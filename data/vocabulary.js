@@ -16,3 +16,30 @@ window.VOCABULARY_DATA = [
     { id: "vocab-n1-remarkable", type: "vocabulary", word: "著しい", kana: "いちじるしい", romaji: "ichijirushii", meaning: "remarkable; striking", jlpt: "N1", exampleSentence: "技術は著しく進歩しました。", exampleTranslation: "Technology advanced remarkably.", notes: "Often used in formal contexts." },
     { id: "vocab-n1-consider", type: "vocabulary", word: "踏まえる", kana: "ふまえる", romaji: "fumaeru", meaning: "to take into account", jlpt: "N1", exampleSentence: "結果を踏まえて計画を直します。", exampleTranslation: "We will revise the plan based on the results.", notes: "Common in business and formal language." }
 ];
+
+/*
+    Dictionary glosses are kept for reference, while naturalMeaning is what a
+    learner should understand and use in context. Extend this guide whenever a
+    new entry needs extra nuance; the original data remains intact.
+*/
+const VOCABULARY_CONTEXT_GUIDE = {
+    "vocab-n5-eat": ["to eat", "to eat", "The standard everyday verb for eating food."],
+    "vocab-n5-morning": ["morning", "morning", "A common everyday noun; 朝に and 朝から are frequent patterns."],
+    "vocab-n5-study": ["study", "studying; to study (勉強する)", "In conversation, use 勉強する when you mean ‘to study.’"],
+    "vocab-n4-prepare": ["preparation", "preparation; to prepare (準備する)", "Use 準備する for the action of getting something ready."],
+    "vocab-n4-necessary": ["necessary; needed", "necessary; needed", "Often used as 必要です or 必要がある, rather than as an isolated exclamation."],
+    "vocab-n3-suddenly": ["suddenly; abrupt", "suddenly; out of nowhere", "Common before a verb, or as 急な + noun when something is unexpected."],
+    "vocab-n3-experience": ["experience", "experience; to experience (経験する)", "Use 経験する for the verb and 経験がある for ‘have experience.’"],
+    "vocab-n2-tendency": ["tendency; trend", "tendency; general pattern", "Common in explanations and reports as ～傾向がある."],
+    "vocab-n2-respect": ["respect; regard", "respect; to respect (尊重する)", "Often used for respecting an opinion, choice, rights, or individuality."],
+    "vocab-n1-remarkable": ["remarkable; striking", "marked; dramatic; remarkable", "More formal than すごい and often describes a clearly measurable change."],
+    "vocab-n1-consider": ["to step on; to tread on", "to take into account; to base a decision on", "In modern formal usage, ～を踏まえて means ‘taking … into account.’ Do not translate it as physically stepping on something in this pattern."]
+};
+
+window.VOCABULARY_DATA.forEach(item => {
+    const guide = VOCABULARY_CONTEXT_GUIDE[item.id];
+    if (!guide) return;
+    item.dictionaryMeaning = guide[0];
+    item.naturalMeaning = guide[1];
+    item.naturalUsageNotes = guide[2];
+});

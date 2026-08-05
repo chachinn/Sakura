@@ -14,6 +14,9 @@ const STORAGE = {
     userNative: "sakura_user_native_entries",
     userSlang: "sakura_user_slang_entries",
     nativeHistory: "sakura_native_recent_history",
+    appearanceTheme: "sakuraAppearanceTheme",
+    wallpaperOverlay: "sakuraWallpaperOverlay",
+    translationHistory: "sakuraTranslationHistory",
     nativeDifficulty: "chaNativeDifficulty",
     wallpaperEnabled: "chaWallpaperEnabled",
     wallpaper: "lastWallpaper"
@@ -24,23 +27,13 @@ const DEFAULT_LEVELS = ["N5"];
 const SECTION_NAMES = ["kanjiOfDay", "wordOfDay", "randomKanji", "randomVocabulary", "kanjiQuiz", "vocabularyQuiz"];
 const NATIVE_CATEGORIES = ["Everyday casual", "Natural polite speech", "Reactions", "Travel", "Workplace", "Friends", "Texting", "Restaurants", "Shopping", "Transportation", "Hotels", "Social situations"];
 const SLANG_CATEGORIES = ["Youth slang", "Internet", "Social media", "Gyaru", "Gaming", "Texting", "Reactions", "Everyday casual", "Anime versus real life", "TikTok / short-form social media", "X / online posts"];
-
-const WALLPAPERS = [
-    "Wallpapers/256C9D22-1EC2-4D74-A99D-166B52F5E8C4.PNG",
-    "Wallpapers/2BE3AC04-4802-4D74-A99D-166B52F5E8C4.PNG",
-    "Wallpapers/3E171C72-2074-4F7A-BB4A-999C7B8BA8AA.PNG",
-    "Wallpapers/5474006B-BEAF-454D-9536-B2B5E8A81580.PNG",
-    "Wallpapers/5C662656-87B3-402E-A1BC-CC52A3A7BE9C.PNG",
-    "Wallpapers/9D12FE90-952B-4FB1-859F-0CA7777DD1EB.PNG",
-    "Wallpapers/9F8CEF4F-CDBE-435B-9ACE-28EB3B9FA6ED.PNG",
-    "Wallpapers/AA876078-C59F-4648-B34C-2643FBCBDD44.PNG",
-    "Wallpapers/ChatGPT Image Jul 31, 2026, 08_37_53 PM.png",
-    "Wallpapers/ChatGPT Image Jul 31, 2026, 08_46_38 PM.png",
-    "Wallpapers/gojo-background.PNG",
-    "Wallpapers/W1.PNG",
-    "Wallpapers/W2.PNG",
-    "Wallpapers/W3.PNG"
-];
+const TRANSLATION_API_ENDPOINT = ""; // Set to a secure serverless endpoint such as /api/translate. Never put an API key in this app.
+const APPEARANCE_DB = "sakuraAppearanceDB";
+const APPEARANCE_STORE = "wallpapers";
+const WALLPAPER_RECORD = "activeWallpaper";
+const THEMES = { pink:{name:"Sakura Pink",swatch:"#ef5b87"},purple:{name:"Lavender Purple",swatch:"#9b70c8"},blue:{name:"Sky Blue",swatch:"#68a9dc"},green:{name:"Mint Green",swatch:"#68b99a"},yellow:{name:"Soft Yellow",swatch:"#d6a94d"} };
+const TRANSLATION_CONTEXTS = ["Everyday","Travel","Restaurant","Café","Shopping","Hotel","Train","Airport","Workplace","Friends","Social media","Other"];
+const TRANSLATION_TONES = ["Polite and natural","Casual","Very polite","Friendly","Social media / texting"];
 
 const KANA_DATA = [
     ["あ", "a", "Hiragana"], ["い", "i", "Hiragana"], ["う", "u", "Hiragana"], ["え", "e", "Hiragana"], ["お", "o", "Hiragana"],
@@ -120,6 +113,13 @@ let userSlangEntries = readJson(STORAGE.userSlang, []);
 let nativeRecentHistory = readJson(STORAGE.nativeHistory, { native: [], slang: [] });
 let nativeQueues = { native: [], slang: [] };
 let nativeQueueKeys = { native: "", slang: "" };
+let wallpaperObjectUrl = "";
+let pendingWallpaperBlob = null;
+let translationHistory = readJson(STORAGE.translationHistory, []);
+let currentTranslationResult = null;
+let translationContext = "Everyday";
+let translationTone = "Polite and natural";
+let translationLoading = false;
 
 function itemKey(item) {
     return item ? `${item.type}:${item.id}` : "";
@@ -424,12 +424,14 @@ function renderKanjiDetail(item) {
     currentDetailKanji = item;
     document.getElementById("detail-kanji-character").textContent = item?.character || "—";
     document.getElementById("detail-kanji-level").textContent = item?.jlpt || "—";
-    document.getElementById("detail-kanji-meaning").textContent = item?.meaning || "No content available";
+    document.getElementById("detail-kanji-meaning").textContent = item?.literalMeaning || item?.meaning || "No content available";
+    document.getElementById("detail-kanji-core-concept").textContent = item?.coreConcept || item?.meaning || "No content available";
+    document.getElementById("detail-kanji-usage-note").textContent = item?.naturalUsageNotes || "This kanji is usually encountered as part of complete words.";
     document.getElementById("detail-kanji-onyomi").textContent = item?.onyomi?.join(", ") || "—";
     document.getElementById("detail-kanji-kunyomi").textContent = item?.kunyomi?.join(", ") || "—";
     document.getElementById("detail-kanji-sentence").textContent = item?.exampleSentence || "";
     document.getElementById("detail-kanji-translation").textContent = item?.exampleTranslation || "";
-    document.getElementById("detail-kanji-examples").innerHTML = (item?.examples || []).map(example => {
+    document.getElementById("detail-kanji-examples").innerHTML = (item?.commonWords || item?.examples || []).map(example => {
         const savedExample = { id: `example-${item.id}-${example.word}`, type: "vocabulary", word: example.word, kana: example.reading, romaji: "", meaning: example.meaning, jlpt: item.jlpt, exampleSentence: item.exampleSentence, exampleTranslation: item.exampleTranslation, notes: `Example word for ${item.character}` };
         return `<article class="example-word"><span><strong>${example.word}（${example.reading}）</strong><small>${example.meaning}</small></span><button class="example-save-button ${isSaved(savedExample) ? "saved" : ""}" type="button" data-example-id="${encodeURIComponent(JSON.stringify(savedExample))}" aria-label="Save ${example.word}">${isSaved(savedExample) ? "♥" : "♡"}</button></article>`;
     }).join("") || '<p class="empty-state">No example words available.</p>';
@@ -442,11 +444,12 @@ function renderWordDetail(item) {
     document.getElementById("detail-word-text").textContent = item?.word || "—";
     document.getElementById("detail-word-kana").textContent = item?.kana || "";
     document.getElementById("detail-word-romaji").textContent = item?.romaji || "";
-    document.getElementById("detail-word-meaning").textContent = item?.meaning || "No content available";
+    document.getElementById("detail-word-dictionary-meaning").textContent = item?.dictionaryMeaning || item?.meaning || "No content available";
+    document.getElementById("detail-word-meaning").textContent = item?.naturalMeaning || item?.meaning || "No content available";
     document.getElementById("detail-word-pos").textContent = partOfSpeech(item);
     document.getElementById("detail-word-sentence").textContent = item?.exampleSentence || "";
     document.getElementById("detail-word-translation").textContent = item?.exampleTranslation || "";
-    document.getElementById("detail-word-notes").textContent = item?.notes || "No usage note available.";
+    document.getElementById("detail-word-notes").textContent = item?.naturalUsageNotes || item?.notes || "No usage note available.";
     setSaveButton(document.getElementById("save-detail-word"), item);
 }
 
@@ -680,7 +683,8 @@ function buildSearchIndex() {
         Kanji: loadedSearchData("KANJI_DATA", "Kanji"),
         Vocabulary: loadedSearchData("VOCABULARY_DATA", "Vocabulary"),
         Native: nativeData(),
-        Slang: slangData()
+        Slang: slangData(),
+        Translations: savedItems.filter(item => item.type === "translation")
     };
     universalSearchIndex = Object.values(groups).flat();
     console.info(`Indexed:\n${groups.Kanji.length} Kanji\n${groups.Vocabulary.length} Vocabulary\n${groups.Native.length} Native\n${groups.Slang.length} Slang`);
@@ -691,11 +695,12 @@ function searchIndex() {
 }
 
 function searchableFields(item) {
-    const exampleFields = (item.examples || []).flatMap(example => [example.word, example.reading, example.kana, example.romaji, example.meaning]);
+    const exampleFields = [...(item.examples || []), ...(item.commonWords || [])].flatMap(example => [example.word, example.reading, example.kana, example.romaji, example.meaning]);
     return [
         item.character, item.kanji, item.word, item.expression,
         item.kana, item.reading, item.romaji, item.meaning, item.english,
         item.literal, item.notes, item.exampleSentence, item.exampleTranslation,
+        item.dictionaryMeaning, item.coreConcept, item.naturalUsageNotes,
         item.naturalMeaning, item.literalMeaning, item.commonUsers, item.commonSituation,
         item.whereUsed, item.learnerSafety, item.currentStatus, item.nuanceNotes,
         item.conversation, item.tone, item.formality, item.users, item.situation,
@@ -739,7 +744,7 @@ function escapeSearchHtml(value) {
 }
 
 function searchTypeLabel(type) {
-    return ({ kanji: "Kanji", vocabulary: "Vocabulary", native: "Native", slang: "Slang" })[type] || type;
+    return ({ kanji: "Kanji", vocabulary: "Vocabulary", native: "Native", slang: "Slang", translation:"Translation" })[type] || type;
 }
 
 function renderSearchResults() {
@@ -824,6 +829,7 @@ function openSearchResult(item) {
     addRecentSearch(document.getElementById("universal-search-input").value);
     if (item.type === "kanji") openKanjiDetail(item, "search");
     else if (item.type === "vocabulary") openWordDetail(item, "search");
+    else if (item.type === "translation") { showRoute("translate"); renderTranslationResult({id:item.id,japanese:item.expression,kana:item.kana,romaji:item.romaji,naturalMeaning:item.naturalMeaning||item.meaning,literalMeaning:item.literalMeaning||"",tone:item.tone||"",usageNote:item.notes||"",alternative:item.alternative||"",offline:false}); }
     else {
         currentNativeMode = item.type;
         document.querySelectorAll("[data-native-mode]").forEach(tab => tab.classList.toggle("active", tab.dataset.nativeMode === item.type));
@@ -1112,6 +1118,73 @@ function setFlashcardStatus(status) {
     renderFlashcard();
 }
 
+function renderTranslationChips() {
+    const render = (id, values, selected, attribute) => { document.getElementById(id).innerHTML = values.map(value => `<button class="translation-chip ${value === selected ? "active" : ""}" type="button" data-${attribute}="${escapeSearchHtml(value)}">${escapeSearchHtml(value)}</button>`).join(""); };
+    render("translation-contexts", TRANSLATION_CONTEXTS, translationContext, "translation-context");
+    render("translation-tones", TRANSLATION_TONES, translationTone, "translation-tone");
+}
+
+function relatedOfflinePhrases(english) {
+    const stopWords = new Set(["a","an","and","are","at","be","can","could","do","for","from","i","in","is","it","me","my","of","on","please","the","this","to","until","we","with","you","your"]);
+    const queryWords = new Set(searchText(english).split(" ").map(word => word.replace(/[^\p{L}\p{N}'-]/gu, "")).filter(word => word.length > 2 && !stopWords.has(word)));
+    const pool = [...nativeData(), ...slangData(), ...window.VOCABULARY_DATA, ...savedItems].filter((item,index,array) => array.findIndex(other => itemKey(other) === itemKey(item)) === index);
+    const ranked = pool.map(item => { const haystack=searchableFields(item).join(" "); let score=0; queryWords.forEach(word => { if(haystack.includes(word)) score+=word.length; }); return {item,score}; }).filter(result=>result.score>0).sort((a,b)=>b.score-a.score);
+    const bestScore = ranked[0]?.score || 0;
+    return ranked.filter(result => result.score >= bestScore * .75).slice(0,5).map(result=>result.item);
+}
+
+function validateTranslationResponse(data) {
+    if (!data || typeof data !== "object" || !cleanEntryText(data.japanese) || !cleanEntryText(data.naturalMeaning)) throw new Error("The translation service returned an incomplete response.");
+    return { japanese:cleanEntryText(data.japanese), kana:cleanEntryText(data.kana), romaji:cleanEntryText(data.romaji), naturalMeaning:cleanEntryText(data.naturalMeaning), literalMeaning:cleanEntryText(data.literalMeaning), tone:cleanEntryText(data.tone), usageNote:cleanEntryText(data.usageNote), alternative:cleanEntryText(data.alternative), offline:false };
+}
+
+function renderTranslationResult(result) {
+    if (result && !result.id) result.id = `translation-${searchText(result.japanese).slice(0,30)}-${Date.now().toString(36)}`;
+    currentTranslationResult = result;
+    const card=document.getElementById("translation-result"); card.hidden=!result;
+    if(!result)return;
+    document.getElementById("translation-result-label").textContent=result.offline?"Related Sakura phrase":"Recommended";
+    document.getElementById("translation-japanese").textContent=result.japanese;
+    document.getElementById("translation-kana").textContent=result.kana;
+    document.getElementById("translation-romaji").textContent=result.romaji;
+    document.getElementById("translation-natural-meaning").textContent=result.naturalMeaning;
+    document.getElementById("translation-literal-meaning").textContent=result.literalMeaning;
+    document.getElementById("translation-literal-group").hidden=!result.literalMeaning;
+    document.getElementById("translation-usage").textContent=[result.tone,result.usageNote].filter(Boolean).join(" · ");
+    document.getElementById("translation-alternative").textContent=result.alternative;
+    document.getElementById("translation-alternative-group").hidden=!result.alternative;
+    const savedItem=translationResultItem(result); setSaveButton(document.getElementById("save-translation"),savedItem); document.getElementById("save-translation").textContent=isSaved(savedItem)?"Saved":"Save";
+}
+
+function translationResultItem(result=currentTranslationResult) {
+    if(!result)return null;
+    return { id:result.id, type:"translation", expression:result.japanese, kana:result.kana, romaji:result.romaji, meaning:result.naturalMeaning, naturalMeaning:result.naturalMeaning, literalMeaning:result.literalMeaning, tone:result.tone, notes:result.usageNote, alternative:result.alternative, context:translationContext };
+}
+
+function addTranslationHistory(request,result) {
+    const record={id:`history-${Date.now().toString(36)}`,english:request.english,context:request.context,tone:request.tone,result,createdAt:new Date().toISOString()};
+    translationHistory=[record,...translationHistory.filter(item=>searchText(item.english)!==searchText(request.english))].slice(0,20); writeJson(STORAGE.translationHistory,translationHistory); renderTranslationHistory();
+}
+
+function renderTranslationHistory() {
+    const container=document.getElementById("translation-history"); if(!container)return;
+    container.innerHTML=translationHistory.map(item=>`<article class="translation-history-item"><button type="button" data-translation-history="${item.id}"><strong>${escapeSearchHtml(item.english)}</strong><small>${escapeSearchHtml(item.context)} · ${escapeSearchHtml(item.tone)}</small></button><button class="history-delete" type="button" data-delete-translation-history="${item.id}" aria-label="Delete ${escapeSearchHtml(item.english)}">×</button></article>`).join("");
+    document.getElementById("translation-history-empty").hidden=translationHistory.length>0; document.getElementById("clear-translation-history").hidden=!translationHistory.length;
+}
+
+async function requestTranslation(event) {
+    event.preventDefault(); if(translationLoading)return;
+    const english=cleanEntryText(document.getElementById("translation-english").value); const message=document.getElementById("translation-message");
+    if(!english){message.textContent="Enter an English sentence first.";return;} if(english.length>500){message.textContent="Keep the sentence under 500 characters.";return;}
+    const request={english,context:translationContext,tone:translationTone}; translationLoading=true; document.getElementById("submit-translation").disabled=true; message.textContent="Finding natural Japanese…";
+    try {
+        let result;
+        if(TRANSLATION_API_ENDPOINT && navigator.onLine){ const response=await fetch(TRANSLATION_API_ENDPOINT,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(request)}); if(!response.ok)throw new Error("The translation service is unavailable right now."); result=validateTranslationResponse(await response.json()); message.textContent=""; }
+        else { const related=relatedOfflinePhrases(english); if(!related.length){renderTranslationResult(null); message.textContent=TRANSLATION_API_ENDPOINT?"AI translation requires internet. No related built-in phrases were found.":"AI translation is not configured yet. No related built-in phrases were found.";return;} const item=related[0]; result={id:`offline-${itemKey(item)}`,japanese:item.expression||item.word||item.character,kana:item.kana||item.reading||"",romaji:item.romaji||"",naturalMeaning:item.naturalMeaning||item.meaning,literalMeaning:item.literalMeaning||item.literal||"",tone:item.tone||item.formality||"",usageNote:`Related phrase already in Sakura for ${item.categories?.join(", ")||item.jlpt||"general use"}.`,alternative:related.slice(1,3).map(other=>other.expression||other.word).join(" / "),offline:true}; message.textContent=TRANSLATION_API_ENDPOINT?"AI translation requires internet. Here are related phrases already in Sakura.":"AI translation is not configured. Here are related phrases already in Sakura."; }
+        renderTranslationResult(result); addTranslationHistory(request,result);
+    } catch(error){renderTranslationResult(null);message.textContent=error.message||"Sakura could not complete that translation.";} finally{translationLoading=false;document.getElementById("submit-translation").disabled=false;}
+}
+
 function showRoute(route, updateHash = true) {
     currentRoute = route;
     document.querySelectorAll(".view").forEach(view => {
@@ -1119,7 +1192,7 @@ function showRoute(route, updateHash = true) {
         view.hidden = !active;
         view.classList.toggle("active-view", active);
     });
-    const mainRoute = route === "search" ? "learn" : route.replace("-detail", "");
+    const mainRoute = ["search","translate"].includes(route) ? "learn" : route.replace("-detail", "");
     document.querySelectorAll(".nav-button").forEach(button => button.classList.toggle("active", button.dataset.route === mainRoute || (route.includes("detail") && button.dataset.route === detailReturnRoute)));
     if (updateHash && !route.includes("detail")) history.replaceState(null, "", `#${route}`);
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -1181,20 +1254,144 @@ function initializePwaUpdates() {
     });
 }
 
-function applyWallpaper() {
-    const enabled = localStorage.getItem(STORAGE.wallpaperEnabled) === "true";
-    const selected = localStorage.getItem(STORAGE.wallpaper) || WALLPAPERS[0];
-    document.body.classList.toggle("wallpaper-enabled", enabled);
-    document.body.style.setProperty("--optional-wallpaper", `url("${selected}")`);
-    document.getElementById("wallpaper-toggle").checked = enabled;
+function setAppearanceMessage(message, error = false) {
+    const element = document.getElementById("appearance-message");
+    if (!element) return;
+    element.textContent = message;
+    element.classList.toggle("incorrect", error);
 }
 
-function chooseWallpaper() {
-    const previous = localStorage.getItem(STORAGE.wallpaper);
-    const available = WALLPAPERS.filter(wallpaper => wallpaper !== previous);
-    const selected = available[Math.floor(Math.random() * available.length)] || WALLPAPERS[0];
-    localStorage.setItem(STORAGE.wallpaper, selected);
-    applyWallpaper();
+function openAppearanceDb() {
+    return new Promise((resolve, reject) => {
+        if (!("indexedDB" in window)) { reject(new Error("IndexedDB is unavailable.")); return; }
+        const request = indexedDB.open(APPEARANCE_DB, 1);
+        request.onupgradeneeded = () => { if (!request.result.objectStoreNames.contains(APPEARANCE_STORE)) request.result.createObjectStore(APPEARANCE_STORE); };
+        request.onsuccess = () => resolve(request.result);
+        request.onerror = () => reject(request.error || new Error("Could not open wallpaper storage."));
+    });
+}
+
+async function wallpaperRecord(action, value) {
+    const db = await openAppearanceDb();
+    return new Promise((resolve, reject) => {
+        const transaction = db.transaction(APPEARANCE_STORE, action === "get" ? "readonly" : "readwrite");
+        const store = transaction.objectStore(APPEARANCE_STORE);
+        const request = action === "get" ? store.get(WALLPAPER_RECORD) : action === "delete" ? store.delete(WALLPAPER_RECORD) : store.put(value, WALLPAPER_RECORD);
+        request.onsuccess = () => resolve(request.result);
+        request.onerror = () => reject(request.error || new Error("Wallpaper storage failed."));
+        transaction.oncomplete = () => db.close();
+    });
+}
+
+function applyTheme(theme) {
+    const selected = THEMES[theme] ? theme : "pink";
+    document.documentElement.dataset.theme = selected;
+    localStorage.setItem(STORAGE.appearanceTheme, selected);
+    renderAppearanceControls();
+}
+
+function applyOverlay(value) {
+    const selected = ["light","medium","strong"].includes(value) ? value : "medium";
+    const strengths = { light:"58%", medium:"76%", strong:"88%" };
+    localStorage.setItem(STORAGE.wallpaperOverlay, selected);
+    document.documentElement.style.setProperty("--wallpaper-overlay-strength", strengths[selected]);
+    document.querySelectorAll("[data-overlay]").forEach(button => button.classList.toggle("active", button.dataset.overlay === selected));
+}
+
+async function loadStoredWallpaper() {
+    try {
+        const blob = await wallpaperRecord("get");
+        if (wallpaperObjectUrl) URL.revokeObjectURL(wallpaperObjectUrl);
+        wallpaperObjectUrl = blob instanceof Blob ? URL.createObjectURL(blob) : "";
+        if (wallpaperObjectUrl) document.body.style.setProperty("--wallpaper-url", `url("${wallpaperObjectUrl}")`);
+        document.body.classList.toggle("wallpaper-enabled", Boolean(wallpaperObjectUrl) && localStorage.getItem(STORAGE.wallpaperEnabled) === "true");
+        renderWallpaperState(Boolean(wallpaperObjectUrl));
+    }
+    catch (error) {
+        document.body.classList.remove("wallpaper-enabled");
+        renderWallpaperState(false);
+        setAppearanceMessage("Custom wallpaper storage is unavailable. Color themes still work normally.", true);
+    }
+}
+
+function renderWallpaperState(hasWallpaper) {
+    const preview = document.getElementById("wallpaper-preview");
+    if (!preview) return;
+    const enabled = hasWallpaper && localStorage.getItem(STORAGE.wallpaperEnabled) === "true";
+    preview.src = wallpaperObjectUrl || "";
+    document.getElementById("wallpaper-preview-wrap").hidden = !hasWallpaper;
+    document.getElementById("wallpaper-empty").hidden = hasWallpaper;
+    document.getElementById("remove-wallpaper").hidden = !hasWallpaper;
+    document.getElementById("choose-wallpaper").textContent = hasWallpaper ? "Replace Photo" : "Choose Photo";
+    document.getElementById("wallpaper-toggle").checked = enabled;
+    document.getElementById("wallpaper-toggle").disabled = !hasWallpaper;
+    document.getElementById("wallpaper-status").textContent = enabled ? "On" : "Off";
+}
+
+function renderAppearanceControls() {
+    const container = document.getElementById("theme-options");
+    if (!container) return;
+    const active = document.documentElement.dataset.theme || "pink";
+    container.innerHTML = Object.entries(THEMES).map(([key, theme]) => `<button class="theme-card ${key === active ? "active" : ""}" type="button" data-theme-choice="${key}"><span class="theme-swatch" style="--swatch:${theme.swatch}"></span><strong>${theme.name}</strong><span class="theme-check">${key === active ? "✓" : ""}</span></button>`).join("");
+    document.getElementById("selected-theme-label").textContent = THEMES[active].name;
+    applyOverlay(localStorage.getItem(STORAGE.wallpaperOverlay) || "medium");
+}
+
+async function decodeAndCompressWallpaper(file) {
+    if (!file || !file.type.startsWith("image/")) throw new Error("Please choose an image file.");
+    let source;
+    try {
+        source = "createImageBitmap" in window ? await createImageBitmap(file, { imageOrientation:"from-image" }) : await new Promise((resolve, reject) => { const image=new Image(); const url=URL.createObjectURL(file); image.onload=()=>{URL.revokeObjectURL(url);resolve(image);}; image.onerror=()=>{URL.revokeObjectURL(url);reject(new Error("Image decoding failed."));}; image.src=url; });
+    }
+    catch { throw new Error("Sakura could not read that image. Try a JPEG, PNG, or WebP file."); }
+    const width = source.width || source.naturalWidth, height = source.height || source.naturalHeight;
+    const scale = Math.min(1, 1920 / Math.max(width, height));
+    const canvas = document.createElement("canvas"); canvas.width=Math.max(1,Math.round(width*scale)); canvas.height=Math.max(1,Math.round(height*scale));
+    const context = canvas.getContext("2d"); if (!context) throw new Error("Image resizing is unavailable in this browser.");
+    context.drawImage(source,0,0,canvas.width,canvas.height); source.close?.();
+    const blob = await new Promise(resolve => canvas.toBlob(resolve, "image/webp", .84));
+    if (blob) return blob;
+    const jpeg = await new Promise(resolve => canvas.toBlob(resolve, "image/jpeg", .84));
+    if (!jpeg) throw new Error("Sakura could not compress that image.");
+    return jpeg;
+}
+
+async function previewWallpaperFile(file) {
+    if (!file) return;
+    setAppearanceMessage("Preparing preview…");
+    try {
+        pendingWallpaperBlob = await decodeAndCompressWallpaper(file);
+        const previewUrl = URL.createObjectURL(pendingWallpaperBlob);
+        document.getElementById("wallpaper-preview").src = previewUrl;
+        document.getElementById("wallpaper-preview-wrap").hidden = false;
+        document.getElementById("wallpaper-preview-label").textContent = "Preview — not applied yet";
+        document.getElementById("wallpaper-confirm-actions").hidden = false;
+        setAppearanceMessage("Preview ready. Confirm to save it on this device.");
+    }
+    catch (error) { pendingWallpaperBlob=null; setAppearanceMessage(error.message, true); }
+}
+
+async function confirmWallpaperPreview() {
+    if (!pendingWallpaperBlob) return;
+    try {
+        await wallpaperRecord("put", pendingWallpaperBlob);
+        pendingWallpaperBlob=null; localStorage.setItem(STORAGE.wallpaperEnabled,"true");
+        document.getElementById("wallpaper-confirm-actions").hidden=true; document.getElementById("wallpaper-preview-label").textContent="Saved wallpaper";
+        await loadStoredWallpaper(); setAppearanceMessage("Wallpaper saved and turned on.");
+    }
+    catch (error) { setAppearanceMessage(error?.name === "QuotaExceededError" ? "This photo is too large for available device storage." : "Sakura could not save this wallpaper on this device.", true); }
+}
+
+async function removeWallpaper() {
+    try { await wallpaperRecord("delete"); } catch {}
+    pendingWallpaperBlob=null; localStorage.setItem(STORAGE.wallpaperEnabled,"false");
+    if (wallpaperObjectUrl) URL.revokeObjectURL(wallpaperObjectUrl); wallpaperObjectUrl="";
+    document.body.classList.remove("wallpaper-enabled"); document.body.style.removeProperty("--wallpaper-url"); renderWallpaperState(false); setAppearanceMessage("Wallpaper removed. Your color theme is unchanged.");
+}
+
+async function resetAppearance() {
+    if (!window.confirm("Reset the color theme and remove the saved wallpaper?")) return;
+    applyTheme("pink"); applyOverlay("medium"); await removeWallpaper(); setAppearanceMessage("Appearance reset to Sakura Pink.");
 }
 
 function addListeners() {
@@ -1205,6 +1402,15 @@ function addListeners() {
         if (quizTarget) showQuizTab(quizTarget);
     }));
     document.getElementById("header-saved").addEventListener("click", () => showRoute("saved"));
+    document.getElementById("translation-contexts").addEventListener("click", event => { const button=event.target.closest("[data-translation-context]"); if(button){translationContext=button.dataset.translationContext;renderTranslationChips();} });
+    document.getElementById("translation-tones").addEventListener("click", event => { const button=event.target.closest("[data-translation-tone]"); if(button){translationTone=button.dataset.translationTone;renderTranslationChips();} });
+    document.getElementById("translation-form").addEventListener("submit",requestTranslation);
+    document.getElementById("translation-english").addEventListener("input",event=>{document.getElementById("translation-character-count").textContent=event.target.value.length;});
+    document.getElementById("clear-translation").addEventListener("click",()=>{document.getElementById("translation-form").reset();document.getElementById("translation-character-count").textContent="0";document.getElementById("translation-message").textContent="";renderTranslationResult(null);});
+    document.getElementById("copy-translation").addEventListener("click",async()=>{if(!currentTranslationResult)return;try{await navigator.clipboard.writeText(currentTranslationResult.japanese);document.getElementById("translation-message").textContent="Copied Japanese to the clipboard.";}catch{document.getElementById("translation-message").textContent="Copy is unavailable. Press and hold the Japanese text to copy it.";}});
+    document.getElementById("save-translation").addEventListener("click",()=>{const item=translationResultItem();if(!item)return;toggleSaved(item);buildSearchIndex();renderTranslationResult(currentTranslationResult);});
+    document.getElementById("translation-history").addEventListener("click",event=>{const remove=event.target.closest("[data-delete-translation-history]");if(remove){translationHistory=translationHistory.filter(item=>item.id!==remove.dataset.deleteTranslationHistory);writeJson(STORAGE.translationHistory,translationHistory);renderTranslationHistory();return;}const reuse=event.target.closest("[data-translation-history]");if(reuse){const item=translationHistory.find(record=>record.id===reuse.dataset.translationHistory);if(item){document.getElementById("translation-english").value=item.english;translationContext=item.context;translationTone=item.tone;renderTranslationChips();renderTranslationResult(item.result);}}});
+    document.getElementById("clear-translation-history").addEventListener("click",()=>{if(window.confirm("Clear all translation history?")){translationHistory=[];writeJson(STORAGE.translationHistory,translationHistory);renderTranslationHistory();}});
     const entryDialog = document.getElementById("entry-manager-dialog");
     document.getElementById("open-entry-manager").addEventListener("click", () => { resetEntryForm(); showEntryTab("form"); entryDialog.showModal(); });
     document.getElementById("close-entry-manager").addEventListener("click", () => entryDialog.close());
@@ -1382,20 +1588,33 @@ function addListeners() {
     document.getElementById("restart-flashcards").addEventListener("click", buildFlashcardDeck);
 
     const settings = document.getElementById("settings-dialog");
-    document.getElementById("open-settings").addEventListener("click", () => settings.showModal());
-    document.getElementById("wallpaper-toggle").addEventListener("change", event => { localStorage.setItem(STORAGE.wallpaperEnabled, String(event.target.checked)); applyWallpaper(); });
-    document.getElementById("change-wallpaper").addEventListener("click", chooseWallpaper);
+    document.getElementById("open-settings").addEventListener("click", () => { renderAppearanceControls(); loadStoredWallpaper(); settings.showModal(); });
+    document.getElementById("close-settings").addEventListener("click", () => settings.close());
+    document.getElementById("done-settings").addEventListener("click", () => settings.close());
+    document.getElementById("theme-options").addEventListener("click", event => { const button=event.target.closest("[data-theme-choice]"); if(button) applyTheme(button.dataset.themeChoice); });
+    document.getElementById("overlay-options").addEventListener("click", event => { const button=event.target.closest("[data-overlay]"); if(button) applyOverlay(button.dataset.overlay); });
+    document.getElementById("choose-wallpaper").addEventListener("click", () => document.getElementById("wallpaper-file-input").click());
+    document.getElementById("wallpaper-file-input").addEventListener("change", event => { if(event.target.files[0]) previewWallpaperFile(event.target.files[0]); event.target.value=""; });
+    document.getElementById("apply-wallpaper-preview").addEventListener("click", confirmWallpaperPreview);
+    document.getElementById("cancel-wallpaper-preview").addEventListener("click", () => { pendingWallpaperBlob=null; document.getElementById("wallpaper-confirm-actions").hidden=true; loadStoredWallpaper(); setAppearanceMessage("Preview cancelled."); });
+    document.getElementById("remove-wallpaper").addEventListener("click", removeWallpaper);
+    document.getElementById("wallpaper-toggle").addEventListener("change", event => { localStorage.setItem(STORAGE.wallpaperEnabled,String(event.target.checked)); document.body.classList.toggle("wallpaper-enabled",event.target.checked&&Boolean(wallpaperObjectUrl)); renderWallpaperState(Boolean(wallpaperObjectUrl)); });
+    document.getElementById("reset-appearance").addEventListener("click", resetAppearance);
 }
 
 function initializeApp() {
     if (!Array.isArray(globalLevels) || !globalLevels.length) globalLevels = [...DEFAULT_LEVELS];
-    applyWallpaper();
+    applyTheme(localStorage.getItem(STORAGE.appearanceTheme) || "pink");
+    applyOverlay(localStorage.getItem(STORAGE.wallpaperOverlay) || "medium");
+    loadStoredWallpaper();
     renderGlobalLevels();
     renderAllSectionControls();
     renderFlashcardLevels();
     buildSearchIndex();
     renderSearchJlptFilters();
     renderRecentSearches();
+    renderTranslationChips();
+    renderTranslationHistory();
     refreshNativeCategories();
     const storedDifficulty = localStorage.getItem(STORAGE.nativeDifficulty);
     if (["All", "Beginner", "Intermediate", "Advanced"].includes(storedDifficulty)) document.getElementById("native-difficulty-filter").value = storedDifficulty;
@@ -1412,7 +1631,7 @@ function initializeApp() {
     browseNative(1, true);
     updateSavedUi();
     const requestedRoute = location.hash.replace("#", "");
-    showRoute(["home", "learn", "search", "quiz", "native", "saved"].includes(requestedRoute) ? requestedRoute : "home", false);
+    showRoute(["home", "learn", "search", "translate", "quiz", "native", "saved"].includes(requestedRoute) ? requestedRoute : "home", false);
     initializePwaUpdates();
 }
 

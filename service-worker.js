@@ -1,10 +1,10 @@
-const CACHE_VERSION = "sakura-v14";
+const CACHE_VERSION = "sakura-v18";
 
 const APP_SHELL = [
     "./",
     "./index.html",
-    "./style.css?v=14",
-    "./app.js?v=14",
+    "./style.css?v=18",
+    "./app.js?v=18",
     "./data/kanji.js",
     "./data/vocabulary.js",
     "./data/native-japanese.js",

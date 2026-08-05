@@ -4,7 +4,7 @@ A plain HTML, CSS, and JavaScript mobile Japanese-learning application that can 
 
 The app includes independent JLPT filters, editable kanji and vocabulary collections, three quizzes, Native Japanese and Current Slang cards, detail screens, saved items, and persistent flashcard study statuses.
 
-The clean sakura-pastel interface is the default. Existing wallpapers remain available as an optional Appearance setting and are disabled by default for readability.
+The clean sakura-pastel interface includes five selectable color themes. You can optionally choose a private device photo as a wallpaper; Sakura resizes it and stores it locally in IndexedDB rather than uploading it or putting it in localStorage.
 
 ## Run locally
 
@@ -25,7 +25,7 @@ A service worker does not work when `index.html` is opened directly from the fil
 
 3. Open `http://localhost:8000` in a browser.
 
-The external Japanese-learning APIs require an internet connection. The app shell, wallpapers that have already been shown, and Kanji API responses that have already been requested are cached for practical offline use. Built-in fallback words and kanji are shown when live API requests are unavailable.
+The external Japanese-learning APIs require an internet connection. The app shell and Kanji API responses that have already been requested are cached for practical offline use. Built-in fallback words, kanji, and related phrase suggestions remain available offline.
 
 ## Deploy to GitHub Pages
 
@@ -49,12 +49,16 @@ Open the new Sakura icon from the Home Screen to use the dashboard in standalone
 
 ## Update the app
 
-1. Edit `index.html`, `style.css`, or `script.js` as usual.
+1. Edit `index.html`, `style.css`, or `app.js` as usual.
 2. When changing cached files, update `CACHE_VERSION` near the top of `service-worker.js` (for example, change `sakura-dashboard-v1` to `sakura-dashboard-v2`).
 3. Upload or push the changed files to the GitHub Pages branch.
 4. Reopen the installed app while online. Safari will download the new service worker and cached files; fully closing and reopening the app may help the update appear immediately.
 
-When adding a wallpaper, place it in `Wallpapers`, then add its exact filename to `WALLPAPERS` near the top of `app.js`. When adding a file that must always be available offline, also add its relative path to `APP_SHELL` in `service-worker.js`.
+When changing a cached file, update both its query string in `index.html` / `service-worker.js` and the service-worker cache version. Device wallpapers do not belong in the project: users choose them from Appearance, and Sakura stores the compressed image in the `sakuraAppearanceDB` IndexedDB database.
+
+## English to Japanese
+
+The English-to-Japanese screen works offline by suggesting related phrases already included in Sakura. It is also ready to call a secure server-side translator. Set `TRANSLATION_API_ENDPOINT` near the top of `app.js` to your deployed endpoint (for example, `/api/translate`). Never place a private AI or translation API key in this project or any browser-visible storage. The endpoint must accept the documented `english`, `context`, and `tone` JSON fields and return the structured translation fields used by the result card.
 
 ## Edit learning content
 
@@ -69,4 +73,4 @@ Each file starts with a beginner editing guide. Copy an existing object, give it
 
 ## Data storage
 
-The dashboard uses `localStorage` for its on-device preferences, JLPT selections, saved items, Native Japanese difficulty, and Known/Needs Review flashcard statuses. This data stays on that browser/device and does not require an account. Removing Safari website data or uninstalling the Home Screen app may remove it.
+Sakura uses `localStorage` for on-device preferences, themes, JLPT selections, saved items, translation history, Native Japanese difficulty, and Known/Needs Review flashcard statuses. The selected wallpaper image is stored separately in IndexedDB. This data stays on that browser/device and does not require an account. Removing Safari website data or uninstalling the Home Screen app may remove it.
