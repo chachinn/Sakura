@@ -1,0 +1,17 @@
+/*
+    BEGINNER EDITING GUIDE
+    Add new kanji by copying one object below. Keep the id unique and use a
+    JLPT level from N5 to N1. Add example words inside the examples list.
+*/
+window.KANJI_DATA = [
+    { id: "kanji-n5-day", type: "kanji", character: "日", reading: "ひ / ニチ", romaji: "hi / nichi", meaning: "day; sun", onyomi: ["ニチ", "ジツ"], kunyomi: ["ひ", "び", "か"], jlpt: "N5", examples: [{ word: "日本", reading: "にほん", meaning: "Japan" }], exampleSentence: "今日はいい天気です。", exampleTranslation: "The weather is nice today." },
+    { id: "kanji-n5-study", type: "kanji", character: "学", reading: "まなぶ / ガク", romaji: "manabu / gaku", meaning: "study; learning", onyomi: ["ガク"], kunyomi: ["まなぶ"], jlpt: "N5", examples: [{ word: "学生", reading: "がくせい", meaning: "student" }], exampleSentence: "毎日日本語を学びます。", exampleTranslation: "I study Japanese every day." },
+    { id: "kanji-n4-trip", type: "kanji", character: "旅", reading: "たび / リョ", romaji: "tabi / ryo", meaning: "trip; travel", onyomi: ["リョ"], kunyomi: ["たび"], jlpt: "N4", examples: [{ word: "旅行", reading: "りょこう", meaning: "travel" }], exampleSentence: "京都へ旅行しました。", exampleTranslation: "I traveled to Kyoto." },
+    { id: "kanji-n4-special", type: "kanji", character: "特", reading: "トク", romaji: "toku", meaning: "special", onyomi: ["トク"], kunyomi: [], jlpt: "N4", examples: [{ word: "特別", reading: "とくべつ", meaning: "special" }], exampleSentence: "今日は特別な日です。", exampleTranslation: "Today is a special day." },
+    { id: "kanji-n3-deep", type: "kanji", character: "深", reading: "ふかい / シン", romaji: "fukai / shin", meaning: "deep", onyomi: ["シン"], kunyomi: ["ふかい", "ふかまる"], jlpt: "N3", examples: [{ word: "深夜", reading: "しんや", meaning: "late at night" }], exampleSentence: "この湖はとても深いです。", exampleTranslation: "This lake is very deep." },
+    { id: "kanji-n3-continue", type: "kanji", character: "続", reading: "つづく / ゾク", romaji: "tsuzuku / zoku", meaning: "continue", onyomi: ["ゾク"], kunyomi: ["つづく", "つづける"], jlpt: "N3", examples: [{ word: "連続", reading: "れんぞく", meaning: "continuation" }], exampleSentence: "雨が三日続きました。", exampleTranslation: "The rain continued for three days." },
+    { id: "kanji-n2-support", type: "kanji", character: "支", reading: "ささえる / シ", romaji: "sasaeru / shi", meaning: "support; branch", onyomi: ["シ"], kunyomi: ["ささえる"], jlpt: "N2", examples: [{ word: "支援", reading: "しえん", meaning: "support; assistance" }], exampleSentence: "家族が私を支えてくれた。", exampleTranslation: "My family supported me." },
+    { id: "kanji-n2-recognize", type: "kanji", character: "認", reading: "みとめる / ニン", romaji: "mitomeru / nin", meaning: "recognize; acknowledge", onyomi: ["ニン"], kunyomi: ["みとめる"], jlpt: "N2", examples: [{ word: "確認", reading: "かくにん", meaning: "confirmation" }], exampleSentence: "内容を確認してください。", exampleTranslation: "Please confirm the contents." },
+    { id: "kanji-n1-carry", type: "kanji", character: "携", reading: "たずさえる / ケイ", romaji: "tazusaeru / kei", meaning: "carry; cooperate", onyomi: ["ケイ"], kunyomi: ["たずさえる", "たずさわる"], jlpt: "N1", examples: [{ word: "携帯", reading: "けいたい", meaning: "portable; mobile phone" }], exampleSentence: "身分証を携帯してください。", exampleTranslation: "Please carry identification." },
+    { id: "kanji-n1-moment", type: "kanji", character: "瞬", reading: "またたく / シュン", romaji: "matataku / shun", meaning: "blink; instant", onyomi: ["シュン"], kunyomi: ["またたく"], jlpt: "N1", examples: [{ word: "瞬間", reading: "しゅんかん", meaning: "instant; moment" }], exampleSentence: "その瞬間を忘れません。", exampleTranslation: "I will not forget that moment." }
+];

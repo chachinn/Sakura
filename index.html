@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="theme-color" content="#fff8fa">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="Sakura">
+    <title>Sakura</title>
+    <link rel="manifest" href="manifest.webmanifest">
+    <link rel="apple-touch-icon" href="icons/icon-180.png">
+    <link rel="stylesheet" href="style.css?v=14">
+</head>
+<body>
+    <div class="app-shell">
+        <header class="app-header">
+            <button id="open-settings" class="icon-button" type="button" aria-label="Open appearance settings">☰</button>
+            <a class="app-brand" href="#home" data-route="home" aria-label="Sakura home">
+                <span aria-hidden="true">🌸</span>
+                <strong>Sakura</strong>
+            </a>
+            <div class="header-actions">
+                <button id="header-search" class="icon-button" type="button" aria-label="Open universal search">⌕</button>
+                <button id="header-saved" class="icon-button header-saved" type="button" aria-label="Open saved items">♡<span id="header-saved-count">0</span></button>
+            </div>
+        </header>
+
+        <main id="main-content">
+            <section id="home-view" class="view active-view" data-view="home" aria-labelledby="home-title">
+                <h1 id="home-title" class="sr-only">Home</h1>
+
+                <section class="level-panel" aria-labelledby="global-level-heading">
+                    <div class="section-heading compact-heading">
+                        <div><span class="section-kicker">🌸 Study settings</span><h2 id="global-level-heading">JLPT Level</h2></div>
+                        <span id="global-level-summary" class="selection-summary">Selected: N5</span>
+                    </div>
+                    <div id="global-jlpt-selector" class="level-chips" role="group" aria-label="Global JLPT levels"></div>
+                </section>
+
+                <section aria-labelledby="daily-heading">
+                    <div class="section-heading"><div><span class="section-kicker">Today’s garden</span><h2 id="daily-heading">Daily Japanese</h2></div></div>
+                    <div class="daily-grid">
+                        <article class="daily-card kanji-daily-card">
+                            <div class="card-topline">
+                                <button class="card-title-button" type="button" data-open-detail="kanji"><span class="card-icon">漢</span> Kanji of the Day</button>
+                                <button id="refresh-daily-kanji" class="round-action" type="button" aria-label="Choose random kanji">↻</button>
+                            </div>
+                            <button class="daily-card-body" type="button" data-open-detail="kanji" aria-label="Open kanji details">
+                                <span id="daily-kanji-character" class="daily-japanese">日</span>
+                                <span id="daily-kanji-reading" class="daily-reading">ひ / ニチ</span>
+                                <span id="daily-kanji-meaning" class="daily-meaning">day; sun</span>
+                                <span id="daily-kanji-level" class="tag">N5</span>
+                                <span id="daily-kanji-example" class="daily-example">日本（にほん）— Japan</span>
+                            </button>
+                            <div id="kanjiOfDay-levels" class="section-level-control"></div>
+                            <div class="card-controls">
+                                <button id="previous-daily-kanji" class="control-button" type="button">‹ Previous</button>
+                                <button id="random-daily-kanji" class="control-button accent-control" type="button">⤨ Random</button>
+                                <button id="next-daily-kanji" class="control-button" type="button">Next ›</button>
+                                <button id="save-daily-kanji" class="save-button" type="button" aria-label="Save kanji">♡</button>
+                            </div>
+                        </article>
+
+                        <article class="daily-card word-daily-card">
+                            <div class="card-topline">
+                                <button class="card-title-button" type="button" data-open-detail="word"><span class="card-icon">語</span> Word of the Day</button>
+                                <button id="refresh-daily-word" class="round-action" type="button" aria-label="Choose random word">↻</button>
+                            </div>
+                            <button class="daily-card-body" type="button" data-open-detail="word" aria-label="Open word details">
+                                <span id="daily-word-text" class="daily-japanese word-size">勉強</span>
+                                <span id="daily-word-reading" class="daily-reading">べんきょう · benkyou</span>
+                                <span id="daily-word-meaning" class="daily-meaning">study</span>
+                                <span id="daily-word-tags" class="tag-row"><span class="tag">N5</span></span>
+                                <span id="daily-word-example" class="daily-example">図書館で勉強します。</span>
+                            </button>
+                            <div id="wordOfDay-levels" class="section-level-control"></div>
+                            <div class="card-controls">
+                                <button id="previous-daily-word" class="control-button" type="button">‹ Previous</button>
+                                <button id="random-daily-word" class="control-button accent-control" type="button">⤨ Random</button>
+                                <button id="next-daily-word" class="control-button" type="button">Next ›</button>
+                                <button id="save-daily-word" class="save-button" type="button" aria-label="Save word">♡</button>
+                            </div>
+                        </article>
+                    </div>
+                </section>
+
+                <section aria-labelledby="practice-heading">
+                    <div class="section-heading"><div><span class="section-kicker">Practice</span><h2 id="practice-heading">Choose a challenge</h2></div></div>
+                    <div class="feature-grid practice-grid">
+                        <button class="feature-card pink-feature" type="button" data-route="quiz" data-quiz-target="kanji"><span class="feature-icon">漢</span><span><strong>Kanji Quiz</strong><small>Test readings and meanings</small></span><b>→</b></button>
+                        <button class="feature-card lavender-feature" type="button" data-route="quiz" data-quiz-target="kana"><span class="feature-icon">あ</span><span><strong>Kana Quiz</strong><small>Hiragana and katakana</small></span><b>→</b></button>
+                        <button class="feature-card peach-feature" type="button" data-route="quiz" data-quiz-target="vocabulary"><span class="feature-icon">語</span><span><strong>Vocabulary Quiz</strong><small>Practice useful words</small></span><b>→</b></button>
+                        <button class="feature-card rose-feature" type="button" data-route="native"><span class="feature-icon">話</span><span><strong>Native Japanese</strong><small>Real expressions and slang</small></span><b>→</b></button>
+                    </div>
+                </section>
+
+                <section aria-labelledby="saved-study-heading">
+                    <div class="section-heading"><div><span class="section-kicker">Saved &amp; Study</span><h2 id="saved-study-heading">Your collection</h2></div></div>
+                    <button class="saved-study-card" type="button" data-route="saved">
+                        <span class="feature-icon outline-icon">♡</span>
+                        <span><strong>Saved Items / Flashcards</strong><small>Review saved Japanese at your pace</small></span>
+                        <span class="saved-count-badge"><b id="home-saved-count">0</b> saved</span>
+                        <b>→</b>
+                    </button>
+                </section>
+            </section>
+
+            <section id="learn-view" class="view" data-view="learn" aria-labelledby="learn-heading" hidden>
+                <div class="page-heading"><span class="section-kicker">Browse &amp; discover</span><h1 id="learn-heading">Learn</h1><p>Explore kanji and vocabulary at your selected levels.</p></div>
+                <button id="open-learn-search" class="learn-search-button" type="button"><span aria-hidden="true">⌕</span><span>Search kanji, words, and expressions</span></button>
+                <div class="browse-grid">
+                    <article class="learning-card">
+                        <div class="card-topline"><h2>Kanji Browser</h2><button id="save-browse-kanji" class="save-button" type="button">♡</button></div>
+                        <button id="open-browse-kanji-detail" class="learning-focus" type="button"><span id="browse-kanji-character">日</span><small id="browse-kanji-reading">ひ / ニチ</small><strong id="browse-kanji-meaning">day; sun</strong><em id="browse-kanji-level">N5</em></button>
+                        <div id="randomKanji-levels" class="section-level-control expanded-level-control"></div>
+                        <div class="three-controls"><button id="previous-kanji" class="control-button" type="button">‹ Previous</button><button id="random-kanji" class="control-button accent-control" type="button">⤨ Random</button><button id="next-kanji" class="control-button" type="button">Next ›</button></div>
+                    </article>
+                    <article class="learning-card">
+                        <div class="card-topline"><h2>Vocabulary Browser</h2><button id="save-browse-word" class="save-button" type="button">♡</button></div>
+                        <button id="open-browse-word-detail" class="learning-focus" type="button"><span id="browse-word-text" class="word-focus">勉強</span><small id="browse-word-reading">べんきょう · benkyou</small><strong id="browse-word-meaning">study</strong><em id="browse-word-level">N5</em></button>
+                        <div id="randomVocabulary-levels" class="section-level-control expanded-level-control"></div>
+                        <div class="three-controls"><button id="previous-word" class="control-button" type="button">‹ Previous</button><button id="random-word" class="control-button accent-control" type="button">⤨ Random</button><button id="next-word" class="control-button" type="button">Next ›</button></div>
+                    </article>
+                </div>
+            </section>
+
+            <section id="search-view" class="view" data-view="search" aria-labelledby="search-heading" hidden>
+                <div class="search-page-heading">
+                    <button id="close-search" class="back-button" type="button" aria-label="Back from search">‹</button>
+                    <div><span class="section-kicker">Find Japanese</span><h1 id="search-heading">Universal Search</h1></div>
+                </div>
+                <form id="search-form" class="universal-search-form" role="search">
+                    <span aria-hidden="true">⌕</span>
+                    <input id="universal-search-input" type="search" placeholder="Kanji, kana, romaji, or English" autocomplete="off" enterkeyhint="search" aria-label="Search Sakura">
+                    <button id="clear-search-input" type="button" aria-label="Clear search" hidden>×</button>
+                    <button class="search-submit-button" type="submit" aria-label="Submit search">→</button>
+                </form>
+                <div id="search-type-filters" class="search-filter-chips" role="group" aria-label="Search result type">
+                    <button class="search-filter-chip active" type="button" data-search-type="all">All</button>
+                    <button class="search-filter-chip" type="button" data-search-type="kanji">Kanji</button>
+                    <button class="search-filter-chip" type="button" data-search-type="vocabulary">Vocabulary</button>
+                    <button class="search-filter-chip" type="button" data-search-type="native">Native</button>
+                    <button class="search-filter-chip" type="button" data-search-type="slang">Slang</button>
+                </div>
+                <section id="search-jlpt-panel" class="search-jlpt-panel" aria-labelledby="search-jlpt-heading">
+                    <div class="search-filter-heading"><h2 id="search-jlpt-heading">JLPT Levels</h2><span id="search-jlpt-summary">All levels</span></div>
+                    <div id="search-jlpt-filters" class="level-chips compact-level-chips" role="group" aria-label="Search JLPT levels"></div>
+                </section>
+                <section id="recent-searches-section" class="recent-searches" aria-labelledby="recent-searches-heading">
+                    <div class="search-filter-heading"><h2 id="recent-searches-heading">Recent Searches</h2><button id="clear-recent-searches" type="button">Clear all</button></div>
+                    <div id="recent-search-list" class="recent-search-list"></div>
+                    <p id="recent-searches-empty" class="empty-state">Your recent searches will appear here.</p>
+                </section>
+                <section id="search-results-section" aria-live="polite" hidden>
+                    <p id="search-result-summary" class="search-result-summary"></p>
+                    <div id="search-results" class="search-results"></div>
+                    <div id="search-empty" class="search-empty-state" hidden><span aria-hidden="true">🌸</span><strong>No matching Japanese found.</strong><p>Try another spelling, kana, romaji, or English word.</p></div>
+                </section>
+            </section>
+
+            <section id="quiz-view" class="view" data-view="quiz" aria-labelledby="quiz-heading" hidden>
+                <div class="page-heading"><span class="section-kicker">Practice</span><h1 id="quiz-heading">Quiz Garden</h1><p>Choose a challenge and grow your recall.</p></div>
+                <div class="tab-bar" role="tablist" aria-label="Quiz type"><button class="tab-button active" type="button" data-quiz-tab="kana">Kana</button><button class="tab-button" type="button" data-quiz-tab="kanji">Kanji</button><button class="tab-button" type="button" data-quiz-tab="vocabulary">Vocabulary</button></div>
+
+                <article id="kana-quiz-panel" class="quiz-card" data-quiz-panel="kana">
+                    <div class="quiz-card-heading"><span class="quiz-icon lavender-feature">あ</span><div><h2>Kana Quiz</h2><p id="kana-type">Hiragana</p></div></div>
+                    <div class="quiz-status-bar"><span>Score <strong id="kana-quiz-score">0</strong></span><span>Question <strong id="kana-quiz-count">0</strong></span></div>
+                    <div id="kana-character" class="quiz-character">あ</div>
+                    <p>Type the romaji reading.</p>
+                    <input id="kana-answer" class="answer-input" type="text" placeholder="Your answer" autocomplete="off" spellcheck="false">
+                    <div class="quiz-actions"><button id="check-kana" class="primary-button" type="button">Check Answer</button><button id="reveal-kana" class="secondary-button" type="button">Reveal</button><button id="next-kana" class="secondary-button" type="button">Next</button></div>
+                    <p id="kana-feedback" class="feedback" aria-live="polite"></p>
+                </article>
+
+                <article id="kanji-quiz-panel" class="quiz-card" data-quiz-panel="kanji" hidden>
+                    <div class="quiz-card-heading"><span class="quiz-icon pink-feature">漢</span><div><h2>Kanji Quiz</h2><p>Enter a reading or meaning.</p></div></div>
+                    <div id="kanjiQuiz-levels" class="section-level-control expanded-level-control"></div>
+                    <div class="quiz-status-bar"><span>Score <strong id="kanji-quiz-score">0</strong></span><span>Question <strong id="kanji-quiz-count">0</strong></span></div>
+                    <div id="kanji-quiz-character" class="quiz-character">日</div>
+                    <input id="kanji-quiz-answer" class="answer-input" type="text" placeholder="Reading or English meaning" autocomplete="off">
+                    <div class="quiz-actions"><button id="check-kanji-quiz" class="primary-button" type="button">Check Answer</button><button id="reveal-kanji-quiz" class="secondary-button" type="button">Reveal</button><button id="next-kanji-quiz" class="secondary-button" type="button">Next</button></div>
+                    <p id="kanji-quiz-feedback" class="feedback" aria-live="polite"></p>
+                </article>
+
+                <article id="vocabulary-quiz-panel" class="quiz-card" data-quiz-panel="vocabulary" hidden>
+                    <div class="quiz-card-heading"><span class="quiz-icon peach-feature">語</span><div><h2>Vocabulary Quiz</h2><p>Enter the English meaning.</p></div></div>
+                    <div id="vocabularyQuiz-levels" class="section-level-control expanded-level-control"></div>
+                    <div class="quiz-status-bar"><span>Score <strong id="vocabulary-quiz-score">0</strong></span><span>Question <strong id="vocabulary-quiz-count">0</strong></span></div>
+                    <div id="vocabulary-quiz-word" class="quiz-character word-quiz-character">勉強</div>
+                    <p id="vocabulary-quiz-reading">べんきょう</p>
+                    <input id="vocabulary-quiz-answer" class="answer-input" type="text" placeholder="English meaning" autocomplete="off">
+                    <div class="quiz-actions"><button id="check-vocabulary-quiz" class="primary-button" type="button">Check Answer</button><button id="reveal-vocabulary-quiz" class="secondary-button" type="button">Reveal</button><button id="next-vocabulary-quiz" class="secondary-button" type="button">Next</button></div>
+                    <p id="vocabulary-quiz-feedback" class="feedback" aria-live="polite"></p>
+                </article>
+            </section>
+
+            <section id="native-view" class="view" data-view="native" aria-labelledby="native-heading" hidden>
+                <div class="page-heading native-page-heading"><div><span class="section-kicker">Speak naturally</span><h1 id="native-heading">Native Japanese</h1><p>Everyday expressions and current casual language.</p></div><button id="open-entry-manager" class="primary-button" type="button">＋ Add Entry</button></div>
+                <div class="tab-bar" role="tablist" aria-label="Native Japanese type"><button class="tab-button active" type="button" data-native-mode="native">Natural Expressions</button><button class="tab-button" type="button" data-native-mode="slang">Current Slang</button></div>
+                <div class="filter-row"><label>Difficulty<select id="native-difficulty-filter"><option>All</option><option>Beginner</option><option>Intermediate</option><option>Advanced</option></select></label><label>Category<select id="native-category-filter"><option>All</option></select></label></div>
+                <article class="native-card">
+                    <div class="card-topline"><span id="native-status" class="status-label">Still common</span><button id="save-native-item" class="save-button" type="button">♡</button></div>
+                    <h2 id="native-expression">お疲れさま</h2>
+                    <p id="native-reading" class="native-reading">おつかれさま · otsukaresama</p>
+                    <p id="native-meaning" class="native-meaning">Good work / Thanks for your effort</p>
+                    <div id="native-details" class="native-details"></div>
+                    <p id="native-empty" class="empty-state" hidden>No content is available for these filters.</p>
+                    <div class="three-controls"><button id="previous-native" class="control-button" type="button">‹ Previous</button><button id="random-native" class="control-button accent-control" type="button">⤨ Random</button><button id="next-native" class="control-button" type="button">Next ›</button></div>
+                </article>
+            </section>
+
+            <section id="saved-view" class="view" data-view="saved" aria-labelledby="saved-heading" hidden>
+                <div class="page-heading"><span class="section-kicker">Your collection</span><h1 id="saved-heading">Saved &amp; Study</h1><p>Review the Japanese you chose to remember.</p></div>
+                <div class="tab-bar" role="tablist" aria-label="Saved study mode"><button class="tab-button active" type="button" data-saved-tab="items">Saved Items</button><button class="tab-button" type="button" data-saved-tab="flashcards">Flashcards</button></div>
+
+                <div id="saved-items-panel" data-saved-panel="items">
+                    <div class="filter-row saved-filters"><label>Type<select id="saved-type-filter"><option value="all">All</option><option value="kanji">Kanji</option><option value="vocabulary">Vocabulary</option><option value="native">Native Japanese</option><option value="slang">Slang</option></select></label><label>JLPT<select id="saved-level-filter"><option value="all">All</option><option>N5</option><option>N4</option><option>N3</option><option>N2</option><option>N1</option></select></label><button id="clear-saved" class="text-danger-button" type="button">Clear all</button></div>
+                    <div id="saved-items" class="saved-grid"></div>
+                    <p id="saved-empty" class="empty-state">No saved items yet. Tap the heart on any learning card.</p>
+                    <button id="start-flashcards" class="primary-button full-width-button" type="button">Study with Flashcards</button>
+                </div>
+
+                <div id="flashcards-panel" data-saved-panel="flashcards" hidden>
+                    <div class="filter-row flashcard-filter-row"><label>Deck<select id="deck-type-filter"><option value="all">All saved</option><option value="kanji">Kanji only</option><option value="vocabulary">Vocabulary only</option><option value="native">Native Japanese only</option><option value="slang">Slang only</option></select></label><label class="checkbox-label"><input id="review-only-filter" type="checkbox"> Needs Review only</label></div>
+                    <div id="flashcard-levels" class="level-chips compact-level-chips"></div>
+                    <p id="flashcard-progress" class="flashcard-progress">Card 0 of 0</p>
+                    <button id="flashcard" class="flashcard" type="button" aria-label="Reveal flashcard answer"><span id="flashcard-side-label" class="section-kicker">Front</span><strong id="flashcard-front">Save some items to begin</strong><span id="flashcard-back" class="flashcard-back" hidden></span></button>
+                    <div class="flashcard-actions"><button id="reveal-flashcard" class="primary-button" type="button">Reveal Answer</button><button id="previous-flashcard" class="secondary-button" type="button">Previous</button><button id="next-flashcard" class="secondary-button" type="button">Next</button><button id="shuffle-flashcards" class="secondary-button" type="button">Shuffle</button><button id="known-flashcard" class="study-status-button known-button" type="button">Known</button><button id="review-flashcard" class="study-status-button review-button" type="button">Needs Review</button><button id="restart-flashcards" class="secondary-button" type="button">Restart Deck</button></div>
+                    <p id="flashcard-empty" class="empty-state" hidden>No saved items match this deck.</p>
+                </div>
+            </section>
+
+            <section id="kanji-detail-view" class="view detail-view" data-view="kanji-detail" aria-labelledby="kanji-detail-heading" hidden>
+                <header class="detail-header"><button class="back-button" type="button" data-detail-back>‹</button><div><span class="section-kicker">Kanji study</span><h1 id="kanji-detail-heading">Kanji Detail</h1></div><button id="save-detail-kanji" class="save-button" type="button">♡</button></header>
+                <article class="detail-hero kanji-detail-hero"><div id="detail-kanji-character" class="detail-kanji-character">日</div><div><span id="detail-kanji-level" class="tag">N5</span><h2 id="detail-kanji-meaning">day; sun</h2><dl class="reading-list"><div><dt>Onyomi</dt><dd id="detail-kanji-onyomi">ニチ, ジツ</dd></div><div><dt>Kunyomi</dt><dd id="detail-kanji-kunyomi">ひ, び, か</dd></div></dl></div></article>
+                <section class="detail-section"><h2>Example Words</h2><div id="detail-kanji-examples" class="example-word-grid"></div></section>
+                <section class="detail-section"><h2>Example Sentence</h2><p id="detail-kanji-sentence" class="japanese-sentence"></p><p id="detail-kanji-translation" class="translation"></p></section>
+                <div class="detail-controls"><button id="detail-previous-kanji" class="control-button" type="button">‹ Previous</button><button id="detail-random-kanji" class="control-button accent-control" type="button">⤨ Random</button><button id="detail-next-kanji" class="control-button" type="button">Next ›</button></div>
+            </section>
+
+            <section id="word-detail-view" class="view detail-view" data-view="word-detail" aria-labelledby="word-detail-heading" hidden>
+                <header class="detail-header"><button class="back-button" type="button" data-detail-back>‹</button><div><span class="section-kicker">Vocabulary study</span><h1 id="word-detail-heading">Word Detail</h1></div><button id="save-detail-word" class="save-button" type="button">♡</button></header>
+                <article class="detail-hero word-detail-hero"><div><span id="detail-word-level" class="tag">N5</span><h2 id="detail-word-text">勉強</h2><p id="detail-word-kana">べんきょう</p><p id="detail-word-romaji">benkyou</p></div><div><span class="detail-label">Meaning</span><strong id="detail-word-meaning">study</strong><span class="detail-label">Part of speech</span><strong id="detail-word-pos">Noun / する verb</strong></div></article>
+                <section class="detail-section"><h2>Example Sentence</h2><p id="detail-word-sentence" class="japanese-sentence"></p><p id="detail-word-translation" class="translation"></p></section>
+                <section class="detail-section"><h2>Usage note</h2><p id="detail-word-notes"></p></section>
+                <div class="detail-controls"><button id="detail-previous-word" class="control-button" type="button">‹ Previous</button><button id="detail-random-word" class="control-button accent-control" type="button">⤨ Random</button><button id="detail-next-word" class="control-button" type="button">Next ›</button></div>
+            </section>
+        </main>
+
+        <nav id="bottom-navigation" class="bottom-navigation" aria-label="Main navigation">
+            <button class="nav-button active" type="button" data-route="home"><span>⌂</span><small>Home</small></button>
+            <button class="nav-button" type="button" data-route="learn"><span>▤</span><small>Learn</small></button>
+            <button class="nav-button" type="button" data-route="quiz"><span>✎</span><small>Quiz</small></button>
+            <button class="nav-button" type="button" data-route="native"><span>◌</span><small>Native</small></button>
+            <button class="nav-button" type="button" data-route="saved"><span>♡</span><small>Saved</small></button>
+        </nav>
+    </div>
+
+    <dialog id="settings-dialog" class="settings-dialog">
+        <form method="dialog" class="settings-card">
+            <div class="card-topline"><div><span class="section-kicker">Personalize</span><h2>Appearance</h2></div><button class="icon-button" value="cancel" aria-label="Close settings">×</button></div>
+            <p>The clean pastel theme is the default and best for reading.</p>
+            <label class="setting-toggle"><span><strong>Optional wallpaper</strong><small>Use one of the existing wallpapers behind solid content cards.</small></span><input id="wallpaper-toggle" type="checkbox"></label>
+            <button id="change-wallpaper" class="secondary-button full-width-button" type="button">Choose another wallpaper</button>
+        </form>
+    </dialog>
+
+    <dialog id="entry-manager-dialog" class="entry-manager-dialog">
+        <div class="entry-manager-shell">
+            <header class="entry-manager-header"><div><span class="section-kicker">Local content</span><h2>My Entries</h2></div><button id="close-entry-manager" class="icon-button" type="button" aria-label="Close entry manager">×</button></header>
+            <div class="tab-bar" role="tablist" aria-label="Entry manager mode"><button class="tab-button active" type="button" data-entry-tab="form">Add Entry</button><button class="tab-button" type="button" data-entry-tab="list">My Entries</button></div>
+            <section id="entry-form-panel" data-entry-panel="form">
+                <form id="entry-form" novalidate>
+                    <input id="entry-edit-id" type="hidden">
+                    <label>Entry type<select id="entry-type"><option value="native">Native Japanese</option><option value="slang">Slang</option></select></label>
+                    <label>Expression <b>*</b><input id="entry-expression" required></label>
+                    <div class="entry-form-pair"><label>Kana<input id="entry-kana"></label><label>Romaji<input id="entry-romaji"></label></div>
+                    <label>Natural English meaning <b>*</b><textarea id="entry-natural-meaning" required></textarea></label>
+                    <label>Literal meaning<textarea id="entry-literal-meaning"></textarea></label>
+                    <label>Difficulty <b>*</b><select id="entry-difficulty" required><option value="">Choose difficulty</option><option>Beginner</option><option>Intermediate</option><option>Advanced</option></select></label>
+                    <fieldset><legend>Categories <b>*</b></legend><div id="entry-category-chips" class="entry-category-chips"></div></fieldset>
+                    <div class="entry-form-pair"><label>Tone<input id="entry-tone"></label><label>Formality<input id="entry-formality"></label></div>
+                    <label>Common users<input id="entry-common-users"></label>
+                    <label>Common situation<textarea id="entry-common-situation"></textarea></label>
+                    <label>Where used<input id="entry-where-used"></label>
+                    <label>Learner safety<textarea id="entry-learner-safety"></textarea></label>
+                    <label>Current-status label<select id="entry-current-status"><option>Still common</option><option>Common in 2026</option><option>Current youth slang</option><option>Current internet slang</option><option>Current gyaru slang</option><option>Becoming dated</option><option>Mostly ironic</option><option>Risky for learners</option><option>Avoid in formal situations</option></select></label>
+                    <label class="setting-toggle"><span><strong>Rude or risky</strong><small>Mark expressions that need extra learner care.</small></span><input id="entry-rude-risky" type="checkbox"></label>
+                    <label>Example sentence<textarea id="entry-example-sentence"></textarea></label>
+                    <label>Example translation<textarea id="entry-example-translation"></textarea></label>
+                    <label>Example conversation<textarea id="entry-conversation"></textarea></label>
+                    <label>Nuance notes<textarea id="entry-nuance-notes"></textarea></label>
+                    <label>Tags<input id="entry-tags" placeholder="casual, travel, reaction"></label>
+                    <div id="entry-form-message" class="form-message" role="alert"></div>
+                    <div class="entry-form-actions"><button id="cancel-entry-edit" class="secondary-button" type="button">Cancel</button><button class="primary-button" type="submit">Save Entry</button></div>
+                </form>
+            </section>
+            <section id="entry-list-panel" data-entry-panel="list" hidden>
+                <div class="entry-list-filters"><input id="my-entry-search" type="search" placeholder="Search my entries"><select id="my-entry-type-filter"><option value="all">All types</option><option value="native">Native</option><option value="slang">Slang</option></select></div>
+                <div id="my-entry-list" class="my-entry-list"></div><p id="my-entry-empty" class="empty-state">No user-created entries yet.</p>
+                <div class="entry-data-actions"><button id="export-user-entries" class="secondary-button" type="button">Export JSON</button><label class="secondary-button import-label">Import JSON<input id="import-user-entries" type="file" accept="application/json,.json"></label><button id="delete-all-user-entries" class="text-danger-button" type="button">Delete all</button></div>
+                <p id="entry-import-message" class="form-message" role="status"></p>
+            </section>
+        </div>
+    </dialog>
+
+    <aside id="update-notification" class="update-notification" role="status" aria-live="polite" hidden>
+        <span>An update is available. Refresh to update.</span>
+        <button id="apply-update" type="button">Update</button>
+    </aside>
+
+    <script src="data/kanji.js"></script>
+    <script src="data/vocabulary.js"></script>
+    <script src="data/native-japanese.js"></script>
+    <script src="data/slang.js"></script>
+    <script src="app.js?v=14"></script>
+</body>
+</html>
