@@ -1,0 +1,98 @@
+[
+  {
+    "id": "kanji-65c5",
+    "type": "kanji",
+    "character": "旅",
+    "reading": "たび / リョ",
+    "romaji": "tabi / ryo",
+    "meaning": "trip; travel",
+    "onyomi": [
+      "リョ"
+    ],
+    "kunyomi": [
+      "たび"
+    ],
+    "jlpt": "N4",
+    "examples": [
+      {
+        "word": "旅行",
+        "reading": "りょこう",
+        "meaning": "travel"
+      }
+    ],
+    "exampleSentence": "京都へ旅行しました。",
+    "exampleTranslation": "I traveled to Kyoto.",
+    "literalMeaning": "trip; travel",
+    "coreConcept": "travel and journeys",
+    "commonWords": [
+      {
+        "word": "旅行",
+        "reading": "りょこう",
+        "meaning": "travel; trip"
+      },
+      {
+        "word": "旅",
+        "reading": "たび",
+        "meaning": "journey"
+      },
+      {
+        "word": "旅館",
+        "reading": "りょかん",
+        "meaning": "Japanese inn"
+      },
+      {
+        "word": "旅先",
+        "reading": "たびさき",
+        "meaning": "travel destination"
+      }
+    ],
+    "naturalUsageNotes": "旅 can be used as たび, but 旅行 is the most useful everyday word for taking a trip."
+  },
+  {
+    "id": "kanji-7279",
+    "type": "kanji",
+    "character": "特",
+    "reading": "トク",
+    "romaji": "toku",
+    "meaning": "special",
+    "onyomi": [
+      "トク"
+    ],
+    "kunyomi": [],
+    "jlpt": "N4",
+    "examples": [
+      {
+        "word": "特別",
+        "reading": "とくべつ",
+        "meaning": "special"
+      }
+    ],
+    "exampleSentence": "今日は特別な日です。",
+    "exampleTranslation": "Today is a special day.",
+    "literalMeaning": "special",
+    "coreConcept": "specialness and distinction",
+    "commonWords": [
+      {
+        "word": "特別",
+        "reading": "とくべつ",
+        "meaning": "special"
+      },
+      {
+        "word": "特徴",
+        "reading": "とくちょう",
+        "meaning": "feature; characteristic"
+      },
+      {
+        "word": "特に",
+        "reading": "とくに",
+        "meaning": "especially"
+      },
+      {
+        "word": "特急",
+        "reading": "とっきゅう",
+        "meaning": "limited express train"
+      }
+    ],
+    "naturalUsageNotes": "特 is not normally spoken alone. Learn it through highly useful words such as 特に and 特別."
+  }
+]

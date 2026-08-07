@@ -1,0 +1,101 @@
+[
+  {
+    "id": "kanji-643a",
+    "type": "kanji",
+    "character": "携",
+    "reading": "たずさえる / ケイ",
+    "romaji": "tazusaeru / kei",
+    "meaning": "carry; cooperate",
+    "onyomi": [
+      "ケイ"
+    ],
+    "kunyomi": [
+      "たずさえる",
+      "たずさわる"
+    ],
+    "jlpt": "N1",
+    "examples": [
+      {
+        "word": "携帯",
+        "reading": "けいたい",
+        "meaning": "portable; mobile phone"
+      }
+    ],
+    "exampleSentence": "身分証を携帯してください。",
+    "exampleTranslation": "Please carry identification.",
+    "literalMeaning": "carry; cooperate",
+    "coreConcept": "carrying and cooperating",
+    "commonWords": [
+      {
+        "word": "携帯",
+        "reading": "けいたい",
+        "meaning": "mobile phone; portable"
+      },
+      {
+        "word": "携帯電話",
+        "reading": "けいたいでんわ",
+        "meaning": "mobile phone"
+      },
+      {
+        "word": "連携",
+        "reading": "れんけい",
+        "meaning": "coordination"
+      },
+      {
+        "word": "提携",
+        "reading": "ていけい",
+        "meaning": "business partnership"
+      }
+    ],
+    "naturalUsageNotes": "Learners most often encounter 携 in 携帯 and 連携; the isolated kanji meaning does not function as a conversational word."
+  },
+  {
+    "id": "kanji-77ac",
+    "type": "kanji",
+    "character": "瞬",
+    "reading": "またたく / シュン",
+    "romaji": "matataku / shun",
+    "meaning": "blink; instant",
+    "onyomi": [
+      "シュン"
+    ],
+    "kunyomi": [
+      "またたく"
+    ],
+    "jlpt": "N1",
+    "examples": [
+      {
+        "word": "瞬間",
+        "reading": "しゅんかん",
+        "meaning": "instant; moment"
+      }
+    ],
+    "exampleSentence": "その瞬間を忘れません。",
+    "exampleTranslation": "I will not forget that moment.",
+    "literalMeaning": "blink; instant",
+    "coreConcept": "a very brief moment",
+    "commonWords": [
+      {
+        "word": "瞬間",
+        "reading": "しゅんかん",
+        "meaning": "instant; moment"
+      },
+      {
+        "word": "一瞬",
+        "reading": "いっしゅん",
+        "meaning": "an instant"
+      },
+      {
+        "word": "瞬時",
+        "reading": "しゅんじ",
+        "meaning": "in an instant"
+      },
+      {
+        "word": "瞬く",
+        "reading": "またたく",
+        "meaning": "to blink; twinkle"
+      }
+    ],
+    "naturalUsageNotes": "瞬 is normally seen in compounds such as 瞬間 and 一瞬. Do not use the isolated kanji as the word for “moment.”"
+  }
+]

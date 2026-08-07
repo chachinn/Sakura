@@ -1,0 +1,3494 @@
+[
+  {
+    "id": "kanji-65e5",
+    "type": "kanji",
+    "character": "日",
+    "reading": "ひ / ニチ",
+    "romaji": "hi / nichi",
+    "meaning": "day; sun",
+    "onyomi": [
+      "ニチ",
+      "ジツ"
+    ],
+    "kunyomi": [
+      "ひ",
+      "び",
+      "か"
+    ],
+    "jlpt": "N5",
+    "examples": [
+      {
+        "word": "日本",
+        "reading": "にほん",
+        "meaning": "Japan"
+      }
+    ],
+    "exampleSentence": "今日はいい天気です。",
+    "exampleTranslation": "The weather is nice today.",
+    "literalMeaning": "day; sun",
+    "coreConcept": "day, sun, and dates",
+    "commonWords": [
+      {
+        "word": "日本",
+        "reading": "にほん",
+        "meaning": "Japan"
+      },
+      {
+        "word": "今日",
+        "reading": "きょう",
+        "meaning": "today"
+      },
+      {
+        "word": "毎日",
+        "reading": "まいにち",
+        "meaning": "every day"
+      },
+      {
+        "word": "日曜日",
+        "reading": "にちようび",
+        "meaning": "Sunday"
+      }
+    ],
+    "naturalUsageNotes": "日 can be a word in limited readings such as ひ, but learners usually meet it inside dates and common words such as 今日, 毎日, and 日本."
+  },
+  {
+    "id": "kanji-5b66",
+    "type": "kanji",
+    "character": "学",
+    "reading": "まなぶ / ガク",
+    "romaji": "manabu / gaku",
+    "meaning": "study; learning",
+    "onyomi": [
+      "ガク"
+    ],
+    "kunyomi": [
+      "まなぶ"
+    ],
+    "jlpt": "N5",
+    "examples": [
+      {
+        "word": "学生",
+        "reading": "がくせい",
+        "meaning": "student"
+      }
+    ],
+    "exampleSentence": "毎日日本語を学びます。",
+    "exampleTranslation": "I study Japanese every day.",
+    "literalMeaning": "study; learning",
+    "coreConcept": "learning, education, and knowledge",
+    "commonWords": [
+      {
+        "word": "勉強",
+        "reading": "べんきょう",
+        "meaning": "study"
+      },
+      {
+        "word": "学ぶ",
+        "reading": "まなぶ",
+        "meaning": "to learn"
+      },
+      {
+        "word": "学生",
+        "reading": "がくせい",
+        "meaning": "student"
+      },
+      {
+        "word": "学校",
+        "reading": "がっこう",
+        "meaning": "school"
+      },
+      {
+        "word": "学習",
+        "reading": "がくしゅう",
+        "meaning": "learning; study"
+      }
+    ],
+    "naturalUsageNotes": "This kanji is almost never used by itself in conversation. Japanese speakers normally use words such as 勉強, 学ぶ, 学生, or 学校."
+  },
+  {
+    "id": "kanji-4e00",
+    "type": "kanji",
+    "character": "一",
+    "reading": "ひと(つ) / イチ / イツ",
+    "romaji": "hitotsu / ichi / itsu",
+    "meaning": "one",
+    "onyomi": [
+      "イチ",
+      "イツ"
+    ],
+    "kunyomi": [
+      "ひと(つ)"
+    ],
+    "jlpt": "N5",
+    "examples": [
+      {
+        "word": "一つ",
+        "reading": "ひとつ",
+        "meaning": "one (thing)"
+      }
+    ],
+    "exampleSentence": "りんごを一つください。",
+    "exampleTranslation": "One apple, please.",
+    "literalMeaning": "one",
+    "coreConcept": "the number one and a single item",
+    "commonWords": [
+      {
+        "word": "一つ",
+        "reading": "ひとつ",
+        "meaning": "one (thing)"
+      }
+    ],
+    "naturalUsageNotes": "Very common in numbers and counters. 一つ is the general counter form for one item."
+  },
+  {
+    "id": "kanji-4e8c",
+    "type": "kanji",
+    "character": "二",
+    "reading": "ふた(つ) / ニ / ジ",
+    "romaji": "futatsu / ni / ji",
+    "meaning": "two",
+    "onyomi": [
+      "ニ",
+      "ジ"
+    ],
+    "kunyomi": [
+      "ふた(つ)"
+    ],
+    "jlpt": "N5",
+    "examples": [
+      {
+        "word": "二人",
+        "reading": "ふたり",
+        "meaning": "two people"
+      }
+    ],
+    "exampleSentence": "二人で行きます。",
+    "exampleTranslation": "We are going as two people.",
+    "literalMeaning": "two",
+    "coreConcept": "the number two and pairs",
+    "commonWords": [
+      {
+        "word": "二人",
+        "reading": "ふたり",
+        "meaning": "two people"
+      }
+    ],
+    "naturalUsageNotes": "Used constantly in numbers. 二人 has the special reading ふたり."
+  },
+  {
+    "id": "kanji-4e09",
+    "type": "kanji",
+    "character": "三",
+    "reading": "み(つ) / サン",
+    "romaji": "mitsu / san",
+    "meaning": "three",
+    "onyomi": [
+      "サン"
+    ],
+    "kunyomi": [
+      "み(つ)"
+    ],
+    "jlpt": "N5",
+    "examples": [
+      {
+        "word": "三つ",
+        "reading": "みっつ",
+        "meaning": "three (things)"
+      }
+    ],
+    "exampleSentence": "パンを三つ買いました。",
+    "exampleTranslation": "I bought three pieces of bread.",
+    "literalMeaning": "three",
+    "coreConcept": "the number three",
+    "commonWords": [
+      {
+        "word": "三つ",
+        "reading": "みっつ",
+        "meaning": "three (things)"
+      }
+    ],
+    "naturalUsageNotes": "Common in prices, dates, counts, and quantities."
+  },
+  {
+    "id": "kanji-56db",
+    "type": "kanji",
+    "character": "四",
+    "reading": "よん / よ(つ) / シ",
+    "romaji": "yon / yotsu / shi",
+    "meaning": "four",
+    "onyomi": [
+      "シ"
+    ],
+    "kunyomi": [
+      "よん",
+      "よ(つ)"
+    ],
+    "jlpt": "N5",
+    "examples": [
+      {
+        "word": "四時",
+        "reading": "よじ",
+        "meaning": "four o'clock"
+      }
+    ],
+    "exampleSentence": "四時に会いましょう。",
+    "exampleTranslation": "Let's meet at four.",
+    "literalMeaning": "four",
+    "coreConcept": "the number four",
+    "commonWords": [
+      {
+        "word": "四時",
+        "reading": "よじ",
+        "meaning": "four o'clock"
+      }
+    ],
+    "naturalUsageNotes": "In everyday counting, よん is often preferred to し. 四時 is read よじ."
+  },
+  {
+    "id": "kanji-4e94",
+    "type": "kanji",
+    "character": "五",
+    "reading": "いつ(つ) / ゴ",
+    "romaji": "itsutsu / go",
+    "meaning": "five",
+    "onyomi": [
+      "ゴ"
+    ],
+    "kunyomi": [
+      "いつ(つ)"
+    ],
+    "jlpt": "N5",
+    "examples": [
+      {
+        "word": "五分",
+        "reading": "ごふん",
+        "meaning": "five minutes"
+      }
+    ],
+    "exampleSentence": "あと五分待ってください。",
+    "exampleTranslation": "Please wait five more minutes.",
+    "literalMeaning": "five",
+    "coreConcept": "the number five",
+    "commonWords": [
+      {
+        "word": "五分",
+        "reading": "ごふん",
+        "meaning": "five minutes"
+      }
+    ],
+    "naturalUsageNotes": "Common in time, prices, dates, and counters."
+  },
+  {
+    "id": "kanji-516d",
+    "type": "kanji",
+    "character": "六",
+    "reading": "む(つ) / ロク",
+    "romaji": "mutsu / roku",
+    "meaning": "six",
+    "onyomi": [
+      "ロク"
+    ],
+    "kunyomi": [
+      "む(つ)"
+    ],
+    "jlpt": "N5",
+    "examples": [
+      {
+        "word": "六時",
+        "reading": "ろくじ",
+        "meaning": "six o'clock"
+      }
+    ],
+    "exampleSentence": "六時に起きます。",
+    "exampleTranslation": "I wake up at six.",
+    "literalMeaning": "six",
+    "coreConcept": "the number six",
+    "commonWords": [
+      {
+        "word": "六時",
+        "reading": "ろくじ",
+        "meaning": "six o'clock"
+      }
+    ],
+    "naturalUsageNotes": "Often causes sound changes in counters, such as 六分 ろっぷん."
+  },
+  {
+    "id": "kanji-4e03",
+    "type": "kanji",
+    "character": "七",
+    "reading": "なな(つ) / シチ",
+    "romaji": "nanatsu / shichi",
+    "meaning": "seven",
+    "onyomi": [
+      "シチ"
+    ],
+    "kunyomi": [
+      "なな(つ)"
+    ],
+    "jlpt": "N5",
+    "examples": [
+      {
+        "word": "七月",
+        "reading": "しちがつ",
+        "meaning": "July"
+      }
+    ],
+    "exampleSentence": "七月に日本へ行きます。",
+    "exampleTranslation": "I'm going to Japan in July.",
+    "literalMeaning": "seven",
+    "coreConcept": "the number seven",
+    "commonWords": [
+      {
+        "word": "七月",
+        "reading": "しちがつ",
+        "meaning": "July"
+      }
+    ],
+    "naturalUsageNotes": "Both しち and なな are common; なな is often clearer in conversation."
+  },
+  {
+    "id": "kanji-516b",
+    "type": "kanji",
+    "character": "八",
+    "reading": "や(つ) / ハチ",
+    "romaji": "yatsu / hachi",
+    "meaning": "eight",
+    "onyomi": [
+      "ハチ"
+    ],
+    "kunyomi": [
+      "や(つ)"
+    ],
+    "jlpt": "N5",
+    "examples": [
+      {
+        "word": "八時",
+        "reading": "はちじ",
+        "meaning": "eight o'clock"
+      }
+    ],
+    "exampleSentence": "八時にホテルを出ます。",
+    "exampleTranslation": "I'll leave the hotel at eight.",
+    "literalMeaning": "eight",
+    "coreConcept": "the number eight",
+    "commonWords": [
+      {
+        "word": "八時",
+        "reading": "はちじ",
+        "meaning": "eight o'clock"
+      }
+    ],
+    "naturalUsageNotes": "Frequently changes to はっ before some counters, such as 八分 はっぷん."
+  },
+  {
+    "id": "kanji-4e5d",
+    "type": "kanji",
+    "character": "九",
+    "reading": "ここの(つ) / キュウ / ク",
+    "romaji": "kokonotsu / kyuu / ku",
+    "meaning": "nine",
+    "onyomi": [
+      "キュウ",
+      "ク"
+    ],
+    "kunyomi": [
+      "ここの(つ)"
+    ],
+    "jlpt": "N5",
+    "examples": [
+      {
+        "word": "九時",
+        "reading": "くじ",
+        "meaning": "nine o'clock"
+      }
+    ],
+    "exampleSentence": "九時から仕事です。",
+    "exampleTranslation": "I work from nine.",
+    "literalMeaning": "nine",
+    "coreConcept": "the number nine",
+    "commonWords": [
+      {
+        "word": "九時",
+        "reading": "くじ",
+        "meaning": "nine o'clock"
+      }
+    ],
+    "naturalUsageNotes": "九時 is normally read くじ, while きゅう is common in general counting."
+  },
+  {
+    "id": "kanji-5341",
+    "type": "kanji",
+    "character": "十",
+    "reading": "とお / ジュウ / ジッ",
+    "romaji": "too / juu / ji",
+    "meaning": "ten",
+    "onyomi": [
+      "ジュウ",
+      "ジッ"
+    ],
+    "kunyomi": [
+      "とお"
+    ],
+    "jlpt": "N5",
+    "examples": [
+      {
+        "word": "十分",
+        "reading": "じゅっぷん",
+        "meaning": "ten minutes"
+      }
+    ],
+    "exampleSentence": "駅まで十分です。",
+    "exampleTranslation": "It's ten minutes to the station.",
+    "literalMeaning": "ten",
+    "coreConcept": "the number ten",
+    "commonWords": [
+      {
+        "word": "十分",
+        "reading": "じゅっぷん",
+        "meaning": "ten minutes"
+      }
+    ],
+    "naturalUsageNotes": "Very common in time and quantities. Counter pronunciation often becomes じゅっ-."
+  },
+  {
+    "id": "kanji-767e",
+    "type": "kanji",
+    "character": "百",
+    "reading": "ヒャク",
+    "romaji": "hyaku",
+    "meaning": "hundred",
+    "onyomi": [
+      "ヒャク"
+    ],
+    "kunyomi": [],
+    "jlpt": "N5",
+    "examples": [
+      {
+        "word": "百円",
+        "reading": "ひゃくえん",
+        "meaning": "100 yen"
+      }
+    ],
+    "exampleSentence": "これは百円です。",
+    "exampleTranslation": "This is 100 yen.",
+    "literalMeaning": "hundred",
+    "coreConcept": "hundreds and prices",
+    "commonWords": [
+      {
+        "word": "百円",
+        "reading": "ひゃくえん",
+        "meaning": "100 yen"
+      }
+    ],
+    "naturalUsageNotes": "Essential for Japanese prices. Sound changes appear in numbers like 三百 さんびゃく."
+  },
+  {
+    "id": "kanji-5343",
+    "type": "kanji",
+    "character": "千",
+    "reading": "ち / セン",
+    "romaji": "chi / sen",
+    "meaning": "thousand",
+    "onyomi": [
+      "セン"
+    ],
+    "kunyomi": [
+      "ち"
+    ],
+    "jlpt": "N5",
+    "examples": [
+      {
+        "word": "千円",
+        "reading": "せんえん",
+        "meaning": "1,000 yen"
+      }
+    ],
+    "exampleSentence": "千円札があります。",
+    "exampleTranslation": "I have a 1,000-yen bill.",
+    "literalMeaning": "thousand",
+    "coreConcept": "thousands and larger numbers",
+    "commonWords": [
+      {
+        "word": "千円",
+        "reading": "せんえん",
+        "meaning": "1,000 yen"
+      }
+    ],
+    "naturalUsageNotes": "Very common for prices and amounts in Japan."
+  },
+  {
+    "id": "kanji-4e07",
+    "type": "kanji",
+    "character": "万",
+    "reading": "マン / バン",
+    "romaji": "man / ban",
+    "meaning": "ten thousand",
+    "onyomi": [
+      "マン",
+      "バン"
+    ],
+    "kunyomi": [],
+    "jlpt": "N5",
+    "examples": [
+      {
+        "word": "一万円",
+        "reading": "いちまんえん",
+        "meaning": "10,000 yen"
+      }
+    ],
+    "exampleSentence": "一万円を両替したいです。",
+    "exampleTranslation": "I'd like to exchange 10,000 yen.",
+    "literalMeaning": "ten thousand",
+    "coreConcept": "the 10,000 unit used in Japanese numbers",
+    "commonWords": [
+      {
+        "word": "一万円",
+        "reading": "いちまんえん",
+        "meaning": "10,000 yen"
+      }
+    ],
+    "naturalUsageNotes": "Japanese groups large numbers by ten-thousands, so 万 is essential for prices and salaries."
+  },
+  {
+    "id": "kanji-5186",
+    "type": "kanji",
+    "character": "円",
+    "reading": "まる(い) / エン",
+    "romaji": "marui / en",
+    "meaning": "yen; circle",
+    "onyomi": [
+      "エン"
+    ],
+    "kunyomi": [
+      "まる(い)"
+    ],
+    "jlpt": "N5",
+    "examples": [
+      {
+        "word": "五百円",
+        "reading": "ごひゃくえん",
+        "meaning": "500 yen"
+      }
+    ],
+    "exampleSentence": "五百円ありますか。",
+    "exampleTranslation": "Do you have 500 yen?",
+    "literalMeaning": "yen; circle",
+    "coreConcept": "Japanese currency and circular shapes",
+    "commonWords": [
+      {
+        "word": "五百円",
+        "reading": "ごひゃくえん",
+        "meaning": "500 yen"
+      }
+    ],
+    "naturalUsageNotes": "For travelers, 円 is most often encountered as the Japanese yen."
+  },
+  {
+    "id": "kanji-6708",
+    "type": "kanji",
+    "character": "月",
+    "reading": "つき / ゲツ / ガツ",
+    "romaji": "tsuki / getsu / gatsu",
+    "meaning": "month; moon",
+    "onyomi": [
+      "ゲツ",
+      "ガツ"
+    ],
+    "kunyomi": [
+      "つき"
+    ],
+    "jlpt": "N5",
+    "examples": [
+      {
+        "word": "今月",
+        "reading": "こんげつ",
+        "meaning": "this month"
+      }
+    ],
+    "exampleSentence": "今月は忙しいです。",
+    "exampleTranslation": "I'm busy this month.",
+    "literalMeaning": "month; moon",
+    "coreConcept": "months, dates, and the moon",
+    "commonWords": [
+      {
+        "word": "今月",
+        "reading": "こんげつ",
+        "meaning": "this month"
+      }
+    ],
+    "naturalUsageNotes": "月 is read がつ in month names and げつ in many compounds such as 今月."
+  },
+  {
+    "id": "kanji-706b",
+    "type": "kanji",
+    "character": "火",
+    "reading": "ひ / カ",
+    "romaji": "hi / ka",
+    "meaning": "fire",
+    "onyomi": [
+      "カ"
+    ],
+    "kunyomi": [
+      "ひ"
+    ],
+    "jlpt": "N5",
+    "examples": [
+      {
+        "word": "火曜日",
+        "reading": "かようび",
+        "meaning": "Tuesday"
+      }
+    ],
+    "exampleSentence": "火曜日は休みです。",
+    "exampleTranslation": "Tuesday is my day off.",
+    "literalMeaning": "fire",
+    "coreConcept": "fire and Tuesday",
+    "commonWords": [
+      {
+        "word": "火曜日",
+        "reading": "かようび",
+        "meaning": "Tuesday"
+      }
+    ],
+    "naturalUsageNotes": "Common in 火曜日 and words related to fire or heat."
+  },
+  {
+    "id": "kanji-6c34",
+    "type": "kanji",
+    "character": "水",
+    "reading": "みず / スイ",
+    "romaji": "mizu / sui",
+    "meaning": "water",
+    "onyomi": [
+      "スイ"
+    ],
+    "kunyomi": [
+      "みず"
+    ],
+    "jlpt": "N5",
+    "examples": [
+      {
+        "word": "水",
+        "reading": "みず",
+        "meaning": "water"
+      }
+    ],
+    "exampleSentence": "お水をください。",
+    "exampleTranslation": "Water, please.",
+    "literalMeaning": "water",
+    "coreConcept": "water and Wednesday",
+    "commonWords": [
+      {
+        "word": "水",
+        "reading": "みず",
+        "meaning": "water"
+      }
+    ],
+    "naturalUsageNotes": "Extremely useful in restaurants. 水 by itself is read みず."
+  },
+  {
+    "id": "kanji-6728",
+    "type": "kanji",
+    "character": "木",
+    "reading": "き / モク / ボク",
+    "romaji": "ki / moku / boku",
+    "meaning": "tree; wood",
+    "onyomi": [
+      "モク",
+      "ボク"
+    ],
+    "kunyomi": [
+      "き"
+    ],
+    "jlpt": "N5",
+    "examples": [
+      {
+        "word": "木曜日",
+        "reading": "もくようび",
+        "meaning": "Thursday"
+      }
+    ],
+    "exampleSentence": "木曜日に予約しました。",
+    "exampleTranslation": "I made a reservation for Thursday.",
+    "literalMeaning": "tree; wood",
+    "coreConcept": "trees, wood, and Thursday",
+    "commonWords": [
+      {
+        "word": "木曜日",
+        "reading": "もくようび",
+        "meaning": "Thursday"
+      }
+    ],
+    "naturalUsageNotes": "木 alone is き; モク appears often in compounds such as 木曜日."
+  },
+  {
+    "id": "kanji-91d1",
+    "type": "kanji",
+    "character": "金",
+    "reading": "かね / キン / コン",
+    "romaji": "kane / kin / kon",
+    "meaning": "gold; money",
+    "onyomi": [
+      "キン",
+      "コン"
+    ],
+    "kunyomi": [
+      "かね"
+    ],
+    "jlpt": "N5",
+    "examples": [
+      {
+        "word": "お金",
+        "reading": "おかね",
+        "meaning": "money"
+      }
+    ],
+    "exampleSentence": "お金を下ろしたいです。",
+    "exampleTranslation": "I'd like to withdraw some money.",
+    "literalMeaning": "gold; money",
+    "coreConcept": "money, gold, and Friday",
+    "commonWords": [
+      {
+        "word": "お金",
+        "reading": "おかね",
+        "meaning": "money"
+      }
+    ],
+    "naturalUsageNotes": "For everyday money, お金 is one of the most useful beginner words."
+  },
+  {
+    "id": "kanji-571f",
+    "type": "kanji",
+    "character": "土",
+    "reading": "つち / ド / ト",
+    "romaji": "tsuchi / do / to",
+    "meaning": "earth; soil",
+    "onyomi": [
+      "ド",
+      "ト"
+    ],
+    "kunyomi": [
+      "つち"
+    ],
+    "jlpt": "N5",
+    "examples": [
+      {
+        "word": "土曜日",
+        "reading": "どようび",
+        "meaning": "Saturday"
+      }
+    ],
+    "exampleSentence": "土曜日は混みます。",
+    "exampleTranslation": "Saturday gets crowded.",
+    "literalMeaning": "earth; soil",
+    "coreConcept": "earth, soil, and Saturday",
+    "commonWords": [
+      {
+        "word": "土曜日",
+        "reading": "どようび",
+        "meaning": "Saturday"
+      }
+    ],
+    "naturalUsageNotes": "Frequently seen in 土曜日 and address/location-related vocabulary."
+  },
+  {
+    "id": "kanji-5e74",
+    "type": "kanji",
+    "character": "年",
+    "reading": "とし / ネン",
+    "romaji": "toshi / nen",
+    "meaning": "year",
+    "onyomi": [
+      "ネン"
+    ],
+    "kunyomi": [
+      "とし"
+    ],
+    "jlpt": "N5",
+    "examples": [
+      {
+        "word": "今年",
+        "reading": "ことし",
+        "meaning": "this year"
+      }
+    ],
+    "exampleSentence": "今年、日本へ行きます。",
+    "exampleTranslation": "I'm going to Japan this year.",
+    "literalMeaning": "year",
+    "coreConcept": "years and age/time periods",
+    "commonWords": [
+      {
+        "word": "今年",
+        "reading": "ことし",
+        "meaning": "this year"
+      }
+    ],
+    "naturalUsageNotes": "年 is read ねん after numbers, while 今年 is the irregular reading ことし."
+  },
+  {
+    "id": "kanji-6642",
+    "type": "kanji",
+    "character": "時",
+    "reading": "とき / ジ",
+    "romaji": "toki / ji",
+    "meaning": "time; hour",
+    "onyomi": [
+      "ジ"
+    ],
+    "kunyomi": [
+      "とき"
+    ],
+    "jlpt": "N5",
+    "examples": [
+      {
+        "word": "三時",
+        "reading": "さんじ",
+        "meaning": "three o'clock"
+      }
+    ],
+    "exampleSentence": "三時に戻ります。",
+    "exampleTranslation": "I'll be back at three.",
+    "literalMeaning": "time; hour",
+    "coreConcept": "clock time and moments",
+    "commonWords": [
+      {
+        "word": "三時",
+        "reading": "さんじ",
+        "meaning": "three o'clock"
+      }
+    ],
+    "naturalUsageNotes": "After a number, 時 usually means o'clock and is read じ."
+  },
+  {
+    "id": "kanji-5206",
+    "type": "kanji",
+    "character": "分",
+    "reading": "わ(かる) / ブン / フン / プン",
+    "romaji": "wakaru / bun / fun / pun",
+    "meaning": "minute; part; understand",
+    "onyomi": [
+      "ブン",
+      "フン",
+      "プン"
+    ],
+    "kunyomi": [
+      "わ(かる)"
+    ],
+    "jlpt": "N5",
+    "examples": [
+      {
+        "word": "十五分",
+        "reading": "じゅうごふん",
+        "meaning": "15 minutes"
+      }
+    ],
+    "exampleSentence": "十五分くらいかかります。",
+    "exampleTranslation": "It takes about 15 minutes.",
+    "literalMeaning": "minute; part; understand",
+    "coreConcept": "minutes, portions, and understanding",
+    "commonWords": [
+      {
+        "word": "十五分",
+        "reading": "じゅうごふん",
+        "meaning": "15 minutes"
+      }
+    ],
+    "naturalUsageNotes": "Pronunciation changes with counters: ふん or ぷん. 分かる is also the common verb 'to understand'."
+  },
+  {
+    "id": "kanji-534a",
+    "type": "kanji",
+    "character": "半",
+    "reading": "なか(ば) / ハン",
+    "romaji": "nakaba / han",
+    "meaning": "half",
+    "onyomi": [
+      "ハン"
+    ],
+    "kunyomi": [
+      "なか(ば)"
+    ],
+    "jlpt": "N5",
+    "examples": [
+      {
+        "word": "一時半",
+        "reading": "いちじはん",
+        "meaning": "1:30"
+      }
+    ],
+    "exampleSentence": "一時半に予約があります。",
+    "exampleTranslation": "I have a reservation at 1:30.",
+    "literalMeaning": "half",
+    "coreConcept": "halves and half-past times",
+    "commonWords": [
+      {
+        "word": "一時半",
+        "reading": "いちじはん",
+        "meaning": "1:30"
+      }
+    ],
+    "naturalUsageNotes": "Very common after a clock time to mean 'half past'."
+  },
+  {
+    "id": "kanji-4eca",
+    "type": "kanji",
+    "character": "今",
+    "reading": "いま / コン / キン",
+    "romaji": "ima / kon / kin",
+    "meaning": "now",
+    "onyomi": [
+      "コン",
+      "キン"
+    ],
+    "kunyomi": [
+      "いま"
+    ],
+    "jlpt": "N5",
+    "examples": [
+      {
+        "word": "今",
+        "reading": "いま",
+        "meaning": "now"
+      }
+    ],
+    "exampleSentence": "今、駅にいます。",
+    "exampleTranslation": "I'm at the station now.",
+    "literalMeaning": "now",
+    "coreConcept": "the present moment",
+    "commonWords": [
+      {
+        "word": "今",
+        "reading": "いま",
+        "meaning": "now"
+      }
+    ],
+    "naturalUsageNotes": "今 by itself is いま and is extremely common in conversation."
+  },
+  {
+    "id": "kanji-5348",
+    "type": "kanji",
+    "character": "午",
+    "reading": "ゴ",
+    "romaji": "go",
+    "meaning": "noon",
+    "onyomi": [
+      "ゴ"
+    ],
+    "kunyomi": [],
+    "jlpt": "N5",
+    "examples": [
+      {
+        "word": "午後",
+        "reading": "ごご",
+        "meaning": "p.m.; afternoon"
+      }
+    ],
+    "exampleSentence": "午後三時でお願いします。",
+    "exampleTranslation": "Three p.m., please.",
+    "literalMeaning": "noon",
+    "coreConcept": "noon and a.m./p.m. expressions",
+    "commonWords": [
+      {
+        "word": "午後",
+        "reading": "ごご",
+        "meaning": "p.m.; afternoon"
+      }
+    ],
+    "naturalUsageNotes": "Mostly learned through 午前 and 午後."
+  },
+  {
+    "id": "kanji-524d",
+    "type": "kanji",
+    "character": "前",
+    "reading": "まえ / ゼン",
+    "romaji": "mae / zen",
+    "meaning": "front; before",
+    "onyomi": [
+      "ゼン"
+    ],
+    "kunyomi": [
+      "まえ"
+    ],
+    "jlpt": "N5",
+    "examples": [
+      {
+        "word": "午前",
+        "reading": "ごぜん",
+        "meaning": "a.m.; morning"
+      }
+    ],
+    "exampleSentence": "午前九時に出発します。",
+    "exampleTranslation": "We leave at 9 a.m.",
+    "literalMeaning": "front; before",
+    "coreConcept": "before, front, and earlier time",
+    "commonWords": [
+      {
+        "word": "午前",
+        "reading": "ごぜん",
+        "meaning": "a.m.; morning"
+      }
+    ],
+    "naturalUsageNotes": "Very common in time expressions and location phrases such as 駅の前."
+  },
+  {
+    "id": "kanji-5f8c",
+    "type": "kanji",
+    "character": "後",
+    "reading": "あと / うし(ろ) / ゴ / コウ",
+    "romaji": "ato / ushiro / go / kou",
+    "meaning": "after; behind",
+    "onyomi": [
+      "ゴ",
+      "コウ"
+    ],
+    "kunyomi": [
+      "あと",
+      "うし(ろ)"
+    ],
+    "jlpt": "N5",
+    "examples": [
+      {
+        "word": "午後",
+        "reading": "ごご",
+        "meaning": "p.m.; afternoon"
+      }
+    ],
+    "exampleSentence": "午後は買い物をします。",
+    "exampleTranslation": "I'll go shopping in the afternoon.",
+    "literalMeaning": "after; behind",
+    "coreConcept": "after, later, and behind",
+    "commonWords": [
+      {
+        "word": "午後",
+        "reading": "ごご",
+        "meaning": "p.m.; afternoon"
+      }
+    ],
+    "naturalUsageNotes": "Readings vary by word. あと is especially common in everyday speech."
+  },
+  {
+    "id": "kanji-6bce",
+    "type": "kanji",
+    "character": "毎",
+    "reading": "マイ",
+    "romaji": "mai",
+    "meaning": "every",
+    "onyomi": [
+      "マイ"
+    ],
+    "kunyomi": [],
+    "jlpt": "N5",
+    "examples": [
+      {
+        "word": "毎日",
+        "reading": "まいにち",
+        "meaning": "every day"
+      }
+    ],
+    "exampleSentence": "毎日日本語を勉強します。",
+    "exampleTranslation": "I study Japanese every day.",
+    "literalMeaning": "every",
+    "coreConcept": "recurring daily or regular frequency",
+    "commonWords": [
+      {
+        "word": "毎日",
+        "reading": "まいにち",
+        "meaning": "every day"
+      }
+    ],
+    "naturalUsageNotes": "Usually appears before time words: 毎日, 毎週, 毎月."
+  },
+  {
+    "id": "kanji-4eba",
+    "type": "kanji",
+    "character": "人",
+    "reading": "ひと / ジン / ニン",
+    "romaji": "hito / jin / nin",
+    "meaning": "person",
+    "onyomi": [
+      "ジン",
+      "ニン"
+    ],
+    "kunyomi": [
+      "ひと"
+    ],
+    "jlpt": "N5",
+    "examples": [
+      {
+        "word": "日本人",
+        "reading": "にほんじん",
+        "meaning": "Japanese person"
+      }
+    ],
+    "exampleSentence": "あの人は日本人です。",
+    "exampleTranslation": "That person is Japanese.",
+    "literalMeaning": "person",
+    "coreConcept": "people and nationality",
+    "commonWords": [
+      {
+        "word": "日本人",
+        "reading": "にほんじん",
+        "meaning": "Japanese person"
+      }
+    ],
+    "naturalUsageNotes": "Read じん for nationality and にん in many counters. 人 alone is ひと."
+  },
+  {
+    "id": "kanji-5b50",
+    "type": "kanji",
+    "character": "子",
+    "reading": "こ / シ / ス",
+    "romaji": "ko / shi / su",
+    "meaning": "child",
+    "onyomi": [
+      "シ",
+      "ス"
+    ],
+    "kunyomi": [
+      "こ"
+    ],
+    "jlpt": "N5",
+    "examples": [
+      {
+        "word": "子ども",
+        "reading": "こども",
+        "meaning": "child"
+      }
+    ],
+    "exampleSentence": "子どもと一緒に来ました。",
+    "exampleTranslation": "I came with my child.",
+    "literalMeaning": "child",
+    "coreConcept": "children and young people",
+    "commonWords": [
+      {
+        "word": "子ども",
+        "reading": "こども",
+        "meaning": "child"
+      }
+    ],
+    "naturalUsageNotes": "子 is commonly read こ in everyday vocabulary."
+  },
+  {
+    "id": "kanji-5973",
+    "type": "kanji",
+    "character": "女",
+    "reading": "おんな / ジョ / ニョ",
+    "romaji": "onna / jo / nyo",
+    "meaning": "woman; female",
+    "onyomi": [
+      "ジョ",
+      "ニョ"
+    ],
+    "kunyomi": [
+      "おんな"
+    ],
+    "jlpt": "N5",
+    "examples": [
+      {
+        "word": "女の人",
+        "reading": "おんなのひと",
+        "meaning": "woman"
+      }
+    ],
+    "exampleSentence": "あの女の人は店員です。",
+    "exampleTranslation": "That woman is a shop clerk.",
+    "literalMeaning": "woman; female",
+    "coreConcept": "female people",
+    "commonWords": [
+      {
+        "word": "女の人",
+        "reading": "おんなのひと",
+        "meaning": "woman"
+      }
+    ],
+    "naturalUsageNotes": "女 by itself can sound blunt in some contexts; 女の人 is a neutral beginner phrase for 'woman'."
+  },
+  {
+    "id": "kanji-7537",
+    "type": "kanji",
+    "character": "男",
+    "reading": "おとこ / ダン / ナン",
+    "romaji": "otoko / dan / nan",
+    "meaning": "man; male",
+    "onyomi": [
+      "ダン",
+      "ナン"
+    ],
+    "kunyomi": [
+      "おとこ"
+    ],
+    "jlpt": "N5",
+    "examples": [
+      {
+        "word": "男の人",
+        "reading": "おとこのひと",
+        "meaning": "man"
+      }
+    ],
+    "exampleSentence": "男の人が待っています。",
+    "exampleTranslation": "A man is waiting.",
+    "literalMeaning": "man; male",
+    "coreConcept": "male people",
+    "commonWords": [
+      {
+        "word": "男の人",
+        "reading": "おとこのひと",
+        "meaning": "man"
+      }
+    ],
+    "naturalUsageNotes": "男の人 is a neutral beginner phrase for 'man'."
+  },
+  {
+    "id": "kanji-7236",
+    "type": "kanji",
+    "character": "父",
+    "reading": "ちち / フ",
+    "romaji": "chichi / fu",
+    "meaning": "father",
+    "onyomi": [
+      "フ"
+    ],
+    "kunyomi": [
+      "ちち"
+    ],
+    "jlpt": "N5",
+    "examples": [
+      {
+        "word": "父",
+        "reading": "ちち",
+        "meaning": "my father"
+      }
+    ],
+    "exampleSentence": "父は会社員です。",
+    "exampleTranslation": "My father is an office worker.",
+    "literalMeaning": "father",
+    "coreConcept": "one's own father",
+    "commonWords": [
+      {
+        "word": "父",
+        "reading": "ちち",
+        "meaning": "my father"
+      }
+    ],
+    "naturalUsageNotes": "Use 父 when referring to your own father to others; お父さん is common when addressing or referring politely to someone else's father."
+  },
+  {
+    "id": "kanji-6bcd",
+    "type": "kanji",
+    "character": "母",
+    "reading": "はは / ボ",
+    "romaji": "haha / bo",
+    "meaning": "mother",
+    "onyomi": [
+      "ボ"
+    ],
+    "kunyomi": [
+      "はは"
+    ],
+    "jlpt": "N5",
+    "examples": [
+      {
+        "word": "母",
+        "reading": "はは",
+        "meaning": "my mother"
+      }
+    ],
+    "exampleSentence": "母と旅行します。",
+    "exampleTranslation": "I'm traveling with my mother.",
+    "literalMeaning": "mother",
+    "coreConcept": "one's own mother",
+    "commonWords": [
+      {
+        "word": "母",
+        "reading": "はは",
+        "meaning": "my mother"
+      }
+    ],
+    "naturalUsageNotes": "Use 母 for your own mother when speaking to others; お母さん is common as an address/polite reference."
+  },
+  {
+    "id": "kanji-53cb",
+    "type": "kanji",
+    "character": "友",
+    "reading": "とも / ユウ",
+    "romaji": "tomo / yuu",
+    "meaning": "friend",
+    "onyomi": [
+      "ユウ"
+    ],
+    "kunyomi": [
+      "とも"
+    ],
+    "jlpt": "N5",
+    "examples": [
+      {
+        "word": "友だち",
+        "reading": "ともだち",
+        "meaning": "friend"
+      }
+    ],
+    "exampleSentence": "友だちと渋谷に行きます。",
+    "exampleTranslation": "I'm going to Shibuya with a friend.",
+    "literalMeaning": "friend",
+    "coreConcept": "friendship and companions",
+    "commonWords": [
+      {
+        "word": "友だち",
+        "reading": "ともだち",
+        "meaning": "friend"
+      }
+    ],
+    "naturalUsageNotes": "Most commonly encountered in 友だち at beginner level."
+  },
+  {
+    "id": "kanji-5148",
+    "type": "kanji",
+    "character": "先",
+    "reading": "さき / セン",
+    "romaji": "saki / sen",
+    "meaning": "ahead; previous",
+    "onyomi": [
+      "セン"
+    ],
+    "kunyomi": [
+      "さき"
+    ],
+    "jlpt": "N5",
+    "examples": [
+      {
+        "word": "先生",
+        "reading": "せんせい",
+        "meaning": "teacher"
+      }
+    ],
+    "exampleSentence": "先生に聞きます。",
+    "exampleTranslation": "I'll ask the teacher.",
+    "literalMeaning": "ahead; previous",
+    "coreConcept": "what comes before or ahead",
+    "commonWords": [
+      {
+        "word": "先生",
+        "reading": "せんせい",
+        "meaning": "teacher"
+      }
+    ],
+    "naturalUsageNotes": "Very common in 先生 and 先週. 先 alone can mean 'ahead' or 'before'."
+  },
+  {
+    "id": "kanji-751f",
+    "type": "kanji",
+    "character": "生",
+    "reading": "い(きる) / う(まれる) / なま / セイ / ショウ",
+    "romaji": "ikiru / umareru / nama / sei / shou",
+    "meaning": "life; birth; student",
+    "onyomi": [
+      "セイ",
+      "ショウ"
+    ],
+    "kunyomi": [
+      "い(きる)",
+      "う(まれる)",
+      "なま"
+    ],
+    "jlpt": "N5",
+    "examples": [
+      {
+        "word": "学生",
+        "reading": "がくせい",
+        "meaning": "student"
+      }
+    ],
+    "exampleSentence": "私は学生です。",
+    "exampleTranslation": "I am a student.",
+    "literalMeaning": "life; birth; student",
+    "coreConcept": "life, birth, and living beings",
+    "commonWords": [
+      {
+        "word": "学生",
+        "reading": "がくせい",
+        "meaning": "student"
+      }
+    ],
+    "naturalUsageNotes": "Has many readings. At N5 it appears constantly in 学生 and 先生."
+  },
+  {
+    "id": "kanji-540d",
+    "type": "kanji",
+    "character": "名",
+    "reading": "な / メイ / ミョウ",
+    "romaji": "na / mei / myou",
+    "meaning": "name",
+    "onyomi": [
+      "メイ",
+      "ミョウ"
+    ],
+    "kunyomi": [
+      "な"
+    ],
+    "jlpt": "N5",
+    "examples": [
+      {
+        "word": "名前",
+        "reading": "なまえ",
+        "meaning": "name"
+      }
+    ],
+    "exampleSentence": "お名前をお願いします。",
+    "exampleTranslation": "Your name, please.",
+    "literalMeaning": "name",
+    "coreConcept": "names and naming",
+    "commonWords": [
+      {
+        "word": "名前",
+        "reading": "なまえ",
+        "meaning": "name"
+      }
+    ],
+    "naturalUsageNotes": "名前 is a very common everyday word, especially at hotels, restaurants, and forms."
+  },
+  {
+    "id": "kanji-4e0a",
+    "type": "kanji",
+    "character": "上",
+    "reading": "うえ / あ(がる) / のぼ(る) / ジョウ",
+    "romaji": "ue / agaru / noboru / jou",
+    "meaning": "up; above",
+    "onyomi": [
+      "ジョウ"
+    ],
+    "kunyomi": [
+      "うえ",
+      "あ(がる)",
+      "のぼ(る)"
+    ],
+    "jlpt": "N5",
+    "examples": [
+      {
+        "word": "上",
+        "reading": "うえ",
+        "meaning": "above; on top"
+      }
+    ],
+    "exampleSentence": "机の上にあります。",
+    "exampleTranslation": "It's on the desk.",
+    "literalMeaning": "up; above",
+    "coreConcept": "upward position and higher location",
+    "commonWords": [
+      {
+        "word": "上",
+        "reading": "うえ",
+        "meaning": "above; on top"
+      }
+    ],
+    "naturalUsageNotes": "上 alone is commonly うえ for physical location."
+  },
+  {
+    "id": "kanji-4e0b",
+    "type": "kanji",
+    "character": "下",
+    "reading": "した / さ(がる) / くだ(る) / カ / ゲ",
+    "romaji": "shita / sagaru / kudaru / ka / ge",
+    "meaning": "down; below",
+    "onyomi": [
+      "カ",
+      "ゲ"
+    ],
+    "kunyomi": [
+      "した",
+      "さ(がる)",
+      "くだ(る)"
+    ],
+    "jlpt": "N5",
+    "examples": [
+      {
+        "word": "下",
+        "reading": "した",
+        "meaning": "below; under"
+      }
+    ],
+    "exampleSentence": "テーブルの下です。",
+    "exampleTranslation": "It's under the table.",
+    "literalMeaning": "down; below",
+    "coreConcept": "lower position and downward movement",
+    "commonWords": [
+      {
+        "word": "下",
+        "reading": "した",
+        "meaning": "below; under"
+      }
+    ],
+    "naturalUsageNotes": "下 alone is commonly した when describing location."
+  },
+  {
+    "id": "kanji-4e2d",
+    "type": "kanji",
+    "character": "中",
+    "reading": "なか / チュウ / ジュウ",
+    "romaji": "naka / chuu / juu",
+    "meaning": "middle; inside",
+    "onyomi": [
+      "チュウ",
+      "ジュウ"
+    ],
+    "kunyomi": [
+      "なか"
+    ],
+    "jlpt": "N5",
+    "examples": [
+      {
+        "word": "中",
+        "reading": "なか",
+        "meaning": "inside"
+      }
+    ],
+    "exampleSentence": "かばんの中にあります。",
+    "exampleTranslation": "It's inside the bag.",
+    "literalMeaning": "middle; inside",
+    "coreConcept": "inside, middle, and throughout",
+    "commonWords": [
+      {
+        "word": "中",
+        "reading": "なか",
+        "meaning": "inside"
+      }
+    ],
+    "naturalUsageNotes": "中 alone is なか. In compounds it can also mean 'during' or 'throughout'."
+  },
+  {
+    "id": "kanji-5916",
+    "type": "kanji",
+    "character": "外",
+    "reading": "そと / はず(す) / ガイ / ゲ",
+    "romaji": "soto / hazusu / gai / ge",
+    "meaning": "outside",
+    "onyomi": [
+      "ガイ",
+      "ゲ"
+    ],
+    "kunyomi": [
+      "そと",
+      "はず(す)"
+    ],
+    "jlpt": "N5",
+    "examples": [
+      {
+        "word": "外",
+        "reading": "そと",
+        "meaning": "outside"
+      }
+    ],
+    "exampleSentence": "外で待っています。",
+    "exampleTranslation": "I'll wait outside.",
+    "literalMeaning": "outside",
+    "coreConcept": "outside and external areas",
+    "commonWords": [
+      {
+        "word": "外",
+        "reading": "そと",
+        "meaning": "outside"
+      }
+    ],
+    "naturalUsageNotes": "外 alone is usually そと for physical location."
+  },
+  {
+    "id": "kanji-5de6",
+    "type": "kanji",
+    "character": "左",
+    "reading": "ひだり / サ",
+    "romaji": "hidari / sa",
+    "meaning": "left",
+    "onyomi": [
+      "サ"
+    ],
+    "kunyomi": [
+      "ひだり"
+    ],
+    "jlpt": "N5",
+    "examples": [
+      {
+        "word": "左",
+        "reading": "ひだり",
+        "meaning": "left"
+      }
+    ],
+    "exampleSentence": "左に曲がってください。",
+    "exampleTranslation": "Please turn left.",
+    "literalMeaning": "left",
+    "coreConcept": "the left side or direction",
+    "commonWords": [
+      {
+        "word": "左",
+        "reading": "ひだり",
+        "meaning": "left"
+      }
+    ],
+    "naturalUsageNotes": "Essential for directions."
+  },
+  {
+    "id": "kanji-53f3",
+    "type": "kanji",
+    "character": "右",
+    "reading": "みぎ / ウ / ユウ",
+    "romaji": "migi / u / yuu",
+    "meaning": "right",
+    "onyomi": [
+      "ウ",
+      "ユウ"
+    ],
+    "kunyomi": [
+      "みぎ"
+    ],
+    "jlpt": "N5",
+    "examples": [
+      {
+        "word": "右",
+        "reading": "みぎ",
+        "meaning": "right"
+      }
+    ],
+    "exampleSentence": "次の角を右に曲がります。",
+    "exampleTranslation": "Turn right at the next corner.",
+    "literalMeaning": "right",
+    "coreConcept": "the right side or direction",
+    "commonWords": [
+      {
+        "word": "右",
+        "reading": "みぎ",
+        "meaning": "right"
+      }
+    ],
+    "naturalUsageNotes": "Essential for directions."
+  },
+  {
+    "id": "kanji-6771",
+    "type": "kanji",
+    "character": "東",
+    "reading": "ひがし / トウ",
+    "romaji": "higashi / tou",
+    "meaning": "east",
+    "onyomi": [
+      "トウ"
+    ],
+    "kunyomi": [
+      "ひがし"
+    ],
+    "jlpt": "N5",
+    "examples": [
+      {
+        "word": "東京",
+        "reading": "とうきょう",
+        "meaning": "Tokyo"
+      }
+    ],
+    "exampleSentence": "東京に泊まります。",
+    "exampleTranslation": "I'm staying in Tokyo.",
+    "literalMeaning": "east",
+    "coreConcept": "east and eastern place names",
+    "commonWords": [
+      {
+        "word": "東京",
+        "reading": "とうきょう",
+        "meaning": "Tokyo"
+      }
+    ],
+    "naturalUsageNotes": "Appears in 東京 and many place names."
+  },
+  {
+    "id": "kanji-897f",
+    "type": "kanji",
+    "character": "西",
+    "reading": "にし / セイ / サイ",
+    "romaji": "nishi / sei / sai",
+    "meaning": "west",
+    "onyomi": [
+      "セイ",
+      "サイ"
+    ],
+    "kunyomi": [
+      "にし"
+    ],
+    "jlpt": "N5",
+    "examples": [
+      {
+        "word": "西口",
+        "reading": "にしぐち",
+        "meaning": "west exit"
+      }
+    ],
+    "exampleSentence": "西口で会いましょう。",
+    "exampleTranslation": "Let's meet at the west exit.",
+    "literalMeaning": "west",
+    "coreConcept": "west and western directions",
+    "commonWords": [
+      {
+        "word": "西口",
+        "reading": "にしぐち",
+        "meaning": "west exit"
+      }
+    ],
+    "naturalUsageNotes": "Very useful at large Japanese stations with directional exits."
+  },
+  {
+    "id": "kanji-5357",
+    "type": "kanji",
+    "character": "南",
+    "reading": "みなみ / ナン",
+    "romaji": "minami / nan",
+    "meaning": "south",
+    "onyomi": [
+      "ナン"
+    ],
+    "kunyomi": [
+      "みなみ"
+    ],
+    "jlpt": "N5",
+    "examples": [
+      {
+        "word": "南口",
+        "reading": "みなみぐち",
+        "meaning": "south exit"
+      }
+    ],
+    "exampleSentence": "南口から出てください。",
+    "exampleTranslation": "Please go out through the south exit.",
+    "literalMeaning": "south",
+    "coreConcept": "south and southern directions",
+    "commonWords": [
+      {
+        "word": "南口",
+        "reading": "みなみぐち",
+        "meaning": "south exit"
+      }
+    ],
+    "naturalUsageNotes": "Often seen on station exits and maps."
+  },
+  {
+    "id": "kanji-5317",
+    "type": "kanji",
+    "character": "北",
+    "reading": "きた / ホク",
+    "romaji": "kita / hoku",
+    "meaning": "north",
+    "onyomi": [
+      "ホク"
+    ],
+    "kunyomi": [
+      "きた"
+    ],
+    "jlpt": "N5",
+    "examples": [
+      {
+        "word": "北口",
+        "reading": "きたぐち",
+        "meaning": "north exit"
+      }
+    ],
+    "exampleSentence": "北口の近くです。",
+    "exampleTranslation": "It's near the north exit.",
+    "literalMeaning": "north",
+    "coreConcept": "north and northern directions",
+    "commonWords": [
+      {
+        "word": "北口",
+        "reading": "きたぐち",
+        "meaning": "north exit"
+      }
+    ],
+    "naturalUsageNotes": "Often seen on station exits and maps."
+  },
+  {
+    "id": "kanji-5927",
+    "type": "kanji",
+    "character": "大",
+    "reading": "おお(きい) / ダイ / タイ",
+    "romaji": "ookii / dai / tai",
+    "meaning": "big; large",
+    "onyomi": [
+      "ダイ",
+      "タイ"
+    ],
+    "kunyomi": [
+      "おお(きい)"
+    ],
+    "jlpt": "N5",
+    "examples": [
+      {
+        "word": "大きい",
+        "reading": "おおきい",
+        "meaning": "big"
+      }
+    ],
+    "exampleSentence": "もっと大きいサイズはありますか。",
+    "exampleTranslation": "Do you have a bigger size?",
+    "literalMeaning": "big; large",
+    "coreConcept": "large size, scale, or importance",
+    "commonWords": [
+      {
+        "word": "大きい",
+        "reading": "おおきい",
+        "meaning": "big"
+      }
+    ],
+    "naturalUsageNotes": "大きい is extremely useful for shopping and descriptions."
+  },
+  {
+    "id": "kanji-5c0f",
+    "type": "kanji",
+    "character": "小",
+    "reading": "ちい(さい) / こ / ショウ",
+    "romaji": "chiisai / ko / shou",
+    "meaning": "small",
+    "onyomi": [
+      "ショウ"
+    ],
+    "kunyomi": [
+      "ちい(さい)",
+      "こ"
+    ],
+    "jlpt": "N5",
+    "examples": [
+      {
+        "word": "小さい",
+        "reading": "ちいさい",
+        "meaning": "small"
+      }
+    ],
+    "exampleSentence": "もう少し小さいサイズはありますか。",
+    "exampleTranslation": "Do you have a slightly smaller size?",
+    "literalMeaning": "small",
+    "coreConcept": "small size or scale",
+    "commonWords": [
+      {
+        "word": "小さい",
+        "reading": "ちいさい",
+        "meaning": "small"
+      }
+    ],
+    "naturalUsageNotes": "小さい is very useful when shopping or describing objects."
+  },
+  {
+    "id": "kanji-9ad8",
+    "type": "kanji",
+    "character": "高",
+    "reading": "たか(い) / コウ",
+    "romaji": "takai / kou",
+    "meaning": "high; expensive",
+    "onyomi": [
+      "コウ"
+    ],
+    "kunyomi": [
+      "たか(い)"
+    ],
+    "jlpt": "N5",
+    "examples": [
+      {
+        "word": "高い",
+        "reading": "たかい",
+        "meaning": "high; expensive"
+      }
+    ],
+    "exampleSentence": "これは少し高いです。",
+    "exampleTranslation": "This is a little expensive.",
+    "literalMeaning": "high; expensive",
+    "coreConcept": "height and high price",
+    "commonWords": [
+      {
+        "word": "高い",
+        "reading": "たかい",
+        "meaning": "high; expensive"
+      }
+    ],
+    "naturalUsageNotes": "高い commonly means either physically high/tall or expensive depending on context."
+  },
+  {
+    "id": "kanji-5b89",
+    "type": "kanji",
+    "character": "安",
+    "reading": "やす(い) / アン",
+    "romaji": "yasui / an",
+    "meaning": "cheap; safe",
+    "onyomi": [
+      "アン"
+    ],
+    "kunyomi": [
+      "やす(い)"
+    ],
+    "jlpt": "N5",
+    "examples": [
+      {
+        "word": "安い",
+        "reading": "やすい",
+        "meaning": "cheap; inexpensive"
+      }
+    ],
+    "exampleSentence": "この店は安いです。",
+    "exampleTranslation": "This shop is inexpensive.",
+    "literalMeaning": "cheap; safe",
+    "coreConcept": "low price and safety",
+    "commonWords": [
+      {
+        "word": "安い",
+        "reading": "やすい",
+        "meaning": "cheap; inexpensive"
+      }
+    ],
+    "naturalUsageNotes": "At beginner level, 安い is most commonly used for price."
+  },
+  {
+    "id": "kanji-65b0",
+    "type": "kanji",
+    "character": "新",
+    "reading": "あたら(しい) / シン",
+    "romaji": "atarashii / shin",
+    "meaning": "new",
+    "onyomi": [
+      "シン"
+    ],
+    "kunyomi": [
+      "あたら(しい)"
+    ],
+    "jlpt": "N5",
+    "examples": [
+      {
+        "word": "新しい",
+        "reading": "あたらしい",
+        "meaning": "new"
+      }
+    ],
+    "exampleSentence": "新しいホテルです。",
+    "exampleTranslation": "It's a new hotel.",
+    "literalMeaning": "new",
+    "coreConcept": "newness and recent things",
+    "commonWords": [
+      {
+        "word": "新しい",
+        "reading": "あたらしい",
+        "meaning": "new"
+      }
+    ],
+    "naturalUsageNotes": "Common in 新しい and many compounds referring to something new."
+  },
+  {
+    "id": "kanji-9577",
+    "type": "kanji",
+    "character": "長",
+    "reading": "なが(い) / チョウ",
+    "romaji": "nagai / chou",
+    "meaning": "long; leader",
+    "onyomi": [
+      "チョウ"
+    ],
+    "kunyomi": [
+      "なが(い)"
+    ],
+    "jlpt": "N5",
+    "examples": [
+      {
+        "word": "長い",
+        "reading": "ながい",
+        "meaning": "long"
+      }
+    ],
+    "exampleSentence": "この道は長いです。",
+    "exampleTranslation": "This road is long.",
+    "literalMeaning": "long; leader",
+    "coreConcept": "length and leadership",
+    "commonWords": [
+      {
+        "word": "長い",
+        "reading": "ながい",
+        "meaning": "long"
+      }
+    ],
+    "naturalUsageNotes": "長い is the core beginner usage; チョウ also appears in titles and roles."
+  },
+  {
+    "id": "kanji-591a",
+    "type": "kanji",
+    "character": "多",
+    "reading": "おお(い) / タ",
+    "romaji": "ooi / ta",
+    "meaning": "many; much",
+    "onyomi": [
+      "タ"
+    ],
+    "kunyomi": [
+      "おお(い)"
+    ],
+    "jlpt": "N5",
+    "examples": [
+      {
+        "word": "多い",
+        "reading": "おおい",
+        "meaning": "many; a lot"
+      }
+    ],
+    "exampleSentence": "この駅は人が多いです。",
+    "exampleTranslation": "There are a lot of people at this station.",
+    "literalMeaning": "many; much",
+    "coreConcept": "large quantity or frequency",
+    "commonWords": [
+      {
+        "word": "多い",
+        "reading": "おおい",
+        "meaning": "many; a lot"
+      }
+    ],
+    "naturalUsageNotes": "多い normally describes that something exists in large quantity."
+  },
+  {
+    "id": "kanji-5c11",
+    "type": "kanji",
+    "character": "少",
+    "reading": "すく(ない) / すこ(し) / ショウ",
+    "romaji": "sukunai / sukoshi / shou",
+    "meaning": "few; little",
+    "onyomi": [
+      "ショウ"
+    ],
+    "kunyomi": [
+      "すく(ない)",
+      "すこ(し)"
+    ],
+    "jlpt": "N5",
+    "examples": [
+      {
+        "word": "少し",
+        "reading": "すこし",
+        "meaning": "a little"
+      }
+    ],
+    "exampleSentence": "日本語が少し分かります。",
+    "exampleTranslation": "I understand a little Japanese.",
+    "literalMeaning": "few; little",
+    "coreConcept": "small quantity or degree",
+    "commonWords": [
+      {
+        "word": "少し",
+        "reading": "すこし",
+        "meaning": "a little"
+      }
+    ],
+    "naturalUsageNotes": "少し is one of the most useful softening expressions in everyday Japanese."
+  },
+  {
+    "id": "kanji-5c71",
+    "type": "kanji",
+    "character": "山",
+    "reading": "やま / サン / セン",
+    "romaji": "yama / san / sen",
+    "meaning": "mountain",
+    "onyomi": [
+      "サン",
+      "セン"
+    ],
+    "kunyomi": [
+      "やま"
+    ],
+    "jlpt": "N5",
+    "examples": [
+      {
+        "word": "山",
+        "reading": "やま",
+        "meaning": "mountain"
+      }
+    ],
+    "exampleSentence": "あの山はきれいです。",
+    "exampleTranslation": "That mountain is beautiful.",
+    "literalMeaning": "mountain",
+    "coreConcept": "mountains and elevated natural places",
+    "commonWords": [
+      {
+        "word": "山",
+        "reading": "やま",
+        "meaning": "mountain"
+      }
+    ],
+    "naturalUsageNotes": "Common alone as やま and in mountain names with さん."
+  },
+  {
+    "id": "kanji-5ddd",
+    "type": "kanji",
+    "character": "川",
+    "reading": "かわ / セン",
+    "romaji": "kawa / sen",
+    "meaning": "river",
+    "onyomi": [
+      "セン"
+    ],
+    "kunyomi": [
+      "かわ"
+    ],
+    "jlpt": "N5",
+    "examples": [
+      {
+        "word": "川",
+        "reading": "かわ",
+        "meaning": "river"
+      }
+    ],
+    "exampleSentence": "川の近くを歩きました。",
+    "exampleTranslation": "I walked near the river.",
+    "literalMeaning": "river",
+    "coreConcept": "rivers and waterways",
+    "commonWords": [
+      {
+        "word": "川",
+        "reading": "かわ",
+        "meaning": "river"
+      }
+    ],
+    "naturalUsageNotes": "Often appears in place names and surnames."
+  },
+  {
+    "id": "kanji-5929",
+    "type": "kanji",
+    "character": "天",
+    "reading": "あめ / あま / テン",
+    "romaji": "ame / ama / ten",
+    "meaning": "heaven; sky",
+    "onyomi": [
+      "テン"
+    ],
+    "kunyomi": [
+      "あめ",
+      "あま"
+    ],
+    "jlpt": "N5",
+    "examples": [
+      {
+        "word": "天気",
+        "reading": "てんき",
+        "meaning": "weather"
+      }
+    ],
+    "exampleSentence": "今日は天気がいいです。",
+    "exampleTranslation": "The weather is nice today.",
+    "literalMeaning": "heaven; sky",
+    "coreConcept": "the sky, heavens, and weather-related concepts",
+    "commonWords": [
+      {
+        "word": "天気",
+        "reading": "てんき",
+        "meaning": "weather"
+      }
+    ],
+    "naturalUsageNotes": "Most useful at N5 through 天気."
+  },
+  {
+    "id": "kanji-6c17",
+    "type": "kanji",
+    "character": "気",
+    "reading": "キ / ケ",
+    "romaji": "ki / ke",
+    "meaning": "spirit; feeling; air",
+    "onyomi": [
+      "キ",
+      "ケ"
+    ],
+    "kunyomi": [],
+    "jlpt": "N5",
+    "examples": [
+      {
+        "word": "天気",
+        "reading": "てんき",
+        "meaning": "weather"
+      }
+    ],
+    "exampleSentence": "明日の天気はどうですか。",
+    "exampleTranslation": "How is the weather tomorrow?",
+    "literalMeaning": "spirit; feeling; air",
+    "coreConcept": "state, feeling, atmosphere, and energy",
+    "commonWords": [
+      {
+        "word": "天気",
+        "reading": "てんき",
+        "meaning": "weather"
+      }
+    ],
+    "naturalUsageNotes": "Appears in many common words. At N5, 天気 and 元気 are especially important."
+  },
+  {
+    "id": "kanji-96e8",
+    "type": "kanji",
+    "character": "雨",
+    "reading": "あめ / あま / ウ",
+    "romaji": "ame / ama / u",
+    "meaning": "rain",
+    "onyomi": [
+      "ウ"
+    ],
+    "kunyomi": [
+      "あめ",
+      "あま"
+    ],
+    "jlpt": "N5",
+    "examples": [
+      {
+        "word": "雨",
+        "reading": "あめ",
+        "meaning": "rain"
+      }
+    ],
+    "exampleSentence": "今日は雨です。",
+    "exampleTranslation": "It's raining today.",
+    "literalMeaning": "rain",
+    "coreConcept": "rain and rainy weather",
+    "commonWords": [
+      {
+        "word": "雨",
+        "reading": "あめ",
+        "meaning": "rain"
+      }
+    ],
+    "naturalUsageNotes": "Rain is commonly expressed simply as 雨です in beginner conversation."
+  },
+  {
+    "id": "kanji-96fb",
+    "type": "kanji",
+    "character": "電",
+    "reading": "デン",
+    "romaji": "den",
+    "meaning": "electricity",
+    "onyomi": [
+      "デン"
+    ],
+    "kunyomi": [],
+    "jlpt": "N5",
+    "examples": [
+      {
+        "word": "電車",
+        "reading": "でんしゃ",
+        "meaning": "train"
+      }
+    ],
+    "exampleSentence": "電車で行きます。",
+    "exampleTranslation": "I'll go by train.",
+    "literalMeaning": "electricity",
+    "coreConcept": "electricity and electrical things",
+    "commonWords": [
+      {
+        "word": "電車",
+        "reading": "でんしゃ",
+        "meaning": "train"
+      }
+    ],
+    "naturalUsageNotes": "At N5, most commonly encountered in 電車 and 電話."
+  },
+  {
+    "id": "kanji-8eca",
+    "type": "kanji",
+    "character": "車",
+    "reading": "くるま / シャ",
+    "romaji": "kuruma / sha",
+    "meaning": "car; vehicle",
+    "onyomi": [
+      "シャ"
+    ],
+    "kunyomi": [
+      "くるま"
+    ],
+    "jlpt": "N5",
+    "examples": [
+      {
+        "word": "電車",
+        "reading": "でんしゃ",
+        "meaning": "train"
+      }
+    ],
+    "exampleSentence": "この電車は新宿に行きますか。",
+    "exampleTranslation": "Does this train go to Shinjuku?",
+    "literalMeaning": "car; vehicle",
+    "coreConcept": "vehicles and wheeled transport",
+    "commonWords": [
+      {
+        "word": "電車",
+        "reading": "でんしゃ",
+        "meaning": "train"
+      }
+    ],
+    "naturalUsageNotes": "車 alone is くるま, while シャ appears in many transport compounds."
+  },
+  {
+    "id": "kanji-99c5",
+    "type": "kanji",
+    "character": "駅",
+    "reading": "エキ",
+    "romaji": "eki",
+    "meaning": "station",
+    "onyomi": [
+      "エキ"
+    ],
+    "kunyomi": [],
+    "jlpt": "N5",
+    "examples": [
+      {
+        "word": "駅",
+        "reading": "えき",
+        "meaning": "station"
+      }
+    ],
+    "exampleSentence": "駅はどこですか。",
+    "exampleTranslation": "Where is the station?",
+    "literalMeaning": "station",
+    "coreConcept": "railway stations",
+    "commonWords": [
+      {
+        "word": "駅",
+        "reading": "えき",
+        "meaning": "station"
+      }
+    ],
+    "naturalUsageNotes": "Extremely useful for travel even though some JLPT lists classify it slightly above core N5."
+  },
+  {
+    "id": "kanji-9053",
+    "type": "kanji",
+    "character": "道",
+    "reading": "みち / ドウ / トウ",
+    "romaji": "michi / dou / tou",
+    "meaning": "road; way",
+    "onyomi": [
+      "ドウ",
+      "トウ"
+    ],
+    "kunyomi": [
+      "みち"
+    ],
+    "jlpt": "N5",
+    "examples": [
+      {
+        "word": "道",
+        "reading": "みち",
+        "meaning": "road; way"
+      }
+    ],
+    "exampleSentence": "この道で合っていますか。",
+    "exampleTranslation": "Is this the right way?",
+    "literalMeaning": "road; way",
+    "coreConcept": "roads, routes, and ways of doing things",
+    "commonWords": [
+      {
+        "word": "道",
+        "reading": "みち",
+        "meaning": "road; way"
+      }
+    ],
+    "naturalUsageNotes": "Very useful for asking directions."
+  },
+  {
+    "id": "kanji-53e3",
+    "type": "kanji",
+    "character": "口",
+    "reading": "くち / コウ / ク",
+    "romaji": "kuchi / kou / ku",
+    "meaning": "mouth; opening; entrance",
+    "onyomi": [
+      "コウ",
+      "ク"
+    ],
+    "kunyomi": [
+      "くち"
+    ],
+    "jlpt": "N5",
+    "examples": [
+      {
+        "word": "入口",
+        "reading": "いりぐち",
+        "meaning": "entrance"
+      }
+    ],
+    "exampleSentence": "入口はあちらです。",
+    "exampleTranslation": "The entrance is over there.",
+    "literalMeaning": "mouth; opening; entrance",
+    "coreConcept": "mouths, openings, and entrances/exits",
+    "commonWords": [
+      {
+        "word": "入口",
+        "reading": "いりぐち",
+        "meaning": "entrance"
+      }
+    ],
+    "naturalUsageNotes": "Frequently appears in station terms such as 東口, 西口, and 入口."
+  },
+  {
+    "id": "kanji-76ee",
+    "type": "kanji",
+    "character": "目",
+    "reading": "め / モク / ボク",
+    "romaji": "me / moku / boku",
+    "meaning": "eye; item number",
+    "onyomi": [
+      "モク",
+      "ボク"
+    ],
+    "kunyomi": [
+      "め"
+    ],
+    "jlpt": "N5",
+    "examples": [
+      {
+        "word": "目",
+        "reading": "め",
+        "meaning": "eye"
+      }
+    ],
+    "exampleSentence": "目が痛いです。",
+    "exampleTranslation": "My eye hurts.",
+    "literalMeaning": "eye; item number",
+    "coreConcept": "eyes and ordered positions",
+    "commonWords": [
+      {
+        "word": "目",
+        "reading": "め",
+        "meaning": "eye"
+      }
+    ],
+    "naturalUsageNotes": "目 alone is め; it also appears as an ordinal suffix such as 一つ目."
+  },
+  {
+    "id": "kanji-8033",
+    "type": "kanji",
+    "character": "耳",
+    "reading": "みみ / ジ",
+    "romaji": "mimi / ji",
+    "meaning": "ear",
+    "onyomi": [
+      "ジ"
+    ],
+    "kunyomi": [
+      "みみ"
+    ],
+    "jlpt": "N5",
+    "examples": [
+      {
+        "word": "耳",
+        "reading": "みみ",
+        "meaning": "ear"
+      }
+    ],
+    "exampleSentence": "耳が少し痛いです。",
+    "exampleTranslation": "My ear hurts a little.",
+    "literalMeaning": "ear",
+    "coreConcept": "ears and hearing organs",
+    "commonWords": [
+      {
+        "word": "耳",
+        "reading": "みみ",
+        "meaning": "ear"
+      }
+    ],
+    "naturalUsageNotes": "Mostly used as みみ at beginner level."
+  },
+  {
+    "id": "kanji-624b",
+    "type": "kanji",
+    "character": "手",
+    "reading": "て / シュ",
+    "romaji": "te / shu",
+    "meaning": "hand",
+    "onyomi": [
+      "シュ"
+    ],
+    "kunyomi": [
+      "て"
+    ],
+    "jlpt": "N5",
+    "examples": [
+      {
+        "word": "手",
+        "reading": "て",
+        "meaning": "hand"
+      }
+    ],
+    "exampleSentence": "手を洗います。",
+    "exampleTranslation": "I'll wash my hands.",
+    "literalMeaning": "hand",
+    "coreConcept": "hands, skill, and means",
+    "commonWords": [
+      {
+        "word": "手",
+        "reading": "て",
+        "meaning": "hand"
+      }
+    ],
+    "naturalUsageNotes": "Very common alone as て and in many compounds."
+  },
+  {
+    "id": "kanji-8db3",
+    "type": "kanji",
+    "character": "足",
+    "reading": "あし / た(りる) / ソク",
+    "romaji": "ashi / tariru / soku",
+    "meaning": "foot; leg; enough",
+    "onyomi": [
+      "ソク"
+    ],
+    "kunyomi": [
+      "あし",
+      "た(りる)"
+    ],
+    "jlpt": "N5",
+    "examples": [
+      {
+        "word": "足",
+        "reading": "あし",
+        "meaning": "foot; leg"
+      }
+    ],
+    "exampleSentence": "足が疲れました。",
+    "exampleTranslation": "My legs are tired.",
+    "literalMeaning": "foot; leg; enough",
+    "coreConcept": "feet, legs, and sufficiency",
+    "commonWords": [
+      {
+        "word": "足",
+        "reading": "あし",
+        "meaning": "foot; leg"
+      }
+    ],
+    "naturalUsageNotes": "あし can refer to the foot or leg depending on context."
+  },
+  {
+    "id": "kanji-529b",
+    "type": "kanji",
+    "character": "力",
+    "reading": "ちから / リョク / リキ",
+    "romaji": "chikara / ryoku / riki",
+    "meaning": "power; strength",
+    "onyomi": [
+      "リョク",
+      "リキ"
+    ],
+    "kunyomi": [
+      "ちから"
+    ],
+    "jlpt": "N5",
+    "examples": [
+      {
+        "word": "力",
+        "reading": "ちから",
+        "meaning": "strength"
+      }
+    ],
+    "exampleSentence": "力がありません。",
+    "exampleTranslation": "I don't have the strength.",
+    "literalMeaning": "power; strength",
+    "coreConcept": "physical or abstract strength",
+    "commonWords": [
+      {
+        "word": "力",
+        "reading": "ちから",
+        "meaning": "strength"
+      }
+    ],
+    "naturalUsageNotes": "Common alone as ちから and in compounds ending in りょく."
+  },
+  {
+    "id": "kanji-672c",
+    "type": "kanji",
+    "character": "本",
+    "reading": "もと / ホン",
+    "romaji": "moto / hon",
+    "meaning": "book; origin; counter for long objects",
+    "onyomi": [
+      "ホン"
+    ],
+    "kunyomi": [
+      "もと"
+    ],
+    "jlpt": "N5",
+    "examples": [
+      {
+        "word": "本",
+        "reading": "ほん",
+        "meaning": "book"
+      }
+    ],
+    "exampleSentence": "日本語の本を買いました。",
+    "exampleTranslation": "I bought a Japanese book.",
+    "literalMeaning": "book; origin; counter for long objects",
+    "coreConcept": "books, origins, and long-object counting",
+    "commonWords": [
+      {
+        "word": "本",
+        "reading": "ほん",
+        "meaning": "book"
+      }
+    ],
+    "naturalUsageNotes": "At N5, 本 is most often 'book'; it is also a counter for long cylindrical objects."
+  },
+  {
+    "id": "kanji-6821",
+    "type": "kanji",
+    "character": "校",
+    "reading": "コウ",
+    "romaji": "kou",
+    "meaning": "school",
+    "onyomi": [
+      "コウ"
+    ],
+    "kunyomi": [],
+    "jlpt": "N5",
+    "examples": [
+      {
+        "word": "学校",
+        "reading": "がっこう",
+        "meaning": "school"
+      }
+    ],
+    "exampleSentence": "学校は駅の近くです。",
+    "exampleTranslation": "The school is near the station.",
+    "literalMeaning": "school",
+    "coreConcept": "schools and educational institutions",
+    "commonWords": [
+      {
+        "word": "学校",
+        "reading": "がっこう",
+        "meaning": "school"
+      }
+    ],
+    "naturalUsageNotes": "Usually encountered in compounds such as 学校."
+  },
+  {
+    "id": "kanji-56fd",
+    "type": "kanji",
+    "character": "国",
+    "reading": "くに / コク",
+    "romaji": "kuni / koku",
+    "meaning": "country",
+    "onyomi": [
+      "コク"
+    ],
+    "kunyomi": [
+      "くに"
+    ],
+    "jlpt": "N5",
+    "examples": [
+      {
+        "word": "外国",
+        "reading": "がいこく",
+        "meaning": "foreign country"
+      }
+    ],
+    "exampleSentence": "外国から来ました。",
+    "exampleTranslation": "I came from another country.",
+    "literalMeaning": "country",
+    "coreConcept": "countries and nations",
+    "commonWords": [
+      {
+        "word": "外国",
+        "reading": "がいこく",
+        "meaning": "foreign country"
+      }
+    ],
+    "naturalUsageNotes": "国 alone is くに; コク appears in compounds such as 外国."
+  },
+  {
+    "id": "kanji-8a9e",
+    "type": "kanji",
+    "character": "語",
+    "reading": "かた(る) / ゴ",
+    "romaji": "kataru / go",
+    "meaning": "language; word",
+    "onyomi": [
+      "ゴ"
+    ],
+    "kunyomi": [
+      "かた(る)"
+    ],
+    "jlpt": "N5",
+    "examples": [
+      {
+        "word": "日本語",
+        "reading": "にほんご",
+        "meaning": "Japanese language"
+      }
+    ],
+    "exampleSentence": "日本語を勉強しています。",
+    "exampleTranslation": "I'm studying Japanese.",
+    "literalMeaning": "language; word",
+    "coreConcept": "languages, words, and speech",
+    "commonWords": [
+      {
+        "word": "日本語",
+        "reading": "にほんご",
+        "meaning": "Japanese language"
+      }
+    ],
+    "naturalUsageNotes": "At beginner level, ゴ is extremely common in language names such as 日本語 and 英語."
+  },
+  {
+    "id": "kanji-6587",
+    "type": "kanji",
+    "character": "文",
+    "reading": "ふみ / ブン / モン",
+    "romaji": "fumi / bun / mon",
+    "meaning": "sentence; writing",
+    "onyomi": [
+      "ブン",
+      "モン"
+    ],
+    "kunyomi": [
+      "ふみ"
+    ],
+    "jlpt": "N5",
+    "examples": [
+      {
+        "word": "文章",
+        "reading": "ぶんしょう",
+        "meaning": "sentence; text"
+      }
+    ],
+    "exampleSentence": "短い文を書きます。",
+    "exampleTranslation": "I'll write a short sentence.",
+    "literalMeaning": "sentence; writing",
+    "coreConcept": "written language and sentences",
+    "commonWords": [
+      {
+        "word": "文章",
+        "reading": "ぶんしょう",
+        "meaning": "sentence; text"
+      }
+    ],
+    "naturalUsageNotes": "At N5, 文 is useful for talking about sentences and written text."
+  },
+  {
+    "id": "kanji-5b57",
+    "type": "kanji",
+    "character": "字",
+    "reading": "あざ / ジ",
+    "romaji": "aza / ji",
+    "meaning": "character; letter",
+    "onyomi": [
+      "ジ"
+    ],
+    "kunyomi": [
+      "あざ"
+    ],
+    "jlpt": "N5",
+    "examples": [
+      {
+        "word": "漢字",
+        "reading": "かんじ",
+        "meaning": "kanji"
+      }
+    ],
+    "exampleSentence": "この漢字は何と読みますか。",
+    "exampleTranslation": "How do you read this kanji?",
+    "literalMeaning": "character; letter",
+    "coreConcept": "written characters and lettering",
+    "commonWords": [
+      {
+        "word": "漢字",
+        "reading": "かんじ",
+        "meaning": "kanji"
+      }
+    ],
+    "naturalUsageNotes": "Essential for discussing kanji and writing."
+  },
+  {
+    "id": "kanji-98df",
+    "type": "kanji",
+    "character": "食",
+    "reading": "た(べる) / ショク / ジキ",
+    "romaji": "taberu / shoku / jiki",
+    "meaning": "eat; food",
+    "onyomi": [
+      "ショク",
+      "ジキ"
+    ],
+    "kunyomi": [
+      "た(べる)"
+    ],
+    "jlpt": "N5",
+    "examples": [
+      {
+        "word": "食べる",
+        "reading": "たべる",
+        "meaning": "to eat"
+      }
+    ],
+    "exampleSentence": "ここで食べてもいいですか。",
+    "exampleTranslation": "May I eat here?",
+    "literalMeaning": "eat; food",
+    "coreConcept": "eating and food",
+    "commonWords": [
+      {
+        "word": "食べる",
+        "reading": "たべる",
+        "meaning": "to eat"
+      }
+    ],
+    "naturalUsageNotes": "食べる is one of the most common beginner verbs."
+  },
+  {
+    "id": "kanji-98f2",
+    "type": "kanji",
+    "character": "飲",
+    "reading": "の(む) / イン",
+    "romaji": "nomu / in",
+    "meaning": "drink",
+    "onyomi": [
+      "イン"
+    ],
+    "kunyomi": [
+      "の(む)"
+    ],
+    "jlpt": "N5",
+    "examples": [
+      {
+        "word": "飲む",
+        "reading": "のむ",
+        "meaning": "to drink"
+      }
+    ],
+    "exampleSentence": "何を飲みますか。",
+    "exampleTranslation": "What will you drink?",
+    "literalMeaning": "drink",
+    "coreConcept": "drinking and beverages",
+    "commonWords": [
+      {
+        "word": "飲む",
+        "reading": "のむ",
+        "meaning": "to drink"
+      }
+    ],
+    "naturalUsageNotes": "飲む is a core restaurant and daily-life verb."
+  },
+  {
+    "id": "kanji-898b",
+    "type": "kanji",
+    "character": "見",
+    "reading": "み(る) / み(える) / ケン",
+    "romaji": "miru / mieru / ken",
+    "meaning": "see; look",
+    "onyomi": [
+      "ケン"
+    ],
+    "kunyomi": [
+      "み(る)",
+      "み(える)"
+    ],
+    "jlpt": "N5",
+    "examples": [
+      {
+        "word": "見る",
+        "reading": "みる",
+        "meaning": "to see; watch"
+      }
+    ],
+    "exampleSentence": "このメニューを見てもいいですか。",
+    "exampleTranslation": "May I look at this menu?",
+    "literalMeaning": "see; look",
+    "coreConcept": "seeing, watching, and appearance",
+    "commonWords": [
+      {
+        "word": "見る",
+        "reading": "みる",
+        "meaning": "to see; watch"
+      }
+    ],
+    "naturalUsageNotes": "見る is extremely common in everyday speech."
+  },
+  {
+    "id": "kanji-805e",
+    "type": "kanji",
+    "character": "聞",
+    "reading": "き(く) / ブン / モン",
+    "romaji": "kiku / bun / mon",
+    "meaning": "hear; ask",
+    "onyomi": [
+      "ブン",
+      "モン"
+    ],
+    "kunyomi": [
+      "き(く)"
+    ],
+    "jlpt": "N5",
+    "examples": [
+      {
+        "word": "聞く",
+        "reading": "きく",
+        "meaning": "to hear; ask"
+      }
+    ],
+    "exampleSentence": "駅員さんに聞きます。",
+    "exampleTranslation": "I'll ask the station staff.",
+    "literalMeaning": "hear; ask",
+    "coreConcept": "hearing and asking for information",
+    "commonWords": [
+      {
+        "word": "聞く",
+        "reading": "きく",
+        "meaning": "to hear; ask"
+      }
+    ],
+    "naturalUsageNotes": "聞く can mean both 'listen/hear' and 'ask', depending on context."
+  },
+  {
+    "id": "kanji-8aad",
+    "type": "kanji",
+    "character": "読",
+    "reading": "よ(む) / ドク / トク",
+    "romaji": "yomu / doku / toku",
+    "meaning": "read",
+    "onyomi": [
+      "ドク",
+      "トク"
+    ],
+    "kunyomi": [
+      "よ(む)"
+    ],
+    "jlpt": "N5",
+    "examples": [
+      {
+        "word": "読む",
+        "reading": "よむ",
+        "meaning": "to read"
+      }
+    ],
+    "exampleSentence": "この漢字が読めません。",
+    "exampleTranslation": "I can't read this kanji.",
+    "literalMeaning": "read",
+    "coreConcept": "reading written material",
+    "commonWords": [
+      {
+        "word": "読む",
+        "reading": "よむ",
+        "meaning": "to read"
+      }
+    ],
+    "naturalUsageNotes": "読む is the core beginner verb."
+  },
+  {
+    "id": "kanji-66f8",
+    "type": "kanji",
+    "character": "書",
+    "reading": "か(く) / ショ",
+    "romaji": "kaku / sho",
+    "meaning": "write",
+    "onyomi": [
+      "ショ"
+    ],
+    "kunyomi": [
+      "か(く)"
+    ],
+    "jlpt": "N5",
+    "examples": [
+      {
+        "word": "書く",
+        "reading": "かく",
+        "meaning": "to write"
+      }
+    ],
+    "exampleSentence": "ここに名前を書いてください。",
+    "exampleTranslation": "Please write your name here.",
+    "literalMeaning": "write",
+    "coreConcept": "writing and written documents",
+    "commonWords": [
+      {
+        "word": "書く",
+        "reading": "かく",
+        "meaning": "to write"
+      }
+    ],
+    "naturalUsageNotes": "書く is extremely useful for forms and study."
+  },
+  {
+    "id": "kanji-8a71",
+    "type": "kanji",
+    "character": "話",
+    "reading": "はな(す) / はなし / ワ",
+    "romaji": "hanasu / hanashi / wa",
+    "meaning": "talk; story",
+    "onyomi": [
+      "ワ"
+    ],
+    "kunyomi": [
+      "はな(す)",
+      "はなし"
+    ],
+    "jlpt": "N5",
+    "examples": [
+      {
+        "word": "話す",
+        "reading": "はなす",
+        "meaning": "to speak; talk"
+      }
+    ],
+    "exampleSentence": "日本語を少し話せます。",
+    "exampleTranslation": "I can speak a little Japanese.",
+    "literalMeaning": "talk; story",
+    "coreConcept": "speaking and conversation",
+    "commonWords": [
+      {
+        "word": "話す",
+        "reading": "はなす",
+        "meaning": "to speak; talk"
+      }
+    ],
+    "naturalUsageNotes": "話す is the everyday verb 'to speak'; 話 can also mean a story or conversation."
+  },
+  {
+    "id": "kanji-8a00",
+    "type": "kanji",
+    "character": "言",
+    "reading": "い(う) / こと / ゲン / ゴン",
+    "romaji": "iu / koto / gen / gon",
+    "meaning": "say; word",
+    "onyomi": [
+      "ゲン",
+      "ゴン"
+    ],
+    "kunyomi": [
+      "い(う)",
+      "こと"
+    ],
+    "jlpt": "N5",
+    "examples": [
+      {
+        "word": "言う",
+        "reading": "いう",
+        "meaning": "to say"
+      }
+    ],
+    "exampleSentence": "もう一度言ってください。",
+    "exampleTranslation": "Please say it one more time.",
+    "literalMeaning": "say; word",
+    "coreConcept": "saying and expressing words",
+    "commonWords": [
+      {
+        "word": "言う",
+        "reading": "いう",
+        "meaning": "to say"
+      }
+    ],
+    "naturalUsageNotes": "言う is one of the most frequent verbs in spoken Japanese."
+  },
+  {
+    "id": "kanji-884c",
+    "type": "kanji",
+    "character": "行",
+    "reading": "い(く) / ゆ(く) / おこな(う) / コウ / ギョウ",
+    "romaji": "iku / yuku / okonau / kou / gyou",
+    "meaning": "go; conduct",
+    "onyomi": [
+      "コウ",
+      "ギョウ"
+    ],
+    "kunyomi": [
+      "い(く)",
+      "ゆ(く)",
+      "おこな(う)"
+    ],
+    "jlpt": "N5",
+    "examples": [
+      {
+        "word": "行く",
+        "reading": "いく",
+        "meaning": "to go"
+      }
+    ],
+    "exampleSentence": "明日、浅草に行きます。",
+    "exampleTranslation": "I'm going to Asakusa tomorrow.",
+    "literalMeaning": "go; conduct",
+    "coreConcept": "movement toward a destination and action",
+    "commonWords": [
+      {
+        "word": "行く",
+        "reading": "いく",
+        "meaning": "to go"
+      }
+    ],
+    "naturalUsageNotes": "行く is a fundamental travel verb. The everyday reading is いく."
+  },
+  {
+    "id": "kanji-6765",
+    "type": "kanji",
+    "character": "来",
+    "reading": "く(る) / きた(る) / ライ",
+    "romaji": "kuru / kitaru / rai",
+    "meaning": "come",
+    "onyomi": [
+      "ライ"
+    ],
+    "kunyomi": [
+      "く(る)",
+      "きた(る)"
+    ],
+    "jlpt": "N5",
+    "examples": [
+      {
+        "word": "来る",
+        "reading": "くる",
+        "meaning": "to come"
+      }
+    ],
+    "exampleSentence": "また来ます。",
+    "exampleTranslation": "I'll come again.",
+    "literalMeaning": "come",
+    "coreConcept": "movement toward the speaker or reference point",
+    "commonWords": [
+      {
+        "word": "来る",
+        "reading": "くる",
+        "meaning": "to come"
+      }
+    ],
+    "naturalUsageNotes": "来る is irregular and extremely common."
+  },
+  {
+    "id": "kanji-5165",
+    "type": "kanji",
+    "character": "入",
+    "reading": "はい(る) / い(れる) / ニュウ",
+    "romaji": "hairu / ireru / nyuu",
+    "meaning": "enter; put in",
+    "onyomi": [
+      "ニュウ"
+    ],
+    "kunyomi": [
+      "はい(る)",
+      "い(れる)"
+    ],
+    "jlpt": "N5",
+    "examples": [
+      {
+        "word": "入る",
+        "reading": "はいる",
+        "meaning": "to enter"
+      }
+    ],
+    "exampleSentence": "この店に入ってみましょう。",
+    "exampleTranslation": "Let's try going into this shop.",
+    "literalMeaning": "enter; put in",
+    "coreConcept": "entering and putting something inside",
+    "commonWords": [
+      {
+        "word": "入る",
+        "reading": "はいる",
+        "meaning": "to enter"
+      }
+    ],
+    "naturalUsageNotes": "入る is intransitive 'enter'; 入れる commonly means 'put in'."
+  },
+  {
+    "id": "kanji-51fa",
+    "type": "kanji",
+    "character": "出",
+    "reading": "で(る) / だ(す) / シュツ / スイ",
+    "romaji": "deru / dasu / shutsu / sui",
+    "meaning": "exit; come out",
+    "onyomi": [
+      "シュツ",
+      "スイ"
+    ],
+    "kunyomi": [
+      "で(る)",
+      "だ(す)"
+    ],
+    "jlpt": "N5",
+    "examples": [
+      {
+        "word": "出口",
+        "reading": "でぐち",
+        "meaning": "exit"
+      }
+    ],
+    "exampleSentence": "出口はどこですか。",
+    "exampleTranslation": "Where is the exit?",
+    "literalMeaning": "exit; come out",
+    "coreConcept": "leaving, exiting, and taking out",
+    "commonWords": [
+      {
+        "word": "出口",
+        "reading": "でぐち",
+        "meaning": "exit"
+      }
+    ],
+    "naturalUsageNotes": "Very important for stations and directions. 出口 means exit."
+  },
+  {
+    "id": "kanji-7acb",
+    "type": "kanji",
+    "character": "立",
+    "reading": "た(つ) / た(てる) / リツ / リュウ",
+    "romaji": "tatsu / tateru / ritsu / ryuu",
+    "meaning": "stand",
+    "onyomi": [
+      "リツ",
+      "リュウ"
+    ],
+    "kunyomi": [
+      "た(つ)",
+      "た(てる)"
+    ],
+    "jlpt": "N5",
+    "examples": [
+      {
+        "word": "立つ",
+        "reading": "たつ",
+        "meaning": "to stand"
+      }
+    ],
+    "exampleSentence": "ここに立ってください。",
+    "exampleTranslation": "Please stand here.",
+    "literalMeaning": "stand",
+    "coreConcept": "standing and establishing",
+    "commonWords": [
+      {
+        "word": "立つ",
+        "reading": "たつ",
+        "meaning": "to stand"
+      }
+    ],
+    "naturalUsageNotes": "立つ is the common intransitive verb 'to stand'."
+  },
+  {
+    "id": "kanji-4f11",
+    "type": "kanji",
+    "character": "休",
+    "reading": "やす(む) / キュウ",
+    "romaji": "yasumu / kyuu",
+    "meaning": "rest; holiday",
+    "onyomi": [
+      "キュウ"
+    ],
+    "kunyomi": [
+      "やす(む)"
+    ],
+    "jlpt": "N5",
+    "examples": [
+      {
+        "word": "休む",
+        "reading": "やすむ",
+        "meaning": "to rest; take a day off"
+      }
+    ],
+    "exampleSentence": "少し休みましょう。",
+    "exampleTranslation": "Let's rest for a bit.",
+    "literalMeaning": "rest; holiday",
+    "coreConcept": "rest, breaks, and days off",
+    "commonWords": [
+      {
+        "word": "休む",
+        "reading": "やすむ",
+        "meaning": "to rest; take a day off"
+      }
+    ],
+    "naturalUsageNotes": "休む is very common for resting, taking leave, or a shop being closed."
+  },
+  {
+    "id": "kanji-8cb7",
+    "type": "kanji",
+    "character": "買",
+    "reading": "か(う) / バイ",
+    "romaji": "kau / bai",
+    "meaning": "buy",
+    "onyomi": [
+      "バイ"
+    ],
+    "kunyomi": [
+      "か(う)"
+    ],
+    "jlpt": "N5",
+    "examples": [
+      {
+        "word": "買う",
+        "reading": "かう",
+        "meaning": "to buy"
+      }
+    ],
+    "exampleSentence": "お土産を買いたいです。",
+    "exampleTranslation": "I want to buy souvenirs.",
+    "literalMeaning": "buy",
+    "coreConcept": "buying and purchases",
+    "commonWords": [
+      {
+        "word": "買う",
+        "reading": "かう",
+        "meaning": "to buy"
+      }
+    ],
+    "naturalUsageNotes": "A core shopping verb."
+  },
+  {
+    "id": "kanji-767d",
+    "type": "kanji",
+    "character": "白",
+    "reading": "しろ / しろ(い) / ハク / ビャク",
+    "romaji": "shiro / shiroi / haku / byaku",
+    "meaning": "white",
+    "onyomi": [
+      "ハク",
+      "ビャク"
+    ],
+    "kunyomi": [
+      "しろ",
+      "しろ(い)"
+    ],
+    "jlpt": "N5",
+    "examples": [
+      {
+        "word": "白い",
+        "reading": "しろい",
+        "meaning": "white"
+      }
+    ],
+    "exampleSentence": "白いシャツを探しています。",
+    "exampleTranslation": "I'm looking for a white shirt.",
+    "literalMeaning": "white",
+    "coreConcept": "the color white",
+    "commonWords": [
+      {
+        "word": "白い",
+        "reading": "しろい",
+        "meaning": "white"
+      }
+    ],
+    "naturalUsageNotes": "白い is the adjective form; 白 alone is しろ."
+  },
+  {
+    "id": "kanji-9ed2",
+    "type": "kanji",
+    "character": "黒",
+    "reading": "くろ / くろ(い) / コク",
+    "romaji": "kuro / kuroi / koku",
+    "meaning": "black",
+    "onyomi": [
+      "コク"
+    ],
+    "kunyomi": [
+      "くろ",
+      "くろ(い)"
+    ],
+    "jlpt": "N5",
+    "examples": [
+      {
+        "word": "黒い",
+        "reading": "くろい",
+        "meaning": "black"
+      }
+    ],
+    "exampleSentence": "黒いバッグが欲しいです。",
+    "exampleTranslation": "I want a black bag.",
+    "literalMeaning": "black",
+    "coreConcept": "the color black",
+    "commonWords": [
+      {
+        "word": "黒い",
+        "reading": "くろい",
+        "meaning": "black"
+      }
+    ],
+    "naturalUsageNotes": "黒い is the adjective form; 黒 alone is くろ."
+  },
+  {
+    "id": "kanji-8d64",
+    "type": "kanji",
+    "character": "赤",
+    "reading": "あか / あか(い) / セキ / シャク",
+    "romaji": "aka / akai / seki / shaku",
+    "meaning": "red",
+    "onyomi": [
+      "セキ",
+      "シャク"
+    ],
+    "kunyomi": [
+      "あか",
+      "あか(い)"
+    ],
+    "jlpt": "N5",
+    "examples": [
+      {
+        "word": "赤い",
+        "reading": "あかい",
+        "meaning": "red"
+      }
+    ],
+    "exampleSentence": "赤い電車に乗ります。",
+    "exampleTranslation": "I'll take the red train.",
+    "literalMeaning": "red",
+    "coreConcept": "the color red",
+    "commonWords": [
+      {
+        "word": "赤い",
+        "reading": "あかい",
+        "meaning": "red"
+      }
+    ],
+    "naturalUsageNotes": "赤い is the adjective form; 赤 alone is あか."
+  },
+  {
+    "id": "kanji-9752",
+    "type": "kanji",
+    "character": "青",
+    "reading": "あお / あお(い) / セイ / ショウ",
+    "romaji": "ao / aoi / sei / shou",
+    "meaning": "blue",
+    "onyomi": [
+      "セイ",
+      "ショウ"
+    ],
+    "kunyomi": [
+      "あお",
+      "あお(い)"
+    ],
+    "jlpt": "N5",
+    "examples": [
+      {
+        "word": "青い",
+        "reading": "あおい",
+        "meaning": "blue"
+      }
+    ],
+    "exampleSentence": "青い看板が見えます。",
+    "exampleTranslation": "I can see a blue sign.",
+    "literalMeaning": "blue",
+    "coreConcept": "blue and greenish-blue colors",
+    "commonWords": [
+      {
+        "word": "青い",
+        "reading": "あおい",
+        "meaning": "blue"
+      }
+    ],
+    "naturalUsageNotes": "青い normally means blue, though 青 can cover some things English describes as green."
+  },
+  {
+    "id": "kanji-4f55",
+    "type": "kanji",
+    "character": "何",
+    "reading": "なに / なん / カ",
+    "romaji": "nani / nan / ka",
+    "meaning": "what; how many",
+    "onyomi": [
+      "カ"
+    ],
+    "kunyomi": [
+      "なに",
+      "なん"
+    ],
+    "jlpt": "N5",
+    "examples": [
+      {
+        "word": "何時",
+        "reading": "なんじ",
+        "meaning": "what time"
+      }
+    ],
+    "exampleSentence": "今、何時ですか。",
+    "exampleTranslation": "What time is it now?",
+    "literalMeaning": "what; how many",
+    "coreConcept": "questions asking what or which quantity",
+    "commonWords": [
+      {
+        "word": "何時",
+        "reading": "なんじ",
+        "meaning": "what time"
+      }
+    ],
+    "naturalUsageNotes": "Read なに in many standalone uses and なん before many counters/words, such as 何時 なんじ."
+  }
+]

@@ -1,10 +1,11 @@
-const CACHE_VERSION = "sakura-v18";
+const SHELL_CACHE_VERSION = "sakura-shell-v25";
+const KANJI_CONTENT_CACHE_VERSION = "sakura-kanji-content-v1";
 
 const APP_SHELL = [
     "./",
     "./index.html",
     "./style.css?v=18",
-    "./app.js?v=18",
+    "./app.js?v=22",
     "./data/kanji.js",
     "./data/vocabulary.js",
     "./data/native-japanese.js",
@@ -20,7 +21,7 @@ self.addEventListener(
     event => {
         event.waitUntil(
             caches
-                .open(CACHE_VERSION)
+                .open(SHELL_CACHE_VERSION)
                 .then(
                     cache =>
                         cache.addAll(APP_SHELL)
@@ -45,7 +46,8 @@ self.addEventListener(
                             cacheNames
                                 .filter(
                                     cacheName =>
-                                        cacheName !== CACHE_VERSION
+                                        cacheName !== SHELL_CACHE_VERSION &&
+                                        cacheName !== KANJI_CONTENT_CACHE_VERSION
                                 )
                                 .map(
                                     cacheName =>
@@ -81,7 +83,7 @@ self.addEventListener(
                                 response.clone();
 
                             caches
-                                .open(CACHE_VERSION)
+                                .open(SHELL_CACHE_VERSION)
                                 .then(
                                     cache =>
                                         cache.put(
@@ -103,13 +105,38 @@ self.addEventListener(
         }
 
         if (requestUrl.origin === self.location.origin) {
+            const isKanjiContent =
+                requestUrl.pathname.includes("/data/kanji/") &&
+                requestUrl.pathname.endsWith(".json");
+
+            if (isKanjiContent) {
+                event.respondWith(
+                    fetch(request)
+                        .then(async response => {
+                            const contentCache = await caches.open(KANJI_CONTENT_CACHE_VERSION);
+                            if (!response.ok) {
+                                return (await contentCache.match(request)) || response;
+                            }
+                            await contentCache.put(request, response.clone());
+                            return response;
+                        })
+                        .catch(async error => {
+                            const contentCache = await caches.open(KANJI_CONTENT_CACHE_VERSION);
+                            const cached = await contentCache.match(request);
+                            if (cached) return cached;
+                            throw error;
+                        })
+                );
+                return;
+            }
+
             event.respondWith(
                 fetch(request)
                     .then(
                         response => {
                             if (response.ok) {
                                 const responseCopy = response.clone();
-                                caches.open(CACHE_VERSION).then(cache => cache.put(request, responseCopy));
+                                caches.open(SHELL_CACHE_VERSION).then(cache => cache.put(request, responseCopy));
                             }
                             return response;
                         }
@@ -120,16 +147,5 @@ self.addEventListener(
             return;
         }
 
-        if (requestUrl.hostname === "kanjiapi.dev") {
-            event.respondWith(
-                caches.match(request).then(cachedResponse => cachedResponse || fetch(request).then(response => {
-                    if (response.ok) {
-                        const responseCopy = response.clone();
-                        caches.open(CACHE_VERSION).then(cache => cache.put(request, responseCopy));
-                    }
-                    return response;
-                }))
-            );
-        }
     }
 );

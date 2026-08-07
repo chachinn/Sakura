@@ -25,7 +25,7 @@ A service worker does not work when `index.html` is opened directly from the fil
 
 3. Open `http://localhost:8000` in a browser.
 
-The external Japanese-learning APIs require an internet connection. The app shell and Kanji API responses that have already been requested are cached for practical offline use. Built-in fallback words, kanji, and related phrase suggestions remain available offline.
+The optional vocabulary API requires an internet connection. Sakura's built-in Kanji dataset is the authoritative source for meanings and readings. The app shell, built-in words and Kanji, and related phrase suggestions remain available offline.
 
 ## Deploy to GitHub Pages
 

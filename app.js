@@ -17,6 +17,7 @@ const STORAGE = {
     appearanceTheme: "sakuraAppearanceTheme",
     wallpaperOverlay: "sakuraWallpaperOverlay",
     translationHistory: "sakuraTranslationHistory",
+    migrationVersion: "sakuraDataMigrationVersion",
     nativeDifficulty: "chaNativeDifficulty",
     wallpaperEnabled: "chaWallpaperEnabled",
     wallpaper: "lastWallpaper"
@@ -24,6 +25,26 @@ const STORAGE = {
 
 const JLPT_LEVELS = ["N5", "N4", "N3", "N2", "N1"];
 const DEFAULT_LEVELS = ["N5"];
+function normalizeJlptLevels(values, fallback = DEFAULT_LEVELS) {
+    const requested = new Set(Array.isArray(values) ? values : []);
+    const normalized = JLPT_LEVELS.filter(level => requested.has(level));
+    return normalized.length ? normalized : [...fallback];
+}
+
+const DATA_MIGRATION_VERSION = 1;
+const LEGACY_KANJI_IDS = {
+    "kanji-n5-day": "kanji-65e5",
+    "kanji-n5-study": "kanji-5b66",
+    "kanji-n4-trip": "kanji-65c5",
+    "kanji-n4-special": "kanji-7279",
+    "kanji-n3-deep": "kanji-6df1",
+    "kanji-n3-continue": "kanji-7d9a",
+    "kanji-n2-support": "kanji-652f",
+    "kanji-n2-recognize": "kanji-8a8d",
+    "kanji-n1-carry": "kanji-643a",
+    "kanji-n1-moment": "kanji-77ac"
+};
+const PERMANENT_KANJI_IDS = new Set(Object.values(LEGACY_KANJI_IDS));
 const SECTION_NAMES = ["kanjiOfDay", "wordOfDay", "randomKanji", "randomVocabulary", "kanjiQuiz", "vocabularyQuiz"];
 const NATIVE_CATEGORIES = ["Everyday casual", "Natural polite speech", "Reactions", "Travel", "Workplace", "Friends", "Texting", "Restaurants", "Shopping", "Transportation", "Hotels", "Social situations"];
 const SLANG_CATEGORIES = ["Youth slang", "Internet", "Social media", "Gyaru", "Gaming", "Texting", "Reactions", "Everyday casual", "Anime versus real life", "TikTok / short-form social media", "X / online posts"];
@@ -71,14 +92,107 @@ function writeJson(key, value) {
     localStorage.setItem(key, JSON.stringify(value));
 }
 
+function recordCompleteness(value) {
+    if (value == null || value === "") return 0;
+    if (Array.isArray(value)) return value.reduce((score, entry) => score + recordCompleteness(entry), value.length ? 1 : 0);
+    if (typeof value === "object") return Object.values(value).reduce((score, entry) => score + recordCompleteness(entry), 1);
+    return 1;
+}
+
+function mergeSavedKanjiRecords(existing, candidate, preferCandidate) {
+    const existingScore = recordCompleteness(existing);
+    const candidateScore = recordCompleteness(candidate);
+    const candidateWins = candidateScore > existingScore || (candidateScore === existingScore && preferCandidate);
+    const primary = candidateWins ? candidate : existing;
+    const secondary = candidateWins ? existing : candidate;
+    const savedDates = [existing.savedAt, candidate.savedAt].filter(value => value && !Number.isNaN(Date.parse(value))).sort();
+    return { ...secondary, ...primary, id: candidate.id, ...(savedDates.length ? { savedAt: savedDates[0] } : {}) };
+}
+
+function migrateSavedKanjiIds(items) {
+    const migrated = [];
+    const knownKanjiIndexes = new Map();
+    let changed = 0;
+    let duplicatesRemoved = 0;
+
+    items.forEach(item => {
+        if (!item || item.type !== "kanji") { migrated.push(item); return; }
+        const mappedId = LEGACY_KANJI_IDS[item.id];
+        const finalId = mappedId || item.id;
+        if (!mappedId && !PERMANENT_KANJI_IDS.has(finalId)) { migrated.push(item); return; }
+
+        const candidate = mappedId ? { ...item, id: finalId } : item;
+        if (mappedId) changed += 1;
+        const key = `kanji:${finalId}`;
+        if (!knownKanjiIndexes.has(key)) {
+            knownKanjiIndexes.set(key, migrated.length);
+            migrated.push(candidate);
+            return;
+        }
+
+        const existingIndex = knownKanjiIndexes.get(key);
+        migrated[existingIndex] = mergeSavedKanjiRecords(migrated[existingIndex], candidate, !mappedId);
+        duplicatesRemoved += 1;
+    });
+
+    return { items: migrated, changed, duplicatesRemoved };
+}
+
+function migrateKanjiFlashcardStatuses(statuses) {
+    const migrated = { ...statuses };
+    let changed = 0;
+    Object.entries(LEGACY_KANJI_IDS).forEach(([oldId, newId]) => {
+        const oldKey = `kanji:${oldId}`;
+        if (!Object.prototype.hasOwnProperty.call(migrated, oldKey)) return;
+        const newKey = `kanji:${newId}`;
+        const oldValue = migrated[oldKey];
+        const newValue = migrated[newKey];
+        const newHasValidValue = newValue !== undefined && newValue !== null && newValue !== "";
+        const oldHasValidValue = oldValue !== undefined && oldValue !== null && oldValue !== "";
+        if (!newHasValidValue && oldHasValidValue) migrated[newKey] = oldValue;
+        delete migrated[oldKey];
+        changed += 1;
+    });
+    return { statuses: migrated, changed };
+}
+
+function runSakuraDataMigrations() {
+    try {
+        const currentVersion = Number(localStorage.getItem(STORAGE.migrationVersion) || 0);
+        if (currentVersion >= DATA_MIGRATION_VERSION) return { skipped: true };
+
+        const savedRaw = localStorage.getItem(STORAGE.saved);
+        const statusesRaw = localStorage.getItem(STORAGE.statuses);
+        const saved = savedRaw ? JSON.parse(savedRaw) : [];
+        const statuses = statusesRaw ? JSON.parse(statusesRaw) : {};
+        if (!Array.isArray(saved)) throw new Error(`${STORAGE.saved} must contain an array.`);
+        if (!statuses || typeof statuses !== "object" || Array.isArray(statuses)) throw new Error(`${STORAGE.statuses} must contain an object.`);
+
+        const savedResult = migrateSavedKanjiIds(saved);
+        const statusResult = migrateKanjiFlashcardStatuses(statuses);
+        if (savedRaw !== null && (savedResult.changed || savedResult.duplicatesRemoved)) writeJson(STORAGE.saved, savedResult.items);
+        if (statusesRaw !== null && statusResult.changed) writeJson(STORAGE.statuses, statusResult.statuses);
+        localStorage.setItem(STORAGE.migrationVersion, String(DATA_MIGRATION_VERSION));
+        console.info(`Sakura data migration ${DATA_MIGRATION_VERSION} complete: ${savedResult.changed} saved Kanji updated, ${savedResult.duplicatesRemoved} duplicate saved Kanji removed, ${statusResult.changed} flashcard status keys updated.`);
+        return { skipped: false, savedResult, statusResult };
+    }
+    catch (error) {
+        console.warn("Sakura data migration could not be completed; it will retry next launch.", error);
+        return { skipped: false, error };
+    }
+}
+
+runSakuraDataMigrations();
+
 function normalizeAnswer(value) {
     return String(value || "").trim().toLowerCase().replace(/[.,!?;:'"()\[\]{}]/g, "").replace(/\s+/g, " ");
 }
 
 let savedItems = readJson(STORAGE.saved, []);
 let flashcardStatuses = readJson(STORAGE.statuses, {});
-let globalLevels = readJson(STORAGE.globalLevels, DEFAULT_LEVELS);
+let globalLevels = normalizeJlptLevels(readJson(STORAGE.globalLevels, DEFAULT_LEVELS));
 let sectionSettings = readJson(STORAGE.sectionLevels, {});
+if (!sectionSettings || typeof sectionSettings !== "object" || Array.isArray(sectionSettings)) sectionSettings = {};
 let quizStats = readJson(STORAGE.quizStats, {
     kana: { score: 0, count: 0 },
     kanji: { score: 0, count: 0 },
@@ -104,7 +218,7 @@ let flashcardDeck = [];
 let flashcardIndex = 0;
 let flashcardRevealed = false;
 let searchType = "all";
-let searchLevels = [...JLPT_LEVELS];
+let searchLevels = [...globalLevels];
 let recentSearches = readJson(STORAGE.recentSearches, []);
 let searchReturnRoute = "learn";
 let universalSearchIndex = [];
@@ -120,6 +234,60 @@ let currentTranslationResult = null;
 let translationContext = "Everyday";
 let translationTone = "Polite and natural";
 let translationLoading = false;
+const kanjiSelectionRevisions = new Map();
+const KANJI_FILTER_SECTIONS = new Set(["kanjiOfDay", "randomKanji", "kanjiQuiz"]);
+
+async function ensureKanjiLevels(requestedLevels) {
+    const levels = normalizeJlptLevels(requestedLevels);
+    const loader = window.SakuraKanjiLoader;
+    if (!loader) throw new Error("Sakura Kanji loader is unavailable.");
+    const before = loader.getLoadedKanjiLevels().join("|");
+    let loadError = null;
+
+    try {
+        await loader.loadKanjiLevels(levels);
+    }
+    catch (error) {
+        loadError = error;
+    }
+    finally {
+        const after = loader.getLoadedKanjiLevels().join("|");
+        const loadedKanji = loader.getLoadedKanji();
+        if (before !== after || window.KANJI_DATA.length !== loadedKanji.length) {
+            window.KANJI_DATA = loadedKanji;
+            validateKanjiDataset(window.KANJI_DATA);
+            buildSearchIndex();
+        }
+    }
+
+    if (loadError) throw loadError;
+    return window.KANJI_DATA;
+}
+
+async function loadKanjiForSelection(scope, levels, onSettled) {
+    const revision = (kanjiSelectionRevisions.get(scope) || 0) + 1;
+    kanjiSelectionRevisions.set(scope, revision);
+    let loaded = false;
+    try {
+        await ensureKanjiLevels(levels);
+        loaded = true;
+    }
+    catch (error) {
+        // The loader already reports the failing level. Keep the current working content.
+    }
+    if (kanjiSelectionRevisions.get(scope) === revision) onSettled?.(loaded);
+    return loaded;
+}
+
+function refreshSectionForLevelChange(sectionName) {
+    if (!KANJI_FILTER_SECTIONS.has(sectionName)) {
+        refreshSection(sectionName);
+        return;
+    }
+    loadKanjiForSelection(sectionName, getActiveLevels(sectionName), loaded => {
+        if (loaded) refreshSection(sectionName);
+    });
+}
 
 function itemKey(item) {
     return item ? `${item.type}:${item.id}` : "";
@@ -182,13 +350,13 @@ function updateSavedUi() {
 }
 
 function getGlobalLevels() {
-    return globalLevels.length ? globalLevels : [...JLPT_LEVELS];
+    return normalizeJlptLevels(globalLevels);
 }
 
 function getActiveLevels(sectionName) {
     const setting = sectionSettings[sectionName];
     if (!setting || setting.useGlobal !== false) return getGlobalLevels();
-    return setting.levels && setting.levels.length ? setting.levels : [...JLPT_LEVELS];
+    return normalizeJlptLevels(setting.levels, JLPT_LEVELS);
 }
 
 function itemsForLevels(items, sectionName) {
@@ -213,10 +381,13 @@ function renderGlobalLevels() {
                 ? [...new Set([...globalLevels, level])]
                 : globalLevels.filter(value => value !== level);
             if (!globalLevels.length) globalLevels = [...JLPT_LEVELS];
+            globalLevels = normalizeJlptLevels(globalLevels, JLPT_LEVELS);
             writeJson(STORAGE.globalLevels, globalLevels);
             renderGlobalLevels();
             renderAllSectionControls();
-            refreshAllFilteredContent();
+            loadKanjiForSelection("global", globalLevels, loaded => {
+                if (loaded) refreshAllFilteredContent();
+            });
         }));
     });
     const allButton = document.createElement("button");
@@ -228,7 +399,9 @@ function renderGlobalLevels() {
         writeJson(STORAGE.globalLevels, globalLevels);
         renderGlobalLevels();
         renderAllSectionControls();
-        refreshAllFilteredContent();
+        loadKanjiForSelection("global", globalLevels, loaded => {
+            if (loaded) refreshAllFilteredContent();
+        });
     });
     container.appendChild(allButton);
     document.getElementById("global-level-summary").textContent = `Selected: ${globalLevels.length === JLPT_LEVELS.length ? "All" : globalLevels.join(" + ")}`;
@@ -248,7 +421,7 @@ function renderSectionControl(sectionName) {
         sectionSettings[sectionName] = { ...setting, useGlobal: event.target.checked };
         writeJson(STORAGE.sectionLevels, sectionSettings);
         renderAllSectionControls();
-        refreshSection(sectionName);
+        refreshSectionForLevelChange(sectionName);
     });
     container.appendChild(top);
 
@@ -263,7 +436,7 @@ function renderSectionControl(sectionName) {
             sectionSettings[sectionName] = { useGlobal: false, levels: levels.length ? levels : [...JLPT_LEVELS] };
             writeJson(STORAGE.sectionLevels, sectionSettings);
             renderAllSectionControls();
-            refreshSection(sectionName);
+            refreshSectionForLevelChange(sectionName);
         }, setting.useGlobal !== false));
     });
     const allButton = document.createElement("button");
@@ -275,7 +448,7 @@ function renderSectionControl(sectionName) {
         sectionSettings[sectionName] = { useGlobal: false, levels: [...JLPT_LEVELS] };
         writeJson(STORAGE.sectionLevels, sectionSettings);
         renderAllSectionControls();
-        refreshSection(sectionName);
+        refreshSectionForLevelChange(sectionName);
     });
     chips.appendChild(allButton);
     container.appendChild(chips);
@@ -296,24 +469,6 @@ function pickIndex(pool, current, direction = 1, random = false) {
     }
     if (currentIndex < 0) return direction < 0 ? pool.length - 1 : 0;
     return (currentIndex + direction + pool.length) % pool.length;
-}
-
-async function enhanceKanji(item) {
-    try {
-        const response = await fetch(`https://kanjiapi.dev/v1/kanji/${encodeURIComponent(item.character)}`);
-        if (!response.ok) throw new Error("Kanji API request failed.");
-        const data = await response.json();
-        return {
-            ...item,
-            meaning: Array.isArray(data.meanings) && data.meanings.length ? data.meanings.slice(0, 3).join("; ") : item.meaning,
-            onyomi: Array.isArray(data.on_readings) && data.on_readings.length ? data.on_readings : item.onyomi,
-            kunyomi: Array.isArray(data.kun_readings) && data.kun_readings.length ? data.kun_readings : item.kunyomi
-        };
-    }
-    catch (error) {
-        console.info("Using local kanji fallback.", error);
-        return item;
-    }
 }
 
 async function enhanceVocabulary(item) {
@@ -351,14 +506,11 @@ function renderDailyKanji(item) {
     setSaveButton(document.getElementById("save-daily-kanji"), item);
 }
 
-async function browseDailyKanji(direction = 1, random = false) {
+function browseDailyKanji(direction = 1, random = false) {
     const pool = itemsForLevels(window.KANJI_DATA, "kanjiOfDay");
     const index = pickIndex(pool, currentDailyKanji, direction, random);
     const selected = index < 0 ? null : pool[index];
     renderDailyKanji(selected);
-    if (!selected) return;
-    const enhanced = await enhanceKanji(selected);
-    if (currentDailyKanji?.id === selected.id) renderDailyKanji(enhanced);
 }
 
 function renderDailyWord(item) {
@@ -593,11 +745,19 @@ function checkKana() {
     setFeedback("kana-feedback", answer === currentKana[1] ? `Correct! ${currentKana[0]} is ${currentKana[1]}.` : "Not quite—try again.", answer === currentKana[1] ? "correct" : "incorrect");
 }
 
+function isKanjiQuizAnswerCorrect(item, rawAnswer) {
+    const answer = normalizeAnswer(rawAnswer);
+    const meaningAnswers = String(item?.meaning || "").split(/[;,]/).map(normalizeAnswer).filter(Boolean);
+    const readingAnswers = [...(item?.onyomi || []), ...(item?.kunyomi || [])].map(normalizeAnswer).filter(Boolean);
+    const exactMatch = meaningAnswers.includes(answer) || readingAnswers.includes(answer);
+    const escapedAnswer = answer.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+    const meaningfulEnglishPartial = answer.length >= 3 && /^[a-z][a-z\s'-]*$/i.test(answer) && meaningAnswers.some(value => new RegExp(`(^|\\s)${escapedAnswer}(?=$|\\s)`, "i").test(value));
+    return Boolean(answer) && (exactMatch || meaningfulEnglishPartial);
+}
+
 function checkKanjiQuiz() {
     if (quizTransitionLocks.kanji || !currentKanjiQuiz) return;
-    const answer = normalizeAnswer(document.getElementById("kanji-quiz-answer").value);
-    const accepted = [currentKanjiQuiz.meaning, ...(currentKanjiQuiz.onyomi || []), ...(currentKanjiQuiz.kunyomi || [])].flatMap(value => String(value).split(/[;,]/)).map(normalizeAnswer);
-    const correct = answer && accepted.some(value => value === answer || (value.length > 2 && value.includes(answer)));
+    const correct = isKanjiQuizAnswerCorrect(currentKanjiQuiz, document.getElementById("kanji-quiz-answer").value);
     if (correct) completeCorrectAnswer("kanji", "kanji-quiz-feedback", `Correct! ${currentKanjiQuiz.character}: ${currentKanjiQuiz.meaning}`, newKanjiQuiz);
     else setFeedback("kanji-quiz-feedback", "Try again with a reading or English meaning.", "incorrect");
     return;
@@ -802,8 +962,9 @@ function renderSearchJlptFilters() {
     JLPT_LEVELS.forEach(level => container.appendChild(createLevelChip(level, searchLevels.includes(level), event => {
         searchLevels = event.target.checked ? [...new Set([...searchLevels, level])] : searchLevels.filter(value => value !== level);
         if (!searchLevels.length) searchLevels = [...JLPT_LEVELS];
+        searchLevels = normalizeJlptLevels(searchLevels, JLPT_LEVELS);
         renderSearchJlptFilters();
-        renderSearchResults();
+        loadKanjiForSelection("search", searchLevels, () => renderSearchResults());
     })));
     const allButton = document.createElement("button");
     allButton.type = "button";
@@ -812,7 +973,7 @@ function renderSearchJlptFilters() {
     allButton.addEventListener("click", () => {
         searchLevels = [...JLPT_LEVELS];
         renderSearchJlptFilters();
-        renderSearchResults();
+        loadKanjiForSelection("search", searchLevels, () => renderSearchResults());
     });
     container.appendChild(allButton);
     document.getElementById("search-jlpt-summary").textContent = searchLevels.length === JLPT_LEVELS.length ? "All levels" : searchLevels.join(" + ");
@@ -821,6 +982,9 @@ function renderSearchJlptFilters() {
 function openSearch(returnRoute = currentRoute) {
     searchReturnRoute = ["search", "kanji-detail", "word-detail"].includes(returnRoute) ? "learn" : returnRoute;
     showRoute("search");
+    loadKanjiForSelection("search", searchLevels, () => {
+        if (currentRoute === "search") renderSearchResults();
+    });
     requestAnimationFrame(() => document.getElementById("universal-search-input").focus());
 }
 
@@ -1226,7 +1390,7 @@ function initializePwaUpdates() {
         notification.hidden = false;
     };
 
-    window.addEventListener("load", async () => {
+    const registerServiceWorker = async () => {
         try {
             const registration = await navigator.serviceWorker.register("service-worker.js");
             if (registration.waiting && navigator.serviceWorker.controller) showUpdate(registration.waiting);
@@ -1241,7 +1405,10 @@ function initializePwaUpdates() {
         catch (error) {
             console.warn("Service worker registration failed.", error);
         }
-    });
+    };
+
+    if (document.readyState === "complete") registerServiceWorker();
+    else window.addEventListener("load", registerServiceWorker, { once: true });
 
     updateButton.addEventListener("click", () => {
         updateButton.disabled = true;

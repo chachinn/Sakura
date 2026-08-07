@@ -1,0 +1,102 @@
+[
+  {
+    "id": "kanji-6df1",
+    "type": "kanji",
+    "character": "深",
+    "reading": "ふかい / シン",
+    "romaji": "fukai / shin",
+    "meaning": "deep",
+    "onyomi": [
+      "シン"
+    ],
+    "kunyomi": [
+      "ふかい",
+      "ふかまる"
+    ],
+    "jlpt": "N3",
+    "examples": [
+      {
+        "word": "深夜",
+        "reading": "しんや",
+        "meaning": "late at night"
+      }
+    ],
+    "exampleSentence": "この湖はとても深いです。",
+    "exampleTranslation": "This lake is very deep.",
+    "literalMeaning": "deep",
+    "coreConcept": "physical or figurative depth",
+    "commonWords": [
+      {
+        "word": "深い",
+        "reading": "ふかい",
+        "meaning": "deep"
+      },
+      {
+        "word": "深夜",
+        "reading": "しんや",
+        "meaning": "late at night"
+      },
+      {
+        "word": "深刻",
+        "reading": "しんこく",
+        "meaning": "serious"
+      },
+      {
+        "word": "興味深い",
+        "reading": "きょうみぶかい",
+        "meaning": "interesting; thought-provoking"
+      }
+    ],
+    "naturalUsageNotes": "The everyday standalone form is the adjective 深い. Compounds often express seriousness, depth, or late-night time."
+  },
+  {
+    "id": "kanji-7d9a",
+    "type": "kanji",
+    "character": "続",
+    "reading": "つづく / ゾク",
+    "romaji": "tsuzuku / zoku",
+    "meaning": "continue",
+    "onyomi": [
+      "ゾク"
+    ],
+    "kunyomi": [
+      "つづく",
+      "つづける"
+    ],
+    "jlpt": "N3",
+    "examples": [
+      {
+        "word": "連続",
+        "reading": "れんぞく",
+        "meaning": "continuation"
+      }
+    ],
+    "exampleSentence": "雨が三日続きました。",
+    "exampleTranslation": "The rain continued for three days.",
+    "literalMeaning": "continue",
+    "coreConcept": "continuation and connection",
+    "commonWords": [
+      {
+        "word": "続く",
+        "reading": "つづく",
+        "meaning": "to continue"
+      },
+      {
+        "word": "続ける",
+        "reading": "つづける",
+        "meaning": "to continue something"
+      },
+      {
+        "word": "連続",
+        "reading": "れんぞく",
+        "meaning": "consecutive; continuous"
+      },
+      {
+        "word": "手続き",
+        "reading": "てつづき",
+        "meaning": "procedure"
+      }
+    ],
+    "naturalUsageNotes": "Use 続く when something continues and 続ける when someone actively continues it; the kanji itself is not used alone."
+  }
+]
