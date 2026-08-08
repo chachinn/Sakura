@@ -49,12 +49,10 @@ body {
 }
 
 body.wallpaper-enabled {
-    background-color: var(--color-background);
-    background-image: var(--wallpaper-url);
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
+    position: relative;
+    isolation: isolate;
+    background: transparent;
+    --color-surface: rgba(255, 255, 255, .91);
 }
 
 body.wallpaper-enabled::before {
@@ -62,9 +60,23 @@ body.wallpaper-enabled::before {
     position: fixed;
     inset: 0;
     z-index: -1;
-    background: color-mix(in srgb, var(--color-background) var(--wallpaper-overlay-strength), transparent);
-    backdrop-filter: blur(5px);
-    -webkit-backdrop-filter: blur(5px);
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    background-image: var(--wallpaper-url);
+    background-image:
+        linear-gradient(
+            color-mix(in srgb, var(--color-background) calc(var(--wallpaper-overlay-strength) - 10%), transparent),
+            color-mix(in srgb, var(--color-background) calc(var(--wallpaper-overlay-strength) - 10%), transparent)
+        ),
+        var(--wallpaper-url);
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+body.wallpaper-enabled .app-shell {
+    background: color-mix(in srgb, var(--color-background) 52%, transparent);
 }
 
 button,
@@ -75,6 +87,23 @@ select {
 
 button {
     -webkit-tap-highlight-color: transparent;
+}
+
+button,
+a,
+select,
+summary,
+input[type="checkbox"],
+input[type="radio"],
+input[type="file"],
+[role="button"],
+[role="tab"],
+.level-chip,
+.checkbox-label,
+.global-toggle,
+.setting-toggle,
+.import-label {
+    touch-action: manipulation;
 }
 
 button:focus-visible,
