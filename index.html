@@ -11,7 +11,7 @@
     <script>try { document.documentElement.dataset.theme = localStorage.getItem("sakuraAppearanceTheme") || "pink"; } catch (error) { document.documentElement.dataset.theme = "pink"; }</script>
     <link rel="manifest" href="manifest.webmanifest">
     <link rel="apple-touch-icon" href="icons/icon-180.png">
-    <link rel="stylesheet" href="style.css?v=18">
+    <link rel="stylesheet" href="style.css?v=19">
 </head>
 <body>
     <div class="app-shell">
@@ -92,7 +92,7 @@
                         <button class="feature-card pink-feature" type="button" data-route="quiz" data-quiz-target="kanji"><span class="feature-icon">漢</span><span><strong>Kanji Quiz</strong><small>Test readings and meanings</small></span><b>→</b></button>
                         <button class="feature-card lavender-feature" type="button" data-route="quiz" data-quiz-target="kana"><span class="feature-icon">あ</span><span><strong>Kana Quiz</strong><small>Hiragana and katakana</small></span><b>→</b></button>
                         <button class="feature-card peach-feature" type="button" data-route="quiz" data-quiz-target="vocabulary"><span class="feature-icon">語</span><span><strong>Vocabulary Quiz</strong><small>Practice useful words</small></span><b>→</b></button>
-                        <button class="feature-card rose-feature" type="button" data-route="native"><span class="feature-icon">話</span><span><strong>Native Japanese</strong><small>Real expressions and slang</small></span><b>→</b></button>
+                        <button class="feature-card rose-feature" type="button" data-route="learn-native"><span class="feature-icon">話</span><span><strong>Native Japanese</strong><small>Real expressions and slang</small></span><b>→</b></button>
                         <button class="feature-card lavender-feature" type="button" data-route="translate"><span class="feature-icon">文</span><span><strong>English to Japanese</strong><small>Natural phrases by context</small></span><b>→</b></button>
                     </div>
                 </section>
@@ -110,6 +110,11 @@
 
             <section id="learn-view" class="view" data-view="learn" aria-labelledby="learn-heading" hidden>
                 <div class="page-heading"><span class="section-kicker">Browse &amp; discover</span><h1 id="learn-heading">Learn</h1><p>Explore kanji and vocabulary at your selected levels.</p></div>
+                <div class="learn-subnav" role="tablist" aria-label="Learn content">
+                    <button class="tab-button active" type="button" role="tab" data-learn-view="library">Kanji &amp; Vocabulary</button>
+                    <button class="tab-button" type="button" role="tab" data-learn-view="native">Native Japanese</button>
+                    <button class="tab-button" type="button" role="tab" data-learn-view="slang">Slang</button>
+                </div>
                 <button id="open-learn-search" class="learn-search-button" type="button"><span aria-hidden="true">⌕</span><span>Search kanji, words, and expressions</span></button>
                 <button class="feature-card translation-launch-card" type="button" data-route="translate"><span class="feature-icon">文</span><span><strong>English to Japanese</strong><small>Natural, context-aware suggestions</small></span><b>→</b></button>
                 <div class="browse-grid">
@@ -201,6 +206,11 @@
 
             <section id="native-view" class="view" data-view="native" aria-labelledby="native-heading" hidden>
                 <div class="page-heading native-page-heading"><div><span class="section-kicker">Speak naturally</span><h1 id="native-heading">Native Japanese</h1><p>Everyday expressions and current casual language.</p></div><button id="open-entry-manager" class="primary-button" type="button">＋ Add Entry</button></div>
+                <div class="learn-subnav" role="tablist" aria-label="Learn content">
+                    <button class="tab-button" type="button" role="tab" data-learn-view="library">Kanji &amp; Vocabulary</button>
+                    <button class="tab-button active" type="button" role="tab" data-learn-view="native">Native Japanese</button>
+                    <button class="tab-button" type="button" role="tab" data-learn-view="slang">Slang</button>
+                </div>
                 <div class="tab-bar" role="tablist" aria-label="Native Japanese type"><button class="tab-button active" type="button" data-native-mode="native">Natural Expressions</button><button class="tab-button" type="button" data-native-mode="slang">Current Slang</button></div>
                 <div class="filter-row"><label>Difficulty<select id="native-difficulty-filter"><option>All</option><option>Beginner</option><option>Intermediate</option><option>Advanced</option></select></label><label>Category<select id="native-category-filter"><option>All</option></select></label></div>
                 <div class="three-controls native-top-controls"><button id="previous-native" class="control-button" type="button">‹ Previous</button><button id="random-native" class="control-button accent-control" type="button">⤨ Random</button><button id="next-native" class="control-button" type="button">Next ›</button></div>
@@ -230,6 +240,19 @@
                     <div class="translation-result-actions"><button id="copy-translation" class="secondary-button" type="button">Copy</button><button id="save-translation" class="primary-button" type="button">Save</button></div>
                 </article>
                 <section class="translation-history-section"><div class="search-filter-heading"><h2>Recent requests</h2><button id="clear-translation-history" type="button">Clear all</button></div><div id="translation-history" class="translation-history"></div><p id="translation-history-empty" class="empty-state">No translation requests yet.</p></section>
+            </section>
+
+            <section id="travel-view" class="view" data-view="travel" aria-labelledby="travel-heading" hidden>
+                <div class="page-heading"><span class="section-kicker">Trip essentials</span><h1 id="travel-heading">Travel Mode</h1><p>Practical Japanese for your trip.</p></div>
+                <div class="travel-category-grid" aria-label="Travel categories">
+                    <article class="travel-category-card" data-travel-category="trains"><span aria-hidden="true">電</span><div><h2>Trains &amp; Stations</h2><p>Rail and station help.</p></div></article>
+                    <article class="travel-category-card" data-travel-category="restaurants"><span aria-hidden="true">食</span><div><h2>Restaurants &amp; Food</h2><p>Ordering and dining.</p></div></article>
+                    <article class="travel-category-card" data-travel-category="shopping"><span aria-hidden="true">買</span><div><h2>Shopping</h2><p>Prices, sizes, and payment.</p></div></article>
+                    <article class="travel-category-card" data-travel-category="hotels"><span aria-hidden="true">宿</span><div><h2>Hotels</h2><p>Check-in and accommodation.</p></div></article>
+                    <article class="travel-category-card" data-travel-category="taxi"><span aria-hidden="true">車</span><div><h2>Taxi &amp; Directions</h2><p>Getting where you need to go.</p></div></article>
+                    <article class="travel-category-card" data-travel-category="emergencies"><span aria-hidden="true">助</span><div><h2>Emergencies &amp; Health</h2><p>Essential help and care.</p></div></article>
+                </div>
+                <article class="travel-utility-card" data-travel-utility="yen-converter"><span aria-hidden="true">¥</span><div><h2>Yen Converter</h2><p>Coming in a future Travel Mode update.</p></div></article>
             </section>
 
             <section id="saved-view" class="view" data-view="saved" aria-labelledby="saved-heading" hidden>
@@ -275,7 +298,7 @@
             <button class="nav-button active" type="button" data-route="home"><span>⌂</span><small>Home</small></button>
             <button class="nav-button" type="button" data-route="learn"><span>▤</span><small>Learn</small></button>
             <button class="nav-button" type="button" data-route="quiz"><span>✎</span><small>Quiz</small></button>
-            <button class="nav-button" type="button" data-route="native"><span>◌</span><small>Native</small></button>
+            <button class="nav-button" type="button" data-route="travel"><span>✈</span><small>Travel</small></button>
             <button class="nav-button" type="button" data-route="saved"><span>♡</span><small>Saved</small></button>
         </nav>
     </div>

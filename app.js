@@ -995,13 +995,11 @@ function openSearchResult(item) {
     else if (item.type === "vocabulary") openWordDetail(item, "search");
     else if (item.type === "translation") { showRoute("translate"); renderTranslationResult({id:item.id,japanese:item.expression,kana:item.kana,romaji:item.romaji,naturalMeaning:item.naturalMeaning||item.meaning,literalMeaning:item.literalMeaning||"",tone:item.tone||"",usageNote:item.notes||"",alternative:item.alternative||"",offline:false}); }
     else {
-        currentNativeMode = item.type;
-        document.querySelectorAll("[data-native-mode]").forEach(tab => tab.classList.toggle("active", tab.dataset.nativeMode === item.type));
-        refreshNativeCategories();
+        showRoute(`learn-${item.type}`);
         document.getElementById("native-difficulty-filter").value = "All";
+        refreshNativeCategories();
         document.getElementById("native-category-filter").value = "All";
         renderNative(item);
-        showRoute("native");
     }
 }
 
@@ -1214,9 +1212,26 @@ function renderSavedItems() {
     const type = document.getElementById("saved-type-filter").value;
     const level = document.getElementById("saved-level-filter").value;
     const filtered = savedItems.filter(item => (type === "all" || item.type === type) && (level === "all" || item.jlpt === level));
-    document.getElementById("saved-items").innerHTML = filtered.map(item => `<article class="saved-item-card"><span class="tag">${item.jlpt || item.difficulty || item.type}</span><h2>${itemTitle(item)}</h2><p>${itemReading(item)}</p><p>${item.meaning}</p><button class="remove-saved-button" type="button" data-remove-key="${itemKey(item)}">Remove</button></article>`).join("");
+    document.getElementById("saved-items").innerHTML = filtered.map(item => `<article class="saved-item-card"><span class="tag">${item.jlpt || item.difficulty || item.type}</span><button class="saved-item-open" type="button" data-open-saved-key="${itemKey(item)}"><strong class="saved-item-title">${itemTitle(item)}</strong><span>${itemReading(item)}</span><span>${item.meaning}</span></button><button class="remove-saved-button" type="button" data-remove-key="${itemKey(item)}">Remove</button></article>`).join("");
     document.getElementById("saved-empty").hidden = filtered.length > 0;
     document.getElementById("start-flashcards").disabled = savedItems.length === 0;
+}
+
+function openSavedItem(item) {
+    if (!item) return;
+    if (item.type === "kanji") openKanjiDetail(item, "saved");
+    else if (item.type === "vocabulary") openWordDetail(item, "saved");
+    else if (["native", "slang"].includes(item.type)) {
+        showRoute(`learn-${item.type}`);
+        document.getElementById("native-difficulty-filter").value = "All";
+        refreshNativeCategories();
+        document.getElementById("native-category-filter").value = "All";
+        renderNative(item);
+    }
+    else if (item.type === "translation") {
+        showRoute("translate");
+        renderTranslationResult({ id:item.id, japanese:item.expression, kana:item.kana, romaji:item.romaji, naturalMeaning:item.naturalMeaning || item.meaning, literalMeaning:item.literalMeaning || "", tone:item.tone || "", usageNote:item.notes || "", alternative:item.alternative || "", offline:false });
+    }
 }
 
 function flashcardBack(item) {
@@ -1350,15 +1365,30 @@ async function requestTranslation(event) {
 }
 
 function showRoute(route, updateHash = true) {
-    currentRoute = route;
+    const normalizedRoute = route === "native" ? "learn-native" : route;
+    const nativeMode = normalizedRoute === "learn-slang" ? "slang" : normalizedRoute === "learn-native" ? "native" : null;
+    const viewRoute = nativeMode ? "native" : normalizedRoute;
+    currentRoute = normalizedRoute;
+    if (nativeMode) {
+        currentNativeMode = nativeMode;
+        document.querySelectorAll("[data-native-mode]").forEach(tab => tab.classList.toggle("active", tab.dataset.nativeMode === nativeMode));
+        refreshNativeCategories();
+        if (currentNativeItem?.type !== nativeMode) browseNative(1, true);
+    }
     document.querySelectorAll(".view").forEach(view => {
-        const active = view.dataset.view === route;
+        const active = view.dataset.view === viewRoute;
         view.hidden = !active;
         view.classList.toggle("active-view", active);
     });
-    const mainRoute = ["search","translate"].includes(route) ? "learn" : route.replace("-detail", "");
-    document.querySelectorAll(".nav-button").forEach(button => button.classList.toggle("active", button.dataset.route === mainRoute || (route.includes("detail") && button.dataset.route === detailReturnRoute)));
-    if (updateHash && !route.includes("detail")) history.replaceState(null, "", `#${route}`);
+    const mainRoute = ["search", "translate", "learn-native", "learn-slang"].includes(normalizedRoute) ? "learn" : normalizedRoute.replace("-detail", "");
+    document.querySelectorAll(".nav-button").forEach(button => button.classList.toggle("active", button.dataset.route === mainRoute || (normalizedRoute.includes("detail") && button.dataset.route === detailReturnRoute)));
+    const learnView = normalizedRoute === "learn" ? "library" : nativeMode;
+    document.querySelectorAll("[data-learn-view]").forEach(button => {
+        const active = button.dataset.learnView === learnView;
+        button.classList.toggle("active", active);
+        button.setAttribute("aria-selected", String(active));
+    });
+    if (updateHash && !normalizedRoute.includes("detail")) history.replaceState(null, "", `#${normalizedRoute}`);
     window.scrollTo({ top: 0, behavior: "smooth" });
 }
 
@@ -1569,6 +1599,10 @@ function addListeners() {
         if (quizTarget) showQuizTab(quizTarget);
     }));
     document.getElementById("header-saved").addEventListener("click", () => showRoute("saved"));
+    document.querySelectorAll("[data-learn-view]").forEach(button => button.addEventListener("click", () => {
+        const learnView = button.dataset.learnView;
+        showRoute(learnView === "library" ? "learn" : `learn-${learnView}`);
+    }));
     document.getElementById("translation-contexts").addEventListener("click", event => { const button=event.target.closest("[data-translation-context]"); if(button){translationContext=button.dataset.translationContext;renderTranslationChips();} });
     document.getElementById("translation-tones").addEventListener("click", event => { const button=event.target.closest("[data-translation-tone]"); if(button){translationTone=button.dataset.translationTone;renderTranslationChips();} });
     document.getElementById("translation-form").addEventListener("submit",requestTranslation);
@@ -1714,12 +1748,7 @@ function addListeners() {
     document.getElementById("next-vocabulary-quiz").addEventListener("click", newVocabularyQuiz);
     document.getElementById("vocabulary-quiz-answer").addEventListener("keydown", event => { if (event.key === "Enter") checkVocabularyQuiz(); });
 
-    document.querySelectorAll("[data-native-mode]").forEach(button => button.addEventListener("click", () => {
-        currentNativeMode = button.dataset.nativeMode;
-        document.querySelectorAll("[data-native-mode]").forEach(tab => tab.classList.toggle("active", tab === button));
-        refreshNativeCategories();
-        browseNative(1, true);
-    }));
+    document.querySelectorAll("[data-native-mode]").forEach(button => button.addEventListener("click", () => showRoute(`learn-${button.dataset.nativeMode}`)));
     document.getElementById("native-difficulty-filter").addEventListener("change", () => { localStorage.setItem(STORAGE.nativeDifficulty, document.getElementById("native-difficulty-filter").value); browseNative(1, true); });
     document.getElementById("native-category-filter").addEventListener("change", () => browseNative(1, true));
     document.getElementById("previous-native").addEventListener("click", () => browseNative(-1));
@@ -1731,8 +1760,10 @@ function addListeners() {
     document.getElementById("saved-type-filter").addEventListener("change", renderSavedItems);
     document.getElementById("saved-level-filter").addEventListener("change", renderSavedItems);
     document.getElementById("saved-items").addEventListener("click", event => {
-        const key = event.target.dataset.removeKey;
-        if (key) removeItem(savedItems.find(item => itemKey(item) === key));
+        const removeButton = event.target.closest("[data-remove-key]");
+        const openButton = event.target.closest("[data-open-saved-key]");
+        if (removeButton) removeItem(savedItems.find(item => itemKey(item) === removeButton.dataset.removeKey));
+        else if (openButton) openSavedItem(savedItems.find(item => itemKey(item) === openButton.dataset.openSavedKey));
     });
     document.getElementById("clear-saved").addEventListener("click", () => {
         if (!savedItems.length || !window.confirm("Clear every saved learning item? This cannot be undone.")) return;
@@ -1798,7 +1829,7 @@ function initializeApp() {
     browseNative(1, true);
     updateSavedUi();
     const requestedRoute = location.hash.replace("#", "");
-    showRoute(["home", "learn", "search", "translate", "quiz", "native", "saved"].includes(requestedRoute) ? requestedRoute : "home", false);
+    showRoute(["home", "learn", "learn-native", "learn-slang", "search", "translate", "quiz", "native", "travel", "saved"].includes(requestedRoute) ? requestedRoute : "home", false);
     initializePwaUpdates();
 }
 

@@ -1416,6 +1416,112 @@ a:focus-visible {
     gap: 7px;
 }
 
+.learn-subnav {
+    margin: 0 0 14px;
+    padding: 4px;
+    display: flex;
+    gap: 5px;
+    overflow-x: auto;
+    border: 1px solid var(--color-border);
+    border-radius: 17px;
+    background: var(--color-surface-soft);
+    scrollbar-width: none;
+}
+
+.learn-subnav::-webkit-scrollbar {
+    display: none;
+}
+
+.learn-subnav .tab-button {
+    flex: 1 0 auto;
+    min-width: max-content;
+    min-height: 44px;
+    padding-inline: 13px;
+}
+
+.travel-category-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+}
+
+.travel-category-card,
+.travel-utility-card {
+    border: 1px solid var(--color-border);
+    border-radius: 20px;
+    background: var(--color-surface);
+    box-shadow: var(--shadow);
+}
+
+.travel-category-card {
+    min-height: 142px;
+    padding: 17px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 14px;
+}
+
+.travel-category-card > span,
+.travel-utility-card > span {
+    width: 46px;
+    height: 46px;
+    display: grid;
+    place-items: center;
+    border-radius: 15px;
+    background: var(--color-primary-soft);
+    color: var(--color-primary-dark);
+    font-size: 24px;
+    font-weight: 800;
+}
+
+.travel-category-card h2,
+.travel-utility-card h2 {
+    margin: 0 0 4px;
+    font-size: 16px;
+}
+
+.travel-category-card p,
+.travel-utility-card p {
+    margin: 0;
+    color: var(--color-text-muted);
+    font-size: 13px;
+    line-height: 1.4;
+}
+
+.travel-utility-card {
+    margin-top: 12px;
+    padding: 16px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.saved-item-open {
+    width: 100%;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: inherit;
+    text-align: left;
+    cursor: pointer;
+}
+
+.saved-item-open > span,
+.saved-item-title {
+    display: block;
+}
+
+.saved-item-title {
+    margin: 8px 0;
+    font-size: 20px;
+}
+
+.saved-item-open > span {
+    margin: 4px 0;
+    color: var(--color-text-muted);
+}
+
 .word-detail-hero .detail-label:not(:first-child) {
     margin-top: 13px;
 }
@@ -1800,6 +1906,14 @@ button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-vis
 
     .section-level-control {
         padding: 9px;
+    }
+
+    .travel-category-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .travel-category-card {
+        min-height: 112px;
     }
 
     .level-control-top {
