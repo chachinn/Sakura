@@ -16,6 +16,7 @@ const STORAGE = {
     nativeHistory: "sakura_native_recent_history",
     appearanceTheme: "sakuraAppearanceTheme",
     wallpaperOverlay: "sakuraWallpaperOverlay",
+    wallpaperFraming: "sakuraWallpaperFraming",
     translationHistory: "sakuraTranslationHistory",
     migrationVersion: "sakuraDataMigrationVersion",
     nativeDifficulty: "chaNativeDifficulty",
@@ -52,6 +53,7 @@ const TRANSLATION_API_ENDPOINT = ""; // Set to a secure serverless endpoint such
 const APPEARANCE_DB = "sakuraAppearanceDB";
 const APPEARANCE_STORE = "wallpapers";
 const WALLPAPER_RECORD = "activeWallpaper";
+const DEFAULT_WALLPAPER_FRAMING = Object.freeze({ positionX: 50, positionY: 50, zoom: 1 });
 const THEMES = { pink:{name:"Sakura Pink",swatch:"#ef5b87"},purple:{name:"Lavender Purple",swatch:"#9b70c8"},blue:{name:"Sky Blue",swatch:"#68a9dc"},green:{name:"Mint Green",swatch:"#68b99a"},yellow:{name:"Soft Yellow",swatch:"#d6a94d"} };
 const TRANSLATION_CONTEXTS = ["Everyday","Travel","Restaurant","Café","Shopping","Hotel","Train","Airport","Workplace","Friends","Social media","Other"];
 const TRANSLATION_TONES = ["Polite and natural","Casual","Very polite","Friendly","Social media / texting"];
@@ -237,6 +239,9 @@ let nativeQueues = { native: [], slang: [] };
 let nativeQueueKeys = { native: "", slang: "" };
 let wallpaperObjectUrl = "";
 let pendingWallpaperBlob = null;
+let wallpaperFraming = normalizeWallpaperFraming(readJson(STORAGE.wallpaperFraming, DEFAULT_WALLPAPER_FRAMING));
+let wallpaperFramingDraft = { ...wallpaperFraming };
+let wallpaperDragState = null;
 let translationHistory = readJson(STORAGE.translationHistory, []);
 let currentTranslationResult = null;
 let translationContext = "Everyday";
@@ -1681,12 +1686,96 @@ function applyOverlay(value) {
     document.querySelectorAll("[data-overlay]").forEach(button => button.classList.toggle("active", button.dataset.overlay === selected));
 }
 
+function clampWallpaperValue(value, minimum, maximum) {
+    return Math.min(maximum, Math.max(minimum, Number(value) || 0));
+}
+
+function normalizeWallpaperFraming(value) {
+    const framing = value && typeof value === "object" ? value : DEFAULT_WALLPAPER_FRAMING;
+    return {
+        positionX: clampWallpaperValue(framing.positionX ?? 50, 0, 100),
+        positionY: clampWallpaperValue(framing.positionY ?? 50, 0, 100),
+        zoom: clampWallpaperValue(framing.zoom ?? 1, 1, 2)
+    };
+}
+
+function applyWallpaperFraming(value = wallpaperFraming) {
+    const framing = normalizeWallpaperFraming(value);
+    document.documentElement.style.setProperty("--wallpaper-position-x", `${framing.positionX}%`);
+    document.documentElement.style.setProperty("--wallpaper-position-y", `${framing.positionY}%`);
+    document.documentElement.style.setProperty("--wallpaper-zoom", framing.zoom);
+}
+
+function renderWallpaperEditor() {
+    const image = document.getElementById("wallpaper-editor-image");
+    if (!image) return;
+    wallpaperFramingDraft = normalizeWallpaperFraming(wallpaperFramingDraft);
+    image.style.setProperty("--editor-wallpaper-url", `url("${wallpaperObjectUrl}")`);
+    image.style.setProperty("--editor-position-x", `${wallpaperFramingDraft.positionX}%`);
+    image.style.setProperty("--editor-position-y", `${wallpaperFramingDraft.positionY}%`);
+    image.style.setProperty("--editor-zoom", wallpaperFramingDraft.zoom);
+    document.getElementById("wallpaper-zoom").value = wallpaperFramingDraft.zoom;
+    document.getElementById("wallpaper-zoom-value").value = `${wallpaperFramingDraft.zoom.toFixed(2)}×`;
+}
+
+function setWallpaperEditorMessage(message) {
+    const element = document.getElementById("wallpaper-editor-message");
+    if (element) element.textContent = message;
+}
+
+function openWallpaperEditor() {
+    if (!wallpaperObjectUrl) return;
+    wallpaperFramingDraft = { ...wallpaperFraming };
+    renderWallpaperEditor();
+    setWallpaperEditorMessage("");
+    const dialog = document.getElementById("wallpaper-editor-dialog");
+    if (!dialog.open) dialog.showModal();
+    requestAnimationFrame(() => document.getElementById("wallpaper-editor-preview").focus());
+}
+
+function cancelWallpaperEditor() {
+    wallpaperFramingDraft = { ...wallpaperFraming };
+    applyWallpaperFraming(wallpaperFraming);
+    const dialog = document.getElementById("wallpaper-editor-dialog");
+    if (dialog.open) dialog.close();
+}
+
+function saveWallpaperEditor() {
+    wallpaperFraming = normalizeWallpaperFraming(wallpaperFramingDraft);
+    writeJson(STORAGE.wallpaperFraming, wallpaperFraming);
+    applyWallpaperFraming(wallpaperFraming);
+    const dialog = document.getElementById("wallpaper-editor-dialog");
+    if (dialog.open) dialog.close();
+    setAppearanceMessage("Wallpaper framing saved.");
+}
+
+function resetWallpaperEditorDraft() {
+    wallpaperFramingDraft = { ...DEFAULT_WALLPAPER_FRAMING };
+    renderWallpaperEditor();
+    setWallpaperEditorMessage("Centered framing restored. Tap Save to keep it.");
+}
+
+function setWallpaperDraftZoom(value) {
+    wallpaperFramingDraft.zoom = clampWallpaperValue(value, 1, 2);
+    renderWallpaperEditor();
+}
+
+function nudgeWallpaper(direction, amount = 5) {
+    if (direction === "left") wallpaperFramingDraft.positionX += amount;
+    if (direction === "right") wallpaperFramingDraft.positionX -= amount;
+    if (direction === "up") wallpaperFramingDraft.positionY += amount;
+    if (direction === "down") wallpaperFramingDraft.positionY -= amount;
+    wallpaperFramingDraft = normalizeWallpaperFraming(wallpaperFramingDraft);
+    renderWallpaperEditor();
+}
+
 async function loadStoredWallpaper() {
     try {
         const blob = await wallpaperRecord("get");
         if (wallpaperObjectUrl) URL.revokeObjectURL(wallpaperObjectUrl);
         wallpaperObjectUrl = blob instanceof Blob ? URL.createObjectURL(blob) : "";
         if (wallpaperObjectUrl) document.body.style.setProperty("--wallpaper-url", `url("${wallpaperObjectUrl}")`);
+        applyWallpaperFraming(wallpaperFraming);
         document.body.classList.toggle("wallpaper-enabled", Boolean(wallpaperObjectUrl) && localStorage.getItem(STORAGE.wallpaperEnabled) === "true");
         renderWallpaperState(Boolean(wallpaperObjectUrl));
     }
@@ -1705,6 +1794,7 @@ function renderWallpaperState(hasWallpaper) {
     document.getElementById("wallpaper-preview-wrap").hidden = !hasWallpaper;
     document.getElementById("wallpaper-empty").hidden = hasWallpaper;
     document.getElementById("remove-wallpaper").hidden = !hasWallpaper;
+    document.getElementById("adjust-wallpaper").hidden = !hasWallpaper;
     document.getElementById("choose-wallpaper").textContent = hasWallpaper ? "Replace Photo" : "Choose Photo";
     document.getElementById("wallpaper-toggle").checked = enabled;
     document.getElementById("wallpaper-toggle").disabled = !hasWallpaper;
@@ -1759,15 +1849,19 @@ async function confirmWallpaperPreview() {
     try {
         await wallpaperRecord("put", pendingWallpaperBlob);
         pendingWallpaperBlob=null; localStorage.setItem(STORAGE.wallpaperEnabled,"true");
+        wallpaperFraming = { ...DEFAULT_WALLPAPER_FRAMING };
+        writeJson(STORAGE.wallpaperFraming, wallpaperFraming);
+        applyWallpaperFraming(wallpaperFraming);
         document.getElementById("wallpaper-confirm-actions").hidden=true; document.getElementById("wallpaper-preview-label").textContent="Saved wallpaper";
-        await loadStoredWallpaper(); setAppearanceMessage("Wallpaper saved and turned on.");
+        await loadStoredWallpaper(); setAppearanceMessage("Wallpaper saved and turned on. Adjust the framing if you like."); openWallpaperEditor();
     }
     catch (error) { setAppearanceMessage(error?.name === "QuotaExceededError" ? "This photo is too large for available device storage." : "Sakura could not save this wallpaper on this device.", true); }
 }
 
 async function removeWallpaper() {
     try { await wallpaperRecord("delete"); } catch {}
-    pendingWallpaperBlob=null; localStorage.setItem(STORAGE.wallpaperEnabled,"false");
+    pendingWallpaperBlob=null; localStorage.setItem(STORAGE.wallpaperEnabled,"false"); localStorage.removeItem(STORAGE.wallpaperFraming);
+    wallpaperFraming={...DEFAULT_WALLPAPER_FRAMING}; wallpaperFramingDraft={...wallpaperFraming}; applyWallpaperFraming(wallpaperFraming);
     if (wallpaperObjectUrl) URL.revokeObjectURL(wallpaperObjectUrl); wallpaperObjectUrl="";
     document.body.classList.remove("wallpaper-enabled"); document.body.style.removeProperty("--wallpaper-url"); renderWallpaperState(false); setAppearanceMessage("Wallpaper removed. Your color theme is unchanged.");
 }
@@ -2004,6 +2098,46 @@ function addListeners() {
     document.getElementById("cancel-wallpaper-preview").addEventListener("click", () => { pendingWallpaperBlob=null; document.getElementById("wallpaper-confirm-actions").hidden=true; loadStoredWallpaper(); setAppearanceMessage("Preview cancelled."); });
     document.getElementById("remove-wallpaper").addEventListener("click", removeWallpaper);
     document.getElementById("wallpaper-toggle").addEventListener("change", event => { localStorage.setItem(STORAGE.wallpaperEnabled,String(event.target.checked)); document.body.classList.toggle("wallpaper-enabled",event.target.checked&&Boolean(wallpaperObjectUrl)); renderWallpaperState(Boolean(wallpaperObjectUrl)); });
+    const wallpaperEditor = document.getElementById("wallpaper-editor-dialog");
+    const wallpaperEditorPreview = document.getElementById("wallpaper-editor-preview");
+    document.getElementById("adjust-wallpaper").addEventListener("click", openWallpaperEditor);
+    document.getElementById("close-wallpaper-editor").addEventListener("click", cancelWallpaperEditor);
+    document.getElementById("cancel-wallpaper-editor").addEventListener("click", cancelWallpaperEditor);
+    document.getElementById("save-wallpaper-position").addEventListener("click", saveWallpaperEditor);
+    document.getElementById("reset-wallpaper-position").addEventListener("click", resetWallpaperEditorDraft);
+    document.getElementById("wallpaper-zoom").addEventListener("input", event => setWallpaperDraftZoom(event.target.value));
+    document.getElementById("wallpaper-zoom-out").addEventListener("click", () => setWallpaperDraftZoom(wallpaperFramingDraft.zoom - .1));
+    document.getElementById("wallpaper-zoom-in").addEventListener("click", () => setWallpaperDraftZoom(wallpaperFramingDraft.zoom + .1));
+    document.querySelectorAll("[data-wallpaper-nudge]").forEach(button => button.addEventListener("click", () => nudgeWallpaper(button.dataset.wallpaperNudge)));
+    wallpaperEditorPreview.addEventListener("pointerdown", event => {
+        if (event.button !== undefined && event.button !== 0) return;
+        event.preventDefault();
+        wallpaperEditorPreview.setPointerCapture(event.pointerId);
+        wallpaperDragState = { pointerId:event.pointerId, x:event.clientX, y:event.clientY, positionX:wallpaperFramingDraft.positionX, positionY:wallpaperFramingDraft.positionY };
+    });
+    wallpaperEditorPreview.addEventListener("pointermove", event => {
+        if (!wallpaperDragState || wallpaperDragState.pointerId !== event.pointerId) return;
+        event.preventDefault();
+        const bounds = wallpaperEditorPreview.getBoundingClientRect();
+        wallpaperFramingDraft.positionX = wallpaperDragState.positionX - ((event.clientX - wallpaperDragState.x) / Math.max(1, bounds.width)) * 100;
+        wallpaperFramingDraft.positionY = wallpaperDragState.positionY - ((event.clientY - wallpaperDragState.y) / Math.max(1, bounds.height)) * 100;
+        wallpaperFramingDraft = normalizeWallpaperFraming(wallpaperFramingDraft);
+        renderWallpaperEditor();
+    });
+    const finishWallpaperDrag = event => {
+        if (!wallpaperDragState || wallpaperDragState.pointerId !== event.pointerId) return;
+        if (wallpaperEditorPreview.hasPointerCapture(event.pointerId)) wallpaperEditorPreview.releasePointerCapture(event.pointerId);
+        wallpaperDragState = null;
+    };
+    wallpaperEditorPreview.addEventListener("pointerup", finishWallpaperDrag);
+    wallpaperEditorPreview.addEventListener("pointercancel", finishWallpaperDrag);
+    wallpaperEditorPreview.addEventListener("keydown", event => {
+        const directions = { ArrowLeft:"left", ArrowRight:"right", ArrowUp:"up", ArrowDown:"down" };
+        if (!directions[event.key]) return;
+        event.preventDefault();
+        nudgeWallpaper(directions[event.key], event.shiftKey ? 10 : 3);
+    });
+    wallpaperEditor.addEventListener("cancel", event => { event.preventDefault(); cancelWallpaperEditor(); });
     document.getElementById("reset-appearance").addEventListener("click", resetAppearance);
 }
 
@@ -2011,6 +2145,7 @@ function initializeApp() {
     if (!Array.isArray(globalLevels) || !globalLevels.length) globalLevels = [...DEFAULT_LEVELS];
     applyTheme(localStorage.getItem(STORAGE.appearanceTheme) || "pink");
     applyOverlay(localStorage.getItem(STORAGE.wallpaperOverlay) || "medium");
+    applyWallpaperFraming(wallpaperFraming);
     loadStoredWallpaper();
     renderGlobalLevels();
     renderAllSectionControls();

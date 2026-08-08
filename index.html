@@ -11,7 +11,7 @@
     <script>try { document.documentElement.dataset.theme = localStorage.getItem("sakuraAppearanceTheme") || "pink"; } catch (error) { document.documentElement.dataset.theme = "pink"; }</script>
     <link rel="manifest" href="manifest.webmanifest">
     <link rel="apple-touch-icon" href="icons/icon-180.png">
-    <link rel="stylesheet" href="style.css?v=26">
+    <link rel="stylesheet" href="style.css?v=28">
 </head>
 <body>
     <div class="app-shell">
@@ -124,21 +124,21 @@
                     <button class="tab-button" type="button" role="tab" data-learn-view="slang">Slang</button>
                 </div>
                 <button id="open-learn-search" class="learn-search-button" type="button"><span aria-hidden="true">⌕</span><span>Search kanji, words, and expressions</span></button>
-                <button class="feature-card translation-launch-card" type="button" data-route="translate"><span class="feature-icon">文</span><span><strong>English to Japanese</strong><small>Natural, context-aware suggestions</small></span><b>→</b></button>
                 <div class="browse-grid">
-                    <article class="learning-card">
-                        <div class="card-topline"><h2>Kanji Garden</h2><button id="save-browse-kanji" class="save-button" type="button">♡</button></div>
-                        <button id="open-browse-kanji-detail" class="learning-focus" type="button"><span id="browse-kanji-character">日</span><small id="browse-kanji-reading">ひ / ニチ</small><strong id="browse-kanji-meaning">day; sun</strong><em id="browse-kanji-level">N5</em></button>
+                    <article class="learning-card kanji-garden-card">
+                        <div class="card-topline"><div class="learning-card-heading"><span class="garden-section-mark" aria-hidden="true">花</span><div><h2>Kanji Garden</h2><p>Browse characters by JLPT level.</p></div></div><button id="save-browse-kanji" class="save-button" type="button" aria-label="Save current kanji">♡</button></div>
+                        <button id="open-browse-kanji-detail" class="learning-focus" type="button"><span id="browse-kanji-character">日</span><small id="browse-kanji-reading">ひ / ニチ</small><strong id="browse-kanji-meaning">day; sun</strong><em id="browse-kanji-level">N5</em><span class="preview-action">View details →</span></button>
                         <div id="randomKanji-levels" class="section-level-control expanded-level-control"></div>
                         <div class="three-controls"><button id="previous-kanji" class="control-button" type="button">‹ Previous</button><button id="random-kanji" class="control-button accent-control" type="button">⤨ Random</button><button id="next-kanji" class="control-button" type="button">Next ›</button></div>
                     </article>
-                    <article class="learning-card">
-                        <div class="card-topline"><h2>Word Garden</h2><button id="save-browse-word" class="save-button" type="button">♡</button></div>
-                        <button id="open-browse-word-detail" class="learning-focus" type="button"><span id="browse-word-text" class="word-focus">勉強</span><small id="browse-word-reading">べんきょう · benkyou</small><strong id="browse-word-meaning">study</strong><em id="browse-word-level">N5</em></button>
+                    <article class="learning-card word-garden-card">
+                        <div class="card-topline"><div class="learning-card-heading"><span class="garden-section-mark word-mark" aria-hidden="true">芽</span><div><h2>Word Garden</h2><p>Grow your vocabulary one word at a time.</p></div></div><button id="save-browse-word" class="save-button" type="button" aria-label="Save current word">♡</button></div>
+                        <button id="open-browse-word-detail" class="learning-focus" type="button"><span id="browse-word-text" class="word-focus">勉強</span><small id="browse-word-reading">べんきょう · benkyou</small><strong id="browse-word-meaning">study</strong><em id="browse-word-level">N5</em><span class="preview-action">View details →</span></button>
                         <div id="randomVocabulary-levels" class="section-level-control expanded-level-control"></div>
                         <div class="three-controls"><button id="previous-word" class="control-button" type="button">‹ Previous</button><button id="random-word" class="control-button accent-control" type="button">⤨ Random</button><button id="next-word" class="control-button" type="button">Next ›</button></div>
                     </article>
                 </div>
+                <button class="feature-card translation-launch-card" type="button" data-route="translate"><span class="feature-icon">文</span><span><strong>English to Japanese</strong><small>Natural, context-aware suggestions</small></span><b>→</b></button>
             </section>
 
             <section id="search-view" class="view" data-view="search" aria-labelledby="search-heading" hidden>
@@ -331,12 +331,31 @@
                 <input id="wallpaper-file-input" type="file" accept="image/*" hidden>
                 <div class="appearance-button-row"><button id="choose-wallpaper" class="secondary-button" type="button">Choose Photo</button><button id="remove-wallpaper" class="text-danger-button" type="button" hidden>Remove Wallpaper</button></div>
                 <div id="wallpaper-confirm-actions" class="appearance-button-row" hidden><button id="cancel-wallpaper-preview" class="secondary-button" type="button">Cancel</button><button id="apply-wallpaper-preview" class="primary-button" type="button">Use This Photo</button></div>
+                <button id="adjust-wallpaper" class="secondary-button full-width-button adjust-wallpaper-button" type="button" hidden>Adjust Wallpaper</button>
                 <label class="setting-toggle"><span><strong>Wallpaper</strong><small>Turn the saved photo background on or off.</small></span><input id="wallpaper-toggle" type="checkbox"></label>
                 <div class="overlay-setting"><strong>Overlay strength</strong><div id="overlay-options" class="segmented-options"><button type="button" data-overlay="light">Light</button><button type="button" data-overlay="medium">Medium</button><button type="button" data-overlay="strong">Strong</button></div></div>
                 <p id="appearance-message" class="form-message" role="status"></p>
             </section>
             <button id="reset-appearance" class="text-danger-button full-width-button" type="button">Reset Appearance</button>
             <button id="done-settings" class="primary-button full-width-button appearance-done" type="button">Done</button>
+        </div>
+    </dialog>
+
+    <dialog id="wallpaper-editor-dialog" class="wallpaper-editor-dialog" aria-labelledby="wallpaper-editor-heading">
+        <div class="wallpaper-editor-sheet">
+            <header class="wallpaper-editor-header"><div><span class="section-kicker">Wallpaper framing</span><h2 id="wallpaper-editor-heading">Adjust Wallpaper</h2></div><button id="close-wallpaper-editor" class="icon-button" type="button" aria-label="Cancel wallpaper adjustments">×</button></header>
+            <p class="wallpaper-editor-intro">Drag the photo to choose what stays visible. Use the slider to zoom.</p>
+            <div id="wallpaper-editor-preview" class="wallpaper-editor-preview" tabindex="0" role="group" aria-label="Wallpaper preview. Drag to reposition, or use the arrow keys."><div id="wallpaper-editor-image" class="wallpaper-editor-image"></div><span class="wallpaper-drag-hint" aria-hidden="true">Drag to reposition</span></div>
+            <div class="wallpaper-zoom-control">
+                <div><label for="wallpaper-zoom">Zoom</label><output id="wallpaper-zoom-value" for="wallpaper-zoom">1.00×</output></div>
+                <div class="wallpaper-zoom-row"><button id="wallpaper-zoom-out" type="button" aria-label="Zoom out">−</button><input id="wallpaper-zoom" type="range" min="1" max="2" step="0.01" value="1" aria-label="Wallpaper zoom"><button id="wallpaper-zoom-in" type="button" aria-label="Zoom in">＋</button></div>
+            </div>
+            <div class="wallpaper-position-controls" aria-label="Wallpaper position controls">
+                <button type="button" data-wallpaper-nudge="up" aria-label="Move wallpaper up">↑</button>
+                <div><button type="button" data-wallpaper-nudge="left" aria-label="Move wallpaper left">←</button><button type="button" data-wallpaper-nudge="down" aria-label="Move wallpaper down">↓</button><button type="button" data-wallpaper-nudge="right" aria-label="Move wallpaper right">→</button></div>
+            </div>
+            <p id="wallpaper-editor-message" class="form-message" role="status"></p>
+            <footer class="wallpaper-editor-actions"><button id="reset-wallpaper-position" class="secondary-button" type="button">Reset Position</button><button id="cancel-wallpaper-editor" class="secondary-button" type="button">Cancel</button><button id="save-wallpaper-position" class="primary-button" type="button">Save</button></footer>
         </div>
     </dialog>
 
