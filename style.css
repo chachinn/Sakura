@@ -2824,6 +2824,100 @@ body {
     }
 }
 
+/* =====================================================
+   Sakura personality pass — atmospheric main screens
+===================================================== */
+.home-dashboard,
+#travel-view {
+    position: relative;
+    isolation: isolate;
+}
+
+.home-dashboard > *,
+#travel-view > * {
+    position: relative;
+    z-index: 1;
+}
+
+.home-dashboard::before,
+.home-dashboard::after,
+#travel-view::before {
+    content: "";
+    position: absolute;
+    z-index: 0;
+    width: 138px;
+    height: 138px;
+    pointer-events: none;
+    opacity: .32;
+    background:
+        radial-gradient(ellipse 17% 34% at 50% 18%, color-mix(in srgb, var(--color-primary) 34%, transparent) 0 68%, transparent 72%),
+        radial-gradient(ellipse 17% 34% at 78% 39%, color-mix(in srgb, var(--color-primary) 27%, transparent) 0 68%, transparent 72%),
+        radial-gradient(ellipse 17% 34% at 68% 73%, color-mix(in srgb, var(--color-secondary) 25%, transparent) 0 68%, transparent 72%),
+        radial-gradient(ellipse 17% 34% at 32% 73%, color-mix(in srgb, var(--color-primary) 24%, transparent) 0 68%, transparent 72%),
+        radial-gradient(ellipse 17% 34% at 22% 39%, color-mix(in srgb, var(--color-secondary) 22%, transparent) 0 68%, transparent 72%),
+        radial-gradient(circle at 50% 50%, color-mix(in srgb, var(--color-primary-dark) 28%, transparent) 0 7%, transparent 9%);
+}
+
+.home-dashboard::before {
+    top: 80px;
+    right: -55px;
+    transform: rotate(13deg);
+}
+
+.home-dashboard::after {
+    bottom: 92px;
+    left: -62px;
+    transform: rotate(-18deg) scale(.76);
+    opacity: .22;
+}
+
+#travel-view::before {
+    top: 46px;
+    right: -54px;
+    transform: rotate(20deg) scale(.82);
+    opacity: .27;
+}
+
+#travel-view .travel-utility-card {
+    position: relative;
+    overflow: hidden;
+    background:
+        radial-gradient(circle at 95% 12%, color-mix(in srgb, var(--color-primary-soft) 86%, transparent), transparent 31%),
+        var(--color-surface);
+}
+
+#travel-view .travel-utility-card::after {
+    content: "";
+    position: absolute;
+    right: -12px;
+    bottom: -20px;
+    width: 78px;
+    height: 78px;
+    border: 1px solid color-mix(in srgb, var(--color-primary) 18%, transparent);
+    border-radius: 50% 42% 54% 46%;
+    opacity: .42;
+    transform: rotate(24deg);
+    pointer-events: none;
+}
+
+body.wallpaper-enabled .home-dashboard::before,
+body.wallpaper-enabled .home-dashboard::after,
+body.wallpaper-enabled #travel-view::before {
+    display: none;
+}
+
+@media (max-width: 390px) {
+    #learn-heading,
+    #saved-heading {
+        max-width: 100%;
+        overflow-wrap: anywhere;
+    }
+
+    #saved-heading {
+        font-size: clamp(23px, 7vw, 28px);
+    }
+}
+
 @media (prefers-reduced-motion: reduce) {
     *,
     *::before,

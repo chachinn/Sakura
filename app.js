@@ -753,11 +753,25 @@ function checkKana() {
     setFeedback("kana-feedback", answer === currentKana[1] ? `Correct! ${currentKana[0]} is ${currentKana[1]}.` : "Not quite—try again.", answer === currentKana[1] ? "correct" : "incorrect");
 }
 
+function normalizeKanjiReading(value) {
+    return normalizeAnswer(String(value || "").normalize("NFKC"))
+        .replace(/[。、．・･]/g, "")
+        .replace(/[ァ-ヶ]/g, character => String.fromCharCode(character.charCodeAt(0) - 0x60));
+}
+
+function kanjiReadingAnswers(item) {
+    return [...(item?.onyomi || []), ...(item?.kunyomi || [])]
+        .flatMap(reading => String(reading || "").split(/[\/／,，、;；|｜]+/))
+        .map(normalizeKanjiReading)
+        .filter(Boolean);
+}
+
 function isKanjiQuizAnswerCorrect(item, rawAnswer) {
     const answer = normalizeAnswer(rawAnswer);
     const meaningAnswers = String(item?.meaning || "").split(/[;,]/).map(normalizeAnswer).filter(Boolean);
-    const readingAnswers = [...(item?.onyomi || []), ...(item?.kunyomi || [])].map(normalizeAnswer).filter(Boolean);
-    const exactMatch = meaningAnswers.includes(answer) || readingAnswers.includes(answer);
+    const readingAnswer = normalizeKanjiReading(rawAnswer);
+    const readingAnswers = kanjiReadingAnswers(item);
+    const exactMatch = meaningAnswers.includes(answer) || readingAnswers.includes(readingAnswer);
     const escapedAnswer = answer.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
     const meaningfulEnglishPartial = answer.length >= 3 && /^[a-z][a-z\s'-]*$/i.test(answer) && meaningAnswers.some(value => new RegExp(`(^|\\s)${escapedAnswer}(?=$|\\s)`, "i").test(value));
     return Boolean(answer) && (exactMatch || meaningfulEnglishPartial);
@@ -1541,7 +1555,8 @@ function showRoute(route, updateHash = true) {
     currentRoute = normalizedRoute;
     if (nativeMode) {
         currentNativeMode = nativeMode;
-        document.querySelectorAll("[data-native-mode]").forEach(tab => tab.classList.toggle("active", tab.dataset.nativeMode === nativeMode));
+        document.getElementById("native-heading").textContent = nativeMode === "slang" ? "Slang" : "Native Japanese";
+        document.querySelector(".native-page-heading p").textContent = nativeMode === "slang" ? "Current expressions, online language, and casual slang." : "Everyday expressions and natural Japanese.";
         refreshNativeCategories();
         if (currentNativeItem?.type !== nativeMode) browseNative(1, true);
     }
@@ -1941,7 +1956,6 @@ function addListeners() {
     document.getElementById("next-vocabulary-quiz").addEventListener("click", newVocabularyQuiz);
     document.getElementById("vocabulary-quiz-answer").addEventListener("keydown", event => { if (event.key === "Enter") checkVocabularyQuiz(); });
 
-    document.querySelectorAll("[data-native-mode]").forEach(button => button.addEventListener("click", () => showRoute(`learn-${button.dataset.nativeMode}`)));
     document.getElementById("native-difficulty-filter").addEventListener("change", () => { localStorage.setItem(STORAGE.nativeDifficulty, document.getElementById("native-difficulty-filter").value); browseNative(1, true); });
     document.getElementById("native-category-filter").addEventListener("change", () => browseNative(1, true));
     document.getElementById("previous-native").addEventListener("click", () => browseNative(-1));
