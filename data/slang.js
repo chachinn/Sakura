@@ -39,3 +39,38 @@ Object.entries(SAKURA_SLANG_GROUPS).forEach(([category, rows]) => rows.forEach((
     const id = `slang-expanded-${String(++sakuraSlangExpansionIndex).padStart(3, "0")}`;
     window.SLANG_DATA.push({ id, type: "slang", expression, kana, romaji, naturalMeaning, literalMeaning: naturalMeaning, difficulty, categories: [category], tone: "Casual and context-sensitive", formality: "Casual; avoid in formal situations", commonUsers: category === "Youth slang" ? "Younger speakers" : "Online and casual speakers", commonSituation: category, whereUsed: category.includes("online") || category === "Internet" ? "Online posts and messages" : "Casual conversation and social media", learnerSafety: "Observe context and relationship before using", currentStatus, rudeOrRisky: ["うざい", "地雷", "特定班", "お気持ち表明"].includes(expression), exampleSentence: expression, exampleTranslation: naturalMeaning, conversation: `A: これどう思う？\nB: ${expression}`, nuanceNotes: `Used in ${category.toLowerCase()} contexts; tone and audience matter.`, tags: [category.toLowerCase(), "casual"] });
 }));
+
+/* Map every existing record into Sakura's authoritative long-term collections. */
+const SAKURA_SLANG_CATEGORY_MAP = {
+    "Gyaru": ["Gyaru", "Beauty / Fashion"],
+    "Social media": ["SNS / Social Media", "Internet"],
+    "TikTok / short-form social media": ["SNS / Social Media", "Internet", "Gen Z / Reiwa"],
+    "X / online posts": ["SNS / Social Media", "Internet"],
+    "Internet": ["Internet"],
+    "Youth slang": ["Youth"],
+    "Everyday casual": ["Casual Spoken"],
+    "Anime versus real life": ["Anime / Otaku"],
+    "Gaming": ["Gaming"],
+    "Texting": ["Texting / LINE / DMs"],
+    "Reactions": ["Memes / Reactions", "Fillers / Reaction Words"]
+};
+const SAKURA_OSHI_TERMS = new Set(["尊い", "沼る", "推し", "推せる", "認知", "古参", "新規", "同担", "同担拒否", "箱推し", "推し回", "尊死"]);
+const SAKURA_ABBREVIATIONS = new Set(["とりま", "りょ", "おけ", "あり", "なし", "フォロバ", "リムる", "ブロ解", "個チャ", "グルチャ", "ボイメ", "スタ連", "リア充", "ROM専", "TL", "リプ", "引リツ", "空リプ", "鍵リプ", "ふぁぼ", "GRWM", "Vlog", "POV"]);
+const SAKURA_LOANWORD_SLANG = new Set(["チルい", "ググる", "ストーリー", "フォロバ", "リムる", "ブロ解", "キャリー", "ログボ", "デコる", "フラグ", "死亡フラグ", "モブ", "チート", "Vlog", "POV", "GRWM", "リップシンク", "テンプレ", "チャレンジ", "デュエット", "ポスト", "ミュート推奨"]);
+const SAKURA_PASSIVE_AGGRESSIVE = new Set(["匂わせ", "お気持ち表明", "既読スルー", "未読スルー", "解釈違い", "それは草"]);
+
+window.SLANG_DATA.forEach(entry => {
+    const memberships = new Set();
+    (entry.categories || []).forEach(category => (SAKURA_SLANG_CATEGORY_MAP[category] || []).forEach(mapped => memberships.add(mapped)));
+    if (entry.currentStatus === "Current youth slang" || entry.status === "Current youth slang") { memberships.add("Youth"); memberships.add("Gen Z / Reiwa"); }
+    if (entry.currentStatus === "Becoming dated" || entry.status === "Becoming dated") memberships.add("Heisei / Retro");
+    if (SAKURA_OSHI_TERMS.has(entry.expression)) memberships.add("Oshi / Fandom");
+    if (SAKURA_ABBREVIATIONS.has(entry.expression)) memberships.add("Abbreviations");
+    if (SAKURA_LOANWORD_SLANG.has(entry.expression)) memberships.add("Loanword Slang");
+    if (SAKURA_PASSIVE_AGGRESSIVE.has(entry.expression)) memberships.add("Sarcasm / Passive Aggressive");
+    if (entry.rudeOrRisky === true) memberships.add("Strong Language / Insults");
+    if (["盛れてる", "ビジュいいじゃん", "映える", "インスタ映え"].includes(entry.expression)) memberships.add("Beauty / Fashion");
+    if (["音源", "バズ音源", "踊ってみた"].includes(entry.expression)) memberships.add("Music / Concert");
+    if (!memberships.size) memberships.add("Things Textbooks Never Teach");
+    entry.categories = [...memberships];
+});

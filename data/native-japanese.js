@@ -59,3 +59,34 @@ Object.entries(SAKURA_NATIVE_GROUPS).forEach(([category, rows]) => rows.forEach(
     const id = `native-expanded-${String(++sakuraNativeExpansionIndex).padStart(3, "0")}`;
     window.NATIVE_JAPANESE_DATA.push({ id, type: "native", expression, kana, romaji, naturalMeaning, literalMeaning: naturalMeaning, difficulty, categories: [category], tone: difficulty === "Beginner" ? "Friendly and direct" : "Context-sensitive", formality: category === "Natural polite speech" || category === "Workplace" ? "Polite" : "Neutral to casual", commonUsers: "General speakers", commonSituation: category, whereUsed: "Conversation", learnerSafety: "Safe when used in the stated situation", currentStatus: "Still common", rudeOrRisky: false, exampleSentence: expression, exampleTranslation: naturalMeaning, conversation: `A: どうしますか？\nB: ${expression}`, nuanceNotes: `A practical expression commonly heard in ${category.toLowerCase()} situations.`, tags: [category.toLowerCase(), "practical"] });
 }));
+
+/*
+    Authoritative Slang-collection migration audit.
+    Travel-only records remain Native because Sakura already provides the same
+    practical purpose in its dedicated Travel phrase library. Broader natural
+    expressions receive collection memberships without duplicating records.
+*/
+const SAKURA_TRAVEL_REDUNDANT_NATIVE_CATEGORIES = new Set(["Travel", "Restaurants", "Shopping", "Transportation", "Hotels"]);
+const SAKURA_WORKPLACE_NATIVE_EXPRESSIONS = new Set(["お疲れさま", "〜させていただきます", "よろしくお願いします", "失礼します", "お先に失礼します", "少々お待ちください", "かしこまりました", "承知しました", "恐れ入ります", "お手数をおかけします", "ご確認ください", "お待たせしました"]);
+
+window.NATIVE_JAPANESE_DATA.forEach(entry => {
+    const oldCategories = Array.isArray(entry.categories) ? entry.categories : [];
+    const isTravelRedundant = oldCategories.length > 0 && oldCategories.every(category => SAKURA_TRAVEL_REDUNDANT_NATIVE_CATEGORIES.has(category));
+    if (isTravelRedundant) {
+        entry.migrationClassification = "REDUNDANT WITH TRAVEL";
+        return;
+    }
+
+    const memberships = new Set(["Things Textbooks Never Teach"]);
+    if (oldCategories.includes("Everyday casual")) memberships.add("Casual Spoken");
+    if (oldCategories.includes("Natural polite speech")) memberships.add("Casual Spoken");
+    if (oldCategories.includes("Reactions")) { memberships.add("Casual Spoken"); memberships.add("Memes / Reactions"); memberships.add("Fillers / Reaction Words"); }
+    if (oldCategories.includes("Workplace") || SAKURA_WORKPLACE_NATIVE_EXPRESSIONS.has(entry.expression)) memberships.add("Workplace / Office");
+    if (oldCategories.includes("Friends") || oldCategories.includes("Social situations")) memberships.add("Friendship / Social");
+    if (oldCategories.includes("Friends")) memberships.add("Casual Spoken");
+    if (oldCategories.includes("Texting")) { memberships.add("Texting / LINE / DMs"); memberships.add("Casual Spoken"); }
+    if (["いただきます", "ごちそうさま", "今度ご飯行こう"].includes(entry.expression)) memberships.add("Food / Going Out");
+    if (entry.expression === "乾杯") memberships.add("Drinking / Nightlife");
+    entry.slangCategories = [...memberships];
+    entry.migrationClassification = "MIGRATED TO SLANG COLLECTIONS";
+});

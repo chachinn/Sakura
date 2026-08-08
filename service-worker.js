@@ -1,4 +1,4 @@
-const SHELL_CACHE_VERSION = "sakura-shell-v57";
+const SHELL_CACHE_VERSION = "sakura-shell-v58";
 const KANJI_CONTENT_CACHE_VERSION = "sakura-kanji-content-v1";
 const TRAVEL_CONTENT_CACHE_VERSION = "sakura-travel-content-v1";
 
@@ -6,11 +6,11 @@ const APP_SHELL = [
     "./",
     "./index.html",
     "./style.css?v=37",
-    "./app.js?v=43",
+    "./app.js?v=44",
     "./data/kanji.js",
     "./data/vocabulary.js?v=2",
-    "./data/native-japanese.js",
-    "./data/slang.js",
+    "./data/native-japanese.js?v=2",
+    "./data/slang.js?v=2",
     "./data/travel.js?v=3",
     "./manifest.webmanifest",
     "./icons/icon-180.png",

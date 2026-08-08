@@ -55,7 +55,14 @@ const LEGACY_KANJI_IDS = {
 const PERMANENT_KANJI_IDS = new Set(Object.values(LEGACY_KANJI_IDS));
 const SECTION_NAMES = ["kanjiOfDay", "wordOfDay", "randomKanji", "randomVocabulary", "kanjiQuiz", "vocabularyQuiz"];
 const NATIVE_CATEGORIES = ["Everyday casual", "Natural polite speech", "Reactions", "Travel", "Workplace", "Friends", "Texting", "Restaurants", "Shopping", "Transportation", "Hotels", "Social situations"];
-const SLANG_CATEGORIES = ["Youth slang", "Internet", "Social media", "Gyaru", "Gaming", "Texting", "Reactions", "Everyday casual", "Anime versus real life", "TikTok / short-form social media", "X / online posts"];
+const SLANG_CATEGORIES = ["Gyaru", "SNS / Social Media", "Internet", "Youth", "Casual Spoken", "Workplace / Office", "Anime / Otaku", "Oshi / Fandom", "Gaming", "Dating / Romance", "Friendship / Social", "School / Student", "Beauty / Fashion", "Food / Going Out", "Drinking / Nightlife", "Music / Concert", "Memes / Reactions", "Texting / LINE / DMs", "Gen Z / Reiwa", "Heisei / Retro", "Kansai", "Regional Dialects", "Strong Language / Insults", "Sarcasm / Passive Aggressive", "Fillers / Reaction Words", "Abbreviations", "Loanword Slang", "Things Textbooks Never Teach"];
+const SLANG_CATEGORY_OPTIONS = [
+    ["All", "🌸 All Slang"], ["Gyaru", "💖 Gyaru"], ["SNS / Social Media", "📱 SNS / Social Media"], ["Internet", "🌐 Internet"], ["Youth", "✨ Youth"], ["Casual Spoken", "🗣️ Casual Spoken"], ["Workplace / Office", "💼 Workplace / Office"], ["Anime / Otaku", "🎌 Anime / Otaku"], ["Oshi / Fandom", "⭐ Oshi / Fandom"], ["Gaming", "🎮 Gaming"], ["Dating / Romance", "💕 Dating / Romance"], ["Friendship / Social", "🫶 Friendship / Social"], ["School / Student", "🎓 School / Student"], ["Beauty / Fashion", "💄 Beauty / Fashion"], ["Food / Going Out", "🍜 Food / Going Out"], ["Drinking / Nightlife", "🍻 Drinking / Nightlife"], ["Music / Concert", "🎤 Music / Concert"], ["Memes / Reactions", "😂 Memes / Reactions"], ["Texting / LINE / DMs", "💬 Texting / LINE / DMs"], ["Gen Z / Reiwa", "🆕 Gen Z / Reiwa"], ["Heisei / Retro", "📼 Heisei / Retro"], ["Kansai", "🐙 Kansai"], ["Regional Dialects", "🗾 Regional Dialects"], ["Strong Language / Insults", "😈 Strong Language / Insults"], ["Sarcasm / Passive Aggressive", "👀 Sarcasm / Passive Aggressive"], ["Fillers / Reaction Words", "💭 Fillers / Reaction Words"], ["Abbreviations", "✂️ Abbreviations"], ["Loanword Slang", "🔤 Loanword Slang"], ["Things Textbooks Never Teach", "📚 Things Textbooks Never Teach"]
+];
+const LEGACY_SLANG_CATEGORY_MAP = { "Youth slang":"Youth", "Social media":"SNS / Social Media", "Internet":"Internet", "Everyday casual":"Casual Spoken", "Workplace":"Workplace / Office", "Anime versus real life":"Anime / Otaku", "Gaming":"Gaming", "Friends":"Friendship / Social", "Reactions":"Memes / Reactions", "Texting":"Texting / LINE / DMs", "Gyaru":"Gyaru", "TikTok / short-form social media":"SNS / Social Media", "X / online posts":"SNS / Social Media" };
+function authoritativeSlangCategories(values) {
+    return [...new Set((Array.isArray(values) ? values : []).map(value => LEGACY_SLANG_CATEGORY_MAP[cleanEntryText(value)] || cleanEntryText(value)).filter(value => SLANG_CATEGORIES.includes(value)))];
+}
 const TRANSLATION_API_ENDPOINT = ""; // Set to a secure serverless endpoint such as /api/translate. Never put an API key in this app.
 const APPEARANCE_DB = "sakuraAppearanceDB";
 const APPEARANCE_STORE = "wallpapers";
@@ -385,7 +392,8 @@ function refreshSectionForLevelChange(sectionName) {
 }
 
 function itemKey(item) {
-    return item ? `${item.type}:${item.id}` : "";
+    if (!item) return "";
+    return `${item.migratedFrom === "native" ? "native" : item.type}:${item.id}`;
 }
 
 function isSaved(item) {
@@ -1134,28 +1142,33 @@ function cleanEntryText(value) {
 
 function normalizeContentEntry(entry, forcedType = entry?.type) {
     const type = forcedType === "slang" ? "slang" : "native";
+    const categories = type === "slang" ? authoritativeSlangCategories(entry?.categories) : [...new Set((Array.isArray(entry?.categories) ? entry.categories : []).map(cleanEntryText).filter(Boolean))];
     const normalized = {
         id: cleanEntryText(entry?.id), type,
         expression: cleanEntryText(entry?.expression), kana: cleanEntryText(entry?.kana), romaji: cleanEntryText(entry?.romaji),
         naturalMeaning: cleanEntryText(entry?.naturalMeaning || entry?.meaning), literalMeaning: cleanEntryText(entry?.literalMeaning || entry?.literal),
-        difficulty: cleanEntryText(entry?.difficulty), categories: [...new Set((Array.isArray(entry?.categories) ? entry.categories : []).map(cleanEntryText).filter(Boolean))],
+        difficulty: cleanEntryText(entry?.difficulty), categories,
         tone: cleanEntryText(entry?.tone), formality: cleanEntryText(entry?.formality), commonUsers: cleanEntryText(entry?.commonUsers || entry?.users),
         commonSituation: cleanEntryText(entry?.commonSituation || entry?.situation), whereUsed: cleanEntryText(entry?.whereUsed || entry?.whereSeen),
         learnerSafety: cleanEntryText(entry?.learnerSafety || entry?.safe), currentStatus: cleanEntryText(entry?.currentStatus || entry?.status),
         rudeOrRisky: typeof entry?.rudeOrRisky === "boolean" ? entry.rudeOrRisky : !["", "no"].includes(cleanEntryText(entry?.rude).toLowerCase()),
         exampleSentence: cleanEntryText(entry?.exampleSentence), exampleTranslation: cleanEntryText(entry?.exampleTranslation),
         conversation: cleanEntryText(entry?.conversation), nuanceNotes: cleanEntryText(entry?.nuanceNotes || entry?.notes),
-        tags: [...new Set((Array.isArray(entry?.tags) ? entry.tags : []).map(cleanEntryText).filter(Boolean))], userCreated: Boolean(entry?.userCreated)
+        tags: [...new Set((Array.isArray(entry?.tags) ? entry.tags : []).map(cleanEntryText).filter(Boolean))], userCreated: Boolean(entry?.userCreated),
+        migratedFrom: cleanEntryText(entry?.migratedFrom)
     };
     return { ...normalized, meaning: normalized.naturalMeaning, literal: normalized.literalMeaning, users: normalized.commonUsers, situation: normalized.commonSituation, whereSeen: normalized.whereUsed, safe: normalized.learnerSafety, status: normalized.currentStatus, rude: normalized.rudeOrRisky ? "Yes" : "No", notes: normalized.nuanceNotes };
 }
 
 function nativeData() {
-    return [...loadedSearchData("NATIVE_JAPANESE_DATA", "Native Japanese"), ...userNativeEntries].map(entry => normalizeContentEntry(entry, "native"));
+    return [...loadedSearchData("NATIVE_JAPANESE_DATA", "Native Japanese").filter(entry => !entry.slangCategories?.length), ...userNativeEntries].map(entry => normalizeContentEntry(entry, "native"));
 }
 
 function slangData() {
-    return [...loadedSearchData("SLANG_DATA", "Slang"), ...userSlangEntries].map(entry => normalizeContentEntry(entry, "slang"));
+    const migratedNative = loadedSearchData("NATIVE_JAPANESE_DATA", "Native Japanese")
+        .filter(entry => entry.slangCategories?.length)
+        .map(entry => ({ ...entry, categories: entry.slangCategories, migratedFrom: "native" }));
+    return [...loadedSearchData("SLANG_DATA", "Slang"), ...migratedNative, ...userSlangEntries].map(entry => normalizeContentEntry(entry, "slang"));
 }
 
 function searchMainText(item) {
@@ -1524,17 +1537,23 @@ function nativePool() {
 }
 
 function refreshNativeCategories() {
-    const source = currentNativeMode === "slang" ? slangData() : nativeData();
-    const categories = [...new Set(source.flatMap(item => item.categories))].sort();
     const select = document.getElementById("native-category-filter");
     const previous = select.value;
+    if (currentNativeMode === "slang") {
+        select.innerHTML = SLANG_CATEGORY_OPTIONS.map(([value, label]) => `<option value="${escapeSearchHtml(value)}">${escapeSearchHtml(label)}</option>`).join("");
+        select.value = SLANG_CATEGORY_OPTIONS.some(([value]) => value === previous) ? previous : "All";
+        return;
+    }
+    const categories = [...new Set(nativeData().flatMap(item => item.categories))].sort();
     select.innerHTML = `<option>All</option>${categories.map(category => `<option>${category}</option>`).join("")}`;
     select.value = categories.includes(previous) ? previous : "All";
 }
 
 function renderNative(item) {
     currentNativeItem = item;
-    document.getElementById("native-empty").hidden = Boolean(item);
+    const empty = document.getElementById("native-empty");
+    empty.hidden = Boolean(item);
+    empty.textContent = currentNativeMode === "slang" ? "No entries here yet 🌸 This collection is still growing." : "No content is available for these filters.";
     document.getElementById("native-status").textContent = item?.status || "No match";
     document.getElementById("native-expression").textContent = item?.expression || "—";
     document.getElementById("native-reading").textContent = item ? `${item.kana} · ${item.romaji}` : "";
