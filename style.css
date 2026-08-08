@@ -2482,6 +2482,348 @@ body {
     }
 }
 
+/* =====================================================
+   Sakura UI Redesign Step 2 — Home dashboard only
+===================================================== */
+.home-dashboard {
+    padding-top: var(--space-3);
+}
+
+.home-welcome {
+    min-height: 108px;
+    padding: 18px;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
+    gap: var(--space-4);
+    overflow: hidden;
+    border: 1px solid color-mix(in srgb, var(--color-primary) 14%, var(--color-border));
+    border-radius: var(--radius-large);
+    background:
+        radial-gradient(circle at 92% 15%, color-mix(in srgb, var(--color-primary) 12%, transparent), transparent 34%),
+        var(--color-surface);
+    box-shadow: var(--shadow-card);
+}
+
+.home-welcome h1 {
+    margin: 3px 0 4px;
+    font-size: clamp(22px, 6vw, 27px);
+    line-height: 1.12;
+    letter-spacing: -.035em;
+}
+
+.home-welcome p {
+    max-width: 270px;
+    margin: 0;
+    color: var(--color-text-muted);
+    font-size: 12px;
+    line-height: 1.4;
+}
+
+.home-continue-button {
+    min-width: 70px;
+    min-height: 70px;
+    padding: 9px;
+    display: grid;
+    place-items: center;
+    gap: 1px;
+    border: 1px solid color-mix(in srgb, var(--color-primary) 24%, var(--color-border));
+    border-radius: 18px;
+    background: var(--color-primary-soft);
+    color: var(--color-primary-dark);
+}
+
+.home-continue-button span {
+    font-size: 25px;
+    line-height: 1;
+}
+
+.home-continue-button strong {
+    font-size: 10px;
+}
+
+.home-level-panel {
+    margin-top: var(--space-3);
+    padding: 13px 14px;
+}
+
+.home-level-panel .compact-heading {
+    margin-bottom: 9px;
+}
+
+.home-level-panel .section-heading h2 {
+    margin-top: 1px;
+    font-size: 15px;
+}
+
+.home-level-panel .level-chips {
+    display: grid;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: 5px;
+}
+
+.home-level-panel .level-chip span,
+.home-level-panel .all-level-button {
+    width: 100%;
+    min-width: 0;
+    min-height: 40px;
+    padding: 7px 3px;
+    border-radius: 11px;
+    font-size: 12px;
+}
+
+.home-dashboard .section-heading {
+    margin: 20px 1px 9px;
+}
+
+.home-section-note {
+    color: var(--color-text-muted);
+    font-size: 10px;
+}
+
+.home-dashboard .daily-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+}
+
+.home-dashboard .daily-card {
+    padding: 11px;
+    border-radius: 18px;
+}
+
+.home-dashboard .daily-card .card-topline {
+    gap: 5px;
+}
+
+.home-dashboard .card-title-button {
+    min-width: 0;
+    min-height: 36px;
+    font-size: 11px;
+    line-height: 1.2;
+}
+
+.home-dashboard .card-icon {
+    width: 24px;
+    height: 24px;
+    margin-right: 2px;
+    border-radius: 8px;
+}
+
+.home-dashboard .daily-card .round-action {
+    width: 34px;
+    min-width: 34px;
+    height: 34px;
+    min-height: 34px;
+    font-size: 17px;
+}
+
+.home-dashboard .daily-card-body {
+    min-height: 147px;
+    padding: 9px 2px 7px;
+    gap: 4px;
+}
+
+.home-dashboard .daily-japanese {
+    max-width: 100%;
+    font-size: clamp(48px, 14vw, 61px);
+    overflow-wrap: anywhere;
+}
+
+.home-dashboard .daily-japanese.word-size {
+    font-size: clamp(28px, 8vw, 38px);
+}
+
+.home-dashboard .daily-reading {
+    max-width: 100%;
+    font-size: 12px;
+    line-height: 1.3;
+    overflow-wrap: anywhere;
+    text-align: center;
+}
+
+.home-dashboard .daily-meaning {
+    font-size: 11px;
+    line-height: 1.3;
+}
+
+.home-dashboard .daily-example {
+    max-width: 100%;
+    margin-top: 2px;
+    display: -webkit-box;
+    overflow: hidden;
+    font-size: 10px;
+    line-height: 1.35;
+    overflow-wrap: anywhere;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+}
+
+.home-dashboard .tag,
+.home-dashboard .status-label {
+    min-height: 23px;
+    padding: 3px 7px;
+    font-size: 10px;
+}
+
+.home-level-details {
+    margin: 3px 0 8px;
+}
+
+.home-level-details summary {
+    min-height: 36px;
+    padding: 8px 9px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid var(--color-border);
+    border-radius: 11px;
+    background: var(--color-surface-soft);
+    color: var(--color-text-muted);
+    cursor: pointer;
+    font-size: 10px;
+    font-weight: 750;
+    list-style: none;
+}
+
+.home-level-details summary::after {
+    content: "+";
+    color: var(--color-primary-dark);
+    font-size: 15px;
+}
+
+.home-level-details[open] summary::after {
+    content: "−";
+}
+
+.home-level-details summary::-webkit-details-marker {
+    display: none;
+}
+
+.home-level-details .section-level-control {
+    margin: 6px 0 0;
+    padding: 8px;
+}
+
+.home-level-details .level-control-top {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.home-level-details .global-toggle {
+    width: 100%;
+    justify-content: space-between;
+}
+
+.home-level-details .section-level-chips {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.home-level-details .section-level-chips .level-chip span,
+.home-level-details .section-level-chips .all-level-button {
+    width: 100%;
+    min-width: 0;
+    min-height: 32px;
+    padding: 5px 2px;
+}
+
+.home-dashboard .card-controls {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 6px;
+}
+
+.home-dashboard .card-controls .control-button,
+.home-dashboard .card-controls .save-button {
+    width: 100%;
+    min-width: 0;
+    min-height: 40px;
+    padding: 7px 3px;
+    font-size: 10px;
+}
+
+.home-dashboard .card-controls .save-button {
+    grid-column: auto;
+    font-size: 19px;
+}
+
+.home-dashboard .feature-grid {
+    gap: 9px;
+}
+
+.home-dashboard .feature-card {
+    min-height: 88px;
+    padding: 11px;
+    grid-template-columns: 39px minmax(0, 1fr) auto;
+    gap: 8px;
+    border-radius: 16px;
+}
+
+.home-dashboard .feature-card .feature-icon {
+    width: 39px;
+    height: 39px;
+    border-radius: 12px;
+    font-size: 20px;
+}
+
+.home-dashboard .feature-card strong {
+    font-size: 12px;
+    line-height: 1.2;
+}
+
+.home-dashboard .feature-card small {
+    margin-top: 3px;
+    font-size: 9px;
+    line-height: 1.3;
+}
+
+.home-dashboard .feature-card > b {
+    grid-column: auto;
+    font-size: 15px;
+}
+
+.home-dashboard .travel-home-card {
+    grid-column: 1 / -1;
+    min-height: 78px;
+    background: color-mix(in srgb, var(--color-mint-soft) 72%, var(--color-surface));
+}
+
+.home-dashboard .travel-home-card .feature-icon {
+    background: color-mix(in srgb, var(--color-success) 84%, white);
+}
+
+.home-study-section .saved-study-card {
+    min-height: 78px;
+    padding: 12px;
+    grid-template-columns: 44px minmax(0, 1fr) auto;
+    gap: 10px;
+}
+
+.home-study-section .feature-icon {
+    width: 44px;
+    height: 44px;
+    font-size: 21px;
+}
+
+@media (max-width: 350px) {
+    .home-welcome {
+        padding: 15px;
+    }
+
+    .home-welcome p,
+    .home-section-note {
+        display: none;
+    }
+
+    .home-level-panel .level-chips {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .home-dashboard .daily-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
 @media (prefers-reduced-motion: reduce) {
     *,
     *::before,

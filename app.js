@@ -227,6 +227,9 @@ let searchLevels = [...globalLevels];
 let recentSearches = readJson(STORAGE.recentSearches, []);
 let searchReturnRoute = "learn";
 let universalSearchIndex = [];
+let travelSearchPreparation = null;
+let travelSearchPrepared = false;
+let pendingTravelPhraseId = "";
 let userNativeEntries = readJson(STORAGE.userNative, []);
 let userSlangEntries = readJson(STORAGE.userSlang, []);
 let nativeRecentHistory = readJson(STORAGE.nativeHistory, { native: [], slang: [] });
@@ -790,6 +793,8 @@ function showQuizTab(name) {
 function searchText(value) {
     return String(Array.isArray(value) ? value.join(" ") : value || "")
         .normalize("NFKC")
+        .replace(/\bwhere[\u2019']s\b/gi, "where is")
+        .replace(/[.,!?;:\uFF0C\u3002\uFF01\uFF1F\u3001]+/g, " ")
         .replace(/[\u3000\s]+/g, " ")
         .trim()
         .toLocaleLowerCase();
@@ -826,7 +831,7 @@ function slangData() {
 }
 
 function searchMainText(item) {
-    return item.character || item.word || item.expression || "";
+    return item.character || item.word || item.expression || item.japanese || "";
 }
 
 function searchReading(item) {
@@ -849,10 +854,39 @@ function buildSearchIndex() {
         Vocabulary: loadedSearchData("VOCABULARY_DATA", "Vocabulary"),
         Native: nativeData(),
         Slang: slangData(),
+        Travel: window.SakuraTravelLoader?.getLoadedTravelPhrases() || [],
         Translations: savedItems.filter(item => item.type === "translation")
     };
     universalSearchIndex = Object.values(groups).flat();
-    console.info(`Indexed:\n${groups.Kanji.length} Kanji\n${groups.Vocabulary.length} Vocabulary\n${groups.Native.length} Native\n${groups.Slang.length} Slang`);
+    console.info(`Indexed:\n${groups.Kanji.length} Kanji\n${groups.Vocabulary.length} Vocabulary\n${groups.Native.length} Native\n${groups.Slang.length} Slang\n${groups.Travel.length} Travel`);
+}
+
+function prepareTravelSearch() {
+    if (travelSearchPrepared) return Promise.resolve();
+    if (travelSearchPreparation) return travelSearchPreparation;
+    const loader = window.SakuraTravelLoader;
+    const categories = Object.keys(window.TRAVEL_CATEGORIES || {});
+    if (!loader || !categories.length) {
+        travelSearchPrepared = true;
+        return Promise.resolve();
+    }
+    travelSearchPreparation = Promise.allSettled(categories.map(category => loader.loadTravelCategory(category)))
+        .then(results => {
+            const unavailable = categories.filter((category, index) => results[index].status === "rejected");
+            if (unavailable.length) console.warn(`Universal Search: Travel categories unavailable: ${unavailable.join(", ")}. Searching available Travel content.`);
+            buildSearchIndex();
+            travelSearchPrepared = true;
+        })
+        .finally(() => { travelSearchPreparation = null; });
+    return travelSearchPreparation;
+}
+
+function prepareTravelSearchForCurrentQuery() {
+    const input = document.getElementById("universal-search-input");
+    if (!input?.value.trim() || travelSearchPrepared) return;
+    prepareTravelSearch().then(() => {
+        if (currentRoute === "search" && input.value.trim()) renderSearchResults();
+    });
 }
 
 function searchIndex() {
@@ -869,7 +903,7 @@ function searchableFields(item) {
         item.naturalMeaning, item.literalMeaning, item.commonUsers, item.commonSituation,
         item.whereUsed, item.learnerSafety, item.currentStatus, item.nuanceNotes,
         item.conversation, item.tone, item.formality, item.users, item.situation,
-        item.whereSeen, item.status, item.safe, item.rude, item.category,
+        item.whereSeen, item.status, item.safe, item.rude, item.category, item.subcategory,
         ...(item.categories || []), ...(item.tags || []),
         ...(item.onyomi || []), ...(item.kunyomi || []), ...exampleFields
     ].filter(Boolean).map(searchText);
@@ -909,7 +943,15 @@ function escapeSearchHtml(value) {
 }
 
 function searchTypeLabel(type) {
-    return ({ kanji: "Kanji", vocabulary: "Vocabulary", native: "Native", slang: "Slang", translation:"Translation" })[type] || type;
+    return ({ kanji: "Kanji", vocabulary: "Vocabulary", native: "Native", slang: "Slang", travel: "Travel", translation:"Translation" })[type] || type;
+}
+
+function searchResultMeta(item) {
+    if (item.type === "travel") {
+        const category = travelCategoryMetadata(item.category)?.title || travelTagLabel(item.category);
+        return [category, travelTagLabel(item.priority)].filter(Boolean).join(" · ");
+    }
+    return item.jlpt || item.difficulty || "";
 }
 
 function renderSearchResults() {
@@ -928,13 +970,13 @@ function renderSearchResults() {
     document.getElementById("search-results").innerHTML = results.map(({ item }) => {
         const saved = isSaved(item);
         const reading = searchReading(item);
-        const meta = item.jlpt || item.difficulty || "";
+        const meta = searchResultMeta(item);
         return `<article class="search-result-card" data-search-key="${escapeSearchHtml(itemKey(item))}">
             <button class="search-result-main" type="button" data-search-open="${escapeSearchHtml(itemKey(item))}">
                 <span class="search-result-topline"><span class="search-type-tag">${searchTypeLabel(item.type)}</span>${meta ? `<span class="tag">${escapeSearchHtml(meta)}</span>` : ""}</span>
                 <h2>${escapeSearchHtml(searchMainText(item))}</h2>
                 ${reading ? `<p class="search-result-reading">${escapeSearchHtml(reading)}${item.romaji && !reading.includes(item.romaji) ? ` · ${escapeSearchHtml(item.romaji)}` : ""}</p>` : ""}
-                <p class="search-result-meaning">${escapeSearchHtml(item.meaning)}</p>
+                <p class="search-result-meaning">${escapeSearchHtml(item.meaning || item.english)}</p>
             </button>
             <button class="save-button search-result-save ${saved ? "saved" : ""}" type="button" data-search-save="${escapeSearchHtml(itemKey(item))}" aria-label="${saved ? "Unsave" : "Save"} ${escapeSearchHtml(searchMainText(item))}" aria-pressed="${saved}">${saved ? "♥" : "♡"}</button>
         </article>`;
@@ -998,6 +1040,11 @@ function openSearchResult(item) {
     addRecentSearch(document.getElementById("universal-search-input").value);
     if (item.type === "kanji") openKanjiDetail(item, "search");
     else if (item.type === "vocabulary") openWordDetail(item, "search");
+    else if (item.type === "travel" && travelCategoryMetadata(item.category)) {
+        pendingTravelPhraseId = item.id;
+        currentTravelFilter = "All";
+        showRoute(`travel-${item.category}`);
+    }
     else if (item.type === "translation") { showRoute("translate"); renderTranslationResult({id:item.id,japanese:item.expression,kana:item.kana,romaji:item.romaji,naturalMeaning:item.naturalMeaning||item.meaning,literalMeaning:item.literalMeaning||"",tone:item.tone||"",usageNote:item.notes||"",alternative:item.alternative||"",offline:false}); }
     else {
         showRoute(`learn-${item.type}`);
@@ -1281,12 +1328,16 @@ async function renderTravelCategory(category) {
     try {
         await window.SakuraTravelLoader.loadTravelCategory(category);
         if (revision !== travelRenderRevision || currentRoute !== `travel-${category}`) return;
+        buildSearchIndex();
         const pool = travelPhrasePool();
         currentTravelIndex = 0;
-        renderTravelPhraseCard(pool[0] || null);
+        const requestedPhrase = pendingTravelPhraseId ? pool.find(phrase => phrase.id === pendingTravelPhraseId) : null;
+        pendingTravelPhraseId = "";
+        renderTravelPhraseCard(requestedPhrase || pool[0] || null);
     }
     catch (error) {
         if (revision !== travelRenderRevision || currentRoute !== `travel-${category}`) return;
+        pendingTravelPhraseId = "";
         console.warn(`Travel Mode: ${category} is unavailable.`, error);
         document.getElementById("travel-category-status").textContent = "Travel phrases could not be loaded.";
         document.getElementById("travel-category-empty").hidden = false;
@@ -1782,11 +1833,15 @@ function addListeners() {
     document.getElementById("header-search").addEventListener("click", () => openSearch(currentRoute));
     document.getElementById("open-learn-search").addEventListener("click", () => openSearch("learn"));
     document.getElementById("close-search").addEventListener("click", () => showRoute(searchReturnRoute));
-    document.getElementById("universal-search-input").addEventListener("input", renderSearchResults);
+    document.getElementById("universal-search-input").addEventListener("input", () => {
+        renderSearchResults();
+        prepareTravelSearchForCurrentQuery();
+    });
     document.getElementById("search-form").addEventListener("submit", event => {
         event.preventDefault();
         addRecentSearch(document.getElementById("universal-search-input").value);
         renderSearchResults();
+        prepareTravelSearchForCurrentQuery();
     });
     document.getElementById("clear-search-input").addEventListener("click", () => {
         document.getElementById("universal-search-input").value = "";
@@ -1823,6 +1878,7 @@ function addListeners() {
         if (useButton) {
             document.getElementById("universal-search-input").value = recentSearches[Number(useButton.dataset.recentIndex)] || "";
             renderSearchResults();
+            prepareTravelSearchForCurrentQuery();
         }
     });
     document.getElementById("clear-recent-searches").addEventListener("click", () => {

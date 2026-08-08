@@ -11,7 +11,7 @@
     <script>try { document.documentElement.dataset.theme = localStorage.getItem("sakuraAppearanceTheme") || "pink"; } catch (error) { document.documentElement.dataset.theme = "pink"; }</script>
     <link rel="manifest" href="manifest.webmanifest">
     <link rel="apple-touch-icon" href="icons/icon-180.png">
-    <link rel="stylesheet" href="style.css?v=21">
+    <link rel="stylesheet" href="style.css?v=22">
 </head>
 <body>
     <div class="app-shell">
@@ -28,10 +28,17 @@
         </header>
 
         <main id="main-content">
-            <section id="home-view" class="view active-view" data-view="home" aria-labelledby="home-title">
-                <h1 id="home-title" class="sr-only">Home</h1>
+            <section id="home-view" class="view active-view home-dashboard" data-view="home" aria-labelledby="home-title">
+                <section class="home-welcome" aria-labelledby="home-title">
+                    <div>
+                        <span class="section-kicker">今日も一歩ずつ</span>
+                        <h1 id="home-title">Welcome to Sakura</h1>
+                        <p>Keep growing your Japanese, one small step at a time.</p>
+                    </div>
+                    <button class="home-continue-button" type="button" data-route="learn"><span aria-hidden="true">学</span><strong>Continue</strong></button>
+                </section>
 
-                <section class="level-panel" aria-labelledby="global-level-heading">
+                <section class="level-panel home-level-panel" aria-labelledby="global-level-heading">
                     <div class="section-heading compact-heading">
                         <div><span class="section-kicker">🌸 Study settings</span><h2 id="global-level-heading">JLPT Level</h2></div>
                         <span id="global-level-summary" class="selection-summary">Selected: N5</span>
@@ -39,8 +46,8 @@
                     <div id="global-jlpt-selector" class="level-chips" role="group" aria-label="Global JLPT levels"></div>
                 </section>
 
-                <section aria-labelledby="daily-heading">
-                    <div class="section-heading"><div><span class="section-kicker">Today’s garden</span><h2 id="daily-heading">Daily Japanese</h2></div></div>
+                <section class="home-daily-section" aria-labelledby="daily-heading">
+                    <div class="section-heading"><div><span class="section-kicker">Today’s focus</span><h2 id="daily-heading">Daily Japanese</h2></div><span class="home-section-note">Tap a card for details</span></div>
                     <div class="daily-grid">
                         <article class="daily-card kanji-daily-card">
                             <div class="card-topline">
@@ -54,7 +61,7 @@
                                 <span id="daily-kanji-level" class="tag">N5</span>
                                 <span id="daily-kanji-example" class="daily-example">日本（にほん）— Japan</span>
                             </button>
-                            <div id="kanjiOfDay-levels" class="section-level-control"></div>
+                            <details class="home-level-details"><summary>Daily Kanji levels</summary><div id="kanjiOfDay-levels" class="section-level-control"></div></details>
                             <div class="card-controls">
                                 <button id="previous-daily-kanji" class="control-button" type="button">‹ Previous</button>
                                 <button id="random-daily-kanji" class="control-button accent-control" type="button">⤨ Random</button>
@@ -75,7 +82,7 @@
                                 <span id="daily-word-tags" class="tag-row"><span class="tag">N5</span></span>
                                 <span id="daily-word-example" class="daily-example">図書館で勉強します。</span>
                             </button>
-                            <div id="wordOfDay-levels" class="section-level-control"></div>
+                            <details class="home-level-details"><summary>Daily Vocabulary levels</summary><div id="wordOfDay-levels" class="section-level-control"></div></details>
                             <div class="card-controls">
                                 <button id="previous-daily-word" class="control-button" type="button">‹ Previous</button>
                                 <button id="random-daily-word" class="control-button accent-control" type="button">⤨ Random</button>
@@ -86,18 +93,19 @@
                     </div>
                 </section>
 
-                <section aria-labelledby="practice-heading">
-                    <div class="section-heading"><div><span class="section-kicker">Practice</span><h2 id="practice-heading">Choose a challenge</h2></div></div>
+                <section class="home-actions-section" aria-labelledby="practice-heading">
+                    <div class="section-heading"><div><span class="section-kicker">Quick actions</span><h2 id="practice-heading">Keep learning</h2></div></div>
                     <div class="feature-grid practice-grid">
                         <button class="feature-card pink-feature" type="button" data-route="quiz" data-quiz-target="kanji"><span class="feature-icon">漢</span><span><strong>Kanji Quiz</strong><small>Test readings and meanings</small></span><b>→</b></button>
                         <button class="feature-card lavender-feature" type="button" data-route="quiz" data-quiz-target="kana"><span class="feature-icon">あ</span><span><strong>Kana Quiz</strong><small>Hiragana and katakana</small></span><b>→</b></button>
                         <button class="feature-card peach-feature" type="button" data-route="quiz" data-quiz-target="vocabulary"><span class="feature-icon">語</span><span><strong>Vocabulary Quiz</strong><small>Practice useful words</small></span><b>→</b></button>
                         <button class="feature-card rose-feature" type="button" data-route="learn-native"><span class="feature-icon">話</span><span><strong>Native Japanese</strong><small>Real expressions and slang</small></span><b>→</b></button>
                         <button class="feature-card lavender-feature" type="button" data-route="translate"><span class="feature-icon">文</span><span><strong>English to Japanese</strong><small>Natural phrases by context</small></span><b>→</b></button>
+                        <button class="feature-card travel-home-card" type="button" data-route="travel"><span class="feature-icon">旅</span><span><strong>Travel Mode</strong><small>Essential Japanese for your trip</small></span><b>→</b></button>
                     </div>
                 </section>
 
-                <section aria-labelledby="saved-study-heading">
+                <section class="home-study-section" aria-labelledby="saved-study-heading">
                     <div class="section-heading"><div><span class="section-kicker">Saved &amp; Study</span><h2 id="saved-study-heading">Your collection</h2></div></div>
                     <button class="saved-study-card" type="button" data-route="saved">
                         <span class="feature-icon outline-icon">♡</span>
@@ -151,6 +159,7 @@
                     <button class="search-filter-chip" type="button" data-search-type="vocabulary">Vocabulary</button>
                     <button class="search-filter-chip" type="button" data-search-type="native">Native</button>
                     <button class="search-filter-chip" type="button" data-search-type="slang">Slang</button>
+                    <button class="search-filter-chip" type="button" data-search-type="travel">Travel</button>
                 </div>
                 <section id="search-jlpt-panel" class="search-jlpt-panel" aria-labelledby="search-jlpt-heading">
                     <div class="search-filter-heading"><h2 id="search-jlpt-heading">JLPT Levels</h2><span id="search-jlpt-summary">All levels</span></div>
