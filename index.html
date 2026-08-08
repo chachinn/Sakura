@@ -18,8 +18,8 @@
         <header class="app-header">
             <button id="open-settings" class="icon-button" type="button" aria-label="Open appearance settings">☰</button>
             <a class="app-brand" href="#home" data-route="home" aria-label="Sakura home">
-                <span aria-hidden="true">🌸</span>
                 <strong>Sakura</strong>
+                <span aria-hidden="true">🌸</span>
             </a>
             <div class="header-actions">
                 <button id="header-search" class="icon-button" type="button" aria-label="Open universal search">⌕</button>
@@ -32,26 +32,26 @@
                 <section class="home-welcome" aria-labelledby="home-title">
                     <div>
                         <span class="section-kicker">今日も一歩ずつ</span>
-                        <h1 id="home-title">Welcome to Sakura</h1>
-                        <p>Keep growing your Japanese, one small step at a time.</p>
+                        <h1 id="home-title">Welcome to Your Garden</h1>
+                        <p>A little Japanese every day, and your garden will bloom.</p>
                     </div>
-                    <button class="home-continue-button" type="button" data-route="learn"><span aria-hidden="true">学</span><strong>Continue</strong></button>
+                    <button class="home-continue-button" type="button" data-route="learn"><span aria-hidden="true">学</span><strong>Continue Learning</strong></button>
                 </section>
 
                 <section class="level-panel home-level-panel" aria-labelledby="global-level-heading">
                     <div class="section-heading compact-heading">
-                        <div><span class="section-kicker">🌸 Study settings</span><h2 id="global-level-heading">JLPT Level</h2></div>
+                        <div><span class="section-kicker">🌿 Your learning path</span><h2 id="global-level-heading">Choose Your Path</h2></div>
                         <span id="global-level-summary" class="selection-summary">Selected: N5</span>
                     </div>
                     <div id="global-jlpt-selector" class="level-chips" role="group" aria-label="Global JLPT levels"></div>
                 </section>
 
                 <section class="home-daily-section" aria-labelledby="daily-heading">
-                    <div class="section-heading"><div><span class="section-kicker">Today’s focus</span><h2 id="daily-heading">Daily Japanese</h2></div><span class="home-section-note">Tap a card for details</span></div>
+                    <div class="section-heading"><div><span class="section-kicker">🌸 Today’s garden</span><h2 id="daily-heading">Today’s Blooms</h2></div><span class="home-section-note">Tap a card for details</span></div>
                     <div class="daily-grid">
                         <article class="daily-card kanji-daily-card">
                             <div class="card-topline">
-                                <button class="card-title-button" type="button" data-open-detail="kanji"><span class="card-icon">漢</span> Kanji of the Day</button>
+                                <button class="card-title-button" type="button" data-open-detail="kanji"><span class="card-icon">漢</span> Kanji in Bloom</button>
                                 <button id="refresh-daily-kanji" class="round-action" type="button" aria-label="Choose random kanji">↻</button>
                             </div>
                             <button class="daily-card-body" type="button" data-open-detail="kanji" aria-label="Open kanji details">
@@ -61,7 +61,7 @@
                                 <span id="daily-kanji-level" class="tag">N5</span>
                                 <span id="daily-kanji-example" class="daily-example">日本（にほん）— Japan</span>
                             </button>
-                            <details class="home-level-details"><summary>Daily Kanji levels</summary><div id="kanjiOfDay-levels" class="section-level-control"></div></details>
+                            <details class="home-level-details"><summary>Kanji Garden Levels</summary><div id="kanjiOfDay-levels" class="section-level-control"></div></details>
                             <div class="card-controls">
                                 <button id="previous-daily-kanji" class="control-button" type="button">‹ Previous</button>
                                 <button id="random-daily-kanji" class="control-button accent-control" type="button">⤨ Random</button>
@@ -72,7 +72,7 @@
 
                         <article class="daily-card word-daily-card">
                             <div class="card-topline">
-                                <button class="card-title-button" type="button" data-open-detail="word"><span class="card-icon">語</span> Word of the Day</button>
+                                <button class="card-title-button" type="button" data-open-detail="word"><span class="card-icon">語</span> Word in Bloom</button>
                                 <button id="refresh-daily-word" class="round-action" type="button" aria-label="Choose random word">↻</button>
                             </div>
                             <button class="daily-card-body" type="button" data-open-detail="word" aria-label="Open word details">
@@ -82,7 +82,7 @@
                                 <span id="daily-word-tags" class="tag-row"><span class="tag">N5</span></span>
                                 <span id="daily-word-example" class="daily-example">図書館で勉強します。</span>
                             </button>
-                            <details class="home-level-details"><summary>Daily Vocabulary levels</summary><div id="wordOfDay-levels" class="section-level-control"></div></details>
+                            <details class="home-level-details"><summary>Word Garden Levels</summary><div id="wordOfDay-levels" class="section-level-control"></div></details>
                             <div class="card-controls">
                                 <button id="previous-daily-word" class="control-button" type="button">‹ Previous</button>
                                 <button id="random-daily-word" class="control-button accent-control" type="button">⤨ Random</button>
@@ -94,7 +94,7 @@
                 </section>
 
                 <section class="home-actions-section" aria-labelledby="practice-heading">
-                    <div class="section-heading"><div><span class="section-kicker">Quick actions</span><h2 id="practice-heading">Keep learning</h2></div></div>
+                    <div class="section-heading"><div><span class="section-kicker">🌿 Garden paths</span><h2 id="practice-heading">Where will we wander today?</h2></div></div>
                     <div class="feature-grid practice-grid">
                         <button class="feature-card pink-feature" type="button" data-route="quiz" data-quiz-target="kanji"><span class="feature-icon">漢</span><span><strong>Kanji Quiz</strong><small>Test readings and meanings</small></span><b>→</b></button>
                         <button class="feature-card lavender-feature" type="button" data-route="quiz" data-quiz-target="kana"><span class="feature-icon">あ</span><span><strong>Kana Quiz</strong><small>Hiragana and katakana</small></span><b>→</b></button>
@@ -106,10 +106,10 @@
                 </section>
 
                 <section class="home-study-section" aria-labelledby="saved-study-heading">
-                    <div class="section-heading"><div><span class="section-kicker">Saved &amp; Study</span><h2 id="saved-study-heading">Your collection</h2></div></div>
+                    <div class="section-heading"><div><span class="section-kicker">🌱 Your garden</span><h2 id="saved-study-heading">Things You’ve Gathered</h2></div></div>
                     <button class="saved-study-card" type="button" data-route="saved">
                         <span class="feature-icon outline-icon">♡</span>
-                        <span><strong>Saved Items / Flashcards</strong><small>Review saved Japanese at your pace</small></span>
+                        <span><strong>Saved Items &amp; Flashcards</strong><small>Your collected Japanese, ready to revisit.</small></span>
                         <span class="saved-count-badge"><b id="home-saved-count">0</b> saved</span>
                         <b>→</b>
                     </button>
