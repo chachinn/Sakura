@@ -824,12 +824,37 @@ const PARTY_SIZE_FORMS = Object.freeze({
     9: { kanji:"九人", kana:"きゅうにん", romaji:"kyuunin", english:"nine" },
     10: { kanji:"十人", kana:"じゅうにん", romaji:"juunin", english:"ten" }
 });
+const TICKET_QUANTITY_FORMS = Object.freeze({
+    1: { kanji:"一枚", kana:"いちまい", romaji:"ichimai", english:"one" },
+    2: { kanji:"二枚", kana:"にまい", romaji:"nimai", english:"two" },
+    3: { kanji:"三枚", kana:"さんまい", romaji:"sanmai", english:"three" },
+    4: { kanji:"四枚", kana:"よんまい", romaji:"yonmai", english:"four" },
+    5: { kanji:"五枚", kana:"ごまい", romaji:"gomai", english:"five" },
+    6: { kanji:"六枚", kana:"ろくまい", romaji:"rokumai", english:"six" },
+    7: { kanji:"七枚", kana:"ななまい", romaji:"nanamai", english:"seven" },
+    8: { kanji:"八枚", kana:"はちまい", romaji:"hachimai", english:"eight" },
+    9: { kanji:"九枚", kana:"きゅうまい", romaji:"kyuumai", english:"nine" },
+    10: { kanji:"十枚", kana:"じゅうまい", romaji:"juumai", english:"ten" }
+});
+const SHOPPING_QUANTITY_FORMS = Object.freeze({
+    1: { kanji:"一つ", kana:"ひとつ", romaji:"hitotsu", english:"one" },
+    2: { kanji:"二つ", kana:"ふたつ", romaji:"futatsu", english:"two" },
+    3: { kanji:"三つ", kana:"みっつ", romaji:"mittsu", english:"three" },
+    4: { kanji:"四つ", kana:"よっつ", romaji:"yottsu", english:"four" },
+    5: { kanji:"五つ", kana:"いつつ", romaji:"itsutsu", english:"five" },
+    6: { kanji:"六つ", kana:"むっつ", romaji:"muttsu", english:"six" },
+    7: { kanji:"七つ", kana:"ななつ", romaji:"nanatsu", english:"seven" },
+    8: { kanji:"八つ", kana:"やっつ", romaji:"yattsu", english:"eight" },
+    9: { kanji:"九つ", kana:"ここのつ", romaji:"kokonotsu", english:"nine" },
+    10: { kanji:"十", kana:"とお", romaji:"too", english:"ten" }
+});
 
 function searchText(value) {
     let normalized = String(Array.isArray(value) ? value.join(" ") : value || "")
         .normalize("NFKC")
         .replace(/\bwhere[\u2019']s\b/gi, "where is")
         .replace(/\bwe[\u2019']re\b/gi, "we are")
+        .replace(/\bi[\u2019']ll\b/gi, "i will")
         .replace(/[.,!?;:\uFF0C\u3002\uFF01\uFF1F\u3001]+/g, " ")
         .replace(/[-\u2010-\u2015]+/g, " ")
         .replace(/[\u3000\s]+/g, " ")
@@ -846,12 +871,57 @@ function searchText(value) {
         .trim();
 }
 
+function searchQuantity(query) {
+    const match = searchText(query).match(/(?:^|\s)(10|[1-9])(?:\s|$)/);
+    return match ? Number(match[1]) : null;
+}
+
+function detectTicketQuantity(query) {
+    const normalized = searchText(query);
+    if (!/\b(?:tickets?|admission|passes?)\b/.test(normalized)) return null;
+    return searchQuantity(normalized);
+}
+
+function buildTicketQuantityVariant(quantity) {
+    const form = TICKET_QUANTITY_FORMS[quantity];
+    if (!form) return null;
+    return {
+        id: `smart-travel:travel.ticket-quantity:${quantity}`,
+        type:"travel", category:"others", subcategory:"Tickets & Admission",
+        japanese:`${form.kanji}お願いします。`, reading:`${form.kana} おねがいします。`, romaji:`${form.romaji} onegai shimasu.`,
+        english:`${form.english.charAt(0).toUpperCase()}${form.english.slice(1)} ticket${quantity === 1 ? "" : "s"}, please.`, literalMeaning:`${form.english.charAt(0).toUpperCase()}${form.english.slice(1)} flat item${quantity === 1 ? "" : "s"}, please.`,
+        naturalUsage:"A concise, polite request for a ticket or admission quantity. Japanese commonly counts tickets with 枚 (mai).",
+        politeness:"polite", priority:"essential", tags:["ticket-quantity", "admission", `quantity-${quantity}`],
+        smartVariant:true, transient:true, intent:"travel.ticket-quantity"
+    };
+}
+
+function detectShoppingQuantity(query) {
+    const normalized = searchText(query);
+    const shoppingContext = /\bof these\b/.test(normalized) || /\bi will take\b/.test(normalized) || /\bcan i get\b.*\bthese\b/.test(normalized);
+    if (!shoppingContext || /\b(?:tickets?|admission|passes?|table|people|party|platform|room|gate|exit|size|floor|pm|am)\b/.test(normalized)) return null;
+    return searchQuantity(normalized);
+}
+
+function buildShoppingQuantityVariant(quantity) {
+    const form = SHOPPING_QUANTITY_FORMS[quantity];
+    if (!form) return null;
+    return {
+        id:`smart-travel:shopping.quantity:${quantity}`,
+        type:"travel", category:"shopping", subcategory:"Essential",
+        japanese:`これを${form.kanji}お願いします。`, reading:`これを ${form.kana} おねがいします。`, romaji:`Kore o ${form.romaji} onegai shimasu.`,
+        english:`I’ll take ${form.english} of these, please.`, literalMeaning:`This, ${form.english} item${quantity === 1 ? "" : "s"}, please.`,
+        naturalUsage:"A polite general-purpose shopping request when pointing to an item. The native Japanese ～つ counter is used through nine; ten is 十 (とお).",
+        politeness:"polite", priority:"essential", tags:["shopping-quantity", "pointing", `quantity-${quantity}`],
+        smartVariant:true, transient:true, intent:"shopping.quantity"
+    };
+}
+
 function detectRestaurantPartySize(query) {
     const normalized = searchText(query);
-    const numberMatch = normalized.match(/(?:^|\s)(10|[1-9])(?:\s|$)/);
-    if (!numberMatch) return null;
-    const partySize = Number(numberMatch[1]);
-    const strongContext = /\btable\b|\bpeople\b|\bparty\b|\bwe are\b/.test(normalized) || new RegExp(`\\bjust\\s+${partySize}\\b`).test(normalized);
+    const partySize = searchQuantity(normalized);
+    if (!partySize) return null;
+    const strongContext = /\btable\b|\bpeople\b|\bparty\b|\bwe are\b|\bof us\b|\breservation\b/.test(normalized) || new RegExp(`\\bjust\\s+${partySize}\\b`).test(normalized);
     return strongContext ? partySize : null;
 }
 
@@ -871,16 +941,19 @@ function buildRestaurantPartySizeVariant(partySize) {
 }
 
 const TRAVEL_SEARCH_INTENTS = Object.freeze([
+    Object.freeze({ id:"travel.ticket-quantity", detect:detectTicketQuantity, build:buildTicketQuantityVariant }),
+    Object.freeze({ id:"shopping.quantity", detect:detectShoppingQuantity, build:buildShoppingQuantityVariant }),
     Object.freeze({ id:"restaurant.party-size", detect:detectRestaurantPartySize, build:buildRestaurantPartySizeVariant })
 ]);
 
 function smartTravelSearchResults(query) {
     if (!query || !["all", "travel"].includes(searchType)) return [];
-    return TRAVEL_SEARCH_INTENTS.flatMap(intent => {
+    for (const intent of TRAVEL_SEARCH_INTENTS) {
         const value = intent.detect(query);
         const item = value === null ? null : intent.build(value);
-        return item ? [{ item, score:2000 }] : [];
-    });
+        if (item) return [{ item, score:2000 }];
+    }
+    return [];
 }
 
 function cleanEntryText(value) {
@@ -1360,7 +1433,7 @@ function renderTravelPhraseCard(phrase) {
     }
     const position = Math.max(0, pool.findIndex(item => item.id === phrase.id));
     currentTravelIndex = position;
-    document.getElementById("travel-category-status").textContent = isSmartVariant ? "Suggested phrase · Restaurants" : pool.length ? `${position + 1} of ${pool.length} · ${currentTravelFilter}` : "Saved travel phrase";
+    document.getElementById("travel-category-status").textContent = isSmartVariant ? `Suggested phrase · ${travelCategoryMetadata(phrase.category)?.title || "Travel"}` : pool.length ? `${position + 1} of ${pool.length} · ${currentTravelFilter}` : "Saved travel phrase";
     const saved = !isSmartVariant && isSaved(phrase);
     list.innerHTML = `<article class="travel-phrase-card">
         <div class="card-topline"><span class="status-label">${escapeSearchHtml(isSmartVariant ? "Suggested phrase" : phrase.subcategory)}</span>${isSmartVariant ? "" : `<button class="save-button ${saved ? "saved" : ""}" type="button" data-save-travel-phrase aria-label="${saved ? "Unsave" : "Save"} travel phrase" aria-pressed="${saved}">${saved ? "♥" : "♡"}</button>`}</div>
