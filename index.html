@@ -11,7 +11,7 @@
     <script>try { document.documentElement.dataset.theme = localStorage.getItem("sakuraAppearanceTheme") || "pink"; } catch (error) { document.documentElement.dataset.theme = "pink"; }</script>
     <link rel="manifest" href="manifest.webmanifest">
     <link rel="apple-touch-icon" href="icons/icon-180.png">
-    <link rel="stylesheet" href="style.css?v=37">
+    <link rel="stylesheet" href="style.css?v=38">
 </head>
 <body>
     <div class="app-shell">
@@ -128,6 +128,7 @@
                     <button class="hub-link" type="button" data-route="translate"><span aria-hidden="true">文</span><span><strong>English to Japanese</strong><small>Natural, context-aware suggestions.</small></span><b aria-hidden="true">›</b></button>
                 </div></section>
                 <section class="hub-section" aria-labelledby="hub-travel-heading"><h2 id="hub-travel-heading">Travel</h2><div class="hub-link-list compact-hub-links">
+                    <label class="hub-travel-mode-toggle"><span aria-hidden="true">✈</span><span><strong>Travel Mode</strong><small>Japanese travel tools in your bottom navigation.</small></span><input id="travel-mode-toggle" type="checkbox" role="switch" aria-label="Show Travel Mode in bottom navigation"></label>
                     <button class="hub-link" type="button" data-route="travel"><span aria-hidden="true">旅</span><span><strong>Travel Mode</strong><small>Browse all travel essentials.</small></span><b aria-hidden="true">›</b></button>
                     <button class="hub-link" type="button" data-route="travel-my-phrases"><span aria-hidden="true">♡</span><span><strong>My Travel Phrases</strong></span><b aria-hidden="true">›</b></button>
                     <button class="hub-link" type="button" data-route="travel-decks"><span aria-hidden="true">🎴</span><span><strong>Phrase Decks</strong></span><b aria-hidden="true">›</b></button>
@@ -237,6 +238,15 @@
                 </article>
             </section>
 
+            <section id="practice-view" class="view practice-view" data-view="practice" aria-labelledby="practice-view-heading" hidden>
+                <div class="page-heading"><span class="section-kicker">🌱 Practice garden</span><h1 id="practice-view-heading">Practice</h1><p>Use the Japanese you’re learning.</p></div>
+                <div class="practice-coming-grid" aria-label="Upcoming practice activities">
+                    <article class="practice-coming-card"><span aria-hidden="true">💬</span><div><h2>What Would You Say?</h2><p>Choose natural Japanese for everyday moments.</p></div><em>Coming soon</em></article>
+                    <article class="practice-coming-card"><span aria-hidden="true">🧩</span><div><h2>Sentence Builder</h2><p>Arrange Japanese into clear, natural sentences.</p></div><em>Coming soon</em></article>
+                    <article class="practice-coming-card"><span aria-hidden="true">🎭</span><div><h2>One Line, Many Personalities</h2><p>See how tone changes the same idea.</p></div><em>Coming soon</em></article>
+                </div>
+            </section>
+
             <section id="native-view" class="view" data-view="native" aria-labelledby="native-heading" hidden>
                 <div class="page-heading native-page-heading"><div><span class="section-kicker">Speak naturally</span><h1 id="native-heading">Native Japanese</h1><p>Everyday expressions and current casual language.</p></div><button id="open-entry-manager" class="primary-button" type="button">＋ Add Entry</button></div>
                 <div class="learn-subnav" role="tablist" aria-label="Learn content">
@@ -275,7 +285,7 @@
             </section>
 
             <section id="travel-view" class="view" data-view="travel" aria-labelledby="travel-heading" hidden>
-                <div class="page-heading"><span class="section-kicker">🌸 Ready to wander?</span><h1 id="travel-heading">Travel Mode</h1><p>Japanese for wherever the journey takes you.</p></div>
+                <div class="page-heading travel-main-heading"><div><span class="section-kicker">🌸 Ready to wander?</span><h1 id="travel-heading">Travel Mode</h1><p>Japanese for wherever the journey takes you.</p></div><button id="travel-header-countdown" class="travel-header-countdown" type="button" data-route="travel-countdown" aria-label="Open Travel Countdown"><span id="travel-header-countdown-label">Set trip →</span></button></div>
                 <div class="travel-category-grid" aria-label="Travel categories">
                     <button class="travel-category-card" type="button" data-route="travel-trains" data-travel-category="trains"><span aria-hidden="true">電</span><div><h2>Trains &amp; Stations</h2><p>Rail and station help.</p></div><b aria-hidden="true">→</b></button>
                     <button class="travel-category-card" type="button" data-route="travel-restaurants" data-travel-category="restaurants"><span aria-hidden="true">食</span><div><h2>Restaurants &amp; Food</h2><p>Ordering and dining.</p></div><b aria-hidden="true">→</b></button>
@@ -284,13 +294,13 @@
                     <button class="travel-category-card" type="button" data-route="travel-taxi" data-travel-category="taxi"><span aria-hidden="true">車</span><div><h2>Taxi &amp; Directions</h2><p>Getting where you need to go.</p></div><b aria-hidden="true">→</b></button>
                     <button class="travel-category-card" type="button" data-route="travel-emergencies" data-travel-category="emergencies"><span aria-hidden="true">助</span><div><h2>Emergencies &amp; Health</h2><p>Essential help and care.</p></div><b aria-hidden="true">→</b></button>
                 </div>
+                <button class="travel-feature-card" type="button" data-route="travel-others" data-travel-category="others"><span aria-hidden="true">🌸</span><div><h2>Others</h2><p>Little moments around Japan.</p></div><b aria-hidden="true">→</b></button>
                 <button class="travel-feature-card travel-pouch-launch" type="button" data-route="travel-my-phrases"><span aria-hidden="true">♡</span><div><h2>My Travel Phrases</h2><p>Saved phrases ready for your trip.</p></div><b aria-hidden="true">→</b></button>
                 <button class="travel-feature-card" type="button" data-route="travel-decks"><span aria-hidden="true">🎴</span><div><h2>Phrase Decks</h2><p>Build collections for the moments ahead.</p></div><b aria-hidden="true">→</b></button>
                 <button class="travel-feature-card" type="button" data-route="travel-notes"><span aria-hidden="true">📝</span><div><h2>Personal Notes</h2><p>Keep trip details handy offline.</p></div><b aria-hidden="true">→</b></button>
+                <button class="travel-feature-card" type="button" data-route="travel-yen"><span aria-hidden="true">¥</span><div><h2>Yen Converter</h2><p>Calculate prices in yen and pesos.</p></div><b aria-hidden="true">→</b></button>
                 <button class="travel-feature-card" type="button" data-route="travel-countdown"><span aria-hidden="true">🗓️</span><div><h2>Travel Countdown</h2><p id="travel-countdown-card-summary">Plan your next adventure.</p></div><b aria-hidden="true">→</b></button>
                 <button class="travel-feature-card" type="button" data-route="travel-offline"><span aria-hidden="true">⇩</span><div><h2>Offline Travel Pack</h2><p id="travel-offline-card-summary">Prepare all 720 phrases for your trip.</p></div><b aria-hidden="true">→</b></button>
-                <button class="travel-feature-card" type="button" data-route="travel-others" data-travel-category="others"><span aria-hidden="true">🌸</span><div><h2>Others</h2><p>Little moments around Japan.</p></div><b aria-hidden="true">→</b></button>
-                <button class="travel-feature-card" type="button" data-route="travel-yen"><span aria-hidden="true">¥</span><div><h2>Yen Converter</h2><p>Calculate prices in yen and pesos.</p></div><b aria-hidden="true">→</b></button>
             </section>
 
             <section id="travel-yen-view" class="view" data-view="travel-yen" aria-labelledby="travel-yen-heading" hidden>
@@ -435,7 +445,7 @@
             <button class="nav-button active" type="button" data-route="home"><span>⌂</span><small>Home</small></button>
             <button class="nav-button" type="button" data-route="learn"><span>▤</span><small>Learn</small></button>
             <button class="nav-button" type="button" data-route="quiz"><span>✎</span><small>Quiz</small></button>
-            <button class="nav-button" type="button" data-route="travel"><span>✈</span><small>Travel</small></button>
+            <button id="dynamic-fourth-nav" class="nav-button" type="button" data-route="travel"><span>✈</span><small>Travel</small></button>
             <button class="nav-button" type="button" data-route="saved"><span>♡</span><small>Saved</small></button>
         </nav>
     </div>

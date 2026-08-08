@@ -23,6 +23,7 @@ const STORAGE = {
     travelPhraseDecks: "sakuraTravelPhraseDecks",
     travelNotes: "sakuraTravelNotes",
     travelCountdown: "sakuraTravelCountdown",
+    travelModeEnabled: "sakuraTravelModeEnabled",
     travelOfflinePack: "sakuraTravelOfflinePack",
     yenConverter: "sakuraYenConverter",
     migrationVersion: "sakuraDataMigrationVersion",
@@ -57,7 +58,7 @@ const SECTION_NAMES = ["kanjiOfDay", "wordOfDay", "randomKanji", "randomVocabula
 const NATIVE_CATEGORIES = ["Everyday casual", "Natural polite speech", "Reactions", "Travel", "Workplace", "Friends", "Texting", "Restaurants", "Shopping", "Transportation", "Hotels", "Social situations"];
 const SLANG_CATEGORIES = ["Gyaru", "SNS / Social Media", "Internet", "Youth", "Casual Spoken", "Workplace / Office", "Anime / Otaku", "Oshi / Fandom", "Gaming", "Dating / Romance", "Friendship / Social", "School / Student", "Beauty / Fashion", "Food / Going Out", "Drinking / Nightlife", "Music / Concert", "Memes / Reactions", "Texting / LINE / DMs", "Gen Z / Reiwa", "Heisei / Retro", "Kansai", "Regional Dialects", "Strong Language / Insults", "Sarcasm / Passive Aggressive", "Fillers / Reaction Words", "Abbreviations", "Loanword Slang", "Things Textbooks Never Teach"];
 const SLANG_CATEGORY_OPTIONS = [
-    ["All", "🌸 All Slang"], ["Gyaru", "💖 Gyaru"], ["SNS / Social Media", "📱 SNS / Social Media"], ["Internet", "🌐 Internet"], ["Youth", "✨ Youth"], ["Casual Spoken", "🗣️ Casual Spoken"], ["Workplace / Office", "💼 Workplace / Office"], ["Anime / Otaku", "🎌 Anime / Otaku"], ["Oshi / Fandom", "⭐ Oshi / Fandom"], ["Gaming", "🎮 Gaming"], ["Dating / Romance", "💕 Dating / Romance"], ["Friendship / Social", "🫶 Friendship / Social"], ["School / Student", "🎓 School / Student"], ["Beauty / Fashion", "💄 Beauty / Fashion"], ["Food / Going Out", "🍜 Food / Going Out"], ["Drinking / Nightlife", "🍻 Drinking / Nightlife"], ["Music / Concert", "🎤 Music / Concert"], ["Memes / Reactions", "😂 Memes / Reactions"], ["Texting / LINE / DMs", "💬 Texting / LINE / DMs"], ["Gen Z / Reiwa", "🆕 Gen Z / Reiwa"], ["Heisei / Retro", "📼 Heisei / Retro"], ["Kansai", "🐙 Kansai"], ["Regional Dialects", "🗾 Regional Dialects"], ["Strong Language / Insults", "😈 Strong Language / Insults"], ["Sarcasm / Passive Aggressive", "👀 Sarcasm / Passive Aggressive"], ["Fillers / Reaction Words", "💭 Fillers / Reaction Words"], ["Abbreviations", "✂️ Abbreviations"], ["Loanword Slang", "🔤 Loanword Slang"], ["Things Textbooks Never Teach", "📚 Things Textbooks Never Teach"]
+    ["All", "All Slang"], ["Gyaru", "Gyaru"], ["SNS / Social Media", "SNS / Social Media"], ["Internet", "Internet"], ["Youth", "Youth"], ["Casual Spoken", "Casual Spoken"], ["Workplace / Office", "Workplace / Office"], ["Anime / Otaku", "Anime / Otaku"], ["Oshi / Fandom", "Oshi / Fandom"], ["Gaming", "Gaming"], ["Dating / Romance", "Dating / Romance"], ["Friendship / Social", "Friendship / Social"], ["School / Student", "School / Student"], ["Beauty / Fashion", "Beauty / Fashion"], ["Food / Going Out", "Food / Going Out"], ["Drinking / Nightlife", "Drinking / Nightlife"], ["Music / Concert", "Music / Concert"], ["Memes / Reactions", "Memes / Reactions"], ["Texting / LINE / DMs", "Texting / LINE / DMs"], ["Gen Z / Reiwa", "Gen Z / Reiwa"], ["Heisei / Retro", "Heisei / Retro"], ["Kansai", "Kansai"], ["Regional Dialects", "Regional Dialects"], ["Strong Language / Insults", "Strong Language / Insults"], ["Sarcasm / Passive Aggressive", "Sarcasm / Passive Aggressive"], ["Fillers / Reaction Words", "Fillers / Reaction Words"], ["Abbreviations", "Abbreviations"], ["Loanword Slang", "Loanword Slang"], ["Things Textbooks Never Teach", "Things Textbooks Never Teach"]
 ];
 const LEGACY_SLANG_CATEGORY_MAP = { "Youth slang":"Youth", "Social media":"SNS / Social Media", "Internet":"Internet", "Everyday casual":"Casual Spoken", "Workplace":"Workplace / Office", "Anime versus real life":"Anime / Otaku", "Gaming":"Gaming", "Friends":"Friendship / Social", "Reactions":"Memes / Reactions", "Texting":"Texting / LINE / DMs", "Gyaru":"Gyaru", "TikTok / short-form social media":"SNS / Social Media", "X / online posts":"SNS / Social Media" };
 function authoritativeSlangCategories(values) {
@@ -262,6 +263,9 @@ let travelNotes = readJson(STORAGE.travelNotes, []);
 if (!Array.isArray(travelNotes)) travelNotes = [];
 let travelCountdown = readJson(STORAGE.travelCountdown, null);
 if (!travelCountdown || typeof travelCountdown !== "object" || Array.isArray(travelCountdown)) travelCountdown = null;
+const storedTravelModeEnabled = localStorage.getItem(STORAGE.travelModeEnabled);
+let travelModeEnabled = storedTravelModeEnabled === null ? true : storedTravelModeEnabled === "true";
+if (storedTravelModeEnabled === null) localStorage.setItem(STORAGE.travelModeEnabled, "true");
 let travelOfflinePackMetadata = readJson(STORAGE.travelOfflinePack, null);
 if (!travelOfflinePackMetadata || typeof travelOfflinePackMetadata !== "object" || Array.isArray(travelOfflinePackMetadata)) travelOfflinePackMetadata = null;
 const TRAVEL_OFFLINE_CACHE = "sakura-travel-content-v1";
@@ -2106,9 +2110,25 @@ function getTravelCountdownState(record = travelCountdown, today = localCalendar
     const end = parseCalendarDate(record?.endDate) || start;
     const daysUntilStart = start.dayNumber - today.dayNumber;
     if (daysUntilStart > 0) return { kind:"upcoming", label:"Upcoming trip", text:`${daysUntilStart} day${daysUntilStart === 1 ? "" : "s"} to go` };
-    if (today.dayNumber === start.dayNumber) return { kind:"active", label:"Trip starts today", text:"Trip time! 🌸" };
-    if (today.dayNumber <= end.dayNumber) return { kind:"active", label:"Trip in progress", text:"You’re on your trip 🌸" };
+    if (today.dayNumber === start.dayNumber) return { kind:"active", label:"Trip starts today", text:"Trip time! 🌸", day:1 };
+    if (today.dayNumber <= end.dayNumber) return { kind:"active", label:"Trip in progress", text:"You’re on your trip 🌸", day:today.dayNumber - start.dayNumber + 1 };
     return { kind:"completed", label:"Completed trip", text:"Trip completed 🌸" };
+}
+
+function renderTravelHeaderCountdown() {
+    const label = document.getElementById("travel-header-countdown-label");
+    const button = document.getElementById("travel-header-countdown");
+    if (!label || !button) return;
+    const state = getTravelCountdownState();
+    button.dataset.countdownState = state?.kind || "empty";
+    if (!state) label.textContent = "Set trip →";
+    else if (state.kind === "upcoming") {
+        const days = parseCalendarDate(travelCountdown.startDate).dayNumber - localCalendarDay().dayNumber;
+        label.textContent = `🌸 ${days} day${days === 1 ? "" : "s"}`;
+    }
+    else if (state.kind === "active" && state.day === 1) label.textContent = "✈️ Today";
+    else if (state.kind === "active") label.textContent = `✈️ Day ${state.day}`;
+    else label.textContent = "Trip complete";
 }
 
 function formatTravelCalendarDate(date, includeYear = true) {
@@ -2125,6 +2145,7 @@ function formatTravelCountdownDates(record = travelCountdown) {
 }
 
 function renderTravelCountdown() {
+    renderTravelHeaderCountdown();
     const empty = document.getElementById("travel-countdown-empty");
     if (!empty) return;
     const detail = document.getElementById("travel-countdown-card");
@@ -2144,6 +2165,24 @@ function renderTravelCountdown() {
     document.getElementById("travel-countdown-dates").textContent = formatTravelCountdownDates();
     detail.dataset.countdownState = state.kind;
     if (summary) summary.textContent = `${tripName} · ${state.text}`;
+}
+
+function renderTravelModeNavigation() {
+    const nav = document.getElementById("dynamic-fourth-nav");
+    const toggle = document.getElementById("travel-mode-toggle");
+    if (toggle) toggle.checked = travelModeEnabled;
+    if (!nav) return;
+    nav.dataset.route = travelModeEnabled ? "travel" : "practice";
+    nav.querySelector("span").textContent = travelModeEnabled ? "✈" : "✿";
+    nav.querySelector("small").textContent = travelModeEnabled ? "Travel" : "Practice";
+    nav.setAttribute("aria-label", travelModeEnabled ? "Travel" : "Practice");
+}
+
+function setTravelModeEnabled(enabled) {
+    travelModeEnabled = Boolean(enabled);
+    localStorage.setItem(STORAGE.travelModeEnabled, String(travelModeEnabled));
+    renderTravelModeNavigation();
+    if (!travelModeEnabled && (currentRoute === "travel" || currentRoute.startsWith("travel-"))) showRoute("home");
 }
 
 function openTravelCountdownEditor() {
@@ -2711,6 +2750,7 @@ function showRoute(route, updateHash = true) {
     if (normalizedRoute === "travel-countdown") renderTravelCountdown();
     if (normalizedRoute === "travel-offline") verifyTravelOfflinePack();
     if (normalizedRoute === "travel-yen") renderYenConverter();
+    if (normalizedRoute === "travel") renderTravelHeaderCountdown();
     if (deckRouteMatch) renderCurrentTravelDeck();
     const mainRoute = travelCategory || isTravelUtilityRoute ? "travel" : ["search", "translate", "learn-native", "learn-slang"].includes(normalizedRoute) ? "learn" : normalizedRoute.replace("-detail", "");
     document.querySelectorAll(".nav-button").forEach(button => button.classList.toggle("active", button.dataset.route === mainRoute || (normalizedRoute.includes("detail") && button.dataset.route === detailReturnRoute)));
@@ -3026,6 +3066,7 @@ function addListeners() {
         if (quizTarget) showQuizTab(quizTarget);
     }));
     document.getElementById("open-hub").addEventListener("click", () => showRoute("hub"));
+    document.getElementById("travel-mode-toggle").addEventListener("change", event => setTravelModeEnabled(event.target.checked));
     document.getElementById("header-appearance").addEventListener("click", openAppearanceSettings);
     document.querySelectorAll("[data-hub-action]").forEach(button => button.addEventListener("click", () => {
         if (button.dataset.hubAction === "appearance") openAppearanceSettings();
@@ -3373,6 +3414,7 @@ function initializeApp() {
     renderTranslationChips();
     renderTranslationHistory();
     renderTravelCountdown();
+    renderTravelModeNavigation();
     renderTravelOfflinePack();
     renderYenConverter();
     refreshNativeCategories();
@@ -3394,7 +3436,7 @@ function initializeApp() {
     const requestedRoute = location.hash.replace("#", "");
     const travelRoutes = Object.keys(window.TRAVEL_CATEGORIES || {}).map(category => `travel-${category}`);
     const validDeckRoute = /^travel-deck-deck-.+/.test(requestedRoute);
-    showRoute(["home", "learn", "learn-native", "learn-slang", "search", "translate", "quiz", "native", "travel", "travel-my-phrases", "travel-decks", "travel-notes", "travel-countdown", "travel-offline", "travel-yen", "saved", ...travelRoutes].includes(requestedRoute) || validDeckRoute ? requestedRoute : "home", false);
+    showRoute(["home", "hub", "learn", "learn-native", "learn-slang", "search", "translate", "quiz", "practice", "native", "travel", "travel-my-phrases", "travel-decks", "travel-notes", "travel-countdown", "travel-offline", "travel-yen", "saved", ...travelRoutes].includes(requestedRoute) || validDeckRoute ? requestedRoute : "home", false);
     initializePwaUpdates();
 }
 
