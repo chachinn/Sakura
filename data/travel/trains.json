@@ -1,0 +1,1603 @@
+[
+  {
+    "id": "travel-trains-001",
+    "type": "travel",
+    "category": "trains",
+    "subcategory": "Essential",
+    "japanese": "すみません、駅はどこですか？",
+    "reading": "すみません、えきはどこですか？",
+    "romaji": "sumimasen, eki wa doko desu ka?",
+    "english": "Excuse me, where is the station?",
+    "literalMeaning": "Excuse me, where is the station?",
+    "naturalUsage": "A simple, natural way to ask for the nearest station.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "station",
+      "directions"
+    ]
+  },
+  {
+    "id": "travel-trains-002",
+    "type": "travel",
+    "category": "trains",
+    "subcategory": "Essential",
+    "japanese": "この電車は東京駅に行きますか？",
+    "reading": "このでんしゃはとうきょうえきにいきますか？",
+    "romaji": "kono densha wa Toukyou-eki ni ikimasu ka?",
+    "english": "Does this train go to Tokyo Station?",
+    "literalMeaning": "Does this train go to Tokyo Station?",
+    "naturalUsage": "Use before boarding when you want to confirm the destination.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "destination",
+      "confirm"
+    ]
+  },
+  {
+    "id": "travel-trains-003",
+    "type": "travel",
+    "category": "trains",
+    "subcategory": "Essential",
+    "japanese": "これは新宿行きですか？",
+    "reading": "これはしんじゅくいきですか？",
+    "romaji": "kore wa Shinjuku-yuki desu ka?",
+    "english": "Is this bound for Shinjuku?",
+    "literalMeaning": "Is this Shinjuku-bound?",
+    "naturalUsage": "〜行き is the standard way to say a train is bound for a destination.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "destination",
+      "bound-for"
+    ]
+  },
+  {
+    "id": "travel-trains-004",
+    "type": "travel",
+    "category": "trains",
+    "subcategory": "Essential",
+    "japanese": "何番線ですか？",
+    "reading": "なんばんせんですか？",
+    "romaji": "nan-bansen desu ka?",
+    "english": "Which platform is it?",
+    "literalMeaning": "What platform number is it?",
+    "naturalUsage": "A concise question commonly used with station staff.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "platform"
+    ]
+  },
+  {
+    "id": "travel-trains-005",
+    "type": "travel",
+    "category": "trains",
+    "subcategory": "Essential",
+    "japanese": "この電車で合っていますか？",
+    "reading": "このでんしゃであっていますか？",
+    "romaji": "kono densha de atteimasu ka?",
+    "english": "Am I on the right train?",
+    "literalMeaning": "Is this train correct?",
+    "naturalUsage": "Natural when you want reassurance before or after boarding.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "confirm",
+      "train"
+    ]
+  },
+  {
+    "id": "travel-trains-006",
+    "type": "travel",
+    "category": "trains",
+    "subcategory": "Essential",
+    "japanese": "次の電車は何時ですか？",
+    "reading": "つぎのでんしゃはなんじですか？",
+    "romaji": "tsugi no densha wa nanji desu ka?",
+    "english": "What time is the next train?",
+    "literalMeaning": "What time is the next train?",
+    "naturalUsage": "Useful after missing a train or while waiting.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "schedule",
+      "next-train"
+    ]
+  },
+  {
+    "id": "travel-trains-007",
+    "type": "travel",
+    "category": "trains",
+    "subcategory": "Essential",
+    "japanese": "出口はどちらですか？",
+    "reading": "でぐちはどちらですか？",
+    "romaji": "deguchi wa dochira desu ka?",
+    "english": "Which way is the exit?",
+    "literalMeaning": "Which direction is the exit?",
+    "naturalUsage": "Polite and natural at stations.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "exit",
+      "directions"
+    ]
+  },
+  {
+    "id": "travel-trains-008",
+    "type": "travel",
+    "category": "trains",
+    "subcategory": "Essential",
+    "japanese": "改札はどこですか？",
+    "reading": "かいさつはどこですか？",
+    "romaji": "kaisatsu wa doko desu ka?",
+    "english": "Where are the ticket gates?",
+    "literalMeaning": "Where are the ticket gates?",
+    "naturalUsage": "Useful in large stations where gates can be hard to find.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "ticket-gate"
+    ]
+  },
+  {
+    "id": "travel-trains-009",
+    "type": "travel",
+    "category": "trains",
+    "subcategory": "Essential",
+    "japanese": "すみません、通ります。",
+    "reading": "すみません、とおります。",
+    "romaji": "sumimasen, toorimasu.",
+    "english": "Excuse me, coming through.",
+    "literalMeaning": "Excuse me, I will pass through.",
+    "naturalUsage": "Natural when moving through a crowded train or platform.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "crowded",
+      "polite"
+    ]
+  },
+  {
+    "id": "travel-trains-010",
+    "type": "travel",
+    "category": "trains",
+    "subcategory": "Essential",
+    "japanese": "次で降ります。",
+    "reading": "つぎでおります。",
+    "romaji": "tsugi de orimasu.",
+    "english": "I'm getting off at the next stop.",
+    "literalMeaning": "I get off at the next one.",
+    "naturalUsage": "Useful when moving toward the door before your stop.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "getting-off"
+    ]
+  },
+  {
+    "id": "travel-trains-011",
+    "type": "travel",
+    "category": "trains",
+    "subcategory": "Essential",
+    "japanese": "この席、空いていますか？",
+    "reading": "このせき、あいていますか？",
+    "romaji": "kono seki, aiteimasu ka?",
+    "english": "Is this seat free?",
+    "literalMeaning": "Is this seat open?",
+    "naturalUsage": "Use before sitting when it is unclear whether someone is using the seat.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "seat"
+    ]
+  },
+  {
+    "id": "travel-trains-012",
+    "type": "travel",
+    "category": "trains",
+    "subcategory": "Essential",
+    "japanese": "荷物をここに置いてもいいですか？",
+    "reading": "にもつをここにおいてもいいですか？",
+    "romaji": "nimotsu o koko ni oite mo ii desu ka?",
+    "english": "May I put my luggage here?",
+    "literalMeaning": "Is it okay if I put my luggage here?",
+    "naturalUsage": "Useful around luggage racks or shared storage areas.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "luggage",
+      "permission"
+    ]
+  },
+  {
+    "id": "travel-trains-013",
+    "type": "travel",
+    "category": "trains",
+    "subcategory": "Essential",
+    "japanese": "この電車は快速ですか？",
+    "reading": "このでんしゃはかいそくですか？",
+    "romaji": "kono densha wa kaisoku desu ka?",
+    "english": "Is this a rapid train?",
+    "literalMeaning": "Is this train rapid?",
+    "naturalUsage": "Use to confirm the service type before boarding.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "rapid",
+      "service-type"
+    ]
+  },
+  {
+    "id": "travel-trains-014",
+    "type": "travel",
+    "category": "trains",
+    "subcategory": "Essential",
+    "japanese": "この電車は各駅停車ですか？",
+    "reading": "このでんしゃはかくえきていしゃですか？",
+    "romaji": "kono densha wa kakueki-teisha desu ka?",
+    "english": "Is this a local train that stops at every station?",
+    "literalMeaning": "Does this train stop at every station?",
+    "naturalUsage": "Useful when distinguishing local service from rapid or express trains.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "local",
+      "service-type"
+    ]
+  },
+  {
+    "id": "travel-trains-015",
+    "type": "travel",
+    "category": "trains",
+    "subcategory": "Essential",
+    "japanese": "駅員さんに聞いてみます。",
+    "reading": "えきいんさんにきいてみます。",
+    "romaji": "ekiin-san ni kiite mimasu.",
+    "english": "I'll ask a station staff member.",
+    "literalMeaning": "I'll try asking station staff.",
+    "naturalUsage": "Useful when deciding to ask for help.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "staff",
+      "help"
+    ]
+  },
+  {
+    "id": "travel-trains-016",
+    "type": "travel",
+    "category": "trains",
+    "subcategory": "Tickets",
+    "japanese": "切符を一枚お願いします。",
+    "reading": "きっぷをいちまいおねがいします。",
+    "romaji": "kippu o ichimai onegai shimasu.",
+    "english": "One ticket, please.",
+    "literalMeaning": "One ticket, please.",
+    "naturalUsage": "Basic ticket-purchase phrase at a staffed counter.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "ticket",
+      "purchase"
+    ]
+  },
+  {
+    "id": "travel-trains-017",
+    "type": "travel",
+    "category": "trains",
+    "subcategory": "Tickets",
+    "japanese": "新宿までの切符をお願いします。",
+    "reading": "しんじゅくまでのきっぷをおねがいします。",
+    "romaji": "Shinjuku made no kippu o onegai shimasu.",
+    "english": "A ticket to Shinjuku, please.",
+    "literalMeaning": "A ticket as far as Shinjuku, please.",
+    "naturalUsage": "Natural way to specify your destination when buying a ticket.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "ticket",
+      "destination"
+    ]
+  },
+  {
+    "id": "travel-trains-018",
+    "type": "travel",
+    "category": "trains",
+    "subcategory": "Tickets",
+    "japanese": "往復でお願いします。",
+    "reading": "おうふくでおねがいします。",
+    "romaji": "oufuku de onegai shimasu.",
+    "english": "Round trip, please.",
+    "literalMeaning": "As a round trip, please.",
+    "naturalUsage": "Useful where round-trip tickets are available.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "ticket",
+      "round-trip"
+    ]
+  },
+  {
+    "id": "travel-trains-019",
+    "type": "travel",
+    "category": "trains",
+    "subcategory": "Tickets",
+    "japanese": "片道でお願いします。",
+    "reading": "かたみちでおねがいします。",
+    "romaji": "katamichi de onegai shimasu.",
+    "english": "One way, please.",
+    "literalMeaning": "As a one-way trip, please.",
+    "naturalUsage": "Useful when clarifying that you need a one-way ticket.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "ticket",
+      "one-way"
+    ]
+  },
+  {
+    "id": "travel-trains-020",
+    "type": "travel",
+    "category": "trains",
+    "subcategory": "Tickets",
+    "japanese": "指定席をお願いします。",
+    "reading": "していせきをおねがいします。",
+    "romaji": "shiteiseki o onegai shimasu.",
+    "english": "A reserved seat, please.",
+    "literalMeaning": "A reserved seat, please.",
+    "naturalUsage": "Common at JR counters and for limited express or Shinkansen travel.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "reserved-seat"
+    ]
+  },
+  {
+    "id": "travel-trains-021",
+    "type": "travel",
+    "category": "trains",
+    "subcategory": "Tickets",
+    "japanese": "自由席はありますか？",
+    "reading": "じゆうせきはありますか？",
+    "romaji": "jiyuuseki wa arimasu ka?",
+    "english": "Are there non-reserved seats?",
+    "literalMeaning": "Are there unreserved seats?",
+    "naturalUsage": "Useful when checking whether a service offers unreserved seating.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "unreserved-seat"
+    ]
+  },
+  {
+    "id": "travel-trains-022",
+    "type": "travel",
+    "category": "trains",
+    "subcategory": "Tickets",
+    "japanese": "窓側の席はありますか？",
+    "reading": "まどがわのせきはありますか？",
+    "romaji": "madogawa no seki wa arimasu ka?",
+    "english": "Is a window seat available?",
+    "literalMeaning": "Is there a seat on the window side?",
+    "naturalUsage": "Useful when requesting a reserved seat.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "seat",
+      "window"
+    ]
+  },
+  {
+    "id": "travel-trains-023",
+    "type": "travel",
+    "category": "trains",
+    "subcategory": "Tickets",
+    "japanese": "通路側の席はありますか？",
+    "reading": "つうろがわのせきはありますか？",
+    "romaji": "tsuurogawa no seki wa arimasu ka?",
+    "english": "Is an aisle seat available?",
+    "literalMeaning": "Is there a seat on the aisle side?",
+    "naturalUsage": "Useful when requesting an aisle seat.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "seat",
+      "aisle"
+    ]
+  },
+  {
+    "id": "travel-trains-024",
+    "type": "travel",
+    "category": "trains",
+    "subcategory": "Tickets",
+    "japanese": "ICカードは使えますか？",
+    "reading": "あいしーかーどはつかえますか？",
+    "romaji": "ai-shii kaado wa tsukaemasu ka?",
+    "english": "Can I use an IC card?",
+    "literalMeaning": "Can an IC card be used?",
+    "naturalUsage": "Useful for checking Suica/PASMO/ICOCA compatibility.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "IC-card",
+      "payment"
+    ]
+  },
+  {
+    "id": "travel-trains-025",
+    "type": "travel",
+    "category": "trains",
+    "subcategory": "Tickets",
+    "japanese": "この切符で乗れますか？",
+    "reading": "このきっぷでのれますか？",
+    "romaji": "kono kippu de noremasu ka?",
+    "english": "Can I ride with this ticket?",
+    "literalMeaning": "Can I board using this ticket?",
+    "naturalUsage": "Useful when unsure whether your ticket covers the service.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "ticket",
+      "confirm"
+    ]
+  },
+  {
+    "id": "travel-trains-026",
+    "type": "travel",
+    "category": "trains",
+    "subcategory": "Tickets",
+    "japanese": "特急券は必要ですか？",
+    "reading": "とっきゅうけんはひつようですか？",
+    "romaji": "tokkyuuken wa hitsuyou desu ka?",
+    "english": "Do I need a limited express ticket?",
+    "literalMeaning": "Is a limited express ticket necessary?",
+    "naturalUsage": "Some trains require an additional limited-express ticket.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "limited-express",
+      "ticket"
+    ]
+  },
+  {
+    "id": "travel-trains-027",
+    "type": "travel",
+    "category": "trains",
+    "subcategory": "Tickets",
+    "japanese": "乗車券だけで大丈夫ですか？",
+    "reading": "じょうしゃけんだけでだいじょうぶですか？",
+    "romaji": "joushaken dake de daijoubu desu ka?",
+    "english": "Is the basic fare ticket enough?",
+    "literalMeaning": "Is just the boarding ticket okay?",
+    "naturalUsage": "Use when checking whether another surcharge ticket is required.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "fare",
+      "ticket"
+    ]
+  },
+  {
+    "id": "travel-trains-028",
+    "type": "travel",
+    "category": "trains",
+    "subcategory": "Tickets",
+    "japanese": "切符をなくしました。",
+    "reading": "きっぷをなくしました。",
+    "romaji": "kippu o nakushimashita.",
+    "english": "I lost my ticket.",
+    "literalMeaning": "I lost the ticket.",
+    "naturalUsage": "Tell station staff immediately if you lose a paper ticket.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "lost-ticket"
+    ]
+  },
+  {
+    "id": "travel-trains-029",
+    "type": "travel",
+    "category": "trains",
+    "subcategory": "Tickets",
+    "japanese": "切符が改札を通りません。",
+    "reading": "きっぷがかいさつをとおりません。",
+    "romaji": "kippu ga kaisatsu o toorimasen.",
+    "english": "My ticket won't go through the gate.",
+    "literalMeaning": "The ticket does not pass through the gate.",
+    "naturalUsage": "Use when an automatic gate rejects your ticket.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "ticket-gate",
+      "problem"
+    ]
+  },
+  {
+    "id": "travel-trains-030",
+    "type": "travel",
+    "category": "trains",
+    "subcategory": "Tickets",
+    "japanese": "精算はどこでできますか？",
+    "reading": "せいさんはどこでできますか？",
+    "romaji": "seisan wa doko de dekimasu ka?",
+    "english": "Where can I adjust the fare?",
+    "literalMeaning": "Where can I settle the fare difference?",
+    "naturalUsage": "Useful when your ticket or IC-card fare needs adjustment.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "fare-adjustment"
+    ]
+  },
+  {
+    "id": "travel-trains-031",
+    "type": "travel",
+    "category": "trains",
+    "subcategory": "Platforms",
+    "japanese": "新宿行きは何番線ですか？",
+    "reading": "しんじゅくいきはなんばんせんですか？",
+    "romaji": "Shinjuku-yuki wa nan-bansen desu ka?",
+    "english": "Which platform is the train for Shinjuku?",
+    "literalMeaning": "What platform number is the Shinjuku-bound train?",
+    "naturalUsage": "One of the most useful station questions.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "platform",
+      "destination"
+    ]
+  },
+  {
+    "id": "travel-trains-032",
+    "type": "travel",
+    "category": "trains",
+    "subcategory": "Platforms",
+    "japanese": "このホームで合っていますか？",
+    "reading": "このほーむであっていますか？",
+    "romaji": "kono hoomu de atteimasu ka?",
+    "english": "Is this the right platform?",
+    "literalMeaning": "Is this platform correct?",
+    "naturalUsage": "Natural way to confirm you are waiting in the right place.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "platform",
+      "confirm"
+    ]
+  },
+  {
+    "id": "travel-trains-033",
+    "type": "travel",
+    "category": "trains",
+    "subcategory": "Platforms",
+    "japanese": "電車はどちらから来ますか？",
+    "reading": "でんしゃはどちらからきますか？",
+    "romaji": "densha wa dochira kara kimasu ka?",
+    "english": "Which direction will the train come from?",
+    "literalMeaning": "From which direction does the train come?",
+    "naturalUsage": "Useful at unfamiliar platforms.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "platform",
+      "direction"
+    ]
+  },
+  {
+    "id": "travel-trains-034",
+    "type": "travel",
+    "category": "trains",
+    "subcategory": "Platforms",
+    "japanese": "何両目ですか？",
+    "reading": "なんりょうめですか？",
+    "romaji": "nan-ryoume desu ka?",
+    "english": "Which car is it?",
+    "literalMeaning": "Which numbered train car is it?",
+    "naturalUsage": "Useful when looking for a reserved car or meeting point.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "train-car"
+    ]
+  },
+  {
+    "id": "travel-trains-035",
+    "type": "travel",
+    "category": "trains",
+    "subcategory": "Platforms",
+    "japanese": "指定席は何号車ですか？",
+    "reading": "していせきはなんごうしゃですか？",
+    "romaji": "shiteiseki wa nan-gousha desu ka?",
+    "english": "Which car has the reserved seats?",
+    "literalMeaning": "What car number is the reserved-seat car?",
+    "naturalUsage": "Useful on limited express and Shinkansen services.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "reserved-seat",
+      "train-car"
+    ]
+  },
+  {
+    "id": "travel-trains-036",
+    "type": "travel",
+    "category": "trains",
+    "subcategory": "Platforms",
+    "japanese": "自由席は何号車ですか？",
+    "reading": "じゆうせきはなんごうしゃですか？",
+    "romaji": "jiyuuseki wa nan-gousha desu ka?",
+    "english": "Which cars are non-reserved?",
+    "literalMeaning": "What car number has unreserved seats?",
+    "naturalUsage": "Useful for trains with both reserved and non-reserved cars.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "unreserved-seat",
+      "train-car"
+    ]
+  },
+  {
+    "id": "travel-trains-037",
+    "type": "travel",
+    "category": "trains",
+    "subcategory": "Platforms",
+    "japanese": "女性専用車はどこですか？",
+    "reading": "じょせいせんようしゃはどこですか？",
+    "romaji": "josei senyou-sha wa doko desu ka?",
+    "english": "Where is the women-only car?",
+    "literalMeaning": "Where is the women-only train car?",
+    "naturalUsage": "Useful on lines that operate women-only cars during certain hours.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "women-only-car"
+    ]
+  },
+  {
+    "id": "travel-trains-038",
+    "type": "travel",
+    "category": "trains",
+    "subcategory": "Platforms",
+    "japanese": "エレベーターはどこですか？",
+    "reading": "えれべーたーはどこですか？",
+    "romaji": "erebeetaa wa doko desu ka?",
+    "english": "Where is the elevator?",
+    "literalMeaning": "Where is the elevator?",
+    "naturalUsage": "Useful with luggage, strollers, or mobility needs.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "elevator",
+      "accessibility"
+    ]
+  },
+  {
+    "id": "travel-trains-039",
+    "type": "travel",
+    "category": "trains",
+    "subcategory": "Platforms",
+    "japanese": "エスカレーターはどこですか？",
+    "reading": "えすかれーたーはどこですか？",
+    "romaji": "esukareetaa wa doko desu ka?",
+    "english": "Where is the escalator?",
+    "literalMeaning": "Where is the escalator?",
+    "naturalUsage": "Useful in large multi-level stations.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "escalator"
+    ]
+  },
+  {
+    "id": "travel-trains-040",
+    "type": "travel",
+    "category": "trains",
+    "subcategory": "Platforms",
+    "japanese": "階段はどこですか？",
+    "reading": "かいだんはどこですか？",
+    "romaji": "kaidan wa doko desu ka?",
+    "english": "Where are the stairs?",
+    "literalMeaning": "Where are the stairs?",
+    "naturalUsage": "Simple navigation question inside stations.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "stairs"
+    ]
+  },
+  {
+    "id": "travel-trains-041",
+    "type": "travel",
+    "category": "trains",
+    "subcategory": "Platforms",
+    "japanese": "ホームはこの先ですか？",
+    "reading": "ほーむはこのさきですか？",
+    "romaji": "hoomu wa kono saki desu ka?",
+    "english": "Is the platform up ahead?",
+    "literalMeaning": "Is the platform beyond here?",
+    "naturalUsage": "Useful when following signs in a large station.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "platform",
+      "directions"
+    ]
+  },
+  {
+    "id": "travel-trains-042",
+    "type": "travel",
+    "category": "trains",
+    "subcategory": "Platforms",
+    "japanese": "この電車は何分後に来ますか？",
+    "reading": "このでんしゃはなんぷんごにきますか？",
+    "romaji": "kono densha wa nan-pun go ni kimasu ka?",
+    "english": "How many minutes until this train arrives?",
+    "literalMeaning": "After how many minutes does this train come?",
+    "naturalUsage": "Useful when departure information is unclear.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "arrival",
+      "schedule"
+    ]
+  },
+  {
+    "id": "travel-trains-043",
+    "type": "travel",
+    "category": "trains",
+    "subcategory": "Platforms",
+    "japanese": "この電車はここに止まりますか？",
+    "reading": "このでんしゃはここにとまりますか？",
+    "romaji": "kono densha wa koko ni tomarimasu ka?",
+    "english": "Does this train stop here?",
+    "literalMeaning": "Does this train stop here?",
+    "naturalUsage": "Use to confirm whether a service calls at a station.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "stop",
+      "confirm"
+    ]
+  },
+  {
+    "id": "travel-trains-044",
+    "type": "travel",
+    "category": "trains",
+    "subcategory": "Platforms",
+    "japanese": "並ぶ場所はここですか？",
+    "reading": "ならぶばしょはここですか？",
+    "romaji": "narabu basho wa koko desu ka?",
+    "english": "Is this where I should line up?",
+    "literalMeaning": "Is the place to line up here?",
+    "naturalUsage": "Useful where platform markings indicate different services.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "queue"
+    ]
+  },
+  {
+    "id": "travel-trains-045",
+    "type": "travel",
+    "category": "trains",
+    "subcategory": "Platforms",
+    "japanese": "この列で合っていますか？",
+    "reading": "このれつであっていますか？",
+    "romaji": "kono retsu de atteimasu ka?",
+    "english": "Is this the right line to queue in?",
+    "literalMeaning": "Is this queue correct?",
+    "naturalUsage": "Useful on busy platforms with multiple boarding lines.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "queue",
+      "confirm"
+    ]
+  },
+  {
+    "id": "travel-trains-046",
+    "type": "travel",
+    "category": "trains",
+    "subcategory": "Transfers",
+    "japanese": "どこで乗り換えますか？",
+    "reading": "どこでのりかえますか？",
+    "romaji": "doko de norikaemasu ka?",
+    "english": "Where do I transfer?",
+    "literalMeaning": "Where do I change trains?",
+    "naturalUsage": "Core phrase for navigating multi-line journeys.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "transfer"
+    ]
+  },
+  {
+    "id": "travel-trains-047",
+    "type": "travel",
+    "category": "trains",
+    "subcategory": "Transfers",
+    "japanese": "新宿で乗り換えですか？",
+    "reading": "しんじゅくでのりかえですか？",
+    "romaji": "Shinjuku de norikae desu ka?",
+    "english": "Do I transfer at Shinjuku?",
+    "literalMeaning": "Is the transfer at Shinjuku?",
+    "naturalUsage": "Use to confirm the transfer station.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "transfer",
+      "confirm"
+    ]
+  },
+  {
+    "id": "travel-trains-048",
+    "type": "travel",
+    "category": "trains",
+    "subcategory": "Transfers",
+    "japanese": "乗り換えは何番線ですか？",
+    "reading": "のりかえはなんばんせんですか？",
+    "romaji": "norikae wa nan-bansen desu ka?",
+    "english": "Which platform do I transfer to?",
+    "literalMeaning": "What platform number is the transfer?",
+    "naturalUsage": "Useful when a transfer requires changing platforms.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "transfer",
+      "platform"
+    ]
+  },
+  {
+    "id": "travel-trains-049",
+    "type": "travel",
+    "category": "trains",
+    "subcategory": "Transfers",
+    "japanese": "乗り換え時間はどのくらいですか？",
+    "reading": "のりかえじかんはどのくらいですか？",
+    "romaji": "norikae jikan wa dono kurai desu ka?",
+    "english": "How long does the transfer take?",
+    "literalMeaning": "About how much time is the transfer?",
+    "naturalUsage": "Useful in large stations or with tight connections.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "transfer",
+      "time"
+    ]
+  },
+  {
+    "id": "travel-trains-050",
+    "type": "travel",
+    "category": "trains",
+    "subcategory": "Transfers",
+    "japanese": "この乗り換えで間に合いますか？",
+    "reading": "こののりかえでまにあいますか？",
+    "romaji": "kono norikae de maniaimasu ka?",
+    "english": "Will I make this connection?",
+    "literalMeaning": "Will I make it with this transfer?",
+    "naturalUsage": "Natural when you are worried about a short connection.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "transfer",
+      "connection"
+    ]
+  },
+  {
+    "id": "travel-trains-051",
+    "type": "travel",
+    "category": "trains",
+    "subcategory": "Transfers",
+    "japanese": "乗り換え口はどこですか？",
+    "reading": "のりかえぐちはどこですか？",
+    "romaji": "norikae-guchi wa doko desu ka?",
+    "english": "Where is the transfer gate?",
+    "literalMeaning": "Where is the transfer entrance/gate?",
+    "naturalUsage": "Useful in stations with dedicated transfer gates.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "transfer-gate"
+    ]
+  },
+  {
+    "id": "travel-trains-052",
+    "type": "travel",
+    "category": "trains",
+    "subcategory": "Transfers",
+    "japanese": "一度改札を出ますか？",
+    "reading": "いちどかいさつをでますか？",
+    "romaji": "ichido kaisatsu o demasu ka?",
+    "english": "Do I need to exit the gates once?",
+    "literalMeaning": "Do I leave the ticket gates once?",
+    "naturalUsage": "Useful when transferring between different operators.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "transfer",
+      "ticket-gate"
+    ]
+  },
+  {
+    "id": "travel-trains-053",
+    "type": "travel",
+    "category": "trains",
+    "subcategory": "Transfers",
+    "japanese": "このまま乗っていて大丈夫ですか？",
+    "reading": "このままのっていてだいじょうぶですか？",
+    "romaji": "kono mama notte ite daijoubu desu ka?",
+    "english": "Can I stay on this train?",
+    "literalMeaning": "Is it okay to remain riding like this?",
+    "naturalUsage": "Useful for through-services where the train continues onto another line.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "through-service",
+      "confirm"
+    ]
+  },
+  {
+    "id": "travel-trains-054",
+    "type": "travel",
+    "category": "trains",
+    "subcategory": "Transfers",
+    "japanese": "この電車は途中で行き先が変わりますか？",
+    "reading": "このでんしゃはとちゅうでいきさきがかわりますか？",
+    "romaji": "kono densha wa tochuu de ikisaki ga kawarimasu ka?",
+    "english": "Does this train's destination change on the way?",
+    "literalMeaning": "Does this train's destination change midway?",
+    "naturalUsage": "Useful for services that split, terminate, or change designation.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "service",
+      "destination"
+    ]
+  },
+  {
+    "id": "travel-trains-055",
+    "type": "travel",
+    "category": "trains",
+    "subcategory": "Transfers",
+    "japanese": "直通ですか？",
+    "reading": "ちょくつうですか？",
+    "romaji": "chokutsuu desu ka?",
+    "english": "Is it a through service?",
+    "literalMeaning": "Is it direct/through-running?",
+    "naturalUsage": "Short and useful when checking whether you can stay on the same train.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "through-service"
+    ]
+  },
+  {
+    "id": "travel-trains-056",
+    "type": "travel",
+    "category": "trains",
+    "subcategory": "Transfers",
+    "japanese": "乗り換えなしで行けますか？",
+    "reading": "のりかえなしでいけますか？",
+    "romaji": "norikae nashi de ikemasu ka?",
+    "english": "Can I get there without transferring?",
+    "literalMeaning": "Can I go without a transfer?",
+    "naturalUsage": "Useful when looking for the simplest route.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "direct",
+      "transfer"
+    ]
+  },
+  {
+    "id": "travel-trains-057",
+    "type": "travel",
+    "category": "trains",
+    "subcategory": "Transfers",
+    "japanese": "次の駅で乗り換えですか？",
+    "reading": "つぎのえきでのりかえですか？",
+    "romaji": "tsugi no eki de norikae desu ka?",
+    "english": "Do I transfer at the next station?",
+    "literalMeaning": "Is the transfer at the next station?",
+    "naturalUsage": "Useful when checking transfer timing.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "transfer",
+      "next-station"
+    ]
+  },
+  {
+    "id": "travel-trains-058",
+    "type": "travel",
+    "category": "trains",
+    "subcategory": "Transfers",
+    "japanese": "乗り換え案内を見せてもらえますか？",
+    "reading": "のりかえあんないをみせてもらえますか？",
+    "romaji": "norikae annai o misete moraemasu ka?",
+    "english": "Could you show me the transfer information?",
+    "literalMeaning": "Could I have you show me the transfer guidance?",
+    "naturalUsage": "Useful when asking staff to point out a route on a map or screen.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "staff",
+      "transfer"
+    ]
+  },
+  {
+    "id": "travel-trains-059",
+    "type": "travel",
+    "category": "trains",
+    "subcategory": "Transfers",
+    "japanese": "この線からJRに乗り換えたいです。",
+    "reading": "このせんからじぇいあーるにのりかえたいです。",
+    "romaji": "kono sen kara jei-aaru ni norikaetai desu.",
+    "english": "I'd like to transfer from this line to JR.",
+    "literalMeaning": "I want to transfer from this line to JR.",
+    "naturalUsage": "Useful when switching between railway operators.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "JR",
+      "transfer"
+    ]
+  },
+  {
+    "id": "travel-trains-060",
+    "type": "travel",
+    "category": "trains",
+    "subcategory": "Transfers",
+    "japanese": "地下鉄への乗り換えはどこですか？",
+    "reading": "ちかてつへののりかえはどこですか？",
+    "romaji": "chikatetsu e no norikae wa doko desu ka?",
+    "english": "Where is the transfer to the subway?",
+    "literalMeaning": "Where is the transfer toward the subway?",
+    "naturalUsage": "Useful in major stations connecting railways and subway lines.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "subway",
+      "transfer"
+    ]
+  },
+  {
+    "id": "travel-trains-061",
+    "type": "travel",
+    "category": "trains",
+    "subcategory": "Directions",
+    "japanese": "東口はどこですか？",
+    "reading": "ひがしぐちはどこですか？",
+    "romaji": "higashi-guchi wa doko desu ka?",
+    "english": "Where is the East Exit?",
+    "literalMeaning": "Where is the East Exit?",
+    "naturalUsage": "Replace 東口 with other named exits as needed.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "exit",
+      "east"
+    ]
+  },
+  {
+    "id": "travel-trains-062",
+    "type": "travel",
+    "category": "trains",
+    "subcategory": "Directions",
+    "japanese": "西口はどこですか？",
+    "reading": "にしぐちはどこですか？",
+    "romaji": "nishi-guchi wa doko desu ka?",
+    "english": "Where is the West Exit?",
+    "literalMeaning": "Where is the West Exit?",
+    "naturalUsage": "Very useful in stations with several named exits.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "exit",
+      "west"
+    ]
+  },
+  {
+    "id": "travel-trains-063",
+    "type": "travel",
+    "category": "trains",
+    "subcategory": "Directions",
+    "japanese": "南口はどこですか？",
+    "reading": "みなみぐちはどこですか？",
+    "romaji": "minami-guchi wa doko desu ka?",
+    "english": "Where is the South Exit?",
+    "literalMeaning": "Where is the South Exit?",
+    "naturalUsage": "Useful when meeting someone or following map directions.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "exit",
+      "south"
+    ]
+  },
+  {
+    "id": "travel-trains-064",
+    "type": "travel",
+    "category": "trains",
+    "subcategory": "Directions",
+    "japanese": "北口はどこですか？",
+    "reading": "きたぐちはどこですか？",
+    "romaji": "kita-guchi wa doko desu ka?",
+    "english": "Where is the North Exit?",
+    "literalMeaning": "Where is the North Exit?",
+    "naturalUsage": "Useful in larger station complexes.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "exit",
+      "north"
+    ]
+  },
+  {
+    "id": "travel-trains-065",
+    "type": "travel",
+    "category": "trains",
+    "subcategory": "Directions",
+    "japanese": "A3出口はどこですか？",
+    "reading": "えーさんでぐちはどこですか？",
+    "romaji": "ee-san deguchi wa doko desu ka?",
+    "english": "Where is Exit A3?",
+    "literalMeaning": "Where is A3 Exit?",
+    "naturalUsage": "Especially useful in subway stations with numbered or lettered exits.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "exit",
+      "subway"
+    ]
+  },
+  {
+    "id": "travel-trains-066",
+    "type": "travel",
+    "category": "trains",
+    "subcategory": "Directions",
+    "japanese": "この出口で合っていますか？",
+    "reading": "このでぐちであっていますか？",
+    "romaji": "kono deguchi de atteimasu ka?",
+    "english": "Is this the right exit?",
+    "literalMeaning": "Is this exit correct?",
+    "naturalUsage": "Use before leaving a large station where the wrong exit may add a long walk.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "exit",
+      "confirm"
+    ]
+  },
+  {
+    "id": "travel-trains-067",
+    "type": "travel",
+    "category": "trains",
+    "subcategory": "Directions",
+    "japanese": "駅の地図はありますか？",
+    "reading": "えきのちずはありますか？",
+    "romaji": "eki no chizu wa arimasu ka?",
+    "english": "Is there a station map?",
+    "literalMeaning": "Is there a map of the station?",
+    "naturalUsage": "Useful at information counters or in complex stations.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "map"
+    ]
+  },
+  {
+    "id": "travel-trains-068",
+    "type": "travel",
+    "category": "trains",
+    "subcategory": "Directions",
+    "japanese": "出口までどのくらいかかりますか？",
+    "reading": "でぐちまでどのくらいかかりますか？",
+    "romaji": "deguchi made dono kurai kakarimasu ka?",
+    "english": "How long does it take to get to the exit?",
+    "literalMeaning": "About how long does it take as far as the exit?",
+    "naturalUsage": "Useful in very large stations.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "exit",
+      "time"
+    ]
+  },
+  {
+    "id": "travel-trains-069",
+    "type": "travel",
+    "category": "trains",
+    "subcategory": "Directions",
+    "japanese": "この道で合っていますか？",
+    "reading": "このみちであっていますか？",
+    "romaji": "kono michi de atteimasu ka?",
+    "english": "Am I going the right way?",
+    "literalMeaning": "Is this route correct?",
+    "naturalUsage": "Natural general-purpose confirmation phrase.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "directions",
+      "confirm"
+    ]
+  },
+  {
+    "id": "travel-trains-070",
+    "type": "travel",
+    "category": "trains",
+    "subcategory": "Directions",
+    "japanese": "まっすぐですか？",
+    "reading": "まっすぐですか？",
+    "romaji": "massugu desu ka?",
+    "english": "Is it straight ahead?",
+    "literalMeaning": "Is it straight?",
+    "naturalUsage": "Short follow-up when someone gives directions.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "directions",
+      "straight"
+    ]
+  },
+  {
+    "id": "travel-trains-071",
+    "type": "travel",
+    "category": "trains",
+    "subcategory": "Directions",
+    "japanese": "右ですか、左ですか？",
+    "reading": "みぎですか、ひだりですか？",
+    "romaji": "migi desu ka, hidari desu ka?",
+    "english": "Is it right or left?",
+    "literalMeaning": "Is it right, or left?",
+    "naturalUsage": "Useful clarification when directions are unclear.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "directions",
+      "right",
+      "left"
+    ]
+  },
+  {
+    "id": "travel-trains-072",
+    "type": "travel",
+    "category": "trains",
+    "subcategory": "Directions",
+    "japanese": "この階で合っていますか？",
+    "reading": "このかいであっていますか？",
+    "romaji": "kono kai de atteimasu ka?",
+    "english": "Is this the right floor?",
+    "literalMeaning": "Is this floor correct?",
+    "naturalUsage": "Useful in multi-level station buildings.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "floor",
+      "confirm"
+    ]
+  },
+  {
+    "id": "travel-trains-073",
+    "type": "travel",
+    "category": "trains",
+    "subcategory": "Directions",
+    "japanese": "案内所はどこですか？",
+    "reading": "あんないじょはどこですか？",
+    "romaji": "annaijo wa doko desu ka?",
+    "english": "Where is the information desk?",
+    "literalMeaning": "Where is the information counter?",
+    "naturalUsage": "Useful when you need more detailed help.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "information",
+      "staff"
+    ]
+  },
+  {
+    "id": "travel-trains-074",
+    "type": "travel",
+    "category": "trains",
+    "subcategory": "Directions",
+    "japanese": "コインロッカーはどこですか？",
+    "reading": "こいんろっかーはどこですか？",
+    "romaji": "koin rokkaa wa doko desu ka?",
+    "english": "Where are the coin lockers?",
+    "literalMeaning": "Where are the coin lockers?",
+    "naturalUsage": "Extremely useful for travelers carrying luggage.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "luggage",
+      "locker"
+    ]
+  },
+  {
+    "id": "travel-trains-075",
+    "type": "travel",
+    "category": "trains",
+    "subcategory": "Directions",
+    "japanese": "トイレはどこですか？",
+    "reading": "といれはどこですか？",
+    "romaji": "toire wa doko desu ka?",
+    "english": "Where is the restroom?",
+    "literalMeaning": "Where is the toilet?",
+    "naturalUsage": "Simple and essential station phrase.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "restroom",
+      "directions"
+    ]
+  },
+  {
+    "id": "travel-trains-076",
+    "type": "travel",
+    "category": "trains",
+    "subcategory": "Problems",
+    "japanese": "電車を間違えました。",
+    "reading": "でんしゃをまちがえました。",
+    "romaji": "densha o machigaemashita.",
+    "english": "I got on the wrong train.",
+    "literalMeaning": "I made a mistake with the train.",
+    "naturalUsage": "Tell staff when you realize you took the wrong service.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "wrong-train",
+      "help"
+    ]
+  },
+  {
+    "id": "travel-trains-077",
+    "type": "travel",
+    "category": "trains",
+    "subcategory": "Problems",
+    "japanese": "乗り過ごしました。",
+    "reading": "のりすごしました。",
+    "romaji": "norisugoshimashita.",
+    "english": "I missed my stop.",
+    "literalMeaning": "I rode past my stop.",
+    "naturalUsage": "Natural phrase when you accidentally stay on too long.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "missed-stop"
+    ]
+  },
+  {
+    "id": "travel-trains-078",
+    "type": "travel",
+    "category": "trains",
+    "subcategory": "Problems",
+    "japanese": "乗り換えに間に合いませんでした。",
+    "reading": "のりかえにまにあいませんでした。",
+    "romaji": "norikae ni maniaimasen deshita.",
+    "english": "I missed my connection.",
+    "literalMeaning": "I did not make it in time for the transfer.",
+    "naturalUsage": "Useful when asking staff what to do next.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "missed-connection"
+    ]
+  },
+  {
+    "id": "travel-trains-079",
+    "type": "travel",
+    "category": "trains",
+    "subcategory": "Problems",
+    "japanese": "電車が遅れていますか？",
+    "reading": "でんしゃがおくれていますか？",
+    "romaji": "densha ga okureteimasu ka?",
+    "english": "Is the train delayed?",
+    "literalMeaning": "Is the train running late?",
+    "naturalUsage": "Useful when the departure board or announcements are unclear.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "delay"
+    ]
+  },
+  {
+    "id": "travel-trains-080",
+    "type": "travel",
+    "category": "trains",
+    "subcategory": "Problems",
+    "japanese": "どのくらい遅れていますか？",
+    "reading": "どのくらいおくれていますか？",
+    "romaji": "dono kurai okureteimasu ka?",
+    "english": "How long is the delay?",
+    "literalMeaning": "About how late is it?",
+    "naturalUsage": "Natural follow-up when a delay has been announced.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "delay",
+      "time"
+    ]
+  },
+  {
+    "id": "travel-trains-081",
+    "type": "travel",
+    "category": "trains",
+    "subcategory": "Problems",
+    "japanese": "運転見合わせですか？",
+    "reading": "うんてんみあわせですか？",
+    "romaji": "unten miawase desu ka?",
+    "english": "Is service suspended?",
+    "literalMeaning": "Is train operation temporarily suspended?",
+    "naturalUsage": "運転見合わせ is a common railway disruption term in Japan.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "suspension",
+      "delay"
+    ]
+  },
+  {
+    "id": "travel-trains-082",
+    "type": "travel",
+    "category": "trains",
+    "subcategory": "Problems",
+    "japanese": "振替輸送はありますか？",
+    "reading": "ふりかえゆそうはありますか？",
+    "romaji": "furikae yusou wa arimasu ka?",
+    "english": "Is alternative transportation available?",
+    "literalMeaning": "Is substitute transportation available?",
+    "naturalUsage": "Useful during major disruptions when another route may accept affected passengers.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "disruption",
+      "alternative-route"
+    ]
+  },
+  {
+    "id": "travel-trains-083",
+    "type": "travel",
+    "category": "trains",
+    "subcategory": "Problems",
+    "japanese": "別の行き方はありますか？",
+    "reading": "べつのいきかたはありますか？",
+    "romaji": "betsu no ikikata wa arimasu ka?",
+    "english": "Is there another way to get there?",
+    "literalMeaning": "Is there another way of going?",
+    "naturalUsage": "Very useful during delays, closures, or missed connections.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "alternative-route",
+      "help"
+    ]
+  },
+  {
+    "id": "travel-trains-084",
+    "type": "travel",
+    "category": "trains",
+    "subcategory": "Problems",
+    "japanese": "ICカードが反応しません。",
+    "reading": "あいしーかーどがはんのうしません。",
+    "romaji": "ai-shii kaado ga hannou shimasen.",
+    "english": "My IC card isn't working.",
+    "literalMeaning": "The IC card is not responding.",
+    "naturalUsage": "Use at a ticket gate when your IC card cannot be read.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "IC-card",
+      "problem"
+    ]
+  },
+  {
+    "id": "travel-trains-085",
+    "type": "travel",
+    "category": "trains",
+    "subcategory": "Problems",
+    "japanese": "改札から出られません。",
+    "reading": "かいさつからでられません。",
+    "romaji": "kaisatsu kara deraremasen.",
+    "english": "I can't get out through the ticket gate.",
+    "literalMeaning": "I cannot exit from the ticket gate.",
+    "naturalUsage": "Useful when your fare or IC card needs adjustment.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "ticket-gate",
+      "problem"
+    ]
+  },
+  {
+    "id": "travel-trains-086",
+    "type": "travel",
+    "category": "trains",
+    "subcategory": "Problems",
+    "japanese": "荷物を電車に忘れました。",
+    "reading": "にもつをでんしゃにわすれました。",
+    "romaji": "nimotsu o densha ni wasuremashita.",
+    "english": "I left my luggage on the train.",
+    "literalMeaning": "I forgot my luggage on the train.",
+    "naturalUsage": "Tell station staff as soon as possible and give train/time details.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "lost-property",
+      "luggage"
+    ]
+  },
+  {
+    "id": "travel-trains-087",
+    "type": "travel",
+    "category": "trains",
+    "subcategory": "Problems",
+    "japanese": "落とし物はどこで聞けばいいですか？",
+    "reading": "おとしものはどこできけばいいですか？",
+    "romaji": "otoshimono wa doko de kikeba ii desu ka?",
+    "english": "Where should I ask about a lost item?",
+    "literalMeaning": "Where would it be good to ask about lost property?",
+    "naturalUsage": "Natural way to ask where the lost-and-found desk or office is.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "lost-property",
+      "help"
+    ]
+  },
+  {
+    "id": "travel-trains-088",
+    "type": "travel",
+    "category": "trains",
+    "subcategory": "Problems",
+    "japanese": "終電を逃しました。",
+    "reading": "しゅうでんをのがしました。",
+    "romaji": "shuuden o nogashimashita.",
+    "english": "I missed the last train.",
+    "literalMeaning": "I missed the final train.",
+    "naturalUsage": "Useful when asking staff about alternative transportation after the last service.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "last-train",
+      "problem"
+    ]
+  },
+  {
+    "id": "travel-trains-089",
+    "type": "travel",
+    "category": "trains",
+    "subcategory": "Problems",
+    "japanese": "終電はもう終わりましたか？",
+    "reading": "しゅうでんはもうおわりましたか？",
+    "romaji": "shuuden wa mou owarimashita ka?",
+    "english": "Has the last train already gone?",
+    "literalMeaning": "Has the final train already finished?",
+    "naturalUsage": "Useful late at night when checking whether service has ended.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "last-train",
+      "schedule"
+    ]
+  },
+  {
+    "id": "travel-trains-090",
+    "type": "travel",
+    "category": "trains",
+    "subcategory": "Problems",
+    "japanese": "電車の中に忘れ物をしたかもしれません。",
+    "reading": "でんしゃのなかにわすれものをしたかもしれません。",
+    "romaji": "densha no naka ni wasuremono o shita kamo shiremasen.",
+    "english": "I may have left something on the train.",
+    "literalMeaning": "I might have forgotten something inside the train.",
+    "naturalUsage": "A softer way to explain that you are not completely sure where an item was lost.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "lost-property",
+      "help"
+    ]
+  }
+]

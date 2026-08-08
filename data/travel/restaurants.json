@@ -1,0 +1,1616 @@
+[
+  {
+    "id": "travel-restaurants-001",
+    "type": "travel",
+    "category": "restaurants",
+    "subcategory": "Essential",
+    "japanese": "すみません、二人です。",
+    "reading": "すみません、ふたりです。",
+    "romaji": "sumimasen, futari desu.",
+    "english": "Excuse me, table for two.",
+    "literalMeaning": "Excuse me, we are two people.",
+    "naturalUsage": "Say this when entering a restaurant and telling staff your party size.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "party-size",
+      "entry"
+    ]
+  },
+  {
+    "id": "travel-restaurants-002",
+    "type": "travel",
+    "category": "restaurants",
+    "subcategory": "Essential",
+    "japanese": "一人です。",
+    "reading": "ひとりです。",
+    "romaji": "hitori desu.",
+    "english": "Just one person.",
+    "literalMeaning": "I am one person.",
+    "naturalUsage": "A natural, concise way to tell staff you are dining alone.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "party-size",
+      "solo"
+    ]
+  },
+  {
+    "id": "travel-restaurants-003",
+    "type": "travel",
+    "category": "restaurants",
+    "subcategory": "Essential",
+    "japanese": "予約していません。",
+    "reading": "よやくしていません。",
+    "romaji": "yoyaku shiteimasen.",
+    "english": "I don't have a reservation.",
+    "literalMeaning": "I have not made a reservation.",
+    "naturalUsage": "Useful when asked whether you have booked.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "reservation",
+      "walk-in"
+    ]
+  },
+  {
+    "id": "travel-restaurants-004",
+    "type": "travel",
+    "category": "restaurants",
+    "subcategory": "Essential",
+    "japanese": "予約しています。",
+    "reading": "よやくしています。",
+    "romaji": "yoyaku shiteimasu.",
+    "english": "I have a reservation.",
+    "literalMeaning": "I have made a reservation.",
+    "naturalUsage": "Use when arriving for a booking.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "reservation",
+      "arrival"
+    ]
+  },
+  {
+    "id": "travel-restaurants-005",
+    "type": "travel",
+    "category": "restaurants",
+    "subcategory": "Essential",
+    "japanese": "英語のメニューはありますか？",
+    "reading": "えいごのめにゅーはありますか？",
+    "romaji": "eigo no menyuu wa arimasu ka?",
+    "english": "Do you have an English menu?",
+    "literalMeaning": "Is there an English-language menu?",
+    "naturalUsage": "Common and polite when you need an English menu.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "menu",
+      "english"
+    ]
+  },
+  {
+    "id": "travel-restaurants-006",
+    "type": "travel",
+    "category": "restaurants",
+    "subcategory": "Essential",
+    "japanese": "これをお願いします。",
+    "reading": "これをおねがいします。",
+    "romaji": "kore o onegai shimasu.",
+    "english": "This one, please.",
+    "literalMeaning": "This, please.",
+    "naturalUsage": "Very useful when pointing at a menu item or display.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "ordering",
+      "pointing"
+    ]
+  },
+  {
+    "id": "travel-restaurants-007",
+    "type": "travel",
+    "category": "restaurants",
+    "subcategory": "Essential",
+    "japanese": "おすすめは何ですか？",
+    "reading": "おすすめはなんですか？",
+    "romaji": "osusume wa nan desu ka?",
+    "english": "What do you recommend?",
+    "literalMeaning": "What is the recommendation?",
+    "naturalUsage": "Natural way to ask staff for a recommendation.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "recommendation",
+      "menu"
+    ]
+  },
+  {
+    "id": "travel-restaurants-008",
+    "type": "travel",
+    "category": "restaurants",
+    "subcategory": "Essential",
+    "japanese": "お水をお願いします。",
+    "reading": "おみずをおねがいします。",
+    "romaji": "omizu o onegai shimasu.",
+    "english": "Water, please.",
+    "literalMeaning": "Water, please.",
+    "naturalUsage": "Simple, polite request for water.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "water",
+      "request"
+    ]
+  },
+  {
+    "id": "travel-restaurants-009",
+    "type": "travel",
+    "category": "restaurants",
+    "subcategory": "Essential",
+    "japanese": "すみません、注文いいですか？",
+    "reading": "すみません、ちゅうもんいいですか？",
+    "romaji": "sumimasen, chuumon ii desu ka?",
+    "english": "Excuse me, can I order?",
+    "literalMeaning": "Excuse me, is ordering okay?",
+    "naturalUsage": "Natural way to get a server's attention when you are ready to order.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "ordering",
+      "staff"
+    ]
+  },
+  {
+    "id": "travel-restaurants-010",
+    "type": "travel",
+    "category": "restaurants",
+    "subcategory": "Essential",
+    "japanese": "お会計お願いします。",
+    "reading": "おかいけいおねがいします。",
+    "romaji": "okaikei onegai shimasu.",
+    "english": "The bill, please.",
+    "literalMeaning": "The check, please.",
+    "naturalUsage": "Standard phrase when you are ready to pay.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "payment",
+      "bill"
+    ]
+  },
+  {
+    "id": "travel-restaurants-011",
+    "type": "travel",
+    "category": "restaurants",
+    "subcategory": "Essential",
+    "japanese": "カードは使えますか？",
+    "reading": "かーどはつかえますか？",
+    "romaji": "kaado wa tsukaemasu ka?",
+    "english": "Can I pay by card?",
+    "literalMeaning": "Can a card be used?",
+    "naturalUsage": "Useful before ordering or paying when you want to confirm card acceptance.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "payment",
+      "card"
+    ]
+  },
+  {
+    "id": "travel-restaurants-012",
+    "type": "travel",
+    "category": "restaurants",
+    "subcategory": "Essential",
+    "japanese": "現金だけですか？",
+    "reading": "げんきんだけですか？",
+    "romaji": "genkin dake desu ka?",
+    "english": "Is it cash only?",
+    "literalMeaning": "Is it only cash?",
+    "naturalUsage": "Useful at smaller restaurants and shops.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "payment",
+      "cash"
+    ]
+  },
+  {
+    "id": "travel-restaurants-013",
+    "type": "travel",
+    "category": "restaurants",
+    "subcategory": "Essential",
+    "japanese": "これは辛いですか？",
+    "reading": "これはからいですか？",
+    "romaji": "kore wa karai desu ka?",
+    "english": "Is this spicy?",
+    "literalMeaning": "Is this spicy?",
+    "naturalUsage": "Useful when checking spice level before ordering.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "spicy",
+      "menu"
+    ]
+  },
+  {
+    "id": "travel-restaurants-014",
+    "type": "travel",
+    "category": "restaurants",
+    "subcategory": "Essential",
+    "japanese": "これは何ですか？",
+    "reading": "これはなんですか？",
+    "romaji": "kore wa nan desu ka?",
+    "english": "What is this?",
+    "literalMeaning": "What is this?",
+    "naturalUsage": "Simple and useful while pointing at a menu item or dish.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "menu",
+      "question"
+    ]
+  },
+  {
+    "id": "travel-restaurants-015",
+    "type": "travel",
+    "category": "restaurants",
+    "subcategory": "Essential",
+    "japanese": "ごちそうさまでした。",
+    "reading": "ごちそうさまでした。",
+    "romaji": "gochisousama deshita.",
+    "english": "Thank you for the meal.",
+    "literalMeaning": "It was a feast.",
+    "naturalUsage": "A very natural phrase to say when leaving after eating; often said toward staff.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "thanks",
+      "leaving"
+    ]
+  },
+  {
+    "id": "travel-restaurants-016",
+    "type": "travel",
+    "category": "restaurants",
+    "subcategory": "Ordering",
+    "japanese": "これを一つお願いします。",
+    "reading": "これをひとつおねがいします。",
+    "romaji": "kore o hitotsu onegai shimasu.",
+    "english": "One of these, please.",
+    "literalMeaning": "One of this, please.",
+    "naturalUsage": "Use while pointing to an item.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "quantity",
+      "ordering"
+    ]
+  },
+  {
+    "id": "travel-restaurants-017",
+    "type": "travel",
+    "category": "restaurants",
+    "subcategory": "Ordering",
+    "japanese": "これを二つお願いします。",
+    "reading": "これをふたつおねがいします。",
+    "romaji": "kore o futatsu onegai shimasu.",
+    "english": "Two of these, please.",
+    "literalMeaning": "Two of this, please.",
+    "naturalUsage": "Useful for ordering two portions of the same item.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "quantity",
+      "ordering"
+    ]
+  },
+  {
+    "id": "travel-restaurants-018",
+    "type": "travel",
+    "category": "restaurants",
+    "subcategory": "Ordering",
+    "japanese": "同じものをお願いします。",
+    "reading": "おなじものをおねがいします。",
+    "romaji": "onaji mono o onegai shimasu.",
+    "english": "I'll have the same thing, please.",
+    "literalMeaning": "The same thing, please.",
+    "naturalUsage": "Natural when ordering the same item as someone else.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "same-order"
+    ]
+  },
+  {
+    "id": "travel-restaurants-019",
+    "type": "travel",
+    "category": "restaurants",
+    "subcategory": "Ordering",
+    "japanese": "セットでお願いします。",
+    "reading": "せっとでおねがいします。",
+    "romaji": "setto de onegai shimasu.",
+    "english": "I'll have it as a set, please.",
+    "literalMeaning": "As a set, please.",
+    "naturalUsage": "Useful where meals can be ordered as a set.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "set-meal"
+    ]
+  },
+  {
+    "id": "travel-restaurants-020",
+    "type": "travel",
+    "category": "restaurants",
+    "subcategory": "Ordering",
+    "japanese": "単品でお願いします。",
+    "reading": "たんぴんでおねがいします。",
+    "romaji": "tanpin de onegai shimasu.",
+    "english": "À la carte, please.",
+    "literalMeaning": "As a single item, please.",
+    "naturalUsage": "Use when you want only the item rather than a set.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "a-la-carte"
+    ]
+  },
+  {
+    "id": "travel-restaurants-021",
+    "type": "travel",
+    "category": "restaurants",
+    "subcategory": "Ordering",
+    "japanese": "大盛りにできますか？",
+    "reading": "おおもりにできますか？",
+    "romaji": "oomori ni dekimasu ka?",
+    "english": "Can I get a large portion?",
+    "literalMeaning": "Can it be made a large serving?",
+    "naturalUsage": "Common for rice, noodles, and some set meals.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "large-portion",
+      "rice",
+      "noodles"
+    ]
+  },
+  {
+    "id": "travel-restaurants-022",
+    "type": "travel",
+    "category": "restaurants",
+    "subcategory": "Ordering",
+    "japanese": "ご飯は少なめでお願いします。",
+    "reading": "ごはんはすくなめでおねがいします。",
+    "romaji": "gohan wa sukuname de onegai shimasu.",
+    "english": "Less rice, please.",
+    "literalMeaning": "Please make the rice a little less.",
+    "naturalUsage": "Natural way to request a smaller rice portion.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "rice",
+      "small-portion"
+    ]
+  },
+  {
+    "id": "travel-restaurants-023",
+    "type": "travel",
+    "category": "restaurants",
+    "subcategory": "Ordering",
+    "japanese": "ご飯は普通でお願いします。",
+    "reading": "ごはんはふつうでおねがいします。",
+    "romaji": "gohan wa futsuu de onegai shimasu.",
+    "english": "Regular rice portion, please.",
+    "literalMeaning": "Please make the rice regular.",
+    "naturalUsage": "Useful when staff asks you to choose the rice size.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "rice",
+      "portion"
+    ]
+  },
+  {
+    "id": "travel-restaurants-024",
+    "type": "travel",
+    "category": "restaurants",
+    "subcategory": "Ordering",
+    "japanese": "飲み物は後でお願いします。",
+    "reading": "のみものはあとでおねがいします。",
+    "romaji": "nomimono wa ato de onegai shimasu.",
+    "english": "Please bring the drink later.",
+    "literalMeaning": "The drink, later please.",
+    "naturalUsage": "Useful when a set menu includes a drink and staff asks when to serve it.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "drink",
+      "timing"
+    ]
+  },
+  {
+    "id": "travel-restaurants-025",
+    "type": "travel",
+    "category": "restaurants",
+    "subcategory": "Ordering",
+    "japanese": "飲み物は先にお願いします。",
+    "reading": "のみものはさきにおねがいします。",
+    "romaji": "nomimono wa saki ni onegai shimasu.",
+    "english": "Please bring the drink first.",
+    "literalMeaning": "The drink, first please.",
+    "naturalUsage": "Use when you want your drink before the food.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "drink",
+      "timing"
+    ]
+  },
+  {
+    "id": "travel-restaurants-026",
+    "type": "travel",
+    "category": "restaurants",
+    "subcategory": "Ordering",
+    "japanese": "追加でこれもお願いします。",
+    "reading": "ついかでこれもおねがいします。",
+    "romaji": "tsuika de kore mo onegai shimasu.",
+    "english": "I'd like to add this too, please.",
+    "literalMeaning": "As an addition, this too please.",
+    "naturalUsage": "Natural for adding another item after your initial order.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "add-order"
+    ]
+  },
+  {
+    "id": "travel-restaurants-027",
+    "type": "travel",
+    "category": "restaurants",
+    "subcategory": "Ordering",
+    "japanese": "注文を変更してもいいですか？",
+    "reading": "ちゅうもんをへんこうしてもいいですか？",
+    "romaji": "chuumon o henkou shite mo ii desu ka?",
+    "english": "Can I change my order?",
+    "literalMeaning": "Is it okay if I change the order?",
+    "naturalUsage": "Use before the kitchen has prepared the dish if you need to change something.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "change-order"
+    ]
+  },
+  {
+    "id": "travel-restaurants-028",
+    "type": "travel",
+    "category": "restaurants",
+    "subcategory": "Ordering",
+    "japanese": "これはまだ注文できますか？",
+    "reading": "これはまだちゅうもんできますか？",
+    "romaji": "kore wa mada chuumon dekimasu ka?",
+    "english": "Can I still order this?",
+    "literalMeaning": "Can this still be ordered?",
+    "naturalUsage": "Useful near last order or when an item may be unavailable.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "availability",
+      "last-order"
+    ]
+  },
+  {
+    "id": "travel-restaurants-029",
+    "type": "travel",
+    "category": "restaurants",
+    "subcategory": "Ordering",
+    "japanese": "ラストオーダーは何時ですか？",
+    "reading": "らすとおーだーはなんじですか？",
+    "romaji": "rasuto oodaa wa nanji desu ka?",
+    "english": "What time is last order?",
+    "literalMeaning": "What time is last order?",
+    "naturalUsage": "Common phrasing in Japanese restaurants.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "last-order",
+      "hours"
+    ]
+  },
+  {
+    "id": "travel-restaurants-030",
+    "type": "travel",
+    "category": "restaurants",
+    "subcategory": "Ordering",
+    "japanese": "以上です。",
+    "reading": "いじょうです。",
+    "romaji": "ijou desu.",
+    "english": "That's all.",
+    "literalMeaning": "That is all.",
+    "naturalUsage": "A natural way to finish your order after listing everything.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "ordering",
+      "finished"
+    ]
+  },
+  {
+    "id": "travel-restaurants-031",
+    "type": "travel",
+    "category": "restaurants",
+    "subcategory": "Reservations",
+    "japanese": "今日の夜、二人で予約できますか？",
+    "reading": "きょうのよる、ふたりでよやくできますか？",
+    "romaji": "kyou no yoru, futari de yoyaku dekimasu ka?",
+    "english": "Can I make a reservation for two tonight?",
+    "literalMeaning": "Can I reserve for two people tonight?",
+    "naturalUsage": "Useful for same-day dinner reservations.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "reservation",
+      "two-people"
+    ]
+  },
+  {
+    "id": "travel-restaurants-032",
+    "type": "travel",
+    "category": "restaurants",
+    "subcategory": "Reservations",
+    "japanese": "明日の七時に予約したいです。",
+    "reading": "あしたのしちじによやくしたいです。",
+    "romaji": "ashita no shichiji ni yoyaku shitai desu.",
+    "english": "I'd like to reserve for 7 p.m. tomorrow.",
+    "literalMeaning": "I would like to make a reservation for seven tomorrow.",
+    "naturalUsage": "Natural way to state the desired date and time.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "reservation",
+      "time"
+    ]
+  },
+  {
+    "id": "travel-restaurants-033",
+    "type": "travel",
+    "category": "restaurants",
+    "subcategory": "Reservations",
+    "japanese": "空いている時間はありますか？",
+    "reading": "あいているじかんはありますか？",
+    "romaji": "aiteiru jikan wa arimasu ka?",
+    "english": "Do you have any available times?",
+    "literalMeaning": "Are there any open times?",
+    "naturalUsage": "Useful if your preferred time is unavailable.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "reservation",
+      "availability"
+    ]
+  },
+  {
+    "id": "travel-restaurants-034",
+    "type": "travel",
+    "category": "restaurants",
+    "subcategory": "Reservations",
+    "japanese": "名前はチャです。",
+    "reading": "なまえはちゃです。",
+    "romaji": "namae wa Cha desu.",
+    "english": "The name is Cha.",
+    "literalMeaning": "The name is Cha.",
+    "naturalUsage": "Use when giving the reservation name; replace the name as needed.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "reservation",
+      "name"
+    ]
+  },
+  {
+    "id": "travel-restaurants-035",
+    "type": "travel",
+    "category": "restaurants",
+    "subcategory": "Reservations",
+    "japanese": "予約名はチャです。",
+    "reading": "よやくめいはちゃです。",
+    "romaji": "yoyakumei wa Cha desu.",
+    "english": "The reservation is under Cha.",
+    "literalMeaning": "The reservation name is Cha.",
+    "naturalUsage": "A concise way to identify your booking at arrival.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "reservation",
+      "name"
+    ]
+  },
+  {
+    "id": "travel-restaurants-036",
+    "type": "travel",
+    "category": "restaurants",
+    "subcategory": "Reservations",
+    "japanese": "少し遅れそうです。",
+    "reading": "すこしおくれそうです。",
+    "romaji": "sukoshi okuresou desu.",
+    "english": "I think we'll be a little late.",
+    "literalMeaning": "It looks like we will be a little late.",
+    "naturalUsage": "Useful when calling a restaurant about a short delay.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "reservation",
+      "late"
+    ]
+  },
+  {
+    "id": "travel-restaurants-037",
+    "type": "travel",
+    "category": "restaurants",
+    "subcategory": "Reservations",
+    "japanese": "十分ほど遅れます。",
+    "reading": "じゅっぷんほどおくれます。",
+    "romaji": "juppun hodo okuremasu.",
+    "english": "We'll be about ten minutes late.",
+    "literalMeaning": "We will be late by about ten minutes.",
+    "naturalUsage": "Clear and practical when notifying the restaurant.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "reservation",
+      "late",
+      "time"
+    ]
+  },
+  {
+    "id": "travel-restaurants-038",
+    "type": "travel",
+    "category": "restaurants",
+    "subcategory": "Reservations",
+    "japanese": "予約時間を変更できますか？",
+    "reading": "よやくじかんをへんこうできますか？",
+    "romaji": "yoyaku jikan o henkou dekimasu ka?",
+    "english": "Can I change the reservation time?",
+    "literalMeaning": "Can the reservation time be changed?",
+    "naturalUsage": "Use when you need to move an existing booking.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "reservation",
+      "change"
+    ]
+  },
+  {
+    "id": "travel-restaurants-039",
+    "type": "travel",
+    "category": "restaurants",
+    "subcategory": "Reservations",
+    "japanese": "予約をキャンセルしたいです。",
+    "reading": "よやくをきゃんせるしたいです。",
+    "romaji": "yoyaku o kyanseru shitai desu.",
+    "english": "I'd like to cancel my reservation.",
+    "literalMeaning": "I want to cancel the reservation.",
+    "naturalUsage": "Polite, direct way to cancel a booking.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "reservation",
+      "cancel"
+    ]
+  },
+  {
+    "id": "travel-restaurants-040",
+    "type": "travel",
+    "category": "restaurants",
+    "subcategory": "Reservations",
+    "japanese": "席だけ予約できますか？",
+    "reading": "せきだけよやくできますか？",
+    "romaji": "seki dake yoyaku dekimasu ka?",
+    "english": "Can I reserve just a table?",
+    "literalMeaning": "Can I reserve only the seats?",
+    "naturalUsage": "Useful at places that may offer courses or set plans with reservations.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "reservation",
+      "table"
+    ]
+  },
+  {
+    "id": "travel-restaurants-041",
+    "type": "travel",
+    "category": "restaurants",
+    "subcategory": "Reservations",
+    "japanese": "カウンター席でも大丈夫です。",
+    "reading": "かうんたーせきでもだいじょうぶです。",
+    "romaji": "kauntaa-seki demo daijoubu desu.",
+    "english": "Counter seats are fine.",
+    "literalMeaning": "Counter seating is also okay.",
+    "naturalUsage": "Useful when staff offers counter seating instead of a table.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "seating",
+      "counter"
+    ]
+  },
+  {
+    "id": "travel-restaurants-042",
+    "type": "travel",
+    "category": "restaurants",
+    "subcategory": "Reservations",
+    "japanese": "テーブル席はありますか？",
+    "reading": "てーぶるせきはありますか？",
+    "romaji": "teeburu-seki wa arimasu ka?",
+    "english": "Do you have a table available?",
+    "literalMeaning": "Is there table seating?",
+    "naturalUsage": "Useful if you prefer a table to counter seating.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "seating",
+      "table"
+    ]
+  },
+  {
+    "id": "travel-restaurants-043",
+    "type": "travel",
+    "category": "restaurants",
+    "subcategory": "Reservations",
+    "japanese": "禁煙席をお願いします。",
+    "reading": "きんえんせきをおねがいします。",
+    "romaji": "kinen-seki o onegai shimasu.",
+    "english": "Non-smoking seating, please.",
+    "literalMeaning": "A non-smoking seat, please.",
+    "naturalUsage": "Useful where smoking and non-smoking areas are still distinguished.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "seating",
+      "non-smoking"
+    ]
+  },
+  {
+    "id": "travel-restaurants-044",
+    "type": "travel",
+    "category": "restaurants",
+    "subcategory": "Reservations",
+    "japanese": "どのくらい待ちますか？",
+    "reading": "どのくらいまちますか？",
+    "romaji": "dono kurai machimasu ka?",
+    "english": "How long is the wait?",
+    "literalMeaning": "About how long will I wait?",
+    "naturalUsage": "Essential for walk-in restaurants with a queue.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "wait",
+      "queue"
+    ]
+  },
+  {
+    "id": "travel-restaurants-045",
+    "type": "travel",
+    "category": "restaurants",
+    "subcategory": "Reservations",
+    "japanese": "待っても大丈夫です。",
+    "reading": "まってもだいじょうぶです。",
+    "romaji": "matte mo daijoubu desu.",
+    "english": "We can wait.",
+    "literalMeaning": "It's okay even if we wait.",
+    "naturalUsage": "Natural response when staff tells you there is a wait.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "wait",
+      "queue"
+    ]
+  },
+  {
+    "id": "travel-restaurants-046",
+    "type": "travel",
+    "category": "restaurants",
+    "subcategory": "Menu",
+    "japanese": "これはどんな料理ですか？",
+    "reading": "これはどんなりょうりですか？",
+    "romaji": "kore wa donna ryouri desu ka?",
+    "english": "What kind of dish is this?",
+    "literalMeaning": "What sort of cuisine/dish is this?",
+    "naturalUsage": "Useful when a menu name does not clearly explain the dish.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "menu",
+      "dish"
+    ]
+  },
+  {
+    "id": "travel-restaurants-047",
+    "type": "travel",
+    "category": "restaurants",
+    "subcategory": "Menu",
+    "japanese": "これは何が入っていますか？",
+    "reading": "これはなにがはいっていますか？",
+    "romaji": "kore wa nani ga haitteimasu ka?",
+    "english": "What's in this?",
+    "literalMeaning": "What is contained in this?",
+    "naturalUsage": "Useful for checking ingredients.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "ingredients",
+      "menu"
+    ]
+  },
+  {
+    "id": "travel-restaurants-048",
+    "type": "travel",
+    "category": "restaurants",
+    "subcategory": "Menu",
+    "japanese": "これは生ですか？",
+    "reading": "これはなまですか？",
+    "romaji": "kore wa nama desu ka?",
+    "english": "Is this raw?",
+    "literalMeaning": "Is this raw?",
+    "naturalUsage": "Useful for sashimi, eggs, meat, or unfamiliar dishes.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "raw",
+      "ingredients"
+    ]
+  },
+  {
+    "id": "travel-restaurants-049",
+    "type": "travel",
+    "category": "restaurants",
+    "subcategory": "Menu",
+    "japanese": "これは魚ですか？",
+    "reading": "これはさかなですか？",
+    "romaji": "kore wa sakana desu ka?",
+    "english": "Is this fish?",
+    "literalMeaning": "Is this fish?",
+    "naturalUsage": "Simple ingredient check.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "fish",
+      "ingredients"
+    ]
+  },
+  {
+    "id": "travel-restaurants-050",
+    "type": "travel",
+    "category": "restaurants",
+    "subcategory": "Menu",
+    "japanese": "これは豚肉ですか？",
+    "reading": "これはぶたにくですか？",
+    "romaji": "kore wa butaniku desu ka?",
+    "english": "Is this pork?",
+    "literalMeaning": "Is this pork?",
+    "naturalUsage": "Useful for identifying meat in a dish.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "pork",
+      "ingredients"
+    ]
+  },
+  {
+    "id": "travel-restaurants-051",
+    "type": "travel",
+    "category": "restaurants",
+    "subcategory": "Menu",
+    "japanese": "これは牛肉ですか？",
+    "reading": "これはぎゅうにくですか？",
+    "romaji": "kore wa gyuuniku desu ka?",
+    "english": "Is this beef?",
+    "literalMeaning": "Is this beef?",
+    "naturalUsage": "Useful for identifying meat in a dish.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "beef",
+      "ingredients"
+    ]
+  },
+  {
+    "id": "travel-restaurants-052",
+    "type": "travel",
+    "category": "restaurants",
+    "subcategory": "Menu",
+    "japanese": "これは鶏肉ですか？",
+    "reading": "これはとりにくですか？",
+    "romaji": "kore wa toriniku desu ka?",
+    "english": "Is this chicken?",
+    "literalMeaning": "Is this chicken?",
+    "naturalUsage": "Useful for identifying meat in a dish.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "chicken",
+      "ingredients"
+    ]
+  },
+  {
+    "id": "travel-restaurants-053",
+    "type": "travel",
+    "category": "restaurants",
+    "subcategory": "Menu",
+    "japanese": "一番人気はどれですか？",
+    "reading": "いちばんにんきはどれですか？",
+    "romaji": "ichiban ninki wa dore desu ka?",
+    "english": "Which one is the most popular?",
+    "literalMeaning": "Which is number one in popularity?",
+    "naturalUsage": "Natural when you want the restaurant's most popular item.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "popular",
+      "recommendation"
+    ]
+  },
+  {
+    "id": "travel-restaurants-054",
+    "type": "travel",
+    "category": "restaurants",
+    "subcategory": "Menu",
+    "japanese": "季節限定はありますか？",
+    "reading": "きせつげんていはありますか？",
+    "romaji": "kisetsu gentei wa arimasu ka?",
+    "english": "Do you have any seasonal specials?",
+    "literalMeaning": "Are there any season-limited items?",
+    "naturalUsage": "Useful in Japan, where seasonal menu items are common.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "seasonal",
+      "special"
+    ]
+  },
+  {
+    "id": "travel-restaurants-055",
+    "type": "travel",
+    "category": "restaurants",
+    "subcategory": "Menu",
+    "japanese": "今日のおすすめはありますか？",
+    "reading": "きょうのおすすめはありますか？",
+    "romaji": "kyou no osusume wa arimasu ka?",
+    "english": "Do you have a special recommendation today?",
+    "literalMeaning": "Is there a recommendation for today?",
+    "naturalUsage": "Natural at izakaya, sushi shops, and restaurants with daily specials.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "daily-special",
+      "recommendation"
+    ]
+  },
+  {
+    "id": "travel-restaurants-056",
+    "type": "travel",
+    "category": "restaurants",
+    "subcategory": "Menu",
+    "japanese": "これは売り切れですか？",
+    "reading": "これはうりきれですか？",
+    "romaji": "kore wa urikire desu ka?",
+    "english": "Is this sold out?",
+    "literalMeaning": "Is this sold out?",
+    "naturalUsage": "Useful when an item is marked unavailable or staff indicates it cannot be ordered.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "sold-out",
+      "availability"
+    ]
+  },
+  {
+    "id": "travel-restaurants-057",
+    "type": "travel",
+    "category": "restaurants",
+    "subcategory": "Menu",
+    "japanese": "写真と同じものですか？",
+    "reading": "しゃしんとおなじものですか？",
+    "romaji": "shashin to onaji mono desu ka?",
+    "english": "Is it the same as the photo?",
+    "literalMeaning": "Is it the same thing as the picture?",
+    "naturalUsage": "Useful when ordering from picture menus or display images.",
+    "politeness": "polite",
+    "priority": "extra",
+    "tags": [
+      "photo-menu"
+    ]
+  },
+  {
+    "id": "travel-restaurants-058",
+    "type": "travel",
+    "category": "restaurants",
+    "subcategory": "Menu",
+    "japanese": "これは一人前ですか？",
+    "reading": "これはいちにんまえですか？",
+    "romaji": "kore wa ichininmae desu ka?",
+    "english": "Is this one serving?",
+    "literalMeaning": "Is this a serving for one person?",
+    "naturalUsage": "Useful for shared dishes, yakiniku, hot pot, and izakaya menus.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "portion",
+      "serving"
+    ]
+  },
+  {
+    "id": "travel-restaurants-059",
+    "type": "travel",
+    "category": "restaurants",
+    "subcategory": "Menu",
+    "japanese": "量は多いですか？",
+    "reading": "りょうはおおいですか？",
+    "romaji": "ryou wa ooi desu ka?",
+    "english": "Is the portion large?",
+    "literalMeaning": "Is the amount large?",
+    "naturalUsage": "Useful before ordering when you are unsure about serving size.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "portion",
+      "size"
+    ]
+  },
+  {
+    "id": "travel-restaurants-060",
+    "type": "travel",
+    "category": "restaurants",
+    "subcategory": "Menu",
+    "japanese": "デザートはありますか？",
+    "reading": "でざーとはありますか？",
+    "romaji": "dezaato wa arimasu ka?",
+    "english": "Do you have dessert?",
+    "literalMeaning": "Is there dessert?",
+    "naturalUsage": "Simple question when dessert is not obvious on the menu.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "dessert",
+      "menu"
+    ]
+  },
+  {
+    "id": "travel-restaurants-061",
+    "type": "travel",
+    "category": "restaurants",
+    "subcategory": "Requests",
+    "japanese": "取り皿をお願いします。",
+    "reading": "とりざらをおねがいします。",
+    "romaji": "torizara o onegai shimasu.",
+    "english": "Small plates for sharing, please.",
+    "literalMeaning": "Serving plates, please.",
+    "naturalUsage": "Useful when sharing dishes with your group.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "plate",
+      "sharing"
+    ]
+  },
+  {
+    "id": "travel-restaurants-062",
+    "type": "travel",
+    "category": "restaurants",
+    "subcategory": "Requests",
+    "japanese": "お箸をお願いします。",
+    "reading": "おはしをおねがいします。",
+    "romaji": "ohashi o onegai shimasu.",
+    "english": "Chopsticks, please.",
+    "literalMeaning": "Chopsticks, please.",
+    "naturalUsage": "Use if chopsticks were not provided or you need another pair.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "chopsticks"
+    ]
+  },
+  {
+    "id": "travel-restaurants-063",
+    "type": "travel",
+    "category": "restaurants",
+    "subcategory": "Requests",
+    "japanese": "スプーンをお願いします。",
+    "reading": "すぷーんをおねがいします。",
+    "romaji": "supuun o onegai shimasu.",
+    "english": "A spoon, please.",
+    "literalMeaning": "A spoon, please.",
+    "naturalUsage": "Simple utensil request.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "spoon",
+      "utensil"
+    ]
+  },
+  {
+    "id": "travel-restaurants-064",
+    "type": "travel",
+    "category": "restaurants",
+    "subcategory": "Requests",
+    "japanese": "フォークをお願いします。",
+    "reading": "ふぉーくをおねがいします。",
+    "romaji": "fooku o onegai shimasu.",
+    "english": "A fork, please.",
+    "literalMeaning": "A fork, please.",
+    "naturalUsage": "Useful if you prefer a fork.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "fork",
+      "utensil"
+    ]
+  },
+  {
+    "id": "travel-restaurants-065",
+    "type": "travel",
+    "category": "restaurants",
+    "subcategory": "Requests",
+    "japanese": "おしぼりをもう一つお願いします。",
+    "reading": "おしぼりをもうひとつおねがいします。",
+    "romaji": "oshibori o mou hitotsu onegai shimasu.",
+    "english": "Another wet towel, please.",
+    "literalMeaning": "One more oshibori, please.",
+    "naturalUsage": "Useful at casual restaurants and izakaya.",
+    "politeness": "polite",
+    "priority": "extra",
+    "tags": [
+      "oshibori",
+      "request"
+    ]
+  },
+  {
+    "id": "travel-restaurants-066",
+    "type": "travel",
+    "category": "restaurants",
+    "subcategory": "Requests",
+    "japanese": "お水をもう一杯お願いします。",
+    "reading": "おみずをもういっぱいおねがいします。",
+    "romaji": "omizu o mou ippai onegai shimasu.",
+    "english": "Another glass of water, please.",
+    "literalMeaning": "One more cup of water, please.",
+    "naturalUsage": "Natural way to ask for a refill or another glass.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "water",
+      "refill"
+    ]
+  },
+  {
+    "id": "travel-restaurants-067",
+    "type": "travel",
+    "category": "restaurants",
+    "subcategory": "Requests",
+    "japanese": "氷なしでお願いします。",
+    "reading": "こおりなしでおねがいします。",
+    "romaji": "koori nashi de onegai shimasu.",
+    "english": "No ice, please.",
+    "literalMeaning": "Without ice, please.",
+    "naturalUsage": "Useful for cold drinks.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "drink",
+      "no-ice"
+    ]
+  },
+  {
+    "id": "travel-restaurants-068",
+    "type": "travel",
+    "category": "restaurants",
+    "subcategory": "Requests",
+    "japanese": "氷少なめでお願いします。",
+    "reading": "こおりすくなめでおねがいします。",
+    "romaji": "koori sukuname de onegai shimasu.",
+    "english": "Less ice, please.",
+    "literalMeaning": "With less ice, please.",
+    "naturalUsage": "Useful when you want only a little ice.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "drink",
+      "less-ice"
+    ]
+  },
+  {
+    "id": "travel-restaurants-069",
+    "type": "travel",
+    "category": "restaurants",
+    "subcategory": "Requests",
+    "japanese": "ソースは別にできますか？",
+    "reading": "そーすはべつにできますか？",
+    "romaji": "soosu wa betsu ni dekimasu ka?",
+    "english": "Can I have the sauce on the side?",
+    "literalMeaning": "Can the sauce be separate?",
+    "naturalUsage": "Natural way to ask for sauce separately.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "sauce",
+      "on-the-side"
+    ]
+  },
+  {
+    "id": "travel-restaurants-070",
+    "type": "travel",
+    "category": "restaurants",
+    "subcategory": "Requests",
+    "japanese": "辛さを控えめにできますか？",
+    "reading": "からさをひかえめにできますか？",
+    "romaji": "karasa o hikaeme ni dekimasu ka?",
+    "english": "Can you make it less spicy?",
+    "literalMeaning": "Can the spiciness be made moderate?",
+    "naturalUsage": "Useful at places where spice level can be adjusted.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "spicy",
+      "adjustment"
+    ]
+  },
+  {
+    "id": "travel-restaurants-071",
+    "type": "travel",
+    "category": "restaurants",
+    "subcategory": "Requests",
+    "japanese": "これは抜きにできますか？",
+    "reading": "これはぬきにできますか？",
+    "romaji": "kore wa nuki ni dekimasu ka?",
+    "english": "Can you leave this out?",
+    "literalMeaning": "Can this be omitted?",
+    "naturalUsage": "Say while pointing to an ingredient you do not want.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "ingredient",
+      "remove"
+    ]
+  },
+  {
+    "id": "travel-restaurants-072",
+    "type": "travel",
+    "category": "restaurants",
+    "subcategory": "Requests",
+    "japanese": "別々に出してもらえますか？",
+    "reading": "べつべつにだしてもらえますか？",
+    "romaji": "betsubetsu ni dashite moraemasu ka?",
+    "english": "Could you serve them separately?",
+    "literalMeaning": "Could I have you bring them out separately?",
+    "naturalUsage": "Useful when you want components or portions served separately.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "separate",
+      "serving"
+    ]
+  },
+  {
+    "id": "travel-restaurants-073",
+    "type": "travel",
+    "category": "restaurants",
+    "subcategory": "Requests",
+    "japanese": "持ち帰りできますか？",
+    "reading": "もちかえりできますか？",
+    "romaji": "mochikaeri dekimasu ka?",
+    "english": "Can I get this to go?",
+    "literalMeaning": "Can this be taken home?",
+    "naturalUsage": "Ask before assuming takeaway is available; some restaurants do not offer it.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "takeout",
+      "to-go"
+    ]
+  },
+  {
+    "id": "travel-restaurants-074",
+    "type": "travel",
+    "category": "restaurants",
+    "subcategory": "Requests",
+    "japanese": "残りを持ち帰れますか？",
+    "reading": "のこりをもちかえれますか？",
+    "romaji": "nokori o mochikaeremasu ka?",
+    "english": "Can I take the leftovers home?",
+    "literalMeaning": "Can I take the remainder home?",
+    "naturalUsage": "Useful, but many Japanese restaurants may decline for food-safety reasons.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "leftovers",
+      "takeout"
+    ]
+  },
+  {
+    "id": "travel-restaurants-075",
+    "type": "travel",
+    "category": "restaurants",
+    "subcategory": "Requests",
+    "japanese": "少し待ってください。",
+    "reading": "すこしまってください。",
+    "romaji": "sukoshi matte kudasai.",
+    "english": "Please give me a moment.",
+    "literalMeaning": "Please wait a little.",
+    "naturalUsage": "Useful when staff is waiting for your order and you need more time.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "wait",
+      "ordering"
+    ]
+  },
+  {
+    "id": "travel-restaurants-076",
+    "type": "travel",
+    "category": "restaurants",
+    "subcategory": "Payment",
+    "japanese": "ここで払いますか？",
+    "reading": "ここではらいますか？",
+    "romaji": "koko de haraimasu ka?",
+    "english": "Do I pay here?",
+    "literalMeaning": "Do I pay here?",
+    "naturalUsage": "Useful when you are unsure whether to pay at the table or register.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "payment",
+      "where"
+    ]
+  },
+  {
+    "id": "travel-restaurants-077",
+    "type": "travel",
+    "category": "restaurants",
+    "subcategory": "Payment",
+    "japanese": "レジで払いますか？",
+    "reading": "れじではらいますか？",
+    "romaji": "reji de haraimasu ka?",
+    "english": "Do I pay at the register?",
+    "literalMeaning": "Do I pay at the cash register?",
+    "naturalUsage": "Useful in restaurants where payment is made near the entrance.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "payment",
+      "register"
+    ]
+  },
+  {
+    "id": "travel-restaurants-078",
+    "type": "travel",
+    "category": "restaurants",
+    "subcategory": "Payment",
+    "japanese": "別々に払えますか？",
+    "reading": "べつべつにはらえますか？",
+    "romaji": "betsubetsu ni haraemasu ka?",
+    "english": "Can we pay separately?",
+    "literalMeaning": "Can we pay separately?",
+    "naturalUsage": "Useful when asking to split payment by person.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "payment",
+      "split-bill"
+    ]
+  },
+  {
+    "id": "travel-restaurants-079",
+    "type": "travel",
+    "category": "restaurants",
+    "subcategory": "Payment",
+    "japanese": "まとめて払います。",
+    "reading": "まとめてはらいます。",
+    "romaji": "matomete haraimasu.",
+    "english": "We'll pay together.",
+    "literalMeaning": "We will pay all together.",
+    "naturalUsage": "Natural response when one payment will cover the whole table.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "payment",
+      "together"
+    ]
+  },
+  {
+    "id": "travel-restaurants-080",
+    "type": "travel",
+    "category": "restaurants",
+    "subcategory": "Payment",
+    "japanese": "私が払います。",
+    "reading": "わたしがはらいます。",
+    "romaji": "watashi ga haraimasu.",
+    "english": "I'll pay.",
+    "literalMeaning": "I will pay.",
+    "naturalUsage": "Simple phrase when telling staff or companions you will cover the bill.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "payment"
+    ]
+  },
+  {
+    "id": "travel-restaurants-081",
+    "type": "travel",
+    "category": "restaurants",
+    "subcategory": "Payment",
+    "japanese": "クレジットカードでお願いします。",
+    "reading": "くれじっとかーどでおねがいします。",
+    "romaji": "kurejitto kaado de onegai shimasu.",
+    "english": "By credit card, please.",
+    "literalMeaning": "By credit card, please.",
+    "naturalUsage": "Use when staff asks how you would like to pay.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "payment",
+      "credit-card"
+    ]
+  },
+  {
+    "id": "travel-restaurants-082",
+    "type": "travel",
+    "category": "restaurants",
+    "subcategory": "Payment",
+    "japanese": "現金でお願いします。",
+    "reading": "げんきんでおねがいします。",
+    "romaji": "genkin de onegai shimasu.",
+    "english": "Cash, please.",
+    "literalMeaning": "By cash, please.",
+    "naturalUsage": "Use when choosing cash as the payment method.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "payment",
+      "cash"
+    ]
+  },
+  {
+    "id": "travel-restaurants-083",
+    "type": "travel",
+    "category": "restaurants",
+    "subcategory": "Payment",
+    "japanese": "ICカードは使えますか？",
+    "reading": "あいしーかーどはつかえますか？",
+    "romaji": "ai-shii kaado wa tsukaemasu ka?",
+    "english": "Can I pay with an IC card?",
+    "literalMeaning": "Can an IC card be used?",
+    "naturalUsage": "Useful for Suica, PASMO, ICOCA, and similar cards where supported.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "payment",
+      "IC-card"
+    ]
+  },
+  {
+    "id": "travel-restaurants-084",
+    "type": "travel",
+    "category": "restaurants",
+    "subcategory": "Payment",
+    "japanese": "タッチ決済は使えますか？",
+    "reading": "たっちけっさいはつかえますか？",
+    "romaji": "tacchi kessai wa tsukaemasu ka?",
+    "english": "Can I use contactless payment?",
+    "literalMeaning": "Can touch payment be used?",
+    "naturalUsage": "Useful when paying with a contactless bank card or phone.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "payment",
+      "contactless"
+    ]
+  },
+  {
+    "id": "travel-restaurants-085",
+    "type": "travel",
+    "category": "restaurants",
+    "subcategory": "Payment",
+    "japanese": "このカードは使えますか？",
+    "reading": "このかーどはつかえますか？",
+    "romaji": "kono kaado wa tsukaemasu ka?",
+    "english": "Can I use this card?",
+    "literalMeaning": "Can this card be used?",
+    "naturalUsage": "Useful when showing a specific card to staff.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "payment",
+      "card"
+    ]
+  },
+  {
+    "id": "travel-restaurants-086",
+    "type": "travel",
+    "category": "restaurants",
+    "subcategory": "Payment",
+    "japanese": "暗証番号は必要ですか？",
+    "reading": "あんしょうばんごうはひつようですか？",
+    "romaji": "anshou bangou wa hitsuyou desu ka?",
+    "english": "Do I need to enter a PIN?",
+    "literalMeaning": "Is a PIN necessary?",
+    "naturalUsage": "Useful when a card terminal workflow is unclear.",
+    "politeness": "polite",
+    "priority": "extra",
+    "tags": [
+      "payment",
+      "PIN"
+    ]
+  },
+  {
+    "id": "travel-restaurants-087",
+    "type": "travel",
+    "category": "restaurants",
+    "subcategory": "Payment",
+    "japanese": "レシートをお願いします。",
+    "reading": "れしーとをおねがいします。",
+    "romaji": "reshiito o onegai shimasu.",
+    "english": "A receipt, please.",
+    "literalMeaning": "A receipt, please.",
+    "naturalUsage": "Standard request if a receipt is not automatically offered.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "receipt",
+      "payment"
+    ]
+  },
+  {
+    "id": "travel-restaurants-088",
+    "type": "travel",
+    "category": "restaurants",
+    "subcategory": "Payment",
+    "japanese": "領収書をお願いします。",
+    "reading": "りょうしゅうしょをおねがいします。",
+    "romaji": "ryoushuusho o onegai shimasu.",
+    "english": "An official receipt, please.",
+    "literalMeaning": "An official receipt, please.",
+    "naturalUsage": "領収書 is used for a more formal receipt, often for business or reimbursement.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "receipt",
+      "formal"
+    ]
+  },
+  {
+    "id": "travel-restaurants-089",
+    "type": "travel",
+    "category": "restaurants",
+    "subcategory": "Payment",
+    "japanese": "お釣りは大丈夫です。",
+    "reading": "おつりはだいじょうぶです。",
+    "romaji": "otsuri wa daijoubu desu.",
+    "english": "Keep the change.",
+    "literalMeaning": "The change is okay.",
+    "naturalUsage": "Understandable when you do not need the change, though tipping itself is not customary in Japan.",
+    "politeness": "polite",
+    "priority": "extra",
+    "tags": [
+      "change",
+      "cash"
+    ]
+  },
+  {
+    "id": "travel-restaurants-090",
+    "type": "travel",
+    "category": "restaurants",
+    "subcategory": "Payment",
+    "japanese": "ごちそうさまでした。ありがとうございました。",
+    "reading": "ごちそうさまでした。ありがとうございました。",
+    "romaji": "gochisousama deshita. arigatou gozaimashita.",
+    "english": "Thank you for the meal. Thank you very much.",
+    "literalMeaning": "It was a feast. Thank you very much.",
+    "naturalUsage": "A warm, natural way to thank staff as you leave after paying.",
+    "politeness": "very-polite",
+    "priority": "essential",
+    "tags": [
+      "thanks",
+      "leaving"
+    ]
+  }
+]

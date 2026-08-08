@@ -1,0 +1,4 @@
+[
+  {"id":"travel-shopping-001","type":"travel","category":"shopping","subcategory":"Essential","japanese":"これはいくらですか？","reading":"これはいくらですか？","romaji":"Kore wa ikura desu ka?","english":"How much is this?","literalMeaning":"As for this, how much is it?","naturalUsage":"A basic polite question for asking the price of an item.","politeness":"polite","priority":"essential","tags":["price","item"]},
+  {"id":"travel-shopping-002","type":"travel","category":"shopping","subcategory":"Sizes","japanese":"もう少し大きいサイズはありますか？","reading":"もうすこしおおきいサイズはありますか？","romaji":"Mou sukoshi ookii saizu wa arimasu ka?","english":"Do you have a slightly larger size?","literalMeaning":"Is there a size that is a little bigger?","naturalUsage":"A polite way to ask store staff for another size.","politeness":"polite","priority":"useful","tags":["size","clothes"]}
+]

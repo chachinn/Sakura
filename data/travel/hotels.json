@@ -1,0 +1,4 @@
+[
+  {"id":"travel-hotels-001","type":"travel","category":"hotels","subcategory":"Essential","japanese":"チェックインをお願いします。","reading":"チェックインをおねがいします。","romaji":"Chekkuin o onegai shimasu.","english":"I would like to check in, please.","literalMeaning":"I request check-in.","naturalUsage":"A simple polite phrase to begin checking in at a hotel.","politeness":"polite","priority":"essential","tags":["check-in","front desk"]},
+  {"id":"travel-hotels-002","type":"travel","category":"hotels","subcategory":"Luggage","japanese":"チェックインまで荷物を預かってもらえますか？","reading":"チェックインまでにもつをあずかってもらえますか？","romaji":"Chekkuin made nimotsu o azukatte moraemasu ka?","english":"Could you keep my luggage until check-in?","literalMeaning":"Could I have you look after my luggage until check-in?","naturalUsage":"Natural and polite when asking hotel staff to store luggage.","politeness":"polite","priority":"useful","tags":["luggage","check-in","storage"]}
+]

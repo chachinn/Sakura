@@ -1,0 +1,4 @@
+[
+  {"id":"travel-taxi-001","type":"travel","category":"taxi","subcategory":"Essential","japanese":"この住所までお願いします。","reading":"このじゅうしょまでおねがいします。","romaji":"Kono juusho made onegai shimasu.","english":"Please take me to this address.","literalMeaning":"To this address, please.","naturalUsage":"Show the written address while saying this to a taxi driver.","politeness":"polite","priority":"essential","tags":["address","destination"]},
+  {"id":"travel-taxi-002","type":"travel","category":"taxi","subcategory":"Fare","japanese":"だいたいいくらかかりますか？","reading":"だいたいいくらかかりますか？","romaji":"Daitai ikura kakarimasu ka?","english":"About how much will it cost?","literalMeaning":"Approximately how much does it cost?","naturalUsage":"A polite way to ask for an estimated fare.","politeness":"polite","priority":"useful","tags":["fare","cost"]}
+]

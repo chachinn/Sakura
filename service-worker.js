@@ -1,15 +1,17 @@
-const SHELL_CACHE_VERSION = "sakura-shell-v26";
+const SHELL_CACHE_VERSION = "sakura-shell-v28";
 const KANJI_CONTENT_CACHE_VERSION = "sakura-kanji-content-v1";
+const TRAVEL_CONTENT_CACHE_VERSION = "sakura-travel-content-v1";
 
 const APP_SHELL = [
     "./",
     "./index.html",
-    "./style.css?v=19",
-    "./app.js?v=23",
+    "./style.css?v=21",
+    "./app.js?v=24",
     "./data/kanji.js",
     "./data/vocabulary.js",
     "./data/native-japanese.js",
     "./data/slang.js",
+    "./data/travel.js?v=1",
     "./manifest.webmanifest",
     "./icons/icon-180.png",
     "./icons/icon-192.png",
@@ -47,7 +49,8 @@ self.addEventListener(
                                 .filter(
                                     cacheName =>
                                         cacheName !== SHELL_CACHE_VERSION &&
-                                        cacheName !== KANJI_CONTENT_CACHE_VERSION
+                                        cacheName !== KANJI_CONTENT_CACHE_VERSION &&
+                                        cacheName !== TRAVEL_CONTENT_CACHE_VERSION
                                 )
                                 .map(
                                     cacheName =>
@@ -108,12 +111,16 @@ self.addEventListener(
             const isKanjiContent =
                 requestUrl.pathname.includes("/data/kanji/") &&
                 requestUrl.pathname.endsWith(".json");
+            const isTravelContent =
+                requestUrl.pathname.includes("/data/travel/") &&
+                requestUrl.pathname.endsWith(".json");
 
-            if (isKanjiContent) {
+            if (isKanjiContent || isTravelContent) {
+                const contentCacheName = isKanjiContent ? KANJI_CONTENT_CACHE_VERSION : TRAVEL_CONTENT_CACHE_VERSION;
                 event.respondWith(
                     fetch(request)
                         .then(async response => {
-                            const contentCache = await caches.open(KANJI_CONTENT_CACHE_VERSION);
+                            const contentCache = await caches.open(contentCacheName);
                             if (!response.ok) {
                                 return (await contentCache.match(request)) || response;
                             }
@@ -121,7 +128,7 @@ self.addEventListener(
                             return response;
                         })
                         .catch(async error => {
-                            const contentCache = await caches.open(KANJI_CONTENT_CACHE_VERSION);
+                            const contentCache = await caches.open(contentCacheName);
                             const cached = await contentCache.match(request);
                             if (cached) return cached;
                             throw error;

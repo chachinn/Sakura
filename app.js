@@ -214,6 +214,11 @@ let currentKanjiQuiz = null;
 let currentVocabularyQuiz = null;
 let currentNativeItem = null;
 let currentNativeMode = "native";
+let currentTravelCategory = null;
+let currentTravelFilter = "All";
+let currentTravelPhrase = null;
+let currentTravelIndex = 0;
+let travelRenderRevision = 0;
 let flashcardDeck = [];
 let flashcardIndex = 0;
 let flashcardRevealed = false;
@@ -1191,6 +1196,106 @@ function browseNative(direction = 1, random = false) {
     renderNative(index < 0 ? null : pool[index]);
 }
 
+function travelCategoryMetadata(category) {
+    return window.TRAVEL_CATEGORIES?.[category] || null;
+}
+
+function travelPhrasePool() {
+    if (!currentTravelCategory || !window.SakuraTravelLoader) return [];
+    const phrases = window.SakuraTravelLoader.getTravelPhrasesByCategory(currentTravelCategory);
+    return currentTravelFilter === "All" ? phrases : phrases.filter(phrase => phrase.subcategory === currentTravelFilter);
+}
+
+function travelTagLabel(value) {
+    return String(value || "").split("-").map(part => part.charAt(0).toUpperCase() + part.slice(1)).join(" ");
+}
+
+function renderTravelPhraseCard(phrase) {
+    currentTravelPhrase = phrase || null;
+    const list = document.getElementById("travel-phrase-list");
+    const empty = document.getElementById("travel-category-empty");
+    const controls = ["previous-travel-phrase", "random-travel-phrase", "next-travel-phrase"].map(id => document.getElementById(id));
+    const pool = travelPhrasePool();
+    controls.forEach(button => { button.disabled = !phrase || !pool.length; });
+    empty.hidden = Boolean(phrase);
+    if (!phrase) {
+        list.innerHTML = "";
+        document.getElementById("travel-category-status").textContent = "0 phrases";
+        return;
+    }
+    const position = Math.max(0, pool.findIndex(item => item.id === phrase.id));
+    currentTravelIndex = position;
+    document.getElementById("travel-category-status").textContent = pool.length ? `${position + 1} of ${pool.length} · ${currentTravelFilter}` : "Saved travel phrase";
+    const saved = isSaved(phrase);
+    list.innerHTML = `<article class="travel-phrase-card">
+        <div class="card-topline"><span class="status-label">${escapeSearchHtml(phrase.subcategory)}</span><button class="save-button ${saved ? "saved" : ""}" type="button" data-save-travel-phrase aria-label="${saved ? "Unsave" : "Save"} travel phrase" aria-pressed="${saved}">${saved ? "♥" : "♡"}</button></div>
+        <h2>${escapeSearchHtml(phrase.japanese)}</h2>
+        <p class="travel-reading">${escapeSearchHtml(phrase.reading)}</p>
+        <p class="travel-romaji">${escapeSearchHtml(phrase.romaji)}</p>
+        <p class="travel-english">${escapeSearchHtml(phrase.english)}</p>
+        <div class="travel-phrase-tags"><span>${escapeSearchHtml(travelTagLabel(phrase.priority))}</span><span>${escapeSearchHtml(travelTagLabel(phrase.politeness))}</span></div>
+        <details class="travel-phrase-details"><summary>Usage details</summary><div><strong>Literal meaning</strong><p>${escapeSearchHtml(phrase.literalMeaning || "—")}</p><strong>Natural usage</strong><p>${escapeSearchHtml(phrase.naturalUsage || "—")}</p>${phrase.tags?.length ? `<strong>Tags</strong><p>${phrase.tags.map(escapeSearchHtml).join(" · ")}</p>` : ""}</div></details>
+    </article>`;
+}
+
+function renderTravelFilters(category) {
+    const metadata = travelCategoryMetadata(category);
+    const container = document.getElementById("travel-category-filters");
+    if (!metadata) { container.innerHTML = ""; return; }
+    container.innerHTML = metadata.filters.map(filter => `<button class="search-filter-chip ${filter === currentTravelFilter ? "active" : ""}" type="button" data-travel-filter="${escapeSearchHtml(filter)}" aria-pressed="${filter === currentTravelFilter}">${escapeSearchHtml(filter)}</button>`).join("");
+}
+
+function browseTravelPhrase(direction = 1, random = false) {
+    const pool = travelPhrasePool();
+    if (!pool.length) { renderTravelPhraseCard(null); return; }
+    const existingIndex = pool.findIndex(phrase => phrase.id === currentTravelPhrase?.id);
+    if (random && pool.length > 1) {
+        const alternatives = pool.filter(phrase => phrase.id !== currentTravelPhrase?.id);
+        currentTravelIndex = Math.floor(Math.random() * alternatives.length);
+        renderTravelPhraseCard(alternatives[currentTravelIndex]);
+        return;
+    }
+    const baseIndex = existingIndex >= 0 ? existingIndex : 0;
+    currentTravelIndex = (baseIndex + direction + pool.length) % pool.length;
+    renderTravelPhraseCard(pool[currentTravelIndex]);
+}
+
+async function renderTravelCategory(category) {
+    const metadata = travelCategoryMetadata(category);
+    if (!metadata) {
+        console.warn(`Travel Mode: invalid category ${JSON.stringify(category)}.`);
+        showRoute("travel");
+        return;
+    }
+    const revision = ++travelRenderRevision;
+    const categoryChanged = currentTravelCategory !== category;
+    currentTravelCategory = category;
+    if (categoryChanged) currentTravelFilter = "All";
+    document.getElementById("travel-category-icon").textContent = metadata.icon;
+    document.getElementById("travel-category-heading").textContent = metadata.title;
+    document.getElementById("travel-category-description").textContent = metadata.description;
+    document.getElementById("travel-category-status").textContent = "Loading travel phrases…";
+    document.getElementById("travel-category-empty").hidden = true;
+    document.getElementById("travel-phrase-list").innerHTML = "";
+    renderTravelFilters(category);
+    try {
+        await window.SakuraTravelLoader.loadTravelCategory(category);
+        if (revision !== travelRenderRevision || currentRoute !== `travel-${category}`) return;
+        const pool = travelPhrasePool();
+        currentTravelIndex = 0;
+        renderTravelPhraseCard(pool[0] || null);
+    }
+    catch (error) {
+        if (revision !== travelRenderRevision || currentRoute !== `travel-${category}`) return;
+        console.warn(`Travel Mode: ${category} is unavailable.`, error);
+        document.getElementById("travel-category-status").textContent = "Travel phrases could not be loaded.";
+        document.getElementById("travel-category-empty").hidden = false;
+        document.getElementById("travel-category-empty").querySelector("strong").textContent = "This category is unavailable offline.";
+        document.getElementById("travel-category-empty").querySelector("p").textContent = "Open it once while online to make it available offline.";
+        ["previous-travel-phrase", "random-travel-phrase", "next-travel-phrase"].forEach(id => { document.getElementById(id).disabled = true; });
+    }
+}
+
 function shuffleItems(items) {
     const shuffled = [...items];
     for (let index = shuffled.length - 1; index > 0; index -= 1) {
@@ -1201,7 +1306,7 @@ function shuffleItems(items) {
 }
 
 function itemTitle(item) {
-    return item?.character || item?.word || item?.expression || "Saved item";
+    return item?.character || item?.word || item?.expression || item?.japanese || "Saved item";
 }
 
 function itemReading(item) {
@@ -1212,7 +1317,7 @@ function renderSavedItems() {
     const type = document.getElementById("saved-type-filter").value;
     const level = document.getElementById("saved-level-filter").value;
     const filtered = savedItems.filter(item => (type === "all" || item.type === type) && (level === "all" || item.jlpt === level));
-    document.getElementById("saved-items").innerHTML = filtered.map(item => `<article class="saved-item-card"><span class="tag">${item.jlpt || item.difficulty || item.type}</span><button class="saved-item-open" type="button" data-open-saved-key="${itemKey(item)}"><strong class="saved-item-title">${itemTitle(item)}</strong><span>${itemReading(item)}</span><span>${item.meaning}</span></button><button class="remove-saved-button" type="button" data-remove-key="${itemKey(item)}">Remove</button></article>`).join("");
+    document.getElementById("saved-items").innerHTML = filtered.map(item => `<article class="saved-item-card"><span class="tag">${item.jlpt || item.difficulty || item.category || item.type}</span><button class="saved-item-open" type="button" data-open-saved-key="${itemKey(item)}"><strong class="saved-item-title">${itemTitle(item)}</strong><span>${itemReading(item)}</span><span>${item.meaning || item.english || ""}</span></button><button class="remove-saved-button" type="button" data-remove-key="${itemKey(item)}">Remove</button></article>`).join("");
     document.getElementById("saved-empty").hidden = filtered.length > 0;
     document.getElementById("start-flashcards").disabled = savedItems.length === 0;
 }
@@ -1228,6 +1333,18 @@ function openSavedItem(item) {
         document.getElementById("native-category-filter").value = "All";
         renderNative(item);
     }
+    else if (item.type === "travel" && travelCategoryMetadata(item.category)) {
+        showRoute(`travel-${item.category}`);
+        window.SakuraTravelLoader.loadTravelCategory(item.category).then(records => {
+            if (currentRoute !== `travel-${item.category}`) return;
+            const phrase = records.find(record => record.id === item.id) || item;
+            currentTravelFilter = phrase.subcategory || "All";
+            renderTravelFilters(item.category);
+            renderTravelPhraseCard(phrase);
+        }).catch(() => {
+            if (currentRoute === `travel-${item.category}`) renderTravelPhraseCard(item);
+        });
+    }
     else if (item.type === "translation") {
         showRoute("translate");
         renderTranslationResult({ id:item.id, japanese:item.expression, kana:item.kana, romaji:item.romaji, naturalMeaning:item.naturalMeaning || item.meaning, literalMeaning:item.literalMeaning || "", tone:item.tone || "", usageNote:item.notes || "", alternative:item.alternative || "", offline:false });
@@ -1235,7 +1352,7 @@ function openSavedItem(item) {
 }
 
 function flashcardBack(item) {
-    return [item.kana || item.reading, item.romaji, item.meaning, item.onyomi?.length ? `On: ${item.onyomi.join(", ")}` : "", item.kunyomi?.length ? `Kun: ${item.kunyomi.join(", ")}` : "", item.jlpt || item.difficulty, item.exampleSentence, item.exampleTranslation, item.formality ? `Formality: ${item.formality}` : "", item.notes].filter(Boolean).join("\n");
+    return [item.kana || item.reading, item.romaji, item.meaning || item.english, item.onyomi?.length ? `On: ${item.onyomi.join(", ")}` : "", item.kunyomi?.length ? `Kun: ${item.kunyomi.join(", ")}` : "", item.jlpt || item.difficulty || item.category, item.exampleSentence, item.exampleTranslation, item.naturalUsage, item.formality ? `Formality: ${item.formality}` : "", item.notes].filter(Boolean).join("\n");
 }
 
 function selectedFlashcardLevels() {
@@ -1367,7 +1484,9 @@ async function requestTranslation(event) {
 function showRoute(route, updateHash = true) {
     const normalizedRoute = route === "native" ? "learn-native" : route;
     const nativeMode = normalizedRoute === "learn-slang" ? "slang" : normalizedRoute === "learn-native" ? "native" : null;
-    const viewRoute = nativeMode ? "native" : normalizedRoute;
+    const requestedTravelCategory = normalizedRoute.startsWith("travel-") ? normalizedRoute.slice(7) : null;
+    const travelCategory = travelCategoryMetadata(requestedTravelCategory) ? requestedTravelCategory : null;
+    const viewRoute = nativeMode ? "native" : travelCategory ? "travel-category" : normalizedRoute;
     currentRoute = normalizedRoute;
     if (nativeMode) {
         currentNativeMode = nativeMode;
@@ -1380,7 +1499,8 @@ function showRoute(route, updateHash = true) {
         view.hidden = !active;
         view.classList.toggle("active-view", active);
     });
-    const mainRoute = ["search", "translate", "learn-native", "learn-slang"].includes(normalizedRoute) ? "learn" : normalizedRoute.replace("-detail", "");
+    if (travelCategory) renderTravelCategory(travelCategory);
+    const mainRoute = travelCategory ? "travel" : ["search", "translate", "learn-native", "learn-slang"].includes(normalizedRoute) ? "learn" : normalizedRoute.replace("-detail", "");
     document.querySelectorAll(".nav-button").forEach(button => button.classList.toggle("active", button.dataset.route === mainRoute || (normalizedRoute.includes("detail") && button.dataset.route === detailReturnRoute)));
     const learnView = normalizedRoute === "learn" ? "library" : nativeMode;
     document.querySelectorAll("[data-learn-view]").forEach(button => {
@@ -1603,6 +1723,23 @@ function addListeners() {
         const learnView = button.dataset.learnView;
         showRoute(learnView === "library" ? "learn" : `learn-${learnView}`);
     }));
+    document.getElementById("travel-category-filters").addEventListener("click", event => {
+        const button = event.target.closest("[data-travel-filter]");
+        if (!button) return;
+        currentTravelFilter = button.dataset.travelFilter;
+        renderTravelFilters(currentTravelCategory);
+        const pool = travelPhrasePool();
+        currentTravelIndex = 0;
+        renderTravelPhraseCard(pool[0] || null);
+    });
+    document.getElementById("previous-travel-phrase").addEventListener("click", () => browseTravelPhrase(-1));
+    document.getElementById("random-travel-phrase").addEventListener("click", () => browseTravelPhrase(1, true));
+    document.getElementById("next-travel-phrase").addEventListener("click", () => browseTravelPhrase(1));
+    document.getElementById("travel-phrase-list").addEventListener("click", event => {
+        if (!event.target.closest("[data-save-travel-phrase]") || !currentTravelPhrase) return;
+        toggleSaved(currentTravelPhrase);
+        renderTravelPhraseCard(currentTravelPhrase);
+    });
     document.getElementById("translation-contexts").addEventListener("click", event => { const button=event.target.closest("[data-translation-context]"); if(button){translationContext=button.dataset.translationContext;renderTranslationChips();} });
     document.getElementById("translation-tones").addEventListener("click", event => { const button=event.target.closest("[data-translation-tone]"); if(button){translationTone=button.dataset.translationTone;renderTranslationChips();} });
     document.getElementById("translation-form").addEventListener("submit",requestTranslation);
@@ -1829,7 +1966,8 @@ function initializeApp() {
     browseNative(1, true);
     updateSavedUi();
     const requestedRoute = location.hash.replace("#", "");
-    showRoute(["home", "learn", "learn-native", "learn-slang", "search", "translate", "quiz", "native", "travel", "saved"].includes(requestedRoute) ? requestedRoute : "home", false);
+    const travelRoutes = Object.keys(window.TRAVEL_CATEGORIES || {}).map(category => `travel-${category}`);
+    showRoute(["home", "learn", "learn-native", "learn-slang", "search", "translate", "quiz", "native", "travel", "saved", ...travelRoutes].includes(requestedRoute) ? requestedRoute : "home", false);
     initializePwaUpdates();
 }
 

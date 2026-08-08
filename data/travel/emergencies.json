@@ -1,0 +1,4 @@
+[
+  {"id":"travel-emergencies-001","type":"travel","category":"emergencies","subcategory":"Essential","japanese":"助けてください。","reading":"たすけてください。","romaji":"Tasukete kudasai.","english":"Please help me.","literalMeaning":"Please help.","naturalUsage":"Use when you urgently need someone’s assistance.","politeness":"polite","priority":"essential","tags":["help","urgent"]},
+  {"id":"travel-emergencies-002","type":"travel","category":"emergencies","subcategory":"Medical","japanese":"救急車を呼んでください。","reading":"きゅうきゅうしゃをよんでください。","romaji":"Kyuukyuusha o yonde kudasai.","english":"Please call an ambulance.","literalMeaning":"Please call an ambulance.","naturalUsage":"A clear emergency request when an ambulance is needed.","politeness":"polite","priority":"essential","tags":["ambulance","medical","urgent"]}
+]
