@@ -1536,6 +1536,274 @@ a:focus-visible {
     box-shadow: var(--shadow);
 }
 
+.travel-pouch-launch > span {
+    font-size: 27px;
+}
+
+.travel-pouch-section {
+    margin-top: 14px;
+    padding: 15px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-card);
+    background: var(--color-surface);
+    box-shadow: var(--shadow-card);
+}
+
+.travel-pouch-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 10px;
+}
+
+.travel-pouch-heading h2 {
+    margin: 2px 0 0;
+    font-size: 18px;
+}
+
+.travel-pouch-list {
+    display: grid;
+    gap: 9px;
+}
+
+.travel-pouch-card {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 8px;
+    padding: 11px;
+    border: 1px solid var(--color-border);
+    border-radius: 15px;
+    background: var(--color-surface-soft);
+}
+
+.travel-pouch-card.pinned {
+    border-color: var(--color-primary);
+    background: var(--color-primary-soft);
+}
+
+.travel-pouch-open {
+    min-width: 0;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: inherit;
+    font: inherit;
+    text-align: left;
+}
+
+.travel-pouch-open strong,
+.travel-pouch-open span,
+.travel-pouch-open small {
+    display: block;
+    overflow-wrap: anywhere;
+}
+
+.travel-pouch-open strong { font-size: 18px; }
+.travel-pouch-open span { margin-top: 3px; color: var(--color-primary-dark); font-size: 13px; }
+.travel-pouch-open small { margin-top: 3px; color: var(--color-text-muted); line-height: 1.35; }
+
+.travel-pin-button {
+    min-width: 56px;
+    min-height: 40px;
+    padding: 7px 10px;
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    background: var(--color-surface);
+    color: var(--color-primary-dark);
+    font: inherit;
+    font-size: 12px;
+    font-weight: 800;
+}
+
+.travel-pin-button.active {
+    border-color: var(--color-primary);
+    background: var(--color-primary);
+    color: white;
+}
+
+.travel-pouch-note {
+    margin: 8px 2px 0;
+    color: var(--color-text-muted);
+    font-size: 13px;
+    line-height: 1.45;
+}
+
+.travel-deck-grid {
+    display: grid;
+    gap: 10px;
+    margin-top: 14px;
+}
+
+.travel-deck-card {
+    position: relative;
+    min-height: 82px;
+    padding: 14px 46px 14px 14px;
+    display: grid;
+    grid-template-columns: 48px minmax(0, 1fr);
+    grid-template-rows: auto auto;
+    align-items: center;
+    column-gap: 12px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-card);
+    background: var(--color-surface);
+    box-shadow: var(--shadow-card);
+    color: inherit;
+    font: inherit;
+    text-align: left;
+}
+
+.travel-deck-card > span { grid-row: 1 / 3; font-size: 31px; }
+.travel-deck-card > strong { overflow-wrap: anywhere; font-size: 17px; }
+.travel-deck-card > small { color: var(--color-text-muted); }
+.travel-deck-card > b { position: absolute; right: 17px; color: var(--color-primary-dark); font-size: 20px; }
+
+.travel-deck-actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 9px;
+    margin-bottom: 14px;
+}
+
+.travel-deck-editor-card label,
+.travel-deck-picker-card > input {
+    display: grid;
+    gap: 7px;
+    margin-top: 14px;
+    font-weight: 750;
+}
+
+.deck-icon-field {
+    margin: 16px 0 0;
+    padding: 0;
+    border: 0;
+}
+
+.deck-icon-field legend { margin-bottom: 8px; font-weight: 750; }
+.deck-icon-options { display: grid; grid-template-columns: repeat(7, 1fr); gap: 6px; }
+
+.deck-icon-button {
+    min-width: 0;
+    min-height: 42px;
+    padding: 4px;
+    border: 1px solid var(--color-border);
+    border-radius: 11px;
+    background: var(--color-surface-soft);
+    font-size: 20px;
+}
+
+.deck-icon-button.active { border-color: var(--color-primary); background: var(--color-primary-soft); box-shadow: 0 0 0 2px var(--color-primary); }
+
+.travel-deck-picker-card { max-height: min(88dvh, 760px); overflow-y: auto; }
+.travel-deck-picker-list { display: grid; gap: 8px; }
+
+.travel-deck-picker-item {
+    padding: 11px;
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    align-items: center;
+    gap: 10px;
+    border: 1px solid var(--color-border);
+    border-radius: 14px;
+    background: var(--color-surface-soft);
+}
+
+.travel-deck-picker-item.selected { border-color: var(--color-primary); background: var(--color-primary-soft); }
+.travel-deck-picker-item input { width: 20px; height: 20px; accent-color: var(--color-primary); }
+.travel-deck-picker-item strong, .travel-deck-picker-item small { display: block; overflow-wrap: anywhere; }
+.travel-deck-picker-item small { margin-top: 3px; color: var(--color-text-muted); line-height: 1.4; }
+.sticky-dialog-actions { position: sticky; bottom: 0; padding-top: 12px; background: var(--color-surface); }
+
+.travel-note-tools {
+    margin-top: 14px;
+}
+
+.travel-note-tools > input {
+    width: 100%;
+}
+
+.travel-note-list {
+    display: grid;
+    gap: 9px;
+}
+
+.travel-note-card {
+    position: relative;
+    width: 100%;
+    padding: 12px 38px 12px 12px;
+    display: grid;
+    grid-template-columns: 42px minmax(0, 1fr);
+    gap: 10px;
+    align-items: start;
+    border: 1px solid var(--color-border);
+    border-radius: 15px;
+    background: var(--color-surface-soft);
+    color: inherit;
+    font: inherit;
+    text-align: left;
+}
+
+.travel-note-card-icon {
+    width: 42px;
+    height: 42px;
+    display: grid;
+    place-items: center;
+    border-radius: 13px;
+    background: var(--color-primary-soft);
+    font-size: 22px;
+}
+
+.travel-note-card strong,
+.travel-note-card small,
+.travel-note-card em {
+    display: block;
+    overflow-wrap: anywhere;
+}
+
+.travel-note-card strong { font-size: 16px; }
+.travel-note-card small { margin-top: 4px; color: var(--color-text-muted); line-height: 1.4; }
+.travel-note-card em { margin-top: 5px; color: var(--color-primary-dark); font-size: 11px; font-style: normal; font-weight: 800; }
+.travel-note-card > b { position: absolute; right: 14px; top: 50%; translate: 0 -50%; color: var(--color-primary-dark); }
+
+.travel-note-editor-card label {
+    display: grid;
+    gap: 7px;
+    margin-top: 14px;
+    font-weight: 750;
+}
+
+.optional-label { color: var(--color-text-muted); font-size: 11px; font-weight: 600; }
+.travel-note-editor-card textarea { min-height: 220px; resize: vertical; white-space: pre-wrap; }
+
+.travel-note-full-content {
+    min-height: 180px;
+    max-height: 58dvh;
+    margin: 16px 0;
+    padding: 14px;
+    overflow: auto;
+    border: 1px solid var(--color-border);
+    border-radius: 15px;
+    background: var(--color-surface-soft);
+    color: var(--color-text);
+    font: inherit;
+    line-height: 1.65;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+}
+
+.travel-note-detail-actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 8px;
+}
+
+@media (max-width: 390px) {
+    .deck-icon-options { grid-template-columns: repeat(5, 1fr); }
+    .travel-note-detail-actions { grid-template-columns: 1fr 1fr; }
+    .travel-note-detail-actions .text-danger-button { grid-column: 1 / -1; }
+}
+
 .travel-category-card {
     position: relative;
     min-height: 142px;
@@ -1607,6 +1875,392 @@ a:focus-visible {
     color: var(--color-text-muted);
     font-size: 13px;
     line-height: 1.4;
+}
+
+.travel-countdown-detail {
+    margin-top: 16px;
+    padding: 22px 18px;
+    overflow: hidden;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-card);
+    background: linear-gradient(145deg, var(--color-surface), var(--color-surface-soft));
+    box-shadow: var(--shadow-card);
+    text-align: center;
+}
+
+.travel-countdown-detail h2 {
+    margin: 7px 0 4px;
+    font-size: clamp(22px, 7vw, 30px);
+    overflow-wrap: anywhere;
+}
+
+.travel-countdown-status {
+    display: block;
+    margin: 12px 0 8px;
+    color: var(--color-primary-dark);
+    font-size: clamp(31px, 10vw, 44px);
+    line-height: 1.08;
+    letter-spacing: -0.03em;
+}
+
+.travel-countdown-detail[data-countdown-state="completed"] .travel-countdown-status {
+    color: var(--color-text-muted);
+}
+
+.travel-countdown-dates {
+    margin: 0;
+    color: var(--color-text-muted);
+    font-weight: 700;
+}
+
+.travel-countdown-actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.travel-countdown-editor-card label {
+    display: grid;
+    gap: 7px;
+    margin-top: 14px;
+    font-weight: 750;
+}
+
+.travel-countdown-editor-card input {
+    min-width: 0;
+}
+
+.travel-offline-pack-card {
+    margin-top: 16px;
+    padding: 22px 18px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-card);
+    background: linear-gradient(145deg, var(--color-surface), var(--color-surface-soft));
+    box-shadow: var(--shadow-card);
+    text-align: center;
+}
+
+.travel-offline-pack-icon {
+    width: 58px;
+    height: 58px;
+    display: grid;
+    place-items: center;
+    margin: 0 auto 12px;
+    border-radius: 19px;
+    background: var(--color-primary-soft);
+    color: var(--color-primary-dark);
+    font-size: 28px;
+    font-weight: 900;
+}
+
+.travel-offline-pack-card h2 {
+    margin: 7px 0;
+    font-size: clamp(22px, 7vw, 28px);
+}
+
+.travel-offline-pack-card > p {
+    margin: 0 auto;
+    max-width: 33ch;
+    color: var(--color-text-muted);
+    line-height: 1.5;
+}
+
+.travel-offline-progress {
+    height: 10px;
+    margin: 20px 0 9px;
+    overflow: hidden;
+    border-radius: 999px;
+    background: var(--color-border);
+}
+
+.travel-offline-progress > span {
+    display: block;
+    width: 0;
+    height: 100%;
+    border-radius: inherit;
+    background: var(--color-primary);
+    transition: width 180ms ease;
+}
+
+.travel-offline-pack-card[data-offline-state="ready"] .travel-offline-pack-icon,
+.travel-offline-pack-card[data-offline-state="ready"] .travel-offline-progress > span {
+    background: var(--color-success);
+    color: white;
+}
+
+#travel-offline-progress-text {
+    display: block;
+    color: var(--color-text);
+    font-size: 13px;
+}
+
+.travel-offline-last-updated {
+    min-height: 18px;
+    margin-top: 8px !important;
+    font-size: 12px;
+}
+
+.travel-offline-actions {
+    display: grid;
+    gap: 10px;
+    margin-top: 18px;
+}
+
+.travel-offline-actions button {
+    width: 100%;
+}
+
+.yen-converter-stack {
+    display: grid;
+    gap: 10px;
+    margin-top: 16px;
+}
+
+.yen-calculator-panel {
+    min-width: 0;
+    padding: 17px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-card);
+    background: var(--color-surface);
+    box-shadow: var(--shadow-card);
+    transition: border-color 160ms ease, background-color 160ms ease, box-shadow 160ms ease;
+}
+
+.yen-calculator-panel.active {
+    border-color: var(--color-primary);
+    background: color-mix(in srgb, var(--color-primary-soft) 28%, var(--color-surface));
+    box-shadow: 0 10px 28px var(--color-shadow);
+}
+
+.yen-panel-header {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: 9px;
+}
+
+.yen-panel-header select {
+    min-height: 42px;
+    padding: 8px 30px 8px 12px;
+    border-color: var(--color-border);
+    border-radius: 12px;
+    background-color: var(--color-surface-soft);
+    color: var(--color-text);
+    font-weight: 850;
+}
+
+.yen-panel-header .status-label {
+    justify-self: start;
+}
+
+.yen-clear-button {
+    min-height: 40px;
+    padding: 7px 9px;
+    border: 0;
+    background: transparent;
+    color: var(--color-primary-dark);
+    font: inherit;
+    font-weight: 800;
+}
+
+.yen-expression-field {
+    display: grid;
+    gap: 7px;
+    margin-top: 15px;
+    color: var(--color-text-muted);
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: .05em;
+    text-transform: uppercase;
+}
+
+.yen-expression-input {
+    min-width: 0;
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    align-items: center;
+    gap: 8px;
+    padding: 4px 11px;
+    border: 1px solid var(--color-border);
+    border-radius: 15px;
+    background: var(--color-surface-soft);
+}
+
+.yen-expression-input:focus-within {
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px var(--color-primary-soft);
+}
+
+.yen-expression-input b {
+    color: var(--color-primary-dark);
+    font-size: 25px;
+}
+
+.yen-expression-input input {
+    min-width: 0;
+    min-height: 48px;
+    padding: 7px 0;
+    border: 0;
+    outline: 0;
+    background: transparent;
+    color: var(--color-text);
+    font: inherit;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.yen-total-row {
+    min-width: 0;
+    display: grid;
+    gap: 4px;
+    margin-top: 14px;
+}
+
+.yen-total-row span {
+    color: var(--color-text-muted);
+    font-size: 12px;
+    font-weight: 750;
+}
+
+.yen-total-row strong {
+    min-width: 0;
+    color: var(--color-text);
+    font-size: clamp(28px, 9vw, 40px);
+    line-height: 1.1;
+    overflow-wrap: anywhere;
+}
+
+.yen-calculator-panel.active .yen-total-row strong {
+    color: var(--color-primary-dark);
+}
+
+.yen-panel-message {
+    min-height: 18px;
+    margin: 6px 0 0;
+    color: var(--color-error);
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.yen-keypad {
+    display: grid;
+    grid-template-columns: repeat(7, minmax(0, 1fr));
+    gap: 5px;
+    margin-top: 8px;
+}
+
+.yen-keypad button {
+    min-width: 0;
+    min-height: 42px;
+    padding: 5px 1px;
+    border: 1px solid var(--color-border);
+    border-radius: 11px;
+    background: var(--color-surface-soft);
+    color: var(--color-text);
+    font: inherit;
+    font-size: 17px;
+    font-weight: 850;
+}
+
+.yen-keypad button:active {
+    border-color: var(--color-primary);
+    background: var(--color-primary-soft);
+}
+
+.yen-swap-button {
+    z-index: 1;
+    justify-self: center;
+    min-height: 44px;
+    margin-block: -3px;
+    padding: 8px 16px;
+    border: 1px solid var(--color-primary);
+    border-radius: 999px;
+    background: var(--color-surface);
+    color: var(--color-primary-dark);
+    box-shadow: var(--shadow);
+    font: inherit;
+    font-weight: 850;
+}
+
+.yen-swap-button span {
+    margin-right: 5px;
+    font-size: 19px;
+}
+
+.yen-rate-card {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 12px;
+    margin-top: 16px;
+    padding: 16px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-card);
+    background: var(--color-surface);
+    box-shadow: var(--shadow-card);
+}
+
+.yen-rate-card h2 {
+    margin: 5px 0 3px;
+    font-size: 20px;
+}
+
+.yen-rate-card p {
+    margin: 0;
+    color: var(--color-text-muted);
+    font-size: 12px;
+}
+
+.yen-rate-editor-card > p {
+    color: var(--color-text-muted);
+    line-height: 1.5;
+}
+
+.yen-rate-editor-card > label {
+    display: grid;
+    gap: 7px;
+    margin-top: 14px;
+    font-weight: 750;
+}
+
+.yen-rate-input {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    align-items: center;
+    gap: 7px;
+    padding-left: 12px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-control);
+    background: var(--color-surface-soft);
+}
+
+.yen-rate-input span {
+    color: var(--color-primary-dark);
+    font-size: 21px;
+    font-weight: 850;
+}
+
+.yen-rate-input input {
+    min-width: 0;
+    border: 0;
+    background: transparent;
+}
+
+body.wallpaper-enabled .yen-calculator-panel,
+body.wallpaper-enabled .yen-rate-card,
+body.wallpaper-enabled .yen-swap-button {
+    background: color-mix(in srgb, var(--color-surface) 90%, transparent);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+}
+
+@media (max-width: 350px) {
+    .yen-calculator-panel { padding: 14px 12px; }
+    .yen-keypad { gap: 3px; }
+    .yen-keypad button { min-height: 40px; font-size: 15px; }
+    .yen-rate-card { grid-template-columns: 1fr; }
+    .yen-rate-card .secondary-button { width: 100%; }
 }
 
 .travel-utility-card {

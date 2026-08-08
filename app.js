@@ -18,6 +18,12 @@ const STORAGE = {
     wallpaperOverlay: "sakuraWallpaperOverlay",
     wallpaperFraming: "sakuraWallpaperFraming",
     translationHistory: "sakuraTranslationHistory",
+    pinnedTravelPhrases: "sakuraPinnedTravelPhrases",
+    travelPhraseDecks: "sakuraTravelPhraseDecks",
+    travelNotes: "sakuraTravelNotes",
+    travelCountdown: "sakuraTravelCountdown",
+    travelOfflinePack: "sakuraTravelOfflinePack",
+    yenConverter: "sakuraYenConverter",
     migrationVersion: "sakuraDataMigrationVersion",
     nativeDifficulty: "chaNativeDifficulty",
     wallpaperEnabled: "chaWallpaperEnabled",
@@ -192,6 +198,24 @@ function normalizeAnswer(value) {
 
 let savedItems = readJson(STORAGE.saved, []);
 let flashcardStatuses = readJson(STORAGE.statuses, {});
+let pinnedTravelPhraseIds = readJson(STORAGE.pinnedTravelPhrases, []);
+if (!Array.isArray(pinnedTravelPhraseIds)) pinnedTravelPhraseIds = [];
+let travelPhraseDecks = readJson(STORAGE.travelPhraseDecks, []);
+if (!Array.isArray(travelPhraseDecks)) travelPhraseDecks = [];
+let travelNotes = readJson(STORAGE.travelNotes, []);
+if (!Array.isArray(travelNotes)) travelNotes = [];
+let travelCountdown = readJson(STORAGE.travelCountdown, null);
+if (!travelCountdown || typeof travelCountdown !== "object" || Array.isArray(travelCountdown)) travelCountdown = null;
+let travelOfflinePackMetadata = readJson(STORAGE.travelOfflinePack, null);
+if (!travelOfflinePackMetadata || typeof travelOfflinePackMetadata !== "object" || Array.isArray(travelOfflinePackMetadata)) travelOfflinePackMetadata = null;
+const TRAVEL_OFFLINE_CACHE = "sakura-travel-content-v1";
+const TRAVEL_OFFLINE_PACK_VERSION = "v1";
+let travelOfflinePackState = { status:"checking", ready:[], failed:[], processed:0 };
+let travelOfflinePackOperation = null;
+let yenConverterSettings = readJson(STORAGE.yenConverter, null);
+if (!yenConverterSettings || !Number.isFinite(Number(yenConverterSettings.phpPerJpy)) || Number(yenConverterSettings.phpPerJpy) <= 0) yenConverterSettings = null;
+const YEN_CURRENCIES = Object.freeze({ JPY:{ symbol:"¥", label:"Japanese yen" }, PHP:{ symbol:"₱", label:"Philippine pesos" } });
+let yenConverterState = { currencies:{ top:"JPY", bottom:"PHP" }, activeSide:"top", expressions:{ top:"", bottom:"" } };
 let globalLevels = normalizeJlptLevels(readJson(STORAGE.globalLevels, DEFAULT_LEVELS));
 let sectionSettings = readJson(STORAGE.sectionLevels, {});
 if (!sectionSettings || typeof sectionSettings !== "object" || Array.isArray(sectionSettings)) sectionSettings = {};
@@ -220,6 +244,13 @@ let currentTravelCategory = null;
 let currentTravelFilter = "All";
 let currentTravelPhrase = null;
 let currentTravelIndex = 0;
+let savedTravelCategoryFilter = "all";
+let currentTravelDeckId = "";
+let travelDeckIconChoice = "🌸";
+let travelDeckPickerFilter = "all";
+let travelDeckPickerSelection = new Set();
+let travelNoteCategoryFilter = "all";
+let currentTravelNoteId = "";
 let pendingTravelSmartPhrase = null;
 let travelRenderRevision = 0;
 let flashcardDeck = [];
@@ -361,6 +392,10 @@ function updateSavedUi() {
     updateSavedCounts();
     syncSaveButtons();
     renderSavedItems();
+    renderMyTravelPhrases();
+    cleanTravelDecks();
+    renderTravelDecks();
+    renderCurrentTravelDeck();
     buildFlashcardDeck();
 }
 
@@ -773,12 +808,26 @@ function kanjiReadingAnswers(item) {
         .filter(Boolean);
 }
 
+function normalizeKanjiRomaji(value) {
+    return normalizeAnswer(String(value || "").normalize("NFKC"))
+        .replace(/[\s\-\u2010-\u2015・･]+/g, "");
+}
+
+function kanjiRomajiAnswers(item) {
+    return String(item?.romaji || "")
+        .split(/[\/／,，、;；|｜]+/)
+        .map(normalizeKanjiRomaji)
+        .filter(Boolean);
+}
+
 function isKanjiQuizAnswerCorrect(item, rawAnswer) {
     const answer = normalizeAnswer(rawAnswer);
     const meaningAnswers = String(item?.meaning || "").split(/[;,]/).map(normalizeAnswer).filter(Boolean);
     const readingAnswer = normalizeKanjiReading(rawAnswer);
     const readingAnswers = kanjiReadingAnswers(item);
-    const exactMatch = meaningAnswers.includes(answer) || readingAnswers.includes(readingAnswer);
+    const romajiAnswer = normalizeKanjiRomaji(rawAnswer);
+    const romajiAnswers = kanjiRomajiAnswers(item);
+    const exactMatch = meaningAnswers.includes(answer) || readingAnswers.includes(readingAnswer) || romajiAnswers.includes(romajiAnswer);
     const escapedAnswer = answer.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
     const meaningfulEnglishPartial = answer.length >= 3 && /^[a-z][a-z\s'-]*$/i.test(answer) && meaningAnswers.some(value => new RegExp(`(^|\\s)${escapedAnswer}(?=$|\\s)`, "i").test(value));
     return Boolean(answer) && (exactMatch || meaningfulEnglishPartial);
@@ -1052,7 +1101,7 @@ function searchIndex() {
 function searchableFields(item) {
     const exampleFields = [...(item.examples || []), ...(item.commonWords || [])].flatMap(example => [example.word, example.reading, example.kana, example.romaji, example.meaning]);
     return [
-        item.character, item.kanji, item.word, item.expression,
+        item.character, item.kanji, item.word, item.expression, item.japanese,
         item.kana, item.reading, item.romaji, item.meaning, item.english,
         item.literal, item.notes, item.exampleSentence, item.exampleTranslation,
         item.dictionaryMeaning, item.coreConcept, item.naturalUsageNotes,
@@ -1569,6 +1618,798 @@ function openSavedItem(item) {
     }
 }
 
+const SAVED_TRAVEL_FILTERS = Object.freeze([
+    ["all", "All"], ["trains", "Trains"], ["restaurants", "Food"], ["shopping", "Shopping"],
+    ["hotels", "Hotels"], ["taxi", "Taxi"], ["emergencies", "Emergency"], ["others", "Others"]
+]);
+
+function savedTravelItems() {
+    return savedItems.filter(item => item?.type === "travel" && !item.transient && !item.smartVariant);
+}
+
+function cleanPinnedTravelIds(items = savedTravelItems()) {
+    const savedIds = new Set(items.map(item => item.id));
+    const clean = [...new Set(pinnedTravelPhraseIds.filter(id => savedIds.has(id)))];
+    if (clean.length !== pinnedTravelPhraseIds.length || clean.some((id, index) => id !== pinnedTravelPhraseIds[index])) {
+        pinnedTravelPhraseIds = clean;
+        writeJson(STORAGE.pinnedTravelPhrases, pinnedTravelPhraseIds);
+    }
+    return clean;
+}
+
+function travelPouchCard(item, pinned = false) {
+    const isPinned = pinnedTravelPhraseIds.includes(item.id);
+    return `<article class="travel-pouch-card ${pinned ? "pinned" : ""}"><button class="travel-pouch-open" type="button" data-open-travel-saved="${escapeSearchHtml(itemKey(item))}"><strong>${escapeSearchHtml(item.japanese)}</strong><span>${escapeSearchHtml(item.reading || item.romaji || "")}</span><small>${escapeSearchHtml(item.english || "")}</small></button><button class="travel-pin-button ${isPinned ? "active" : ""}" type="button" data-pin-travel-id="${escapeSearchHtml(item.id)}" aria-pressed="${isPinned}">${isPinned ? "Unpin" : "Pin"}</button></article>`;
+}
+
+function renderMyTravelPhrases() {
+    const content = document.getElementById("travel-pouch-content");
+    if (!content) return;
+    const items = savedTravelItems();
+    const cleanPins = cleanPinnedTravelIds(items);
+    const byId = new Map(items.map(item => [item.id, item]));
+    const pinned = cleanPins.map(id => byId.get(id)).filter(Boolean);
+    const recent = items.map((item, index) => ({ item, index, time: Number.isNaN(Date.parse(item.savedAt)) ? 0 : Date.parse(item.savedAt) }))
+        .sort((a, b) => b.time - a.time || b.index - a.index).slice(0, 8).map(entry => entry.item);
+    const filtered = savedTravelCategoryFilter === "all" ? items : items.filter(item => item.category === savedTravelCategoryFilter);
+    document.getElementById("travel-pouch-empty").hidden = items.length > 0;
+    content.hidden = items.length === 0;
+    document.getElementById("travel-pinned-list").innerHTML = pinned.map(item => travelPouchCard(item, true)).join("");
+    document.getElementById("travel-pinned-empty").hidden = pinned.length > 0;
+    document.getElementById("travel-pinned-count").textContent = String(pinned.length);
+    document.getElementById("travel-recent-list").innerHTML = recent.map(item => travelPouchCard(item)).join("");
+    document.getElementById("travel-all-list").innerHTML = filtered.map(item => travelPouchCard(item)).join("");
+    document.getElementById("travel-all-count").textContent = String(items.length);
+    document.getElementById("travel-filter-empty").hidden = filtered.length > 0;
+    document.getElementById("travel-saved-filters").innerHTML = SAVED_TRAVEL_FILTERS.map(([category, label]) => `<button class="search-filter-chip ${category === savedTravelCategoryFilter ? "active" : ""}" type="button" data-saved-travel-filter="${category}" aria-pressed="${category === savedTravelCategoryFilter}">${label}</button>`).join("");
+}
+
+function togglePinnedTravelPhrase(id) {
+    const item = savedTravelItems().find(saved => saved.id === id);
+    if (!item) return;
+    pinnedTravelPhraseIds = pinnedTravelPhraseIds.includes(id) ? pinnedTravelPhraseIds.filter(savedId => savedId !== id) : [...pinnedTravelPhraseIds, id];
+    writeJson(STORAGE.pinnedTravelPhrases, pinnedTravelPhraseIds);
+    renderMyTravelPhrases();
+}
+
+const TRAVEL_DECK_ICONS = Object.freeze(["🌸", "🚆", "🍜", "🛍️", "🏨", "🚕", "🎟️", "🎤", "⛩️", "🎢", "📍", "🗺️", "❤️", "⭐"]);
+
+function writeTravelDecks() {
+    writeJson(STORAGE.travelPhraseDecks, travelPhraseDecks);
+}
+
+function makeTravelDeckId() {
+    return `deck-${globalThis.crypto?.randomUUID?.() || `${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 10)}`}`;
+}
+
+function cleanTravelDecks() {
+    const validIds = new Set(savedTravelItems().map(item => item.id));
+    let changed = false;
+    travelPhraseDecks = travelPhraseDecks.filter(deck => deck && typeof deck.id === "string").map(deck => {
+        const phraseIds = [...new Set((Array.isArray(deck.phraseIds) ? deck.phraseIds : []).filter(id => validIds.has(id)))];
+        if (phraseIds.length !== (deck.phraseIds?.length || 0)) changed = true;
+        return { ...deck, phraseIds };
+    });
+    if (changed) writeTravelDecks();
+}
+
+function travelDeckById(id = currentTravelDeckId) {
+    return travelPhraseDecks.find(deck => deck.id === id) || null;
+}
+
+function renderTravelDecks() {
+    const list = document.getElementById("travel-deck-list");
+    if (!list) return;
+    list.innerHTML = travelPhraseDecks.map(deck => `<button class="travel-deck-card" type="button" data-open-travel-deck="${escapeSearchHtml(deck.id)}"><span aria-hidden="true">${escapeSearchHtml(deck.icon || "🌸")}</span><strong>${escapeSearchHtml(deck.name)}</strong><small>${deck.phraseIds.length} phrase${deck.phraseIds.length === 1 ? "" : "s"}</small><b aria-hidden="true">→</b></button>`).join("");
+    document.getElementById("travel-decks-empty").hidden = travelPhraseDecks.length > 0;
+}
+
+function deckPhraseCard(item) {
+    return `<article class="travel-pouch-card"><button class="travel-pouch-open" type="button" data-open-deck-phrase="${escapeSearchHtml(itemKey(item))}"><strong>${escapeSearchHtml(item.japanese)}</strong><span>${escapeSearchHtml(item.reading || item.romaji || "")}</span><small>${escapeSearchHtml(item.english || "")}</small></button><button class="travel-pin-button" type="button" data-remove-deck-phrase="${escapeSearchHtml(item.id)}">Remove</button></article>`;
+}
+
+function renderCurrentTravelDeck() {
+    const heading = document.getElementById("travel-deck-heading");
+    if (!heading) return;
+    const deck = travelDeckById();
+    if (!deck) {
+        heading.textContent = "Deck not found";
+        document.getElementById("travel-deck-phrases").innerHTML = "";
+        document.getElementById("travel-deck-empty").hidden = false;
+        return;
+    }
+    const byId = new Map(savedTravelItems().map(item => [item.id, item]));
+    const phrases = deck.phraseIds.map(id => byId.get(id)).filter(Boolean);
+    document.getElementById("travel-deck-icon").textContent = deck.icon || "🌸";
+    heading.textContent = deck.name;
+    document.getElementById("travel-deck-count").textContent = `${phrases.length} phrase${phrases.length === 1 ? "" : "s"}`;
+    document.getElementById("travel-deck-phrases").innerHTML = phrases.map(deckPhraseCard).join("");
+    document.getElementById("travel-deck-empty").hidden = phrases.length > 0;
+}
+
+function renderTravelDeckIcons() {
+    document.getElementById("travel-deck-icons").innerHTML = TRAVEL_DECK_ICONS.map(icon => `<button class="deck-icon-button ${icon === travelDeckIconChoice ? "active" : ""}" type="button" data-deck-icon="${icon}" aria-pressed="${icon === travelDeckIconChoice}">${icon}</button>`).join("");
+}
+
+function openTravelDeckEditor(deck = null) {
+    travelDeckIconChoice = deck?.icon || "🌸";
+    document.getElementById("travel-deck-edit-id").value = deck?.id || "";
+    document.getElementById("travel-deck-name").value = deck?.name || "";
+    document.getElementById("travel-deck-editor-heading").textContent = deck ? "Edit Deck" : "Create Deck";
+    document.getElementById("delete-travel-deck").hidden = !deck;
+    document.getElementById("travel-deck-form-message").textContent = "";
+    renderTravelDeckIcons();
+    document.getElementById("travel-deck-editor").showModal();
+}
+
+function saveTravelDeck(event) {
+    event.preventDefault();
+    const name = document.getElementById("travel-deck-name").value.trim();
+    const message = document.getElementById("travel-deck-form-message");
+    if (!name) { message.textContent = "Enter a deck name."; return; }
+    if (name.length > 50) { message.textContent = "Keep the deck name to 50 characters or fewer."; return; }
+    const id = document.getElementById("travel-deck-edit-id").value;
+    const now = new Date().toISOString();
+    if (id) travelPhraseDecks = travelPhraseDecks.map(deck => deck.id === id ? { ...deck, name, icon:travelDeckIconChoice, updatedAt:now } : deck);
+    else {
+        const deck = { id:makeTravelDeckId(), name, icon:travelDeckIconChoice, phraseIds:[], createdAt:now, updatedAt:now };
+        travelPhraseDecks.push(deck);
+        currentTravelDeckId = deck.id;
+    }
+    writeTravelDecks();
+    document.getElementById("travel-deck-editor").close();
+    renderTravelDecks();
+    if (currentTravelDeckId) showRoute(`travel-deck-${currentTravelDeckId}`);
+}
+
+function deleteCurrentTravelDeck() {
+    const id = document.getElementById("travel-deck-edit-id").value;
+    const deck = travelDeckById(id);
+    if (!deck || !window.confirm(`Delete “${deck.name}”? Saved phrases and pins will not be removed.`)) return;
+    travelPhraseDecks = travelPhraseDecks.filter(item => item.id !== id);
+    writeTravelDecks();
+    currentTravelDeckId = "";
+    document.getElementById("travel-deck-editor").close();
+    showRoute("travel-decks");
+}
+
+function pickerEligibleTravelItems() {
+    const query = searchText(document.getElementById("travel-deck-picker-search")?.value || "");
+    return savedTravelItems().filter(item => travelDeckPickerFilter === "all" || item.category === travelDeckPickerFilter).filter(item => !query || searchableFields(item).some(field => field.includes(query)));
+}
+
+function renderTravelDeckPicker() {
+    const deck = travelDeckById();
+    if (!deck) return;
+    document.getElementById("travel-deck-picker-filters").innerHTML = SAVED_TRAVEL_FILTERS.map(([category, label]) => `<button class="search-filter-chip ${category === travelDeckPickerFilter ? "active" : ""}" type="button" data-deck-picker-filter="${category}" aria-pressed="${category === travelDeckPickerFilter}">${label}</button>`).join("");
+    const items = pickerEligibleTravelItems();
+    document.getElementById("travel-deck-picker-list").innerHTML = items.map(item => { const selected=travelDeckPickerSelection.has(item.id); return `<label class="travel-deck-picker-item ${selected ? "selected" : ""}"><input type="checkbox" data-deck-picker-id="${escapeSearchHtml(item.id)}" ${selected ? "checked" : ""}><span><strong>${escapeSearchHtml(item.japanese)}</strong><small>${escapeSearchHtml(item.reading || item.romaji || "")}<br>${escapeSearchHtml(item.english || "")}</small></span></label>`; }).join("");
+    document.getElementById("travel-deck-picker-empty").hidden = items.length > 0;
+}
+
+function openTravelDeckPicker() {
+    const deck = travelDeckById();
+    if (!deck) return;
+    travelDeckPickerFilter = "all";
+    travelDeckPickerSelection = new Set(deck.phraseIds);
+    document.getElementById("travel-deck-picker-search").value = "";
+    renderTravelDeckPicker();
+    document.getElementById("travel-deck-picker").showModal();
+}
+
+function saveTravelDeckPicker() {
+    const deck = travelDeckById();
+    if (!deck) return;
+    const validIds = new Set(savedTravelItems().map(item => item.id));
+    deck.phraseIds = [...new Set([...deck.phraseIds, ...travelDeckPickerSelection].filter(id => validIds.has(id)))];
+    deck.updatedAt = new Date().toISOString();
+    writeTravelDecks();
+    document.getElementById("travel-deck-picker").close();
+    renderTravelDecks();
+    renderCurrentTravelDeck();
+}
+
+function removePhraseFromCurrentDeck(id) {
+    const deck = travelDeckById();
+    if (!deck) return;
+    deck.phraseIds = deck.phraseIds.filter(phraseId => phraseId !== id);
+    deck.updatedAt = new Date().toISOString();
+    writeTravelDecks();
+    renderTravelDecks();
+    renderCurrentTravelDeck();
+}
+
+const TRAVEL_NOTE_CATEGORIES = Object.freeze({
+    general:{ label:"General", icon:"🌸" }, hotel:{ label:"Hotel", icon:"🏨" }, food:{ label:"Food", icon:"🍜" },
+    transport:{ label:"Transport", icon:"🚆" }, event:{ label:"Event", icon:"🎟️" }, shopping:{ label:"Shopping", icon:"🛍️" }, place:{ label:"Place", icon:"📍" }
+});
+
+function writeTravelNotes() {
+    writeJson(STORAGE.travelNotes, travelNotes);
+}
+
+function makeTravelNoteId() {
+    return `note-${globalThis.crypto?.randomUUID?.() || `${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 10)}`}`;
+}
+
+function travelNoteById(id = currentTravelNoteId) {
+    return travelNotes.find(note => note.id === id) || null;
+}
+
+function normalizedTravelNotes() {
+    return travelNotes.filter(note => note && typeof note.id === "string" && typeof note.content === "string").sort((a, b) => {
+        const aTime = Date.parse(a.updatedAt || a.createdAt) || 0;
+        const bTime = Date.parse(b.updatedAt || b.createdAt) || 0;
+        return bTime - aTime;
+    });
+}
+
+function filteredTravelNotes() {
+    const input = document.getElementById("travel-note-search");
+    const query = String(input?.value || "").normalize("NFKC").trim().toLocaleLowerCase();
+    return normalizedTravelNotes().filter(note => travelNoteCategoryFilter === "all" || note.category === travelNoteCategoryFilter).filter(note => {
+        if (!query) return true;
+        const category = TRAVEL_NOTE_CATEGORIES[note.category]?.label || "General";
+        return [note.title, note.content, category].some(value => String(value || "").normalize("NFKC").toLocaleLowerCase().includes(query));
+    });
+}
+
+function travelNoteCard(note) {
+    const category = TRAVEL_NOTE_CATEGORIES[note.category] || TRAVEL_NOTE_CATEGORIES.general;
+    const preview = note.content.replace(/\s+/g, " ").trim().slice(0, 120);
+    return `<button class="travel-note-card" type="button" data-open-travel-note="${escapeSearchHtml(note.id)}"><span class="travel-note-card-icon" aria-hidden="true">${category.icon}</span><span><strong>${escapeSearchHtml(note.title?.trim() || "Untitled Note")}</strong><small>${escapeSearchHtml(preview)}${note.content.length > 120 ? "…" : ""}</small><em>${escapeSearchHtml(category.label)}${note.pinned ? " · Pinned" : ""}</em></span><b aria-hidden="true">→</b></button>`;
+}
+
+function renderTravelNotes() {
+    const allList = document.getElementById("travel-notes-all");
+    if (!allList) return;
+    const allNotes = normalizedTravelNotes();
+    const filtered = filteredTravelNotes();
+    const pinned = filtered.filter(note => note.pinned);
+    document.getElementById("travel-note-filters").innerHTML = [["all", "All"], ...Object.entries(TRAVEL_NOTE_CATEGORIES).map(([id, category]) => [id, category.label])].map(([id, label]) => `<button class="search-filter-chip ${id === travelNoteCategoryFilter ? "active" : ""}" type="button" data-travel-note-filter="${id}" aria-pressed="${id === travelNoteCategoryFilter}">${label}</button>`).join("");
+    document.getElementById("travel-notes-empty").hidden = allNotes.length > 0;
+    document.getElementById("travel-notes-all-section").hidden = allNotes.length === 0;
+    document.getElementById("travel-notes-pinned-section").hidden = pinned.length === 0;
+    document.getElementById("travel-notes-pinned").innerHTML = pinned.map(travelNoteCard).join("");
+    document.getElementById("travel-notes-pinned-count").textContent = String(pinned.length);
+    allList.innerHTML = filtered.map(travelNoteCard).join("");
+    document.getElementById("travel-notes-count").textContent = String(filtered.length);
+    document.getElementById("travel-notes-filter-empty").hidden = filtered.length > 0;
+}
+
+function openTravelNoteEditor(note = null) {
+    document.getElementById("travel-note-edit-id").value = note?.id || "";
+    document.getElementById("travel-note-title").value = note?.title || "";
+    document.getElementById("travel-note-category").value = TRAVEL_NOTE_CATEGORIES[note?.category] ? note.category : "general";
+    document.getElementById("travel-note-content").value = note?.content || "";
+    document.getElementById("travel-note-editor-heading").textContent = note ? "Edit Note" : "Create Note";
+    document.getElementById("travel-note-form-message").textContent = "";
+    document.getElementById("travel-note-editor").showModal();
+}
+
+function saveTravelNote(event) {
+    event.preventDefault();
+    const id = document.getElementById("travel-note-edit-id").value;
+    const title = document.getElementById("travel-note-title").value.trim();
+    const categoryValue = document.getElementById("travel-note-category").value;
+    const category = TRAVEL_NOTE_CATEGORIES[categoryValue] ? categoryValue : "general";
+    const content = document.getElementById("travel-note-content").value.trim();
+    const message = document.getElementById("travel-note-form-message");
+    if (!content) { message.textContent = "Enter some note content."; return; }
+    const now = new Date().toISOString();
+    if (id) travelNotes = travelNotes.map(note => note.id === id ? { ...note, title, category, content, updatedAt:now } : note);
+    else travelNotes.push({ id:makeTravelNoteId(), title, content, category, pinned:false, createdAt:now, updatedAt:now });
+    writeTravelNotes();
+    document.getElementById("travel-note-editor").close();
+    renderTravelNotes();
+    if (id && currentTravelNoteId === id) openTravelNoteDetail(id);
+}
+
+function openTravelNoteDetail(id) {
+    const note = travelNoteById(id);
+    if (!note) return;
+    currentTravelNoteId = id;
+    const category = TRAVEL_NOTE_CATEGORIES[note.category] || TRAVEL_NOTE_CATEGORIES.general;
+    document.getElementById("travel-note-detail-category").textContent = `${category.icon} ${category.label}`;
+    document.getElementById("travel-note-detail-title").textContent = note.title?.trim() || "Untitled Note";
+    document.getElementById("travel-note-detail-content").textContent = note.content;
+    document.getElementById("pin-travel-note").textContent = note.pinned ? "Unpin" : "Pin";
+    const dialog = document.getElementById("travel-note-detail");
+    if (!dialog.open) dialog.showModal();
+}
+
+function toggleCurrentTravelNotePin() {
+    const note = travelNoteById();
+    if (!note) return;
+    note.pinned = !note.pinned;
+    note.updatedAt = new Date().toISOString();
+    writeTravelNotes();
+    renderTravelNotes();
+    openTravelNoteDetail(note.id);
+}
+
+function deleteCurrentTravelNote() {
+    const note = travelNoteById();
+    if (!note || !window.confirm(`Delete “${note.title?.trim() || "Untitled Note"}”?`)) return;
+    travelNotes = travelNotes.filter(item => item.id !== note.id);
+    writeTravelNotes();
+    currentTravelNoteId = "";
+    document.getElementById("travel-note-detail").close();
+    renderTravelNotes();
+}
+
+const CALENDAR_DAY_MS = 86400000;
+
+function parseCalendarDate(value) {
+    const match = /^(\d{4})-(\d{2})-(\d{2})$/.exec(String(value || ""));
+    if (!match) return null;
+    const year = Number(match[1]);
+    const month = Number(match[2]);
+    const day = Number(match[3]);
+    const localDate = new Date(year, month - 1, day, 12);
+    if (localDate.getFullYear() !== year || localDate.getMonth() !== month - 1 || localDate.getDate() !== day) return null;
+    return { year, month, day, dayNumber: Math.floor(Date.UTC(year, month - 1, day) / CALENDAR_DAY_MS) };
+}
+
+function localCalendarDay(now = new Date()) {
+    const year = now.getFullYear();
+    const month = now.getMonth() + 1;
+    const day = now.getDate();
+    return { year, month, day, dayNumber: Math.floor(Date.UTC(year, month - 1, day) / CALENDAR_DAY_MS) };
+}
+
+function getTravelCountdownState(record = travelCountdown, today = localCalendarDay()) {
+    const start = parseCalendarDate(record?.startDate);
+    if (!start) return null;
+    const end = parseCalendarDate(record?.endDate) || start;
+    const daysUntilStart = start.dayNumber - today.dayNumber;
+    if (daysUntilStart > 0) return { kind:"upcoming", label:"Upcoming trip", text:`${daysUntilStart} day${daysUntilStart === 1 ? "" : "s"} to go` };
+    if (today.dayNumber === start.dayNumber) return { kind:"active", label:"Trip starts today", text:"Trip time! 🌸" };
+    if (today.dayNumber <= end.dayNumber) return { kind:"active", label:"Trip in progress", text:"You’re on your trip 🌸" };
+    return { kind:"completed", label:"Completed trip", text:"Trip completed 🌸" };
+}
+
+function formatTravelCalendarDate(date, includeYear = true) {
+    return new Intl.DateTimeFormat(undefined, { month:"short", day:"numeric", ...(includeYear ? { year:"numeric" } : {}) }).format(new Date(date.year, date.month - 1, date.day, 12));
+}
+
+function formatTravelCountdownDates(record = travelCountdown) {
+    const start = parseCalendarDate(record?.startDate);
+    const end = parseCalendarDate(record?.endDate);
+    if (!start) return "";
+    if (!end || start.dayNumber === end.dayNumber) return formatTravelCalendarDate(start);
+    if (start.year === end.year) return `${formatTravelCalendarDate(start, false)} – ${formatTravelCalendarDate(end)}`;
+    return `${formatTravelCalendarDate(start)} – ${formatTravelCalendarDate(end)}`;
+}
+
+function renderTravelCountdown() {
+    const empty = document.getElementById("travel-countdown-empty");
+    if (!empty) return;
+    const detail = document.getElementById("travel-countdown-card");
+    const summary = document.getElementById("travel-countdown-card-summary");
+    const state = getTravelCountdownState();
+    const hasCountdown = Boolean(travelCountdown && state);
+    empty.hidden = hasCountdown;
+    detail.hidden = !hasCountdown;
+    if (!hasCountdown) {
+        if (summary) summary.textContent = "Plan your next adventure.";
+        return;
+    }
+    const tripName = String(travelCountdown.tripName || "").trim() || "Japan Trip";
+    document.getElementById("travel-countdown-status-label").textContent = state.label;
+    document.getElementById("travel-countdown-trip-name").textContent = tripName;
+    document.getElementById("travel-countdown-status").textContent = state.text;
+    document.getElementById("travel-countdown-dates").textContent = formatTravelCountdownDates();
+    detail.dataset.countdownState = state.kind;
+    if (summary) summary.textContent = `${tripName} · ${state.text}`;
+}
+
+function openTravelCountdownEditor() {
+    document.getElementById("travel-countdown-editor-heading").textContent = travelCountdown ? "Edit Your Trip" : "Set Your Trip";
+    document.getElementById("travel-countdown-name").value = travelCountdown?.tripName || "";
+    document.getElementById("travel-countdown-start").value = travelCountdown?.startDate || "";
+    document.getElementById("travel-countdown-end").value = travelCountdown?.endDate || "";
+    document.getElementById("travel-countdown-form-message").textContent = "";
+    document.getElementById("travel-countdown-editor").showModal();
+}
+
+function saveTravelCountdown(event) {
+    event.preventDefault();
+    const message = document.getElementById("travel-countdown-form-message");
+    const tripName = document.getElementById("travel-countdown-name").value.normalize("NFKC").trim();
+    const startDate = document.getElementById("travel-countdown-start").value;
+    const endDate = document.getElementById("travel-countdown-end").value;
+    const start = parseCalendarDate(startDate);
+    const end = endDate ? parseCalendarDate(endDate) : null;
+    if (!start) { message.textContent = "Choose a valid start date."; return; }
+    if (endDate && !end) { message.textContent = "Choose a valid end date."; return; }
+    if (end && end.dayNumber < start.dayNumber) { message.textContent = "The end date cannot be before the start date."; return; }
+    const now = new Date().toISOString();
+    travelCountdown = { tripName, startDate, endDate, createdAt:travelCountdown?.createdAt || now, updatedAt:now };
+    writeJson(STORAGE.travelCountdown, travelCountdown);
+    document.getElementById("travel-countdown-editor").close();
+    renderTravelCountdown();
+}
+
+function removeTravelCountdown() {
+    if (!travelCountdown || !window.confirm("Remove this travel countdown?")) return;
+    travelCountdown = null;
+    localStorage.removeItem(STORAGE.travelCountdown);
+    renderTravelCountdown();
+}
+
+function travelOfflineCategories() {
+    return Object.keys(window.TRAVEL_CATEGORIES || {});
+}
+
+function travelOfflineAssetUrl(category) {
+    const asset = window.SakuraTravelLoader?.getTravelCategoryAsset?.(category);
+    if (!asset) throw new Error(`Travel asset information is unavailable for ${category}.`);
+    return new URL(asset, document.baseURI).href;
+}
+
+async function inspectTravelOfflineCache() {
+    const categories = travelOfflineCategories();
+    if (!window.caches) return { supported:false, ready:[], missing:[...categories] };
+    const cache = await caches.open(TRAVEL_OFFLINE_CACHE);
+    const checks = await Promise.all(categories.map(async category => [category, Boolean(await cache.match(travelOfflineAssetUrl(category)))]));
+    return {
+        supported:true,
+        ready:checks.filter(([, isReady]) => isReady).map(([category]) => category),
+        missing:checks.filter(([, isReady]) => !isReady).map(([category]) => category)
+    };
+}
+
+function formatTravelOfflineTimestamp(value) {
+    const date = new Date(value || "");
+    return Number.isNaN(date.getTime()) ? "" : new Intl.DateTimeFormat(undefined, { dateStyle:"medium", timeStyle:"short" }).format(date);
+}
+
+function renderTravelOfflinePack() {
+    const card = document.getElementById("travel-offline-card");
+    if (!card) return;
+    const categories = travelOfflineCategories();
+    const total = categories.length || 7;
+    const readyCount = travelOfflinePackState.ready.length;
+    const status = travelOfflinePackState.status;
+    const configurations = {
+        checking:["Checking availability", "Checking your Travel Pack…", "Sakura is checking which phrases are ready offline.", "🌸"],
+        unavailable:["Unavailable", "Offline downloads aren't available", "Sakura can still load Travel phrases normally while you are online.", "!"],
+        empty:["Not downloaded", "Prepare for your trip", "Download all 720 Travel phrases before you leave.", "⇩"],
+        downloading:["Downloading", "Downloading Travel Pack…", `${readyCount} of ${total} categories are ready.`, "⇩"],
+        partial:["Incomplete", "Travel Pack is partly ready", `${readyCount} of ${total} categories are available offline. Retry the remaining categories.`, "!"],
+        error:["Download interrupted", "Travel Pack couldn't be completed", "Your completed downloads were kept. Try again when you have a connection.", "!"],
+        ready:["Ready Offline", "Your Travel Pack is ready", "All 720 Travel phrases are prepared for your trip.", "✓"]
+    };
+    const configuration = configurations[status] || configurations.empty;
+    document.getElementById("travel-offline-label").textContent = configuration[0];
+    document.getElementById("travel-offline-status").textContent = configuration[1];
+    document.getElementById("travel-offline-description").textContent = configuration[2];
+    document.getElementById("travel-offline-icon").textContent = configuration[3];
+    document.getElementById("travel-offline-progress-text").textContent = `${readyCount} of ${total} categories ready`;
+    const progress = card.querySelector("[role='progressbar']");
+    progress.setAttribute("aria-valuemax", String(total));
+    progress.setAttribute("aria-valuenow", String(readyCount));
+    document.getElementById("travel-offline-progress-bar").style.width = `${total ? (readyCount / total) * 100 : 0}%`;
+    card.dataset.offlineState = status;
+    const action = document.getElementById("travel-offline-action");
+    action.disabled = status === "checking" || status === "downloading" || status === "unavailable";
+    action.textContent = status === "ready" ? "Refresh Travel Pack" : readyCount ? "Retry Remaining" : "Download Travel Pack";
+    document.getElementById("remove-travel-offline-pack").hidden = readyCount === 0 || status === "downloading";
+    const completed = formatTravelOfflineTimestamp(travelOfflinePackMetadata?.lastCompletedAt);
+    document.getElementById("travel-offline-last-updated").textContent = completed ? `Last completed ${completed}` : "";
+    const summary = document.getElementById("travel-offline-card-summary");
+    if (summary) summary.textContent = status === "ready" ? "All 720 phrases are ready offline." : readyCount ? `${readyCount} of ${total} categories ready.` : "Prepare all 720 phrases for your trip.";
+}
+
+function saveTravelOfflineMetadata(ready, completed = false, updateCompletion = false) {
+    const now = new Date().toISOString();
+    travelOfflinePackMetadata = {
+        version:TRAVEL_OFFLINE_PACK_VERSION,
+        categories:[...ready],
+        lastCheckedAt:now,
+        lastCompletedAt:completed ? (updateCompletion ? now : travelOfflinePackMetadata?.lastCompletedAt || now) : travelOfflinePackMetadata?.lastCompletedAt || null
+    };
+    writeJson(STORAGE.travelOfflinePack, travelOfflinePackMetadata);
+}
+
+async function verifyTravelOfflinePack() {
+    if (travelOfflinePackOperation) return travelOfflinePackOperation;
+    travelOfflinePackState = { status:"checking", ready:[], failed:[], processed:0 };
+    renderTravelOfflinePack();
+    try {
+        const inspection = await inspectTravelOfflineCache();
+        if (!inspection.supported) travelOfflinePackState = { status:"unavailable", ready:[], failed:[], processed:0 };
+        else {
+            const status = inspection.ready.length === travelOfflineCategories().length ? "ready" : inspection.ready.length ? "partial" : "empty";
+            travelOfflinePackState = { status, ready:inspection.ready, failed:inspection.missing, processed:0 };
+            saveTravelOfflineMetadata(inspection.ready, status === "ready");
+        }
+    }
+    catch (error) {
+        console.warn("Offline Travel Pack: cache availability could not be checked.", error);
+        travelOfflinePackState = { status:"unavailable", ready:[], failed:[], processed:0 };
+    }
+    renderTravelOfflinePack();
+}
+
+async function downloadTravelOfflinePack(refresh = false) {
+    if (travelOfflinePackOperation) return travelOfflinePackOperation;
+    travelOfflinePackOperation = (async () => {
+        const loader = window.SakuraTravelLoader;
+        const message = document.getElementById("travel-offline-message");
+        message.textContent = "";
+        let inspection;
+        try { inspection = await inspectTravelOfflineCache(); }
+        catch (error) { inspection = { supported:false, ready:[], missing:travelOfflineCategories() }; }
+        if (!inspection.supported || !loader?.refreshTravelCategory) {
+            travelOfflinePackState = { status:"unavailable", ready:[], failed:inspection.missing, processed:0 };
+            renderTravelOfflinePack();
+            return;
+        }
+        const categories = travelOfflineCategories();
+        const pending = refresh ? categories : inspection.missing;
+        const ready = new Set(inspection.ready);
+        const failed = [];
+        travelOfflinePackState = { status:"downloading", ready:[...ready], failed:[], processed:0 };
+        renderTravelOfflinePack();
+        for (const category of pending) {
+            try {
+                await loader.refreshTravelCategory(category);
+                const cache = await caches.open(TRAVEL_OFFLINE_CACHE);
+                if (!await cache.match(travelOfflineAssetUrl(category))) throw new Error("The downloaded response was not saved for offline use.");
+                ready.add(category);
+            }
+            catch (error) {
+                failed.push(category);
+                console.warn(`Offline Travel Pack: ${category} could not be prepared.`, error);
+            }
+            travelOfflinePackState = { status:"downloading", ready:[...ready], failed:[...failed], processed:travelOfflinePackState.processed + 1 };
+            renderTravelOfflinePack();
+        }
+        const finalInspection = await inspectTravelOfflineCache();
+        const complete = finalInspection.ready.length === categories.length;
+        travelOfflinePackState = { status:complete ? "ready" : finalInspection.ready.length ? "partial" : "error", ready:finalInspection.ready, failed:finalInspection.missing, processed:pending.length };
+        saveTravelOfflineMetadata(finalInspection.ready, complete, complete);
+        buildSearchIndex();
+        message.textContent = complete ? "Travel Pack download complete." : "Some categories could not be downloaded. Your completed categories were kept.";
+        renderTravelOfflinePack();
+    })().catch(error => {
+        console.warn("Offline Travel Pack: download failed.", error);
+        travelOfflinePackState.status = travelOfflinePackState.ready.length ? "partial" : "error";
+        document.getElementById("travel-offline-message").textContent = "The download was interrupted. Try again when you have a connection.";
+        renderTravelOfflinePack();
+    }).finally(() => { travelOfflinePackOperation = null; });
+    return travelOfflinePackOperation;
+}
+
+async function removeTravelOfflinePack() {
+    if (travelOfflinePackOperation || !window.confirm("Remove the downloaded Travel Pack? Your saved phrases, decks, notes, pins, and countdown will stay safe.")) return;
+    const message = document.getElementById("travel-offline-message");
+    try {
+        if (!window.caches) throw new Error("Offline storage is unavailable.");
+        const categories = travelOfflineCategories();
+        const cache = await caches.open(TRAVEL_OFFLINE_CACHE);
+        await Promise.all(categories.map(category => cache.delete(travelOfflineAssetUrl(category))));
+        window.SakuraTravelLoader?.forgetTravelCategories?.(categories);
+        travelSearchPrepared = false;
+        buildSearchIndex();
+        localStorage.removeItem(STORAGE.travelOfflinePack);
+        travelOfflinePackMetadata = null;
+        travelOfflinePackState = { status:"empty", ready:[], failed:[...categories], processed:0 };
+        message.textContent = "Offline Travel Pack removed. Your saved Travel items and trip tools were not changed.";
+    }
+    catch (error) {
+        console.warn("Offline Travel Pack: removal failed.", error);
+        message.textContent = "Sakura couldn't remove the downloaded pack. Please try again.";
+    }
+    renderTravelOfflinePack();
+}
+
+function parseCurrencyExpression(expression) {
+    const source = String(expression || "");
+    if (!source.trim()) return { status:"empty", value:null, message:"" };
+    if (source.length > 200) return { status:"invalid", value:null, message:"Keep the calculation under 200 characters." };
+    if (/[^0-9.+\-*/()\s]/.test(source)) return { status:"invalid", value:null, message:"Use only numbers and the arithmetic controls." };
+    const tokens = [];
+    let position = 0;
+    while (position < source.length) {
+        const character = source[position];
+        if (/\s/.test(character)) { position += 1; continue; }
+        if (/[+\-*/()]/.test(character)) { tokens.push({ type:character }); position += 1; continue; }
+        const numberMatch = source.slice(position).match(/^(?:\d+(?:\.\d*)?|\.\d+)/);
+        if (!numberMatch) return { status:"invalid", value:null, message:"Check the number or operator near the end." };
+        const value = Number(numberMatch[0]);
+        if (!Number.isFinite(value)) return { status:"invalid", value:null, message:"That number is too large." };
+        tokens.push({ type:"number", value });
+        position += numberMatch[0].length;
+    }
+    let index = 0;
+    const fail = (message, incomplete = false) => { const error = new Error(message); error.incomplete = incomplete; throw error; };
+    const bounded = value => {
+        if (!Number.isFinite(value) || Math.abs(value) > 1e12) fail("That result is too large.");
+        return value;
+    };
+    const parseFactor = () => {
+        const token = tokens[index];
+        if (!token) fail("Keep typing to finish the calculation.", true);
+        if (token.type === "+" || token.type === "-") { index += 1; const value = parseFactor(); return token.type === "-" ? -value : value; }
+        if (token.type === "number") { index += 1; return token.value; }
+        if (token.type === "(") {
+            index += 1;
+            if (tokens[index]?.type === ")") fail("Parentheses need a calculation inside them.");
+            const value = parseExpression();
+            if (!tokens[index]) fail("Add a closing parenthesis.", true);
+            if (tokens[index].type !== ")") fail("Check the parentheses in this calculation.");
+            index += 1;
+            return value;
+        }
+        fail("Check the number or operator near the end.");
+    };
+    const parseTerm = () => {
+        let value = parseFactor();
+        while (["*", "/"].includes(tokens[index]?.type)) {
+            const operator = tokens[index++].type;
+            const right = parseFactor();
+            if (operator === "/" && right === 0) fail("Division by zero isn't allowed.");
+            value = bounded(operator === "*" ? value * right : value / right);
+        }
+        return value;
+    };
+    const parseExpression = () => {
+        let value = parseTerm();
+        while (["+", "-"].includes(tokens[index]?.type)) {
+            const operator = tokens[index++].type;
+            const right = parseTerm();
+            value = bounded(operator === "+" ? value + right : value - right);
+        }
+        return value;
+    };
+    try {
+        const value = bounded(parseExpression());
+        if (index !== tokens.length) fail("Check the order of the numbers and operators.");
+        return { status:"valid", value, message:"" };
+    }
+    catch (error) {
+        return { status:error.incomplete ? "incomplete" : "invalid", value:null, message:error.incomplete ? "" : error.message || "Check this calculation." };
+    }
+}
+
+function formatYenCurrency(value, currency, converted = false) {
+    if (!Number.isFinite(value)) return "—";
+    const fractionDigits = currency === "PHP" ? 2 : converted || Number.isInteger(value) ? 0 : 2;
+    return new Intl.NumberFormat("en-US", { style:"currency", currency, currencyDisplay:"narrowSymbol", minimumFractionDigits:fractionDigits, maximumFractionDigits:fractionDigits }).format(value);
+}
+
+function convertYenCurrency(value, fromCurrency, toCurrency) {
+    const rate = Number(yenConverterSettings?.phpPerJpy);
+    if (!Number.isFinite(value) || !Number.isFinite(rate) || rate <= 0 || fromCurrency === toCurrency) return null;
+    const converted = fromCurrency === "JPY" ? value * rate : value / rate;
+    return Number.isFinite(converted) && Math.abs(converted) <= 1e12 ? converted : null;
+}
+
+function renderYenConverter() {
+    const view = document.getElementById("travel-yen-view");
+    if (!view) return;
+    const activeSide = yenConverterState.activeSide;
+    const inactiveSide = activeSide === "top" ? "bottom" : "top";
+    const result = parseCurrencyExpression(yenConverterState.expressions[activeSide]);
+    const sourceCurrency = yenConverterState.currencies[activeSide];
+    const destinationCurrency = yenConverterState.currencies[inactiveSide];
+    const convertedValue = result.status === "valid" ? convertYenCurrency(result.value, sourceCurrency, destinationCurrency) : null;
+    for (const side of ["top", "bottom"]) {
+        const currency = yenConverterState.currencies[side];
+        const active = side === activeSide;
+        const panel = document.getElementById(`yen-panel-${side}`);
+        panel.classList.toggle("active", active);
+        document.getElementById(`yen-${side}-mode`).textContent = active ? "Editing" : "Converted";
+        document.getElementById(`yen-${side}-currency`).value = currency;
+        document.getElementById(`yen-${side}-symbol`).textContent = YEN_CURRENCIES[currency].symbol;
+        const input = document.getElementById(`yen-${side}-expression`);
+        if (input.value !== yenConverterState.expressions[side]) input.value = yenConverterState.expressions[side];
+        input.placeholder = active ? "Enter an amount or calculation" : `Tap to calculate from ${currency}`;
+        document.getElementById(`yen-${side}-total-label`).textContent = active ? "Evaluated total" : "Converted amount";
+        document.getElementById(`yen-${side}-total`).textContent = active
+            ? result.status === "valid" ? formatYenCurrency(result.value, currency) : "—"
+            : convertedValue !== null ? formatYenCurrency(convertedValue, currency, true) : result.status === "valid" && !yenConverterSettings ? "Set rate" : "—";
+        document.getElementById(`yen-${side}-message`).textContent = active && result.status === "invalid" ? result.message : "";
+        input.setAttribute("aria-invalid", String(active && result.status === "invalid"));
+    }
+    const rate = Number(yenConverterSettings?.phpPerJpy);
+    const hasRate = Number.isFinite(rate) && rate > 0;
+    document.getElementById("yen-rate-display").textContent = hasRate ? `¥1 = ₱${new Intl.NumberFormat("en-US", { minimumFractionDigits:2, maximumFractionDigits:6 }).format(rate)}` : "Set exchange rate";
+    document.getElementById("yen-rate-helper").textContent = hasRate ? `Saved manually${yenConverterSettings.updatedAt ? ` · ${new Intl.DateTimeFormat(undefined, { dateStyle:"medium" }).format(new Date(yenConverterSettings.updatedAt))}` : ""}` : "Enter how many Philippine pesos equal ¥1.";
+    document.getElementById("edit-yen-rate").textContent = hasRate ? "Edit Rate" : "Set Rate";
+}
+
+function activateYenSide(side, focus = false) {
+    if (!['top', 'bottom'].includes(side)) return;
+    if (yenConverterState.activeSide !== side) {
+        const other = side === "top" ? "bottom" : "top";
+        yenConverterState.activeSide = side;
+        yenConverterState.expressions[other] = "";
+        renderYenConverter();
+    }
+    if (focus) document.getElementById(`yen-${side}-expression`).focus();
+}
+
+function setYenCurrency(side, currency) {
+    if (!YEN_CURRENCIES[currency]) return;
+    const other = side === "top" ? "bottom" : "top";
+    yenConverterState.currencies[side] = currency;
+    yenConverterState.currencies[other] = currency === "JPY" ? "PHP" : "JPY";
+    renderYenConverter();
+}
+
+function editYenExpression(side, value) {
+    activateYenSide(side);
+    yenConverterState.expressions[side] = String(value || "");
+    renderYenConverter();
+}
+
+function insertYenKey(side, key) {
+    activateYenSide(side);
+    const input = document.getElementById(`yen-${side}-expression`);
+    const start = input.selectionStart ?? input.value.length;
+    const end = input.selectionEnd ?? start;
+    let before = input.value.slice(0, start);
+    let after = input.value.slice(end);
+    let insertion = key;
+    if (key === "backspace") {
+        if (start !== end) before = input.value.slice(0, start);
+        else {
+            before = before.replace(/\s+$/, "");
+            if (/[+\-*/]$/.test(before)) before = before.slice(0, -1).replace(/\s+$/, "");
+            else before = before.slice(0, -1);
+        }
+        insertion = "";
+    }
+    else if (["+", "-", "*", "/"].includes(key)) insertion = ` ${key} `;
+    const nextValue = `${before}${insertion}${after}`.slice(0, 200);
+    yenConverterState.expressions[side] = nextValue;
+    renderYenConverter();
+    input.focus();
+    const caret = Math.min(before.length + insertion.length, nextValue.length);
+    input.setSelectionRange(caret, caret);
+}
+
+function clearYenExpression(side) {
+    activateYenSide(side);
+    yenConverterState.expressions.top = "";
+    yenConverterState.expressions.bottom = "";
+    renderYenConverter();
+    document.getElementById(`yen-${side}-expression`).focus();
+}
+
+function swapYenCurrencies() {
+    const { top, bottom } = yenConverterState.currencies;
+    yenConverterState.currencies = { top:bottom, bottom:top };
+    const topExpression = yenConverterState.expressions.top;
+    yenConverterState.expressions.top = yenConverterState.expressions.bottom;
+    yenConverterState.expressions.bottom = topExpression;
+    yenConverterState.activeSide = yenConverterState.activeSide === "top" ? "bottom" : "top";
+    renderYenConverter();
+}
+
+function openYenRateEditor() {
+    document.getElementById("yen-rate-input").value = yenConverterSettings?.phpPerJpy || "";
+    document.getElementById("yen-rate-message").textContent = "";
+    document.getElementById("yen-rate-editor").showModal();
+}
+
+function saveYenRate(event) {
+    event.preventDefault();
+    const rawValue = document.getElementById("yen-rate-input").value.trim();
+    const message = document.getElementById("yen-rate-message");
+    if (!/^(?:\d+(?:\.\d*)?|\.\d+)$/.test(rawValue)) { message.textContent = "Enter a valid positive number, such as 0.38."; return; }
+    const phpPerJpy = Number(rawValue);
+    if (!Number.isFinite(phpPerJpy) || phpPerJpy <= 0) { message.textContent = "The exchange rate must be greater than zero."; return; }
+    yenConverterSettings = { phpPerJpy, updatedAt:new Date().toISOString(), source:"manual" };
+    writeJson(STORAGE.yenConverter, yenConverterSettings);
+    document.getElementById("yen-rate-editor").close();
+    renderYenConverter();
+}
+
 function flashcardBack(item) {
     return [item.kana || item.reading, item.romaji, item.meaning || item.english, item.onyomi?.length ? `On: ${item.onyomi.join(", ")}` : "", item.kunyomi?.length ? `Kun: ${item.kunyomi.join(", ")}` : "", item.jlpt || item.difficulty || item.category, item.exampleSentence, item.exampleTranslation, item.naturalUsage, item.formality ? `Formality: ${item.formality}` : "", item.notes].filter(Boolean).join("\n");
 }
@@ -1702,9 +2543,12 @@ async function requestTranslation(event) {
 function showRoute(route, updateHash = true) {
     const normalizedRoute = route === "native" ? "learn-native" : route;
     const nativeMode = normalizedRoute === "learn-slang" ? "slang" : normalizedRoute === "learn-native" ? "native" : null;
-    const requestedTravelCategory = normalizedRoute.startsWith("travel-") ? normalizedRoute.slice(7) : null;
+    const deckRouteMatch = normalizedRoute.match(/^travel-deck-(deck-.+)$/);
+    if (deckRouteMatch) currentTravelDeckId = deckRouteMatch[1];
+    const requestedTravelCategory = normalizedRoute.startsWith("travel-") && !deckRouteMatch ? normalizedRoute.slice(7) : null;
     const travelCategory = travelCategoryMetadata(requestedTravelCategory) ? requestedTravelCategory : null;
-    const viewRoute = nativeMode ? "native" : travelCategory ? "travel-category" : normalizedRoute;
+    const isTravelUtilityRoute = ["travel-my-phrases", "travel-decks", "travel-notes", "travel-countdown", "travel-offline", "travel-yen"].includes(normalizedRoute) || Boolean(deckRouteMatch);
+    const viewRoute = nativeMode ? "native" : travelCategory ? "travel-category" : deckRouteMatch ? "travel-deck" : normalizedRoute;
     currentRoute = normalizedRoute;
     if (nativeMode) {
         currentNativeMode = nativeMode;
@@ -1719,7 +2563,14 @@ function showRoute(route, updateHash = true) {
         view.classList.toggle("active-view", active);
     });
     if (travelCategory) renderTravelCategory(travelCategory);
-    const mainRoute = travelCategory ? "travel" : ["search", "translate", "learn-native", "learn-slang"].includes(normalizedRoute) ? "learn" : normalizedRoute.replace("-detail", "");
+    if (normalizedRoute === "travel-my-phrases") renderMyTravelPhrases();
+    if (normalizedRoute === "travel-decks") renderTravelDecks();
+    if (normalizedRoute === "travel-notes") renderTravelNotes();
+    if (normalizedRoute === "travel-countdown") renderTravelCountdown();
+    if (normalizedRoute === "travel-offline") verifyTravelOfflinePack();
+    if (normalizedRoute === "travel-yen") renderYenConverter();
+    if (deckRouteMatch) renderCurrentTravelDeck();
+    const mainRoute = travelCategory || isTravelUtilityRoute ? "travel" : ["search", "translate", "learn-native", "learn-slang"].includes(normalizedRoute) ? "learn" : normalizedRoute.replace("-detail", "");
     document.querySelectorAll(".nav-button").forEach(button => button.classList.toggle("active", button.dataset.route === mainRoute || (normalizedRoute.includes("detail") && button.dataset.route === detailReturnRoute)));
     const learnView = normalizedRoute === "learn" ? "library" : nativeMode;
     document.querySelectorAll("[data-learn-view]").forEach(button => {
@@ -2048,6 +2899,66 @@ function addListeners() {
         toggleSaved(currentTravelPhrase);
         renderTravelPhraseCard(currentTravelPhrase);
     });
+    document.getElementById("travel-my-phrases-view").addEventListener("click", event => {
+        const filter = event.target.closest("[data-saved-travel-filter]");
+        const pin = event.target.closest("[data-pin-travel-id]");
+        const open = event.target.closest("[data-open-travel-saved]");
+        if (filter) { savedTravelCategoryFilter = filter.dataset.savedTravelFilter; renderMyTravelPhrases(); }
+        else if (pin) togglePinnedTravelPhrase(pin.dataset.pinTravelId);
+        else if (open) openSavedItem(savedItems.find(item => itemKey(item) === open.dataset.openTravelSaved));
+    });
+    document.getElementById("create-travel-deck").addEventListener("click", () => openTravelDeckEditor());
+    document.getElementById("travel-decks-empty").addEventListener("click", event => { if (event.target.closest("[data-create-travel-deck]")) openTravelDeckEditor(); });
+    document.getElementById("travel-deck-list").addEventListener("click", event => { const button=event.target.closest("[data-open-travel-deck]"); if(button)showRoute(`travel-deck-${button.dataset.openTravelDeck}`); });
+    document.getElementById("edit-travel-deck").addEventListener("click", () => openTravelDeckEditor(travelDeckById()));
+    document.getElementById("add-travel-deck-phrases").addEventListener("click", openTravelDeckPicker);
+    document.getElementById("travel-deck-empty").addEventListener("click", event => { if(event.target.closest("[data-add-deck-phrases]"))openTravelDeckPicker(); });
+    document.getElementById("travel-deck-phrases").addEventListener("click", event => { const remove=event.target.closest("[data-remove-deck-phrase]");const open=event.target.closest("[data-open-deck-phrase]");if(remove)removePhraseFromCurrentDeck(remove.dataset.removeDeckPhrase);else if(open)openSavedItem(savedItems.find(item=>itemKey(item)===open.dataset.openDeckPhrase)); });
+    document.getElementById("travel-deck-form").addEventListener("submit", saveTravelDeck);
+    document.getElementById("close-travel-deck-editor").addEventListener("click", () => document.getElementById("travel-deck-editor").close());
+    document.getElementById("travel-deck-icons").addEventListener("click", event => { const button=event.target.closest("[data-deck-icon]");if(button){travelDeckIconChoice=button.dataset.deckIcon;renderTravelDeckIcons();} });
+    document.getElementById("delete-travel-deck").addEventListener("click", deleteCurrentTravelDeck);
+    document.getElementById("close-travel-deck-picker").addEventListener("click", () => document.getElementById("travel-deck-picker").close());
+    document.getElementById("cancel-travel-deck-picker").addEventListener("click", () => document.getElementById("travel-deck-picker").close());
+    document.getElementById("travel-deck-picker-search").addEventListener("input", renderTravelDeckPicker);
+    document.getElementById("travel-deck-picker-filters").addEventListener("click", event => { const button=event.target.closest("[data-deck-picker-filter]");if(button){travelDeckPickerFilter=button.dataset.deckPickerFilter;renderTravelDeckPicker();} });
+    document.getElementById("travel-deck-picker-list").addEventListener("change", event => { const input=event.target.closest("[data-deck-picker-id]");if(!input)return;if(input.checked)travelDeckPickerSelection.add(input.dataset.deckPickerId);else travelDeckPickerSelection.delete(input.dataset.deckPickerId);renderTravelDeckPicker(); });
+    document.getElementById("save-travel-deck-phrases").addEventListener("click", saveTravelDeckPicker);
+    document.getElementById("create-travel-note").addEventListener("click", () => openTravelNoteEditor());
+    document.getElementById("travel-notes-empty").addEventListener("click", event => { if(event.target.closest("[data-create-travel-note]"))openTravelNoteEditor(); });
+    document.getElementById("travel-note-search").addEventListener("input", renderTravelNotes);
+    document.getElementById("travel-note-filters").addEventListener("click", event => { const button=event.target.closest("[data-travel-note-filter]");if(button){travelNoteCategoryFilter=button.dataset.travelNoteFilter;renderTravelNotes();} });
+    document.getElementById("travel-notes-view").addEventListener("click", event => { const button=event.target.closest("[data-open-travel-note]");if(button)openTravelNoteDetail(button.dataset.openTravelNote); });
+    document.getElementById("travel-note-form").addEventListener("submit", saveTravelNote);
+    document.getElementById("close-travel-note-editor").addEventListener("click", () => document.getElementById("travel-note-editor").close());
+    document.getElementById("cancel-travel-note").addEventListener("click", () => document.getElementById("travel-note-editor").close());
+    document.getElementById("close-travel-note-detail").addEventListener("click", () => document.getElementById("travel-note-detail").close());
+    document.getElementById("edit-travel-note").addEventListener("click", () => { const note=travelNoteById();document.getElementById("travel-note-detail").close();openTravelNoteEditor(note); });
+    document.getElementById("pin-travel-note").addEventListener("click", toggleCurrentTravelNotePin);
+    document.getElementById("delete-travel-note").addEventListener("click", deleteCurrentTravelNote);
+    document.querySelectorAll("[data-edit-travel-countdown]").forEach(button => button.addEventListener("click", openTravelCountdownEditor));
+    document.getElementById("edit-travel-countdown").addEventListener("click", openTravelCountdownEditor);
+    document.getElementById("remove-travel-countdown").addEventListener("click", removeTravelCountdown);
+    document.getElementById("travel-countdown-form").addEventListener("submit", saveTravelCountdown);
+    document.getElementById("close-travel-countdown-editor").addEventListener("click", () => document.getElementById("travel-countdown-editor").close());
+    document.getElementById("cancel-travel-countdown").addEventListener("click", () => document.getElementById("travel-countdown-editor").close());
+    document.getElementById("travel-offline-action").addEventListener("click", () => downloadTravelOfflinePack(travelOfflinePackState.status === "ready"));
+    document.getElementById("remove-travel-offline-pack").addEventListener("click", removeTravelOfflinePack);
+    document.querySelectorAll("[data-yen-expression]").forEach(input => {
+        input.addEventListener("focus", () => activateYenSide(input.dataset.yenExpression));
+        input.addEventListener("input", () => editYenExpression(input.dataset.yenExpression, input.value));
+    });
+    document.querySelectorAll("[data-yen-panel]").forEach(panel => panel.addEventListener("click", event => {
+        if (!event.target.closest("button, input, select, label")) activateYenSide(panel.dataset.yenPanel, true);
+    }));
+    document.querySelectorAll("[data-yen-currency]").forEach(select => select.addEventListener("change", () => setYenCurrency(select.dataset.yenCurrency, select.value)));
+    document.querySelectorAll("[data-yen-key]").forEach(button => button.addEventListener("click", () => insertYenKey(button.dataset.yenSide, button.dataset.yenKey)));
+    document.querySelectorAll("[data-yen-clear]").forEach(button => button.addEventListener("click", () => clearYenExpression(button.dataset.yenClear)));
+    document.getElementById("swap-yen-currencies").addEventListener("click", swapYenCurrencies);
+    document.getElementById("edit-yen-rate").addEventListener("click", openYenRateEditor);
+    document.getElementById("yen-rate-form").addEventListener("submit", saveYenRate);
+    document.getElementById("close-yen-rate-editor").addEventListener("click", () => document.getElementById("yen-rate-editor").close());
+    document.getElementById("cancel-yen-rate").addEventListener("click", () => document.getElementById("yen-rate-editor").close());
     document.getElementById("translation-contexts").addEventListener("click", event => { const button=event.target.closest("[data-translation-context]"); if(button){translationContext=button.dataset.translationContext;renderTranslationChips();} });
     document.getElementById("translation-tones").addEventListener("click", event => { const button=event.target.closest("[data-translation-tone]"); if(button){translationTone=button.dataset.translationTone;renderTranslationChips();} });
     document.getElementById("translation-form").addEventListener("submit",requestTranslation);
@@ -2303,6 +3214,9 @@ function initializeApp() {
     renderRecentSearches();
     renderTranslationChips();
     renderTranslationHistory();
+    renderTravelCountdown();
+    renderTravelOfflinePack();
+    renderYenConverter();
     refreshNativeCategories();
     const storedDifficulty = localStorage.getItem(STORAGE.nativeDifficulty);
     if (["All", "Beginner", "Intermediate", "Advanced"].includes(storedDifficulty)) document.getElementById("native-difficulty-filter").value = storedDifficulty;
@@ -2320,7 +3234,8 @@ function initializeApp() {
     updateSavedUi();
     const requestedRoute = location.hash.replace("#", "");
     const travelRoutes = Object.keys(window.TRAVEL_CATEGORIES || {}).map(category => `travel-${category}`);
-    showRoute(["home", "learn", "learn-native", "learn-slang", "search", "translate", "quiz", "native", "travel", "saved", ...travelRoutes].includes(requestedRoute) ? requestedRoute : "home", false);
+    const validDeckRoute = /^travel-deck-deck-.+/.test(requestedRoute);
+    showRoute(["home", "learn", "learn-native", "learn-slang", "search", "translate", "quiz", "native", "travel", "travel-my-phrases", "travel-decks", "travel-notes", "travel-countdown", "travel-offline", "travel-yen", "saved", ...travelRoutes].includes(requestedRoute) || validDeckRoute ? requestedRoute : "home", false);
     initializePwaUpdates();
 }
 

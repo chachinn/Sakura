@@ -28,7 +28,7 @@
     function validateTravelRecords(records, category) {
         const errors = [];
         const ids = new Set();
-        const loadedIds = new Set([...loadedByCategory.values()].flat().map(record => record.id));
+        const loadedIds = new Set([...loadedByCategory.entries()].filter(([loadedCategory]) => loadedCategory !== category).flatMap(([, loadedRecords]) => loadedRecords).map(record => record.id));
         const validSubcategories = new Set(categories[category].filters.filter(filter => filter !== "All"));
         const requiredStrings = ["id", "type", "category", "subcategory", "japanese", "reading", "romaji", "english", "politeness", "priority"];
         const valid = records.filter((record, index) => {
@@ -55,9 +55,9 @@
         return valid;
     }
 
-    function loadTravelCategory(category) {
+    function loadTravelCategory(category, refresh = false) {
         const validCategory = requireCategory(category);
-        if (loadedByCategory.has(validCategory)) return Promise.resolve(loadedByCategory.get(validCategory));
+        if (!refresh && loadedByCategory.has(validCategory)) return Promise.resolve(loadedByCategory.get(validCategory));
         if (inFlightByCategory.has(validCategory)) return inFlightByCategory.get(validCategory);
         const request = (async () => {
             const response = await fetch(files[validCategory]);
@@ -78,6 +78,11 @@
     window.TRAVEL_CATEGORIES = categories;
     window.SakuraTravelLoader = Object.freeze({
         loadTravelCategory,
+        refreshTravelCategory: category => loadTravelCategory(category, true),
+        getTravelCategoryAsset: category => files[requireCategory(category)],
+        forgetTravelCategories: categoriesToForget => {
+            (categoriesToForget || Object.keys(categories)).forEach(category => loadedByCategory.delete(requireCategory(category)));
+        },
         getLoadedTravelCategories: () => Object.keys(categories).filter(category => loadedByCategory.has(category)),
         getLoadedTravelPhrases: () => Object.keys(categories).flatMap(category => loadedByCategory.get(category) || []),
         getTravelPhrasesByCategory: category => [...(loadedByCategory.get(requireCategory(category)) || [])]

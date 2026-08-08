@@ -11,7 +11,7 @@
     <script>try { document.documentElement.dataset.theme = localStorage.getItem("sakuraAppearanceTheme") || "pink"; } catch (error) { document.documentElement.dataset.theme = "pink"; }</script>
     <link rel="manifest" href="manifest.webmanifest">
     <link rel="apple-touch-icon" href="icons/icon-180.png">
-    <link rel="stylesheet" href="style.css?v=29">
+    <link rel="stylesheet" href="style.css?v=35">
 </head>
 <body>
     <div class="app-shell">
@@ -260,8 +260,91 @@
                     <button class="travel-category-card" type="button" data-route="travel-taxi" data-travel-category="taxi"><span aria-hidden="true">車</span><div><h2>Taxi &amp; Directions</h2><p>Getting where you need to go.</p></div><b aria-hidden="true">→</b></button>
                     <button class="travel-category-card" type="button" data-route="travel-emergencies" data-travel-category="emergencies"><span aria-hidden="true">助</span><div><h2>Emergencies &amp; Health</h2><p>Essential help and care.</p></div><b aria-hidden="true">→</b></button>
                 </div>
+                <button class="travel-feature-card travel-pouch-launch" type="button" data-route="travel-my-phrases"><span aria-hidden="true">♡</span><div><h2>My Travel Phrases</h2><p>Saved phrases ready for your trip.</p></div><b aria-hidden="true">→</b></button>
+                <button class="travel-feature-card" type="button" data-route="travel-decks"><span aria-hidden="true">🎴</span><div><h2>Phrase Decks</h2><p>Build collections for the moments ahead.</p></div><b aria-hidden="true">→</b></button>
+                <button class="travel-feature-card" type="button" data-route="travel-notes"><span aria-hidden="true">📝</span><div><h2>Personal Notes</h2><p>Keep trip details handy offline.</p></div><b aria-hidden="true">→</b></button>
+                <button class="travel-feature-card" type="button" data-route="travel-countdown"><span aria-hidden="true">🗓️</span><div><h2>Travel Countdown</h2><p id="travel-countdown-card-summary">Plan your next adventure.</p></div><b aria-hidden="true">→</b></button>
+                <button class="travel-feature-card" type="button" data-route="travel-offline"><span aria-hidden="true">⇩</span><div><h2>Offline Travel Pack</h2><p id="travel-offline-card-summary">Prepare all 720 phrases for your trip.</p></div><b aria-hidden="true">→</b></button>
                 <button class="travel-feature-card" type="button" data-route="travel-others" data-travel-category="others"><span aria-hidden="true">🌸</span><div><h2>Others</h2><p>Little moments around Japan.</p></div><b aria-hidden="true">→</b></button>
-                <article class="travel-utility-card" data-travel-utility="yen-converter"><span aria-hidden="true">¥</span><div><h2>Yen Converter</h2><p>Coming in a future Travel Mode update.</p></div></article>
+                <button class="travel-feature-card" type="button" data-route="travel-yen"><span aria-hidden="true">¥</span><div><h2>Yen Converter</h2><p>Calculate prices in yen and pesos.</p></div><b aria-hidden="true">→</b></button>
+            </section>
+
+            <section id="travel-yen-view" class="view" data-view="travel-yen" aria-labelledby="travel-yen-heading" hidden>
+                <header class="travel-category-header"><button class="back-button" type="button" data-route="travel" aria-label="Back to Travel">‹</button><span class="travel-category-icon" aria-hidden="true">¥</span><div><span class="section-kicker">Travel Tool</span><h1 id="travel-yen-heading">Yen Converter</h1></div><span class="tag">Two-way</span></header>
+                <p class="travel-category-description">You can also type a calculation such as 1990 + 3450 + 1280.</p>
+                <div class="yen-converter-stack">
+                    <article id="yen-panel-top" class="yen-calculator-panel active" data-yen-panel="top">
+                        <div class="yen-panel-header"><label><span class="sr-only">Top currency</span><select id="yen-top-currency" data-yen-currency="top"><option value="JPY">JPY</option><option value="PHP">PHP</option></select></label><span id="yen-top-mode" class="status-label">Editing</span><button class="yen-clear-button" type="button" data-yen-clear="top">Clear</button></div>
+                        <label class="yen-expression-field"><span>Expression</span><span class="yen-expression-input"><b id="yen-top-symbol">¥</b><input id="yen-top-expression" data-yen-expression="top" type="text" maxlength="200" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="Enter an amount or calculation"></span></label>
+                        <div class="yen-total-row"><span id="yen-top-total-label">Evaluated total</span><strong id="yen-top-total">—</strong></div>
+                        <p id="yen-top-message" class="yen-panel-message" role="status"></p>
+                        <div class="yen-keypad" aria-label="JPY arithmetic controls"><button type="button" data-yen-key="+" data-yen-side="top">+</button><button type="button" data-yen-key="-" data-yen-side="top">−</button><button type="button" data-yen-key="*" data-yen-side="top">×</button><button type="button" data-yen-key="/" data-yen-side="top">÷</button><button type="button" data-yen-key="(" data-yen-side="top">(</button><button type="button" data-yen-key=")" data-yen-side="top">)</button><button type="button" data-yen-key="backspace" data-yen-side="top" aria-label="Backspace">⌫</button></div>
+                    </article>
+                    <button id="swap-yen-currencies" class="yen-swap-button" type="button" aria-label="Swap JPY and PHP"><span aria-hidden="true">⇅</span> Swap</button>
+                    <article id="yen-panel-bottom" class="yen-calculator-panel" data-yen-panel="bottom">
+                        <div class="yen-panel-header"><label><span class="sr-only">Bottom currency</span><select id="yen-bottom-currency" data-yen-currency="bottom"><option value="PHP">PHP</option><option value="JPY">JPY</option></select></label><span id="yen-bottom-mode" class="status-label">Converted</span><button class="yen-clear-button" type="button" data-yen-clear="bottom">Clear</button></div>
+                        <label class="yen-expression-field"><span>Expression</span><span class="yen-expression-input"><b id="yen-bottom-symbol">₱</b><input id="yen-bottom-expression" data-yen-expression="bottom" type="text" maxlength="200" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="Tap to calculate from PHP"></span></label>
+                        <div class="yen-total-row"><span id="yen-bottom-total-label">Converted amount</span><strong id="yen-bottom-total">—</strong></div>
+                        <p id="yen-bottom-message" class="yen-panel-message" role="status"></p>
+                        <div class="yen-keypad" aria-label="PHP arithmetic controls"><button type="button" data-yen-key="+" data-yen-side="bottom">+</button><button type="button" data-yen-key="-" data-yen-side="bottom">−</button><button type="button" data-yen-key="*" data-yen-side="bottom">×</button><button type="button" data-yen-key="/" data-yen-side="bottom">÷</button><button type="button" data-yen-key="(" data-yen-side="bottom">(</button><button type="button" data-yen-key=")" data-yen-side="bottom">)</button><button type="button" data-yen-key="backspace" data-yen-side="bottom" aria-label="Backspace">⌫</button></div>
+                    </article>
+                </div>
+                <article class="yen-rate-card"><div><span class="section-kicker">Exchange rate</span><h2 id="yen-rate-display">Set exchange rate</h2><p id="yen-rate-helper">Enter how many Philippine pesos equal ¥1.</p></div><button id="edit-yen-rate" class="secondary-button" type="button">Edit Rate</button></article>
+            </section>
+
+            <section id="travel-offline-view" class="view" data-view="travel-offline" aria-labelledby="travel-offline-heading" hidden>
+                <header class="travel-category-header"><button class="back-button" type="button" data-route="travel" aria-label="Back to Travel">‹</button><span class="travel-category-icon" aria-hidden="true">⇩</span><div><span class="section-kicker">Travel Mode</span><h1 id="travel-offline-heading">Offline Travel Pack</h1></div></header>
+                <p class="travel-category-description">Download Sakura's Travel phrases before your trip so they stay available even without signal.</p>
+                <article id="travel-offline-card" class="travel-offline-pack-card" aria-live="polite">
+                    <span id="travel-offline-icon" class="travel-offline-pack-icon" aria-hidden="true">🌸</span>
+                    <span id="travel-offline-label" class="section-kicker">Checking availability</span>
+                    <h2 id="travel-offline-status">Checking your Travel Pack…</h2>
+                    <p id="travel-offline-description">Sakura is checking which phrases are ready offline.</p>
+                    <div class="travel-offline-progress" role="progressbar" aria-label="Offline Travel Pack progress" aria-valuemin="0" aria-valuemax="7" aria-valuenow="0"><span id="travel-offline-progress-bar"></span></div>
+                    <strong id="travel-offline-progress-text">0 of 7 categories ready</strong>
+                    <p id="travel-offline-last-updated" class="travel-offline-last-updated"></p>
+                    <div class="travel-offline-actions"><button id="travel-offline-action" class="primary-button" type="button">Download Travel Pack</button><button id="remove-travel-offline-pack" class="text-danger-button" type="button" hidden>Remove Offline Travel Pack</button></div>
+                </article>
+                <p id="travel-offline-message" class="form-message" role="status"></p>
+            </section>
+
+            <section id="travel-countdown-view" class="view" data-view="travel-countdown" aria-labelledby="travel-countdown-heading" hidden>
+                <header class="travel-category-header"><button class="back-button" type="button" data-route="travel" aria-label="Back to Travel">‹</button><span class="travel-category-icon" aria-hidden="true">🗓️</span><div><span class="section-kicker">Travel Mode</span><h1 id="travel-countdown-heading">Travel Countdown</h1></div></header>
+                <p class="travel-category-description">One upcoming adventure, always available offline.</p>
+                <div id="travel-countdown-empty" class="search-empty-state"><span aria-hidden="true">🌸</span><strong>Where will Sakura take you next?</strong><p>Set a date and watch your trip get closer.</p><button class="primary-button" type="button" data-edit-travel-countdown>Set Countdown</button></div>
+                <article id="travel-countdown-card" class="travel-countdown-detail" hidden>
+                    <span id="travel-countdown-status-label" class="section-kicker">Upcoming trip</span>
+                    <h2 id="travel-countdown-trip-name">Japan Trip</h2>
+                    <strong id="travel-countdown-status" class="travel-countdown-status">0 days to go</strong>
+                    <p id="travel-countdown-dates" class="travel-countdown-dates"></p>
+                    <div class="travel-countdown-actions"><button id="edit-travel-countdown" class="primary-button" type="button">Edit</button><button id="remove-travel-countdown" class="text-danger-button" type="button">Remove</button></div>
+                </article>
+            </section>
+
+            <section id="travel-notes-view" class="view" data-view="travel-notes" aria-labelledby="travel-notes-heading" hidden>
+                <header class="travel-category-header"><button class="back-button" type="button" data-route="travel" aria-label="Back to Travel">‹</button><span class="travel-category-icon" aria-hidden="true">📝</span><div><span class="section-kicker">Travel Mode</span><h1 id="travel-notes-heading">Personal Notes</h1></div></header>
+                <p class="travel-category-description">Keep ordinary trip details close at hand—even offline.</p>
+                <button id="create-travel-note" class="primary-button full-width-button" type="button">＋ Create Note</button>
+                <div class="travel-note-tools"><input id="travel-note-search" type="search" placeholder="Search your notes" aria-label="Search Personal Notes"><div id="travel-note-filters" class="travel-filter-chips" role="group" aria-label="Personal Note categories"></div></div>
+                <div id="travel-notes-empty" class="search-empty-state"><span aria-hidden="true">🌸</span><strong>Keep the little details you’ll want handy in Japan.</strong><p>Hotel addresses, reservations, event details, and places to remember.</p><button class="primary-button" type="button" data-create-travel-note>Create Note</button></div>
+                <section id="travel-notes-pinned-section" class="travel-pouch-section" hidden><div class="travel-pouch-heading"><div><span class="section-kicker">Quick access</span><h2>Pinned</h2></div><span id="travel-notes-pinned-count" class="tag">0</span></div><div id="travel-notes-pinned" class="travel-note-list"></div></section>
+                <section id="travel-notes-all-section" class="travel-pouch-section" hidden><div class="travel-pouch-heading"><div><span class="section-kicker">Updated recently</span><h2>All Notes</h2></div><span id="travel-notes-count" class="tag">0</span></div><div id="travel-notes-all" class="travel-note-list"></div><p id="travel-notes-filter-empty" class="travel-pouch-note" hidden>No notes match this search and category.</p></section>
+            </section>
+
+            <section id="travel-decks-view" class="view" data-view="travel-decks" aria-labelledby="travel-decks-heading" hidden>
+                <header class="travel-category-header"><button class="back-button" type="button" data-route="travel" aria-label="Back to Travel">‹</button><span class="travel-category-icon" aria-hidden="true">🎴</span><div><span class="section-kicker">Travel Mode</span><h1 id="travel-decks-heading">Phrase Decks</h1></div></header>
+                <p class="travel-category-description">Create collections for a day, destination, or situation.</p>
+                <button id="create-travel-deck" class="primary-button full-width-button" type="button">＋ Create Deck</button>
+                <div id="travel-deck-list" class="travel-deck-grid"></div>
+                <div id="travel-decks-empty" class="search-empty-state"><span aria-hidden="true">🌸</span><strong>Create a phrase deck for the moments you want to be ready for.</strong><p>Concert Day, Train Day, Restaurant Night… you decide.</p><button class="primary-button" type="button" data-create-travel-deck>Create Deck</button></div>
+            </section>
+
+            <section id="travel-deck-view" class="view" data-view="travel-deck" aria-labelledby="travel-deck-heading" hidden>
+                <header class="travel-category-header"><button class="back-button" type="button" data-route="travel-decks" aria-label="Back to Phrase Decks">‹</button><span id="travel-deck-icon" class="travel-category-icon" aria-hidden="true">🌸</span><div><span class="section-kicker">Phrase Deck</span><h1 id="travel-deck-heading">Deck</h1></div></header>
+                <p id="travel-deck-count" class="travel-category-description">0 phrases</p>
+                <div class="travel-deck-actions"><button id="add-travel-deck-phrases" class="primary-button" type="button">＋ Add Phrases</button><button id="edit-travel-deck" class="secondary-button" type="button">Edit Deck</button></div>
+                <div id="travel-deck-phrases" class="travel-pouch-list"></div>
+                <div id="travel-deck-empty" class="search-empty-state"><span aria-hidden="true">🎴</span><strong>This deck is empty.</strong><p>Add Saved Travel phrases when you’re ready.</p><button class="primary-button" type="button" data-add-deck-phrases>Add Phrases</button></div>
             </section>
 
             <section id="travel-category-view" class="view" data-view="travel-category" aria-labelledby="travel-category-heading" hidden>
@@ -272,6 +355,17 @@
                 <p id="travel-category-status" class="travel-category-status" role="status" aria-live="polite">Loading travel phrases…</p>
                 <div id="travel-phrase-list" class="travel-phrase-list"></div>
                 <div id="travel-category-empty" class="search-empty-state" hidden><span aria-hidden="true">🌸</span><strong>No phrases in this section yet.</strong><p>Travel phrases for this category are coming soon.</p></div>
+            </section>
+
+            <section id="travel-my-phrases-view" class="view" data-view="travel-my-phrases" aria-labelledby="travel-my-phrases-heading" hidden>
+                <header class="travel-category-header"><button class="back-button" type="button" data-route="travel" aria-label="Back to Travel">‹</button><span class="travel-category-icon" aria-hidden="true">♡</span><div><span class="section-kicker">Travel Mode</span><h1 id="travel-my-phrases-heading">My Travel Phrases</h1></div></header>
+                <p class="travel-category-description">Your quickest path to useful phrases you’ve already saved.</p>
+                <div id="travel-pouch-empty" class="search-empty-state" hidden><span aria-hidden="true">🌸</span><strong>Your travel pouch is empty</strong><p>Save useful phrases while exploring Travel and they’ll appear here.</p><button class="primary-button" type="button" data-route="travel">Explore Travel Phrases</button></div>
+                <div id="travel-pouch-content">
+                    <section class="travel-pouch-section"><div class="travel-pouch-heading"><div><span class="section-kicker">Fast access</span><h2>Pinned</h2></div><span id="travel-pinned-count" class="tag">0</span></div><div id="travel-pinned-list" class="travel-pouch-list compact"></div><p id="travel-pinned-empty" class="travel-pouch-note">Pin your most useful phrases for quick access during your trip.</p></section>
+                    <section class="travel-pouch-section"><div class="travel-pouch-heading"><div><span class="section-kicker">Latest additions</span><h2>Recently Saved</h2></div></div><div id="travel-recent-list" class="travel-pouch-list"></div></section>
+                    <section class="travel-pouch-section"><div class="travel-pouch-heading"><div><span class="section-kicker">Your collection</span><h2>All Travel Phrases</h2></div><span id="travel-all-count" class="tag">0</span></div><div id="travel-saved-filters" class="travel-filter-chips" role="group" aria-label="Saved Travel category filters"></div><div id="travel-all-list" class="travel-pouch-list"></div><p id="travel-filter-empty" class="travel-pouch-note" hidden>No saved phrases match this category.</p></section>
+                </div>
             </section>
 
             <section id="saved-view" class="view" data-view="saved" aria-labelledby="saved-heading" hidden>
@@ -342,6 +436,69 @@
         </div>
     </dialog>
 
+    <dialog id="travel-deck-editor" class="settings-dialog">
+        <form id="travel-deck-form" class="settings-card travel-deck-editor-card">
+            <div class="card-topline"><div><span class="section-kicker">Phrase Deck</span><h2 id="travel-deck-editor-heading">Create Deck</h2></div><button id="close-travel-deck-editor" class="icon-button" type="button" aria-label="Close deck editor">×</button></div>
+            <input id="travel-deck-edit-id" type="hidden">
+            <label>Deck name<input id="travel-deck-name" maxlength="50" autocomplete="off" required></label>
+            <fieldset class="deck-icon-field"><legend>Icon</legend><div id="travel-deck-icons" class="deck-icon-options"></div></fieldset>
+            <p id="travel-deck-form-message" class="form-message" role="alert"></p>
+            <div class="entry-form-actions"><button id="delete-travel-deck" class="text-danger-button" type="button" hidden>Delete Deck</button><button class="primary-button" type="submit">Save Deck</button></div>
+        </form>
+    </dialog>
+
+    <dialog id="travel-deck-picker" class="settings-dialog">
+        <div class="settings-card travel-deck-picker-card">
+            <div class="card-topline"><div><span class="section-kicker">Saved Travel</span><h2>Add Phrases</h2></div><button id="close-travel-deck-picker" class="icon-button" type="button" aria-label="Close phrase picker">×</button></div>
+            <input id="travel-deck-picker-search" type="search" placeholder="Search saved phrases">
+            <div id="travel-deck-picker-filters" class="travel-filter-chips" role="group" aria-label="Phrase picker categories"></div>
+            <div id="travel-deck-picker-list" class="travel-deck-picker-list"></div>
+            <p id="travel-deck-picker-empty" class="travel-pouch-note" hidden>No Saved Travel phrases match.</p>
+            <div class="entry-form-actions sticky-dialog-actions"><button id="cancel-travel-deck-picker" class="secondary-button" type="button">Cancel</button><button id="save-travel-deck-phrases" class="primary-button" type="button">Add Selected</button></div>
+        </div>
+    </dialog>
+
+    <dialog id="travel-note-editor" class="settings-dialog">
+        <form id="travel-note-form" class="settings-card travel-note-editor-card">
+            <div class="card-topline"><div><span class="section-kicker">Personal Notes</span><h2 id="travel-note-editor-heading">Create Note</h2></div><button id="close-travel-note-editor" class="icon-button" type="button" aria-label="Close note editor">×</button></div>
+            <input id="travel-note-edit-id" type="hidden">
+            <label>Title <span class="optional-label">Optional</span><input id="travel-note-title" maxlength="80" autocomplete="off"></label>
+            <label>Category<select id="travel-note-category"><option value="general">🌸 General</option><option value="hotel">🏨 Hotel</option><option value="food">🍜 Food</option><option value="transport">🚆 Transport</option><option value="event">🎟️ Event</option><option value="shopping">🛍️ Shopping</option><option value="place">📍 Place</option></select></label>
+            <label>Content<textarea id="travel-note-content" rows="10" required placeholder="Address, reservation details, Japanese text, or anything useful for your trip…"></textarea></label>
+            <p id="travel-note-form-message" class="form-message" role="alert"></p>
+            <div class="entry-form-actions sticky-dialog-actions"><button id="cancel-travel-note" class="secondary-button" type="button">Cancel</button><button class="primary-button" type="submit">Save Note</button></div>
+        </form>
+    </dialog>
+
+    <dialog id="travel-note-detail" class="settings-dialog">
+        <article class="settings-card travel-note-detail-card">
+            <div class="card-topline"><div><span id="travel-note-detail-category" class="section-kicker">🌸 General</span><h2 id="travel-note-detail-title">Untitled Note</h2></div><button id="close-travel-note-detail" class="icon-button" type="button" aria-label="Close note">×</button></div>
+            <pre id="travel-note-detail-content" class="travel-note-full-content"></pre>
+            <div class="travel-note-detail-actions"><button id="edit-travel-note" class="secondary-button" type="button">Edit</button><button id="pin-travel-note" class="secondary-button" type="button">Pin</button><button id="delete-travel-note" class="text-danger-button" type="button">Delete</button></div>
+        </article>
+    </dialog>
+
+    <dialog id="travel-countdown-editor" class="settings-dialog">
+        <form id="travel-countdown-form" class="settings-card travel-countdown-editor-card">
+            <div class="card-topline"><div><span class="section-kicker">Travel Countdown</span><h2 id="travel-countdown-editor-heading">Set Your Trip</h2></div><button id="close-travel-countdown-editor" class="icon-button" type="button" aria-label="Close countdown editor">×</button></div>
+            <label>Trip name <span class="optional-label">Optional</span><input id="travel-countdown-name" maxlength="50" autocomplete="off" placeholder="Japan Trip"></label>
+            <label>Start date<input id="travel-countdown-start" type="date" required></label>
+            <label>End date <span class="optional-label">Optional</span><input id="travel-countdown-end" type="date"></label>
+            <p id="travel-countdown-form-message" class="form-message" role="alert"></p>
+            <div class="entry-form-actions sticky-dialog-actions"><button id="cancel-travel-countdown" class="secondary-button" type="button">Cancel</button><button class="primary-button" type="submit">Save Countdown</button></div>
+        </form>
+    </dialog>
+
+    <dialog id="yen-rate-editor" class="settings-dialog">
+        <form id="yen-rate-form" class="settings-card yen-rate-editor-card">
+            <div class="card-topline"><div><span class="section-kicker">Yen Converter</span><h2>Set Exchange Rate</h2></div><button id="close-yen-rate-editor" class="icon-button" type="button" aria-label="Close rate editor">×</button></div>
+            <p>Enter how many Philippine pesos equal ¥1.</p>
+            <label>PHP per ¥1<span class="yen-rate-input"><span>₱</span><input id="yen-rate-input" type="text" inputmode="decimal" autocomplete="off" placeholder="0.38" required></span></label>
+            <p id="yen-rate-message" class="form-message" role="alert"></p>
+            <div class="entry-form-actions sticky-dialog-actions"><button id="cancel-yen-rate" class="secondary-button" type="button">Cancel</button><button class="primary-button" type="submit">Save Rate</button></div>
+        </form>
+    </dialog>
+
     <dialog id="wallpaper-editor-dialog" class="wallpaper-editor-dialog" aria-labelledby="wallpaper-editor-heading">
         <div class="wallpaper-editor-sheet">
             <header class="wallpaper-editor-header"><div><span class="section-kicker">Wallpaper framing</span><h2 id="wallpaper-editor-heading">Adjust Wallpaper</h2></div><button id="close-wallpaper-editor" class="icon-button" type="button" aria-label="Cancel wallpaper adjustments">×</button></header>
@@ -407,7 +564,7 @@
     <script src="data/vocabulary.js"></script>
     <script src="data/native-japanese.js"></script>
     <script src="data/slang.js"></script>
-    <script src="data/travel.js?v=2"></script>
+    <script src="data/travel.js?v=3"></script>
     <script src="data/kanji.js"></script>
 </body>
 </html>
