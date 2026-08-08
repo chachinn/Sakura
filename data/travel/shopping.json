@@ -1,4 +1,1616 @@
 [
-  {"id":"travel-shopping-001","type":"travel","category":"shopping","subcategory":"Essential","japanese":"これはいくらですか？","reading":"これはいくらですか？","romaji":"Kore wa ikura desu ka?","english":"How much is this?","literalMeaning":"As for this, how much is it?","naturalUsage":"A basic polite question for asking the price of an item.","politeness":"polite","priority":"essential","tags":["price","item"]},
-  {"id":"travel-shopping-002","type":"travel","category":"shopping","subcategory":"Sizes","japanese":"もう少し大きいサイズはありますか？","reading":"もうすこしおおきいサイズはありますか？","romaji":"Mou sukoshi ookii saizu wa arimasu ka?","english":"Do you have a slightly larger size?","literalMeaning":"Is there a size that is a little bigger?","naturalUsage":"A polite way to ask store staff for another size.","politeness":"polite","priority":"useful","tags":["size","clothes"]}
+  {
+    "id": "travel-shopping-001",
+    "type": "travel",
+    "category": "shopping",
+    "subcategory": "Essential",
+    "japanese": "すみません、これを見せてもらえますか？",
+    "reading": "すみません、これをみせてもらえますか？",
+    "romaji": "sumimasen, kore o misete moraemasu ka?",
+    "english": "Excuse me, could you show me this?",
+    "literalMeaning": "Excuse me, could I have you show me this?",
+    "naturalUsage": "Useful when an item is behind a counter or inside a display case.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "show-item",
+      "staff"
+    ]
+  },
+  {
+    "id": "travel-shopping-002",
+    "type": "travel",
+    "category": "shopping",
+    "subcategory": "Essential",
+    "japanese": "これはいくらですか？",
+    "reading": "これはいくらですか？",
+    "romaji": "kore wa ikura desu ka?",
+    "english": "How much is this?",
+    "literalMeaning": "How much is this?",
+    "naturalUsage": "Simple and essential when the price is unclear.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "price"
+    ]
+  },
+  {
+    "id": "travel-shopping-003",
+    "type": "travel",
+    "category": "shopping",
+    "subcategory": "Essential",
+    "japanese": "これをお願いします。",
+    "reading": "これをおねがいします。",
+    "romaji": "kore o onegai shimasu.",
+    "english": "This one, please.",
+    "literalMeaning": "This, please.",
+    "naturalUsage": "Use when you have decided to buy an item.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "purchase",
+      "pointing"
+    ]
+  },
+  {
+    "id": "travel-shopping-004",
+    "type": "travel",
+    "category": "shopping",
+    "subcategory": "Essential",
+    "japanese": "これを一つお願いします。",
+    "reading": "これをひとつおねがいします。",
+    "romaji": "kore o hitotsu onegai shimasu.",
+    "english": "One of these, please.",
+    "literalMeaning": "One of this, please.",
+    "naturalUsage": "Useful for convenience stores, souvenirs, and small goods.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "quantity",
+      "purchase"
+    ]
+  },
+  {
+    "id": "travel-shopping-005",
+    "type": "travel",
+    "category": "shopping",
+    "subcategory": "Essential",
+    "japanese": "これはありますか？",
+    "reading": "これはありますか？",
+    "romaji": "kore wa arimasu ka?",
+    "english": "Do you have this?",
+    "literalMeaning": "Is this available?",
+    "naturalUsage": "Useful while showing a photo, product page, or sample.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "availability",
+      "showing-item"
+    ]
+  },
+  {
+    "id": "travel-shopping-006",
+    "type": "travel",
+    "category": "shopping",
+    "subcategory": "Essential",
+    "japanese": "別の色はありますか？",
+    "reading": "べつのいろはありますか？",
+    "romaji": "betsu no iro wa arimasu ka?",
+    "english": "Do you have another color?",
+    "literalMeaning": "Is there a different color?",
+    "naturalUsage": "Natural when shopping for clothes, bags, or accessories.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "color",
+      "availability"
+    ]
+  },
+  {
+    "id": "travel-shopping-007",
+    "type": "travel",
+    "category": "shopping",
+    "subcategory": "Essential",
+    "japanese": "もう少し小さいものはありますか？",
+    "reading": "もうすこしちいさいものはありますか？",
+    "romaji": "mou sukoshi chiisai mono wa arimasu ka?",
+    "english": "Do you have something a little smaller?",
+    "literalMeaning": "Is there something a little smaller?",
+    "naturalUsage": "Useful for clothing, accessories, souvenirs, or household goods.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "smaller",
+      "size"
+    ]
+  },
+  {
+    "id": "travel-shopping-008",
+    "type": "travel",
+    "category": "shopping",
+    "subcategory": "Essential",
+    "japanese": "もう少し大きいものはありますか？",
+    "reading": "もうすこしおおきいものはありますか？",
+    "romaji": "mou sukoshi ookii mono wa arimasu ka?",
+    "english": "Do you have something a little bigger?",
+    "literalMeaning": "Is there something a little bigger?",
+    "naturalUsage": "Useful when the displayed item is too small.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "bigger",
+      "size"
+    ]
+  },
+  {
+    "id": "travel-shopping-009",
+    "type": "travel",
+    "category": "shopping",
+    "subcategory": "Essential",
+    "japanese": "これ、試してもいいですか？",
+    "reading": "これ、ためしてもいいですか？",
+    "romaji": "kore, tameshite mo ii desu ka?",
+    "english": "Can I try this?",
+    "literalMeaning": "Is it okay if I try this?",
+    "naturalUsage": "General-purpose phrase for products that can be tested or tried.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "try",
+      "permission"
+    ]
+  },
+  {
+    "id": "travel-shopping-010",
+    "type": "travel",
+    "category": "shopping",
+    "subcategory": "Essential",
+    "japanese": "これ、買います。",
+    "reading": "これ、かいます。",
+    "romaji": "kore, kaimasu.",
+    "english": "I'll take this.",
+    "literalMeaning": "I'll buy this.",
+    "naturalUsage": "Natural, simple way to tell staff you have decided to purchase.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "purchase",
+      "decision"
+    ]
+  },
+  {
+    "id": "travel-shopping-011",
+    "type": "travel",
+    "category": "shopping",
+    "subcategory": "Essential",
+    "japanese": "袋をお願いします。",
+    "reading": "ふくろをおねがいします。",
+    "romaji": "fukuro o onegai shimasu.",
+    "english": "A bag, please.",
+    "literalMeaning": "A bag, please.",
+    "naturalUsage": "Useful because shopping bags may be optional or charged separately.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "bag"
+    ]
+  },
+  {
+    "id": "travel-shopping-012",
+    "type": "travel",
+    "category": "shopping",
+    "subcategory": "Essential",
+    "japanese": "袋はいりません。",
+    "reading": "ふくろはいりません。",
+    "romaji": "fukuro wa irimasen.",
+    "english": "I don't need a bag.",
+    "literalMeaning": "A bag is not needed.",
+    "naturalUsage": "Natural at convenience stores and shops.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "bag",
+      "no-bag"
+    ]
+  },
+  {
+    "id": "travel-shopping-013",
+    "type": "travel",
+    "category": "shopping",
+    "subcategory": "Essential",
+    "japanese": "レシートをお願いします。",
+    "reading": "れしーとをおねがいします。",
+    "romaji": "reshiito o onegai shimasu.",
+    "english": "A receipt, please.",
+    "literalMeaning": "A receipt, please.",
+    "naturalUsage": "Useful if one is not automatically given.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "receipt"
+    ]
+  },
+  {
+    "id": "travel-shopping-014",
+    "type": "travel",
+    "category": "shopping",
+    "subcategory": "Essential",
+    "japanese": "プレゼント用です。",
+    "reading": "ぷれぜんとようです。",
+    "romaji": "purezento-you desu.",
+    "english": "It's a gift.",
+    "literalMeaning": "It is for a present.",
+    "naturalUsage": "Useful before asking for gift wrapping.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "gift",
+      "wrapping"
+    ]
+  },
+  {
+    "id": "travel-shopping-015",
+    "type": "travel",
+    "category": "shopping",
+    "subcategory": "Essential",
+    "japanese": "ありがとうございます。",
+    "reading": "ありがとうございます。",
+    "romaji": "arigatou gozaimasu.",
+    "english": "Thank you very much.",
+    "literalMeaning": "Thank you very much.",
+    "naturalUsage": "Natural and polite after receiving help or completing a purchase.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "thanks"
+    ]
+  },
+  {
+    "id": "travel-shopping-016",
+    "type": "travel",
+    "category": "shopping",
+    "subcategory": "Sizes",
+    "japanese": "Sサイズはありますか？",
+    "reading": "えすさいずはありますか？",
+    "romaji": "esu saizu wa arimasu ka?",
+    "english": "Do you have this in size S?",
+    "literalMeaning": "Is there an S size?",
+    "naturalUsage": "Replace S with M, L, or another size as needed.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "clothes",
+      "size"
+    ]
+  },
+  {
+    "id": "travel-shopping-017",
+    "type": "travel",
+    "category": "shopping",
+    "subcategory": "Sizes",
+    "japanese": "Mサイズはありますか？",
+    "reading": "えむさいずはありますか？",
+    "romaji": "emu saizu wa arimasu ka?",
+    "english": "Do you have this in size M?",
+    "literalMeaning": "Is there an M size?",
+    "naturalUsage": "Useful when checking clothing sizes.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "clothes",
+      "size"
+    ]
+  },
+  {
+    "id": "travel-shopping-018",
+    "type": "travel",
+    "category": "shopping",
+    "subcategory": "Sizes",
+    "japanese": "Lサイズはありますか？",
+    "reading": "えるさいずはありますか？",
+    "romaji": "eru saizu wa arimasu ka?",
+    "english": "Do you have this in size L?",
+    "literalMeaning": "Is there an L size?",
+    "naturalUsage": "Useful when checking clothing sizes.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "clothes",
+      "size"
+    ]
+  },
+  {
+    "id": "travel-shopping-019",
+    "type": "travel",
+    "category": "shopping",
+    "subcategory": "Sizes",
+    "japanese": "このサイズはありますか？",
+    "reading": "このさいずはありますか？",
+    "romaji": "kono saizu wa arimasu ka?",
+    "english": "Do you have this size?",
+    "literalMeaning": "Is there this size?",
+    "naturalUsage": "Useful while pointing at a size label or showing another item.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "size",
+      "availability"
+    ]
+  },
+  {
+    "id": "travel-shopping-020",
+    "type": "travel",
+    "category": "shopping",
+    "subcategory": "Sizes",
+    "japanese": "もう一つ小さいサイズはありますか？",
+    "reading": "もうひとつちいさいさいずはありますか？",
+    "romaji": "mou hitotsu chiisai saizu wa arimasu ka?",
+    "english": "Do you have one size smaller?",
+    "literalMeaning": "Is there one smaller size?",
+    "naturalUsage": "Very useful when trying on clothes or shoes.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "smaller-size",
+      "clothes"
+    ]
+  },
+  {
+    "id": "travel-shopping-021",
+    "type": "travel",
+    "category": "shopping",
+    "subcategory": "Sizes",
+    "japanese": "もう一つ大きいサイズはありますか？",
+    "reading": "もうひとつおおきいさいずはありますか？",
+    "romaji": "mou hitotsu ookii saizu wa arimasu ka?",
+    "english": "Do you have one size bigger?",
+    "literalMeaning": "Is there one larger size?",
+    "naturalUsage": "Useful when the current item feels too small.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "larger-size",
+      "clothes"
+    ]
+  },
+  {
+    "id": "travel-shopping-022",
+    "type": "travel",
+    "category": "shopping",
+    "subcategory": "Sizes",
+    "japanese": "これは日本のサイズですか？",
+    "reading": "これはにほんのさいずですか？",
+    "romaji": "kore wa Nihon no saizu desu ka?",
+    "english": "Is this Japanese sizing?",
+    "literalMeaning": "Is this a Japanese size?",
+    "naturalUsage": "Useful because Japanese clothing and shoe sizing may differ from what travelers expect.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "japanese-size",
+      "clothes"
+    ]
+  },
+  {
+    "id": "travel-shopping-023",
+    "type": "travel",
+    "category": "shopping",
+    "subcategory": "Sizes",
+    "japanese": "何センチですか？",
+    "reading": "なんせんちですか？",
+    "romaji": "nan-senchi desu ka?",
+    "english": "How many centimeters is it?",
+    "literalMeaning": "How many centimeters?",
+    "naturalUsage": "Useful for shoes, accessories, luggage, or dimensions.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "centimeters",
+      "measurement"
+    ]
+  },
+  {
+    "id": "travel-shopping-024",
+    "type": "travel",
+    "category": "shopping",
+    "subcategory": "Sizes",
+    "japanese": "二十三センチはありますか？",
+    "reading": "にじゅうさんせんちはありますか？",
+    "romaji": "nijuu-san senchi wa arimasu ka?",
+    "english": "Do you have size 23 centimeters?",
+    "literalMeaning": "Is there 23 centimeters?",
+    "naturalUsage": "Useful for shoe shopping; replace the number with your size.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "shoes",
+      "size"
+    ]
+  },
+  {
+    "id": "travel-shopping-025",
+    "type": "travel",
+    "category": "shopping",
+    "subcategory": "Sizes",
+    "japanese": "少しきついです。",
+    "reading": "すこしきついです。",
+    "romaji": "sukoshi kitsui desu.",
+    "english": "It's a little tight.",
+    "literalMeaning": "It is a little tight.",
+    "naturalUsage": "Natural after trying on clothing or shoes.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "fit",
+      "tight"
+    ]
+  },
+  {
+    "id": "travel-shopping-026",
+    "type": "travel",
+    "category": "shopping",
+    "subcategory": "Sizes",
+    "japanese": "少し大きいです。",
+    "reading": "すこしおおきいです。",
+    "romaji": "sukoshi ookii desu.",
+    "english": "It's a little big.",
+    "literalMeaning": "It is a little large.",
+    "naturalUsage": "Useful when explaining why you need another size.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "fit",
+      "large"
+    ]
+  },
+  {
+    "id": "travel-shopping-027",
+    "type": "travel",
+    "category": "shopping",
+    "subcategory": "Sizes",
+    "japanese": "ちょうどいいです。",
+    "reading": "ちょうどいいです。",
+    "romaji": "choudo ii desu.",
+    "english": "It fits just right.",
+    "literalMeaning": "It is just right.",
+    "naturalUsage": "Natural when the size fits well.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "fit",
+      "good-fit"
+    ]
+  },
+  {
+    "id": "travel-shopping-028",
+    "type": "travel",
+    "category": "shopping",
+    "subcategory": "Sizes",
+    "japanese": "このサイズしかありませんか？",
+    "reading": "このさいずしかありませんか？",
+    "romaji": "kono saizu shika arimasen ka?",
+    "english": "Is this the only size available?",
+    "literalMeaning": "Is there only this size?",
+    "naturalUsage": "Useful when you cannot find other size options.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "size",
+      "availability"
+    ]
+  },
+  {
+    "id": "travel-shopping-029",
+    "type": "travel",
+    "category": "shopping",
+    "subcategory": "Sizes",
+    "japanese": "子ども用ですか？",
+    "reading": "こどもようですか？",
+    "romaji": "kodomo-you desu ka?",
+    "english": "Is this for children?",
+    "literalMeaning": "Is this intended for children?",
+    "naturalUsage": "Useful when sizing or labeling is unclear.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "kids",
+      "size"
+    ]
+  },
+  {
+    "id": "travel-shopping-030",
+    "type": "travel",
+    "category": "shopping",
+    "subcategory": "Sizes",
+    "japanese": "大人用はありますか？",
+    "reading": "おとなようはありますか？",
+    "romaji": "otona-you wa arimasu ka?",
+    "english": "Do you have an adult size/version?",
+    "literalMeaning": "Is there one for adults?",
+    "naturalUsage": "Useful when a displayed item appears to be for children.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "adult",
+      "size"
+    ]
+  },
+  {
+    "id": "travel-shopping-031",
+    "type": "travel",
+    "category": "shopping",
+    "subcategory": "Stock",
+    "japanese": "在庫はありますか？",
+    "reading": "ざいこはありますか？",
+    "romaji": "zaiko wa arimasu ka?",
+    "english": "Do you have it in stock?",
+    "literalMeaning": "Is there stock?",
+    "naturalUsage": "Core phrase for asking whether an item is available.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "stock",
+      "availability"
+    ]
+  },
+  {
+    "id": "travel-shopping-032",
+    "type": "travel",
+    "category": "shopping",
+    "subcategory": "Stock",
+    "japanese": "この色の在庫はありますか？",
+    "reading": "このいろのざいこはありますか？",
+    "romaji": "kono iro no zaiko wa arimasu ka?",
+    "english": "Do you have this color in stock?",
+    "literalMeaning": "Is there stock in this color?",
+    "naturalUsage": "Useful when the display color is unavailable in your size or version.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "stock",
+      "color"
+    ]
+  },
+  {
+    "id": "travel-shopping-033",
+    "type": "travel",
+    "category": "shopping",
+    "subcategory": "Stock",
+    "japanese": "このサイズの在庫はありますか？",
+    "reading": "このさいずのざいこはありますか？",
+    "romaji": "kono saizu no zaiko wa arimasu ka?",
+    "english": "Do you have this size in stock?",
+    "literalMeaning": "Is there stock in this size?",
+    "naturalUsage": "Very useful in clothing and shoe stores.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "stock",
+      "size"
+    ]
+  },
+  {
+    "id": "travel-shopping-034",
+    "type": "travel",
+    "category": "shopping",
+    "subcategory": "Stock",
+    "japanese": "他の店舗にありますか？",
+    "reading": "ほかのてんぽにありますか？",
+    "romaji": "hoka no tenpo ni arimasu ka?",
+    "english": "Is it available at another branch?",
+    "literalMeaning": "Is it at another store?",
+    "naturalUsage": "Useful at chain stores when an item is sold out locally.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "other-store",
+      "stock"
+    ]
+  },
+  {
+    "id": "travel-shopping-035",
+    "type": "travel",
+    "category": "shopping",
+    "subcategory": "Stock",
+    "japanese": "取り寄せできますか？",
+    "reading": "とりよせできますか？",
+    "romaji": "toriyose dekimasu ka?",
+    "english": "Can you order it in?",
+    "literalMeaning": "Can it be specially ordered?",
+    "naturalUsage": "Useful when asking whether staff can bring stock from another store or warehouse.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "special-order",
+      "stock"
+    ]
+  },
+  {
+    "id": "travel-shopping-036",
+    "type": "travel",
+    "category": "shopping",
+    "subcategory": "Stock",
+    "japanese": "いつ入荷しますか？",
+    "reading": "いつにゅうかしますか？",
+    "romaji": "itsu nyuuka shimasu ka?",
+    "english": "When will it be back in stock?",
+    "literalMeaning": "When will stock arrive?",
+    "naturalUsage": "Useful for temporarily sold-out items.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "restock",
+      "availability"
+    ]
+  },
+  {
+    "id": "travel-shopping-037",
+    "type": "travel",
+    "category": "shopping",
+    "subcategory": "Stock",
+    "japanese": "売り切れですか？",
+    "reading": "うりきれですか？",
+    "romaji": "urikire desu ka?",
+    "english": "Is it sold out?",
+    "literalMeaning": "Is it sold out?",
+    "naturalUsage": "Simple confirmation when shelves are empty or a label indicates no stock.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "sold-out"
+    ]
+  },
+  {
+    "id": "travel-shopping-038",
+    "type": "travel",
+    "category": "shopping",
+    "subcategory": "Stock",
+    "japanese": "最後の一つですか？",
+    "reading": "さいごのひとつですか？",
+    "romaji": "saigo no hitotsu desu ka?",
+    "english": "Is this the last one?",
+    "literalMeaning": "Is this the final one?",
+    "naturalUsage": "Useful when only one display item remains.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "last-one",
+      "stock"
+    ]
+  },
+  {
+    "id": "travel-shopping-039",
+    "type": "travel",
+    "category": "shopping",
+    "subcategory": "Stock",
+    "japanese": "新しいものはありますか？",
+    "reading": "あたらしいものはありますか？",
+    "romaji": "atarashii mono wa arimasu ka?",
+    "english": "Do you have a new one?",
+    "literalMeaning": "Is there a new item?",
+    "naturalUsage": "Useful when you prefer unopened stock rather than the display item.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "new-item",
+      "display"
+    ]
+  },
+  {
+    "id": "travel-shopping-040",
+    "type": "travel",
+    "category": "shopping",
+    "subcategory": "Stock",
+    "japanese": "未開封のものはありますか？",
+    "reading": "みかいふうのものはありますか？",
+    "romaji": "mikaifuu no mono wa arimasu ka?",
+    "english": "Do you have an unopened one?",
+    "literalMeaning": "Is there an unopened item?",
+    "naturalUsage": "Useful for cosmetics, electronics, collectibles, and gifts.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "unopened",
+      "new-item"
+    ]
+  },
+  {
+    "id": "travel-shopping-041",
+    "type": "travel",
+    "category": "shopping",
+    "subcategory": "Stock",
+    "japanese": "展示品だけですか？",
+    "reading": "てんじひんだけですか？",
+    "romaji": "tenjihin dake desu ka?",
+    "english": "Is the display item the only one left?",
+    "literalMeaning": "Is there only the display item?",
+    "naturalUsage": "Useful when the shelf item looks handled or opened.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "display-item",
+      "stock"
+    ]
+  },
+  {
+    "id": "travel-shopping-042",
+    "type": "travel",
+    "category": "shopping",
+    "subcategory": "Stock",
+    "japanese": "同じものがもう一つありますか？",
+    "reading": "おなじものがもうひとつありますか？",
+    "romaji": "onaji mono ga mou hitotsu arimasu ka?",
+    "english": "Do you have another one of the same item?",
+    "literalMeaning": "Is there one more of the same thing?",
+    "naturalUsage": "Useful when buying multiples or looking for a cleaner item.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "same-item",
+      "stock"
+    ]
+  },
+  {
+    "id": "travel-shopping-043",
+    "type": "travel",
+    "category": "shopping",
+    "subcategory": "Stock",
+    "japanese": "この商品は限定ですか？",
+    "reading": "このしょうひんはげんていですか？",
+    "romaji": "kono shouhin wa gentei desu ka?",
+    "english": "Is this a limited-edition item?",
+    "literalMeaning": "Is this product limited?",
+    "naturalUsage": "Useful for seasonal, regional, collaboration, or character goods.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "limited-edition",
+      "goods"
+    ]
+  },
+  {
+    "id": "travel-shopping-044",
+    "type": "travel",
+    "category": "shopping",
+    "subcategory": "Stock",
+    "japanese": "再入荷の予定はありますか？",
+    "reading": "さいにゅうかのよていはありますか？",
+    "romaji": "sainyuuka no yotei wa arimasu ka?",
+    "english": "Is there a restock planned?",
+    "literalMeaning": "Is there a plan for restocking?",
+    "naturalUsage": "Useful for popular or limited products.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "restock",
+      "planned"
+    ]
+  },
+  {
+    "id": "travel-shopping-045",
+    "type": "travel",
+    "category": "shopping",
+    "subcategory": "Stock",
+    "japanese": "予約できますか？",
+    "reading": "よやくできますか？",
+    "romaji": "yoyaku dekimasu ka?",
+    "english": "Can I reserve it?",
+    "literalMeaning": "Can it be reserved?",
+    "naturalUsage": "Useful when a product is expected to arrive later.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "reserve-item",
+      "stock"
+    ]
+  },
+  {
+    "id": "travel-shopping-046",
+    "type": "travel",
+    "category": "shopping",
+    "subcategory": "Fitting",
+    "japanese": "試着してもいいですか？",
+    "reading": "しちゃくしてもいいですか？",
+    "romaji": "shichaku shite mo ii desu ka?",
+    "english": "Can I try this on?",
+    "literalMeaning": "Is it okay if I try this on?",
+    "naturalUsage": "Essential clothing-store phrase.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "fitting-room",
+      "clothes"
+    ]
+  },
+  {
+    "id": "travel-shopping-047",
+    "type": "travel",
+    "category": "shopping",
+    "subcategory": "Fitting",
+    "japanese": "試着室はどこですか？",
+    "reading": "しちゃくしつはどこですか？",
+    "romaji": "shichakushitsu wa doko desu ka?",
+    "english": "Where is the fitting room?",
+    "literalMeaning": "Where is the fitting room?",
+    "naturalUsage": "Useful in larger clothing stores.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "fitting-room",
+      "directions"
+    ]
+  },
+  {
+    "id": "travel-shopping-048",
+    "type": "travel",
+    "category": "shopping",
+    "subcategory": "Fitting",
+    "japanese": "これを試着したいです。",
+    "reading": "これをしちゃくしたいです。",
+    "romaji": "kore o shichaku shitai desu.",
+    "english": "I'd like to try this on.",
+    "literalMeaning": "I want to try this on.",
+    "naturalUsage": "Natural when handing an item to fitting-room staff.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "fitting-room",
+      "clothes"
+    ]
+  },
+  {
+    "id": "travel-shopping-049",
+    "type": "travel",
+    "category": "shopping",
+    "subcategory": "Fitting",
+    "japanese": "靴を試してもいいですか？",
+    "reading": "くつをためしてもいいですか？",
+    "romaji": "kutsu o tameshite mo ii desu ka?",
+    "english": "Can I try on these shoes?",
+    "literalMeaning": "Is it okay if I try the shoes?",
+    "naturalUsage": "Useful in shoe stores.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "shoes",
+      "try-on"
+    ]
+  },
+  {
+    "id": "travel-shopping-050",
+    "type": "travel",
+    "category": "shopping",
+    "subcategory": "Fitting",
+    "japanese": "鏡はどこですか？",
+    "reading": "かがみはどこですか？",
+    "romaji": "kagami wa doko desu ka?",
+    "english": "Where is the mirror?",
+    "literalMeaning": "Where is the mirror?",
+    "naturalUsage": "Useful for accessories, clothing, or eyewear.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "mirror"
+    ]
+  },
+  {
+    "id": "travel-shopping-051",
+    "type": "travel",
+    "category": "shopping",
+    "subcategory": "Fitting",
+    "japanese": "これ、似合いますか？",
+    "reading": "これ、にあいますか？",
+    "romaji": "kore, niaimasu ka?",
+    "english": "Does this suit me?",
+    "literalMeaning": "Does this look good on me?",
+    "naturalUsage": "Friendly way to ask staff or a companion for an opinion.",
+    "politeness": "polite",
+    "priority": "extra",
+    "tags": [
+      "opinion",
+      "clothes"
+    ]
+  },
+  {
+    "id": "travel-shopping-052",
+    "type": "travel",
+    "category": "shopping",
+    "subcategory": "Fitting",
+    "japanese": "少し長いです。",
+    "reading": "すこしながいです。",
+    "romaji": "sukoshi nagai desu.",
+    "english": "It's a little long.",
+    "literalMeaning": "It is a little long.",
+    "naturalUsage": "Useful for sleeves, pants, skirts, straps, or length.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "fit",
+      "length"
+    ]
+  },
+  {
+    "id": "travel-shopping-053",
+    "type": "travel",
+    "category": "shopping",
+    "subcategory": "Fitting",
+    "japanese": "少し短いです。",
+    "reading": "すこしみじかいです。",
+    "romaji": "sukoshi mijikai desu.",
+    "english": "It's a little short.",
+    "literalMeaning": "It is a little short.",
+    "naturalUsage": "Useful when explaining a fitting issue.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "fit",
+      "length"
+    ]
+  },
+  {
+    "id": "travel-shopping-054",
+    "type": "travel",
+    "category": "shopping",
+    "subcategory": "Fitting",
+    "japanese": "丈を直せますか？",
+    "reading": "たけをなおせますか？",
+    "romaji": "take o naosemasu ka?",
+    "english": "Can the length be altered?",
+    "literalMeaning": "Can the garment length be adjusted?",
+    "naturalUsage": "Useful in stores that provide hemming or alterations.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "alteration",
+      "hemming"
+    ]
+  },
+  {
+    "id": "travel-shopping-055",
+    "type": "travel",
+    "category": "shopping",
+    "subcategory": "Fitting",
+    "japanese": "裾上げできますか？",
+    "reading": "すそあげできますか？",
+    "romaji": "susoage dekimasu ka?",
+    "english": "Can you hem these?",
+    "literalMeaning": "Can the hem be shortened?",
+    "naturalUsage": "Common when buying pants in Japan.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "hemming",
+      "pants"
+    ]
+  },
+  {
+    "id": "travel-shopping-056",
+    "type": "travel",
+    "category": "shopping",
+    "subcategory": "Fitting",
+    "japanese": "裾上げはどのくらいかかりますか？",
+    "reading": "すそあげはどのくらいかかりますか？",
+    "romaji": "susoage wa dono kurai kakarimasu ka?",
+    "english": "How long will hemming take?",
+    "literalMeaning": "About how long does hemming take?",
+    "naturalUsage": "Useful if you need alterations completed the same day.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "hemming",
+      "time"
+    ]
+  },
+  {
+    "id": "travel-shopping-057",
+    "type": "travel",
+    "category": "shopping",
+    "subcategory": "Fitting",
+    "japanese": "これにします。",
+    "reading": "これにします。",
+    "romaji": "kore ni shimasu.",
+    "english": "I'll take this one.",
+    "literalMeaning": "I will choose this one.",
+    "naturalUsage": "Natural after deciding on a size/color after trying items.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "decision",
+      "purchase"
+    ]
+  },
+  {
+    "id": "travel-shopping-058",
+    "type": "travel",
+    "category": "shopping",
+    "subcategory": "Fitting",
+    "japanese": "別のサイズを試してもいいですか？",
+    "reading": "べつのさいずをためしてもいいですか？",
+    "romaji": "betsu no saizu o tameshite mo ii desu ka?",
+    "english": "Can I try another size?",
+    "literalMeaning": "Is it okay if I try a different size?",
+    "naturalUsage": "Useful while comparing sizes.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "fitting-room",
+      "size"
+    ]
+  },
+  {
+    "id": "travel-shopping-059",
+    "type": "travel",
+    "category": "shopping",
+    "subcategory": "Fitting",
+    "japanese": "別の色を試してもいいですか？",
+    "reading": "べつのいろをためしてもいいですか？",
+    "romaji": "betsu no iro o tameshite mo ii desu ka?",
+    "english": "Can I try another color?",
+    "literalMeaning": "Is it okay if I try a different color?",
+    "naturalUsage": "Useful when deciding between color options.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "fitting-room",
+      "color"
+    ]
+  },
+  {
+    "id": "travel-shopping-060",
+    "type": "travel",
+    "category": "shopping",
+    "subcategory": "Fitting",
+    "japanese": "試着したものはどこに戻しますか？",
+    "reading": "しちゃくしたものはどこにもどしますか？",
+    "romaji": "shichaku shita mono wa doko ni modoshimasu ka?",
+    "english": "Where should I return the items I tried on?",
+    "literalMeaning": "Where do I return the things I tried on?",
+    "naturalUsage": "Useful because some stores ask customers not to return items directly to racks.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "fitting-room",
+      "return-item"
+    ]
+  },
+  {
+    "id": "travel-shopping-061",
+    "type": "travel",
+    "category": "shopping",
+    "subcategory": "Tax-Free",
+    "japanese": "免税できますか？",
+    "reading": "めんぜいできますか？",
+    "romaji": "menzei dekimasu ka?",
+    "english": "Can I buy this tax-free?",
+    "literalMeaning": "Can tax exemption be done?",
+    "naturalUsage": "Essential when checking whether a shop supports tax-free purchases.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "tax-free"
+    ]
+  },
+  {
+    "id": "travel-shopping-062",
+    "type": "travel",
+    "category": "shopping",
+    "subcategory": "Tax-Free",
+    "japanese": "免税カウンターはどこですか？",
+    "reading": "めんぜいかうんたーはどこですか？",
+    "romaji": "menzei kauntaa wa doko desu ka?",
+    "english": "Where is the tax-free counter?",
+    "literalMeaning": "Where is the tax-exemption counter?",
+    "naturalUsage": "Useful in department stores and malls.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "tax-free",
+      "counter"
+    ]
+  },
+  {
+    "id": "travel-shopping-063",
+    "type": "travel",
+    "category": "shopping",
+    "subcategory": "Tax-Free",
+    "japanese": "免税の条件は何ですか？",
+    "reading": "めんぜいのじょうけんはなんですか？",
+    "romaji": "menzei no jouken wa nan desu ka?",
+    "english": "What are the tax-free requirements?",
+    "literalMeaning": "What are the conditions for tax exemption?",
+    "naturalUsage": "Useful if you are unsure about minimum spend or eligible items.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "tax-free",
+      "requirements"
+    ]
+  },
+  {
+    "id": "travel-shopping-064",
+    "type": "travel",
+    "category": "shopping",
+    "subcategory": "Tax-Free",
+    "japanese": "いくらから免税になりますか？",
+    "reading": "いくらからめんぜいになりますか？",
+    "romaji": "ikura kara menzei ni narimasu ka?",
+    "english": "How much do I need to spend for tax-free shopping?",
+    "literalMeaning": "From how much does it become tax-free?",
+    "naturalUsage": "Useful when checking the minimum purchase amount.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "tax-free",
+      "minimum-spend"
+    ]
+  },
+  {
+    "id": "travel-shopping-065",
+    "type": "travel",
+    "category": "shopping",
+    "subcategory": "Tax-Free",
+    "japanese": "パスポートが必要ですか？",
+    "reading": "ぱすぽーとがひつようですか？",
+    "romaji": "pasupooto ga hitsuyou desu ka?",
+    "english": "Do I need my passport?",
+    "literalMeaning": "Is a passport necessary?",
+    "naturalUsage": "Common tax-free shopping question.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "tax-free",
+      "passport"
+    ]
+  },
+  {
+    "id": "travel-shopping-066",
+    "type": "travel",
+    "category": "shopping",
+    "subcategory": "Tax-Free",
+    "japanese": "パスポートを持っています。",
+    "reading": "ぱすぽーとをもっています。",
+    "romaji": "pasupooto o motteimasu.",
+    "english": "I have my passport with me.",
+    "literalMeaning": "I am carrying my passport.",
+    "naturalUsage": "Useful when staff asks for your passport.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "passport",
+      "tax-free"
+    ]
+  },
+  {
+    "id": "travel-shopping-067",
+    "type": "travel",
+    "category": "shopping",
+    "subcategory": "Tax-Free",
+    "japanese": "この商品も免税対象ですか？",
+    "reading": "このしょうひんもめんぜいたいしょうですか？",
+    "romaji": "kono shouhin mo menzei taishou desu ka?",
+    "english": "Is this item also eligible for tax-free shopping?",
+    "literalMeaning": "Is this product also subject to tax exemption?",
+    "naturalUsage": "Useful when buying mixed categories of products.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "tax-free",
+      "eligible"
+    ]
+  },
+  {
+    "id": "travel-shopping-068",
+    "type": "travel",
+    "category": "shopping",
+    "subcategory": "Tax-Free",
+    "japanese": "食品も免税になりますか？",
+    "reading": "しょくひんもめんぜいになりますか？",
+    "romaji": "shokuhin mo menzei ni narimasu ka?",
+    "english": "Are food items also tax-free?",
+    "literalMeaning": "Do food products also become tax-free?",
+    "naturalUsage": "Useful at department stores and souvenir shops.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "tax-free",
+      "food"
+    ]
+  },
+  {
+    "id": "travel-shopping-069",
+    "type": "travel",
+    "category": "shopping",
+    "subcategory": "Tax-Free",
+    "japanese": "化粧品も免税になりますか？",
+    "reading": "けしょうひんもめんぜいになりますか？",
+    "romaji": "keshouhin mo menzei ni narimasu ka?",
+    "english": "Are cosmetics also tax-free?",
+    "literalMeaning": "Do cosmetics also become tax-free?",
+    "naturalUsage": "Useful when buying skincare or cosmetics.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "tax-free",
+      "cosmetics"
+    ]
+  },
+  {
+    "id": "travel-shopping-070",
+    "type": "travel",
+    "category": "shopping",
+    "subcategory": "Tax-Free",
+    "japanese": "免税手続きはここでできますか？",
+    "reading": "めんぜいてつづきはここでできますか？",
+    "romaji": "menzei tetsuzuki wa koko de dekimasu ka?",
+    "english": "Can I do the tax-free procedure here?",
+    "literalMeaning": "Can the tax-exemption procedure be done here?",
+    "naturalUsage": "Useful when checking whether the register handles the process.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "tax-free",
+      "procedure"
+    ]
+  },
+  {
+    "id": "travel-shopping-071",
+    "type": "travel",
+    "category": "shopping",
+    "subcategory": "Tax-Free",
+    "japanese": "あとで免税できますか？",
+    "reading": "あとでめんぜいできますか？",
+    "romaji": "ato de menzei dekimasu ka?",
+    "english": "Can I get the tax refund later?",
+    "literalMeaning": "Can tax exemption be done later?",
+    "naturalUsage": "Useful at malls or department stores with separate tax-free counters.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "tax-free",
+      "later"
+    ]
+  },
+  {
+    "id": "travel-shopping-072",
+    "type": "travel",
+    "category": "shopping",
+    "subcategory": "Tax-Free",
+    "japanese": "レシートは必要ですか？",
+    "reading": "れしーとはひつようですか？",
+    "romaji": "reshiito wa hitsuyou desu ka?",
+    "english": "Do I need the receipt?",
+    "literalMeaning": "Is the receipt necessary?",
+    "naturalUsage": "Useful when going to a separate tax-free counter.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "tax-free",
+      "receipt"
+    ]
+  },
+  {
+    "id": "travel-shopping-073",
+    "type": "travel",
+    "category": "shopping",
+    "subcategory": "Tax-Free",
+    "japanese": "免税のレシートをお願いします。",
+    "reading": "めんぜいのれしーとをおねがいします。",
+    "romaji": "menzei no reshiito o onegai shimasu.",
+    "english": "A tax-free receipt, please.",
+    "literalMeaning": "A tax-exemption receipt, please.",
+    "naturalUsage": "Useful if you need documentation for the purchase.",
+    "politeness": "polite",
+    "priority": "extra",
+    "tags": [
+      "tax-free",
+      "receipt"
+    ]
+  },
+  {
+    "id": "travel-shopping-074",
+    "type": "travel",
+    "category": "shopping",
+    "subcategory": "Tax-Free",
+    "japanese": "この袋は開けてもいいですか？",
+    "reading": "このふくろはあけてもいいですか？",
+    "romaji": "kono fukuro wa akete mo ii desu ka?",
+    "english": "Can I open this bag?",
+    "literalMeaning": "Is it okay if I open this bag?",
+    "naturalUsage": "Useful for sealed tax-free consumables; staff may explain restrictions.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "tax-free",
+      "sealed-bag"
+    ]
+  },
+  {
+    "id": "travel-shopping-075",
+    "type": "travel",
+    "category": "shopping",
+    "subcategory": "Tax-Free",
+    "japanese": "日本で使っても大丈夫ですか？",
+    "reading": "にほんでつかってもだいじょうぶですか？",
+    "romaji": "Nihon de tsukatte mo daijoubu desu ka?",
+    "english": "Is it okay to use this in Japan?",
+    "literalMeaning": "Is it okay if I use this in Japan?",
+    "naturalUsage": "Useful when asking about restrictions on tax-free consumable purchases.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "tax-free",
+      "usage"
+    ]
+  },
+  {
+    "id": "travel-shopping-076",
+    "type": "travel",
+    "category": "shopping",
+    "subcategory": "Payment",
+    "japanese": "カードは使えますか？",
+    "reading": "かーどはつかえますか？",
+    "romaji": "kaado wa tsukaemasu ka?",
+    "english": "Can I pay by card?",
+    "literalMeaning": "Can a card be used?",
+    "naturalUsage": "Essential at shops where payment methods are unclear.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "payment",
+      "card"
+    ]
+  },
+  {
+    "id": "travel-shopping-077",
+    "type": "travel",
+    "category": "shopping",
+    "subcategory": "Payment",
+    "japanese": "クレジットカードでお願いします。",
+    "reading": "くれじっとかーどでおねがいします。",
+    "romaji": "kurejitto kaado de onegai shimasu.",
+    "english": "By credit card, please.",
+    "literalMeaning": "By credit card, please.",
+    "naturalUsage": "Use when staff asks how you would like to pay.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "payment",
+      "credit-card"
+    ]
+  },
+  {
+    "id": "travel-shopping-078",
+    "type": "travel",
+    "category": "shopping",
+    "subcategory": "Payment",
+    "japanese": "現金でお願いします。",
+    "reading": "げんきんでおねがいします。",
+    "romaji": "genkin de onegai shimasu.",
+    "english": "Cash, please.",
+    "literalMeaning": "By cash, please.",
+    "naturalUsage": "Use when choosing cash.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "payment",
+      "cash"
+    ]
+  },
+  {
+    "id": "travel-shopping-079",
+    "type": "travel",
+    "category": "shopping",
+    "subcategory": "Payment",
+    "japanese": "ICカードは使えますか？",
+    "reading": "あいしーかーどはつかえますか？",
+    "romaji": "ai-shii kaado wa tsukaemasu ka?",
+    "english": "Can I pay with an IC card?",
+    "literalMeaning": "Can an IC card be used?",
+    "naturalUsage": "Useful for Suica, PASMO, ICOCA, and similar cards where supported.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "payment",
+      "IC-card"
+    ]
+  },
+  {
+    "id": "travel-shopping-080",
+    "type": "travel",
+    "category": "shopping",
+    "subcategory": "Payment",
+    "japanese": "タッチ決済は使えますか？",
+    "reading": "たっちけっさいはつかえますか？",
+    "romaji": "tacchi kessai wa tsukaemasu ka?",
+    "english": "Can I use contactless payment?",
+    "literalMeaning": "Can touch payment be used?",
+    "naturalUsage": "Useful for contactless bank cards and mobile wallets.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "payment",
+      "contactless"
+    ]
+  },
+  {
+    "id": "travel-shopping-081",
+    "type": "travel",
+    "category": "shopping",
+    "subcategory": "Payment",
+    "japanese": "PayPayは使えますか？",
+    "reading": "ぺいぺいはつかえますか？",
+    "romaji": "PeiPei wa tsukaemasu ka?",
+    "english": "Can I use PayPay?",
+    "literalMeaning": "Can PayPay be used?",
+    "naturalUsage": "Useful at shops that accept Japanese QR payment services.",
+    "politeness": "polite",
+    "priority": "extra",
+    "tags": [
+      "payment",
+      "QR",
+      "PayPay"
+    ]
+  },
+  {
+    "id": "travel-shopping-082",
+    "type": "travel",
+    "category": "shopping",
+    "subcategory": "Payment",
+    "japanese": "このカードは使えますか？",
+    "reading": "このかーどはつかえますか？",
+    "romaji": "kono kaado wa tsukaemasu ka?",
+    "english": "Can I use this card?",
+    "literalMeaning": "Can this card be used?",
+    "naturalUsage": "Useful while showing a specific card.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "payment",
+      "card"
+    ]
+  },
+  {
+    "id": "travel-shopping-083",
+    "type": "travel",
+    "category": "shopping",
+    "subcategory": "Payment",
+    "japanese": "暗証番号は必要ですか？",
+    "reading": "あんしょうばんごうはひつようですか？",
+    "romaji": "anshou bangou wa hitsuyou desu ka?",
+    "english": "Do I need to enter a PIN?",
+    "literalMeaning": "Is a PIN necessary?",
+    "naturalUsage": "Useful when the terminal workflow is unclear.",
+    "politeness": "polite",
+    "priority": "extra",
+    "tags": [
+      "payment",
+      "PIN"
+    ]
+  },
+  {
+    "id": "travel-shopping-084",
+    "type": "travel",
+    "category": "shopping",
+    "subcategory": "Payment",
+    "japanese": "一括でお願いします。",
+    "reading": "いっかつでおねがいします。",
+    "romaji": "ikkatsu de onegai shimasu.",
+    "english": "One-time payment, please.",
+    "literalMeaning": "Please process it as a single payment.",
+    "naturalUsage": "Common response in Japan when a credit-card terminal asks whether to pay in one installment.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "payment",
+      "credit-card",
+      "single-payment"
+    ]
+  },
+  {
+    "id": "travel-shopping-085",
+    "type": "travel",
+    "category": "shopping",
+    "subcategory": "Payment",
+    "japanese": "別々に払えますか？",
+    "reading": "べつべつにはらえますか？",
+    "romaji": "betsubetsu ni haraemasu ka?",
+    "english": "Can we pay separately?",
+    "literalMeaning": "Can we pay separately?",
+    "naturalUsage": "Useful when buying items with another person.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "payment",
+      "separate"
+    ]
+  },
+  {
+    "id": "travel-shopping-086",
+    "type": "travel",
+    "category": "shopping",
+    "subcategory": "Payment",
+    "japanese": "まとめて払います。",
+    "reading": "まとめてはらいます。",
+    "romaji": "matomete haraimasu.",
+    "english": "I'll pay for everything together.",
+    "literalMeaning": "I will pay it all together.",
+    "naturalUsage": "Natural when making one payment for multiple people/items.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "payment",
+      "together"
+    ]
+  },
+  {
+    "id": "travel-shopping-087",
+    "type": "travel",
+    "category": "shopping",
+    "subcategory": "Payment",
+    "japanese": "ポイントカードはありません。",
+    "reading": "ぽいんとかーどはありません。",
+    "romaji": "pointo kaado wa arimasen.",
+    "english": "I don't have a point card.",
+    "literalMeaning": "I do not have a point card.",
+    "naturalUsage": "Very useful because Japanese stores often ask about membership or point cards.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "point-card",
+      "membership"
+    ]
+  },
+  {
+    "id": "travel-shopping-088",
+    "type": "travel",
+    "category": "shopping",
+    "subcategory": "Payment",
+    "japanese": "会員ではありません。",
+    "reading": "かいいんではありません。",
+    "romaji": "kaiin dewa arimasen.",
+    "english": "I'm not a member.",
+    "literalMeaning": "I am not a member.",
+    "naturalUsage": "Useful when staff asks whether you have store membership.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "membership"
+    ]
+  },
+  {
+    "id": "travel-shopping-089",
+    "type": "travel",
+    "category": "shopping",
+    "subcategory": "Payment",
+    "japanese": "領収書をお願いします。",
+    "reading": "りょうしゅうしょをおねがいします。",
+    "romaji": "ryoushuusho o onegai shimasu.",
+    "english": "An official receipt, please.",
+    "literalMeaning": "An official receipt, please.",
+    "naturalUsage": "Use when you need a formal receipt for reimbursement or business purposes.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "receipt",
+      "formal"
+    ]
+  },
+  {
+    "id": "travel-shopping-090",
+    "type": "travel",
+    "category": "shopping",
+    "subcategory": "Payment",
+    "japanese": "返品できますか？",
+    "reading": "へんぴんできますか？",
+    "romaji": "henpin dekimasu ka?",
+    "english": "Can I return this?",
+    "literalMeaning": "Can this be returned?",
+    "naturalUsage": "Useful when asking about a store's return policy; policies vary by shop.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "return",
+      "refund"
+    ]
+  }
 ]

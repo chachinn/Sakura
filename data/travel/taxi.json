@@ -1,4 +1,1612 @@
 [
-  {"id":"travel-taxi-001","type":"travel","category":"taxi","subcategory":"Essential","japanese":"この住所までお願いします。","reading":"このじゅうしょまでおねがいします。","romaji":"Kono juusho made onegai shimasu.","english":"Please take me to this address.","literalMeaning":"To this address, please.","naturalUsage":"Show the written address while saying this to a taxi driver.","politeness":"polite","priority":"essential","tags":["address","destination"]},
-  {"id":"travel-taxi-002","type":"travel","category":"taxi","subcategory":"Fare","japanese":"だいたいいくらかかりますか？","reading":"だいたいいくらかかりますか？","romaji":"Daitai ikura kakarimasu ka?","english":"About how much will it cost?","literalMeaning":"Approximately how much does it cost?","naturalUsage":"A polite way to ask for an estimated fare.","politeness":"polite","priority":"useful","tags":["fare","cost"]}
+  {
+    "id": "travel-taxi-001",
+    "type": "travel",
+    "category": "taxi",
+    "subcategory": "Essential",
+    "japanese": "すみません、タクシー乗り場はどこですか？",
+    "reading": "すみません、たくしーのりばはどこですか？",
+    "romaji": "sumimasen, takushii noriba wa doko desu ka?",
+    "english": "Excuse me, where is the taxi stand?",
+    "literalMeaning": "Excuse me, where is the taxi boarding area?",
+    "naturalUsage": "Natural at stations, airports, and hotels.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "taxi-stand",
+      "directions"
+    ]
+  },
+  {
+    "id": "travel-taxi-002",
+    "type": "travel",
+    "category": "taxi",
+    "subcategory": "Essential",
+    "japanese": "タクシーをお願いします。",
+    "reading": "たくしーをおねがいします。",
+    "romaji": "takushii o onegai shimasu.",
+    "english": "A taxi, please.",
+    "literalMeaning": "A taxi, please.",
+    "naturalUsage": "Useful at a hotel, restaurant, or front desk when asking staff to call one.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "call-taxi"
+    ]
+  },
+  {
+    "id": "travel-taxi-003",
+    "type": "travel",
+    "category": "taxi",
+    "subcategory": "Essential",
+    "japanese": "ここまでお願いします。",
+    "reading": "ここまでおねがいします。",
+    "romaji": "koko made onegai shimasu.",
+    "english": "Please take me here.",
+    "literalMeaning": "Please go as far as here.",
+    "naturalUsage": "Very natural while showing the driver a map, address, or phone screen.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "destination",
+      "showing-map"
+    ]
+  },
+  {
+    "id": "travel-taxi-004",
+    "type": "travel",
+    "category": "taxi",
+    "subcategory": "Essential",
+    "japanese": "この住所までお願いします。",
+    "reading": "このじゅうしょまでおねがいします。",
+    "romaji": "kono juusho made onegai shimasu.",
+    "english": "Please take me to this address.",
+    "literalMeaning": "Please go as far as this address.",
+    "naturalUsage": "Use while showing a written address.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "destination",
+      "address"
+    ]
+  },
+  {
+    "id": "travel-taxi-005",
+    "type": "travel",
+    "category": "taxi",
+    "subcategory": "Essential",
+    "japanese": "〇〇駅までお願いします。",
+    "reading": "〇〇えきまでおねがいします。",
+    "romaji": "___-eki made onegai shimasu.",
+    "english": "To ___ Station, please.",
+    "literalMeaning": "Please go as far as ___ Station.",
+    "naturalUsage": "One of the most natural ways to state a taxi destination.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "destination",
+      "station"
+    ]
+  },
+  {
+    "id": "travel-taxi-006",
+    "type": "travel",
+    "category": "taxi",
+    "subcategory": "Essential",
+    "japanese": "〇〇ホテルまでお願いします。",
+    "reading": "〇〇ほてるまでおねがいします。",
+    "romaji": "___ hoteru made onegai shimasu.",
+    "english": "To ___ Hotel, please.",
+    "literalMeaning": "Please go as far as ___ Hotel.",
+    "naturalUsage": "Natural and concise when heading to your hotel.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "destination",
+      "hotel"
+    ]
+  },
+  {
+    "id": "travel-taxi-007",
+    "type": "travel",
+    "category": "taxi",
+    "subcategory": "Essential",
+    "japanese": "この地図を見てもらえますか？",
+    "reading": "このちずをみてもらえますか？",
+    "romaji": "kono chizu o mite moraemasu ka?",
+    "english": "Could you look at this map?",
+    "literalMeaning": "Could I have you look at this map?",
+    "naturalUsage": "Useful if pronunciation of the destination is difficult.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "map",
+      "destination"
+    ]
+  },
+  {
+    "id": "travel-taxi-008",
+    "type": "travel",
+    "category": "taxi",
+    "subcategory": "Essential",
+    "japanese": "ここで大丈夫です。",
+    "reading": "ここでだいじょうぶです。",
+    "romaji": "koko de daijoubu desu.",
+    "english": "Here is fine.",
+    "literalMeaning": "Here is okay.",
+    "naturalUsage": "Very natural when you want to get out at the current spot.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "stop",
+      "arrival"
+    ]
+  },
+  {
+    "id": "travel-taxi-009",
+    "type": "travel",
+    "category": "taxi",
+    "subcategory": "Essential",
+    "japanese": "ここで降ります。",
+    "reading": "ここでおります。",
+    "romaji": "koko de orimasu.",
+    "english": "I'll get out here.",
+    "literalMeaning": "I will get off here.",
+    "naturalUsage": "Natural when the taxi has reached a suitable stopping point.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "stop",
+      "get-out"
+    ]
+  },
+  {
+    "id": "travel-taxi-010",
+    "type": "travel",
+    "category": "taxi",
+    "subcategory": "Essential",
+    "japanese": "少し待ってもらえますか？",
+    "reading": "すこしまってもらえますか？",
+    "romaji": "sukoshi matte moraemasu ka?",
+    "english": "Could you wait a moment?",
+    "literalMeaning": "Could I have you wait a little?",
+    "naturalUsage": "Useful for a brief stop or while someone joins the taxi.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "wait",
+      "request"
+    ]
+  },
+  {
+    "id": "travel-taxi-011",
+    "type": "travel",
+    "category": "taxi",
+    "subcategory": "Essential",
+    "japanese": "急いでいます。",
+    "reading": "いそいでいます。",
+    "romaji": "isoideimasu.",
+    "english": "I'm in a hurry.",
+    "literalMeaning": "I am in a hurry.",
+    "naturalUsage": "Useful context, but it does not ask the driver to break traffic rules.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "hurry"
+    ]
+  },
+  {
+    "id": "travel-taxi-012",
+    "type": "travel",
+    "category": "taxi",
+    "subcategory": "Essential",
+    "japanese": "時間はどのくらいかかりますか？",
+    "reading": "じかんはどのくらいかかりますか？",
+    "romaji": "jikan wa dono kurai kakarimasu ka?",
+    "english": "About how long will it take?",
+    "literalMeaning": "About how much time will it take?",
+    "naturalUsage": "Natural way to ask for approximate travel time.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "time",
+      "estimate"
+    ]
+  },
+  {
+    "id": "travel-taxi-013",
+    "type": "travel",
+    "category": "taxi",
+    "subcategory": "Essential",
+    "japanese": "料金はどのくらいですか？",
+    "reading": "りょうきんはどのくらいですか？",
+    "romaji": "ryoukin wa dono kurai desu ka?",
+    "english": "About how much will it cost?",
+    "literalMeaning": "About how much is the fare?",
+    "naturalUsage": "Useful before a longer ride.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "fare",
+      "estimate"
+    ]
+  },
+  {
+    "id": "travel-taxi-014",
+    "type": "travel",
+    "category": "taxi",
+    "subcategory": "Essential",
+    "japanese": "カードは使えますか？",
+    "reading": "かーどはつかえますか？",
+    "romaji": "kaado wa tsukaemasu ka?",
+    "english": "Can I pay by card?",
+    "literalMeaning": "Can a card be used?",
+    "naturalUsage": "Very useful before or at the end of the ride.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "payment",
+      "card"
+    ]
+  },
+  {
+    "id": "travel-taxi-015",
+    "type": "travel",
+    "category": "taxi",
+    "subcategory": "Essential",
+    "japanese": "現金で払います。",
+    "reading": "げんきんではらいます。",
+    "romaji": "genkin de haraimasu.",
+    "english": "I'll pay in cash.",
+    "literalMeaning": "I will pay in cash.",
+    "naturalUsage": "Natural when choosing cash at the end of the trip.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "payment",
+      "cash"
+    ]
+  },
+  {
+    "id": "travel-taxi-016",
+    "type": "travel",
+    "category": "taxi",
+    "subcategory": "Essential",
+    "japanese": "レシートをお願いします。",
+    "reading": "れしーとをおねがいします。",
+    "romaji": "reshiito o onegai shimasu.",
+    "english": "A receipt, please.",
+    "literalMeaning": "A receipt, please.",
+    "naturalUsage": "Useful if you need a taxi receipt.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "receipt"
+    ]
+  },
+  {
+    "id": "travel-taxi-017",
+    "type": "travel",
+    "category": "taxi",
+    "subcategory": "Essential",
+    "japanese": "荷物があります。",
+    "reading": "にもつがあります。",
+    "romaji": "nimotsu ga arimasu.",
+    "english": "I have luggage.",
+    "literalMeaning": "There is luggage.",
+    "naturalUsage": "Useful before getting in if you have suitcases that need the trunk.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "luggage"
+    ]
+  },
+  {
+    "id": "travel-taxi-018",
+    "type": "travel",
+    "category": "taxi",
+    "subcategory": "Essential",
+    "japanese": "ありがとうございます。",
+    "reading": "ありがとうございます。",
+    "romaji": "arigatou gozaimasu.",
+    "english": "Thank you very much.",
+    "literalMeaning": "Thank you very much.",
+    "naturalUsage": "Natural at the end of the ride.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "thanks"
+    ]
+  },
+  {
+    "id": "travel-taxi-019",
+    "type": "travel",
+    "category": "taxi",
+    "subcategory": "Destination",
+    "japanese": "成田空港までお願いします。",
+    "reading": "なりたくうこうまでおねがいします。",
+    "romaji": "Narita Kuukou made onegai shimasu.",
+    "english": "To Narita Airport, please.",
+    "literalMeaning": "Please go as far as Narita Airport.",
+    "naturalUsage": "A natural destination phrase; replace the airport as needed.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "airport",
+      "destination"
+    ]
+  },
+  {
+    "id": "travel-taxi-020",
+    "type": "travel",
+    "category": "taxi",
+    "subcategory": "Destination",
+    "japanese": "羽田空港までお願いします。",
+    "reading": "はねだくうこうまでおねがいします。",
+    "romaji": "Haneda Kuukou made onegai shimasu.",
+    "english": "To Haneda Airport, please.",
+    "literalMeaning": "Please go as far as Haneda Airport.",
+    "naturalUsage": "Useful in Tokyo.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "airport",
+      "destination"
+    ]
+  },
+  {
+    "id": "travel-taxi-021",
+    "type": "travel",
+    "category": "taxi",
+    "subcategory": "Destination",
+    "japanese": "このホテルまでお願いします。",
+    "reading": "このほてるまでおねがいします。",
+    "romaji": "kono hoteru made onegai shimasu.",
+    "english": "Please take me to this hotel.",
+    "literalMeaning": "Please go as far as this hotel.",
+    "naturalUsage": "Use while showing the hotel name or booking screen.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "hotel",
+      "showing-phone"
+    ]
+  },
+  {
+    "id": "travel-taxi-022",
+    "type": "travel",
+    "category": "taxi",
+    "subcategory": "Destination",
+    "japanese": "このお店までお願いします。",
+    "reading": "このおみせまでおねがいします。",
+    "romaji": "kono omise made onegai shimasu.",
+    "english": "Please take me to this shop/restaurant.",
+    "literalMeaning": "Please go as far as this shop.",
+    "naturalUsage": "Useful while showing a destination on your phone.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "shop",
+      "restaurant",
+      "destination"
+    ]
+  },
+  {
+    "id": "travel-taxi-023",
+    "type": "travel",
+    "category": "taxi",
+    "subcategory": "Destination",
+    "japanese": "この場所までお願いします。",
+    "reading": "このばしょまでおねがいします。",
+    "romaji": "kono basho made onegai shimasu.",
+    "english": "Please take me to this place.",
+    "literalMeaning": "Please go as far as this place.",
+    "naturalUsage": "General-purpose destination phrase while pointing to a map.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "destination",
+      "map"
+    ]
+  },
+  {
+    "id": "travel-taxi-024",
+    "type": "travel",
+    "category": "taxi",
+    "subcategory": "Destination",
+    "japanese": "このピンの場所までお願いします。",
+    "reading": "このぴんのばしょまでおねがいします。",
+    "romaji": "kono pin no basho made onegai shimasu.",
+    "english": "Please take me to this pinned location.",
+    "literalMeaning": "Please go as far as the location of this pin.",
+    "naturalUsage": "Very practical when showing Google/Apple Maps.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "map-pin",
+      "destination"
+    ]
+  },
+  {
+    "id": "travel-taxi-025",
+    "type": "travel",
+    "category": "taxi",
+    "subcategory": "Destination",
+    "japanese": "入口の前までお願いします。",
+    "reading": "いりぐちのまえまでおねがいします。",
+    "romaji": "iriguchi no mae made onegai shimasu.",
+    "english": "Please take me to the entrance.",
+    "literalMeaning": "Please go as far as in front of the entrance.",
+    "naturalUsage": "Useful at large hotels, malls, venues, or hospitals.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "entrance",
+      "destination"
+    ]
+  },
+  {
+    "id": "travel-taxi-026",
+    "type": "travel",
+    "category": "taxi",
+    "subcategory": "Destination",
+    "japanese": "正面玄関までお願いします。",
+    "reading": "しょうめんげんかんまでおねがいします。",
+    "romaji": "shoumen genkan made onegai shimasu.",
+    "english": "Please take me to the main entrance.",
+    "literalMeaning": "Please go as far as the front entrance.",
+    "naturalUsage": "Natural for hotels and larger buildings.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "main-entrance",
+      "destination"
+    ]
+  },
+  {
+    "id": "travel-taxi-027",
+    "type": "travel",
+    "category": "taxi",
+    "subcategory": "Destination",
+    "japanese": "駅の東口までお願いします。",
+    "reading": "えきのひがしぐちまでおねがいします。",
+    "romaji": "eki no higashi-guchi made onegai shimasu.",
+    "english": "Please take me to the station's East Exit.",
+    "literalMeaning": "Please go as far as the station's East Exit.",
+    "naturalUsage": "Useful at large stations with multiple taxi drop-off areas.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "station",
+      "east-exit"
+    ]
+  },
+  {
+    "id": "travel-taxi-028",
+    "type": "travel",
+    "category": "taxi",
+    "subcategory": "Destination",
+    "japanese": "駅の西口までお願いします。",
+    "reading": "えきのにしぐちまでおねがいします。",
+    "romaji": "eki no nishi-guchi made onegai shimasu.",
+    "english": "Please take me to the station's West Exit.",
+    "literalMeaning": "Please go as far as the station's West Exit.",
+    "naturalUsage": "Useful at major stations.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "station",
+      "west-exit"
+    ]
+  },
+  {
+    "id": "travel-taxi-029",
+    "type": "travel",
+    "category": "taxi",
+    "subcategory": "Destination",
+    "japanese": "駅の近くまでお願いします。",
+    "reading": "えきのちかくまでおねがいします。",
+    "romaji": "eki no chikaku made onegai shimasu.",
+    "english": "Please take me near the station.",
+    "literalMeaning": "Please go as far as near the station.",
+    "naturalUsage": "Useful if the exact station entrance is congested.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "station",
+      "nearby"
+    ]
+  },
+  {
+    "id": "travel-taxi-030",
+    "type": "travel",
+    "category": "taxi",
+    "subcategory": "Destination",
+    "japanese": "この交差点までお願いします。",
+    "reading": "このこうさてんまでおねがいします。",
+    "romaji": "kono kousaten made onegai shimasu.",
+    "english": "Please take me to this intersection.",
+    "literalMeaning": "Please go as far as this intersection.",
+    "naturalUsage": "Useful when the destination is easiest to identify by an intersection.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "intersection",
+      "destination"
+    ]
+  },
+  {
+    "id": "travel-taxi-031",
+    "type": "travel",
+    "category": "taxi",
+    "subcategory": "Destination",
+    "japanese": "この建物の前までお願いします。",
+    "reading": "このたてもののまえまでおねがいします。",
+    "romaji": "kono tatemono no mae made onegai shimasu.",
+    "english": "Please take me in front of this building.",
+    "literalMeaning": "Please go as far as in front of this building.",
+    "naturalUsage": "Use while showing a photo or map.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "building",
+      "destination"
+    ]
+  },
+  {
+    "id": "travel-taxi-032",
+    "type": "travel",
+    "category": "taxi",
+    "subcategory": "Destination",
+    "japanese": "一番近いコンビニまでお願いします。",
+    "reading": "いちばんちかいこんびにまでおねがいします。",
+    "romaji": "ichiban chikai konbini made onegai shimasu.",
+    "english": "Please take me to the nearest convenience store.",
+    "literalMeaning": "Please go as far as the nearest convenience store.",
+    "naturalUsage": "Useful when you simply need the nearest convenience store.",
+    "politeness": "polite",
+    "priority": "extra",
+    "tags": [
+      "convenience-store",
+      "nearest"
+    ]
+  },
+  {
+    "id": "travel-taxi-033",
+    "type": "travel",
+    "category": "taxi",
+    "subcategory": "Destination",
+    "japanese": "一番近い病院までお願いします。",
+    "reading": "いちばんちかいびょういんまでおねがいします。",
+    "romaji": "ichiban chikai byouin made onegai shimasu.",
+    "english": "Please take me to the nearest hospital.",
+    "literalMeaning": "Please go as far as the nearest hospital.",
+    "naturalUsage": "Useful in a medical situation when you can safely travel by taxi.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "hospital",
+      "nearest"
+    ]
+  },
+  {
+    "id": "travel-taxi-034",
+    "type": "travel",
+    "category": "taxi",
+    "subcategory": "Destination",
+    "japanese": "最寄り駅までお願いします。",
+    "reading": "もよりえきまでおねがいします。",
+    "romaji": "moyori eki made onegai shimasu.",
+    "english": "Please take me to the nearest station.",
+    "literalMeaning": "Please go as far as the nearest station.",
+    "naturalUsage": "Very useful if you are somewhere unfamiliar.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "station",
+      "nearest"
+    ]
+  },
+  {
+    "id": "travel-taxi-035",
+    "type": "travel",
+    "category": "taxi",
+    "subcategory": "Destination",
+    "japanese": "〇〇の近くまでお願いします。",
+    "reading": "〇〇のちかくまでおねがいします。",
+    "romaji": "___ no chikaku made onegai shimasu.",
+    "english": "Please take me near ___.",
+    "literalMeaning": "Please go as far as near ___.",
+    "naturalUsage": "Useful if stopping directly in front is difficult.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "nearby",
+      "destination"
+    ]
+  },
+  {
+    "id": "travel-taxi-036",
+    "type": "travel",
+    "category": "taxi",
+    "subcategory": "Destination",
+    "japanese": "住所を見せますね。",
+    "reading": "じゅうしょをみせますね。",
+    "romaji": "juusho o misemasu ne.",
+    "english": "I'll show you the address.",
+    "literalMeaning": "I'll show the address.",
+    "naturalUsage": "Natural conversational lead-in before showing your phone.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "address",
+      "showing-phone"
+    ]
+  },
+  {
+    "id": "travel-taxi-037",
+    "type": "travel",
+    "category": "taxi",
+    "subcategory": "Directions",
+    "japanese": "まっすぐお願いします。",
+    "reading": "まっすぐおねがいします。",
+    "romaji": "massugu onegai shimasu.",
+    "english": "Straight ahead, please.",
+    "literalMeaning": "Straight, please.",
+    "naturalUsage": "Short and natural if guiding the driver locally.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "straight"
+    ]
+  },
+  {
+    "id": "travel-taxi-038",
+    "type": "travel",
+    "category": "taxi",
+    "subcategory": "Directions",
+    "japanese": "次を右にお願いします。",
+    "reading": "つぎをみぎにおねがいします。",
+    "romaji": "tsugi o migi ni onegai shimasu.",
+    "english": "Please turn right at the next one.",
+    "literalMeaning": "At the next one, right please.",
+    "naturalUsage": "Natural when giving simple turn-by-turn guidance.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "right",
+      "turn"
+    ]
+  },
+  {
+    "id": "travel-taxi-039",
+    "type": "travel",
+    "category": "taxi",
+    "subcategory": "Directions",
+    "japanese": "次を左にお願いします。",
+    "reading": "つぎをひだりにおねがいします。",
+    "romaji": "tsugi o hidari ni onegai shimasu.",
+    "english": "Please turn left at the next one.",
+    "literalMeaning": "At the next one, left please.",
+    "naturalUsage": "Natural when guiding the driver.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "left",
+      "turn"
+    ]
+  },
+  {
+    "id": "travel-taxi-040",
+    "type": "travel",
+    "category": "taxi",
+    "subcategory": "Directions",
+    "japanese": "次の信号を右にお願いします。",
+    "reading": "つぎのしんごうをみぎにおねがいします。",
+    "romaji": "tsugi no shingou o migi ni onegai shimasu.",
+    "english": "Please turn right at the next traffic light.",
+    "literalMeaning": "At the next signal, right please.",
+    "naturalUsage": "Clear and practical direction.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "traffic-light",
+      "right"
+    ]
+  },
+  {
+    "id": "travel-taxi-041",
+    "type": "travel",
+    "category": "taxi",
+    "subcategory": "Directions",
+    "japanese": "次の信号を左にお願いします。",
+    "reading": "つぎのしんごうをひだりにおねがいします。",
+    "romaji": "tsugi no shingou o hidari ni onegai shimasu.",
+    "english": "Please turn left at the next traffic light.",
+    "literalMeaning": "At the next signal, left please.",
+    "naturalUsage": "Clear and practical direction.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "traffic-light",
+      "left"
+    ]
+  },
+  {
+    "id": "travel-taxi-042",
+    "type": "travel",
+    "category": "taxi",
+    "subcategory": "Directions",
+    "japanese": "この道をまっすぐです。",
+    "reading": "このみちをまっすぐです。",
+    "romaji": "kono michi o massugu desu.",
+    "english": "It's straight along this road.",
+    "literalMeaning": "Straight along this road.",
+    "naturalUsage": "Useful if the driver asks you to confirm the route.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "straight",
+      "road"
+    ]
+  },
+  {
+    "id": "travel-taxi-043",
+    "type": "travel",
+    "category": "taxi",
+    "subcategory": "Directions",
+    "japanese": "この角を右です。",
+    "reading": "このかどをみぎです。",
+    "romaji": "kono kado o migi desu.",
+    "english": "Turn right at this corner.",
+    "literalMeaning": "At this corner, right.",
+    "naturalUsage": "A concise spoken direction.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "corner",
+      "right"
+    ]
+  },
+  {
+    "id": "travel-taxi-044",
+    "type": "travel",
+    "category": "taxi",
+    "subcategory": "Directions",
+    "japanese": "この角を左です。",
+    "reading": "このかどをひだりです。",
+    "romaji": "kono kado o hidari desu.",
+    "english": "Turn left at this corner.",
+    "literalMeaning": "At this corner, left.",
+    "naturalUsage": "A concise spoken direction.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "corner",
+      "left"
+    ]
+  },
+  {
+    "id": "travel-taxi-045",
+    "type": "travel",
+    "category": "taxi",
+    "subcategory": "Directions",
+    "japanese": "もう少し先です。",
+    "reading": "もうすこしさきです。",
+    "romaji": "mou sukoshi saki desu.",
+    "english": "It's a little farther ahead.",
+    "literalMeaning": "It is a little farther ahead.",
+    "naturalUsage": "Very natural when approaching the destination.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "ahead",
+      "near-destination"
+    ]
+  },
+  {
+    "id": "travel-taxi-046",
+    "type": "travel",
+    "category": "taxi",
+    "subcategory": "Directions",
+    "japanese": "もう少し戻ってください。",
+    "reading": "もうすこしもどってください。",
+    "romaji": "mou sukoshi modotte kudasai.",
+    "english": "Please go back a little.",
+    "literalMeaning": "Please return a little.",
+    "naturalUsage": "Useful if you passed the destination and it is safe/legal to go back.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "back",
+      "passed-destination"
+    ]
+  },
+  {
+    "id": "travel-taxi-047",
+    "type": "travel",
+    "category": "taxi",
+    "subcategory": "Directions",
+    "japanese": "反対側です。",
+    "reading": "はんたいがわです。",
+    "romaji": "hantai-gawa desu.",
+    "english": "It's on the other side.",
+    "literalMeaning": "It is on the opposite side.",
+    "naturalUsage": "Useful when pointing out the destination across the street.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "opposite-side"
+    ]
+  },
+  {
+    "id": "travel-taxi-048",
+    "type": "travel",
+    "category": "taxi",
+    "subcategory": "Directions",
+    "japanese": "右側です。",
+    "reading": "みぎがわです。",
+    "romaji": "migi-gawa desu.",
+    "english": "It's on the right.",
+    "literalMeaning": "It is on the right side.",
+    "naturalUsage": "Useful as you approach your destination.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "right-side"
+    ]
+  },
+  {
+    "id": "travel-taxi-049",
+    "type": "travel",
+    "category": "taxi",
+    "subcategory": "Directions",
+    "japanese": "左側です。",
+    "reading": "ひだりがわです。",
+    "romaji": "hidari-gawa desu.",
+    "english": "It's on the left.",
+    "literalMeaning": "It is on the left side.",
+    "naturalUsage": "Useful as you approach your destination.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "left-side"
+    ]
+  },
+  {
+    "id": "travel-taxi-050",
+    "type": "travel",
+    "category": "taxi",
+    "subcategory": "Directions",
+    "japanese": "あの建物です。",
+    "reading": "あのたてものです。",
+    "romaji": "ano tatemono desu.",
+    "english": "It's that building.",
+    "literalMeaning": "It is that building.",
+    "naturalUsage": "Very natural while pointing out the destination.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "building",
+      "pointing"
+    ]
+  },
+  {
+    "id": "travel-taxi-051",
+    "type": "travel",
+    "category": "taxi",
+    "subcategory": "Directions",
+    "japanese": "あのコンビニの隣です。",
+    "reading": "あのこんびにのとなりです。",
+    "romaji": "ano konbini no tonari desu.",
+    "english": "It's next to that convenience store.",
+    "literalMeaning": "It is next to that convenience store.",
+    "naturalUsage": "Useful landmark-based guidance.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "landmark",
+      "next-to"
+    ]
+  },
+  {
+    "id": "travel-taxi-052",
+    "type": "travel",
+    "category": "taxi",
+    "subcategory": "Directions",
+    "japanese": "ナビの通りで大丈夫です。",
+    "reading": "なびのとおりでだいじょうぶです。",
+    "romaji": "nabi no toori de daijoubu desu.",
+    "english": "Following the navigation is fine.",
+    "literalMeaning": "The navigation route is okay.",
+    "naturalUsage": "Natural if the driver asks whether their navigation route is okay.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "navigation",
+      "route"
+    ]
+  },
+  {
+    "id": "travel-taxi-053",
+    "type": "travel",
+    "category": "taxi",
+    "subcategory": "Directions",
+    "japanese": "高速道路を使っても大丈夫です。",
+    "reading": "こうそくどうろをつかってもだいじょうぶです。",
+    "romaji": "kousoku douro o tsukatte mo daijoubu desu.",
+    "english": "It's okay to take the expressway.",
+    "literalMeaning": "It is okay to use the expressway.",
+    "naturalUsage": "Useful for longer rides when toll roads may be faster.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "expressway",
+      "toll-road"
+    ]
+  },
+  {
+    "id": "travel-taxi-054",
+    "type": "travel",
+    "category": "taxi",
+    "subcategory": "Directions",
+    "japanese": "高速道路は使わなくて大丈夫です。",
+    "reading": "こうそくどうろはつかわなくてだいじょうぶです。",
+    "romaji": "kousoku douro wa tsukawanakute daijoubu desu.",
+    "english": "No need to take the expressway.",
+    "literalMeaning": "It is okay not to use the expressway.",
+    "naturalUsage": "Useful if you prefer to avoid toll roads.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "expressway",
+      "avoid"
+    ]
+  },
+  {
+    "id": "travel-taxi-055",
+    "type": "travel",
+    "category": "taxi",
+    "subcategory": "Fare",
+    "japanese": "だいたいいくらかかりますか？",
+    "reading": "だいたいいくらかかりますか？",
+    "romaji": "daitai ikura kakarimasu ka?",
+    "english": "About how much will it cost?",
+    "literalMeaning": "Approximately how much will it cost?",
+    "naturalUsage": "Natural way to ask for a rough fare estimate.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "fare",
+      "estimate"
+    ]
+  },
+  {
+    "id": "travel-taxi-056",
+    "type": "travel",
+    "category": "taxi",
+    "subcategory": "Fare",
+    "japanese": "メーターでお願いします。",
+    "reading": "めーたーでおねがいします。",
+    "romaji": "meetaa de onegai shimasu.",
+    "english": "Please use the meter.",
+    "literalMeaning": "By the meter, please.",
+    "naturalUsage": "Useful where you need to confirm a metered fare; in Japan regular taxis normally use meters.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "meter",
+      "fare"
+    ]
+  },
+  {
+    "id": "travel-taxi-057",
+    "type": "travel",
+    "category": "taxi",
+    "subcategory": "Fare",
+    "japanese": "高速料金は別ですか？",
+    "reading": "こうそくりょうきんはべつですか？",
+    "romaji": "kousoku ryoukin wa betsu desu ka?",
+    "english": "Is the expressway toll separate?",
+    "literalMeaning": "Is the expressway fee separate?",
+    "naturalUsage": "Useful before taking a toll road.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "toll",
+      "expressway"
+    ]
+  },
+  {
+    "id": "travel-taxi-058",
+    "type": "travel",
+    "category": "taxi",
+    "subcategory": "Fare",
+    "japanese": "追加料金はありますか？",
+    "reading": "ついかりょうきんはありますか？",
+    "romaji": "tsuika ryoukin wa arimasu ka?",
+    "english": "Are there any additional charges?",
+    "literalMeaning": "Are there additional fees?",
+    "naturalUsage": "Useful for late-night, toll, or booking-related charges.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "extra-charge",
+      "fare"
+    ]
+  },
+  {
+    "id": "travel-taxi-059",
+    "type": "travel",
+    "category": "taxi",
+    "subcategory": "Fare",
+    "japanese": "深夜料金はかかりますか？",
+    "reading": "しんやりょうきんはかかりますか？",
+    "romaji": "shinya ryoukin wa kakarimasu ka?",
+    "english": "Is there a late-night surcharge?",
+    "literalMeaning": "Does a late-night fee apply?",
+    "naturalUsage": "Useful when taking a taxi late at night.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "late-night",
+      "surcharge"
+    ]
+  },
+  {
+    "id": "travel-taxi-060",
+    "type": "travel",
+    "category": "taxi",
+    "subcategory": "Fare",
+    "japanese": "迎車料金はかかりますか？",
+    "reading": "げいしゃりょうきんはかかりますか？",
+    "romaji": "geisha ryoukin wa kakarimasu ka?",
+    "english": "Is there a pickup fee?",
+    "literalMeaning": "Does a vehicle-dispatch fee apply?",
+    "naturalUsage": "Useful for taxis called through an app, hotel, or dispatch service.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "pickup-fee",
+      "dispatch"
+    ]
+  },
+  {
+    "id": "travel-taxi-061",
+    "type": "travel",
+    "category": "taxi",
+    "subcategory": "Fare",
+    "japanese": "料金を確認してもいいですか？",
+    "reading": "りょうきんをかくにんしてもいいですか？",
+    "romaji": "ryoukin o kakunin shite mo ii desu ka?",
+    "english": "May I check the fare?",
+    "literalMeaning": "Is it okay if I check the fare?",
+    "naturalUsage": "Useful if you want to look at the meter before paying.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "fare",
+      "check"
+    ]
+  },
+  {
+    "id": "travel-taxi-062",
+    "type": "travel",
+    "category": "taxi",
+    "subcategory": "Fare",
+    "japanese": "カードで払えますか？",
+    "reading": "かーどではらえますか？",
+    "romaji": "kaado de haraemasu ka?",
+    "english": "Can I pay by card?",
+    "literalMeaning": "Can I pay by card?",
+    "naturalUsage": "Natural and concise.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "payment",
+      "card"
+    ]
+  },
+  {
+    "id": "travel-taxi-063",
+    "type": "travel",
+    "category": "taxi",
+    "subcategory": "Fare",
+    "japanese": "クレジットカードでお願いします。",
+    "reading": "くれじっとかーどでおねがいします。",
+    "romaji": "kurejitto kaado de onegai shimasu.",
+    "english": "By credit card, please.",
+    "literalMeaning": "By credit card, please.",
+    "naturalUsage": "Use when choosing the payment method.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "payment",
+      "credit-card"
+    ]
+  },
+  {
+    "id": "travel-taxi-064",
+    "type": "travel",
+    "category": "taxi",
+    "subcategory": "Fare",
+    "japanese": "ICカードは使えますか？",
+    "reading": "あいしーかーどはつかえますか？",
+    "romaji": "ai-shii kaado wa tsukaemasu ka?",
+    "english": "Can I pay with an IC card?",
+    "literalMeaning": "Can an IC card be used?",
+    "naturalUsage": "Some taxis accept transport IC cards such as Suica/PASMO/ICOCA.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "payment",
+      "IC-card"
+    ]
+  },
+  {
+    "id": "travel-taxi-065",
+    "type": "travel",
+    "category": "taxi",
+    "subcategory": "Fare",
+    "japanese": "タッチ決済は使えますか？",
+    "reading": "たっちけっさいはつかえますか？",
+    "romaji": "tacchi kessai wa tsukaemasu ka?",
+    "english": "Can I use contactless payment?",
+    "literalMeaning": "Can touch payment be used?",
+    "naturalUsage": "Useful for contactless bank cards where supported.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "payment",
+      "contactless"
+    ]
+  },
+  {
+    "id": "travel-taxi-066",
+    "type": "travel",
+    "category": "taxi",
+    "subcategory": "Fare",
+    "japanese": "現金でお願いします。",
+    "reading": "げんきんでおねがいします。",
+    "romaji": "genkin de onegai shimasu.",
+    "english": "Cash, please.",
+    "literalMeaning": "By cash, please.",
+    "naturalUsage": "Use when choosing cash.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "payment",
+      "cash"
+    ]
+  },
+  {
+    "id": "travel-taxi-067",
+    "type": "travel",
+    "category": "taxi",
+    "subcategory": "Fare",
+    "japanese": "一万円札でも大丈夫ですか？",
+    "reading": "いちまんえんさつでもだいじょうぶですか？",
+    "romaji": "ichiman-en satsu demo daijoubu desu ka?",
+    "english": "Is a 10,000-yen bill okay?",
+    "literalMeaning": "Is it okay even with a 10,000-yen note?",
+    "naturalUsage": "Useful if you only have a large bill.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "cash",
+      "large-bill"
+    ]
+  },
+  {
+    "id": "travel-taxi-068",
+    "type": "travel",
+    "category": "taxi",
+    "subcategory": "Fare",
+    "japanese": "お釣りはありますか？",
+    "reading": "おつりはありますか？",
+    "romaji": "otsuri wa arimasu ka?",
+    "english": "Do you have change?",
+    "literalMeaning": "Is there change?",
+    "naturalUsage": "Useful if paying with a large note.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "cash",
+      "change"
+    ]
+  },
+  {
+    "id": "travel-taxi-069",
+    "type": "travel",
+    "category": "taxi",
+    "subcategory": "Fare",
+    "japanese": "領収書をお願いします。",
+    "reading": "りょうしゅうしょをおねがいします。",
+    "romaji": "ryoushuusho o onegai shimasu.",
+    "english": "An official receipt, please.",
+    "literalMeaning": "An official receipt, please.",
+    "naturalUsage": "Useful for reimbursement or business records.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "receipt",
+      "formal"
+    ]
+  },
+  {
+    "id": "travel-taxi-070",
+    "type": "travel",
+    "category": "taxi",
+    "subcategory": "Fare",
+    "japanese": "レシートをお願いします。",
+    "reading": "れしーとをおねがいします。",
+    "romaji": "reshiito o onegai shimasu.",
+    "english": "A receipt, please.",
+    "literalMeaning": "A receipt, please.",
+    "naturalUsage": "Simple request after payment.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "receipt"
+    ]
+  },
+  {
+    "id": "travel-taxi-071",
+    "type": "travel",
+    "category": "taxi",
+    "subcategory": "Fare",
+    "japanese": "この料金で合っていますか？",
+    "reading": "このりょうきんであっていますか？",
+    "romaji": "kono ryoukin de atteimasu ka?",
+    "english": "Is this fare correct?",
+    "literalMeaning": "Is this fare correct?",
+    "naturalUsage": "Use politely if you genuinely need clarification about the amount.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "fare",
+      "confirm"
+    ]
+  },
+  {
+    "id": "travel-taxi-072",
+    "type": "travel",
+    "category": "taxi",
+    "subcategory": "Fare",
+    "japanese": "アプリで支払い済みです。",
+    "reading": "あぷりでしはらいずみです。",
+    "romaji": "apuri de shiharai-zumi desu.",
+    "english": "I've already paid through the app.",
+    "literalMeaning": "Payment has already been completed in the app.",
+    "naturalUsage": "Useful with app-booked taxis where payment was handled digitally.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "app",
+      "prepaid"
+    ]
+  },
+  {
+    "id": "travel-taxi-073",
+    "type": "travel",
+    "category": "taxi",
+    "subcategory": "Stops",
+    "japanese": "ここで止めてください。",
+    "reading": "ここでとめてください。",
+    "romaji": "koko de tomete kudasai.",
+    "english": "Please stop here.",
+    "literalMeaning": "Please stop here.",
+    "naturalUsage": "Direct but polite; useful when the driver can safely stop.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "stop",
+      "here"
+    ]
+  },
+  {
+    "id": "travel-taxi-074",
+    "type": "travel",
+    "category": "taxi",
+    "subcategory": "Stops",
+    "japanese": "ここで大丈夫です。",
+    "reading": "ここでだいじょうぶです。",
+    "romaji": "koko de daijoubu desu.",
+    "english": "Here is fine.",
+    "literalMeaning": "Here is okay.",
+    "naturalUsage": "Softer and extremely natural when indicating a drop-off point.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "stop",
+      "here"
+    ]
+  },
+  {
+    "id": "travel-taxi-075",
+    "type": "travel",
+    "category": "taxi",
+    "subcategory": "Stops",
+    "japanese": "この先で止めてください。",
+    "reading": "このさきでとめてください。",
+    "romaji": "kono saki de tomete kudasai.",
+    "english": "Please stop a little farther ahead.",
+    "literalMeaning": "Please stop ahead of here.",
+    "naturalUsage": "Useful as you approach the destination.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "stop",
+      "ahead"
+    ]
+  },
+  {
+    "id": "travel-taxi-076",
+    "type": "travel",
+    "category": "taxi",
+    "subcategory": "Stops",
+    "japanese": "次の角で止めてください。",
+    "reading": "つぎのかどでとめてください。",
+    "romaji": "tsugi no kado de tomete kudasai.",
+    "english": "Please stop at the next corner.",
+    "literalMeaning": "Please stop at the next corner.",
+    "naturalUsage": "Natural if there is a safe stopping place there.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "stop",
+      "corner"
+    ]
+  },
+  {
+    "id": "travel-taxi-077",
+    "type": "travel",
+    "category": "taxi",
+    "subcategory": "Stops",
+    "japanese": "信号の手前でお願いします。",
+    "reading": "しんごうのてまえでおねがいします。",
+    "romaji": "shingou no temae de onegai shimasu.",
+    "english": "Please stop before the traffic light.",
+    "literalMeaning": "Before the traffic light, please.",
+    "naturalUsage": "Useful when identifying a convenient drop-off point.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "stop",
+      "traffic-light"
+    ]
+  },
+  {
+    "id": "travel-taxi-078",
+    "type": "travel",
+    "category": "taxi",
+    "subcategory": "Stops",
+    "japanese": "入口の前でお願いします。",
+    "reading": "いりぐちのまえでおねがいします。",
+    "romaji": "iriguchi no mae de onegai shimasu.",
+    "english": "In front of the entrance, please.",
+    "literalMeaning": "In front of the entrance, please.",
+    "naturalUsage": "Natural for hotel, mall, venue, or hospital drop-offs.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "stop",
+      "entrance"
+    ]
+  },
+  {
+    "id": "travel-taxi-079",
+    "type": "travel",
+    "category": "taxi",
+    "subcategory": "Stops",
+    "japanese": "コンビニの前でお願いします。",
+    "reading": "こんびにのまえでおねがいします。",
+    "romaji": "konbini no mae de onegai shimasu.",
+    "english": "In front of the convenience store, please.",
+    "literalMeaning": "In front of the convenience store, please.",
+    "naturalUsage": "Useful when the convenience store is an obvious landmark.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "stop",
+      "landmark"
+    ]
+  },
+  {
+    "id": "travel-taxi-080",
+    "type": "travel",
+    "category": "taxi",
+    "subcategory": "Stops",
+    "japanese": "あの建物の前でお願いします。",
+    "reading": "あのたてもののまえでおねがいします。",
+    "romaji": "ano tatemono no mae de onegai shimasu.",
+    "english": "In front of that building, please.",
+    "literalMeaning": "In front of that building, please.",
+    "naturalUsage": "Natural while pointing.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "stop",
+      "building"
+    ]
+  },
+  {
+    "id": "travel-taxi-081",
+    "type": "travel",
+    "category": "taxi",
+    "subcategory": "Stops",
+    "japanese": "少し先でお願いします。",
+    "reading": "すこしさきでおねがいします。",
+    "romaji": "sukoshi saki de onegai shimasu.",
+    "english": "A little farther ahead, please.",
+    "literalMeaning": "A little ahead, please.",
+    "naturalUsage": "Very natural near your destination.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "stop",
+      "ahead"
+    ]
+  },
+  {
+    "id": "travel-taxi-082",
+    "type": "travel",
+    "category": "taxi",
+    "subcategory": "Stops",
+    "japanese": "もう少し先までお願いします。",
+    "reading": "もうすこしさきまでおねがいします。",
+    "romaji": "mou sukoshi saki made onegai shimasu.",
+    "english": "Please go a little farther.",
+    "literalMeaning": "Please go a little farther ahead.",
+    "naturalUsage": "Useful if the driver starts to stop slightly too early.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "continue",
+      "ahead"
+    ]
+  },
+  {
+    "id": "travel-taxi-083",
+    "type": "travel",
+    "category": "taxi",
+    "subcategory": "Stops",
+    "japanese": "ここで少し待ってもらえますか？",
+    "reading": "ここですこしまってもらえますか？",
+    "romaji": "koko de sukoshi matte moraemasu ka?",
+    "english": "Could you wait here for a moment?",
+    "literalMeaning": "Could I have you wait here a little?",
+    "naturalUsage": "Useful for a brief pickup or errand; waiting charges may apply.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "wait",
+      "stop"
+    ]
+  },
+  {
+    "id": "travel-taxi-084",
+    "type": "travel",
+    "category": "taxi",
+    "subcategory": "Stops",
+    "japanese": "五分くらい待ってもらえますか？",
+    "reading": "ごふんくらいまってもらえますか？",
+    "romaji": "gofun kurai matte moraemasu ka?",
+    "english": "Could you wait about five minutes?",
+    "literalMeaning": "Could I have you wait about five minutes?",
+    "naturalUsage": "Useful for a short stop; expect the meter to continue.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "wait",
+      "five-minutes"
+    ]
+  },
+  {
+    "id": "travel-taxi-085",
+    "type": "travel",
+    "category": "taxi",
+    "subcategory": "Stops",
+    "japanese": "ここで友達を乗せます。",
+    "reading": "ここでともだちをのせます。",
+    "romaji": "koko de tomodachi o nosemasu.",
+    "english": "I'm picking up a friend here.",
+    "literalMeaning": "I will have a friend get in here.",
+    "naturalUsage": "Useful if making a brief stop to pick someone up.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "pickup",
+      "friend"
+    ]
+  },
+  {
+    "id": "travel-taxi-086",
+    "type": "travel",
+    "category": "taxi",
+    "subcategory": "Stops",
+    "japanese": "途中で一か所寄れますか？",
+    "reading": "とちゅうでいっかしょよれますか？",
+    "romaji": "tochuu de ikkasho yoremasu ka?",
+    "english": "Can we make one stop on the way?",
+    "literalMeaning": "Can we stop at one place along the way?",
+    "naturalUsage": "Natural way to ask for an intermediate stop.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "intermediate-stop"
+    ]
+  },
+  {
+    "id": "travel-taxi-087",
+    "type": "travel",
+    "category": "taxi",
+    "subcategory": "Stops",
+    "japanese": "途中でコンビニに寄れますか？",
+    "reading": "とちゅうでこんびにによれますか？",
+    "romaji": "tochuu de konbini ni yoremasu ka?",
+    "english": "Can we stop at a convenience store on the way?",
+    "literalMeaning": "Can we stop by a convenience store along the way?",
+    "naturalUsage": "Useful on longer rides.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "intermediate-stop",
+      "convenience-store"
+    ]
+  },
+  {
+    "id": "travel-taxi-088",
+    "type": "travel",
+    "category": "taxi",
+    "subcategory": "Stops",
+    "japanese": "先にこの場所に寄ってください。",
+    "reading": "さきにこのばしょによってください。",
+    "romaji": "saki ni kono basho ni yotte kudasai.",
+    "english": "Please stop at this place first.",
+    "literalMeaning": "Please stop by this place first.",
+    "naturalUsage": "Use while showing the first stop on your phone.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "first-stop",
+      "route"
+    ]
+  },
+  {
+    "id": "travel-taxi-089",
+    "type": "travel",
+    "category": "taxi",
+    "subcategory": "Stops",
+    "japanese": "そのあとホテルまでお願いします。",
+    "reading": "そのあとほてるまでおねがいします。",
+    "romaji": "sono ato hoteru made onegai shimasu.",
+    "english": "After that, please take me to the hotel.",
+    "literalMeaning": "After that, please go as far as the hotel.",
+    "naturalUsage": "Useful when explaining a two-stop taxi trip.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "second-stop",
+      "hotel"
+    ]
+  },
+  {
+    "id": "travel-taxi-090",
+    "type": "travel",
+    "category": "taxi",
+    "subcategory": "Stops",
+    "japanese": "ここで降ろしてください。",
+    "reading": "ここでおろしてください。",
+    "romaji": "koko de oroshite kudasai.",
+    "english": "Please let me out here.",
+    "literalMeaning": "Please let me get out here.",
+    "naturalUsage": "Natural, clear request when you want to get out at the current location.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "drop-off",
+      "here"
+    ]
+  }
 ]

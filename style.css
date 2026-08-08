@@ -1528,6 +1528,7 @@ a:focus-visible {
 }
 
 .travel-category-card,
+.travel-feature-card,
 .travel-utility-card {
     border: 1px solid var(--color-border);
     border-radius: 20px;
@@ -1549,6 +1550,27 @@ a:focus-visible {
     cursor: pointer;
 }
 
+.travel-feature-card {
+    position: relative;
+    width: 100%;
+    min-height: 78px;
+    margin-top: 12px;
+    padding: 16px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    color: inherit;
+    font: inherit;
+    text-align: left;
+    cursor: pointer;
+}
+
+.travel-feature-card > b {
+    margin-left: auto;
+    color: var(--color-primary-dark);
+    font-size: 20px;
+}
+
 .travel-category-card > b {
     position: absolute;
     right: 16px;
@@ -1558,6 +1580,7 @@ a:focus-visible {
 }
 
 .travel-category-card > span,
+.travel-feature-card > span,
 .travel-utility-card > span {
     width: 46px;
     height: 46px;
@@ -1571,12 +1594,14 @@ a:focus-visible {
 }
 
 .travel-category-card h2,
+.travel-feature-card h2,
 .travel-utility-card h2 {
     margin: 0 0 4px;
     font-size: 16px;
 }
 
 .travel-category-card p,
+.travel-feature-card p,
 .travel-utility-card p {
     margin: 0;
     color: var(--color-text-muted);
@@ -2318,6 +2343,7 @@ body {
 .search-result-card,
 .saved-item-card,
 .travel-category-card,
+.travel-feature-card,
 .travel-utility-card,
 .travel-phrase-card,
 .translation-form,

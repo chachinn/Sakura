@@ -1,4 +1,1622 @@
 [
-  {"id":"travel-emergencies-001","type":"travel","category":"emergencies","subcategory":"Essential","japanese":"助けてください。","reading":"たすけてください。","romaji":"Tasukete kudasai.","english":"Please help me.","literalMeaning":"Please help.","naturalUsage":"Use when you urgently need someone’s assistance.","politeness":"polite","priority":"essential","tags":["help","urgent"]},
-  {"id":"travel-emergencies-002","type":"travel","category":"emergencies","subcategory":"Medical","japanese":"救急車を呼んでください。","reading":"きゅうきゅうしゃをよんでください。","romaji":"Kyuukyuusha o yonde kudasai.","english":"Please call an ambulance.","literalMeaning":"Please call an ambulance.","naturalUsage":"A clear emergency request when an ambulance is needed.","politeness":"polite","priority":"essential","tags":["ambulance","medical","urgent"]}
+  {
+    "id": "travel-emergencies-001",
+    "type": "travel",
+    "category": "emergencies",
+    "subcategory": "Essential",
+    "japanese": "助けてください。",
+    "reading": "たすけてください。",
+    "romaji": "tasukete kudasai.",
+    "english": "Please help me.",
+    "literalMeaning": "Please help me.",
+    "naturalUsage": "Use when you urgently need assistance.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "help",
+      "emergency"
+    ]
+  },
+  {
+    "id": "travel-emergencies-002",
+    "type": "travel",
+    "category": "emergencies",
+    "subcategory": "Essential",
+    "japanese": "すみません、困っています。",
+    "reading": "すみません、こまっています。",
+    "romaji": "sumimasen, komatteimasu.",
+    "english": "Excuse me, I'm in trouble.",
+    "literalMeaning": "Excuse me, I am having difficulty.",
+    "naturalUsage": "Natural way to ask for help when you are stuck but not in immediate danger.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "help",
+      "problem"
+    ]
+  },
+  {
+    "id": "travel-emergencies-003",
+    "type": "travel",
+    "category": "emergencies",
+    "subcategory": "Essential",
+    "japanese": "警察を呼んでください。",
+    "reading": "けいさつをよんでください。",
+    "romaji": "keisatsu o yonde kudasai.",
+    "english": "Please call the police.",
+    "literalMeaning": "Please call the police.",
+    "naturalUsage": "Use in a serious safety or theft situation.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "police",
+      "call"
+    ]
+  },
+  {
+    "id": "travel-emergencies-004",
+    "type": "travel",
+    "category": "emergencies",
+    "subcategory": "Essential",
+    "japanese": "救急車を呼んでください。",
+    "reading": "きゅうきゅうしゃをよんでください。",
+    "romaji": "kyuukyuusha o yonde kudasai.",
+    "english": "Please call an ambulance.",
+    "literalMeaning": "Please call an ambulance.",
+    "naturalUsage": "Use for a serious medical emergency.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "ambulance",
+      "medical"
+    ]
+  },
+  {
+    "id": "travel-emergencies-005",
+    "type": "travel",
+    "category": "emergencies",
+    "subcategory": "Essential",
+    "japanese": "病院はどこですか？",
+    "reading": "びょういんはどこですか？",
+    "romaji": "byouin wa doko desu ka?",
+    "english": "Where is the hospital?",
+    "literalMeaning": "Where is the hospital?",
+    "naturalUsage": "Useful when you need medical care and can travel there safely.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "hospital",
+      "directions"
+    ]
+  },
+  {
+    "id": "travel-emergencies-006",
+    "type": "travel",
+    "category": "emergencies",
+    "subcategory": "Essential",
+    "japanese": "薬局はどこですか？",
+    "reading": "やっきょくはどこですか？",
+    "romaji": "yakkyoku wa doko desu ka?",
+    "english": "Where is the pharmacy?",
+    "literalMeaning": "Where is the pharmacy?",
+    "naturalUsage": "Useful for finding a pharmacy.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "pharmacy",
+      "directions"
+    ]
+  },
+  {
+    "id": "travel-emergencies-007",
+    "type": "travel",
+    "category": "emergencies",
+    "subcategory": "Essential",
+    "japanese": "英語を話せる人はいますか？",
+    "reading": "えいごをはなせるひとはいますか？",
+    "romaji": "eigo o hanaseru hito wa imasu ka?",
+    "english": "Is there someone who speaks English?",
+    "literalMeaning": "Is there a person who can speak English?",
+    "naturalUsage": "Useful in hospitals, police stations, pharmacies, or other urgent situations.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "english",
+      "language"
+    ]
+  },
+  {
+    "id": "travel-emergencies-008",
+    "type": "travel",
+    "category": "emergencies",
+    "subcategory": "Essential",
+    "japanese": "日本語があまり話せません。",
+    "reading": "にほんごがあまりはなせません。",
+    "romaji": "nihongo ga amari hanasemasen.",
+    "english": "I don't speak much Japanese.",
+    "literalMeaning": "I cannot speak much Japanese.",
+    "naturalUsage": "Natural way to explain your language limitation.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "language",
+      "japanese"
+    ]
+  },
+  {
+    "id": "travel-emergencies-009",
+    "type": "travel",
+    "category": "emergencies",
+    "subcategory": "Essential",
+    "japanese": "ゆっくり話してもらえますか？",
+    "reading": "ゆっくりはなしてもらえますか？",
+    "romaji": "yukkuri hanashite moraemasu ka?",
+    "english": "Could you speak slowly?",
+    "literalMeaning": "Could I have you speak slowly?",
+    "naturalUsage": "Useful when important instructions are being given.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "language",
+      "slowly"
+    ]
+  },
+  {
+    "id": "travel-emergencies-010",
+    "type": "travel",
+    "category": "emergencies",
+    "subcategory": "Essential",
+    "japanese": "もう一度お願いします。",
+    "reading": "もういちどおねがいします。",
+    "romaji": "mou ichido onegai shimasu.",
+    "english": "One more time, please.",
+    "literalMeaning": "Once more, please.",
+    "naturalUsage": "Useful when you need something repeated.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "repeat",
+      "language"
+    ]
+  },
+  {
+    "id": "travel-emergencies-011",
+    "type": "travel",
+    "category": "emergencies",
+    "subcategory": "Essential",
+    "japanese": "これを見てもらえますか？",
+    "reading": "これをみてもらえますか？",
+    "romaji": "kore o mite moraemasu ka?",
+    "english": "Could you look at this?",
+    "literalMeaning": "Could I have you look at this?",
+    "naturalUsage": "Useful when showing a map, note, medicine, injury, or phone screen.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "showing",
+      "help"
+    ]
+  },
+  {
+    "id": "travel-emergencies-012",
+    "type": "travel",
+    "category": "emergencies",
+    "subcategory": "Essential",
+    "japanese": "ここが痛いです。",
+    "reading": "ここがいたいです。",
+    "romaji": "koko ga itai desu.",
+    "english": "It hurts here.",
+    "literalMeaning": "This place hurts.",
+    "naturalUsage": "Very useful while pointing to the painful area.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "pain",
+      "medical"
+    ]
+  },
+  {
+    "id": "travel-emergencies-013",
+    "type": "travel",
+    "category": "emergencies",
+    "subcategory": "Essential",
+    "japanese": "具合が悪いです。",
+    "reading": "ぐあいがわるいです。",
+    "romaji": "guai ga warui desu.",
+    "english": "I feel sick.",
+    "literalMeaning": "My condition is bad.",
+    "naturalUsage": "General and natural phrase for feeling unwell.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "sick",
+      "medical"
+    ]
+  },
+  {
+    "id": "travel-emergencies-014",
+    "type": "travel",
+    "category": "emergencies",
+    "subcategory": "Essential",
+    "japanese": "財布をなくしました。",
+    "reading": "さいふをなくしました。",
+    "romaji": "saifu o nakushimashita.",
+    "english": "I lost my wallet.",
+    "literalMeaning": "I lost my wallet.",
+    "naturalUsage": "Important if you need help from staff or police.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "lost",
+      "wallet"
+    ]
+  },
+  {
+    "id": "travel-emergencies-015",
+    "type": "travel",
+    "category": "emergencies",
+    "subcategory": "Essential",
+    "japanese": "携帯をなくしました。",
+    "reading": "けいたいをなくしました。",
+    "romaji": "keitai o nakushimashita.",
+    "english": "I lost my phone.",
+    "literalMeaning": "I lost my mobile phone.",
+    "naturalUsage": "Useful when asking for help finding or reporting a lost phone.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "lost",
+      "phone"
+    ]
+  },
+  {
+    "id": "travel-emergencies-016",
+    "type": "travel",
+    "category": "emergencies",
+    "subcategory": "Medical",
+    "japanese": "熱があります。",
+    "reading": "ねつがあります。",
+    "romaji": "netsu ga arimasu.",
+    "english": "I have a fever.",
+    "literalMeaning": "I have a fever.",
+    "naturalUsage": "Common and natural when describing symptoms.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "fever",
+      "symptom"
+    ]
+  },
+  {
+    "id": "travel-emergencies-017",
+    "type": "travel",
+    "category": "emergencies",
+    "subcategory": "Medical",
+    "japanese": "頭が痛いです。",
+    "reading": "あたまがいたいです。",
+    "romaji": "atama ga itai desu.",
+    "english": "I have a headache.",
+    "literalMeaning": "My head hurts.",
+    "naturalUsage": "Natural symptom description.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "headache",
+      "symptom"
+    ]
+  },
+  {
+    "id": "travel-emergencies-018",
+    "type": "travel",
+    "category": "emergencies",
+    "subcategory": "Medical",
+    "japanese": "お腹が痛いです。",
+    "reading": "おなかがいたいです。",
+    "romaji": "onaka ga itai desu.",
+    "english": "My stomach hurts.",
+    "literalMeaning": "My stomach hurts.",
+    "naturalUsage": "Useful for abdominal pain.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "stomach",
+      "pain"
+    ]
+  },
+  {
+    "id": "travel-emergencies-019",
+    "type": "travel",
+    "category": "emergencies",
+    "subcategory": "Medical",
+    "japanese": "喉が痛いです。",
+    "reading": "のどがいたいです。",
+    "romaji": "nodo ga itai desu.",
+    "english": "My throat hurts.",
+    "literalMeaning": "My throat hurts.",
+    "naturalUsage": "Natural symptom description.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "throat",
+      "pain"
+    ]
+  },
+  {
+    "id": "travel-emergencies-020",
+    "type": "travel",
+    "category": "emergencies",
+    "subcategory": "Medical",
+    "japanese": "咳が出ます。",
+    "reading": "せきがでます。",
+    "romaji": "seki ga demasu.",
+    "english": "I have a cough.",
+    "literalMeaning": "A cough comes out.",
+    "naturalUsage": "Natural way to say you are coughing.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "cough",
+      "symptom"
+    ]
+  },
+  {
+    "id": "travel-emergencies-021",
+    "type": "travel",
+    "category": "emergencies",
+    "subcategory": "Medical",
+    "japanese": "息苦しいです。",
+    "reading": "いきぐるしいです。",
+    "romaji": "ikigurushii desu.",
+    "english": "I'm having difficulty breathing.",
+    "literalMeaning": "Breathing is difficult.",
+    "naturalUsage": "Use for breathing difficulty; seek urgent help if severe.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "breathing",
+      "urgent"
+    ]
+  },
+  {
+    "id": "travel-emergencies-022",
+    "type": "travel",
+    "category": "emergencies",
+    "subcategory": "Medical",
+    "japanese": "めまいがします。",
+    "reading": "めまいがします。",
+    "romaji": "memai ga shimasu.",
+    "english": "I feel dizzy.",
+    "literalMeaning": "I have dizziness.",
+    "naturalUsage": "Natural symptom description.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "dizzy",
+      "symptom"
+    ]
+  },
+  {
+    "id": "travel-emergencies-023",
+    "type": "travel",
+    "category": "emergencies",
+    "subcategory": "Medical",
+    "japanese": "吐き気がします。",
+    "reading": "はきけがします。",
+    "romaji": "hakike ga shimasu.",
+    "english": "I feel nauseous.",
+    "literalMeaning": "I have nausea.",
+    "naturalUsage": "Useful for nausea.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "nausea",
+      "symptom"
+    ]
+  },
+  {
+    "id": "travel-emergencies-024",
+    "type": "travel",
+    "category": "emergencies",
+    "subcategory": "Medical",
+    "japanese": "吐きました。",
+    "reading": "はきました。",
+    "romaji": "hakimashita.",
+    "english": "I vomited.",
+    "literalMeaning": "I vomited.",
+    "naturalUsage": "Simple, direct symptom report.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "vomiting",
+      "symptom"
+    ]
+  },
+  {
+    "id": "travel-emergencies-025",
+    "type": "travel",
+    "category": "emergencies",
+    "subcategory": "Medical",
+    "japanese": "下痢をしています。",
+    "reading": "げりをしています。",
+    "romaji": "geri o shiteimasu.",
+    "english": "I have diarrhea.",
+    "literalMeaning": "I am having diarrhea.",
+    "naturalUsage": "Clear and appropriate in a medical setting.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "diarrhea",
+      "symptom"
+    ]
+  },
+  {
+    "id": "travel-emergencies-026",
+    "type": "travel",
+    "category": "emergencies",
+    "subcategory": "Medical",
+    "japanese": "けがをしました。",
+    "reading": "けがをしました。",
+    "romaji": "kega o shimashita.",
+    "english": "I got injured.",
+    "literalMeaning": "I sustained an injury.",
+    "naturalUsage": "General phrase for an injury.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "injury"
+    ]
+  },
+  {
+    "id": "travel-emergencies-027",
+    "type": "travel",
+    "category": "emergencies",
+    "subcategory": "Medical",
+    "japanese": "血が出ています。",
+    "reading": "ちがでています。",
+    "romaji": "chi ga deteimasu.",
+    "english": "I'm bleeding.",
+    "literalMeaning": "Blood is coming out.",
+    "naturalUsage": "Use when describing active bleeding.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "bleeding",
+      "injury"
+    ]
+  },
+  {
+    "id": "travel-emergencies-028",
+    "type": "travel",
+    "category": "emergencies",
+    "subcategory": "Medical",
+    "japanese": "足をひねりました。",
+    "reading": "あしをひねりました。",
+    "romaji": "ashi o hinerimashita.",
+    "english": "I twisted my ankle/leg.",
+    "literalMeaning": "I twisted my leg.",
+    "naturalUsage": "Useful after a minor injury while walking.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "sprain",
+      "leg"
+    ]
+  },
+  {
+    "id": "travel-emergencies-029",
+    "type": "travel",
+    "category": "emergencies",
+    "subcategory": "Medical",
+    "japanese": "この薬を飲んでいます。",
+    "reading": "このくすりをのんでいます。",
+    "romaji": "kono kusuri o nondeimasu.",
+    "english": "I'm taking this medicine.",
+    "literalMeaning": "I am taking this medicine.",
+    "naturalUsage": "Use while showing your current medication.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "medicine",
+      "current-medication"
+    ]
+  },
+  {
+    "id": "travel-emergencies-030",
+    "type": "travel",
+    "category": "emergencies",
+    "subcategory": "Medical",
+    "japanese": "アレルギーがあります。",
+    "reading": "あれるぎーがあります。",
+    "romaji": "arerugii ga arimasu.",
+    "english": "I have an allergy.",
+    "literalMeaning": "I have an allergy.",
+    "naturalUsage": "Important when speaking with medical staff.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "allergy",
+      "medical"
+    ]
+  },
+  {
+    "id": "travel-emergencies-031",
+    "type": "travel",
+    "category": "emergencies",
+    "subcategory": "Pharmacy",
+    "japanese": "風邪薬はありますか？",
+    "reading": "かぜぐすりはありますか？",
+    "romaji": "kazegusuri wa arimasu ka?",
+    "english": "Do you have cold medicine?",
+    "literalMeaning": "Is there cold medicine?",
+    "naturalUsage": "Useful at a pharmacy or drugstore.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "cold-medicine",
+      "pharmacy"
+    ]
+  },
+  {
+    "id": "travel-emergencies-032",
+    "type": "travel",
+    "category": "emergencies",
+    "subcategory": "Pharmacy",
+    "japanese": "頭痛薬はありますか？",
+    "reading": "ずつうやくはありますか？",
+    "romaji": "zutsuu-yaku wa arimasu ka?",
+    "english": "Do you have headache medicine?",
+    "literalMeaning": "Is there headache medicine?",
+    "naturalUsage": "Useful when buying OTC pain relief.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "headache",
+      "medicine"
+    ]
+  },
+  {
+    "id": "travel-emergencies-033",
+    "type": "travel",
+    "category": "emergencies",
+    "subcategory": "Pharmacy",
+    "japanese": "胃薬はありますか？",
+    "reading": "いぐすりはありますか？",
+    "romaji": "igusuri wa arimasu ka?",
+    "english": "Do you have stomach medicine?",
+    "literalMeaning": "Is there stomach medicine?",
+    "naturalUsage": "Useful for indigestion or stomach discomfort.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "stomach",
+      "medicine"
+    ]
+  },
+  {
+    "id": "travel-emergencies-034",
+    "type": "travel",
+    "category": "emergencies",
+    "subcategory": "Pharmacy",
+    "japanese": "酔い止めはありますか？",
+    "reading": "よいどめはありますか？",
+    "romaji": "yoidome wa arimasu ka?",
+    "english": "Do you have motion-sickness medicine?",
+    "literalMeaning": "Is there medicine to prevent motion sickness?",
+    "naturalUsage": "Very useful for buses, boats, or winding roads.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "motion-sickness",
+      "medicine"
+    ]
+  },
+  {
+    "id": "travel-emergencies-035",
+    "type": "travel",
+    "category": "emergencies",
+    "subcategory": "Pharmacy",
+    "japanese": "痛み止めはありますか？",
+    "reading": "いたみどめはありますか？",
+    "romaji": "itamidome wa arimasu ka?",
+    "english": "Do you have a painkiller?",
+    "literalMeaning": "Is there pain-relieving medicine?",
+    "naturalUsage": "General OTC pain-relief request.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "painkiller",
+      "medicine"
+    ]
+  },
+  {
+    "id": "travel-emergencies-036",
+    "type": "travel",
+    "category": "emergencies",
+    "subcategory": "Pharmacy",
+    "japanese": "熱を下げる薬はありますか？",
+    "reading": "ねつをさげるくすりはありますか？",
+    "romaji": "netsu o sageru kusuri wa arimasu ka?",
+    "english": "Do you have medicine to reduce a fever?",
+    "literalMeaning": "Is there medicine that lowers fever?",
+    "naturalUsage": "Useful when asking for fever medicine.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "fever",
+      "medicine"
+    ]
+  },
+  {
+    "id": "travel-emergencies-037",
+    "type": "travel",
+    "category": "emergencies",
+    "subcategory": "Pharmacy",
+    "japanese": "のどの薬はありますか？",
+    "reading": "のどのくすりはありますか？",
+    "romaji": "nodo no kusuri wa arimasu ka?",
+    "english": "Do you have medicine for a sore throat?",
+    "literalMeaning": "Is there medicine for the throat?",
+    "naturalUsage": "Useful for sore-throat treatment.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "throat",
+      "medicine"
+    ]
+  },
+  {
+    "id": "travel-emergencies-038",
+    "type": "travel",
+    "category": "emergencies",
+    "subcategory": "Pharmacy",
+    "japanese": "咳の薬はありますか？",
+    "reading": "せきのくすりはありますか？",
+    "romaji": "seki no kusuri wa arimasu ka?",
+    "english": "Do you have cough medicine?",
+    "literalMeaning": "Is there medicine for coughs?",
+    "naturalUsage": "Useful at a pharmacy.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "cough",
+      "medicine"
+    ]
+  },
+  {
+    "id": "travel-emergencies-039",
+    "type": "travel",
+    "category": "emergencies",
+    "subcategory": "Pharmacy",
+    "japanese": "これと同じような薬はありますか？",
+    "reading": "これとおなじようなくすりはありますか？",
+    "romaji": "kore to onaji you na kusuri wa arimasu ka?",
+    "english": "Do you have something similar to this medicine?",
+    "literalMeaning": "Is there medicine similar to this?",
+    "naturalUsage": "Useful while showing medicine from home or a photo.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "similar-medicine",
+      "showing"
+    ]
+  },
+  {
+    "id": "travel-emergencies-040",
+    "type": "travel",
+    "category": "emergencies",
+    "subcategory": "Pharmacy",
+    "japanese": "眠くならない薬はありますか？",
+    "reading": "ねむくならないくすりはありますか？",
+    "romaji": "nemuku naranai kusuri wa arimasu ka?",
+    "english": "Do you have medicine that won't make me drowsy?",
+    "literalMeaning": "Is there medicine that does not make one sleepy?",
+    "naturalUsage": "Useful if you need to avoid drowsiness.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "non-drowsy",
+      "medicine"
+    ]
+  },
+  {
+    "id": "travel-emergencies-041",
+    "type": "travel",
+    "category": "emergencies",
+    "subcategory": "Pharmacy",
+    "japanese": "一日に何回飲みますか？",
+    "reading": "いちにちになんかいのみますか？",
+    "romaji": "ichinichi ni nankai nomimasu ka?",
+    "english": "How many times a day should I take it?",
+    "literalMeaning": "How many times per day do I take it?",
+    "naturalUsage": "Essential for understanding dosage frequency.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "dosage",
+      "frequency"
+    ]
+  },
+  {
+    "id": "travel-emergencies-042",
+    "type": "travel",
+    "category": "emergencies",
+    "subcategory": "Pharmacy",
+    "japanese": "一回何錠ですか？",
+    "reading": "いっかいなんじょうですか？",
+    "romaji": "ikkai nanjou desu ka?",
+    "english": "How many tablets per dose?",
+    "literalMeaning": "How many tablets each time?",
+    "naturalUsage": "Useful for dosage instructions.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "dosage",
+      "tablets"
+    ]
+  },
+  {
+    "id": "travel-emergencies-043",
+    "type": "travel",
+    "category": "emergencies",
+    "subcategory": "Pharmacy",
+    "japanese": "食前ですか、食後ですか？",
+    "reading": "しょくぜんですか、しょくごですか？",
+    "romaji": "shokuzen desu ka, shokugo desu ka?",
+    "english": "Should I take it before or after meals?",
+    "literalMeaning": "Is it before meals or after meals?",
+    "naturalUsage": "Very useful for medicine instructions.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "dosage",
+      "meals"
+    ]
+  },
+  {
+    "id": "travel-emergencies-044",
+    "type": "travel",
+    "category": "emergencies",
+    "subcategory": "Pharmacy",
+    "japanese": "副作用はありますか？",
+    "reading": "ふくさようはありますか？",
+    "romaji": "fukusayou wa arimasu ka?",
+    "english": "Are there any side effects?",
+    "literalMeaning": "Are there side effects?",
+    "naturalUsage": "Useful when discussing OTC medication.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "side-effects",
+      "medicine"
+    ]
+  },
+  {
+    "id": "travel-emergencies-045",
+    "type": "travel",
+    "category": "emergencies",
+    "subcategory": "Pharmacy",
+    "japanese": "薬剤師さんに相談できますか？",
+    "reading": "やくざいしさんにそうだんできますか？",
+    "romaji": "yakuzaishi-san ni soudan dekimasu ka?",
+    "english": "Can I speak with a pharmacist?",
+    "literalMeaning": "Can I consult with the pharmacist?",
+    "naturalUsage": "Useful when you need professional advice in the pharmacy.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "pharmacist",
+      "consult"
+    ]
+  },
+  {
+    "id": "travel-emergencies-046",
+    "type": "travel",
+    "category": "emergencies",
+    "subcategory": "Police",
+    "japanese": "交番はどこですか？",
+    "reading": "こうばんはどこですか？",
+    "romaji": "kouban wa doko desu ka?",
+    "english": "Where is the police box?",
+    "literalMeaning": "Where is the police box?",
+    "naturalUsage": "Very useful in Japan for lost items and minor incidents.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "koban",
+      "police"
+    ]
+  },
+  {
+    "id": "travel-emergencies-047",
+    "type": "travel",
+    "category": "emergencies",
+    "subcategory": "Police",
+    "japanese": "警察に行きたいです。",
+    "reading": "けいさつにいきたいです。",
+    "romaji": "keisatsu ni ikitai desu.",
+    "english": "I need to go to the police.",
+    "literalMeaning": "I want to go to the police.",
+    "naturalUsage": "Useful when asking someone to direct you to police assistance.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "police",
+      "directions"
+    ]
+  },
+  {
+    "id": "travel-emergencies-048",
+    "type": "travel",
+    "category": "emergencies",
+    "subcategory": "Police",
+    "japanese": "盗まれました。",
+    "reading": "ぬすまれました。",
+    "romaji": "nusumaremashita.",
+    "english": "It was stolen.",
+    "literalMeaning": "It was stolen.",
+    "naturalUsage": "Use when reporting theft.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "theft",
+      "stolen"
+    ]
+  },
+  {
+    "id": "travel-emergencies-049",
+    "type": "travel",
+    "category": "emergencies",
+    "subcategory": "Police",
+    "japanese": "財布を盗まれました。",
+    "reading": "さいふをぬすまれました。",
+    "romaji": "saifu o nusumaremashita.",
+    "english": "My wallet was stolen.",
+    "literalMeaning": "My wallet was stolen.",
+    "naturalUsage": "Clear report of wallet theft.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "wallet",
+      "theft"
+    ]
+  },
+  {
+    "id": "travel-emergencies-050",
+    "type": "travel",
+    "category": "emergencies",
+    "subcategory": "Police",
+    "japanese": "携帯を盗まれました。",
+    "reading": "けいたいをぬすまれました。",
+    "romaji": "keitai o nusumaremashita.",
+    "english": "My phone was stolen.",
+    "literalMeaning": "My mobile phone was stolen.",
+    "naturalUsage": "Useful when reporting phone theft.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "phone",
+      "theft"
+    ]
+  },
+  {
+    "id": "travel-emergencies-051",
+    "type": "travel",
+    "category": "emergencies",
+    "subcategory": "Police",
+    "japanese": "パスポートをなくしました。",
+    "reading": "ぱすぽーとをなくしました。",
+    "romaji": "pasupooto o nakushimashita.",
+    "english": "I lost my passport.",
+    "literalMeaning": "I lost my passport.",
+    "naturalUsage": "Important when reporting a lost passport.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "passport",
+      "lost"
+    ]
+  },
+  {
+    "id": "travel-emergencies-052",
+    "type": "travel",
+    "category": "emergencies",
+    "subcategory": "Police",
+    "japanese": "パスポートを盗まれました。",
+    "reading": "ぱすぽーとをぬすまれました。",
+    "romaji": "pasupooto o nusumaremashita.",
+    "english": "My passport was stolen.",
+    "literalMeaning": "My passport was stolen.",
+    "naturalUsage": "Important theft report.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "passport",
+      "theft"
+    ]
+  },
+  {
+    "id": "travel-emergencies-053",
+    "type": "travel",
+    "category": "emergencies",
+    "subcategory": "Police",
+    "japanese": "被害届を出したいです。",
+    "reading": "ひがいとどけをだしたいです。",
+    "romaji": "higai todoke o dashitai desu.",
+    "english": "I'd like to file a police report.",
+    "literalMeaning": "I want to submit a damage/victim report.",
+    "naturalUsage": "Useful when making an official report of theft or damage.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "police-report",
+      "report"
+    ]
+  },
+  {
+    "id": "travel-emergencies-054",
+    "type": "travel",
+    "category": "emergencies",
+    "subcategory": "Police",
+    "japanese": "英語の通訳はいますか？",
+    "reading": "えいごのつうやくはいますか？",
+    "romaji": "eigo no tsuuyaku wa imasu ka?",
+    "english": "Is an English interpreter available?",
+    "literalMeaning": "Is there an English interpreter?",
+    "naturalUsage": "Useful at a police station if communication is difficult.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "interpreter",
+      "english"
+    ]
+  },
+  {
+    "id": "travel-emergencies-055",
+    "type": "travel",
+    "category": "emergencies",
+    "subcategory": "Police",
+    "japanese": "この場所でなくしました。",
+    "reading": "このばしょでなくしました。",
+    "romaji": "kono basho de nakushimashita.",
+    "english": "I lost it at this place.",
+    "literalMeaning": "I lost it at this location.",
+    "naturalUsage": "Use while showing a location on your phone.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "lost",
+      "location"
+    ]
+  },
+  {
+    "id": "travel-emergencies-056",
+    "type": "travel",
+    "category": "emergencies",
+    "subcategory": "Police",
+    "japanese": "最後に見たのはここです。",
+    "reading": "さいごにみたのはここです。",
+    "romaji": "saigo ni mita no wa koko desu.",
+    "english": "This is where I last saw it.",
+    "literalMeaning": "The last place I saw it was here.",
+    "naturalUsage": "Useful while explaining where an item went missing.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "lost",
+      "last-seen"
+    ]
+  },
+  {
+    "id": "travel-emergencies-057",
+    "type": "travel",
+    "category": "emergencies",
+    "subcategory": "Police",
+    "japanese": "いつなくしたかわかりません。",
+    "reading": "いつなくしたかわかりません。",
+    "romaji": "itsu nakushita ka wakarimasen.",
+    "english": "I don't know when I lost it.",
+    "literalMeaning": "I do not know when I lost it.",
+    "naturalUsage": "Natural when the exact time is unknown.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "lost",
+      "unknown-time"
+    ]
+  },
+  {
+    "id": "travel-emergencies-058",
+    "type": "travel",
+    "category": "emergencies",
+    "subcategory": "Police",
+    "japanese": "写真があります。",
+    "reading": "しゃしんがあります。",
+    "romaji": "shashin ga arimasu.",
+    "english": "I have a photo.",
+    "literalMeaning": "There is a photograph.",
+    "naturalUsage": "Useful when you have a photo of the lost item, person, or relevant scene.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "photo",
+      "evidence"
+    ]
+  },
+  {
+    "id": "travel-emergencies-059",
+    "type": "travel",
+    "category": "emergencies",
+    "subcategory": "Police",
+    "japanese": "この番号に連絡してください。",
+    "reading": "このばんごうにれんらくしてください。",
+    "romaji": "kono bangou ni renraku shite kudasai.",
+    "english": "Please contact me at this number.",
+    "literalMeaning": "Please contact this number.",
+    "naturalUsage": "Useful when leaving contact details.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "contact",
+      "phone-number"
+    ]
+  },
+  {
+    "id": "travel-emergencies-060",
+    "type": "travel",
+    "category": "emergencies",
+    "subcategory": "Police",
+    "japanese": "どうすればいいですか？",
+    "reading": "どうすればいいですか？",
+    "romaji": "dou sureba ii desu ka?",
+    "english": "What should I do?",
+    "literalMeaning": "What would be good to do?",
+    "naturalUsage": "Natural when asking police or staff what the next step is.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "next-step",
+      "help"
+    ]
+  },
+  {
+    "id": "travel-emergencies-061",
+    "type": "travel",
+    "category": "emergencies",
+    "subcategory": "Lost Items",
+    "japanese": "忘れ物をしました。",
+    "reading": "わすれものをしました。",
+    "romaji": "wasuremono o shimashita.",
+    "english": "I left something behind.",
+    "literalMeaning": "I forgot an item.",
+    "naturalUsage": "Very common and natural when reporting something left somewhere.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "lost-item",
+      "forgotten"
+    ]
+  },
+  {
+    "id": "travel-emergencies-062",
+    "type": "travel",
+    "category": "emergencies",
+    "subcategory": "Lost Items",
+    "japanese": "〇〇をなくしました。",
+    "reading": "〇〇をなくしました。",
+    "romaji": "___ o nakushimashita.",
+    "english": "I lost ___.",
+    "literalMeaning": "I lost ___.",
+    "naturalUsage": "General pattern for a lost item.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "lost-item",
+      "template"
+    ]
+  },
+  {
+    "id": "travel-emergencies-063",
+    "type": "travel",
+    "category": "emergencies",
+    "subcategory": "Lost Items",
+    "japanese": "電車に忘れました。",
+    "reading": "でんしゃにわすれました。",
+    "romaji": "densha ni wasuremashita.",
+    "english": "I left it on the train.",
+    "literalMeaning": "I forgot it on the train.",
+    "naturalUsage": "Useful at a station lost-and-found counter.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "train",
+      "lost-item"
+    ]
+  },
+  {
+    "id": "travel-emergencies-064",
+    "type": "travel",
+    "category": "emergencies",
+    "subcategory": "Lost Items",
+    "japanese": "タクシーに忘れました。",
+    "reading": "たくしーにわすれました。",
+    "romaji": "takushii ni wasuremashita.",
+    "english": "I left it in a taxi.",
+    "literalMeaning": "I forgot it in a taxi.",
+    "naturalUsage": "Useful if you left an item in a taxi.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "taxi",
+      "lost-item"
+    ]
+  },
+  {
+    "id": "travel-emergencies-065",
+    "type": "travel",
+    "category": "emergencies",
+    "subcategory": "Lost Items",
+    "japanese": "ホテルに忘れました。",
+    "reading": "ほてるにわすれました。",
+    "romaji": "hoteru ni wasuremashita.",
+    "english": "I left it at the hotel.",
+    "literalMeaning": "I forgot it at the hotel.",
+    "naturalUsage": "Useful when contacting hotel staff.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "hotel",
+      "lost-item"
+    ]
+  },
+  {
+    "id": "travel-emergencies-066",
+    "type": "travel",
+    "category": "emergencies",
+    "subcategory": "Lost Items",
+    "japanese": "お店に忘れました。",
+    "reading": "おみせにわすれました。",
+    "romaji": "omise ni wasuremashita.",
+    "english": "I left it at the shop/restaurant.",
+    "literalMeaning": "I forgot it at the shop.",
+    "naturalUsage": "Useful when returning to a store or restaurant.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "shop",
+      "restaurant",
+      "lost-item"
+    ]
+  },
+  {
+    "id": "travel-emergencies-067",
+    "type": "travel",
+    "category": "emergencies",
+    "subcategory": "Lost Items",
+    "japanese": "忘れ物センターはどこですか？",
+    "reading": "わすれものせんたーはどこですか？",
+    "romaji": "wasuremono sentaa wa doko desu ka?",
+    "english": "Where is the lost-and-found?",
+    "literalMeaning": "Where is the lost-item center?",
+    "naturalUsage": "Useful at large stations, airports, and facilities.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "lost-and-found",
+      "directions"
+    ]
+  },
+  {
+    "id": "travel-emergencies-068",
+    "type": "travel",
+    "category": "emergencies",
+    "subcategory": "Lost Items",
+    "japanese": "落とし物は届いていますか？",
+    "reading": "おとしものはとどいていますか？",
+    "romaji": "otoshimono wa todoiteimasu ka?",
+    "english": "Has a lost item been turned in?",
+    "literalMeaning": "Has a dropped/lost item been delivered here?",
+    "naturalUsage": "Natural at a lost-and-found counter.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "lost-and-found",
+      "turned-in"
+    ]
+  },
+  {
+    "id": "travel-emergencies-069",
+    "type": "travel",
+    "category": "emergencies",
+    "subcategory": "Lost Items",
+    "japanese": "黒い財布です。",
+    "reading": "くろいさいふです。",
+    "romaji": "kuroi saifu desu.",
+    "english": "It's a black wallet.",
+    "literalMeaning": "It is a black wallet.",
+    "naturalUsage": "Simple item description; replace color/item as needed.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "description",
+      "wallet"
+    ]
+  },
+  {
+    "id": "travel-emergencies-070",
+    "type": "travel",
+    "category": "emergencies",
+    "subcategory": "Lost Items",
+    "japanese": "小さい黒いバッグです。",
+    "reading": "ちいさいくろいばっぐです。",
+    "romaji": "chiisai kuroi baggu desu.",
+    "english": "It's a small black bag.",
+    "literalMeaning": "It is a small black bag.",
+    "naturalUsage": "Useful model for describing a lost bag.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "description",
+      "bag"
+    ]
+  },
+  {
+    "id": "travel-emergencies-071",
+    "type": "travel",
+    "category": "emergencies",
+    "subcategory": "Lost Items",
+    "japanese": "中にパスポートが入っています。",
+    "reading": "なかにぱすぽーとがはいっています。",
+    "romaji": "naka ni pasupooto ga haitteimasu.",
+    "english": "My passport is inside.",
+    "literalMeaning": "A passport is inside.",
+    "naturalUsage": "Important identifying detail when describing a lost bag.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "passport",
+      "inside"
+    ]
+  },
+  {
+    "id": "travel-emergencies-072",
+    "type": "travel",
+    "category": "emergencies",
+    "subcategory": "Lost Items",
+    "japanese": "中に現金が入っています。",
+    "reading": "なかにげんきんがはいっています。",
+    "romaji": "naka ni genkin ga haitteimasu.",
+    "english": "There is cash inside.",
+    "literalMeaning": "Cash is inside.",
+    "naturalUsage": "Useful when describing contents of a lost wallet or bag.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "cash",
+      "inside"
+    ]
+  },
+  {
+    "id": "travel-emergencies-073",
+    "type": "travel",
+    "category": "emergencies",
+    "subcategory": "Lost Items",
+    "japanese": "いつ届いたかわかりますか？",
+    "reading": "いつとどいたかわかりますか？",
+    "romaji": "itsu todoita ka wakarimasu ka?",
+    "english": "Do you know when it was turned in?",
+    "literalMeaning": "Do you know when it arrived here?",
+    "naturalUsage": "Useful when confirming whether the item matches yours.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "lost-and-found",
+      "time"
+    ]
+  },
+  {
+    "id": "travel-emergencies-074",
+    "type": "travel",
+    "category": "emergencies",
+    "subcategory": "Lost Items",
+    "japanese": "見つかったら連絡してもらえますか？",
+    "reading": "みつかったられんらくしてもらえますか？",
+    "romaji": "mitsukattara renraku shite moraemasu ka?",
+    "english": "Could you contact me if it's found?",
+    "literalMeaning": "Could I have you contact me if it is found?",
+    "naturalUsage": "Useful when leaving a report with staff.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "contact",
+      "found"
+    ]
+  },
+  {
+    "id": "travel-emergencies-075",
+    "type": "travel",
+    "category": "emergencies",
+    "subcategory": "Lost Items",
+    "japanese": "受け取りには何が必要ですか？",
+    "reading": "うけとりにはなにがひつようですか？",
+    "romaji": "uketori ni wa nani ga hitsuyou desu ka?",
+    "english": "What do I need to pick it up?",
+    "literalMeaning": "What is necessary for collection?",
+    "naturalUsage": "Useful if identification or a claim number is required.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "pickup",
+      "lost-and-found"
+    ]
+  },
+  {
+    "id": "travel-emergencies-076",
+    "type": "travel",
+    "category": "emergencies",
+    "subcategory": "Help",
+    "japanese": "道に迷いました。",
+    "reading": "みちにまよいました。",
+    "romaji": "michi ni mayoimashita.",
+    "english": "I'm lost.",
+    "literalMeaning": "I got lost.",
+    "naturalUsage": "Very natural when asking for directions.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "lost",
+      "directions"
+    ]
+  },
+  {
+    "id": "travel-emergencies-077",
+    "type": "travel",
+    "category": "emergencies",
+    "subcategory": "Help",
+    "japanese": "ここはどこですか？",
+    "reading": "ここはどこですか？",
+    "romaji": "koko wa doko desu ka?",
+    "english": "Where am I?",
+    "literalMeaning": "Where is this place?",
+    "naturalUsage": "Useful if you are disoriented.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "location",
+      "lost"
+    ]
+  },
+  {
+    "id": "travel-emergencies-078",
+    "type": "travel",
+    "category": "emergencies",
+    "subcategory": "Help",
+    "japanese": "この場所に行きたいです。",
+    "reading": "このばしょにいきたいです。",
+    "romaji": "kono basho ni ikitai desu.",
+    "english": "I want to go to this place.",
+    "literalMeaning": "I want to go to this location.",
+    "naturalUsage": "Use while showing a map or address.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "directions",
+      "showing-map"
+    ]
+  },
+  {
+    "id": "travel-emergencies-079",
+    "type": "travel",
+    "category": "emergencies",
+    "subcategory": "Help",
+    "japanese": "行き方を教えてもらえますか？",
+    "reading": "いきかたをおしえてもらえますか？",
+    "romaji": "ikikata o oshiete moraemasu ka?",
+    "english": "Could you tell me how to get there?",
+    "literalMeaning": "Could I have you tell me the way to go?",
+    "naturalUsage": "Natural and polite when asking directions.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "directions",
+      "help"
+    ]
+  },
+  {
+    "id": "travel-emergencies-080",
+    "type": "travel",
+    "category": "emergencies",
+    "subcategory": "Help",
+    "japanese": "ここから遠いですか？",
+    "reading": "ここからとおいですか？",
+    "romaji": "koko kara tooi desu ka?",
+    "english": "Is it far from here?",
+    "literalMeaning": "Is it far from here?",
+    "naturalUsage": "Useful when deciding whether to walk or take transport.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "distance",
+      "directions"
+    ]
+  },
+  {
+    "id": "travel-emergencies-081",
+    "type": "travel",
+    "category": "emergencies",
+    "subcategory": "Help",
+    "japanese": "歩いて行けますか？",
+    "reading": "あるいていけますか？",
+    "romaji": "aruite ikemasu ka?",
+    "english": "Can I walk there?",
+    "literalMeaning": "Can I go there on foot?",
+    "naturalUsage": "Very practical when asking locals or staff.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "walking",
+      "directions"
+    ]
+  },
+  {
+    "id": "travel-emergencies-082",
+    "type": "travel",
+    "category": "emergencies",
+    "subcategory": "Help",
+    "japanese": "一番近い駅はどこですか？",
+    "reading": "いちばんちかいえきはどこですか？",
+    "romaji": "ichiban chikai eki wa doko desu ka?",
+    "english": "Where is the nearest station?",
+    "literalMeaning": "Where is the closest station?",
+    "naturalUsage": "Useful when you need to get back onto public transport.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "station",
+      "nearest"
+    ]
+  },
+  {
+    "id": "travel-emergencies-083",
+    "type": "travel",
+    "category": "emergencies",
+    "subcategory": "Help",
+    "japanese": "一番近いコンビニはどこですか？",
+    "reading": "いちばんちかいこんびにはどこですか？",
+    "romaji": "ichiban chikai konbini wa doko desu ka?",
+    "english": "Where is the nearest convenience store?",
+    "literalMeaning": "Where is the closest convenience store?",
+    "naturalUsage": "Useful for basic supplies, cash, food, or directions.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "convenience-store",
+      "nearest"
+    ]
+  },
+  {
+    "id": "travel-emergencies-084",
+    "type": "travel",
+    "category": "emergencies",
+    "subcategory": "Help",
+    "japanese": "一番近いトイレはどこですか？",
+    "reading": "いちばんちかいといれはどこですか？",
+    "romaji": "ichiban chikai toire wa doko desu ka?",
+    "english": "Where is the nearest restroom?",
+    "literalMeaning": "Where is the closest toilet?",
+    "naturalUsage": "Useful in many travel situations.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "restroom",
+      "nearest"
+    ]
+  },
+  {
+    "id": "travel-emergencies-085",
+    "type": "travel",
+    "category": "emergencies",
+    "subcategory": "Help",
+    "japanese": "この電話を使ってもいいですか？",
+    "reading": "このでんわをつかってもいいですか？",
+    "romaji": "kono denwa o tsukatte mo ii desu ka?",
+    "english": "May I use this phone?",
+    "literalMeaning": "Is it okay if I use this phone?",
+    "naturalUsage": "Useful if your own phone is unavailable.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "phone",
+      "permission"
+    ]
+  },
+  {
+    "id": "travel-emergencies-086",
+    "type": "travel",
+    "category": "emergencies",
+    "subcategory": "Help",
+    "japanese": "充電できますか？",
+    "reading": "じゅうでんできますか？",
+    "romaji": "juuden dekimasu ka?",
+    "english": "Can I charge my phone here?",
+    "literalMeaning": "Can charging be done?",
+    "naturalUsage": "Useful if your phone battery is dead or low.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "charging",
+      "phone"
+    ]
+  },
+  {
+    "id": "travel-emergencies-087",
+    "type": "travel",
+    "category": "emergencies",
+    "subcategory": "Help",
+    "japanese": "Wi-Fiはありますか？",
+    "reading": "わいふぁいはありますか？",
+    "romaji": "wai-fai wa arimasu ka?",
+    "english": "Is Wi-Fi available?",
+    "literalMeaning": "Is there Wi-Fi?",
+    "naturalUsage": "Useful if you need internet access for maps or communication.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "wifi",
+      "internet"
+    ]
+  },
+  {
+    "id": "travel-emergencies-088",
+    "type": "travel",
+    "category": "emergencies",
+    "subcategory": "Help",
+    "japanese": "この住所を読んでもらえますか？",
+    "reading": "このじゅうしょをよんでもらえますか？",
+    "romaji": "kono juusho o yonde moraemasu ka?",
+    "english": "Could you read this address for me?",
+    "literalMeaning": "Could I have you read this address?",
+    "naturalUsage": "Useful when a Japanese address is difficult to understand.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "address",
+      "help"
+    ]
+  },
+  {
+    "id": "travel-emergencies-089",
+    "type": "travel",
+    "category": "emergencies",
+    "subcategory": "Help",
+    "japanese": "書いてもらえますか？",
+    "reading": "かいてもらえますか？",
+    "romaji": "kaite moraemasu ka?",
+    "english": "Could you write it down for me?",
+    "literalMeaning": "Could I have you write it?",
+    "naturalUsage": "Very useful when you need a name, address, or instruction written down.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "writing",
+      "help"
+    ]
+  },
+  {
+    "id": "travel-emergencies-090",
+    "type": "travel",
+    "category": "emergencies",
+    "subcategory": "Help",
+    "japanese": "本当に助かりました。",
+    "reading": "ほんとうにたすかりました。",
+    "romaji": "hontou ni tasukarimashita.",
+    "english": "You really helped me. Thank you.",
+    "literalMeaning": "I was truly helped.",
+    "naturalUsage": "Warm, natural way to thank someone who seriously helped you.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "thanks",
+      "help"
+    ]
+  }
 ]

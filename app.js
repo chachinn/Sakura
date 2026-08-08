@@ -220,6 +220,7 @@ let currentTravelCategory = null;
 let currentTravelFilter = "All";
 let currentTravelPhrase = null;
 let currentTravelIndex = 0;
+let pendingTravelSmartPhrase = null;
 let travelRenderRevision = 0;
 let flashcardDeck = [];
 let flashcardIndex = 0;
@@ -229,6 +230,7 @@ let searchLevels = [...globalLevels];
 let recentSearches = readJson(STORAGE.recentSearches, []);
 let searchReturnRoute = "learn";
 let universalSearchIndex = [];
+let transientSearchItems = new Map();
 let travelSearchPreparation = null;
 let travelSearchPrepared = false;
 let pendingTravelPhraseId = "";
@@ -809,14 +811,76 @@ function showQuizTab(name) {
     localStorage.setItem(STORAGE.activeQuiz, name);
 }
 
+const SEARCH_NUMBER_WORDS = Object.freeze(["zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten"]);
+const PARTY_SIZE_FORMS = Object.freeze({
+    1: { kanji:"一人", kana:"ひとり", romaji:"hitori", english:"one" },
+    2: { kanji:"二人", kana:"ふたり", romaji:"futari", english:"two" },
+    3: { kanji:"三人", kana:"さんにん", romaji:"sannin", english:"three" },
+    4: { kanji:"四人", kana:"よにん", romaji:"yonin", english:"four" },
+    5: { kanji:"五人", kana:"ごにん", romaji:"gonin", english:"five" },
+    6: { kanji:"六人", kana:"ろくにん", romaji:"rokunin", english:"six" },
+    7: { kanji:"七人", kana:"ななにん", romaji:"nananin", english:"seven" },
+    8: { kanji:"八人", kana:"はちにん", romaji:"hachinin", english:"eight" },
+    9: { kanji:"九人", kana:"きゅうにん", romaji:"kyuunin", english:"nine" },
+    10: { kanji:"十人", kana:"じゅうにん", romaji:"juunin", english:"ten" }
+});
+
 function searchText(value) {
-    return String(Array.isArray(value) ? value.join(" ") : value || "")
+    let normalized = String(Array.isArray(value) ? value.join(" ") : value || "")
         .normalize("NFKC")
         .replace(/\bwhere[\u2019']s\b/gi, "where is")
+        .replace(/\bwe[\u2019']re\b/gi, "we are")
         .replace(/[.,!?;:\uFF0C\u3002\uFF01\uFF1F\u3001]+/g, " ")
+        .replace(/[-\u2010-\u2015]+/g, " ")
         .replace(/[\u3000\s]+/g, " ")
         .trim()
         .toLocaleLowerCase();
+    return normalized
+        .replace(/\b(one|two|three|four|five|six|seven|eight|nine|ten)\b/g, word => String(SEARCH_NUMBER_WORDS.indexOf(word)))
+        .replace(/\bpersons?\b|\bpeople\b/g, "people")
+        .replace(/\bbookings?\b|\breservations?\b/g, "reservation")
+        .replace(/\bwi\s+fi\b/g, "wifi")
+        .replace(/\bmicrowav(?:e|ed|ing)\b/g, "heat")
+        .replace(/\bpictures?\b/g, "photo")
+        .replace(/[\s]+/g, " ")
+        .trim();
+}
+
+function detectRestaurantPartySize(query) {
+    const normalized = searchText(query);
+    const numberMatch = normalized.match(/(?:^|\s)(10|[1-9])(?:\s|$)/);
+    if (!numberMatch) return null;
+    const partySize = Number(numberMatch[1]);
+    const strongContext = /\btable\b|\bpeople\b|\bparty\b|\bwe are\b/.test(normalized) || new RegExp(`\\bjust\\s+${partySize}\\b`).test(normalized);
+    return strongContext ? partySize : null;
+}
+
+function buildRestaurantPartySizeVariant(partySize) {
+    const form = PARTY_SIZE_FORMS[partySize];
+    if (!form) return null;
+    const peopleMeaning = partySize === 1 ? "One person" : `${form.english.charAt(0).toUpperCase()}${form.english.slice(1)} people`;
+    return {
+        id: `smart-travel:restaurant.party-size:${partySize}`,
+        type: "travel", category: "restaurants", subcategory: "Essential",
+        japanese: `すみません、${form.kanji}です。`, reading: `すみません、${form.kana}です。`, romaji: `sumimasen, ${form.romaji} desu.`,
+        english: `Excuse me, table for ${form.english}.`, literalMeaning: `${peopleMeaning}.`,
+        naturalUsage: "Suggested restaurant arrival phrase based on Sakura's trusted party-size template.",
+        politeness: "polite", priority: "essential", tags: ["party-size", "restaurant-arrival", `people-${partySize}`],
+        smartVariant: true, transient: true, intent: "restaurant.party-size", sourceId: "travel-restaurants-001"
+    };
+}
+
+const TRAVEL_SEARCH_INTENTS = Object.freeze([
+    Object.freeze({ id:"restaurant.party-size", detect:detectRestaurantPartySize, build:buildRestaurantPartySizeVariant })
+]);
+
+function smartTravelSearchResults(query) {
+    if (!query || !["all", "travel"].includes(searchType)) return [];
+    return TRAVEL_SEARCH_INTENTS.flatMap(intent => {
+        const value = intent.detect(query);
+        const item = value === null ? null : intent.build(value);
+        return item ? [{ item, score:2000 }] : [];
+    });
 }
 
 function cleanEntryText(value) {
@@ -937,6 +1001,8 @@ function searchScore(item, query) {
         else if (field.split(/\s+/).some(word => word.startsWith(query))) score = Math.max(score, 500 - index * 4);
         else if (field.includes(query)) score = Math.max(score, 300 - index * 2);
     });
+    const queryTokens = query.split(/\s+/).filter(token => token.length > 1);
+    if (queryTokens.length > 1 && queryTokens.every(token => fields.some(field => field.split(/\s+/).some(word => word.startsWith(token))))) score = Math.max(score, 180);
     return score;
 }
 
@@ -944,7 +1010,7 @@ function filteredSearchResults(query) {
     const normalized = searchText(query);
     if (!normalized) return [];
     const seen = new Set();
-    return searchIndex().map(item => ({ item, score: searchScore(item, normalized) }))
+    return [...smartTravelSearchResults(query), ...searchIndex().map(item => ({ item, score: searchScore(item, normalized) }))]
         .filter(result => result.score > 0)
         .filter(result => searchType === "all" || result.item.type === searchType)
         .filter(result => !["kanji", "vocabulary"].includes(result.item.type) || searchLevels.includes(result.item.jlpt))
@@ -985,26 +1051,27 @@ function renderSearchResults() {
     if (!query) return;
 
     const results = filteredSearchResults(query);
+    transientSearchItems = new Map(results.filter(result => result.item.transient).map(result => [itemKey(result.item), result.item]));
     document.getElementById("search-result-summary").textContent = `${results.length} ${results.length === 1 ? "result" : "results"} for “${query}”`;
     document.getElementById("search-results").innerHTML = results.map(({ item }) => {
-        const saved = isSaved(item);
+        const saved = !item.transient && isSaved(item);
         const reading = searchReading(item);
         const meta = searchResultMeta(item);
         return `<article class="search-result-card" data-search-key="${escapeSearchHtml(itemKey(item))}">
             <button class="search-result-main" type="button" data-search-open="${escapeSearchHtml(itemKey(item))}">
-                <span class="search-result-topline"><span class="search-type-tag">${searchTypeLabel(item.type)}</span>${meta ? `<span class="tag">${escapeSearchHtml(meta)}</span>` : ""}</span>
+                <span class="search-result-topline"><span class="search-type-tag">${searchTypeLabel(item.type)}</span>${item.smartVariant ? `<span class="status-label">Suggested phrase</span>` : ""}${meta ? `<span class="tag">${escapeSearchHtml(meta)}</span>` : ""}</span>
                 <h2>${escapeSearchHtml(searchMainText(item))}</h2>
                 ${reading ? `<p class="search-result-reading">${escapeSearchHtml(reading)}${item.romaji && !reading.includes(item.romaji) ? ` · ${escapeSearchHtml(item.romaji)}` : ""}</p>` : ""}
                 <p class="search-result-meaning">${escapeSearchHtml(item.meaning || item.english)}</p>
             </button>
-            <button class="save-button search-result-save ${saved ? "saved" : ""}" type="button" data-search-save="${escapeSearchHtml(itemKey(item))}" aria-label="${saved ? "Unsave" : "Save"} ${escapeSearchHtml(searchMainText(item))}" aria-pressed="${saved}">${saved ? "♥" : "♡"}</button>
+            ${item.transient ? "" : `<button class="save-button search-result-save ${saved ? "saved" : ""}" type="button" data-search-save="${escapeSearchHtml(itemKey(item))}" aria-label="${saved ? "Unsave" : "Save"} ${escapeSearchHtml(searchMainText(item))}" aria-pressed="${saved}">${saved ? "♥" : "♡"}</button>`}
         </article>`;
     }).join("");
     document.getElementById("search-empty").hidden = results.length > 0;
 }
 
 function findSearchItem(key) {
-    return searchIndex().find(item => itemKey(item) === key);
+    return transientSearchItems.get(key) || searchIndex().find(item => itemKey(item) === key);
 }
 
 function addRecentSearch(query) {
@@ -1060,7 +1127,8 @@ function openSearchResult(item) {
     if (item.type === "kanji") openKanjiDetail(item, "search");
     else if (item.type === "vocabulary") openWordDetail(item, "search");
     else if (item.type === "travel" && travelCategoryMetadata(item.category)) {
-        pendingTravelPhraseId = item.id;
+        if (item.smartVariant) pendingTravelSmartPhrase = item;
+        else pendingTravelPhraseId = item.id;
         currentTravelFilter = "All";
         showRoute(`travel-${item.category}`);
     }
@@ -1282,7 +1350,8 @@ function renderTravelPhraseCard(phrase) {
     const empty = document.getElementById("travel-category-empty");
     const controls = ["previous-travel-phrase", "random-travel-phrase", "next-travel-phrase"].map(id => document.getElementById(id));
     const pool = travelPhrasePool();
-    controls.forEach(button => { button.disabled = !phrase || !pool.length; });
+    const isSmartVariant = Boolean(phrase?.smartVariant);
+    controls.forEach(button => { button.disabled = !phrase || !pool.length || isSmartVariant; });
     empty.hidden = Boolean(phrase);
     if (!phrase) {
         list.innerHTML = "";
@@ -1291,10 +1360,10 @@ function renderTravelPhraseCard(phrase) {
     }
     const position = Math.max(0, pool.findIndex(item => item.id === phrase.id));
     currentTravelIndex = position;
-    document.getElementById("travel-category-status").textContent = pool.length ? `${position + 1} of ${pool.length} · ${currentTravelFilter}` : "Saved travel phrase";
-    const saved = isSaved(phrase);
+    document.getElementById("travel-category-status").textContent = isSmartVariant ? "Suggested phrase · Restaurants" : pool.length ? `${position + 1} of ${pool.length} · ${currentTravelFilter}` : "Saved travel phrase";
+    const saved = !isSmartVariant && isSaved(phrase);
     list.innerHTML = `<article class="travel-phrase-card">
-        <div class="card-topline"><span class="status-label">${escapeSearchHtml(phrase.subcategory)}</span><button class="save-button ${saved ? "saved" : ""}" type="button" data-save-travel-phrase aria-label="${saved ? "Unsave" : "Save"} travel phrase" aria-pressed="${saved}">${saved ? "♥" : "♡"}</button></div>
+        <div class="card-topline"><span class="status-label">${escapeSearchHtml(isSmartVariant ? "Suggested phrase" : phrase.subcategory)}</span>${isSmartVariant ? "" : `<button class="save-button ${saved ? "saved" : ""}" type="button" data-save-travel-phrase aria-label="${saved ? "Unsave" : "Save"} travel phrase" aria-pressed="${saved}">${saved ? "♥" : "♡"}</button>`}</div>
         <h2>${escapeSearchHtml(phrase.japanese)}</h2>
         <p class="travel-reading">${escapeSearchHtml(phrase.reading)}</p>
         <p class="travel-romaji">${escapeSearchHtml(phrase.romaji)}</p>
@@ -1344,6 +1413,12 @@ async function renderTravelCategory(category) {
     document.getElementById("travel-category-empty").hidden = true;
     document.getElementById("travel-phrase-list").innerHTML = "";
     renderTravelFilters(category);
+    if (pendingTravelSmartPhrase?.category === category) {
+        const smartPhrase = pendingTravelSmartPhrase;
+        pendingTravelSmartPhrase = null;
+        renderTravelPhraseCard(smartPhrase);
+        return;
+    }
     try {
         await window.SakuraTravelLoader.loadTravelCategory(category);
         if (revision !== travelRenderRevision || currentRoute !== `travel-${category}`) return;

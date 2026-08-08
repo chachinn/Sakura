@@ -1,0 +1,3178 @@
+[
+  {
+    "id": "travel-others-001",
+    "type": "travel",
+    "category": "others",
+    "subcategory": "Convenience Stores",
+    "japanese": "これ、温めてもらえますか？",
+    "reading": "これ、あたためてもらえますか？",
+    "romaji": "kore, atatamete moraemasu ka?",
+    "english": "Could you heat this up?",
+    "literalMeaning": "Could I have you warm this?",
+    "naturalUsage": "Very natural for convenience-store meals.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "heating",
+      "food"
+    ]
+  },
+  {
+    "id": "travel-others-002",
+    "type": "travel",
+    "category": "others",
+    "subcategory": "Convenience Stores",
+    "japanese": "温めなくて大丈夫です。",
+    "reading": "あたためなくてだいじょうぶです。",
+    "romaji": "atatamenakute daijoubu desu.",
+    "english": "No need to heat it.",
+    "literalMeaning": "It's okay not to warm it.",
+    "naturalUsage": "Natural response when staff asks whether to heat food.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "heating",
+      "no"
+    ]
+  },
+  {
+    "id": "travel-others-003",
+    "type": "travel",
+    "category": "others",
+    "subcategory": "Convenience Stores",
+    "japanese": "お箸をお願いします。",
+    "reading": "おはしをおねがいします。",
+    "romaji": "ohashi o onegai shimasu.",
+    "english": "Chopsticks, please.",
+    "literalMeaning": "Chopsticks, please.",
+    "naturalUsage": "Useful for bentos, noodles, and prepared food.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "chopsticks",
+      "utensils"
+    ]
+  },
+  {
+    "id": "travel-others-004",
+    "type": "travel",
+    "category": "others",
+    "subcategory": "Convenience Stores",
+    "japanese": "スプーンをお願いします。",
+    "reading": "すぷーんをおねがいします。",
+    "romaji": "supuun o onegai shimasu.",
+    "english": "A spoon, please.",
+    "literalMeaning": "A spoon, please.",
+    "naturalUsage": "Useful for desserts, soup, and rice dishes.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "spoon",
+      "utensils"
+    ]
+  },
+  {
+    "id": "travel-others-005",
+    "type": "travel",
+    "category": "others",
+    "subcategory": "Convenience Stores",
+    "japanese": "フォークをお願いします。",
+    "reading": "ふぉーくをおねがいします。",
+    "romaji": "fooku o onegai shimasu.",
+    "english": "A fork, please.",
+    "literalMeaning": "A fork, please.",
+    "naturalUsage": "Useful if you prefer a fork.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "fork",
+      "utensils"
+    ]
+  },
+  {
+    "id": "travel-others-006",
+    "type": "travel",
+    "category": "others",
+    "subcategory": "Convenience Stores",
+    "japanese": "袋をお願いします。",
+    "reading": "ふくろをおねがいします。",
+    "romaji": "fukuro o onegai shimasu.",
+    "english": "A bag, please.",
+    "literalMeaning": "A bag, please.",
+    "naturalUsage": "Shopping bags may cost extra.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "bag"
+    ]
+  },
+  {
+    "id": "travel-others-007",
+    "type": "travel",
+    "category": "others",
+    "subcategory": "Convenience Stores",
+    "japanese": "袋はいりません。",
+    "reading": "ふくろはいりません。",
+    "romaji": "fukuro wa irimasen.",
+    "english": "I don't need a bag.",
+    "literalMeaning": "A bag is not needed.",
+    "naturalUsage": "Very common at convenience stores.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "bag",
+      "no-bag"
+    ]
+  },
+  {
+    "id": "travel-others-008",
+    "type": "travel",
+    "category": "others",
+    "subcategory": "Convenience Stores",
+    "japanese": "このままで大丈夫です。",
+    "reading": "このままでだいじょうぶです。",
+    "romaji": "kono mama de daijoubu desu.",
+    "english": "This is fine as it is.",
+    "literalMeaning": "It's okay like this.",
+    "naturalUsage": "Useful when you do not need a bag or special packaging.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "no-bag",
+      "as-is"
+    ]
+  },
+  {
+    "id": "travel-others-009",
+    "type": "travel",
+    "category": "others",
+    "subcategory": "Convenience Stores",
+    "japanese": "レシートをお願いします。",
+    "reading": "れしーとをおねがいします。",
+    "romaji": "reshiito o onegai shimasu.",
+    "english": "A receipt, please.",
+    "literalMeaning": "A receipt, please.",
+    "naturalUsage": "Useful if one is not automatically handed to you.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "receipt"
+    ]
+  },
+  {
+    "id": "travel-others-010",
+    "type": "travel",
+    "category": "others",
+    "subcategory": "Convenience Stores",
+    "japanese": "レシートはいりません。",
+    "reading": "れしーとはいりません。",
+    "romaji": "reshiito wa irimasen.",
+    "english": "I don't need the receipt.",
+    "literalMeaning": "The receipt is not needed.",
+    "naturalUsage": "Natural if you do not need it.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "receipt",
+      "no"
+    ]
+  },
+  {
+    "id": "travel-others-011",
+    "type": "travel",
+    "category": "others",
+    "subcategory": "Convenience Stores",
+    "japanese": "お手洗いはありますか？",
+    "reading": "おてあらいはありますか？",
+    "romaji": "otearai wa arimasu ka?",
+    "english": "Do you have a restroom?",
+    "literalMeaning": "Is there a restroom?",
+    "naturalUsage": "Some convenience stores allow customer restroom use.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "restroom"
+    ]
+  },
+  {
+    "id": "travel-others-012",
+    "type": "travel",
+    "category": "others",
+    "subcategory": "Convenience Stores",
+    "japanese": "ATMはありますか？",
+    "reading": "えーてぃーえむはありますか？",
+    "romaji": "ee-tii-emu wa arimasu ka?",
+    "english": "Is there an ATM?",
+    "literalMeaning": "Is there an ATM?",
+    "naturalUsage": "Useful when looking for cash withdrawal.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "ATM",
+      "cash"
+    ]
+  },
+  {
+    "id": "travel-others-013",
+    "type": "travel",
+    "category": "others",
+    "subcategory": "Convenience Stores",
+    "japanese": "海外のカードは使えますか？",
+    "reading": "かいがいのかーどはつかえますか？",
+    "romaji": "kaigai no kaado wa tsukaemasu ka?",
+    "english": "Can I use an overseas card?",
+    "literalMeaning": "Can an overseas card be used?",
+    "naturalUsage": "Useful for ATMs and payment terminals.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "foreign-card",
+      "payment"
+    ]
+  },
+  {
+    "id": "travel-others-014",
+    "type": "travel",
+    "category": "others",
+    "subcategory": "Convenience Stores",
+    "japanese": "ICカードで払えますか？",
+    "reading": "あいしーかーどではらえますか？",
+    "romaji": "ai-shii kaado de haraemasu ka?",
+    "english": "Can I pay with an IC card?",
+    "literalMeaning": "Can I pay by IC card?",
+    "naturalUsage": "Useful for Suica/PASMO/ICOCA where accepted.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "IC-card",
+      "payment"
+    ]
+  },
+  {
+    "id": "travel-others-015",
+    "type": "travel",
+    "category": "others",
+    "subcategory": "Convenience Stores",
+    "japanese": "カードでお願いします。",
+    "reading": "かーどでおねがいします。",
+    "romaji": "kaado de onegai shimasu.",
+    "english": "By card, please.",
+    "literalMeaning": "By card, please.",
+    "naturalUsage": "Natural when choosing card payment.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "card",
+      "payment"
+    ]
+  },
+  {
+    "id": "travel-others-016",
+    "type": "travel",
+    "category": "others",
+    "subcategory": "Convenience Stores",
+    "japanese": "現金でお願いします。",
+    "reading": "げんきんでおねがいします。",
+    "romaji": "genkin de onegai shimasu.",
+    "english": "Cash, please.",
+    "literalMeaning": "By cash, please.",
+    "naturalUsage": "Natural when choosing cash.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "cash",
+      "payment"
+    ]
+  },
+  {
+    "id": "travel-others-017",
+    "type": "travel",
+    "category": "others",
+    "subcategory": "Convenience Stores",
+    "japanese": "これはどこですか？",
+    "reading": "これはどこですか？",
+    "romaji": "kore wa doko desu ka?",
+    "english": "Where is this?",
+    "literalMeaning": "Where is this?",
+    "naturalUsage": "Use while showing a product photo or name.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "product",
+      "location"
+    ]
+  },
+  {
+    "id": "travel-others-018",
+    "type": "travel",
+    "category": "others",
+    "subcategory": "Convenience Stores",
+    "japanese": "充電器はありますか？",
+    "reading": "じゅうでんきはありますか？",
+    "romaji": "juudenki wa arimasu ka?",
+    "english": "Do you sell chargers?",
+    "literalMeaning": "Is there a charger?",
+    "naturalUsage": "Useful for phone accessories.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "charger",
+      "phone"
+    ]
+  },
+  {
+    "id": "travel-others-019",
+    "type": "travel",
+    "category": "others",
+    "subcategory": "Convenience Stores",
+    "japanese": "モバイルバッテリーはありますか？",
+    "reading": "もばいるばってりーはありますか？",
+    "romaji": "mobairu batterii wa arimasu ka?",
+    "english": "Do you have portable batteries?",
+    "literalMeaning": "Is there a mobile battery?",
+    "naturalUsage": "Useful if your phone battery is low.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "power-bank",
+      "phone"
+    ]
+  },
+  {
+    "id": "travel-others-020",
+    "type": "travel",
+    "category": "others",
+    "subcategory": "Convenience Stores",
+    "japanese": "ゴミ箱はどこですか？",
+    "reading": "ごみばこはどこですか？",
+    "romaji": "gomibako wa doko desu ka?",
+    "english": "Where is the trash bin?",
+    "literalMeaning": "Where is the trash can?",
+    "naturalUsage": "Useful when disposal bins are not obvious.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "trash"
+    ]
+  },
+  {
+    "id": "travel-others-021",
+    "type": "travel",
+    "category": "others",
+    "subcategory": "Convenience Stores",
+    "japanese": "コピーできますか？",
+    "reading": "こぴーできますか？",
+    "romaji": "kopii dekimasu ka?",
+    "english": "Can I make copies here?",
+    "literalMeaning": "Can copying be done?",
+    "naturalUsage": "Useful for convenience-store multifunction machines.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "copy",
+      "service"
+    ]
+  },
+  {
+    "id": "travel-others-022",
+    "type": "travel",
+    "category": "others",
+    "subcategory": "Convenience Stores",
+    "japanese": "印刷できますか？",
+    "reading": "いんさつできますか？",
+    "romaji": "insatsu dekimasu ka?",
+    "english": "Can I print here?",
+    "literalMeaning": "Can printing be done?",
+    "naturalUsage": "Useful for documents and tickets.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "print",
+      "service"
+    ]
+  },
+  {
+    "id": "travel-others-023",
+    "type": "travel",
+    "category": "others",
+    "subcategory": "Convenience Stores",
+    "japanese": "写真を印刷できますか？",
+    "reading": "しゃしんをいんさつできますか？",
+    "romaji": "shashin o insatsu dekimasu ka?",
+    "english": "Can I print photos here?",
+    "literalMeaning": "Can photographs be printed?",
+    "naturalUsage": "Useful at multifunction machines.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "photo-print",
+      "service"
+    ]
+  },
+  {
+    "id": "travel-others-024",
+    "type": "travel",
+    "category": "others",
+    "subcategory": "Convenience Stores",
+    "japanese": "チケットを発券したいです。",
+    "reading": "ちけっとをはっけんしたいです。",
+    "romaji": "chiketto o hakken shitai desu.",
+    "english": "I'd like to print/issue my ticket.",
+    "literalMeaning": "I want to issue a ticket.",
+    "naturalUsage": "Useful for tickets reserved online and collected at convenience stores.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "ticket",
+      "pickup"
+    ]
+  },
+  {
+    "id": "travel-others-025",
+    "type": "travel",
+    "category": "others",
+    "subcategory": "Convenience Stores",
+    "japanese": "予約番号はこちらです。",
+    "reading": "よやくばんごうはこちらです。",
+    "romaji": "yoyaku bangou wa kochira desu.",
+    "english": "Here's my reservation number.",
+    "literalMeaning": "The reservation number is here.",
+    "naturalUsage": "Use while showing the number needed for ticket or parcel pickup.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "reservation-number",
+      "pickup"
+    ]
+  },
+  {
+    "id": "travel-others-026",
+    "type": "travel",
+    "category": "others",
+    "subcategory": "Convenience Stores",
+    "japanese": "荷物を受け取りたいです。",
+    "reading": "にもつをうけとりたいです。",
+    "romaji": "nimotsu o uketoritai desu.",
+    "english": "I'd like to pick up a parcel.",
+    "literalMeaning": "I want to receive luggage/a parcel.",
+    "naturalUsage": "Useful for convenience-store parcel pickup.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "parcel",
+      "pickup"
+    ]
+  },
+  {
+    "id": "travel-others-027",
+    "type": "travel",
+    "category": "others",
+    "subcategory": "Convenience Stores",
+    "japanese": "荷物を送りたいです。",
+    "reading": "にもつをおくりたいです。",
+    "romaji": "nimotsu o okuritai desu.",
+    "english": "I'd like to send a parcel.",
+    "literalMeaning": "I want to send luggage/a parcel.",
+    "naturalUsage": "Useful at stores that accept courier shipments.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "parcel",
+      "send"
+    ]
+  },
+  {
+    "id": "travel-others-028",
+    "type": "travel",
+    "category": "others",
+    "subcategory": "Convenience Stores",
+    "japanese": "宅配便は使えますか？",
+    "reading": "たくはいびんはつかえますか？",
+    "romaji": "takuhaibin wa tsukaemasu ka?",
+    "english": "Can I use the delivery service here?",
+    "literalMeaning": "Can courier delivery be used?",
+    "naturalUsage": "Useful when checking whether the store accepts shipments.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "takuhaibin",
+      "delivery"
+    ]
+  },
+  {
+    "id": "travel-others-029",
+    "type": "travel",
+    "category": "others",
+    "subcategory": "Convenience Stores",
+    "japanese": "イートインは使えますか？",
+    "reading": "いーといんはつかえますか？",
+    "romaji": "iito-in wa tsukaemasu ka?",
+    "english": "Can I use the eat-in area?",
+    "literalMeaning": "Can the eat-in area be used?",
+    "naturalUsage": "Useful at convenience stores with seating.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "eat-in",
+      "seating"
+    ]
+  },
+  {
+    "id": "travel-others-030",
+    "type": "travel",
+    "category": "others",
+    "subcategory": "Convenience Stores",
+    "japanese": "ここで食べても大丈夫ですか？",
+    "reading": "ここでたべてもだいじょうぶですか？",
+    "romaji": "koko de tabete mo daijoubu desu ka?",
+    "english": "Is it okay to eat here?",
+    "literalMeaning": "Is it okay if I eat here?",
+    "naturalUsage": "Useful when you are unsure whether food may be eaten in that area.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "eat-here",
+      "permission"
+    ]
+  },
+  {
+    "id": "travel-others-031",
+    "type": "travel",
+    "category": "others",
+    "subcategory": "Shrines & Temples",
+    "japanese": "御朱印をいただけますか？",
+    "reading": "ごしゅいんをいただけますか？",
+    "romaji": "goshuin o itadakemasu ka?",
+    "english": "May I receive a goshuin?",
+    "literalMeaning": "May I receive a goshuin?",
+    "naturalUsage": "Polite and natural at the goshuin counter.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "goshuin"
+    ]
+  },
+  {
+    "id": "travel-others-032",
+    "type": "travel",
+    "category": "others",
+    "subcategory": "Shrines & Temples",
+    "japanese": "御朱印帳はありますか？",
+    "reading": "ごしゅいんちょうはありますか？",
+    "romaji": "goshuinchou wa arimasu ka?",
+    "english": "Do you sell goshuin books?",
+    "literalMeaning": "Is there a goshuin book?",
+    "naturalUsage": "Useful if you want to buy a shrine/temple stamp book.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "goshuincho",
+      "book"
+    ]
+  },
+  {
+    "id": "travel-others-033",
+    "type": "travel",
+    "category": "others",
+    "subcategory": "Shrines & Temples",
+    "japanese": "御朱印はどこでいただけますか？",
+    "reading": "ごしゅいんはどこでいただけますか？",
+    "romaji": "goshuin wa doko de itadakemasu ka?",
+    "english": "Where can I receive a goshuin?",
+    "literalMeaning": "Where may I receive a goshuin?",
+    "naturalUsage": "Useful at large shrine/temple grounds.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "goshuin",
+      "location"
+    ]
+  },
+  {
+    "id": "travel-others-034",
+    "type": "travel",
+    "category": "others",
+    "subcategory": "Shrines & Temples",
+    "japanese": "お守りはどこですか？",
+    "reading": "おまもりはどこですか？",
+    "romaji": "omamori wa doko desu ka?",
+    "english": "Where are the omamori?",
+    "literalMeaning": "Where are the protective charms?",
+    "naturalUsage": "Simple and natural.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "omamori"
+    ]
+  },
+  {
+    "id": "travel-others-035",
+    "type": "travel",
+    "category": "others",
+    "subcategory": "Shrines & Temples",
+    "japanese": "交通安全のお守りはありますか？",
+    "reading": "こうつうあんぜんのおまもりはありますか？",
+    "romaji": "koutsuu anzen no omamori wa arimasu ka?",
+    "english": "Do you have a traffic-safety omamori?",
+    "literalMeaning": "Is there a traffic-safety charm?",
+    "naturalUsage": "Useful when choosing a specific charm.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "omamori",
+      "traffic-safety"
+    ]
+  },
+  {
+    "id": "travel-others-036",
+    "type": "travel",
+    "category": "others",
+    "subcategory": "Shrines & Temples",
+    "japanese": "健康のお守りはありますか？",
+    "reading": "けんこうのおまもりはありますか？",
+    "romaji": "kenkou no omamori wa arimasu ka?",
+    "english": "Do you have a health omamori?",
+    "literalMeaning": "Is there a health charm?",
+    "naturalUsage": "Useful for health-related charms.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "omamori",
+      "health"
+    ]
+  },
+  {
+    "id": "travel-others-037",
+    "type": "travel",
+    "category": "others",
+    "subcategory": "Shrines & Temples",
+    "japanese": "おみくじはどこですか？",
+    "reading": "おみくじはどこですか？",
+    "romaji": "omikuji wa doko desu ka?",
+    "english": "Where are the omikuji?",
+    "literalMeaning": "Where are the fortune slips?",
+    "naturalUsage": "Useful on shrine/temple grounds.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "omikuji"
+    ]
+  },
+  {
+    "id": "travel-others-038",
+    "type": "travel",
+    "category": "others",
+    "subcategory": "Shrines & Temples",
+    "japanese": "英語のおみくじはありますか？",
+    "reading": "えいごのおみくじはありますか？",
+    "romaji": "eigo no omikuji wa arimasu ka?",
+    "english": "Do you have omikuji in English?",
+    "literalMeaning": "Are there English fortune slips?",
+    "naturalUsage": "Some popular sites provide multilingual omikuji.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "omikuji",
+      "english"
+    ]
+  },
+  {
+    "id": "travel-others-039",
+    "type": "travel",
+    "category": "others",
+    "subcategory": "Shrines & Temples",
+    "japanese": "ここで写真を撮っても大丈夫ですか？",
+    "reading": "ここでしゃしんをとってもだいじょうぶですか？",
+    "romaji": "koko de shashin o totte mo daijoubu desu ka?",
+    "english": "Is it okay to take photos here?",
+    "literalMeaning": "Is it okay if I take photos here?",
+    "naturalUsage": "Important in halls or sacred areas where photography may be restricted.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "photography",
+      "permission"
+    ]
+  },
+  {
+    "id": "travel-others-040",
+    "type": "travel",
+    "category": "others",
+    "subcategory": "Shrines & Temples",
+    "japanese": "中に入っても大丈夫ですか？",
+    "reading": "なかにはいってもだいじょうぶですか？",
+    "romaji": "naka ni haitte mo daijoubu desu ka?",
+    "english": "Is it okay to go inside?",
+    "literalMeaning": "Is it okay if I enter?",
+    "naturalUsage": "Useful if access restrictions are unclear.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "entry",
+      "permission"
+    ]
+  },
+  {
+    "id": "travel-others-041",
+    "type": "travel",
+    "category": "others",
+    "subcategory": "Shrines & Temples",
+    "japanese": "拝観料はいくらですか？",
+    "reading": "はいかんりょうはいくらですか？",
+    "romaji": "haikanryou wa ikura desu ka?",
+    "english": "How much is the admission fee?",
+    "literalMeaning": "How much is the viewing fee?",
+    "naturalUsage": "Common at temples with paid areas.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "admission",
+      "fee"
+    ]
+  },
+  {
+    "id": "travel-others-042",
+    "type": "travel",
+    "category": "others",
+    "subcategory": "Shrines & Temples",
+    "japanese": "何時まで入れますか？",
+    "reading": "なんじまではいれますか？",
+    "romaji": "nanji made hairemasu ka?",
+    "english": "Until what time can I enter?",
+    "literalMeaning": "Until what time can I enter?",
+    "naturalUsage": "Useful near closing time.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "entry",
+      "closing-time"
+    ]
+  },
+  {
+    "id": "travel-others-043",
+    "type": "travel",
+    "category": "others",
+    "subcategory": "Shrines & Temples",
+    "japanese": "本堂はどこですか？",
+    "reading": "ほんどうはどこですか？",
+    "romaji": "hondou wa doko desu ka?",
+    "english": "Where is the main hall?",
+    "literalMeaning": "Where is the main hall?",
+    "naturalUsage": "Useful at temple complexes.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "main-hall",
+      "temple"
+    ]
+  },
+  {
+    "id": "travel-others-044",
+    "type": "travel",
+    "category": "others",
+    "subcategory": "Shrines & Temples",
+    "japanese": "社務所はどこですか？",
+    "reading": "しゃむしょはどこですか？",
+    "romaji": "shamusho wa doko desu ka?",
+    "english": "Where is the shrine office?",
+    "literalMeaning": "Where is the shrine office?",
+    "naturalUsage": "Useful for goshuin, omamori, and inquiries.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "shrine-office"
+    ]
+  },
+  {
+    "id": "travel-others-045",
+    "type": "travel",
+    "category": "others",
+    "subcategory": "Shrines & Temples",
+    "japanese": "お寺の入口はどこですか？",
+    "reading": "おてらのいりぐちはどこですか？",
+    "romaji": "otera no iriguchi wa doko desu ka?",
+    "english": "Where is the temple entrance?",
+    "literalMeaning": "Where is the temple entrance?",
+    "naturalUsage": "Useful at larger complexes.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "temple",
+      "entrance"
+    ]
+  },
+  {
+    "id": "travel-others-046",
+    "type": "travel",
+    "category": "others",
+    "subcategory": "Shrines & Temples",
+    "japanese": "参拝の仕方を教えてもらえますか？",
+    "reading": "さんぱいのしかたをおしえてもらえますか？",
+    "romaji": "sanpai no shikata o oshiete moraemasu ka?",
+    "english": "Could you show me how to pray here?",
+    "literalMeaning": "Could I have you explain how to worship?",
+    "naturalUsage": "Useful if you want to follow local etiquette correctly.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "prayer",
+      "etiquette"
+    ]
+  },
+  {
+    "id": "travel-others-047",
+    "type": "travel",
+    "category": "others",
+    "subcategory": "Shrines & Temples",
+    "japanese": "ここは神社ですか、お寺ですか？",
+    "reading": "ここはじんじゃですか、おてらですか？",
+    "romaji": "koko wa jinja desu ka, otera desu ka?",
+    "english": "Is this a shrine or a temple?",
+    "literalMeaning": "Is this a shrine or a temple?",
+    "naturalUsage": "Useful when the distinction is unclear.",
+    "politeness": "polite",
+    "priority": "extra",
+    "tags": [
+      "shrine",
+      "temple"
+    ]
+  },
+  {
+    "id": "travel-others-048",
+    "type": "travel",
+    "category": "others",
+    "subcategory": "Shrines & Temples",
+    "japanese": "お参りしてもいいですか？",
+    "reading": "おまいりしてもいいですか？",
+    "romaji": "omairi shite mo ii desu ka?",
+    "english": "May I pray here?",
+    "literalMeaning": "Is it okay if I worship here?",
+    "naturalUsage": "Natural and respectful.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "prayer",
+      "permission"
+    ]
+  },
+  {
+    "id": "travel-others-049",
+    "type": "travel",
+    "category": "others",
+    "subcategory": "Shrines & Temples",
+    "japanese": "お賽銭はここですか？",
+    "reading": "おさいせんはここですか？",
+    "romaji": "osaisen wa koko desu ka?",
+    "english": "Is this where I make an offering?",
+    "literalMeaning": "Is the monetary offering here?",
+    "naturalUsage": "Useful if the offering box is not obvious.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "offering"
+    ]
+  },
+  {
+    "id": "travel-others-050",
+    "type": "travel",
+    "category": "others",
+    "subcategory": "Shrines & Temples",
+    "japanese": "ありがとうございました。",
+    "reading": "ありがとうございました。",
+    "romaji": "arigatou gozaimashita.",
+    "english": "Thank you very much.",
+    "literalMeaning": "Thank you very much.",
+    "naturalUsage": "Polite when leaving a counter or after receiving help.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "thanks"
+    ]
+  },
+  {
+    "id": "travel-others-051",
+    "type": "travel",
+    "category": "others",
+    "subcategory": "Tickets & Admission",
+    "japanese": "チケットを一枚お願いします。",
+    "reading": "ちけっとをいちまいおねがいします。",
+    "romaji": "chiketto o ichimai onegai shimasu.",
+    "english": "One ticket, please.",
+    "literalMeaning": "One ticket, please.",
+    "naturalUsage": "Very natural at a staffed ticket counter.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "ticket",
+      "one"
+    ]
+  },
+  {
+    "id": "travel-others-052",
+    "type": "travel",
+    "category": "others",
+    "subcategory": "Tickets & Admission",
+    "japanese": "チケットを二枚お願いします。",
+    "reading": "ちけっとをにまいおねがいします。",
+    "romaji": "chiketto o nimai onegai shimasu.",
+    "english": "Two tickets, please.",
+    "literalMeaning": "Two tickets, please.",
+    "naturalUsage": "Natural for two people.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "ticket",
+      "two"
+    ]
+  },
+  {
+    "id": "travel-others-053",
+    "type": "travel",
+    "category": "others",
+    "subcategory": "Tickets & Admission",
+    "japanese": "当日券はありますか？",
+    "reading": "とうじつけんはありますか？",
+    "romaji": "toujitsuken wa arimasu ka?",
+    "english": "Are same-day tickets available?",
+    "literalMeaning": "Are there same-day tickets?",
+    "naturalUsage": "Useful for museums, exhibitions, concerts, and attractions.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "same-day-ticket"
+    ]
+  },
+  {
+    "id": "travel-others-054",
+    "type": "travel",
+    "category": "others",
+    "subcategory": "Tickets & Admission",
+    "japanese": "前売り券はありますか？",
+    "reading": "まえうりけんはありますか？",
+    "romaji": "maeuriken wa arimasu ka?",
+    "english": "Are advance tickets available?",
+    "literalMeaning": "Are there advance-sale tickets?",
+    "naturalUsage": "Useful when planning ahead.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "advance-ticket"
+    ]
+  },
+  {
+    "id": "travel-others-055",
+    "type": "travel",
+    "category": "others",
+    "subcategory": "Tickets & Admission",
+    "japanese": "まだチケットは買えますか？",
+    "reading": "まだちけっとはかえますか？",
+    "romaji": "mada chiketto wa kaemasu ka?",
+    "english": "Can I still buy a ticket?",
+    "literalMeaning": "Can tickets still be bought?",
+    "naturalUsage": "Useful close to entry time or closing.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "ticket",
+      "availability"
+    ]
+  },
+  {
+    "id": "travel-others-056",
+    "type": "travel",
+    "category": "others",
+    "subcategory": "Tickets & Admission",
+    "japanese": "売り切れですか？",
+    "reading": "うりきれですか？",
+    "romaji": "urikire desu ka?",
+    "english": "Is it sold out?",
+    "literalMeaning": "Is it sold out?",
+    "naturalUsage": "Useful when ticket availability is unclear.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "sold-out"
+    ]
+  },
+  {
+    "id": "travel-others-057",
+    "type": "travel",
+    "category": "others",
+    "subcategory": "Tickets & Admission",
+    "japanese": "予約が必要ですか？",
+    "reading": "よやくがひつようですか？",
+    "romaji": "yoyaku ga hitsuyou desu ka?",
+    "english": "Do I need a reservation?",
+    "literalMeaning": "Is a reservation necessary?",
+    "naturalUsage": "Useful for timed attractions and exhibitions.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "reservation"
+    ]
+  },
+  {
+    "id": "travel-others-058",
+    "type": "travel",
+    "category": "others",
+    "subcategory": "Tickets & Admission",
+    "japanese": "予約しています。",
+    "reading": "よやくしています。",
+    "romaji": "yoyaku shiteimasu.",
+    "english": "I have a reservation.",
+    "literalMeaning": "I have made a reservation.",
+    "naturalUsage": "Natural at an admission desk.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "reservation",
+      "arrival"
+    ]
+  },
+  {
+    "id": "travel-others-059",
+    "type": "travel",
+    "category": "others",
+    "subcategory": "Tickets & Admission",
+    "japanese": "QRコードはこちらです。",
+    "reading": "きゅーあーるこーどはこちらです。",
+    "romaji": "kyuu-aaru koodo wa kochira desu.",
+    "english": "Here's my QR code.",
+    "literalMeaning": "The QR code is here.",
+    "naturalUsage": "Use while showing an e-ticket.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "QR",
+      "e-ticket"
+    ]
+  },
+  {
+    "id": "travel-others-060",
+    "type": "travel",
+    "category": "others",
+    "subcategory": "Tickets & Admission",
+    "japanese": "電子チケットでも大丈夫ですか？",
+    "reading": "でんしちけっとでもだいじょうぶですか？",
+    "romaji": "denshi chiketto demo daijoubu desu ka?",
+    "english": "Is an e-ticket okay?",
+    "literalMeaning": "Is an electronic ticket okay?",
+    "naturalUsage": "Useful if ticket format is unclear.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "e-ticket"
+    ]
+  },
+  {
+    "id": "travel-others-061",
+    "type": "travel",
+    "category": "others",
+    "subcategory": "Tickets & Admission",
+    "japanese": "入場口はどこですか？",
+    "reading": "にゅうじょうぐちはどこですか？",
+    "romaji": "nyuujouguchi wa doko desu ka?",
+    "english": "Where is the entrance?",
+    "literalMeaning": "Where is the admission entrance?",
+    "naturalUsage": "Useful at large venues.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "entrance"
+    ]
+  },
+  {
+    "id": "travel-others-062",
+    "type": "travel",
+    "category": "others",
+    "subcategory": "Tickets & Admission",
+    "japanese": "列はここですか？",
+    "reading": "れつはここですか？",
+    "romaji": "retsu wa koko desu ka?",
+    "english": "Is this the line?",
+    "literalMeaning": "Is the queue here?",
+    "naturalUsage": "Very practical at busy attractions.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "queue",
+      "line"
+    ]
+  },
+  {
+    "id": "travel-others-063",
+    "type": "travel",
+    "category": "others",
+    "subcategory": "Tickets & Admission",
+    "japanese": "最後尾はどこですか？",
+    "reading": "さいこうびはどこですか？",
+    "romaji": "saikoubi wa doko desu ka?",
+    "english": "Where is the end of the line?",
+    "literalMeaning": "Where is the very back of the line?",
+    "naturalUsage": "Common and useful in Japan.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "queue",
+      "end"
+    ]
+  },
+  {
+    "id": "travel-others-064",
+    "type": "travel",
+    "category": "others",
+    "subcategory": "Tickets & Admission",
+    "japanese": "入場時間は何時ですか？",
+    "reading": "にゅうじょうじかんはなんじですか？",
+    "romaji": "nyuujou jikan wa nanji desu ka?",
+    "english": "What time can I enter?",
+    "literalMeaning": "What time is the admission time?",
+    "naturalUsage": "Useful with timed-entry tickets.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "entry-time"
+    ]
+  },
+  {
+    "id": "travel-others-065",
+    "type": "travel",
+    "category": "others",
+    "subcategory": "Tickets & Admission",
+    "japanese": "今から入れますか？",
+    "reading": "いまからはいれますか？",
+    "romaji": "ima kara hairemasu ka?",
+    "english": "Can I enter now?",
+    "literalMeaning": "Can I enter from now?",
+    "naturalUsage": "Useful if you arrive early or late.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "entry",
+      "now"
+    ]
+  },
+  {
+    "id": "travel-others-066",
+    "type": "travel",
+    "category": "others",
+    "subcategory": "Tickets & Admission",
+    "japanese": "再入場できますか？",
+    "reading": "さいにゅうじょうできますか？",
+    "romaji": "sainyuujou dekimasu ka?",
+    "english": "Can I re-enter?",
+    "literalMeaning": "Can re-entry be done?",
+    "naturalUsage": "Useful at events and attractions.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "re-entry"
+    ]
+  },
+  {
+    "id": "travel-others-067",
+    "type": "travel",
+    "category": "others",
+    "subcategory": "Tickets & Admission",
+    "japanese": "指定席ですか？",
+    "reading": "していせきですか？",
+    "romaji": "shiteiseki desu ka?",
+    "english": "Is this reserved seating?",
+    "literalMeaning": "Is it an assigned seat?",
+    "naturalUsage": "Useful for shows, concerts, and transport-like attractions.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "reserved-seat"
+    ]
+  },
+  {
+    "id": "travel-others-068",
+    "type": "travel",
+    "category": "others",
+    "subcategory": "Tickets & Admission",
+    "japanese": "自由席ですか？",
+    "reading": "じゆうせきですか？",
+    "romaji": "jiyuuseki desu ka?",
+    "english": "Is this unreserved seating?",
+    "literalMeaning": "Is it free seating?",
+    "naturalUsage": "Useful when seat rules are unclear.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "unreserved-seat"
+    ]
+  },
+  {
+    "id": "travel-others-069",
+    "type": "travel",
+    "category": "others",
+    "subcategory": "Tickets & Admission",
+    "japanese": "席はどこですか？",
+    "reading": "せきはどこですか？",
+    "romaji": "seki wa doko desu ka?",
+    "english": "Where is my seat?",
+    "literalMeaning": "Where is the seat?",
+    "naturalUsage": "Useful inside theaters and event venues.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "seat",
+      "location"
+    ]
+  },
+  {
+    "id": "travel-others-070",
+    "type": "travel",
+    "category": "others",
+    "subcategory": "Tickets & Admission",
+    "japanese": "チケットを見せればいいですか？",
+    "reading": "ちけっとをみせればいいですか？",
+    "romaji": "chiketto o misereba ii desu ka?",
+    "english": "Do I just show my ticket?",
+    "literalMeaning": "Is it enough if I show the ticket?",
+    "naturalUsage": "Useful when entry procedure is unclear.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "ticket-check",
+      "entry"
+    ]
+  },
+  {
+    "id": "travel-others-071",
+    "type": "travel",
+    "category": "others",
+    "subcategory": "Concerts & Live Events",
+    "japanese": "会場はどこですか？",
+    "reading": "かいじょうはどこですか？",
+    "romaji": "kaijou wa doko desu ka?",
+    "english": "Where is the venue?",
+    "literalMeaning": "Where is the venue?",
+    "naturalUsage": "Useful near stations or event complexes.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "venue",
+      "directions"
+    ]
+  },
+  {
+    "id": "travel-others-072",
+    "type": "travel",
+    "category": "others",
+    "subcategory": "Concerts & Live Events",
+    "japanese": "入口はどこですか？",
+    "reading": "いりぐちはどこですか？",
+    "romaji": "iriguchi wa doko desu ka?",
+    "english": "Where is the entrance?",
+    "literalMeaning": "Where is the entrance?",
+    "naturalUsage": "Useful at large halls and arenas.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "entrance"
+    ]
+  },
+  {
+    "id": "travel-others-073",
+    "type": "travel",
+    "category": "others",
+    "subcategory": "Concerts & Live Events",
+    "japanese": "物販はどこですか？",
+    "reading": "ぶっぱんはどこですか？",
+    "romaji": "buppan wa doko desu ka?",
+    "english": "Where is the merchandise area?",
+    "literalMeaning": "Where are the goods sales?",
+    "naturalUsage": "Very natural concert/event wording.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "merch",
+      "goods"
+    ]
+  },
+  {
+    "id": "travel-others-074",
+    "type": "travel",
+    "category": "others",
+    "subcategory": "Concerts & Live Events",
+    "japanese": "グッズはまだ買えますか？",
+    "reading": "ぐっずはまだかえますか？",
+    "romaji": "guzzu wa mada kaemasu ka?",
+    "english": "Can I still buy merchandise?",
+    "literalMeaning": "Can the goods still be bought?",
+    "naturalUsage": "Useful if sales are ending or items are selling out.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "merch",
+      "availability"
+    ]
+  },
+  {
+    "id": "travel-others-075",
+    "type": "travel",
+    "category": "others",
+    "subcategory": "Concerts & Live Events",
+    "japanese": "このグッズは売り切れですか？",
+    "reading": "このぐっずはうりきれですか？",
+    "romaji": "kono guzzu wa urikire desu ka?",
+    "english": "Is this merch sold out?",
+    "literalMeaning": "Is this merchandise sold out?",
+    "naturalUsage": "Useful at event merchandise booths.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "merch",
+      "sold-out"
+    ]
+  },
+  {
+    "id": "travel-others-076",
+    "type": "travel",
+    "category": "others",
+    "subcategory": "Concerts & Live Events",
+    "japanese": "整理番号はどこで確認しますか？",
+    "reading": "せいりばんごうはどこでかくにんしますか？",
+    "romaji": "seiri bangou wa doko de kakunin shimasu ka?",
+    "english": "Where do I check my entry number?",
+    "literalMeaning": "Where do I confirm the numbered-entry number?",
+    "naturalUsage": "Useful at standing/live-house events.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "entry-number",
+      "seiri-bangou"
+    ]
+  },
+  {
+    "id": "travel-others-077",
+    "type": "travel",
+    "category": "others",
+    "subcategory": "Concerts & Live Events",
+    "japanese": "整理番号順ですか？",
+    "reading": "せいりばんごうじゅんですか？",
+    "romaji": "seiri bangou-jun desu ka?",
+    "english": "Do we enter in numbered order?",
+    "literalMeaning": "Is it in order of entry number?",
+    "naturalUsage": "Useful at Japanese live events.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "entry-number",
+      "queue"
+    ]
+  },
+  {
+    "id": "travel-others-078",
+    "type": "travel",
+    "category": "others",
+    "subcategory": "Concerts & Live Events",
+    "japanese": "開場は何時ですか？",
+    "reading": "かいじょうはなんじですか？",
+    "romaji": "kaijou wa nanji desu ka?",
+    "english": "What time do doors open?",
+    "literalMeaning": "What time is venue opening?",
+    "naturalUsage": "Essential event timing phrase.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "doors-open",
+      "time"
+    ]
+  },
+  {
+    "id": "travel-others-079",
+    "type": "travel",
+    "category": "others",
+    "subcategory": "Concerts & Live Events",
+    "japanese": "開演は何時ですか？",
+    "reading": "かいえんはなんじですか？",
+    "romaji": "kaien wa nanji desu ka?",
+    "english": "What time does the show start?",
+    "literalMeaning": "What time is the performance start?",
+    "naturalUsage": "Essential concert phrase.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "show-start",
+      "time"
+    ]
+  },
+  {
+    "id": "travel-others-080",
+    "type": "travel",
+    "category": "others",
+    "subcategory": "Concerts & Live Events",
+    "japanese": "ロッカーはありますか？",
+    "reading": "ろっかーはありますか？",
+    "romaji": "rokkaa wa arimasu ka?",
+    "english": "Are there lockers?",
+    "literalMeaning": "Are there lockers?",
+    "naturalUsage": "Useful at concert halls and live houses.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "locker"
+    ]
+  },
+  {
+    "id": "travel-others-081",
+    "type": "travel",
+    "category": "others",
+    "subcategory": "Concerts & Live Events",
+    "japanese": "荷物を預けられますか？",
+    "reading": "にもつをあずけられますか？",
+    "romaji": "nimotsu o azukeraremasu ka?",
+    "english": "Can I check my bag?",
+    "literalMeaning": "Can I leave my luggage?",
+    "naturalUsage": "Useful if cloakroom/bag check is available.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "bag-check",
+      "luggage"
+    ]
+  },
+  {
+    "id": "travel-others-082",
+    "type": "travel",
+    "category": "others",
+    "subcategory": "Concerts & Live Events",
+    "japanese": "ドリンク代はいくらですか？",
+    "reading": "どりんくだいはいくらですか？",
+    "romaji": "dorinku-dai wa ikura desu ka?",
+    "english": "How much is the drink fee?",
+    "literalMeaning": "How much is the drink charge?",
+    "naturalUsage": "Especially useful at Japanese live houses.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "drink-fee",
+      "live-house"
+    ]
+  },
+  {
+    "id": "travel-others-083",
+    "type": "travel",
+    "category": "others",
+    "subcategory": "Concerts & Live Events",
+    "japanese": "ドリンクチケットはどこで使いますか？",
+    "reading": "どりんくちけっとはどこでつかいますか？",
+    "romaji": "dorinku chiketto wa doko de tsukaimasu ka?",
+    "english": "Where do I use the drink ticket?",
+    "literalMeaning": "Where do I use the drink ticket?",
+    "naturalUsage": "Useful at venues requiring a drink ticket.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "drink-ticket"
+    ]
+  },
+  {
+    "id": "travel-others-084",
+    "type": "travel",
+    "category": "others",
+    "subcategory": "Concerts & Live Events",
+    "japanese": "スタンディングですか？",
+    "reading": "すたんでぃんぐですか？",
+    "romaji": "sutandingu desu ka?",
+    "english": "Is it standing room?",
+    "literalMeaning": "Is it standing?",
+    "naturalUsage": "Useful when venue format is unclear.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "standing"
+    ]
+  },
+  {
+    "id": "travel-others-085",
+    "type": "travel",
+    "category": "others",
+    "subcategory": "Concerts & Live Events",
+    "japanese": "指定席ですか？",
+    "reading": "していせきですか？",
+    "romaji": "shiteiseki desu ka?",
+    "english": "Is it assigned seating?",
+    "literalMeaning": "Is it a reserved seat?",
+    "naturalUsage": "Useful at halls and arenas.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "seating"
+    ]
+  },
+  {
+    "id": "travel-others-086",
+    "type": "travel",
+    "category": "others",
+    "subcategory": "Concerts & Live Events",
+    "japanese": "席はどこですか？",
+    "reading": "せきはどこですか？",
+    "romaji": "seki wa doko desu ka?",
+    "english": "Where is my seat?",
+    "literalMeaning": "Where is the seat?",
+    "naturalUsage": "Useful after entering.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "seat",
+      "location"
+    ]
+  },
+  {
+    "id": "travel-others-087",
+    "type": "travel",
+    "category": "others",
+    "subcategory": "Concerts & Live Events",
+    "japanese": "写真を撮っても大丈夫ですか？",
+    "reading": "しゃしんをとってもだいじょうぶですか？",
+    "romaji": "shashin o totte mo daijoubu desu ka?",
+    "english": "Is photography allowed?",
+    "literalMeaning": "Is it okay to take photos?",
+    "naturalUsage": "Important because event rules vary widely.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "photography",
+      "rules"
+    ]
+  },
+  {
+    "id": "travel-others-088",
+    "type": "travel",
+    "category": "others",
+    "subcategory": "Concerts & Live Events",
+    "japanese": "動画を撮っても大丈夫ですか？",
+    "reading": "どうがをとってもだいじょうぶですか？",
+    "romaji": "douga o totte mo daijoubu desu ka?",
+    "english": "Is video recording allowed?",
+    "literalMeaning": "Is it okay to take video?",
+    "naturalUsage": "Useful because video rules may differ from photo rules.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "video",
+      "rules"
+    ]
+  },
+  {
+    "id": "travel-others-089",
+    "type": "travel",
+    "category": "others",
+    "subcategory": "Concerts & Live Events",
+    "japanese": "再入場できますか？",
+    "reading": "さいにゅうじょうできますか？",
+    "romaji": "sainyuujou dekimasu ka?",
+    "english": "Can I re-enter?",
+    "literalMeaning": "Can re-entry be done?",
+    "naturalUsage": "Useful at longer events.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "re-entry"
+    ]
+  },
+  {
+    "id": "travel-others-090",
+    "type": "travel",
+    "category": "others",
+    "subcategory": "Concerts & Live Events",
+    "japanese": "終演は何時ごろですか？",
+    "reading": "しゅうえんはなんじごろですか？",
+    "romaji": "shuuen wa nanji goro desu ka?",
+    "english": "About what time will the show end?",
+    "literalMeaning": "Around what time is the performance end?",
+    "naturalUsage": "Useful for planning trains after the event.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "end-time",
+      "transport"
+    ]
+  },
+  {
+    "id": "travel-others-091",
+    "type": "travel",
+    "category": "others",
+    "subcategory": "Anime & Exhibitions",
+    "japanese": "展示会場はどこですか？",
+    "reading": "てんじかいじょうはどこですか？",
+    "romaji": "tenji kaijou wa doko desu ka?",
+    "english": "Where is the exhibition area?",
+    "literalMeaning": "Where is the exhibition venue?",
+    "naturalUsage": "Useful at anime exhibitions and conventions.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "exhibition",
+      "venue"
+    ]
+  },
+  {
+    "id": "travel-others-092",
+    "type": "travel",
+    "category": "others",
+    "subcategory": "Anime & Exhibitions",
+    "japanese": "グッズ売り場はどこですか？",
+    "reading": "ぐっずうりばはどこですか？",
+    "romaji": "guzzu uriba wa doko desu ka?",
+    "english": "Where is the merchandise shop?",
+    "literalMeaning": "Where is the goods sales area?",
+    "naturalUsage": "Very useful at anime exhibitions.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "merch",
+      "shop"
+    ]
+  },
+  {
+    "id": "travel-others-093",
+    "type": "travel",
+    "category": "others",
+    "subcategory": "Anime & Exhibitions",
+    "japanese": "限定グッズはありますか？",
+    "reading": "げんていぐっずはありますか？",
+    "romaji": "gentei guzzu wa arimasu ka?",
+    "english": "Are there limited-edition goods?",
+    "literalMeaning": "Are there limited goods?",
+    "naturalUsage": "Useful for event-exclusive merchandise.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "limited-goods"
+    ]
+  },
+  {
+    "id": "travel-others-094",
+    "type": "travel",
+    "category": "others",
+    "subcategory": "Anime & Exhibitions",
+    "japanese": "会場限定ですか？",
+    "reading": "かいじょうげんていですか？",
+    "romaji": "kaijou gentei desu ka?",
+    "english": "Is this venue-exclusive?",
+    "literalMeaning": "Is this limited to the venue?",
+    "naturalUsage": "Useful for exclusive merchandise.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "venue-exclusive"
+    ]
+  },
+  {
+    "id": "travel-others-095",
+    "type": "travel",
+    "category": "others",
+    "subcategory": "Anime & Exhibitions",
+    "japanese": "ランダム商品ですか？",
+    "reading": "らんだむしょうひんですか？",
+    "romaji": "randamu shouhin desu ka?",
+    "english": "Is this a random item?",
+    "literalMeaning": "Is this a random product?",
+    "naturalUsage": "Useful for blind/random character goods.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "random-goods"
+    ]
+  },
+  {
+    "id": "travel-others-096",
+    "type": "travel",
+    "category": "others",
+    "subcategory": "Anime & Exhibitions",
+    "japanese": "中身は選べませんか？",
+    "reading": "なかみはえらべませんか？",
+    "romaji": "nakami wa erabemasen ka?",
+    "english": "Can I not choose what's inside?",
+    "literalMeaning": "Can the contents not be chosen?",
+    "naturalUsage": "Useful for blind packs and random goods.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "blind-box",
+      "random"
+    ]
+  },
+  {
+    "id": "travel-others-097",
+    "type": "travel",
+    "category": "others",
+    "subcategory": "Anime & Exhibitions",
+    "japanese": "一人何個までですか？",
+    "reading": "ひとりなんこまでですか？",
+    "romaji": "hitori nanko made desu ka?",
+    "english": "How many can each person buy?",
+    "literalMeaning": "Up to how many per person?",
+    "naturalUsage": "Useful when purchase limits apply.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "purchase-limit"
+    ]
+  },
+  {
+    "id": "travel-others-098",
+    "type": "travel",
+    "category": "others",
+    "subcategory": "Anime & Exhibitions",
+    "japanese": "このキャラクターはありますか？",
+    "reading": "このきゃらくたーはありますか？",
+    "romaji": "kono kyarakutaa wa arimasu ka?",
+    "english": "Do you have this character?",
+    "literalMeaning": "Is this character available?",
+    "naturalUsage": "Use while showing a character image or name.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "character",
+      "merch"
+    ]
+  },
+  {
+    "id": "travel-others-099",
+    "type": "travel",
+    "category": "others",
+    "subcategory": "Anime & Exhibitions",
+    "japanese": "在庫はありますか？",
+    "reading": "ざいこはありますか？",
+    "romaji": "zaiko wa arimasu ka?",
+    "english": "Is it in stock?",
+    "literalMeaning": "Is there stock?",
+    "naturalUsage": "Useful at merch counters.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "stock"
+    ]
+  },
+  {
+    "id": "travel-others-100",
+    "type": "travel",
+    "category": "others",
+    "subcategory": "Anime & Exhibitions",
+    "japanese": "再入荷はありますか？",
+    "reading": "さいにゅうかはありますか？",
+    "romaji": "sainyuuka wa arimasu ka?",
+    "english": "Will it be restocked?",
+    "literalMeaning": "Is there a restock?",
+    "naturalUsage": "Useful for sold-out event merchandise.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "restock"
+    ]
+  },
+  {
+    "id": "travel-others-101",
+    "type": "travel",
+    "category": "others",
+    "subcategory": "Anime & Exhibitions",
+    "japanese": "展示はどこから見ますか？",
+    "reading": "てんじはどこからみますか？",
+    "romaji": "tenji wa doko kara mimasu ka?",
+    "english": "Where does the exhibition start?",
+    "literalMeaning": "From where do I view the exhibition?",
+    "naturalUsage": "Useful at guided-flow exhibitions.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "exhibition",
+      "start"
+    ]
+  },
+  {
+    "id": "travel-others-102",
+    "type": "travel",
+    "category": "others",
+    "subcategory": "Anime & Exhibitions",
+    "japanese": "順路はどちらですか？",
+    "reading": "じゅんろはどちらですか？",
+    "romaji": "junro wa dochira desu ka?",
+    "english": "Which way is the route?",
+    "literalMeaning": "Which way is the designated route?",
+    "naturalUsage": "Very natural for exhibitions and museums.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "route",
+      "exhibition"
+    ]
+  },
+  {
+    "id": "travel-others-103",
+    "type": "travel",
+    "category": "others",
+    "subcategory": "Anime & Exhibitions",
+    "japanese": "写真撮影できますか？",
+    "reading": "しゃしんさつえいできますか？",
+    "romaji": "shashin satsuei dekimasu ka?",
+    "english": "Can I take photos?",
+    "literalMeaning": "Can photography be done?",
+    "naturalUsage": "Useful where photography restrictions vary by section.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "photography"
+    ]
+  },
+  {
+    "id": "travel-others-104",
+    "type": "travel",
+    "category": "others",
+    "subcategory": "Anime & Exhibitions",
+    "japanese": "ここは撮影禁止ですか？",
+    "reading": "ここはさつえいきんしですか？",
+    "romaji": "koko wa satsuei kinshi desu ka?",
+    "english": "Is photography prohibited here?",
+    "literalMeaning": "Is photography prohibited here?",
+    "naturalUsage": "Useful if signage is unclear.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "no-photography"
+    ]
+  },
+  {
+    "id": "travel-others-105",
+    "type": "travel",
+    "category": "others",
+    "subcategory": "Anime & Exhibitions",
+    "japanese": "フラッシュは使っても大丈夫ですか？",
+    "reading": "ふらっしゅはつかってもだいじょうぶですか？",
+    "romaji": "furasshu wa tsukatte mo daijoubu desu ka?",
+    "english": "Is flash photography allowed?",
+    "literalMeaning": "Is it okay to use flash?",
+    "naturalUsage": "Useful at exhibitions where flash may be restricted.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "flash",
+      "photography"
+    ]
+  },
+  {
+    "id": "travel-others-106",
+    "type": "travel",
+    "category": "others",
+    "subcategory": "Anime & Exhibitions",
+    "japanese": "コスプレエリアはどこですか？",
+    "reading": "こすぷれえりあはどこですか？",
+    "romaji": "kosupure eria wa doko desu ka?",
+    "english": "Where is the cosplay area?",
+    "literalMeaning": "Where is the cosplay area?",
+    "naturalUsage": "Useful at conventions.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "cosplay",
+      "area"
+    ]
+  },
+  {
+    "id": "travel-others-107",
+    "type": "travel",
+    "category": "others",
+    "subcategory": "Anime & Exhibitions",
+    "japanese": "更衣室はどこですか？",
+    "reading": "こういしつはどこですか？",
+    "romaji": "kouishitsu wa doko desu ka?",
+    "english": "Where is the changing room?",
+    "literalMeaning": "Where is the changing room?",
+    "naturalUsage": "Useful at cosplay events.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "changing-room",
+      "cosplay"
+    ]
+  },
+  {
+    "id": "travel-others-108",
+    "type": "travel",
+    "category": "others",
+    "subcategory": "Anime & Exhibitions",
+    "japanese": "整理券は必要ですか？",
+    "reading": "せいりけんはひつようですか？",
+    "romaji": "seiriken wa hitsuyou desu ka?",
+    "english": "Do I need a numbered ticket?",
+    "literalMeaning": "Is a numbered ticket necessary?",
+    "naturalUsage": "Useful for popular booths and timed attractions.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "numbered-ticket"
+    ]
+  },
+  {
+    "id": "travel-others-109",
+    "type": "travel",
+    "category": "others",
+    "subcategory": "Anime & Exhibitions",
+    "japanese": "整理券はどこでもらえますか？",
+    "reading": "せいりけんはどこでもらえますか？",
+    "romaji": "seiriken wa doko de moraemasu ka?",
+    "english": "Where can I get a numbered ticket?",
+    "literalMeaning": "Where can I receive a numbered ticket?",
+    "naturalUsage": "Useful at events with crowd control.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "numbered-ticket",
+      "location"
+    ]
+  },
+  {
+    "id": "travel-others-110",
+    "type": "travel",
+    "category": "others",
+    "subcategory": "Anime & Exhibitions",
+    "japanese": "この列は何の列ですか？",
+    "reading": "このれつはなんのれつですか？",
+    "romaji": "kono retsu wa nan no retsu desu ka?",
+    "english": "What is this line for?",
+    "literalMeaning": "What kind of line is this?",
+    "naturalUsage": "Extremely practical at busy conventions.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "queue",
+      "line"
+    ]
+  },
+  {
+    "id": "travel-others-111",
+    "type": "travel",
+    "category": "others",
+    "subcategory": "Aquariums & Zoos",
+    "japanese": "入口はどこですか？",
+    "reading": "いりぐちはどこですか？",
+    "romaji": "iriguchi wa doko desu ka?",
+    "english": "Where is the entrance?",
+    "literalMeaning": "Where is the entrance?",
+    "naturalUsage": "Useful at large facilities.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "entrance"
+    ]
+  },
+  {
+    "id": "travel-others-112",
+    "type": "travel",
+    "category": "others",
+    "subcategory": "Aquariums & Zoos",
+    "japanese": "館内マップはありますか？",
+    "reading": "かんないまっぷはありますか？",
+    "romaji": "kannai mappu wa arimasu ka?",
+    "english": "Do you have a map?",
+    "literalMeaning": "Is there an inside map?",
+    "naturalUsage": "Useful at aquariums and zoos.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "map"
+    ]
+  },
+  {
+    "id": "travel-others-113",
+    "type": "travel",
+    "category": "others",
+    "subcategory": "Aquariums & Zoos",
+    "japanese": "イルカショーは何時ですか？",
+    "reading": "いるかしょーはなんじですか？",
+    "romaji": "iruka shoo wa nanji desu ka?",
+    "english": "What time is the dolphin show?",
+    "literalMeaning": "What time is the dolphin show?",
+    "naturalUsage": "Useful at aquariums that offer shows.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "dolphin-show",
+      "time"
+    ]
+  },
+  {
+    "id": "travel-others-114",
+    "type": "travel",
+    "category": "others",
+    "subcategory": "Aquariums & Zoos",
+    "japanese": "餌やりは何時ですか？",
+    "reading": "えさやりはなんじですか？",
+    "romaji": "esayari wa nanji desu ka?",
+    "english": "What time is feeding?",
+    "literalMeaning": "What time is feeding?",
+    "naturalUsage": "Useful for animal feeding schedules.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "feeding",
+      "time"
+    ]
+  },
+  {
+    "id": "travel-others-115",
+    "type": "travel",
+    "category": "others",
+    "subcategory": "Aquariums & Zoos",
+    "japanese": "次のショーは何時ですか？",
+    "reading": "つぎのしょーはなんじですか？",
+    "romaji": "tsugi no shoo wa nanji desu ka?",
+    "english": "What time is the next show?",
+    "literalMeaning": "What time is the next show?",
+    "naturalUsage": "General attraction phrase.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "show",
+      "time"
+    ]
+  },
+  {
+    "id": "travel-others-116",
+    "type": "travel",
+    "category": "others",
+    "subcategory": "Aquariums & Zoos",
+    "japanese": "この動物は何ですか？",
+    "reading": "このどうぶつはなんですか？",
+    "romaji": "kono doubutsu wa nan desu ka?",
+    "english": "What animal is this?",
+    "literalMeaning": "What is this animal?",
+    "naturalUsage": "Useful for unfamiliar species.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "animal",
+      "question"
+    ]
+  },
+  {
+    "id": "travel-others-117",
+    "type": "travel",
+    "category": "others",
+    "subcategory": "Aquariums & Zoos",
+    "japanese": "この魚は何ですか？",
+    "reading": "このさかなはなんですか？",
+    "romaji": "kono sakana wa nan desu ka?",
+    "english": "What fish is this?",
+    "literalMeaning": "What is this fish?",
+    "naturalUsage": "Useful at aquariums.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "fish",
+      "question"
+    ]
+  },
+  {
+    "id": "travel-others-118",
+    "type": "travel",
+    "category": "others",
+    "subcategory": "Aquariums & Zoos",
+    "japanese": "写真を撮っても大丈夫ですか？",
+    "reading": "しゃしんをとってもだいじょうぶですか？",
+    "romaji": "shashin o totte mo daijoubu desu ka?",
+    "english": "Is it okay to take photos?",
+    "literalMeaning": "Is it okay if I take photos?",
+    "naturalUsage": "Useful where restrictions apply.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "photography"
+    ]
+  },
+  {
+    "id": "travel-others-119",
+    "type": "travel",
+    "category": "others",
+    "subcategory": "Aquariums & Zoos",
+    "japanese": "フラッシュは禁止ですか？",
+    "reading": "ふらっしゅはきんしですか？",
+    "romaji": "furasshu wa kinshi desu ka?",
+    "english": "Is flash prohibited?",
+    "literalMeaning": "Is flash forbidden?",
+    "naturalUsage": "Important around sensitive animals.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "flash",
+      "rules"
+    ]
+  },
+  {
+    "id": "travel-others-120",
+    "type": "travel",
+    "category": "others",
+    "subcategory": "Aquariums & Zoos",
+    "japanese": "再入場できますか？",
+    "reading": "さいにゅうじょうできますか？",
+    "romaji": "sainyuujou dekimasu ka?",
+    "english": "Can I re-enter?",
+    "literalMeaning": "Can re-entry be done?",
+    "naturalUsage": "Useful for larger attractions.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "re-entry"
+    ]
+  },
+  {
+    "id": "travel-others-121",
+    "type": "travel",
+    "category": "others",
+    "subcategory": "Aquariums & Zoos",
+    "japanese": "ロッカーはありますか？",
+    "reading": "ろっかーはありますか？",
+    "romaji": "rokkaa wa arimasu ka?",
+    "english": "Are there lockers?",
+    "literalMeaning": "Are there lockers?",
+    "naturalUsage": "Useful for bags and luggage.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "locker"
+    ]
+  },
+  {
+    "id": "travel-others-122",
+    "type": "travel",
+    "category": "others",
+    "subcategory": "Aquariums & Zoos",
+    "japanese": "レストランはどこですか？",
+    "reading": "れすとらんはどこですか？",
+    "romaji": "resutoran wa doko desu ka?",
+    "english": "Where is the restaurant?",
+    "literalMeaning": "Where is the restaurant?",
+    "naturalUsage": "Useful inside large facilities.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "restaurant"
+    ]
+  },
+  {
+    "id": "travel-others-123",
+    "type": "travel",
+    "category": "others",
+    "subcategory": "Aquariums & Zoos",
+    "japanese": "出口はどこですか？",
+    "reading": "でぐちはどこですか？",
+    "romaji": "deguchi wa doko desu ka?",
+    "english": "Where is the exit?",
+    "literalMeaning": "Where is the exit?",
+    "naturalUsage": "Essential at large facilities.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "exit"
+    ]
+  },
+  {
+    "id": "travel-others-124",
+    "type": "travel",
+    "category": "others",
+    "subcategory": "Aquariums & Zoos",
+    "japanese": "何時に閉まりますか？",
+    "reading": "なんじにしまりますか？",
+    "romaji": "nanji ni shimarimasu ka?",
+    "english": "What time do you close?",
+    "literalMeaning": "What time does it close?",
+    "naturalUsage": "Useful when planning the visit.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "closing-time"
+    ]
+  },
+  {
+    "id": "travel-others-125",
+    "type": "travel",
+    "category": "others",
+    "subcategory": "Aquariums & Zoos",
+    "japanese": "全部見るのにどのくらいかかりますか？",
+    "reading": "ぜんぶみるのにどのくらいかかりますか？",
+    "romaji": "zenbu miru no ni dono kurai kakarimasu ka?",
+    "english": "About how long does it take to see everything?",
+    "literalMeaning": "About how long does viewing everything take?",
+    "naturalUsage": "Useful for planning time at a large attraction.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "duration",
+      "visit"
+    ]
+  },
+  {
+    "id": "travel-others-126",
+    "type": "travel",
+    "category": "others",
+    "subcategory": "Theme Parks & Attractions",
+    "japanese": "待ち時間はどのくらいですか？",
+    "reading": "まちじかんはどのくらいですか？",
+    "romaji": "machijikan wa dono kurai desu ka?",
+    "english": "How long is the wait?",
+    "literalMeaning": "How much is the waiting time?",
+    "naturalUsage": "Essential at rides and popular attractions.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "wait-time"
+    ]
+  },
+  {
+    "id": "travel-others-127",
+    "type": "travel",
+    "category": "others",
+    "subcategory": "Theme Parks & Attractions",
+    "japanese": "今、何分待ちですか？",
+    "reading": "いま、なんぷんまちですか？",
+    "romaji": "ima, nanpun machi desu ka?",
+    "english": "How many minutes is the wait right now?",
+    "literalMeaning": "How many minutes of waiting is it now?",
+    "naturalUsage": "Very natural at attractions.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "wait-time",
+      "minutes"
+    ]
+  },
+  {
+    "id": "travel-others-128",
+    "type": "travel",
+    "category": "others",
+    "subcategory": "Theme Parks & Attractions",
+    "japanese": "この列で合っていますか？",
+    "reading": "このれつであっていますか？",
+    "romaji": "kono retsu de atteimasu ka?",
+    "english": "Is this the right line?",
+    "literalMeaning": "Is this line correct?",
+    "naturalUsage": "Useful when several queues are close together.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "queue"
+    ]
+  },
+  {
+    "id": "travel-others-129",
+    "type": "travel",
+    "category": "others",
+    "subcategory": "Theme Parks & Attractions",
+    "japanese": "最後尾はどこですか？",
+    "reading": "さいこうびはどこですか？",
+    "romaji": "saikoubi wa doko desu ka?",
+    "english": "Where is the end of the line?",
+    "literalMeaning": "Where is the end of the queue?",
+    "naturalUsage": "Very useful in Japan.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "queue",
+      "end"
+    ]
+  },
+  {
+    "id": "travel-others-130",
+    "type": "travel",
+    "category": "others",
+    "subcategory": "Theme Parks & Attractions",
+    "japanese": "整理券は必要ですか？",
+    "reading": "せいりけんはひつようですか？",
+    "romaji": "seiriken wa hitsuyou desu ka?",
+    "english": "Do I need a timed/numbered ticket?",
+    "literalMeaning": "Is a numbered ticket necessary?",
+    "naturalUsage": "Useful for crowd-controlled attractions.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "timed-entry",
+      "ticket"
+    ]
+  },
+  {
+    "id": "travel-others-131",
+    "type": "travel",
+    "category": "others",
+    "subcategory": "Theme Parks & Attractions",
+    "japanese": "時間指定ですか？",
+    "reading": "じかんしていですか？",
+    "romaji": "jikan shitei desu ka?",
+    "english": "Is this timed entry?",
+    "literalMeaning": "Is the time specified?",
+    "naturalUsage": "Useful for attractions with assigned slots.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "timed-entry"
+    ]
+  },
+  {
+    "id": "travel-others-132",
+    "type": "travel",
+    "category": "others",
+    "subcategory": "Theme Parks & Attractions",
+    "japanese": "予約時間に遅れました。",
+    "reading": "よやくじかんにおくれました。",
+    "romaji": "yoyaku jikan ni okuremashita.",
+    "english": "I'm late for my reserved time.",
+    "literalMeaning": "I was late for the reserved time.",
+    "naturalUsage": "Useful if you miss a timed-entry slot.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "late",
+      "reservation"
+    ]
+  },
+  {
+    "id": "travel-others-133",
+    "type": "travel",
+    "category": "others",
+    "subcategory": "Theme Parks & Attractions",
+    "japanese": "まだ入れますか？",
+    "reading": "まだはいれますか？",
+    "romaji": "mada hairemasu ka?",
+    "english": "Can I still enter?",
+    "literalMeaning": "Can I still enter?",
+    "naturalUsage": "Useful if late or near closing.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "entry",
+      "late"
+    ]
+  },
+  {
+    "id": "travel-others-134",
+    "type": "travel",
+    "category": "others",
+    "subcategory": "Theme Parks & Attractions",
+    "japanese": "身長制限はありますか？",
+    "reading": "しんちょうせいげんはありますか？",
+    "romaji": "shinchou seigen wa arimasu ka?",
+    "english": "Is there a height restriction?",
+    "literalMeaning": "Is there a height restriction?",
+    "naturalUsage": "Useful for rides.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "height-restriction"
+    ]
+  },
+  {
+    "id": "travel-others-135",
+    "type": "travel",
+    "category": "others",
+    "subcategory": "Theme Parks & Attractions",
+    "japanese": "荷物はどこに置きますか？",
+    "reading": "にもつはどこにおきますか？",
+    "romaji": "nimotsu wa doko ni okimasu ka?",
+    "english": "Where should I put my bag?",
+    "literalMeaning": "Where do I put my luggage?",
+    "naturalUsage": "Useful before rides.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "bag",
+      "ride"
+    ]
+  },
+  {
+    "id": "travel-others-136",
+    "type": "travel",
+    "category": "others",
+    "subcategory": "Theme Parks & Attractions",
+    "japanese": "ロッカーはありますか？",
+    "reading": "ろっかーはありますか？",
+    "romaji": "rokkaa wa arimasu ka?",
+    "english": "Are there lockers?",
+    "literalMeaning": "Are there lockers?",
+    "naturalUsage": "Useful for larger bags.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "locker"
+    ]
+  },
+  {
+    "id": "travel-others-137",
+    "type": "travel",
+    "category": "others",
+    "subcategory": "Theme Parks & Attractions",
+    "japanese": "これは怖いですか？",
+    "reading": "これはこわいですか？",
+    "romaji": "kore wa kowai desu ka?",
+    "english": "Is this scary?",
+    "literalMeaning": "Is this scary?",
+    "naturalUsage": "Casual but useful when asking staff or companions about a ride.",
+    "politeness": "polite",
+    "priority": "extra",
+    "tags": [
+      "ride",
+      "scary"
+    ]
+  },
+  {
+    "id": "travel-others-138",
+    "type": "travel",
+    "category": "others",
+    "subcategory": "Theme Parks & Attractions",
+    "japanese": "これは濡れますか？",
+    "reading": "これはぬれますか？",
+    "romaji": "kore wa nuremasu ka?",
+    "english": "Will I get wet on this?",
+    "literalMeaning": "Does this get you wet?",
+    "naturalUsage": "Useful for water rides.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "water-ride",
+      "wet"
+    ]
+  },
+  {
+    "id": "travel-others-139",
+    "type": "travel",
+    "category": "others",
+    "subcategory": "Theme Parks & Attractions",
+    "japanese": "写真はどこで見られますか？",
+    "reading": "しゃしんはどこでみられますか？",
+    "romaji": "shashin wa doko de miraremasu ka?",
+    "english": "Where can I see the ride photo?",
+    "literalMeaning": "Where can the photo be viewed?",
+    "naturalUsage": "Useful at rides with automatic photos.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "ride-photo"
+    ]
+  },
+  {
+    "id": "travel-others-140",
+    "type": "travel",
+    "category": "others",
+    "subcategory": "Theme Parks & Attractions",
+    "japanese": "ファストパスのようなものはありますか？",
+    "reading": "ふぁすとぱすのようなものはありますか？",
+    "romaji": "fasuto pasu no you na mono wa arimasu ka?",
+    "english": "Is there a fast-pass type option?",
+    "literalMeaning": "Is there something like a fast pass?",
+    "naturalUsage": "General phrasing because each park uses different branding.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "priority-pass"
+    ]
+  },
+  {
+    "id": "travel-others-141",
+    "type": "travel",
+    "category": "others",
+    "subcategory": "Theme Parks & Attractions",
+    "japanese": "アプリが必要ですか？",
+    "reading": "あぷりがひつようですか？",
+    "romaji": "apuri ga hitsuyou desu ka?",
+    "english": "Do I need the app?",
+    "literalMeaning": "Is an app necessary?",
+    "naturalUsage": "Useful at parks using app-based entry and queues.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "app"
+    ]
+  },
+  {
+    "id": "travel-others-142",
+    "type": "travel",
+    "category": "others",
+    "subcategory": "Theme Parks & Attractions",
+    "japanese": "再入場できますか？",
+    "reading": "さいにゅうじょうできますか？",
+    "romaji": "sainyuujou dekimasu ka?",
+    "english": "Can I re-enter?",
+    "literalMeaning": "Can re-entry be done?",
+    "naturalUsage": "Useful for full-day parks.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "re-entry"
+    ]
+  },
+  {
+    "id": "travel-others-143",
+    "type": "travel",
+    "category": "others",
+    "subcategory": "Theme Parks & Attractions",
+    "japanese": "パレードは何時ですか？",
+    "reading": "ぱれーどはなんじですか？",
+    "romaji": "pareedo wa nanji desu ka?",
+    "english": "What time is the parade?",
+    "literalMeaning": "What time is the parade?",
+    "naturalUsage": "Useful at theme parks.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "parade",
+      "time"
+    ]
+  },
+  {
+    "id": "travel-others-144",
+    "type": "travel",
+    "category": "others",
+    "subcategory": "Theme Parks & Attractions",
+    "japanese": "ショーはどこで見られますか？",
+    "reading": "しょーはどこでみられますか？",
+    "romaji": "shoo wa doko de miraremasu ka?",
+    "english": "Where can I watch the show?",
+    "literalMeaning": "Where can the show be seen?",
+    "naturalUsage": "Useful for staged entertainment.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "show",
+      "location"
+    ]
+  },
+  {
+    "id": "travel-others-145",
+    "type": "travel",
+    "category": "others",
+    "subcategory": "Theme Parks & Attractions",
+    "japanese": "閉園は何時ですか？",
+    "reading": "へいえんはなんじですか？",
+    "romaji": "heien wa nanji desu ka?",
+    "english": "What time does the park close?",
+    "literalMeaning": "What time is park closing?",
+    "naturalUsage": "Useful for planning the day.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "closing-time"
+    ]
+  },
+  {
+    "id": "travel-others-146",
+    "type": "travel",
+    "category": "others",
+    "subcategory": "Sightseeing & Photos",
+    "japanese": "写真を撮ってもらえますか？",
+    "reading": "しゃしんをとってもらえますか？",
+    "romaji": "shashin o totte moraemasu ka?",
+    "english": "Could you take a photo for me?",
+    "literalMeaning": "Could I have you take a photo?",
+    "naturalUsage": "Very natural when asking another visitor.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "photo",
+      "request"
+    ]
+  },
+  {
+    "id": "travel-others-147",
+    "type": "travel",
+    "category": "others",
+    "subcategory": "Sightseeing & Photos",
+    "japanese": "一枚お願いします。",
+    "reading": "いちまいおねがいします。",
+    "romaji": "ichimai onegai shimasu.",
+    "english": "One photo, please.",
+    "literalMeaning": "One, please.",
+    "naturalUsage": "Useful immediately after handing someone your phone/camera.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "photo",
+      "one"
+    ]
+  },
+  {
+    "id": "travel-others-148",
+    "type": "travel",
+    "category": "others",
+    "subcategory": "Sightseeing & Photos",
+    "japanese": "縦でお願いします。",
+    "reading": "たてでおねがいします。",
+    "romaji": "tate de onegai shimasu.",
+    "english": "Portrait orientation, please.",
+    "literalMeaning": "Vertical, please.",
+    "naturalUsage": "Useful when specifying phone orientation.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "portrait",
+      "photo"
+    ]
+  },
+  {
+    "id": "travel-others-149",
+    "type": "travel",
+    "category": "others",
+    "subcategory": "Sightseeing & Photos",
+    "japanese": "横でお願いします。",
+    "reading": "よこでおねがいします。",
+    "romaji": "yoko de onegai shimasu.",
+    "english": "Landscape orientation, please.",
+    "literalMeaning": "Horizontal, please.",
+    "naturalUsage": "Useful when specifying photo orientation.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "landscape",
+      "photo"
+    ]
+  },
+  {
+    "id": "travel-others-150",
+    "type": "travel",
+    "category": "others",
+    "subcategory": "Sightseeing & Photos",
+    "japanese": "全身が入るようにお願いします。",
+    "reading": "ぜんしんがはいるようにおねがいします。",
+    "romaji": "zenshin ga hairu you ni onegai shimasu.",
+    "english": "Please get my whole body in the photo.",
+    "literalMeaning": "Please make it so my whole body fits.",
+    "naturalUsage": "Useful for travel photos.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "full-body",
+      "photo"
+    ]
+  },
+  {
+    "id": "travel-others-151",
+    "type": "travel",
+    "category": "others",
+    "subcategory": "Sightseeing & Photos",
+    "japanese": "背景も入れてください。",
+    "reading": "はいけいもいれてください。",
+    "romaji": "haikei mo irete kudasai.",
+    "english": "Please include the background too.",
+    "literalMeaning": "Please include the background too.",
+    "naturalUsage": "Useful at scenic locations.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "background",
+      "photo"
+    ]
+  },
+  {
+    "id": "travel-others-152",
+    "type": "travel",
+    "category": "others",
+    "subcategory": "Sightseeing & Photos",
+    "japanese": "もう一枚お願いします。",
+    "reading": "もういちまいおねがいします。",
+    "romaji": "mou ichimai onegai shimasu.",
+    "english": "One more, please.",
+    "literalMeaning": "One more photo, please.",
+    "naturalUsage": "Natural after checking the first shot.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "photo",
+      "again"
+    ]
+  },
+  {
+    "id": "travel-others-153",
+    "type": "travel",
+    "category": "others",
+    "subcategory": "Sightseeing & Photos",
+    "japanese": "ここで写真を撮っても大丈夫ですか？",
+    "reading": "ここでしゃしんをとってもだいじょうぶですか？",
+    "romaji": "koko de shashin o totte mo daijoubu desu ka?",
+    "english": "Is it okay to take photos here?",
+    "literalMeaning": "Is it okay if I take photos here?",
+    "naturalUsage": "Useful at attractions, shops, temples, and museums.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "photography",
+      "permission"
+    ]
+  },
+  {
+    "id": "travel-others-154",
+    "type": "travel",
+    "category": "others",
+    "subcategory": "Sightseeing & Photos",
+    "japanese": "三脚は使えますか？",
+    "reading": "さんきゃくはつかえますか？",
+    "romaji": "sankyaku wa tsukaemasu ka?",
+    "english": "Can I use a tripod?",
+    "literalMeaning": "Can a tripod be used?",
+    "naturalUsage": "Useful where tripods may be restricted.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "tripod",
+      "rules"
+    ]
+  },
+  {
+    "id": "travel-others-155",
+    "type": "travel",
+    "category": "others",
+    "subcategory": "Sightseeing & Photos",
+    "japanese": "自撮り棒は使えますか？",
+    "reading": "じどりぼうはつかえますか？",
+    "romaji": "jidoribou wa tsukaemasu ka?",
+    "english": "Can I use a selfie stick?",
+    "literalMeaning": "Can a selfie stick be used?",
+    "naturalUsage": "Useful at attractions with equipment restrictions.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "selfie-stick",
+      "rules"
+    ]
+  },
+  {
+    "id": "travel-others-156",
+    "type": "travel",
+    "category": "others",
+    "subcategory": "Sightseeing & Photos",
+    "japanese": "展望台はどこですか？",
+    "reading": "てんぼうだいはどこですか？",
+    "romaji": "tenboudai wa doko desu ka?",
+    "english": "Where is the observation deck?",
+    "literalMeaning": "Where is the observation deck?",
+    "naturalUsage": "Useful at towers and scenic locations.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "observation-deck"
+    ]
+  },
+  {
+    "id": "travel-others-157",
+    "type": "travel",
+    "category": "others",
+    "subcategory": "Sightseeing & Photos",
+    "japanese": "一番景色がいい場所はどこですか？",
+    "reading": "いちばんけしきがいいばしょはどこですか？",
+    "romaji": "ichiban keshiki ga ii basho wa doko desu ka?",
+    "english": "Where is the best viewpoint?",
+    "literalMeaning": "Where is the place with the best scenery?",
+    "naturalUsage": "Useful when asking staff or locals.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "viewpoint",
+      "scenery"
+    ]
+  },
+  {
+    "id": "travel-others-158",
+    "type": "travel",
+    "category": "others",
+    "subcategory": "Sightseeing & Photos",
+    "japanese": "夕日はどこから見えますか？",
+    "reading": "ゆうひはどこからみえますか？",
+    "romaji": "yuuhi wa doko kara miemasu ka?",
+    "english": "Where can I see the sunset?",
+    "literalMeaning": "From where can the sunset be seen?",
+    "naturalUsage": "Useful at scenic destinations.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "sunset",
+      "viewpoint"
+    ]
+  },
+  {
+    "id": "travel-others-159",
+    "type": "travel",
+    "category": "others",
+    "subcategory": "Sightseeing & Photos",
+    "japanese": "何時まで開いていますか？",
+    "reading": "なんじまであいていますか？",
+    "romaji": "nanji made aiteimasu ka?",
+    "english": "Until what time are you open?",
+    "literalMeaning": "Until what time is it open?",
+    "naturalUsage": "Useful for attractions and observation decks.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "hours"
+    ]
+  },
+  {
+    "id": "travel-others-160",
+    "type": "travel",
+    "category": "others",
+    "subcategory": "Sightseeing & Photos",
+    "japanese": "ここから駅まで歩けますか？",
+    "reading": "ここからえきまであるけますか？",
+    "romaji": "koko kara eki made arukemasu ka?",
+    "english": "Can I walk to the station from here?",
+    "literalMeaning": "Can I walk from here to the station?",
+    "naturalUsage": "Useful after sightseeing.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "station",
+      "walking"
+    ]
+  },
+  {
+    "id": "travel-others-161",
+    "type": "travel",
+    "category": "others",
+    "subcategory": "General Tourist Situations",
+    "japanese": "コインロッカーはどこですか？",
+    "reading": "こいんろっかーはどこですか？",
+    "romaji": "koin rokkaa wa doko desu ka?",
+    "english": "Where are the coin lockers?",
+    "literalMeaning": "Where are the coin lockers?",
+    "naturalUsage": "Extremely useful at stations and attractions.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "locker"
+    ]
+  },
+  {
+    "id": "travel-others-162",
+    "type": "travel",
+    "category": "others",
+    "subcategory": "General Tourist Situations",
+    "japanese": "大きいロッカーはありますか？",
+    "reading": "おおきいろっかーはありますか？",
+    "romaji": "ookii rokkaa wa arimasu ka?",
+    "english": "Are there large lockers?",
+    "literalMeaning": "Are there large lockers?",
+    "naturalUsage": "Useful for suitcases.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "locker",
+      "large"
+    ]
+  },
+  {
+    "id": "travel-others-163",
+    "type": "travel",
+    "category": "others",
+    "subcategory": "General Tourist Situations",
+    "japanese": "荷物を預けられますか？",
+    "reading": "にもつをあずけられますか？",
+    "romaji": "nimotsu o azukeraremasu ka?",
+    "english": "Can I leave my luggage here?",
+    "literalMeaning": "Can I leave my luggage?",
+    "naturalUsage": "Useful at attractions and information desks.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "luggage",
+      "storage"
+    ]
+  },
+  {
+    "id": "travel-others-164",
+    "type": "travel",
+    "category": "others",
+    "subcategory": "General Tourist Situations",
+    "japanese": "観光案内所はどこですか？",
+    "reading": "かんこうあんないじょはどこですか？",
+    "romaji": "kankou annaijo wa doko desu ka?",
+    "english": "Where is the tourist information center?",
+    "literalMeaning": "Where is the tourist information office?",
+    "naturalUsage": "Useful in cities and major stations.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "tourist-info"
+    ]
+  },
+  {
+    "id": "travel-others-165",
+    "type": "travel",
+    "category": "others",
+    "subcategory": "General Tourist Situations",
+    "japanese": "英語の地図はありますか？",
+    "reading": "えいごのちずはありますか？",
+    "romaji": "eigo no chizu wa arimasu ka?",
+    "english": "Do you have an English map?",
+    "literalMeaning": "Is there an English map?",
+    "naturalUsage": "Useful at tourist information desks.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "map",
+      "english"
+    ]
+  },
+  {
+    "id": "travel-others-166",
+    "type": "travel",
+    "category": "others",
+    "subcategory": "General Tourist Situations",
+    "japanese": "英語のパンフレットはありますか？",
+    "reading": "えいごのぱんふれっとはありますか？",
+    "romaji": "eigo no panfuretto wa arimasu ka?",
+    "english": "Do you have an English brochure?",
+    "literalMeaning": "Is there an English pamphlet?",
+    "naturalUsage": "Useful at attractions and tourist desks.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "brochure",
+      "english"
+    ]
+  },
+  {
+    "id": "travel-others-167",
+    "type": "travel",
+    "category": "others",
+    "subcategory": "General Tourist Situations",
+    "japanese": "無料Wi-Fiはありますか？",
+    "reading": "むりょうわいふぁいはありますか？",
+    "romaji": "muryou wai-fai wa arimasu ka?",
+    "english": "Is there free Wi-Fi?",
+    "literalMeaning": "Is there free Wi-Fi?",
+    "naturalUsage": "Useful in public facilities.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "wifi",
+      "free"
+    ]
+  },
+  {
+    "id": "travel-others-168",
+    "type": "travel",
+    "category": "others",
+    "subcategory": "General Tourist Situations",
+    "japanese": "充電できる場所はありますか？",
+    "reading": "じゅうでんできるばしょはありますか？",
+    "romaji": "juuden dekiru basho wa arimasu ka?",
+    "english": "Is there somewhere I can charge my phone?",
+    "literalMeaning": "Is there a place where charging is possible?",
+    "naturalUsage": "Useful when your battery is low.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "charging",
+      "phone"
+    ]
+  },
+  {
+    "id": "travel-others-169",
+    "type": "travel",
+    "category": "others",
+    "subcategory": "General Tourist Situations",
+    "japanese": "コンセントは使えますか？",
+    "reading": "こんせんとはつかえますか？",
+    "romaji": "konsento wa tsukaemasu ka?",
+    "english": "Can I use the power outlet?",
+    "literalMeaning": "Can the outlet be used?",
+    "naturalUsage": "Useful at cafés and waiting areas.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "outlet",
+      "charging"
+    ]
+  },
+  {
+    "id": "travel-others-170",
+    "type": "travel",
+    "category": "others",
+    "subcategory": "General Tourist Situations",
+    "japanese": "お手洗いはどこですか？",
+    "reading": "おてあらいはどこですか？",
+    "romaji": "otearai wa doko desu ka?",
+    "english": "Where is the restroom?",
+    "literalMeaning": "Where is the restroom?",
+    "naturalUsage": "Essential anywhere.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "restroom"
+    ]
+  },
+  {
+    "id": "travel-others-171",
+    "type": "travel",
+    "category": "others",
+    "subcategory": "General Tourist Situations",
+    "japanese": "女性用トイレはどこですか？",
+    "reading": "じょせいようといれはどこですか？",
+    "romaji": "joseiyou toire wa doko desu ka?",
+    "english": "Where is the women's restroom?",
+    "literalMeaning": "Where is the restroom for women?",
+    "naturalUsage": "Useful where signs are unclear.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "restroom",
+      "women"
+    ]
+  },
+  {
+    "id": "travel-others-172",
+    "type": "travel",
+    "category": "others",
+    "subcategory": "General Tourist Situations",
+    "japanese": "エレベーターはどこですか？",
+    "reading": "えれべーたーはどこですか？",
+    "romaji": "erebeetaa wa doko desu ka?",
+    "english": "Where is the elevator?",
+    "literalMeaning": "Where is the elevator?",
+    "naturalUsage": "Useful with luggage or in large facilities.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "elevator"
+    ]
+  },
+  {
+    "id": "travel-others-173",
+    "type": "travel",
+    "category": "others",
+    "subcategory": "General Tourist Situations",
+    "japanese": "エスカレーターはどこですか？",
+    "reading": "えすかれーたーはどこですか？",
+    "romaji": "esukareetaa wa doko desu ka?",
+    "english": "Where is the escalator?",
+    "literalMeaning": "Where is the escalator?",
+    "naturalUsage": "Useful in large stations and malls.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "escalator"
+    ]
+  },
+  {
+    "id": "travel-others-174",
+    "type": "travel",
+    "category": "others",
+    "subcategory": "General Tourist Situations",
+    "japanese": "出口はどこですか？",
+    "reading": "でぐちはどこですか？",
+    "romaji": "deguchi wa doko desu ka?",
+    "english": "Where is the exit?",
+    "literalMeaning": "Where is the exit?",
+    "naturalUsage": "Essential in complex facilities.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "exit"
+    ]
+  },
+  {
+    "id": "travel-others-175",
+    "type": "travel",
+    "category": "others",
+    "subcategory": "General Tourist Situations",
+    "japanese": "喫煙所はどこですか？",
+    "reading": "きつえんじょはどこですか？",
+    "romaji": "kitsuenjo wa doko desu ka?",
+    "english": "Where is the smoking area?",
+    "literalMeaning": "Where is the smoking area?",
+    "naturalUsage": "Useful for travelers who need to locate designated smoking areas.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "smoking-area"
+    ]
+  },
+  {
+    "id": "travel-others-176",
+    "type": "travel",
+    "category": "others",
+    "subcategory": "General Tourist Situations",
+    "japanese": "休憩できる場所はありますか？",
+    "reading": "きゅうけいできるばしょはありますか？",
+    "romaji": "kyuukei dekiru basho wa arimasu ka?",
+    "english": "Is there somewhere I can sit and rest?",
+    "literalMeaning": "Is there a place where I can rest?",
+    "naturalUsage": "Useful during long sightseeing days.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "rest-area"
+    ]
+  },
+  {
+    "id": "travel-others-177",
+    "type": "travel",
+    "category": "others",
+    "subcategory": "General Tourist Situations",
+    "japanese": "ここで待っても大丈夫ですか？",
+    "reading": "ここでまってもだいじょうぶですか？",
+    "romaji": "koko de matte mo daijoubu desu ka?",
+    "english": "Is it okay to wait here?",
+    "literalMeaning": "Is it okay if I wait here?",
+    "naturalUsage": "Useful when meeting someone.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "waiting",
+      "permission"
+    ]
+  },
+  {
+    "id": "travel-others-178",
+    "type": "travel",
+    "category": "others",
+    "subcategory": "General Tourist Situations",
+    "japanese": "待ち合わせ場所はどこですか？",
+    "reading": "まちあわせばしょはどこですか？",
+    "romaji": "machiawase basho wa doko desu ka?",
+    "english": "Where is the meeting point?",
+    "literalMeaning": "Where is the meeting place?",
+    "naturalUsage": "Useful at events and large stations.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "meeting-point"
+    ]
+  },
+  {
+    "id": "travel-others-179",
+    "type": "travel",
+    "category": "others",
+    "subcategory": "General Tourist Situations",
+    "japanese": "この近くにカフェはありますか？",
+    "reading": "このちかくにかふぇはありますか？",
+    "romaji": "kono chikaku ni kafe wa arimasu ka?",
+    "english": "Is there a café nearby?",
+    "literalMeaning": "Is there a café near here?",
+    "naturalUsage": "Useful while waiting or taking a break.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "cafe",
+      "nearby"
+    ]
+  },
+  {
+    "id": "travel-others-180",
+    "type": "travel",
+    "category": "others",
+    "subcategory": "General Tourist Situations",
+    "japanese": "この近くにATMはありますか？",
+    "reading": "このちかくにえーてぃーえむはありますか？",
+    "romaji": "kono chikaku ni ee-tii-emu wa arimasu ka?",
+    "english": "Is there an ATM nearby?",
+    "literalMeaning": "Is there an ATM near here?",
+    "naturalUsage": "Useful when you need cash.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "ATM",
+      "nearby"
+    ]
+  }
+]

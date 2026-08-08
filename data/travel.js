@@ -11,7 +11,8 @@
         shopping: { title: "Shopping", icon: "買", description: "Practical help with prices, sizes, stock, fitting, tax-free shopping, and payment.", filters: ["All", "Essential", "Sizes", "Stock", "Fitting", "Tax-Free", "Payment"] },
         hotels: { title: "Hotels", icon: "宿", description: "Check-in, luggage, room requests, check-out, and accommodation problems.", filters: ["All", "Essential", "Check-in", "Check-out", "Luggage", "Room Requests", "Problems"] },
         taxi: { title: "Taxi & Directions", icon: "車", description: "Tell a driver your destination, clarify directions, fares, and stops.", filters: ["All", "Essential", "Destination", "Directions", "Fare", "Stops"] },
-        emergencies: { title: "Emergencies & Health", icon: "助", description: "Essential Japanese for medical help, pharmacies, police, and lost items.", filters: ["All", "Essential", "Medical", "Pharmacy", "Police", "Lost Items", "Help"] }
+        emergencies: { title: "Emergencies & Health", icon: "助", description: "Essential Japanese for medical help, pharmacies, police, and lost items.", filters: ["All", "Essential", "Medical", "Pharmacy", "Police", "Lost Items", "Help"] },
+        others: { title: "Others", icon: "🌸", description: "More useful Japanese for little moments around Japan.", filters: ["All", "Convenience Stores", "Shrines & Temples", "Tickets & Admission", "Concerts & Live Events", "Anime & Exhibitions", "Aquariums & Zoos", "Theme Parks & Attractions", "Sightseeing & Photos", "General Tourist Situations"] }
     });
     const files = Object.freeze(Object.fromEntries(Object.keys(categories).map(category => [category, `./data/travel/${category}.json`])));
     const loadedByCategory = new Map();

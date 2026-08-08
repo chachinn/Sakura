@@ -1,4 +1,1620 @@
 [
-  {"id":"travel-hotels-001","type":"travel","category":"hotels","subcategory":"Essential","japanese":"チェックインをお願いします。","reading":"チェックインをおねがいします。","romaji":"Chekkuin o onegai shimasu.","english":"I would like to check in, please.","literalMeaning":"I request check-in.","naturalUsage":"A simple polite phrase to begin checking in at a hotel.","politeness":"polite","priority":"essential","tags":["check-in","front desk"]},
-  {"id":"travel-hotels-002","type":"travel","category":"hotels","subcategory":"Luggage","japanese":"チェックインまで荷物を預かってもらえますか？","reading":"チェックインまでにもつをあずかってもらえますか？","romaji":"Chekkuin made nimotsu o azukatte moraemasu ka?","english":"Could you keep my luggage until check-in?","literalMeaning":"Could I have you look after my luggage until check-in?","naturalUsage":"Natural and polite when asking hotel staff to store luggage.","politeness":"polite","priority":"useful","tags":["luggage","check-in","storage"]}
+  {
+    "id": "travel-hotels-001",
+    "type": "travel",
+    "category": "hotels",
+    "subcategory": "Essential",
+    "japanese": "予約しています。",
+    "reading": "よやくしています。",
+    "romaji": "yoyaku shiteimasu.",
+    "english": "I have a reservation.",
+    "literalMeaning": "I have made a reservation.",
+    "naturalUsage": "Use at reception when you arrive.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "reservation",
+      "arrival"
+    ]
+  },
+  {
+    "id": "travel-hotels-002",
+    "type": "travel",
+    "category": "hotels",
+    "subcategory": "Essential",
+    "japanese": "チェックインをお願いします。",
+    "reading": "ちぇっくいんをおねがいします。",
+    "romaji": "chekkuin o onegai shimasu.",
+    "english": "I'd like to check in, please.",
+    "literalMeaning": "Check-in, please.",
+    "naturalUsage": "Natural at the front desk when starting check-in.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "check-in",
+      "front-desk"
+    ]
+  },
+  {
+    "id": "travel-hotels-003",
+    "type": "travel",
+    "category": "hotels",
+    "subcategory": "Essential",
+    "japanese": "予約名は〇〇です。",
+    "reading": "よやくめいは〇〇です。",
+    "romaji": "yoyakumei wa ___ desu.",
+    "english": "The reservation is under ___.",
+    "literalMeaning": "The reservation name is ___.",
+    "naturalUsage": "Use when staff asks for the name on the booking.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "reservation",
+      "name"
+    ]
+  },
+  {
+    "id": "travel-hotels-004",
+    "type": "travel",
+    "category": "hotels",
+    "subcategory": "Essential",
+    "japanese": "パスポートはこちらです。",
+    "reading": "ぱすぽーとはこちらです。",
+    "romaji": "pasupooto wa kochira desu.",
+    "english": "Here's my passport.",
+    "literalMeaning": "The passport is here.",
+    "naturalUsage": "Use when presenting your passport at check-in.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "passport",
+      "check-in"
+    ]
+  },
+  {
+    "id": "travel-hotels-005",
+    "type": "travel",
+    "category": "hotels",
+    "subcategory": "Essential",
+    "japanese": "Wi-Fiのパスワードは何ですか？",
+    "reading": "わいふぁいのぱすわーどはなんですか？",
+    "romaji": "wai-fai no pasuwaado wa nan desu ka?",
+    "english": "What's the Wi-Fi password?",
+    "literalMeaning": "What is the Wi-Fi password?",
+    "naturalUsage": "Useful after checking in if the password is not clearly displayed.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "wifi",
+      "password"
+    ]
+  },
+  {
+    "id": "travel-hotels-006",
+    "type": "travel",
+    "category": "hotels",
+    "subcategory": "Essential",
+    "japanese": "部屋は何階ですか？",
+    "reading": "へやはなんがいですか？",
+    "romaji": "heya wa nangai desu ka?",
+    "english": "What floor is my room on?",
+    "literalMeaning": "What floor is the room?",
+    "naturalUsage": "Useful if you did not catch the room-floor explanation.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "room",
+      "floor"
+    ]
+  },
+  {
+    "id": "travel-hotels-007",
+    "type": "travel",
+    "category": "hotels",
+    "subcategory": "Essential",
+    "japanese": "エレベーターはどこですか？",
+    "reading": "えれべーたーはどこですか？",
+    "romaji": "erebeetaa wa doko desu ka?",
+    "english": "Where is the elevator?",
+    "literalMeaning": "Where is the elevator?",
+    "naturalUsage": "Useful in hotels with several corridors or buildings.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "elevator",
+      "directions"
+    ]
+  },
+  {
+    "id": "travel-hotels-008",
+    "type": "travel",
+    "category": "hotels",
+    "subcategory": "Essential",
+    "japanese": "朝食は何時からですか？",
+    "reading": "ちょうしょくはなんじからですか？",
+    "romaji": "choushoku wa nanji kara desu ka?",
+    "english": "What time does breakfast start?",
+    "literalMeaning": "From what time is breakfast?",
+    "naturalUsage": "Use to confirm breakfast hours.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "breakfast",
+      "time"
+    ]
+  },
+  {
+    "id": "travel-hotels-009",
+    "type": "travel",
+    "category": "hotels",
+    "subcategory": "Essential",
+    "japanese": "朝食はどこですか？",
+    "reading": "ちょうしょくはどこですか？",
+    "romaji": "choushoku wa doko desu ka?",
+    "english": "Where is breakfast served?",
+    "literalMeaning": "Where is breakfast?",
+    "naturalUsage": "Useful when the breakfast venue was not explained.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "breakfast",
+      "location"
+    ]
+  },
+  {
+    "id": "travel-hotels-010",
+    "type": "travel",
+    "category": "hotels",
+    "subcategory": "Essential",
+    "japanese": "チェックアウトは何時ですか？",
+    "reading": "ちぇっくあうとはなんじですか？",
+    "romaji": "chekkuauto wa nanji desu ka?",
+    "english": "What time is check-out?",
+    "literalMeaning": "What time is check-out?",
+    "naturalUsage": "Essential for planning your departure morning.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "check-out",
+      "time"
+    ]
+  },
+  {
+    "id": "travel-hotels-011",
+    "type": "travel",
+    "category": "hotels",
+    "subcategory": "Essential",
+    "japanese": "荷物を預かってもらえますか？",
+    "reading": "にもつをあずかってもらえますか？",
+    "romaji": "nimotsu o azukatte moraemasu ka?",
+    "english": "Could you hold my luggage?",
+    "literalMeaning": "Could I have you keep my luggage?",
+    "naturalUsage": "Useful before check-in or after check-out.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "luggage",
+      "storage"
+    ]
+  },
+  {
+    "id": "travel-hotels-012",
+    "type": "travel",
+    "category": "hotels",
+    "subcategory": "Essential",
+    "japanese": "部屋の鍵をなくしました。",
+    "reading": "へやのかぎをなくしました。",
+    "romaji": "heya no kagi o nakushimashita.",
+    "english": "I lost my room key.",
+    "literalMeaning": "I lost the room key.",
+    "naturalUsage": "Tell reception immediately if your key or key card is missing.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "key",
+      "lost"
+    ]
+  },
+  {
+    "id": "travel-hotels-013",
+    "type": "travel",
+    "category": "hotels",
+    "subcategory": "Essential",
+    "japanese": "カードキーが使えません。",
+    "reading": "かーどきーがつかえません。",
+    "romaji": "kaado kii ga tsukaemasen.",
+    "english": "My key card isn't working.",
+    "literalMeaning": "The card key cannot be used.",
+    "naturalUsage": "Use when the room key card will not unlock the door.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "key-card",
+      "problem"
+    ]
+  },
+  {
+    "id": "travel-hotels-014",
+    "type": "travel",
+    "category": "hotels",
+    "subcategory": "Essential",
+    "japanese": "すみません、手伝ってもらえますか？",
+    "reading": "すみません、てつだってもらえますか？",
+    "romaji": "sumimasen, tetsudatte moraemasu ka?",
+    "english": "Excuse me, could you help me?",
+    "literalMeaning": "Excuse me, could I have you help me?",
+    "naturalUsage": "General-purpose phrase when you need hotel staff assistance.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "help",
+      "staff"
+    ]
+  },
+  {
+    "id": "travel-hotels-015",
+    "type": "travel",
+    "category": "hotels",
+    "subcategory": "Essential",
+    "japanese": "ありがとうございます。",
+    "reading": "ありがとうございます。",
+    "romaji": "arigatou gozaimasu.",
+    "english": "Thank you very much.",
+    "literalMeaning": "Thank you very much.",
+    "naturalUsage": "Polite and natural after receiving assistance.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "thanks"
+    ]
+  },
+  {
+    "id": "travel-hotels-016",
+    "type": "travel",
+    "category": "hotels",
+    "subcategory": "Check-in",
+    "japanese": "今日から予約しています。",
+    "reading": "きょうからよやくしています。",
+    "romaji": "kyou kara yoyaku shiteimasu.",
+    "english": "I have a reservation starting today.",
+    "literalMeaning": "I have a reservation from today.",
+    "naturalUsage": "Useful if staff needs help locating today's booking.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "reservation",
+      "today"
+    ]
+  },
+  {
+    "id": "travel-hotels-017",
+    "type": "travel",
+    "category": "hotels",
+    "subcategory": "Check-in",
+    "japanese": "二泊の予約です。",
+    "reading": "にはくのよやくです。",
+    "romaji": "nihaku no yoyaku desu.",
+    "english": "I have a reservation for two nights.",
+    "literalMeaning": "It is a reservation for two nights.",
+    "naturalUsage": "Replace the number as needed.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "reservation",
+      "nights"
+    ]
+  },
+  {
+    "id": "travel-hotels-018",
+    "type": "travel",
+    "category": "hotels",
+    "subcategory": "Check-in",
+    "japanese": "二名で予約しています。",
+    "reading": "にめいでよやくしています。",
+    "romaji": "nimei de yoyaku shiteimasu.",
+    "english": "The reservation is for two guests.",
+    "literalMeaning": "I have reserved for two people.",
+    "naturalUsage": "A polite hotel-style way to state the number of guests.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "reservation",
+      "guests"
+    ]
+  },
+  {
+    "id": "travel-hotels-019",
+    "type": "travel",
+    "category": "hotels",
+    "subcategory": "Check-in",
+    "japanese": "オンラインで予約しました。",
+    "reading": "おんらいんでよやくしました。",
+    "romaji": "onrain de yoyaku shimashita.",
+    "english": "I booked online.",
+    "literalMeaning": "I made the reservation online.",
+    "naturalUsage": "Useful if staff asks how the booking was made.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "reservation",
+      "online"
+    ]
+  },
+  {
+    "id": "travel-hotels-020",
+    "type": "travel",
+    "category": "hotels",
+    "subcategory": "Check-in",
+    "japanese": "予約確認書はこちらです。",
+    "reading": "よやくかくにんしょはこちらです。",
+    "romaji": "yoyaku kakuninsho wa kochira desu.",
+    "english": "Here's my booking confirmation.",
+    "literalMeaning": "The reservation confirmation is here.",
+    "naturalUsage": "Use while showing the confirmation on your phone or on paper.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "reservation",
+      "confirmation"
+    ]
+  },
+  {
+    "id": "travel-hotels-021",
+    "type": "travel",
+    "category": "hotels",
+    "subcategory": "Check-in",
+    "japanese": "まだチェックインできますか？",
+    "reading": "まだちぇっくいんできますか？",
+    "romaji": "mada chekkuin dekimasu ka?",
+    "english": "Can I still check in?",
+    "literalMeaning": "Can I still check in?",
+    "naturalUsage": "Useful if you arrive later than expected.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "check-in",
+      "late"
+    ]
+  },
+  {
+    "id": "travel-hotels-022",
+    "type": "travel",
+    "category": "hotels",
+    "subcategory": "Check-in",
+    "japanese": "少し早くチェックインできますか？",
+    "reading": "すこしはやくちぇっくいんできますか？",
+    "romaji": "sukoshi hayaku chekkuin dekimasu ka?",
+    "english": "Can I check in a little early?",
+    "literalMeaning": "Can I check in a little early?",
+    "naturalUsage": "Ask politely if you arrive before the normal check-in time.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "check-in",
+      "early"
+    ]
+  },
+  {
+    "id": "travel-hotels-023",
+    "type": "travel",
+    "category": "hotels",
+    "subcategory": "Check-in",
+    "japanese": "部屋はもう準備できていますか？",
+    "reading": "へやはもうじゅんびできていますか？",
+    "romaji": "heya wa mou junbi dekiteimasu ka?",
+    "english": "Is the room ready yet?",
+    "literalMeaning": "Has the room already been prepared?",
+    "naturalUsage": "Useful when waiting for early check-in.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "room",
+      "ready"
+    ]
+  },
+  {
+    "id": "travel-hotels-024",
+    "type": "travel",
+    "category": "hotels",
+    "subcategory": "Check-in",
+    "japanese": "チェックインまで荷物を預けられますか？",
+    "reading": "ちぇっくいんまでにもつをあずけられますか？",
+    "romaji": "chekkuin made nimotsu o azukeraremasu ka?",
+    "english": "Can I leave my luggage here until check-in?",
+    "literalMeaning": "Can I leave my luggage until check-in?",
+    "naturalUsage": "Very useful when arriving before your room is ready.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "luggage",
+      "early-arrival"
+    ]
+  },
+  {
+    "id": "travel-hotels-025",
+    "type": "travel",
+    "category": "hotels",
+    "subcategory": "Check-in",
+    "japanese": "宿泊税は含まれていますか？",
+    "reading": "しゅくはくぜいはふくまれていますか？",
+    "romaji": "shukuhakuzei wa fukumareteimasu ka?",
+    "english": "Is the accommodation tax included?",
+    "literalMeaning": "Is the lodging tax included?",
+    "naturalUsage": "Useful in destinations where a local accommodation tax may be collected.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "tax",
+      "payment"
+    ]
+  },
+  {
+    "id": "travel-hotels-026",
+    "type": "travel",
+    "category": "hotels",
+    "subcategory": "Check-in",
+    "japanese": "支払いはもう済んでいますか？",
+    "reading": "しはらいはもうすんでいますか？",
+    "romaji": "shiharai wa mou sundeimasu ka?",
+    "english": "Has the payment already been completed?",
+    "literalMeaning": "Has payment already been settled?",
+    "naturalUsage": "Useful if you prepaid and want to confirm the booking status.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "payment",
+      "prepaid"
+    ]
+  },
+  {
+    "id": "travel-hotels-027",
+    "type": "travel",
+    "category": "hotels",
+    "subcategory": "Check-in",
+    "japanese": "今、支払いますか？",
+    "reading": "いま、しはらいますか？",
+    "romaji": "ima, shiharaimasu ka?",
+    "english": "Do I pay now?",
+    "literalMeaning": "Do I pay now?",
+    "naturalUsage": "Useful when the payment timing is unclear.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "payment",
+      "check-in"
+    ]
+  },
+  {
+    "id": "travel-hotels-028",
+    "type": "travel",
+    "category": "hotels",
+    "subcategory": "Check-in",
+    "japanese": "クレジットカードは使えますか？",
+    "reading": "くれじっとかーどはつかえますか？",
+    "romaji": "kurejitto kaado wa tsukaemasu ka?",
+    "english": "Can I pay by credit card?",
+    "literalMeaning": "Can a credit card be used?",
+    "naturalUsage": "Useful if payment is due at the hotel.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "payment",
+      "credit-card"
+    ]
+  },
+  {
+    "id": "travel-hotels-029",
+    "type": "travel",
+    "category": "hotels",
+    "subcategory": "Check-in",
+    "japanese": "館内の説明をもう一度お願いします。",
+    "reading": "かんないのせつめいをもういちどおねがいします。",
+    "romaji": "kannai no setsumei o mou ichido onegai shimasu.",
+    "english": "Could you explain the hotel facilities again?",
+    "literalMeaning": "Please explain the inside of the hotel once more.",
+    "naturalUsage": "Useful if the check-in explanation was too fast.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "facilities",
+      "explanation"
+    ]
+  },
+  {
+    "id": "travel-hotels-030",
+    "type": "travel",
+    "category": "hotels",
+    "subcategory": "Check-in",
+    "japanese": "もう少しゆっくり話してもらえますか？",
+    "reading": "もうすこしゆっくりはなしてもらえますか？",
+    "romaji": "mou sukoshi yukkuri hanashite moraemasu ka?",
+    "english": "Could you speak a little more slowly?",
+    "literalMeaning": "Could I have you speak a little more slowly?",
+    "naturalUsage": "Very useful when reception staff are explaining several details in Japanese.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "language",
+      "slowly"
+    ]
+  },
+  {
+    "id": "travel-hotels-031",
+    "type": "travel",
+    "category": "hotels",
+    "subcategory": "Check-out",
+    "japanese": "チェックアウトをお願いします。",
+    "reading": "ちぇっくあうとをおねがいします。",
+    "romaji": "chekkuauto o onegai shimasu.",
+    "english": "I'd like to check out, please.",
+    "literalMeaning": "Check-out, please.",
+    "naturalUsage": "Natural at reception when leaving.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "check-out",
+      "front-desk"
+    ]
+  },
+  {
+    "id": "travel-hotels-032",
+    "type": "travel",
+    "category": "hotels",
+    "subcategory": "Check-out",
+    "japanese": "部屋番号は〇〇です。",
+    "reading": "へやばんごうは〇〇です。",
+    "romaji": "heya bangou wa ___ desu.",
+    "english": "My room number is ___.",
+    "literalMeaning": "The room number is ___.",
+    "naturalUsage": "Use when staff asks for your room number.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "room-number",
+      "check-out"
+    ]
+  },
+  {
+    "id": "travel-hotels-033",
+    "type": "travel",
+    "category": "hotels",
+    "subcategory": "Check-out",
+    "japanese": "追加料金はありますか？",
+    "reading": "ついかりょうきんはありますか？",
+    "romaji": "tsuika ryoukin wa arimasu ka?",
+    "english": "Are there any additional charges?",
+    "literalMeaning": "Are there additional fees?",
+    "naturalUsage": "Useful before settling the final bill.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "charges",
+      "payment"
+    ]
+  },
+  {
+    "id": "travel-hotels-034",
+    "type": "travel",
+    "category": "hotels",
+    "subcategory": "Check-out",
+    "japanese": "明細を確認してもいいですか？",
+    "reading": "めいさいをかくにんしてもいいですか？",
+    "romaji": "meisai o kakunin shite mo ii desu ka?",
+    "english": "May I check the bill details?",
+    "literalMeaning": "Is it okay if I check the statement?",
+    "naturalUsage": "Useful if you want to review charges before paying.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "bill",
+      "charges"
+    ]
+  },
+  {
+    "id": "travel-hotels-035",
+    "type": "travel",
+    "category": "hotels",
+    "subcategory": "Check-out",
+    "japanese": "カードで支払います。",
+    "reading": "かーどでしはらいます。",
+    "romaji": "kaado de shiharaimasu.",
+    "english": "I'll pay by card.",
+    "literalMeaning": "I will pay by card.",
+    "naturalUsage": "Natural when settling the final hotel bill.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "payment",
+      "card"
+    ]
+  },
+  {
+    "id": "travel-hotels-036",
+    "type": "travel",
+    "category": "hotels",
+    "subcategory": "Check-out",
+    "japanese": "現金で支払います。",
+    "reading": "げんきんでしはらいます。",
+    "romaji": "genkin de shiharaimasu.",
+    "english": "I'll pay in cash.",
+    "literalMeaning": "I will pay in cash.",
+    "naturalUsage": "Use when paying the final balance in cash.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "payment",
+      "cash"
+    ]
+  },
+  {
+    "id": "travel-hotels-037",
+    "type": "travel",
+    "category": "hotels",
+    "subcategory": "Check-out",
+    "japanese": "領収書をお願いします。",
+    "reading": "りょうしゅうしょをおねがいします。",
+    "romaji": "ryoushuusho o onegai shimasu.",
+    "english": "An official receipt, please.",
+    "literalMeaning": "An official receipt, please.",
+    "naturalUsage": "Useful for reimbursement or business travel.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "receipt",
+      "formal"
+    ]
+  },
+  {
+    "id": "travel-hotels-038",
+    "type": "travel",
+    "category": "hotels",
+    "subcategory": "Check-out",
+    "japanese": "レシートをお願いします。",
+    "reading": "れしーとをおねがいします。",
+    "romaji": "reshiito o onegai shimasu.",
+    "english": "A receipt, please.",
+    "literalMeaning": "A receipt, please.",
+    "naturalUsage": "Useful if a receipt is not automatically provided.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "receipt"
+    ]
+  },
+  {
+    "id": "travel-hotels-039",
+    "type": "travel",
+    "category": "hotels",
+    "subcategory": "Check-out",
+    "japanese": "チェックアウト後、荷物を預かってもらえますか？",
+    "reading": "ちぇっくあうとご、にもつをあずかってもらえますか？",
+    "romaji": "chekkuauto-go, nimotsu o azukatte moraemasu ka?",
+    "english": "Could you hold my luggage after check-out?",
+    "literalMeaning": "Could I have you keep my luggage after check-out?",
+    "naturalUsage": "Very useful when sightseeing before a later train or flight.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "luggage",
+      "after-checkout"
+    ]
+  },
+  {
+    "id": "travel-hotels-040",
+    "type": "travel",
+    "category": "hotels",
+    "subcategory": "Check-out",
+    "japanese": "何時まで荷物を預けられますか？",
+    "reading": "なんじまでにもつをあずけられますか？",
+    "romaji": "nanji made nimotsu o azukeraremasu ka?",
+    "english": "Until what time can you hold my luggage?",
+    "literalMeaning": "Until what time can I leave my luggage?",
+    "naturalUsage": "Use to confirm the hotel's luggage-storage deadline.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "luggage",
+      "time"
+    ]
+  },
+  {
+    "id": "travel-hotels-041",
+    "type": "travel",
+    "category": "hotels",
+    "subcategory": "Check-out",
+    "japanese": "レイトチェックアウトはできますか？",
+    "reading": "れいとちぇっくあうとはできますか？",
+    "romaji": "reito chekkuauto wa dekimasu ka?",
+    "english": "Is late check-out available?",
+    "literalMeaning": "Can late check-out be done?",
+    "naturalUsage": "Ask reception if you need the room beyond normal check-out.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "late-checkout"
+    ]
+  },
+  {
+    "id": "travel-hotels-042",
+    "type": "travel",
+    "category": "hotels",
+    "subcategory": "Check-out",
+    "japanese": "レイトチェックアウトはいくらですか？",
+    "reading": "れいとちぇっくあうとはいくらですか？",
+    "romaji": "reito chekkuauto wa ikura desu ka?",
+    "english": "How much is late check-out?",
+    "literalMeaning": "How much is late check-out?",
+    "naturalUsage": "Useful after confirming late check-out is available.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "late-checkout",
+      "fee"
+    ]
+  },
+  {
+    "id": "travel-hotels-043",
+    "type": "travel",
+    "category": "hotels",
+    "subcategory": "Check-out",
+    "japanese": "タクシーを呼んでもらえますか？",
+    "reading": "たくしーをよんでもらえますか？",
+    "romaji": "takushii o yonde moraemasu ka?",
+    "english": "Could you call a taxi for me?",
+    "literalMeaning": "Could I have you call a taxi?",
+    "naturalUsage": "Useful when leaving with luggage or heading to a station/airport.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "taxi",
+      "departure"
+    ]
+  },
+  {
+    "id": "travel-hotels-044",
+    "type": "travel",
+    "category": "hotels",
+    "subcategory": "Check-out",
+    "japanese": "最寄り駅までどう行けばいいですか？",
+    "reading": "もよりえきまでどういけばいいですか？",
+    "romaji": "moyori eki made dou ikeba ii desu ka?",
+    "english": "How do I get to the nearest station?",
+    "literalMeaning": "How should I go to the nearest station?",
+    "naturalUsage": "Useful when leaving the hotel on foot or by transit.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "station",
+      "directions"
+    ]
+  },
+  {
+    "id": "travel-hotels-045",
+    "type": "travel",
+    "category": "hotels",
+    "subcategory": "Check-out",
+    "japanese": "お世話になりました。",
+    "reading": "おせわになりました。",
+    "romaji": "osewa ni narimashita.",
+    "english": "Thank you for everything.",
+    "literalMeaning": "I was in your care.",
+    "naturalUsage": "A warm, natural phrase when leaving after being looked after by hotel staff.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "thanks",
+      "departure"
+    ]
+  },
+  {
+    "id": "travel-hotels-046",
+    "type": "travel",
+    "category": "hotels",
+    "subcategory": "Luggage",
+    "japanese": "荷物を預けたいです。",
+    "reading": "にもつをあずけたいです。",
+    "romaji": "nimotsu o azuketai desu.",
+    "english": "I'd like to leave my luggage here.",
+    "literalMeaning": "I want to leave my luggage.",
+    "naturalUsage": "Natural at reception when requesting luggage storage.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "luggage",
+      "storage"
+    ]
+  },
+  {
+    "id": "travel-hotels-047",
+    "type": "travel",
+    "category": "hotels",
+    "subcategory": "Luggage",
+    "japanese": "この荷物を預かってもらえますか？",
+    "reading": "このにもつをあずかってもらえますか？",
+    "romaji": "kono nimotsu o azukatte moraemasu ka?",
+    "english": "Could you hold this luggage for me?",
+    "literalMeaning": "Could I have you keep this luggage?",
+    "naturalUsage": "Useful while indicating a particular suitcase or bag.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "luggage",
+      "storage"
+    ]
+  },
+  {
+    "id": "travel-hotels-048",
+    "type": "travel",
+    "category": "hotels",
+    "subcategory": "Luggage",
+    "japanese": "チェックイン前でも荷物を預けられますか？",
+    "reading": "ちぇっくいんまえでもにもつをあずけられますか？",
+    "romaji": "chekkuin mae demo nimotsu o azukeraremasu ka?",
+    "english": "Can I leave my luggage before check-in?",
+    "literalMeaning": "Can I leave luggage even before check-in?",
+    "naturalUsage": "Very useful for early arrivals.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "luggage",
+      "before-checkin"
+    ]
+  },
+  {
+    "id": "travel-hotels-049",
+    "type": "travel",
+    "category": "hotels",
+    "subcategory": "Luggage",
+    "japanese": "明日まで荷物を預けられますか？",
+    "reading": "あしたまでにもつをあずけられますか？",
+    "romaji": "ashita made nimotsu o azukeraremasu ka?",
+    "english": "Can you hold my luggage until tomorrow?",
+    "literalMeaning": "Can I leave my luggage until tomorrow?",
+    "naturalUsage": "Ask if you need overnight storage; availability depends on the hotel.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "luggage",
+      "overnight"
+    ]
+  },
+  {
+    "id": "travel-hotels-050",
+    "type": "travel",
+    "category": "hotels",
+    "subcategory": "Luggage",
+    "japanese": "荷物はどこで受け取れますか？",
+    "reading": "にもつはどこでうけとれますか？",
+    "romaji": "nimotsu wa doko de uketoremasu ka?",
+    "english": "Where can I pick up my luggage?",
+    "literalMeaning": "Where can I receive my luggage?",
+    "naturalUsage": "Useful in larger hotels with a separate luggage counter.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "luggage",
+      "pickup"
+    ]
+  },
+  {
+    "id": "travel-hotels-051",
+    "type": "travel",
+    "category": "hotels",
+    "subcategory": "Luggage",
+    "japanese": "荷物を受け取りに来ました。",
+    "reading": "にもつをうけとりにきました。",
+    "romaji": "nimotsu o uketori ni kimashita.",
+    "english": "I'm here to pick up my luggage.",
+    "literalMeaning": "I came to receive my luggage.",
+    "naturalUsage": "Natural when returning after sightseeing.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "luggage",
+      "pickup"
+    ]
+  },
+  {
+    "id": "travel-hotels-052",
+    "type": "travel",
+    "category": "hotels",
+    "subcategory": "Luggage",
+    "japanese": "預かり証はこちらです。",
+    "reading": "あずかりしょうはこちらです。",
+    "romaji": "azukarishou wa kochira desu.",
+    "english": "Here's my luggage claim ticket.",
+    "literalMeaning": "The storage receipt is here.",
+    "naturalUsage": "Use while presenting the ticket/tag given when you left your luggage.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "luggage",
+      "claim-ticket"
+    ]
+  },
+  {
+    "id": "travel-hotels-053",
+    "type": "travel",
+    "category": "hotels",
+    "subcategory": "Luggage",
+    "japanese": "このスーツケースは重いです。",
+    "reading": "このすーつけーすはおもいです。",
+    "romaji": "kono suutsukeesu wa omoi desu.",
+    "english": "This suitcase is heavy.",
+    "literalMeaning": "This suitcase is heavy.",
+    "naturalUsage": "Useful when asking staff for assistance handling luggage.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "suitcase",
+      "heavy"
+    ]
+  },
+  {
+    "id": "travel-hotels-054",
+    "type": "travel",
+    "category": "hotels",
+    "subcategory": "Luggage",
+    "japanese": "部屋まで運んでもらえますか？",
+    "reading": "へやまではこんでもらえますか？",
+    "romaji": "heya made hakonde moraemasu ka?",
+    "english": "Could you take it to my room?",
+    "literalMeaning": "Could I have you carry it to the room?",
+    "naturalUsage": "Useful at hotels that provide luggage assistance.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "luggage",
+      "room",
+      "assistance"
+    ]
+  },
+  {
+    "id": "travel-hotels-055",
+    "type": "travel",
+    "category": "hotels",
+    "subcategory": "Luggage",
+    "japanese": "宅配便で送れますか？",
+    "reading": "たくはいびんでおくれますか？",
+    "romaji": "takuhaibin de okuremasu ka?",
+    "english": "Can I send this by luggage delivery service?",
+    "literalMeaning": "Can it be sent by courier delivery?",
+    "naturalUsage": "Very useful in Japan for forwarding suitcases between hotels or to an airport.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "luggage-delivery",
+      "takuhaibin"
+    ]
+  },
+  {
+    "id": "travel-hotels-056",
+    "type": "travel",
+    "category": "hotels",
+    "subcategory": "Luggage",
+    "japanese": "次のホテルに荷物を送りたいです。",
+    "reading": "つぎのほてるににもつをおくりたいです。",
+    "romaji": "tsugi no hoteru ni nimotsu o okuritai desu.",
+    "english": "I'd like to send my luggage to my next hotel.",
+    "literalMeaning": "I want to send my luggage to the next hotel.",
+    "naturalUsage": "Useful when using takkyubin/takuhaibin during a multi-city trip.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "luggage-delivery",
+      "next-hotel"
+    ]
+  },
+  {
+    "id": "travel-hotels-057",
+    "type": "travel",
+    "category": "hotels",
+    "subcategory": "Luggage",
+    "japanese": "空港に荷物を送れますか？",
+    "reading": "くうこうににもつをおくれますか？",
+    "romaji": "kuukou ni nimotsu o okuremasu ka?",
+    "english": "Can I send my luggage to the airport?",
+    "literalMeaning": "Can I send my luggage to the airport?",
+    "naturalUsage": "Useful before your departure flight; ask about required lead time.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "luggage-delivery",
+      "airport"
+    ]
+  },
+  {
+    "id": "travel-hotels-058",
+    "type": "travel",
+    "category": "hotels",
+    "subcategory": "Luggage",
+    "japanese": "いつ届きますか？",
+    "reading": "いつとどきますか？",
+    "romaji": "itsu todokimasu ka?",
+    "english": "When will it arrive?",
+    "literalMeaning": "When will it be delivered?",
+    "naturalUsage": "Essential when arranging luggage forwarding.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "delivery",
+      "arrival-time"
+    ]
+  },
+  {
+    "id": "travel-hotels-059",
+    "type": "travel",
+    "category": "hotels",
+    "subcategory": "Luggage",
+    "japanese": "料金はいくらですか？",
+    "reading": "りょうきんはいくらですか？",
+    "romaji": "ryoukin wa ikura desu ka?",
+    "english": "How much does it cost?",
+    "literalMeaning": "How much is the fee?",
+    "naturalUsage": "Useful when checking luggage storage or delivery fees.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "fee",
+      "luggage"
+    ]
+  },
+  {
+    "id": "travel-hotels-060",
+    "type": "travel",
+    "category": "hotels",
+    "subcategory": "Luggage",
+    "japanese": "壊れ物が入っています。",
+    "reading": "こわれものがはいっています。",
+    "romaji": "kowaremono ga haitteimasu.",
+    "english": "There are fragile items inside.",
+    "literalMeaning": "Breakable things are inside.",
+    "naturalUsage": "Tell staff when a bag contains fragile items.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "fragile",
+      "luggage"
+    ]
+  },
+  {
+    "id": "travel-hotels-061",
+    "type": "travel",
+    "category": "hotels",
+    "subcategory": "Room Requests",
+    "japanese": "タオルをもう一枚もらえますか？",
+    "reading": "たおるをもういちまいもらえますか？",
+    "romaji": "taoru o mou ichimai moraemasu ka?",
+    "english": "Could I have another towel?",
+    "literalMeaning": "Could I receive one more towel?",
+    "naturalUsage": "Useful when you need an extra towel.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "towel",
+      "extra"
+    ]
+  },
+  {
+    "id": "travel-hotels-062",
+    "type": "travel",
+    "category": "hotels",
+    "subcategory": "Room Requests",
+    "japanese": "枕をもう一つもらえますか？",
+    "reading": "まくらをもうひとつもらえますか？",
+    "romaji": "makura o mou hitotsu moraemasu ka?",
+    "english": "Could I have another pillow?",
+    "literalMeaning": "Could I receive one more pillow?",
+    "naturalUsage": "Useful if you need an extra pillow.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "pillow",
+      "extra"
+    ]
+  },
+  {
+    "id": "travel-hotels-063",
+    "type": "travel",
+    "category": "hotels",
+    "subcategory": "Room Requests",
+    "japanese": "毛布をもう一枚もらえますか？",
+    "reading": "もうふをもういちまいもらえますか？",
+    "romaji": "moufu o mou ichimai moraemasu ka?",
+    "english": "Could I have another blanket?",
+    "literalMeaning": "Could I receive one more blanket?",
+    "naturalUsage": "Useful when the room feels cold.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "blanket",
+      "extra"
+    ]
+  },
+  {
+    "id": "travel-hotels-064",
+    "type": "travel",
+    "category": "hotels",
+    "subcategory": "Room Requests",
+    "japanese": "水をもう一本もらえますか？",
+    "reading": "みずをもういっぽんもらえますか？",
+    "romaji": "mizu o mou ippon moraemasu ka?",
+    "english": "Could I have another bottle of water?",
+    "literalMeaning": "Could I receive one more bottle of water?",
+    "naturalUsage": "Ask if the hotel provides bottled water; charges may apply.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "water",
+      "extra"
+    ]
+  },
+  {
+    "id": "travel-hotels-065",
+    "type": "travel",
+    "category": "hotels",
+    "subcategory": "Room Requests",
+    "japanese": "歯ブラシをもらえますか？",
+    "reading": "はぶらしをもらえますか？",
+    "romaji": "haburashi o moraemasu ka?",
+    "english": "Could I have a toothbrush?",
+    "literalMeaning": "Could I receive a toothbrush?",
+    "naturalUsage": "Useful at hotels where amenities are available on request.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "amenity",
+      "toothbrush"
+    ]
+  },
+  {
+    "id": "travel-hotels-066",
+    "type": "travel",
+    "category": "hotels",
+    "subcategory": "Room Requests",
+    "japanese": "部屋を掃除してもらえますか？",
+    "reading": "へやをそうじしてもらえますか？",
+    "romaji": "heya o souji shite moraemasu ka?",
+    "english": "Could you clean my room?",
+    "literalMeaning": "Could I have you clean the room?",
+    "naturalUsage": "Useful if housekeeping is request-based.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "housekeeping",
+      "cleaning"
+    ]
+  },
+  {
+    "id": "travel-hotels-067",
+    "type": "travel",
+    "category": "hotels",
+    "subcategory": "Room Requests",
+    "japanese": "今日は掃除はいりません。",
+    "reading": "きょうはそうじはいりません。",
+    "romaji": "kyou wa souji wa irimasen.",
+    "english": "I don't need room cleaning today.",
+    "literalMeaning": "I don't need cleaning today.",
+    "naturalUsage": "Natural way to decline housekeeping.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "housekeeping",
+      "no-cleaning"
+    ]
+  },
+  {
+    "id": "travel-hotels-068",
+    "type": "travel",
+    "category": "hotels",
+    "subcategory": "Room Requests",
+    "japanese": "タオルだけ交換してもらえますか？",
+    "reading": "たおるだけこうかんしてもらえますか？",
+    "romaji": "taoru dake koukan shite moraemasu ka?",
+    "english": "Could you just replace the towels?",
+    "literalMeaning": "Could I have only the towels exchanged?",
+    "naturalUsage": "Useful when you do not need full housekeeping.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "towel",
+      "housekeeping"
+    ]
+  },
+  {
+    "id": "travel-hotels-069",
+    "type": "travel",
+    "category": "hotels",
+    "subcategory": "Room Requests",
+    "japanese": "静かな部屋に変更できますか？",
+    "reading": "しずかなへやにへんこうできますか？",
+    "romaji": "shizuka na heya ni henkou dekimasu ka?",
+    "english": "Could I change to a quieter room?",
+    "literalMeaning": "Can I change to a quiet room?",
+    "naturalUsage": "Useful if noise is affecting your stay; availability may be limited.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "room-change",
+      "quiet"
+    ]
+  },
+  {
+    "id": "travel-hotels-070",
+    "type": "travel",
+    "category": "hotels",
+    "subcategory": "Room Requests",
+    "japanese": "禁煙の部屋に変更できますか？",
+    "reading": "きんえんのへやにへんこうできますか？",
+    "romaji": "kin'en no heya ni henkou dekimasu ka?",
+    "english": "Could I change to a non-smoking room?",
+    "literalMeaning": "Can I change to a non-smoking room?",
+    "naturalUsage": "Useful if the assigned room is unsuitable.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "room-change",
+      "non-smoking"
+    ]
+  },
+  {
+    "id": "travel-hotels-071",
+    "type": "travel",
+    "category": "hotels",
+    "subcategory": "Room Requests",
+    "japanese": "高い階の部屋はありますか？",
+    "reading": "たかいかいのへやはありますか？",
+    "romaji": "takai kai no heya wa arimasu ka?",
+    "english": "Do you have a room on a higher floor?",
+    "literalMeaning": "Is there a room on a high floor?",
+    "naturalUsage": "Useful as a preference request; not guaranteed.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "room-request",
+      "high-floor"
+    ]
+  },
+  {
+    "id": "travel-hotels-072",
+    "type": "travel",
+    "category": "hotels",
+    "subcategory": "Room Requests",
+    "japanese": "眺めのいい部屋はありますか？",
+    "reading": "ながめのいいへやはありますか？",
+    "romaji": "nagame no ii heya wa arimasu ka?",
+    "english": "Do you have a room with a nice view?",
+    "literalMeaning": "Is there a room with a good view?",
+    "naturalUsage": "Useful when asking about an upgrade or room change.",
+    "politeness": "polite",
+    "priority": "extra",
+    "tags": [
+      "room-request",
+      "view"
+    ]
+  },
+  {
+    "id": "travel-hotels-073",
+    "type": "travel",
+    "category": "hotels",
+    "subcategory": "Room Requests",
+    "japanese": "加湿器を借りられますか？",
+    "reading": "かしつきをかりられますか？",
+    "romaji": "kashitsuki o kariraremasu ka?",
+    "english": "Can I borrow a humidifier?",
+    "literalMeaning": "Can I borrow a humidifier?",
+    "naturalUsage": "Commonly useful in Japanese hotels, especially during dry seasons.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "humidifier",
+      "borrow"
+    ]
+  },
+  {
+    "id": "travel-hotels-074",
+    "type": "travel",
+    "category": "hotels",
+    "subcategory": "Room Requests",
+    "japanese": "アイロンを借りられますか？",
+    "reading": "あいろんをかりられますか？",
+    "romaji": "airon o kariraremasu ka?",
+    "english": "Can I borrow an iron?",
+    "literalMeaning": "Can I borrow an iron?",
+    "naturalUsage": "Useful if the room does not include one.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "iron",
+      "borrow"
+    ]
+  },
+  {
+    "id": "travel-hotels-075",
+    "type": "travel",
+    "category": "hotels",
+    "subcategory": "Room Requests",
+    "japanese": "充電器を借りられますか？",
+    "reading": "じゅうでんきをかりられますか？",
+    "romaji": "juudenki o kariraremasu ka?",
+    "english": "Can I borrow a charger?",
+    "literalMeaning": "Can I borrow a charger?",
+    "naturalUsage": "Some hotels lend chargers; useful if yours is lost or forgotten.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "charger",
+      "borrow"
+    ]
+  },
+  {
+    "id": "travel-hotels-076",
+    "type": "travel",
+    "category": "hotels",
+    "subcategory": "Problems",
+    "japanese": "部屋に問題があります。",
+    "reading": "へやにもんだいがあります。",
+    "romaji": "heya ni mondai ga arimasu.",
+    "english": "There's a problem with my room.",
+    "literalMeaning": "There is a problem in the room.",
+    "naturalUsage": "General opening phrase before explaining a room issue.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "room",
+      "problem"
+    ]
+  },
+  {
+    "id": "travel-hotels-077",
+    "type": "travel",
+    "category": "hotels",
+    "subcategory": "Problems",
+    "japanese": "エアコンが動きません。",
+    "reading": "えあこんがうごきません。",
+    "romaji": "eakon ga ugokimasen.",
+    "english": "The air conditioner isn't working.",
+    "literalMeaning": "The air conditioner does not operate.",
+    "naturalUsage": "Useful for heating or cooling problems.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "air-conditioner",
+      "broken"
+    ]
+  },
+  {
+    "id": "travel-hotels-078",
+    "type": "travel",
+    "category": "hotels",
+    "subcategory": "Problems",
+    "japanese": "部屋が寒すぎます。",
+    "reading": "へやがさむすぎます。",
+    "romaji": "heya ga samusugimasu.",
+    "english": "The room is too cold.",
+    "literalMeaning": "The room is excessively cold.",
+    "naturalUsage": "Useful if temperature controls are unclear or ineffective.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "temperature",
+      "cold"
+    ]
+  },
+  {
+    "id": "travel-hotels-079",
+    "type": "travel",
+    "category": "hotels",
+    "subcategory": "Problems",
+    "japanese": "部屋が暑すぎます。",
+    "reading": "へやがあつすぎます。",
+    "romaji": "heya ga atsusugimasu.",
+    "english": "The room is too hot.",
+    "literalMeaning": "The room is excessively hot.",
+    "naturalUsage": "Useful if the room cannot be cooled sufficiently.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "temperature",
+      "hot"
+    ]
+  },
+  {
+    "id": "travel-hotels-080",
+    "type": "travel",
+    "category": "hotels",
+    "subcategory": "Problems",
+    "japanese": "お湯が出ません。",
+    "reading": "おゆがでません。",
+    "romaji": "oyu ga demasen.",
+    "english": "There's no hot water.",
+    "literalMeaning": "Hot water does not come out.",
+    "naturalUsage": "Important bathroom problem to report to reception.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "hot-water",
+      "bathroom"
+    ]
+  },
+  {
+    "id": "travel-hotels-081",
+    "type": "travel",
+    "category": "hotels",
+    "subcategory": "Problems",
+    "japanese": "シャワーが使えません。",
+    "reading": "しゃわーがつかえません。",
+    "romaji": "shawaa ga tsukaemasen.",
+    "english": "The shower isn't working.",
+    "literalMeaning": "The shower cannot be used.",
+    "naturalUsage": "Use when the shower has a functional problem.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "shower",
+      "broken"
+    ]
+  },
+  {
+    "id": "travel-hotels-082",
+    "type": "travel",
+    "category": "hotels",
+    "subcategory": "Problems",
+    "japanese": "トイレが流れません。",
+    "reading": "といれがながれません。",
+    "romaji": "toire ga nagaremasen.",
+    "english": "The toilet won't flush.",
+    "literalMeaning": "The toilet does not flush.",
+    "naturalUsage": "Important room problem to report promptly.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "toilet",
+      "broken"
+    ]
+  },
+  {
+    "id": "travel-hotels-083",
+    "type": "travel",
+    "category": "hotels",
+    "subcategory": "Problems",
+    "japanese": "Wi-Fiにつながりません。",
+    "reading": "わいふぁいにつながりません。",
+    "romaji": "wai-fai ni tsunagarimasen.",
+    "english": "I can't connect to the Wi-Fi.",
+    "literalMeaning": "It does not connect to Wi-Fi.",
+    "naturalUsage": "Useful if the network appears but your device cannot connect.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "wifi",
+      "connection"
+    ]
+  },
+  {
+    "id": "travel-hotels-084",
+    "type": "travel",
+    "category": "hotels",
+    "subcategory": "Problems",
+    "japanese": "テレビがつきません。",
+    "reading": "てれびがつきません。",
+    "romaji": "terebi ga tsukimasen.",
+    "english": "The TV won't turn on.",
+    "literalMeaning": "The television does not turn on.",
+    "naturalUsage": "Useful for a broken television or remote-control issue.",
+    "politeness": "polite",
+    "priority": "extra",
+    "tags": [
+      "television",
+      "broken"
+    ]
+  },
+  {
+    "id": "travel-hotels-085",
+    "type": "travel",
+    "category": "hotels",
+    "subcategory": "Problems",
+    "japanese": "部屋が少しうるさいです。",
+    "reading": "へやがすこしうるさいです。",
+    "romaji": "heya ga sukoshi urusai desu.",
+    "english": "The room is a little noisy.",
+    "literalMeaning": "The room is a little noisy.",
+    "naturalUsage": "Polite way to raise a noise issue before asking for help or a room change.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "noise",
+      "room"
+    ]
+  },
+  {
+    "id": "travel-hotels-086",
+    "type": "travel",
+    "category": "hotels",
+    "subcategory": "Problems",
+    "japanese": "隣の部屋がうるさいです。",
+    "reading": "となりのへやがうるさいです。",
+    "romaji": "tonari no heya ga urusai desu.",
+    "english": "The room next door is noisy.",
+    "literalMeaning": "The neighboring room is noisy.",
+    "naturalUsage": "Use when noise from another guest room is disturbing you.",
+    "politeness": "polite",
+    "priority": "useful",
+    "tags": [
+      "noise",
+      "neighbor"
+    ]
+  },
+  {
+    "id": "travel-hotels-087",
+    "type": "travel",
+    "category": "hotels",
+    "subcategory": "Problems",
+    "japanese": "部屋を変えてもらえますか？",
+    "reading": "へやをかえてもらえますか？",
+    "romaji": "heya o kaete moraemasu ka?",
+    "english": "Could you change my room?",
+    "literalMeaning": "Could I have you change the room?",
+    "naturalUsage": "Use after explaining a significant problem; availability may vary.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "room-change",
+      "problem"
+    ]
+  },
+  {
+    "id": "travel-hotels-088",
+    "type": "travel",
+    "category": "hotels",
+    "subcategory": "Problems",
+    "japanese": "スタッフに来てもらえますか？",
+    "reading": "すたっふにきてもらえますか？",
+    "romaji": "sutaffu ni kite moraemasu ka?",
+    "english": "Could someone from the staff come to my room?",
+    "literalMeaning": "Could I have a staff member come?",
+    "naturalUsage": "Useful when a problem needs to be inspected in person.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "staff",
+      "assistance"
+    ]
+  },
+  {
+    "id": "travel-hotels-089",
+    "type": "travel",
+    "category": "hotels",
+    "subcategory": "Problems",
+    "japanese": "部屋に忘れ物をしました。",
+    "reading": "へやにわすれものをしました。",
+    "romaji": "heya ni wasuremono o shimashita.",
+    "english": "I left something in my room.",
+    "literalMeaning": "I forgot an item in the room.",
+    "naturalUsage": "Useful after check-out if you realize you left something behind.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "lost-item",
+      "room"
+    ]
+  },
+  {
+    "id": "travel-hotels-090",
+    "type": "travel",
+    "category": "hotels",
+    "subcategory": "Problems",
+    "japanese": "忘れ物が見つかりましたか？",
+    "reading": "わすれものがみつかりましたか？",
+    "romaji": "wasuremono ga mitsukarimashita ka?",
+    "english": "Was my lost item found?",
+    "literalMeaning": "Was the forgotten item found?",
+    "naturalUsage": "Use when following up with the hotel about something left behind.",
+    "politeness": "polite",
+    "priority": "essential",
+    "tags": [
+      "lost-item",
+      "follow-up"
+    ]
+  }
 ]
