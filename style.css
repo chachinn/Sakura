@@ -52,10 +52,11 @@ body.wallpaper-enabled {
     position: relative;
     isolation: isolate;
     background: transparent;
-    --color-surface: rgba(255, 255, 255, .91);
+    --color-surface: rgba(255, 255, 255, .85);
 }
 
 body.wallpaper-enabled::before {
+    --wallpaper-display-overlay: 48%;
     content: "";
     position: fixed;
     inset: 0;
@@ -66,8 +67,8 @@ body.wallpaper-enabled::before {
     background-image: var(--wallpaper-url);
     background-image:
         linear-gradient(
-            color-mix(in srgb, var(--color-background) calc(var(--wallpaper-overlay-strength) - 10%), transparent),
-            color-mix(in srgb, var(--color-background) calc(var(--wallpaper-overlay-strength) - 10%), transparent)
+            color-mix(in srgb, var(--color-background) var(--wallpaper-display-overlay), transparent),
+            color-mix(in srgb, var(--color-background) var(--wallpaper-display-overlay), transparent)
         ),
         var(--wallpaper-url);
     background-position: center center;
@@ -75,8 +76,50 @@ body.wallpaper-enabled::before {
     background-repeat: no-repeat;
 }
 
+body.wallpaper-enabled:has(#overlay-options [data-overlay="light"].active)::before {
+    --wallpaper-display-overlay: 28%;
+}
+
+body.wallpaper-enabled:has(#overlay-options [data-overlay="medium"].active)::before {
+    --wallpaper-display-overlay: 48%;
+}
+
+body.wallpaper-enabled:has(#overlay-options [data-overlay="strong"].active)::before {
+    --wallpaper-display-overlay: 63%;
+}
+
 body.wallpaper-enabled .app-shell {
-    background: color-mix(in srgb, var(--color-background) 52%, transparent);
+    background: color-mix(in srgb, var(--color-background) 32%, transparent);
+}
+
+body.wallpaper-enabled .app-header {
+    background: color-mix(in srgb, var(--color-background) 74%, transparent);
+    backdrop-filter: blur(18px) saturate(1.15);
+    -webkit-backdrop-filter: blur(18px) saturate(1.15);
+}
+
+body.wallpaper-enabled .bottom-navigation {
+    background: color-mix(in srgb, var(--color-background) 78%, transparent);
+    backdrop-filter: blur(22px) saturate(1.2);
+    -webkit-backdrop-filter: blur(22px) saturate(1.2);
+}
+
+body.wallpaper-enabled .learn-search-button,
+body.wallpaper-enabled .universal-search-form,
+body.wallpaper-enabled .answer-input,
+body.wallpaper-enabled .filter-row select,
+body.wallpaper-enabled #entry-form input:not([type="checkbox"]),
+body.wallpaper-enabled #entry-form select,
+body.wallpaper-enabled #entry-form textarea,
+body.wallpaper-enabled .entry-list-filters input,
+body.wallpaper-enabled .entry-list-filters select,
+body.wallpaper-enabled .translation-form textarea {
+    background: rgba(255, 255, 255, .95);
+}
+
+body.wallpaper-enabled .appearance-settings-card,
+body.wallpaper-enabled .entry-manager-dialog {
+    background: color-mix(in srgb, var(--color-background) 96%, white);
 }
 
 button,
