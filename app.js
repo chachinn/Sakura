@@ -10,6 +10,7 @@ const STORAGE = {
     sectionLevels: "chaSectionJlptLevels",
     quizStats: "chaQuizStats",
     activeQuiz: "chaActiveQuizType",
+    kanaQuizGroups: "sakuraKanaQuizGroups",
     recentSearches: "chaRecentSearches",
     userNative: "sakura_user_native_entries",
     userSlang: "sakura_user_slang_entries",
@@ -63,6 +64,10 @@ const DEFAULT_WALLPAPER_FRAMING = Object.freeze({ positionX: 50, positionY: 50, 
 const THEMES = { pink:{name:"Sakura Pink",swatch:"#ef5b87"},purple:{name:"Lavender Purple",swatch:"#9b70c8"},blue:{name:"Sky Blue",swatch:"#68a9dc"},green:{name:"Mint Green",swatch:"#68b99a"},yellow:{name:"Soft Yellow",swatch:"#d6a94d"} };
 const TRANSLATION_CONTEXTS = ["Everyday","Travel","Restaurant","Café","Shopping","Hotel","Train","Airport","Workplace","Friends","Social media","Other"];
 const TRANSLATION_TONES = ["Polite and natural","Casual","Very polite","Friendly","Social media / texting"];
+const KANA_QUIZ_GROUPS = ["Basic", "Dakuten", "Handakuten", "Yoon", "Extended"];
+let activeKanaQuizGroups = readJson(STORAGE.kanaQuizGroups, ["Basic"])
+    .filter(group => KANA_QUIZ_GROUPS.includes(group));
+if (!activeKanaQuizGroups.length) activeKanaQuizGroups = ["Basic"];
 
 const KANA_DATA = [
     ["あ", "a", "Hiragana"], ["い", "i", "Hiragana"], ["う", "u", "Hiragana"], ["え", "e", "Hiragana"], ["お", "o", "Hiragana"],
@@ -82,7 +87,51 @@ const KANA_DATA = [
     ["ハ", "ha", "Katakana"], ["ヒ", "hi", "Katakana"], ["フ", "fu", "Katakana"], ["ヘ", "he", "Katakana"], ["ホ", "ho", "Katakana"],
     ["マ", "ma", "Katakana"], ["ミ", "mi", "Katakana"], ["ム", "mu", "Katakana"], ["メ", "me", "Katakana"], ["モ", "mo", "Katakana"],
     ["ヤ", "ya", "Katakana"], ["ユ", "yu", "Katakana"], ["ヨ", "yo", "Katakana"], ["ラ", "ra", "Katakana"], ["リ", "ri", "Katakana"],
-    ["ル", "ru", "Katakana"], ["レ", "re", "Katakana"], ["ロ", "ro", "Katakana"], ["ワ", "wa", "Katakana"], ["ヲ", "wo", "Katakana"], ["ン", "n", "Katakana"]
+    ["ル", "ru", "Katakana"], ["レ", "re", "Katakana"], ["ロ", "ro", "Katakana"], ["ワ", "wa", "Katakana"], ["ヲ", "wo", "Katakana"], ["ン", "n", "Katakana"],
+
+    ["が", "ga", "Hiragana", "Dakuten"], ["ぎ", "gi", "Hiragana", "Dakuten"], ["ぐ", "gu", "Hiragana", "Dakuten"], ["げ", "ge", "Hiragana", "Dakuten"], ["ご", "go", "Hiragana", "Dakuten"],
+    ["ざ", "za", "Hiragana", "Dakuten"], ["じ", "ji", "Hiragana", "Dakuten"], ["ず", "zu", "Hiragana", "Dakuten"], ["ぜ", "ze", "Hiragana", "Dakuten"], ["ぞ", "zo", "Hiragana", "Dakuten"],
+    ["だ", "da", "Hiragana", "Dakuten"], ["ぢ", "ji", "Hiragana", "Dakuten"], ["づ", "zu", "Hiragana", "Dakuten"], ["で", "de", "Hiragana", "Dakuten"], ["ど", "do", "Hiragana", "Dakuten"],
+    ["ば", "ba", "Hiragana", "Dakuten"], ["び", "bi", "Hiragana", "Dakuten"], ["ぶ", "bu", "Hiragana", "Dakuten"], ["べ", "be", "Hiragana", "Dakuten"], ["ぼ", "bo", "Hiragana", "Dakuten"],
+    ["ぱ", "pa", "Hiragana", "Handakuten"], ["ぴ", "pi", "Hiragana", "Handakuten"], ["ぷ", "pu", "Hiragana", "Handakuten"], ["ぺ", "pe", "Hiragana", "Handakuten"], ["ぽ", "po", "Hiragana", "Handakuten"],
+    ["きゃ", "kya", "Hiragana", "Yoon"], ["きゅ", "kyu", "Hiragana", "Yoon"], ["きょ", "kyo", "Hiragana", "Yoon"],
+    ["ぎゃ", "gya", "Hiragana", "Yoon"], ["ぎゅ", "gyu", "Hiragana", "Yoon"], ["ぎょ", "gyo", "Hiragana", "Yoon"],
+    ["しゃ", "sha", "Hiragana", "Yoon"], ["しゅ", "shu", "Hiragana", "Yoon"], ["しょ", "sho", "Hiragana", "Yoon"],
+    ["じゃ", "ja", "Hiragana", "Yoon"], ["じゅ", "ju", "Hiragana", "Yoon"], ["じょ", "jo", "Hiragana", "Yoon"],
+    ["ちゃ", "cha", "Hiragana", "Yoon"], ["ちゅ", "chu", "Hiragana", "Yoon"], ["ちょ", "cho", "Hiragana", "Yoon"],
+    ["にゃ", "nya", "Hiragana", "Yoon"], ["にゅ", "nyu", "Hiragana", "Yoon"], ["にょ", "nyo", "Hiragana", "Yoon"],
+    ["ひゃ", "hya", "Hiragana", "Yoon"], ["ひゅ", "hyu", "Hiragana", "Yoon"], ["ひょ", "hyo", "Hiragana", "Yoon"],
+    ["びゃ", "bya", "Hiragana", "Yoon"], ["びゅ", "byu", "Hiragana", "Yoon"], ["びょ", "byo", "Hiragana", "Yoon"],
+    ["ぴゃ", "pya", "Hiragana", "Yoon"], ["ぴゅ", "pyu", "Hiragana", "Yoon"], ["ぴょ", "pyo", "Hiragana", "Yoon"],
+    ["みゃ", "mya", "Hiragana", "Yoon"], ["みゅ", "myu", "Hiragana", "Yoon"], ["みょ", "myo", "Hiragana", "Yoon"],
+    ["りゃ", "rya", "Hiragana", "Yoon"], ["りゅ", "ryu", "Hiragana", "Yoon"], ["りょ", "ryo", "Hiragana", "Yoon"],
+    ["っ", "small tsu", "Hiragana", "Special", false],
+
+    ["ガ", "ga", "Katakana", "Dakuten"], ["ギ", "gi", "Katakana", "Dakuten"], ["グ", "gu", "Katakana", "Dakuten"], ["ゲ", "ge", "Katakana", "Dakuten"], ["ゴ", "go", "Katakana", "Dakuten"],
+    ["ザ", "za", "Katakana", "Dakuten"], ["ジ", "ji", "Katakana", "Dakuten"], ["ズ", "zu", "Katakana", "Dakuten"], ["ゼ", "ze", "Katakana", "Dakuten"], ["ゾ", "zo", "Katakana", "Dakuten"],
+    ["ダ", "da", "Katakana", "Dakuten"], ["ヂ", "ji", "Katakana", "Dakuten"], ["ヅ", "zu", "Katakana", "Dakuten"], ["デ", "de", "Katakana", "Dakuten"], ["ド", "do", "Katakana", "Dakuten"],
+    ["バ", "ba", "Katakana", "Dakuten"], ["ビ", "bi", "Katakana", "Dakuten"], ["ブ", "bu", "Katakana", "Dakuten"], ["ベ", "be", "Katakana", "Dakuten"], ["ボ", "bo", "Katakana", "Dakuten"],
+    ["パ", "pa", "Katakana", "Handakuten"], ["ピ", "pi", "Katakana", "Handakuten"], ["プ", "pu", "Katakana", "Handakuten"], ["ペ", "pe", "Katakana", "Handakuten"], ["ポ", "po", "Katakana", "Handakuten"],
+    ["キャ", "kya", "Katakana", "Yoon"], ["キュ", "kyu", "Katakana", "Yoon"], ["キョ", "kyo", "Katakana", "Yoon"],
+    ["ギャ", "gya", "Katakana", "Yoon"], ["ギュ", "gyu", "Katakana", "Yoon"], ["ギョ", "gyo", "Katakana", "Yoon"],
+    ["シャ", "sha", "Katakana", "Yoon"], ["シュ", "shu", "Katakana", "Yoon"], ["ショ", "sho", "Katakana", "Yoon"],
+    ["ジャ", "ja", "Katakana", "Yoon"], ["ジュ", "ju", "Katakana", "Yoon"], ["ジョ", "jo", "Katakana", "Yoon"],
+    ["チャ", "cha", "Katakana", "Yoon"], ["チュ", "chu", "Katakana", "Yoon"], ["チョ", "cho", "Katakana", "Yoon"],
+    ["ニャ", "nya", "Katakana", "Yoon"], ["ニュ", "nyu", "Katakana", "Yoon"], ["ニョ", "nyo", "Katakana", "Yoon"],
+    ["ヒャ", "hya", "Katakana", "Yoon"], ["ヒュ", "hyu", "Katakana", "Yoon"], ["ヒョ", "hyo", "Katakana", "Yoon"],
+    ["ビャ", "bya", "Katakana", "Yoon"], ["ビュ", "byu", "Katakana", "Yoon"], ["ビョ", "byo", "Katakana", "Yoon"],
+    ["ピャ", "pya", "Katakana", "Yoon"], ["ピュ", "pyu", "Katakana", "Yoon"], ["ピョ", "pyo", "Katakana", "Yoon"],
+    ["ミャ", "mya", "Katakana", "Yoon"], ["ミュ", "myu", "Katakana", "Yoon"], ["ミョ", "myo", "Katakana", "Yoon"],
+    ["リャ", "rya", "Katakana", "Yoon"], ["リュ", "ryu", "Katakana", "Yoon"], ["リョ", "ryo", "Katakana", "Yoon"],
+    ["ヴァ", "va", "Katakana", "Extended"], ["ヴィ", "vi", "Katakana", "Extended"], ["ヴ", "vu", "Katakana", "Extended"], ["ヴェ", "ve", "Katakana", "Extended"], ["ヴォ", "vo", "Katakana", "Extended"],
+    ["ウィ", "wi", "Katakana", "Extended"], ["ウェ", "we", "Katakana", "Extended"], ["ウォ", "wo", "Katakana", "Extended"],
+    ["ファ", "fa", "Katakana", "Extended"], ["フィ", "fi", "Katakana", "Extended"], ["フェ", "fe", "Katakana", "Extended"], ["フォ", "fo", "Katakana", "Extended"], ["フュ", "fyu", "Katakana", "Extended"],
+    ["ティ", "ti", "Katakana", "Extended"], ["トゥ", "tu", "Katakana", "Extended"], ["ディ", "di", "Katakana", "Extended"], ["ドゥ", "du", "Katakana", "Extended"],
+    ["チェ", "che", "Katakana", "Extended"], ["シェ", "she", "Katakana", "Extended"], ["ジェ", "je", "Katakana", "Extended"],
+    ["ツァ", "tsa", "Katakana", "Extended"], ["ツィ", "tsi", "Katakana", "Extended"], ["ツェ", "tse", "Katakana", "Extended"], ["ツォ", "tso", "Katakana", "Extended"],
+    ["クァ", "kwa", "Katakana", "Extended"], ["クィ", "kwi", "Katakana", "Extended"], ["クェ", "kwe", "Katakana", "Extended"], ["クォ", "kwo", "Katakana", "Extended"], ["グァ", "gwa", "Katakana", "Extended"],
+    ["イェ", "ye", "Katakana", "Extended"], ["キェ", "kye", "Katakana", "Extended"], ["ギェ", "gye", "Katakana", "Extended"], ["ニェ", "nye", "Katakana", "Extended"], ["ヒェ", "hye", "Katakana", "Extended"], ["ビェ", "bye", "Katakana", "Extended"], ["ピェ", "pye", "Katakana", "Extended"], ["ミェ", "mye", "Katakana", "Extended"], ["リェ", "rye", "Katakana", "Extended"],
+    ["ッ", "small tsu", "Katakana", "Special", false], ["ー", "long vowel mark", "Katakana", "Special", false]
 ];
 
 function readJson(key, fallback) {
@@ -219,11 +268,11 @@ let yenConverterState = { currencies:{ top:"JPY", bottom:"PHP" }, activeSide:"to
 let globalLevels = normalizeJlptLevels(readJson(STORAGE.globalLevels, DEFAULT_LEVELS));
 let sectionSettings = readJson(STORAGE.sectionLevels, {});
 if (!sectionSettings || typeof sectionSettings !== "object" || Array.isArray(sectionSettings)) sectionSettings = {};
-let quizStats = readJson(STORAGE.quizStats, {
-    kana: { score: 0, count: 0 },
-    kanji: { score: 0, count: 0 },
-    vocabulary: { score: 0, count: 0 }
-});
+let quizStats = {
+    kana: { blooms: 0, misses: 0, questions: 0 },
+    kanji: { blooms: 0, misses: 0, questions: 0 },
+    vocabulary: { blooms: 0, misses: 0, questions: 0 }
+};
 const quizTransitionLocks = { kana: false, kanji: false, vocabulary: false };
 const quizTransitionTimers = { kana: null, kanji: null, vocabulary: null };
 
@@ -352,7 +401,6 @@ function setSaveButton(button, item) {
 }
 
 function updateSavedCounts() {
-    document.getElementById("header-saved-count").textContent = savedItems.length;
     document.getElementById("home-saved-count").textContent = savedItems.length;
 }
 
@@ -689,12 +737,71 @@ function moveDetailWord(direction = 1, random = false) {
     else if (detailReturnRoute !== "search") renderDailyWord(item);
 }
 
+function kanaGroup(item) {
+    return item[3] || "Basic";
+}
+
+function kanaQuizEligible(item) {
+    return item[4] !== false;
+}
+
+function kanaToRomaji(value) {
+    const kana = String(value || "").normalize("NFKC");
+    const readings = new Map(KANA_DATA.filter(kanaQuizEligible).map(item => [item[0], item[1]]));
+    const tokens = [...readings.keys()].sort((left, right) => right.length - left.length);
+    let result = "";
+    for (let index = 0; index < kana.length;) {
+        const character = kana[index];
+        if (character === "っ" || character === "ッ") {
+            const nextToken = tokens.find(token => kana.startsWith(token, index + 1));
+            const nextReading = nextToken ? readings.get(nextToken) : "";
+            result += nextReading.startsWith("ch") ? "c" : (/^[bcdfghjklmnpqrstvwxyz]/.exec(nextReading)?.[0] || "");
+            index += 1;
+            continue;
+        }
+        if (character === "ー") {
+            result += /[aeiou](?!.*[aeiou])/.exec(result)?.[0] || "";
+            index += 1;
+            continue;
+        }
+        const token = tokens.find(candidate => kana.startsWith(candidate, index));
+        if (!token) {
+            result += character;
+            index += 1;
+            continue;
+        }
+        result += readings.get(token);
+        index += token.length;
+    }
+    return result;
+}
+
+function renderKanaQuizGroups() {
+    const container = document.getElementById("kana-quiz-groups");
+    if (!container) return;
+    container.innerHTML = KANA_QUIZ_GROUPS.map(group => `<button class="kana-group-chip ${activeKanaQuizGroups.includes(group) ? "active" : ""}" type="button" data-kana-group="${group}" aria-pressed="${activeKanaQuizGroups.includes(group)}">${group === "Yoon" ? "Yōon" : group}</button>`).join("");
+}
+
+function toggleKanaQuizGroup(group) {
+    if (!KANA_QUIZ_GROUPS.includes(group)) return;
+    if (activeKanaQuizGroups.includes(group)) {
+        if (activeKanaQuizGroups.length === 1) return;
+        activeKanaQuizGroups = activeKanaQuizGroups.filter(value => value !== group);
+    }
+    else activeKanaQuizGroups = KANA_QUIZ_GROUPS.filter(value => activeKanaQuizGroups.includes(value) || value === group);
+    writeJson(STORAGE.kanaQuizGroups, activeKanaQuizGroups);
+    renderKanaQuizGroups();
+    newKana();
+}
+
 function newKana() {
     cancelQuizTransition("kana");
-    const choices = KANA_DATA.filter(item => !currentKana || item[0] !== currentKana[0]);
-    currentKana = choices[Math.floor(Math.random() * choices.length)];
+    const pool = KANA_DATA.filter(item => kanaQuizEligible(item) && activeKanaQuizGroups.includes(kanaGroup(item)));
+    const choices = pool.filter(item => !currentKana || item[0] !== currentKana[0]);
+    const available = choices.length ? choices : pool;
+    currentKana = available[Math.floor(Math.random() * available.length)];
     document.getElementById("kana-character").textContent = currentKana[0];
-    document.getElementById("kana-type").textContent = currentKana[2];
+    document.getElementById("kana-type").textContent = `${currentKana[2]} · ${kanaGroup(currentKana) === "Yoon" ? "Yōon" : kanaGroup(currentKana)}`;
     document.getElementById("kana-answer").value = "";
     setFeedback("kana-feedback", "");
     recordQuizQuestion("kana");
@@ -730,29 +837,45 @@ function setFeedback(id, message, state = "") {
 }
 
 const QUIZ_UI = {
-    kana: { panel: "kana-quiz-panel", input: "kana-answer", check: "check-kana", score: "kana-quiz-score", count: "kana-quiz-count" },
-    kanji: { panel: "kanji-quiz-panel", input: "kanji-quiz-answer", check: "check-kanji-quiz", score: "kanji-quiz-score", count: "kanji-quiz-count" },
-    vocabulary: { panel: "vocabulary-quiz-panel", input: "vocabulary-quiz-answer", check: "check-vocabulary-quiz", score: "vocabulary-quiz-score", count: "vocabulary-quiz-count" }
+    kana: { panel: "kana-quiz-panel", input: "kana-answer", check: "check-kana", blooms: "kana-quiz-blooms", misses: "kana-quiz-misses" },
+    kanji: { panel: "kanji-quiz-panel", input: "kanji-quiz-answer", check: "check-kanji-quiz", blooms: "kanji-quiz-blooms", misses: "kanji-quiz-misses" },
+    vocabulary: { panel: "vocabulary-quiz-panel", input: "vocabulary-quiz-answer", check: "check-vocabulary-quiz", blooms: "vocabulary-quiz-blooms", misses: "vocabulary-quiz-misses" }
 };
 
 function normalizedQuizStats(type) {
     const stored = quizStats[type] || {};
-    return { score: Number(stored.score) || 0, count: Number(stored.count) || 0 };
+    return { blooms: Number(stored.blooms) || 0, misses: Number(stored.misses) || 0, questions: Number(stored.questions) || 0 };
 }
 
 function updateQuizStatus(type) {
     const stats = normalizedQuizStats(type);
     quizStats[type] = stats;
-    document.getElementById(QUIZ_UI[type].score).textContent = stats.score;
-    document.getElementById(QUIZ_UI[type].count).textContent = stats.count;
+    document.getElementById(QUIZ_UI[type].blooms).textContent = stats.blooms;
+    document.getElementById(QUIZ_UI[type].misses).textContent = stats.misses;
 }
 
 function recordQuizQuestion(type) {
     const stats = normalizedQuizStats(type);
-    stats.count += 1;
+    stats.questions += 1;
     quizStats[type] = stats;
-    writeJson(STORAGE.quizStats, quizStats);
     updateQuizStatus(type);
+}
+
+function recordQuizMiss(type) {
+    const stats = normalizedQuizStats(type);
+    stats.misses += 1;
+    quizStats[type] = stats;
+    updateQuizStatus(type);
+}
+
+function resetQuizSession(type) {
+    if (!QUIZ_UI[type]) return;
+    const stats = normalizedQuizStats(type);
+    if ((stats.blooms || stats.misses) && !window.confirm("Reset your Quiz Garden?\n\nYour Blooms and Misses will return to zero.")) return;
+    cancelQuizTransition(type);
+    quizStats[type] = { blooms: 0, misses: 0, questions: 0 };
+    updateQuizStatus(type);
+    ({ kana: newKana, kanji: newKanjiQuiz, vocabulary: newVocabularyQuiz })[type]();
 }
 
 function cancelQuizTransition(type) {
@@ -771,9 +894,8 @@ function completeCorrectAnswer(type, feedbackId, message, nextQuestion) {
     if (quizTransitionLocks[type]) return;
     quizTransitionLocks[type] = true;
     const stats = normalizedQuizStats(type);
-    stats.score += 1;
+    stats.blooms += 1;
     quizStats[type] = stats;
-    writeJson(STORAGE.quizStats, quizStats);
     updateQuizStatus(type);
     setFeedback(feedbackId, message, "correct");
     const ui = QUIZ_UI[type];
@@ -790,6 +912,7 @@ function checkKana() {
         completeCorrectAnswer("kana", "kana-feedback", `Correct! ${currentKana[0]} is ${currentKana[1]}.`, newKana);
         return;
     }
+    recordQuizMiss("kana");
     setFeedback("kana-feedback", "Try again. Enter the romaji reading.", "incorrect");
     return;
     setFeedback("kana-feedback", answer === currentKana[1] ? `Correct! ${currentKana[0]} is ${currentKana[1]}.` : "Not quite—try again.", answer === currentKana[1] ? "correct" : "incorrect");
@@ -837,7 +960,7 @@ function checkKanjiQuiz() {
     if (quizTransitionLocks.kanji || !currentKanjiQuiz) return;
     const correct = isKanjiQuizAnswerCorrect(currentKanjiQuiz, document.getElementById("kanji-quiz-answer").value);
     if (correct) completeCorrectAnswer("kanji", "kanji-quiz-feedback", `Correct! ${currentKanjiQuiz.character}: ${currentKanjiQuiz.meaning}`, newKanjiQuiz);
-    else setFeedback("kanji-quiz-feedback", "Try again with a reading or English meaning.", "incorrect");
+    else { recordQuizMiss("kanji"); setFeedback("kanji-quiz-feedback", "Try again with a reading or English meaning.", "incorrect"); }
     return;
     setFeedback("kanji-quiz-feedback", correct ? `Correct! ${currentKanjiQuiz.character}: ${currentKanjiQuiz.meaning}` : "Not quite—try a reading or English meaning.", correct ? "correct" : "incorrect");
 }
@@ -848,7 +971,7 @@ function checkVocabularyQuiz() {
     const meanings = currentVocabularyQuiz.meaning.split(/[;,]/).map(normalizeAnswer);
     const correct = answer && meanings.some(value => value === answer || value.includes(answer));
     if (correct) completeCorrectAnswer("vocabulary", "vocabulary-quiz-feedback", `Correct! ${currentVocabularyQuiz.word}: ${currentVocabularyQuiz.meaning}`, newVocabularyQuiz);
-    else setFeedback("vocabulary-quiz-feedback", "Try again with the English meaning.", "incorrect");
+    else { recordQuizMiss("vocabulary"); setFeedback("vocabulary-quiz-feedback", "Try again with the English meaning.", "incorrect"); }
     return;
     setFeedback("vocabulary-quiz-feedback", correct ? `Correct! ${currentVocabularyQuiz.word}: ${currentVocabularyQuiz.meaning}` : "Not quite—try again.", correct ? "correct" : "incorrect");
 }
@@ -2870,6 +2993,12 @@ async function resetAppearance() {
     applyTheme("pink"); applyOverlay("medium"); await removeWallpaper(); setAppearanceMessage("Appearance reset to Sakura Pink.");
 }
 
+function openAppearanceSettings() {
+    renderAppearanceControls();
+    loadStoredWallpaper();
+    document.getElementById("settings-dialog").showModal();
+}
+
 function addListeners() {
     document.querySelectorAll("[data-route]").forEach(control => control.addEventListener("click", event => {
         event.preventDefault();
@@ -2877,7 +3006,13 @@ function addListeners() {
         showRoute(control.dataset.route);
         if (quizTarget) showQuizTab(quizTarget);
     }));
-    document.getElementById("header-saved").addEventListener("click", () => showRoute("saved"));
+    document.getElementById("open-hub").addEventListener("click", () => showRoute("hub"));
+    document.getElementById("header-appearance").addEventListener("click", openAppearanceSettings);
+    document.querySelectorAll("[data-hub-action]").forEach(button => button.addEventListener("click", () => {
+        if (button.dataset.hubAction === "appearance") openAppearanceSettings();
+        if (button.dataset.hubAction === "search") openSearch("hub");
+        if (button.dataset.hubAction === "flashcards") { showRoute("saved"); showSavedTab("flashcards"); }
+    }));
     document.querySelectorAll("[data-learn-view]").forEach(button => button.addEventListener("click", () => {
         const learnView = button.dataset.learnView;
         showRoute(learnView === "library" ? "learn" : `learn-${learnView}`);
@@ -3096,6 +3231,11 @@ function addListeners() {
     });
 
     document.querySelectorAll("[data-quiz-tab]").forEach(button => button.addEventListener("click", () => showQuizTab(button.dataset.quizTab)));
+    document.querySelectorAll("[data-reset-quiz]").forEach(button => button.addEventListener("click", () => resetQuizSession(button.dataset.resetQuiz)));
+    document.getElementById("kana-quiz-groups").addEventListener("click", event => {
+        const button = event.target.closest("[data-kana-group]");
+        if (button) toggleKanaQuizGroup(button.dataset.kanaGroup);
+    });
     document.getElementById("check-kana").addEventListener("click", checkKana);
     document.getElementById("reveal-kana").addEventListener("click", () => setFeedback("kana-feedback", `${currentKana[0]} is ${currentKana[1]}.`));
     document.getElementById("next-kana").addEventListener("click", newKana);
@@ -3146,7 +3286,6 @@ function addListeners() {
     document.getElementById("restart-flashcards").addEventListener("click", buildFlashcardDeck);
 
     const settings = document.getElementById("settings-dialog");
-    document.getElementById("open-settings").addEventListener("click", () => { renderAppearanceControls(); loadStoredWallpaper(); settings.showModal(); });
     document.getElementById("close-settings").addEventListener("click", () => settings.close());
     document.getElementById("done-settings").addEventListener("click", () => settings.close());
     document.getElementById("theme-options").addEventListener("click", event => { const button=event.target.closest("[data-theme-choice]"); if(button) applyTheme(button.dataset.themeChoice); });
@@ -3225,6 +3364,7 @@ function initializeApp() {
     browseDailyWord(1, true);
     browseKanji(1, true);
     browseWord(1, true);
+    renderKanaQuizGroups();
     newKana();
     newKanjiQuiz();
     newVocabularyQuiz();

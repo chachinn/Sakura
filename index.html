@@ -11,19 +11,19 @@
     <script>try { document.documentElement.dataset.theme = localStorage.getItem("sakuraAppearanceTheme") || "pink"; } catch (error) { document.documentElement.dataset.theme = "pink"; }</script>
     <link rel="manifest" href="manifest.webmanifest">
     <link rel="apple-touch-icon" href="icons/icon-180.png">
-    <link rel="stylesheet" href="style.css?v=35">
+    <link rel="stylesheet" href="style.css?v=37">
 </head>
 <body>
     <div class="app-shell">
         <header class="app-header">
-            <button id="open-settings" class="icon-button" type="button" aria-label="Open appearance settings">☰</button>
+            <button id="open-hub" class="icon-button" type="button" aria-label="Open Sakura Hub">☰</button>
             <a class="app-brand" href="#home" data-route="home" aria-label="Sakura home">
                 <strong>Sakura</strong>
                 <span aria-hidden="true">🌸</span>
             </a>
             <div class="header-actions">
                 <button id="header-search" class="icon-button" type="button" aria-label="Open universal search">⌕</button>
-                <button id="header-saved" class="icon-button header-saved" type="button" aria-label="Open saved items">♡<span id="header-saved-count">0</span></button>
+                <button id="header-appearance" class="icon-button" type="button" aria-label="Open appearance settings">✿</button>
             </div>
         </header>
 
@@ -116,6 +116,28 @@
                 </section>
             </section>
 
+            <section id="hub-view" class="view hub-view" data-view="hub" aria-labelledby="hub-heading" hidden>
+                <header class="hub-heading"><button class="back-button" type="button" data-route="home" aria-label="Back to Home">‹</button><div><span class="section-kicker">More from Sakura</span><h1 id="hub-heading">Sakura Hub</h1><p>Useful places for learning, planning, and making Sakura yours.</p></div></header>
+                <section class="hub-section" aria-labelledby="hub-sakura-heading"><h2 id="hub-sakura-heading">Sakura</h2><div class="hub-link-list">
+                    <button class="hub-link" type="button" data-route="home"><span aria-hidden="true">⌂</span><span><strong>Home</strong><small>Return to your learning garden.</small></span><b aria-hidden="true">›</b></button>
+                    <button class="hub-link" type="button" data-hub-action="appearance"><span aria-hidden="true">✿</span><span><strong>Appearance</strong><small>Themes, wallpaper, and framing.</small></span><b aria-hidden="true">›</b></button>
+                    <button class="hub-link" type="button" data-hub-action="search"><span aria-hidden="true">⌕</span><span><strong>Universal Search</strong><small>Find Japanese across Sakura.</small></span><b aria-hidden="true">›</b></button>
+                </div></section>
+                <section class="hub-section" aria-labelledby="hub-learning-heading"><h2 id="hub-learning-heading">Learning</h2><div class="hub-link-list">
+                    <button class="hub-link" type="button" data-hub-action="flashcards"><span aria-hidden="true">◫</span><span><strong>Flashcards</strong><small>Review the Japanese you saved.</small></span><b aria-hidden="true">›</b></button>
+                    <button class="hub-link" type="button" data-route="translate"><span aria-hidden="true">文</span><span><strong>English to Japanese</strong><small>Natural, context-aware suggestions.</small></span><b aria-hidden="true">›</b></button>
+                </div></section>
+                <section class="hub-section" aria-labelledby="hub-travel-heading"><h2 id="hub-travel-heading">Travel</h2><div class="hub-link-list compact-hub-links">
+                    <button class="hub-link" type="button" data-route="travel"><span aria-hidden="true">旅</span><span><strong>Travel Mode</strong><small>Browse all travel essentials.</small></span><b aria-hidden="true">›</b></button>
+                    <button class="hub-link" type="button" data-route="travel-my-phrases"><span aria-hidden="true">♡</span><span><strong>My Travel Phrases</strong></span><b aria-hidden="true">›</b></button>
+                    <button class="hub-link" type="button" data-route="travel-decks"><span aria-hidden="true">🎴</span><span><strong>Phrase Decks</strong></span><b aria-hidden="true">›</b></button>
+                    <button class="hub-link" type="button" data-route="travel-notes"><span aria-hidden="true">📝</span><span><strong>Personal Notes</strong></span><b aria-hidden="true">›</b></button>
+                    <button class="hub-link" type="button" data-route="travel-countdown"><span aria-hidden="true">🗓</span><span><strong>Travel Countdown</strong></span><b aria-hidden="true">›</b></button>
+                    <button class="hub-link" type="button" data-route="travel-offline"><span aria-hidden="true">⇩</span><span><strong>Offline Travel Pack</strong></span><b aria-hidden="true">›</b></button>
+                    <button class="hub-link" type="button" data-route="travel-yen"><span aria-hidden="true">¥</span><span><strong>Yen Converter</strong></span><b aria-hidden="true">›</b></button>
+                </div></section>
+            </section>
+
             <section id="learn-view" class="view" data-view="learn" aria-labelledby="learn-heading" hidden>
                 <div class="page-heading"><span class="section-kicker">🌱 Grow &amp; discover</span><h1 id="learn-heading">Learning Garden</h1><p>Explore new words, kanji, and expressions as your Japanese grows.</p></div>
                 <div class="learn-subnav" role="tablist" aria-label="Learn content">
@@ -183,18 +205,20 @@
 
                 <article id="kana-quiz-panel" class="quiz-card" data-quiz-panel="kana">
                     <div class="quiz-card-heading"><span class="quiz-icon lavender-feature">あ</span><div><h2>Kana Quiz</h2><p id="kana-type">Hiragana</p></div></div>
-                    <div class="quiz-status-bar"><span>Score <strong id="kana-quiz-score">0</strong></span><span>Question <strong id="kana-quiz-count">0</strong></span></div>
+                    <div class="kana-group-filter"><strong>Practice groups</strong><div id="kana-quiz-groups" class="kana-group-chips" role="group" aria-label="Kana practice groups"></div><small>Choose one or more groups. Extended contains modern Katakana sounds.</small></div>
+                    <div class="quiz-status-bar"><span>🌸 Blooms <strong id="kana-quiz-blooms">0</strong></span><span>🍂 Misses <strong id="kana-quiz-misses">0</strong></span><button class="quiz-reset-button" type="button" data-reset-quiz="kana" aria-label="Reset Kana Quiz">↻ Reset</button></div>
                     <div id="kana-character" class="quiz-character">あ</div>
                     <p>Type the romaji reading.</p>
                     <input id="kana-answer" class="answer-input" type="text" placeholder="Your answer" autocomplete="off" spellcheck="false">
                     <div class="quiz-actions"><button id="check-kana" class="primary-button" type="button">Check Answer</button><button id="reveal-kana" class="secondary-button" type="button">Reveal</button><button id="next-kana" class="secondary-button" type="button">Next</button></div>
                     <p id="kana-feedback" class="feedback" aria-live="polite"></p>
+                    <details class="kana-special-guide"><summary>Special sounds: っ / ッ and ー</summary><div class="kana-guide-grid"><section><strong>っ / ッ — small tsu (sokuon)</strong><p>It usually does not make a full “tsu” sound. It creates a short pause and doubles the next consonant.</p><span>きて → kite<br>きって → kitte<br>がっこう → gakkou<br>バッグ → baggu<br>こっち → kocchi</span></section><section><strong>ー — long vowel mark (chōonpu)</strong><p>Common in Katakana, it lengthens the preceding vowel. Sakura writes the longer sound by repeating that vowel.</p><span>ケーキ → keeki<br>コーヒー → koohii<br>スーパー → suupaa<br>タクシー → takushii</span></section></div></details>
                 </article>
 
                 <article id="kanji-quiz-panel" class="quiz-card" data-quiz-panel="kanji" hidden>
                     <div class="quiz-card-heading"><span class="quiz-icon pink-feature">漢</span><div><h2>Kanji Quiz</h2><p>Enter a reading or meaning.</p></div></div>
                     <div id="kanjiQuiz-levels" class="section-level-control expanded-level-control"></div>
-                    <div class="quiz-status-bar"><span>Score <strong id="kanji-quiz-score">0</strong></span><span>Question <strong id="kanji-quiz-count">0</strong></span></div>
+                    <div class="quiz-status-bar"><span>🌸 Blooms <strong id="kanji-quiz-blooms">0</strong></span><span>🍂 Misses <strong id="kanji-quiz-misses">0</strong></span><button class="quiz-reset-button" type="button" data-reset-quiz="kanji" aria-label="Reset Kanji Quiz">↻ Reset</button></div>
                     <div id="kanji-quiz-character" class="quiz-character">日</div>
                     <input id="kanji-quiz-answer" class="answer-input" type="text" placeholder="Reading or English meaning" autocomplete="off">
                     <div class="quiz-actions"><button id="check-kanji-quiz" class="primary-button" type="button">Check Answer</button><button id="reveal-kanji-quiz" class="secondary-button" type="button">Reveal</button><button id="next-kanji-quiz" class="secondary-button" type="button">Next</button></div>
@@ -204,7 +228,7 @@
                 <article id="vocabulary-quiz-panel" class="quiz-card" data-quiz-panel="vocabulary" hidden>
                     <div class="quiz-card-heading"><span class="quiz-icon peach-feature">語</span><div><h2>Vocabulary Quiz</h2><p>Enter the English meaning.</p></div></div>
                     <div id="vocabularyQuiz-levels" class="section-level-control expanded-level-control"></div>
-                    <div class="quiz-status-bar"><span>Score <strong id="vocabulary-quiz-score">0</strong></span><span>Question <strong id="vocabulary-quiz-count">0</strong></span></div>
+                    <div class="quiz-status-bar"><span>🌸 Blooms <strong id="vocabulary-quiz-blooms">0</strong></span><span>🍂 Misses <strong id="vocabulary-quiz-misses">0</strong></span><button class="quiz-reset-button" type="button" data-reset-quiz="vocabulary" aria-label="Reset Vocabulary Quiz">↻ Reset</button></div>
                     <div id="vocabulary-quiz-word" class="quiz-character word-quiz-character">勉強</div>
                     <p id="vocabulary-quiz-reading">べんきょう</p>
                     <input id="vocabulary-quiz-answer" class="answer-input" type="text" placeholder="English meaning" autocomplete="off">
@@ -561,7 +585,7 @@
         <button id="apply-update" type="button">Update</button>
     </aside>
 
-    <script src="data/vocabulary.js"></script>
+    <script src="data/vocabulary.js?v=2"></script>
     <script src="data/native-japanese.js"></script>
     <script src="data/slang.js"></script>
     <script src="data/travel.js?v=3"></script>
