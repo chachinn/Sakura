@@ -328,6 +328,14 @@ let travelSearchPreparation = null;
 let searchVisibleCount = 40;
 const searchFieldCache = new WeakMap();
 const levelPoolCache = new WeakMap();
+const LIBRARY_BATCH_SIZE = 48;
+const LIBRARY_TOTALS = Object.freeze({ kanji:306, vocabulary:1506 });
+let libraryInitialized = false;
+let libraryRepository = "";
+let libraryFilter = "N5";
+let libraryVisibleCount = LIBRARY_BATCH_SIZE;
+let libraryLoadingRevision = 0;
+let libraryCurrentItems = [];
 let normalizedNativeDataCache = null;
 let normalizedSlangDataCache = null;
 let pendingTravelPhraseId = "";
@@ -514,6 +522,7 @@ function updateSavedUi() {
     syncSaveButtons();
     renderSavedItems();
     renderMyTravelPhrases();
+    if (currentRoute === "library" && libraryRepository) renderLibraryResults();
     cleanTravelDecks();
     renderTravelDecks();
     renderCurrentTravelDeck();
@@ -809,7 +818,7 @@ function openWordDetail(item, returnRoute = currentRoute) {
 
 function moveDetailKanji(direction = 1, random = false) {
     const section = detailReturnRoute === "learn" ? "randomKanji" : "kanjiOfDay";
-    const pool = detailReturnRoute === "search" ? window.KANJI_DATA : itemsForLevels(window.KANJI_DATA, section);
+    const pool = detailReturnRoute === "library" ? libraryCurrentItems : detailReturnRoute === "search" ? window.KANJI_DATA : itemsForLevels(window.KANJI_DATA, section);
     const index = pickIndex(pool, currentDetailKanji, direction, random);
     const item = index < 0 ? null : pool[index];
     renderKanjiDetail(item);
@@ -819,7 +828,7 @@ function moveDetailKanji(direction = 1, random = false) {
 
 function moveDetailWord(direction = 1, random = false) {
     const section = detailReturnRoute === "learn" ? "randomVocabulary" : "wordOfDay";
-    const pool = detailReturnRoute === "search" ? window.VOCABULARY_DATA : itemsForLevels(window.VOCABULARY_DATA, section);
+    const pool = detailReturnRoute === "library" ? libraryCurrentItems : detailReturnRoute === "search" ? window.VOCABULARY_DATA : itemsForLevels(window.VOCABULARY_DATA, section);
     const index = pickIndex(pool, currentDetailWord, direction, random);
     const item = index < 0 ? null : pool[index];
     renderWordDetail(item);
@@ -2865,6 +2874,138 @@ async function requestTranslation(event) {
     } catch(error){renderTranslationResult(null);message.textContent=error.message||"Sakura could not complete that translation.";} finally{translationLoading=false;document.getElementById("submit-translation").disabled=false;}
 }
 
+function initializeLibrary() {
+    if (libraryInitialized) return;
+    libraryInitialized = true;
+    document.getElementById("library-kanji-count").textContent = LIBRARY_TOTALS.kanji.toLocaleString();
+    document.getElementById("library-vocabulary-count").textContent = LIBRARY_TOTALS.vocabulary.toLocaleString();
+    document.getElementById("library-slang-count").textContent = slangData().length.toLocaleString();
+    document.getElementById("library-kana-count").textContent = KANA_DATA.length.toLocaleString();
+}
+
+function libraryHome() {
+    libraryRepository = "";
+    document.getElementById("library-home").hidden = false;
+    document.getElementById("library-repository").hidden = true;
+    document.getElementById("library-search-input").value = "";
+}
+
+function libraryFilterOptions(type) {
+    if (["kanji", "vocabulary"].includes(type)) return ["All", "N5", "N4", "N3", "N2", "N1"];
+    if (type === "slang") return SLANG_CATEGORY_OPTIONS.map(([value, label]) => ({ value, label }));
+    return ["All", "Basic", "Dakuten", "Handakuten", "Yoon", "Extended"].map(value => ({ value, label:value === "Yoon" ? "Yōon" : value === "Extended" ? "Extended Katakana" : value }));
+}
+
+function renderLibraryFilters() {
+    const options = libraryFilterOptions(libraryRepository).map(option => typeof option === "string" ? { value:option, label:option } : option);
+    document.getElementById("library-filter-controls").innerHTML = options.map(option => `<button type="button" class="filter-chip ${option.value === libraryFilter ? "active" : ""}" data-library-filter="${escapeSearchHtml(option.value)}" aria-pressed="${option.value === libraryFilter}">${escapeSearchHtml(option.label)}</button>`).join("");
+}
+
+function libraryKanaItem(item, index) {
+    return { id:`kana-${index}-${item[0]}`, type:"kana", kana:item[0], romaji:item[1], script:item[2], group:kanaGroup(item), quizEligible:kanaQuizEligible(item) };
+}
+
+function librarySource(type = libraryRepository) {
+    if (type === "kanji") return window.SakuraKanjiLoader?.getLoadedKanji() || [];
+    if (type === "vocabulary") return window.SakuraVocabularyLoader?.getLoadedVocabulary() || [];
+    if (type === "slang") return slangData();
+    if (type === "kana") return KANA_DATA.map(libraryKanaItem);
+    return [];
+}
+
+function libraryMatches(item, query) {
+    if (!query) return true;
+    let values = [];
+    if (libraryRepository === "kanji") values = [item.character, item.reading, item.romaji, item.meaning];
+    if (libraryRepository === "vocabulary") values = [item.word, item.kana, item.romaji, item.meaning];
+    if (libraryRepository === "slang") values = [item.expression, item.kana, item.romaji, item.meaning, ...(item.categories || [])];
+    if (libraryRepository === "kana") values = [item.kana, item.romaji, item.script, item.group];
+    return values.some(value => searchText(value).includes(query));
+}
+
+function filteredLibraryItems() {
+    const query = searchText(document.getElementById("library-search-input").value);
+    const seen = new Set();
+    return librarySource().filter(item => {
+        const identity = itemKey(item) || `${item.type}:${item.kana}`;
+        if (seen.has(identity)) return false;
+        seen.add(identity);
+        if (["kanji", "vocabulary"].includes(libraryRepository) && libraryFilter !== "All" && item.jlpt !== libraryFilter) return false;
+        if (libraryRepository === "slang" && libraryFilter !== "All" && !item.categories.includes(libraryFilter)) return false;
+        if (libraryRepository === "kana" && libraryFilter !== "All" && item.group !== libraryFilter) return false;
+        return libraryMatches(item, query);
+    });
+}
+
+function libraryCard(item) {
+    const key = encodeURIComponent(itemKey(item) || `${item.type}:${item.kana}`);
+    if (item.type === "kanji") return `<article class="library-item-card"><button type="button" class="library-item-main" data-library-open="${key}"><strong class="library-japanese">${escapeSearchHtml(item.character)}</strong><span>${escapeSearchHtml(item.reading || "")}</span><span class="learning-romaji">${escapeSearchHtml(item.romaji || "")}</span><b>${escapeSearchHtml(item.meaning)}</b><em>${escapeSearchHtml(item.jlpt)}</em></button><button type="button" class="library-save ${isSaved(item) ? "saved" : ""}" data-library-save="${key}" aria-label="${isSaved(item) ? "Unsave" : "Save"} ${escapeSearchHtml(item.character)}">${isSaved(item) ? "♥" : "♡"}</button></article>`;
+    if (item.type === "vocabulary") return `<article class="library-item-card"><button type="button" class="library-item-main" data-library-open="${key}"><strong class="library-japanese library-word">${escapeSearchHtml(item.word)}</strong><span>${escapeSearchHtml(item.kana || "")}</span><span class="learning-romaji">${escapeSearchHtml(item.romaji || "")}</span><b>${escapeSearchHtml(item.meaning)}</b><em>${escapeSearchHtml(item.jlpt)}</em></button><button type="button" class="library-save ${isSaved(item) ? "saved" : ""}" data-library-save="${key}" aria-label="${isSaved(item) ? "Unsave" : "Save"} ${escapeSearchHtml(item.word)}">${isSaved(item) ? "♥" : "♡"}</button></article>`;
+    if (item.type === "slang") return `<article class="library-item-card"><button type="button" class="library-item-main" data-library-open="${key}"><strong class="library-japanese library-word">${escapeSearchHtml(item.expression)}</strong><span>${escapeSearchHtml(item.kana || "")}</span><span class="learning-romaji">${escapeSearchHtml(item.romaji || "")}</span><b>${escapeSearchHtml(item.meaning)}</b><em>${escapeSearchHtml(item.categories.slice(0,2).join(" · "))}</em></button><button type="button" class="library-save ${isSaved(item) ? "saved" : ""}" data-library-save="${key}" aria-label="${isSaved(item) ? "Unsave" : "Save"} ${escapeSearchHtml(item.expression)}">${isSaved(item) ? "♥" : "♡"}</button></article>`;
+    return `<article class="library-item-card kana-library-card"><div class="library-item-main"><strong class="library-japanese">${escapeSearchHtml(item.kana)}</strong><b>${escapeSearchHtml(item.romaji)}</b><span>${escapeSearchHtml(item.script)}</span><em>${escapeSearchHtml(item.group === "Yoon" ? "Yōon" : item.group)}</em></div></article>`;
+}
+
+function renderLibraryResults() {
+    libraryCurrentItems = filteredLibraryItems();
+    const visible = libraryCurrentItems.slice(0, libraryVisibleCount);
+    document.getElementById("library-results").innerHTML = visible.map(libraryCard).join("");
+    document.getElementById("library-empty").hidden = libraryCurrentItems.length > 0;
+    document.getElementById("library-show-more").hidden = visible.length >= libraryCurrentItems.length;
+    document.getElementById("library-status").textContent = `${libraryCurrentItems.length.toLocaleString()} ${libraryCurrentItems.length === 1 ? "entry" : "entries"}${visible.length < libraryCurrentItems.length ? ` · showing ${visible.length.toLocaleString()}` : ""}`;
+}
+
+async function loadLibraryLevels(type, filter, revision) {
+    const levels = filter === "All" ? ["N5", "N4", "N3", "N2", "N1"] : [filter];
+    const ensure = type === "kanji" ? ensureKanjiLevels : ensureVocabularyLevels;
+    document.getElementById("library-status").textContent = filter === "All" ? "Loading available levels…" : `Loading ${filter}…`;
+    document.getElementById("library-empty").hidden = true;
+    try {
+        for (const level of levels) {
+            await ensure([level]);
+            if (revision !== libraryLoadingRevision || currentRoute !== "library") return;
+            renderLibraryResults();
+        }
+    }
+    catch {
+        if (revision === libraryLoadingRevision) document.getElementById("library-status").textContent = "This level could not be loaded. Check your connection and try again.";
+    }
+}
+
+function openLibraryRepository(type) {
+    initializeLibrary();
+    libraryRepository = type;
+    libraryFilter = ["kanji", "vocabulary"].includes(type) ? "N5" : "All";
+    libraryVisibleCount = LIBRARY_BATCH_SIZE;
+    document.getElementById("library-home").hidden = true;
+    document.getElementById("library-repository").hidden = false;
+    document.getElementById("library-search-input").value = "";
+    const titles = { kanji:"Kanji", vocabulary:"Vocabulary", slang:"Slang", kana:"Kana" };
+    document.getElementById("library-repository-title").textContent = titles[type];
+    document.getElementById("library-repository-summary").textContent = `Browse Sakura’s ${titles[type].toLowerCase()} collection.`;
+    document.querySelectorAll("[data-library-tab]").forEach(button => { const active=button.dataset.libraryTab===type; button.classList.toggle("active",active); button.setAttribute("aria-selected",String(active)); });
+    renderLibraryFilters();
+    renderLibraryResults();
+    if (["kanji", "vocabulary"].includes(type)) loadLibraryLevels(type, libraryFilter, ++libraryLoadingRevision);
+}
+
+function findLibraryItem(encodedKey) {
+    const key = decodeURIComponent(encodedKey);
+    return libraryCurrentItems.find(item => (itemKey(item) || `${item.type}:${item.kana}`) === key);
+}
+
+function openLibraryItem(item) {
+    if (!item) return;
+    if (item.type === "kanji") openKanjiDetail(item, "library");
+    else if (item.type === "vocabulary") openWordDetail(item, "library");
+    else if (item.type === "slang") {
+        showRoute("learn-slang", false);
+        document.getElementById("native-difficulty-filter").value = "All";
+        refreshNativeCategories();
+        document.getElementById("native-category-filter").value = "All";
+        renderNative(item);
+    }
+}
+
 function showRoute(route, updateHash = true) {
     const normalizedRoute = route === "native" ? "learn-native" : route;
     const nativeMode = normalizedRoute === "learn-slang" ? "slang" : normalizedRoute === "learn-native" ? "native" : null;
@@ -2875,6 +3016,7 @@ function showRoute(route, updateHash = true) {
     const isTravelUtilityRoute = ["travel-my-phrases", "travel-decks", "travel-notes", "travel-countdown", "travel-offline", "travel-yen"].includes(normalizedRoute) || Boolean(deckRouteMatch);
     const viewRoute = nativeMode ? "native" : travelCategory ? "travel-category" : deckRouteMatch ? "travel-deck" : normalizedRoute;
     currentRoute = normalizedRoute;
+    if (normalizedRoute === "library") initializeLibrary();
     if (normalizedRoute === "search") buildSearchIndex();
     if (nativeMode) {
         currentNativeMode = nativeMode;
@@ -2897,7 +3039,7 @@ function showRoute(route, updateHash = true) {
     if (normalizedRoute === "travel-yen") renderYenConverter();
     if (normalizedRoute === "travel") renderTravelHeaderCountdown();
     if (deckRouteMatch) renderCurrentTravelDeck();
-    const mainRoute = travelCategory || isTravelUtilityRoute ? "travel" : ["search", "translate", "learn-native", "learn-slang"].includes(normalizedRoute) ? "learn" : normalizedRoute.replace("-detail", "");
+    const mainRoute = travelCategory || isTravelUtilityRoute ? "travel" : ["search", "translate", "learn-native", "learn-slang", "library"].includes(normalizedRoute) || (normalizedRoute.includes("detail") && detailReturnRoute === "library") ? "learn" : normalizedRoute.replace("-detail", "");
     document.querySelectorAll(".nav-button").forEach(button => button.classList.toggle("active", button.dataset.route === mainRoute || (normalizedRoute.includes("detail") && button.dataset.route === detailReturnRoute)));
     const learnView = normalizedRoute === "learn" ? "library" : nativeMode;
     document.querySelectorAll("[data-learn-view]").forEach(button => {
@@ -3211,6 +3353,28 @@ function addListeners() {
         if (quizTarget) showQuizTab(quizTarget);
     }));
     document.getElementById("open-hub").addEventListener("click", () => showRoute("hub"));
+    document.getElementById("library-view").addEventListener("click", event => {
+        const repository = event.target.closest("[data-library-repository]");
+        const tab = event.target.closest("[data-library-tab]");
+        const filter = event.target.closest("[data-library-filter]");
+        const save = event.target.closest("[data-library-save]");
+        const open = event.target.closest("[data-library-open]");
+        if (repository) openLibraryRepository(repository.dataset.libraryRepository);
+        else if (tab) openLibraryRepository(tab.dataset.libraryTab);
+        else if (filter) {
+            libraryFilter = filter.dataset.libraryFilter;
+            libraryVisibleCount = LIBRARY_BATCH_SIZE;
+            renderLibraryFilters();
+            renderLibraryResults();
+            if (["kanji", "vocabulary"].includes(libraryRepository)) loadLibraryLevels(libraryRepository, libraryFilter, ++libraryLoadingRevision);
+        }
+        else if (save) { toggleSaved(findLibraryItem(save.dataset.librarySave)); }
+        else if (open) openLibraryItem(findLibraryItem(open.dataset.libraryOpen));
+    });
+    document.getElementById("library-repository-back").addEventListener("click", libraryHome);
+    document.getElementById("library-search-input").addEventListener("input", () => { libraryVisibleCount=LIBRARY_BATCH_SIZE; renderLibraryResults(); });
+    document.getElementById("clear-library-search").addEventListener("click", () => { document.getElementById("library-search-input").value=""; libraryVisibleCount=LIBRARY_BATCH_SIZE; renderLibraryResults(); document.getElementById("library-search-input").focus(); });
+    document.getElementById("library-show-more").addEventListener("click", () => { libraryVisibleCount += LIBRARY_BATCH_SIZE; renderLibraryResults(); });
     document.getElementById("travel-mode-toggle").addEventListener("change", event => setTravelModeEnabled(event.target.checked));
     document.getElementById("header-appearance").addEventListener("click", openAppearanceSettings);
     document.querySelectorAll("[data-hub-action]").forEach(button => button.addEventListener("click", () => {
@@ -3589,7 +3753,7 @@ function initializeApp() {
     const requestedRoute = location.hash.replace("#", "");
     const travelRoutes = Object.keys(window.TRAVEL_CATEGORIES || {}).map(category => `travel-${category}`);
     const validDeckRoute = /^travel-deck-deck-.+/.test(requestedRoute);
-    showRoute(["home", "hub", "learn", "learn-native", "learn-slang", "search", "translate", "quiz", "practice", "native", "travel", "travel-my-phrases", "travel-decks", "travel-notes", "travel-countdown", "travel-offline", "travel-yen", "saved", ...travelRoutes].includes(requestedRoute) || validDeckRoute ? requestedRoute : "home", false);
+    showRoute(["home", "hub", "library", "learn", "learn-native", "learn-slang", "search", "translate", "quiz", "practice", "native", "travel", "travel-my-phrases", "travel-decks", "travel-notes", "travel-countdown", "travel-offline", "travel-yen", "saved", ...travelRoutes].includes(requestedRoute) || validDeckRoute ? requestedRoute : "home", false);
     initializePwaUpdates();
 }
 

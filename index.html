@@ -11,7 +11,7 @@
     <script>try { document.documentElement.dataset.theme = localStorage.getItem("sakuraAppearanceTheme") || "pink"; } catch (error) { document.documentElement.dataset.theme = "pink"; }</script>
     <link rel="manifest" href="manifest.webmanifest">
     <link rel="apple-touch-icon" href="icons/icon-180.png">
-    <link rel="stylesheet" href="style.css?v=40">
+    <link rel="stylesheet" href="style.css?v=41">
 </head>
 <body>
     <div class="app-shell">
@@ -126,6 +126,7 @@
                     <button class="hub-link" type="button" data-hub-action="search"><span aria-hidden="true">⌕</span><span><strong>Universal Search</strong><small>Find Japanese across Sakura.</small></span><b aria-hidden="true">›</b></button>
                 </div></section>
                 <section class="hub-section" aria-labelledby="hub-learning-heading"><h2 id="hub-learning-heading">Learning</h2><div class="hub-link-list">
+                    <button class="hub-link" type="button" data-route="library"><span aria-hidden="true">▤</span><span><strong>Library</strong><small>Browse Sakura’s learning collection.</small></span><b aria-hidden="true">›</b></button>
                     <button class="hub-link" type="button" data-hub-action="flashcards"><span aria-hidden="true">◫</span><span><strong>Flashcards</strong><small>Review the Japanese you saved.</small></span><b aria-hidden="true">›</b></button>
                     <button class="hub-link" type="button" data-route="translate"><span aria-hidden="true">文</span><span><strong>English to Japanese</strong><small>Natural, context-aware suggestions.</small></span><b aria-hidden="true">›</b></button>
                 </div></section>
@@ -139,6 +140,28 @@
                     <button class="hub-link" type="button" data-route="travel-offline"><span aria-hidden="true">⇩</span><span><strong>Offline Travel Pack</strong></span><b aria-hidden="true">›</b></button>
                     <button class="hub-link" type="button" data-route="travel-yen"><span aria-hidden="true">¥</span><span><strong>Yen Converter</strong></span><b aria-hidden="true">›</b></button>
                 </div></section>
+            </section>
+
+            <section id="library-view" class="view library-view" data-view="library" aria-labelledby="library-heading" hidden>
+                <header class="library-heading"><button class="back-button" type="button" data-route="hub" aria-label="Back to Sakura Hub">‹</button><div><span class="section-kicker">Your learning collection</span><h1 id="library-heading">Sakura Library</h1><p>Browse everything growing in Sakura.</p></div></header>
+                <div id="library-home" class="library-home">
+                    <div class="library-repository-grid" aria-label="Library repositories">
+                        <button class="library-repository-card" type="button" data-library-repository="kanji"><span class="library-repository-icon">漢</span><span><strong>Kanji</strong><small><b id="library-kanji-count">306</b> entries</small></span><b aria-hidden="true">›</b></button>
+                        <button class="library-repository-card" type="button" data-library-repository="vocabulary"><span class="library-repository-icon">語</span><span><strong>Vocabulary</strong><small><b id="library-vocabulary-count">1,506</b> entries</small></span><b aria-hidden="true">›</b></button>
+                        <button class="library-repository-card" type="button" data-library-repository="slang"><span class="library-repository-icon">話</span><span><strong>Slang</strong><small><b id="library-slang-count">0</b> entries</small></span><b aria-hidden="true">›</b></button>
+                        <button class="library-repository-card" type="button" data-library-repository="kana"><span class="library-repository-icon">あ</span><span><strong>Kana</strong><small><b id="library-kana-count">0</b> entries</small></span><b aria-hidden="true">›</b></button>
+                    </div>
+                </div>
+                <div id="library-repository" class="library-repository" hidden>
+                    <div class="library-repository-heading"><button id="library-repository-back" class="back-button" type="button" aria-label="Back to Library repositories">‹</button><div><span class="section-kicker">Repository</span><h2 id="library-repository-title">Kanji</h2><p id="library-repository-summary"></p></div></div>
+                    <div id="library-repository-tabs" class="library-tabs" role="tablist" aria-label="Library repository"><button type="button" role="tab" data-library-tab="kanji">Kanji</button><button type="button" role="tab" data-library-tab="vocabulary">Vocabulary</button><button type="button" role="tab" data-library-tab="slang">Slang</button><button type="button" role="tab" data-library-tab="kana">Kana</button></div>
+                    <label class="library-search"><span aria-hidden="true">⌕</span><input id="library-search-input" type="search" inputmode="search" autocomplete="off" placeholder="Search this repository" aria-label="Search this repository"><button id="clear-library-search" type="button" aria-label="Clear repository search">×</button></label>
+                    <div id="library-filter-controls" class="library-filter-controls"></div>
+                    <p id="library-status" class="library-status" role="status"></p>
+                    <div id="library-results" class="library-results"></div>
+                    <div id="library-empty" class="search-empty-state" hidden><span aria-hidden="true">🌸</span><strong>No matching Japanese found.</strong><p>Try another spelling or choose a different filter.</p></div>
+                    <button id="library-show-more" class="secondary-button full-width-button" type="button" hidden>Show More</button>
+                </div>
             </section>
 
             <section id="learn-view" class="view" data-view="learn" aria-labelledby="learn-heading" hidden>
