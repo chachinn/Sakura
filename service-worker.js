@@ -1,13 +1,15 @@
-const SHELL_CACHE_VERSION = "sakura-shell-v73";
+const SHELL_CACHE_VERSION = "sakura-shell-v75";
 const KANJI_CONTENT_CACHE_VERSION = "sakura-kanji-content-v1";
 const TRAVEL_CONTENT_CACHE_VERSION = "sakura-travel-content-v1";
 const VOCABULARY_CONTENT_CACHE_VERSION = "sakura-vocabulary-content-v1";
 
 const APP_SHELL = [
     "./index.html",
-    "./style.css?v=44",
-    "./app.js?v=52",
+    "./style.css?v=46",
+    "./app.js?v=54",
     "./data/practice-what-would-you-say.js?v=1",
+    "./data/practice-sentence-builder.js?v=1",
+    "./data/practice-one-line-many-personalities.js?v=1",
     "./data/kanji.js",
     "./data/vocabulary.js?v=4",
     "./data/native-japanese.js?v=2",

@@ -339,6 +339,10 @@ let libraryLoadingRevision = 0;
 let libraryCurrentItems = [];
 let whatWouldYouSayBankPromise = null;
 let whatWouldYouSaySession = null;
+let sentenceBuilderBankPromise = null;
+let sentenceBuilderSession = null;
+let personalitiesBankPromise = null;
+let personalitiesSession = null;
 let normalizedNativeDataCache = null;
 let normalizedSlangDataCache = null;
 let pendingTravelPhraseId = "";
@@ -3177,6 +3181,279 @@ function nextWhatWouldYouSay() {
     document.getElementById("wwys-final-score").textContent = `${session.correct} / ${session.questions.length}`;
 }
 
+function loadSentenceBuilderBank() {
+    if (Array.isArray(window.SENTENCE_BUILDER_DATA)) return Promise.resolve(window.SENTENCE_BUILDER_DATA);
+    if (sentenceBuilderBankPromise) return sentenceBuilderBankPromise;
+    sentenceBuilderBankPromise = new Promise((resolve, reject) => {
+        const script = document.createElement("script");
+        script.src = "./data/practice-sentence-builder.js?v=1";
+        script.onload = () => Array.isArray(window.SENTENCE_BUILDER_DATA) ? resolve(window.SENTENCE_BUILDER_DATA) : reject(new Error("Sentence Builder questions are unavailable."));
+        script.onerror = () => reject(new Error("Sentence Builder questions could not be loaded."));
+        document.head.appendChild(script);
+    });
+    return sentenceBuilderBankPromise;
+}
+
+function validateSentenceBuilderBank(bank) {
+    const ids = new Set();
+    return Array.isArray(bank) && bank.length >= 10 && bank.every(question => {
+        const order = question?.correctOrder;
+        const validOrder = Array.isArray(order) && Array.isArray(question?.chunks) && order.length === question.chunks.length
+            && new Set(order).size === order.length && order.every(index => Number.isInteger(index) && index >= 0 && index < question.chunks.length);
+        const valid = question && typeof question.id === "string" && !ids.has(question.id)
+            && ["Everyday", "Travel", "Casual"].includes(question.category)
+            && ["Beginner", "Intermediate", "Advanced"].includes(question.difficulty)
+            && [question.english, question.sentence, question.kana, question.romaji, question.explanation].every(value => typeof value === "string" && value.trim())
+            && Array.isArray(question.chunks) && question.chunks.length >= 3 && question.chunks.every(chunk => typeof chunk === "string" && chunk.trim())
+            && validOrder && order.map(index => question.chunks[index]).join("") === question.sentence;
+        if (valid) ids.add(question.id);
+        return Boolean(valid);
+    });
+}
+
+function shuffledSentenceChunks(question) {
+    const chunks = question.chunks.map((text, sourceIndex) => ({ text, sourceIndex }));
+    for (let index = chunks.length - 1; index > 0; index -= 1) {
+        const target = Math.floor(Math.random() * (index + 1));
+        [chunks[index], chunks[target]] = [chunks[target], chunks[index]];
+    }
+    if (chunks.length > 1 && chunks.every((chunk, index) => chunk.sourceIndex === question.correctOrder[index])) [chunks[0], chunks[1]] = [chunks[1], chunks[0]];
+    return chunks;
+}
+
+function prepareSentenceBuilderQuestion(question) {
+    return { ...question, available:shuffledSentenceChunks(question), selected:[], answered:false };
+}
+
+function renderSentenceBuilderChunks() {
+    const question = sentenceBuilderSession?.questions[sentenceBuilderSession.index];
+    if (!question) return;
+    const locked = question.answered;
+    document.getElementById("sentence-builder-chunks").innerHTML = question.available.map(chunk => `<button class="sentence-chunk" type="button" data-sentence-available="${chunk.sourceIndex}" ${locked ? "disabled" : ""}>${escapeSearchHtml(chunk.text)}</button>`).join("");
+    document.getElementById("sentence-builder-answer").innerHTML = question.selected.length
+        ? question.selected.map((chunk, index) => `<button class="sentence-chunk placed" type="button" data-sentence-selected="${index}" ${locked ? "disabled" : ""}>${escapeSearchHtml(chunk.text)}</button>`).join("")
+        : '<p id="sentence-builder-placeholder">Tap the chunks below in order.</p>';
+    document.getElementById("sentence-builder-check").disabled = locked || question.selected.length !== question.chunks.length;
+    document.getElementById("sentence-builder-clear").disabled = locked || !question.selected.length;
+}
+
+function renderSentenceBuilderQuestion() {
+    const session = sentenceBuilderSession;
+    if (!session) return;
+    const question = session.questions[session.index];
+    document.getElementById("sentence-builder-loading").hidden = true;
+    document.getElementById("sentence-builder-results").hidden = true;
+    document.getElementById("sentence-builder-question").hidden = false;
+    document.getElementById("sentence-builder-category").textContent = question.category;
+    document.getElementById("sentence-builder-difficulty").textContent = question.difficulty;
+    document.getElementById("sentence-builder-progress").textContent = `${session.index + 1} / ${session.questions.length}`;
+    document.getElementById("sentence-builder-english").textContent = question.english;
+    document.getElementById("sentence-builder-feedback").hidden = true;
+    renderSentenceBuilderChunks();
+    if (question.answered) showSentenceBuilderFeedback(question, question.wasCorrect);
+}
+
+function startSentenceBuilderSession(bank) {
+    sentenceBuilderSession = { questions:shuffledPracticeQuestions(bank).slice(0, 10).map(prepareSentenceBuilderQuestion), index:0, correct:0, completed:false };
+    renderSentenceBuilderQuestion();
+}
+
+async function openSentenceBuilder() {
+    const loading = document.getElementById("sentence-builder-loading");
+    loading.hidden = false;
+    loading.textContent = "Preparing your practice…";
+    try {
+        const bank = await loadSentenceBuilderBank();
+        if (!validateSentenceBuilderBank(bank)) throw new Error("Sentence Builder question validation failed.");
+        if (currentRoute !== "practice-sentence-builder") return;
+        if (!sentenceBuilderSession) startSentenceBuilderSession(bank);
+        else if (sentenceBuilderSession.completed) renderSentenceBuilderResults();
+        else renderSentenceBuilderQuestion();
+    }
+    catch (error) {
+        console.warn("Sentence Builder could not start.", error);
+        loading.textContent = "Practice could not be prepared. Check your connection and try again.";
+    }
+}
+
+function addSentenceBuilderChunk(sourceIndex) {
+    const question = sentenceBuilderSession?.questions[sentenceBuilderSession.index];
+    if (!question || question.answered) return;
+    const availableIndex = question.available.findIndex(chunk => chunk.sourceIndex === sourceIndex);
+    if (availableIndex < 0) return;
+    question.selected.push(question.available.splice(availableIndex, 1)[0]);
+    renderSentenceBuilderChunks();
+}
+
+function removeSentenceBuilderChunk(selectedIndex) {
+    const question = sentenceBuilderSession?.questions[sentenceBuilderSession.index];
+    if (!question || question.answered || selectedIndex < 0 || selectedIndex >= question.selected.length) return;
+    question.available.push(question.selected.splice(selectedIndex, 1)[0]);
+    renderSentenceBuilderChunks();
+}
+
+function clearSentenceBuilderAnswer() {
+    const question = sentenceBuilderSession?.questions[sentenceBuilderSession.index];
+    if (!question || question.answered) return;
+    question.available.push(...question.selected.splice(0));
+    renderSentenceBuilderChunks();
+}
+
+function checkSentenceBuilderAnswer() {
+    const session = sentenceBuilderSession;
+    const question = session?.questions[session.index];
+    if (!question || question.answered || question.selected.length !== question.chunks.length) return;
+    question.answered = true;
+    const correct = question.selected.every((chunk, index) => chunk.sourceIndex === question.correctOrder[index]);
+    question.wasCorrect = correct;
+    if (correct) session.correct += 1;
+    renderSentenceBuilderChunks();
+    showSentenceBuilderFeedback(question, correct);
+}
+
+function showSentenceBuilderFeedback(question, correct) {
+    const session = sentenceBuilderSession;
+    const feedback = document.getElementById("sentence-builder-feedback");
+    feedback.hidden = false;
+    feedback.classList.toggle("correct", correct);
+    feedback.classList.toggle("incorrect", !correct);
+    document.getElementById("sentence-builder-feedback-title").textContent = correct ? "✓ Correct" : "Not quite";
+    document.getElementById("sentence-builder-japanese").textContent = question.sentence;
+    document.getElementById("sentence-builder-kana").textContent = question.kana;
+    document.getElementById("sentence-builder-romaji").textContent = question.romaji;
+    document.getElementById("sentence-builder-result-english").textContent = question.english;
+    document.getElementById("sentence-builder-explanation").textContent = question.explanation;
+    document.getElementById("sentence-builder-next").textContent = session.index === session.questions.length - 1 ? "See Results" : "Next";
+}
+
+function renderSentenceBuilderResults() {
+    const session = sentenceBuilderSession;
+    if (!session) return;
+    document.getElementById("sentence-builder-loading").hidden = true;
+    document.getElementById("sentence-builder-question").hidden = true;
+    document.getElementById("sentence-builder-results").hidden = false;
+    document.getElementById("sentence-builder-final-score").textContent = `${session.correct} / ${session.questions.length}`;
+}
+
+function nextSentenceBuilderQuestion() {
+    const session = sentenceBuilderSession;
+    const question = session?.questions[session.index];
+    if (!question?.answered) return;
+    if (session.index < session.questions.length - 1) {
+        session.index += 1;
+        renderSentenceBuilderQuestion();
+        return;
+    }
+    session.completed = true;
+    renderSentenceBuilderResults();
+}
+
+function loadPersonalitiesBank() {
+    if (Array.isArray(window.ONE_LINE_MANY_PERSONALITIES_DATA)) return Promise.resolve(window.ONE_LINE_MANY_PERSONALITIES_DATA);
+    if (personalitiesBankPromise) return personalitiesBankPromise;
+    personalitiesBankPromise = new Promise((resolve, reject) => {
+        const script = document.createElement("script");
+        script.src = "./data/practice-one-line-many-personalities.js?v=1";
+        script.onload = () => Array.isArray(window.ONE_LINE_MANY_PERSONALITIES_DATA) ? resolve(window.ONE_LINE_MANY_PERSONALITIES_DATA) : reject(new Error("Personality practice content is unavailable."));
+        script.onerror = () => reject(new Error("Personality practice content could not be loaded."));
+        document.head.appendChild(script);
+    });
+    return personalitiesBankPromise;
+}
+
+function validatePersonalitiesBank(bank) {
+    const ids = new Set();
+    return Array.isArray(bank) && bank.length >= 10 && bank.every(entry => {
+        const labels = Array.isArray(entry?.variants) ? entry.variants.map(variant => variant?.label) : [];
+        const valid = entry && typeof entry.id === "string" && !ids.has(entry.id)
+            && ["Everyday", "Friendship", "Workplace", "Expressive"].includes(entry.category)
+            && [entry.coreMeaning, entry.situation].every(value => typeof value === "string" && value.trim())
+            && Array.isArray(entry.variants) && entry.variants.length >= 3 && new Set(labels).size === labels.length
+            && entry.variants.every(variant => [variant.label, variant.japanese, variant.kana, variant.romaji, variant.english, variant.nuance].every(value => typeof value === "string" && value.trim()));
+        if (valid) ids.add(entry.id);
+        return Boolean(valid);
+    });
+}
+
+function renderPersonalitiesResults() {
+    document.getElementById("personalities-loading").hidden = true;
+    document.getElementById("personalities-question").hidden = true;
+    document.getElementById("personalities-results").hidden = false;
+}
+
+function selectPersonalityVariant(index) {
+    const entry = personalitiesSession?.entries[personalitiesSession.index];
+    const variant = entry?.variants[index];
+    if (!variant) return;
+    entry.selectedVariant = index;
+    document.querySelectorAll("[data-personality-variant]").forEach(button => {
+        const active = Number(button.dataset.personalityVariant) === index;
+        button.classList.toggle("active", active);
+        button.setAttribute("aria-selected", String(active));
+    });
+    document.getElementById("personalities-detail").hidden = false;
+    document.getElementById("personalities-selected-label").textContent = variant.label;
+    const register = variant.formality || variant.tone || "";
+    document.getElementById("personalities-formality").textContent = register;
+    document.getElementById("personalities-formality").hidden = !register;
+    document.getElementById("personalities-japanese").textContent = variant.japanese;
+    document.getElementById("personalities-kana").textContent = variant.kana;
+    document.getElementById("personalities-romaji").textContent = variant.romaji;
+    document.getElementById("personalities-english").textContent = variant.english;
+    document.getElementById("personalities-nuance").textContent = variant.nuance;
+    const warning = document.getElementById("personalities-warning");
+    warning.hidden = !variant.warning;
+    warning.querySelector("p").textContent = variant.warning || "";
+}
+
+function renderPersonalitiesEntry() {
+    const session = personalitiesSession;
+    if (!session) return;
+    if (session.completed) { renderPersonalitiesResults(); return; }
+    const entry = session.entries[session.index];
+    document.getElementById("personalities-loading").hidden = true;
+    document.getElementById("personalities-results").hidden = true;
+    document.getElementById("personalities-question").hidden = false;
+    document.getElementById("personalities-category").textContent = entry.category;
+    document.getElementById("personalities-progress").textContent = `${session.index + 1} / ${session.entries.length}`;
+    document.getElementById("personalities-core-meaning").textContent = `“${entry.coreMeaning}”`;
+    document.getElementById("personalities-situation").textContent = entry.situation;
+    document.getElementById("personalities-chips").innerHTML = entry.variants.map((variant, index) => `<button class="personality-chip" type="button" role="tab" data-personality-variant="${index}" aria-selected="false">${escapeSearchHtml(variant.label)}</button>`).join("");
+    document.getElementById("personalities-detail").hidden = true;
+    document.getElementById("personalities-next").textContent = session.index === session.entries.length - 1 ? "Finish Session" : "Next";
+    if (entry.selectedVariant >= 0) selectPersonalityVariant(entry.selectedVariant);
+}
+
+function startPersonalitiesSession(bank) {
+    personalitiesSession = { entries:shuffledPracticeQuestions(bank).slice(0, 10).map(entry => ({ ...entry, variants:entry.variants.slice(), selectedVariant:-1 })), index:0, completed:false };
+    renderPersonalitiesEntry();
+}
+
+async function openPersonalitiesPractice() {
+    const loading = document.getElementById("personalities-loading");
+    loading.hidden = false;
+    loading.textContent = "Preparing your practice…";
+    try {
+        const bank = await loadPersonalitiesBank();
+        if (!validatePersonalitiesBank(bank)) throw new Error("Personality practice validation failed.");
+        if (currentRoute !== "practice-one-line-many-personalities") return;
+        if (!personalitiesSession) startPersonalitiesSession(bank);
+        else renderPersonalitiesEntry();
+    }
+    catch (error) {
+        console.warn("One Line, Many Personalities could not start.", error);
+        loading.textContent = "Practice could not be prepared. Check your connection and try again.";
+    }
+}
+
+function nextPersonalitiesEntry() {
+    const session = personalitiesSession;
+    if (!session) return;
+    if (session.index < session.entries.length - 1) session.index += 1;
+    else session.completed = true;
+    renderPersonalitiesEntry();
+}
+
 function openHubDrawer() {
     const layer = document.getElementById("hub-drawer-layer");
     if (!layer || layer.classList.contains("open")) return;
@@ -3218,6 +3495,8 @@ function showRoute(route, updateHash = true) {
     if (normalizedRoute === "library") initializeLibrary();
     if (normalizedRoute === "search") buildSearchIndex();
     if (normalizedRoute === "practice-what-would-you-say") openWhatWouldYouSay();
+    if (normalizedRoute === "practice-sentence-builder") openSentenceBuilder();
+    if (normalizedRoute === "practice-one-line-many-personalities") openPersonalitiesPractice();
     if (nativeMode) {
         currentNativeMode = nativeMode;
         document.getElementById("native-heading").textContent = nativeMode === "slang" ? "Slang" : "Native Japanese";
@@ -3244,7 +3523,7 @@ function showRoute(route, updateHash = true) {
     if (normalizedRoute === "travel-yen") renderYenConverter();
     if (normalizedRoute === "travel") renderTravelHeaderCountdown();
     if (deckRouteMatch) renderCurrentTravelDeck();
-    const mainRoute = travelCategory || isTravelUtilityRoute ? "travel" : normalizedRoute === "practice-what-would-you-say" ? "practice" : ["search", "translate", "learn-native", "learn-slang", "library"].includes(normalizedRoute) || (normalizedRoute.includes("detail") && detailReturnRoute === "library") ? "learn" : normalizedRoute.replace("-detail", "");
+    const mainRoute = travelCategory || isTravelUtilityRoute ? "travel" : ["practice-what-would-you-say", "practice-sentence-builder", "practice-one-line-many-personalities"].includes(normalizedRoute) ? "practice" : ["search", "translate", "learn-native", "learn-slang", "library"].includes(normalizedRoute) || (normalizedRoute.includes("detail") && detailReturnRoute === "library") ? "learn" : normalizedRoute.replace("-detail", "");
     document.querySelectorAll(".nav-button").forEach(button => button.classList.toggle("active", button.dataset.route === mainRoute || (normalizedRoute.includes("detail") && button.dataset.route === detailReturnRoute)));
     const learnView = normalizedRoute === "learn" ? "library" : nativeMode;
     document.querySelectorAll("[data-learn-view]").forEach(button => {
@@ -3589,6 +3868,28 @@ function addListeners() {
     document.getElementById("wwys-practice-again").addEventListener("click", async () => {
         const bank = await loadWhatWouldYouSayBank();
         if (validateWhatWouldYouSayBank(bank)) startWhatWouldYouSaySession(bank);
+    });
+    document.getElementById("practice-sentence-builder-view").addEventListener("click", event => {
+        const available = event.target.closest("[data-sentence-available]");
+        const selected = event.target.closest("[data-sentence-selected]");
+        if (available) addSentenceBuilderChunk(Number(available.dataset.sentenceAvailable));
+        else if (selected) removeSentenceBuilderChunk(Number(selected.dataset.sentenceSelected));
+    });
+    document.getElementById("sentence-builder-clear").addEventListener("click", clearSentenceBuilderAnswer);
+    document.getElementById("sentence-builder-check").addEventListener("click", checkSentenceBuilderAnswer);
+    document.getElementById("sentence-builder-next").addEventListener("click", nextSentenceBuilderQuestion);
+    document.getElementById("sentence-builder-practice-again").addEventListener("click", async () => {
+        const bank = await loadSentenceBuilderBank();
+        if (validateSentenceBuilderBank(bank)) startSentenceBuilderSession(bank);
+    });
+    document.getElementById("practice-one-line-many-personalities-view").addEventListener("click", event => {
+        const variant = event.target.closest("[data-personality-variant]");
+        if (variant) selectPersonalityVariant(Number(variant.dataset.personalityVariant));
+    });
+    document.getElementById("personalities-next").addEventListener("click", nextPersonalitiesEntry);
+    document.getElementById("personalities-practice-again").addEventListener("click", async () => {
+        const bank = await loadPersonalitiesBank();
+        if (validatePersonalitiesBank(bank)) startPersonalitiesSession(bank);
     });
     document.getElementById("travel-mode-toggle").addEventListener("change", event => setTravelModeEnabled(event.target.checked));
     document.getElementById("header-appearance").addEventListener("click", openAppearanceSettings);
@@ -3969,7 +4270,7 @@ function initializeApp() {
     const requestedRoute = location.hash.replace("#", "");
     const travelRoutes = Object.keys(window.TRAVEL_CATEGORIES || {}).map(category => `travel-${category}`);
     const validDeckRoute = /^travel-deck-deck-.+/.test(requestedRoute);
-    showRoute(["home", "hub", "library", "learn", "learn-native", "learn-slang", "search", "translate", "quiz", "practice", "practice-what-would-you-say", "native", "travel", "travel-my-phrases", "travel-decks", "travel-notes", "travel-countdown", "travel-offline", "travel-yen", "saved", ...travelRoutes].includes(requestedRoute) || validDeckRoute ? requestedRoute : "home", false);
+    showRoute(["home", "hub", "library", "learn", "learn-native", "learn-slang", "search", "translate", "quiz", "practice", "practice-what-would-you-say", "practice-sentence-builder", "practice-one-line-many-personalities", "native", "travel", "travel-my-phrases", "travel-decks", "travel-notes", "travel-countdown", "travel-offline", "travel-yen", "saved", ...travelRoutes].includes(requestedRoute) || validDeckRoute ? requestedRoute : "home", false);
     initializePwaUpdates();
 }
 

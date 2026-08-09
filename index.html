@@ -11,7 +11,7 @@
     <script>try { document.documentElement.dataset.theme = localStorage.getItem("sakuraAppearanceTheme") || "pink"; } catch (error) { document.documentElement.dataset.theme = "pink"; }</script>
     <link rel="manifest" href="manifest.webmanifest">
     <link rel="apple-touch-icon" href="icons/icon-180.png">
-    <link rel="stylesheet" href="style.css?v=44">
+    <link rel="stylesheet" href="style.css?v=46">
 </head>
 <body>
     <div class="app-shell">
@@ -274,8 +274,8 @@
                 <div class="page-heading"><span class="section-kicker">🌱 Practice garden</span><h1 id="practice-view-heading">Practice</h1><p>Use the Japanese you’re learning.</p></div>
                 <div class="practice-coming-grid" aria-label="Practice activities">
                     <button class="practice-coming-card practice-active-card" type="button" data-route="practice-what-would-you-say"><span aria-hidden="true">💬</span><span><h2>What Would You Say?</h2><p>Choose natural Japanese for everyday moments.</p></span><b aria-hidden="true">→</b></button>
-                    <article class="practice-coming-card"><span aria-hidden="true">🧩</span><div><h2>Sentence Builder</h2><p>Arrange Japanese into clear, natural sentences.</p></div><em>Coming soon</em></article>
-                    <article class="practice-coming-card"><span aria-hidden="true">🎭</span><div><h2>One Line, Many Personalities</h2><p>See how tone changes the same idea.</p></div><em>Coming soon</em></article>
+                    <button class="practice-coming-card practice-active-card" type="button" data-route="practice-sentence-builder"><span aria-hidden="true">🧩</span><span><h2>Sentence Builder</h2><p>Arrange Japanese into clear, natural sentences.</p></span><b aria-hidden="true">→</b></button>
+                    <button class="practice-coming-card practice-active-card" type="button" data-route="practice-one-line-many-personalities"><span aria-hidden="true">🎭</span><span><h2>One Line, Many Personalities</h2><p>See how tone changes the same idea.</p></span><b aria-hidden="true">→</b></button>
                 </div>
             </section>
 
@@ -297,6 +297,49 @@
                 <article id="wwys-results" class="practice-results-card" hidden>
                     <span aria-hidden="true">🌸</span><h2>Practice complete</h2><p><strong id="wwys-final-score">0 / 10</strong> correct</p>
                     <div><button id="wwys-practice-again" class="primary-button" type="button">Practice Again</button><button class="secondary-button" type="button" data-route="practice">Back to Practice</button></div>
+                </article>
+            </section>
+
+            <section id="practice-sentence-builder-view" class="view practice-activity-view" data-view="practice-sentence-builder" aria-labelledby="sentence-builder-heading" hidden>
+                <div class="practice-activity-heading"><button class="back-button" type="button" data-route="practice" aria-label="Back to Practice">‹</button><div><span class="section-kicker">🌸 Word-order practice</span><h1 id="sentence-builder-heading">Sentence Builder</h1></div></div>
+                <div id="sentence-builder-loading" class="practice-loading" role="status">Preparing your practice…</div>
+                <article id="sentence-builder-question" class="practice-question-card sentence-builder-card" hidden>
+                    <div class="practice-progress-row"><span id="sentence-builder-category" class="tag"></span><span id="sentence-builder-difficulty" class="tag"></span><strong id="sentence-builder-progress">1 / 10</strong></div>
+                    <section class="practice-prompt sentence-builder-prompt"><span>Build this sentence</span><p id="sentence-builder-english"></p></section>
+                    <section class="sentence-answer-section" aria-labelledby="sentence-answer-heading"><div><strong id="sentence-answer-heading">Your sentence</strong><small>Tap a placed chunk to return it.</small></div><div id="sentence-builder-answer" class="sentence-chunk-area answer-area" role="group" aria-label="Your sentence"><p id="sentence-builder-placeholder">Tap the chunks below in order.</p></div></section>
+                    <section class="sentence-chunk-section" aria-labelledby="sentence-chunks-heading"><strong id="sentence-chunks-heading">Available chunks</strong><div id="sentence-builder-chunks" class="sentence-chunk-area" role="group" aria-label="Available sentence chunks"></div></section>
+                    <div class="sentence-builder-actions"><button id="sentence-builder-clear" class="secondary-button" type="button">Clear</button><button id="sentence-builder-check" class="primary-button" type="button" disabled>Check Answer</button></div>
+                    <section id="sentence-builder-feedback" class="practice-feedback" aria-live="polite" hidden>
+                        <h2 id="sentence-builder-feedback-title"></h2>
+                        <div class="practice-answer-reading"><strong id="sentence-builder-japanese"></strong><span id="sentence-builder-kana"></span><span id="sentence-builder-romaji"></span><span id="sentence-builder-result-english"></span></div>
+                        <p id="sentence-builder-explanation"></p>
+                        <button id="sentence-builder-next" class="primary-button full-width-button" type="button">Next</button>
+                    </section>
+                </article>
+                <article id="sentence-builder-results" class="practice-results-card" hidden>
+                    <span aria-hidden="true">🌸</span><h2>Practice complete</h2><p><strong id="sentence-builder-final-score">0 / 10</strong> correct</p>
+                    <div><button id="sentence-builder-practice-again" class="primary-button" type="button">Practice Again</button><button class="secondary-button" type="button" data-route="practice">Back to Practice</button></div>
+                </article>
+            </section>
+
+            <section id="practice-one-line-many-personalities-view" class="view practice-activity-view" data-view="practice-one-line-many-personalities" aria-labelledby="personalities-heading" hidden>
+                <div class="practice-activity-heading"><button class="back-button" type="button" data-route="practice" aria-label="Back to Practice">‹</button><div><span class="section-kicker">🌸 Tone and personality</span><h1 id="personalities-heading">One Line, Many Personalities</h1></div></div>
+                <div id="personalities-loading" class="practice-loading" role="status">Preparing your practice…</div>
+                <article id="personalities-question" class="practice-question-card personalities-question-card" hidden>
+                    <div class="practice-progress-row"><span id="personalities-category" class="tag"></span><strong id="personalities-progress">1 / 10</strong></div>
+                    <section class="practice-prompt personalities-core"><span>How would you say…</span><p id="personalities-core-meaning"></p><small id="personalities-situation"></small></section>
+                    <section class="personalities-options" aria-labelledby="personalities-options-heading"><strong id="personalities-options-heading">Choose a personality</strong><div id="personalities-chips" class="personalities-chip-list" role="tablist" aria-label="Tone and personality variants"></div></section>
+                    <section id="personalities-detail" class="personality-detail-card" aria-live="polite" hidden>
+                        <div class="personality-detail-heading"><span id="personalities-selected-label" class="tag"></span><span id="personalities-formality"></span></div>
+                        <h2 id="personalities-japanese"></h2><p id="personalities-kana"></p><p id="personalities-romaji" class="learning-romaji"></p><p id="personalities-english"></p>
+                        <div class="personality-nuance"><strong>Nuance</strong><p id="personalities-nuance"></p></div>
+                        <div id="personalities-warning" class="personality-warning" hidden><strong>Use with care</strong><p></p></div>
+                    </section>
+                    <button id="personalities-next" class="primary-button full-width-button personalities-next" type="button">Next</button>
+                </article>
+                <article id="personalities-results" class="practice-results-card" hidden>
+                    <span aria-hidden="true">🌸</span><h2>Session complete</h2><p>You compared <strong>10 expressions</strong>.</p>
+                    <div><button id="personalities-practice-again" class="primary-button" type="button">Practice Again</button><button class="secondary-button" type="button" data-route="practice">Back to Practice</button></div>
                 </article>
             </section>
 
