@@ -1,0 +1,2671 @@
+[
+  {
+    "id": "counter-e8e742604d",
+    "type": "counter",
+    "counter": "歳",
+    "reading": "さい",
+    "romaji": "sai",
+    "categories": [
+      "Age"
+    ],
+    "frequencyTier": "Essential",
+    "usedFor": "age in years",
+    "explanation": "Used to count age in years.",
+    "countTable": [
+      {
+        "number": 1,
+        "japanese": "一歳",
+        "kana": "いっさい",
+        "romaji": "issai"
+      },
+      {
+        "number": 8,
+        "japanese": "八歳",
+        "kana": "はっさい",
+        "romaji": "hassai"
+      },
+      {
+        "number": 10,
+        "japanese": "十歳",
+        "kana": "じゅっさい",
+        "romaji": "jussai"
+      },
+      {
+        "number": 20,
+        "japanese": "二十歳",
+        "kana": "はたち",
+        "romaji": "hatachi"
+      }
+    ],
+    "notes": "20歳=はたち.",
+    "verifiedYear": 2026
+  },
+  {
+    "id": "counter-a2d6c5d7ed",
+    "type": "counter",
+    "counter": "匹",
+    "reading": "ひき",
+    "romaji": "hiki",
+    "categories": [
+      "Animals"
+    ],
+    "frequencyTier": "Essential",
+    "usedFor": "small/medium animals, fish, insects",
+    "explanation": "Used to count small/medium animals, fish, insects.",
+    "countTable": [
+      {
+        "number": 1,
+        "japanese": "一匹",
+        "kana": "いっぴき",
+        "romaji": "ippiki"
+      },
+      {
+        "number": 2,
+        "japanese": "二匹",
+        "kana": "にひき",
+        "romaji": "nihiki"
+      },
+      {
+        "number": 3,
+        "japanese": "三匹",
+        "kana": "さんびき",
+        "romaji": "sanbiki"
+      },
+      {
+        "number": 4,
+        "japanese": "四匹",
+        "kana": "よんひき",
+        "romaji": "yonhiki"
+      },
+      {
+        "number": 5,
+        "japanese": "五匹",
+        "kana": "ごひき",
+        "romaji": "gohiki"
+      },
+      {
+        "number": 6,
+        "japanese": "六匹",
+        "kana": "ろっぴき",
+        "romaji": "roppiki"
+      },
+      {
+        "number": 7,
+        "japanese": "七匹",
+        "kana": "ななひき",
+        "romaji": "nanahiki"
+      },
+      {
+        "number": 8,
+        "japanese": "八匹",
+        "kana": "はっぴき",
+        "romaji": "happiki"
+      },
+      {
+        "number": 9,
+        "japanese": "九匹",
+        "kana": "きゅうひき",
+        "romaji": "kyuuhiki"
+      },
+      {
+        "number": 10,
+        "japanese": "十匹",
+        "kana": "じゅっぴき",
+        "romaji": "juppiki"
+      }
+    ],
+    "notes": "Sound changes to -piki/-biki.",
+    "verifiedYear": 2026
+  },
+  {
+    "id": "counter-da136989e3",
+    "type": "counter",
+    "counter": "冊",
+    "reading": "さつ",
+    "romaji": "satsu",
+    "categories": [
+      "Books & Media"
+    ],
+    "frequencyTier": "Essential",
+    "usedFor": "books, notebooks, magazines, bound volumes",
+    "explanation": "Used to count books, notebooks, magazines, bound volumes.",
+    "countTable": [
+      {
+        "number": 1,
+        "japanese": "一冊",
+        "kana": "いっさつ",
+        "romaji": "issatsu"
+      },
+      {
+        "number": 2,
+        "japanese": "二冊",
+        "kana": "にさつ",
+        "romaji": "nisatsu"
+      },
+      {
+        "number": 3,
+        "japanese": "三冊",
+        "kana": "さんさつ",
+        "romaji": "sansatsu"
+      },
+      {
+        "number": 4,
+        "japanese": "四冊",
+        "kana": "よんさつ",
+        "romaji": "yonsatsu"
+      },
+      {
+        "number": 5,
+        "japanese": "五冊",
+        "kana": "ごさつ",
+        "romaji": "gosatsu"
+      },
+      {
+        "number": 6,
+        "japanese": "六冊",
+        "kana": "ろくさつ",
+        "romaji": "rokusatsu"
+      },
+      {
+        "number": 7,
+        "japanese": "七冊",
+        "kana": "ななさつ",
+        "romaji": "nanasatsu"
+      },
+      {
+        "number": 8,
+        "japanese": "八冊",
+        "kana": "はっさつ",
+        "romaji": "hassatsu"
+      },
+      {
+        "number": 9,
+        "japanese": "九冊",
+        "kana": "きゅうさつ",
+        "romaji": "kyuusatsu"
+      },
+      {
+        "number": 10,
+        "japanese": "十冊",
+        "kana": "じゅっさつ",
+        "romaji": "jussatsu"
+      }
+    ],
+    "notes": "Gemination with some numbers.",
+    "verifiedYear": 2026
+  },
+  {
+    "id": "counter-c7f7bb37e3",
+    "type": "counter",
+    "counter": "階",
+    "reading": "かい",
+    "romaji": "kai",
+    "categories": [
+      "Buildings & Rooms"
+    ],
+    "frequencyTier": "Essential",
+    "usedFor": "floors/storeys",
+    "explanation": "Used to count floors/storeys.",
+    "countTable": [
+      {
+        "number": 1,
+        "japanese": "一階",
+        "kana": "いっかい",
+        "romaji": "ikkai"
+      },
+      {
+        "number": 2,
+        "japanese": "二階",
+        "kana": "にかい",
+        "romaji": "nikai"
+      },
+      {
+        "number": 3,
+        "japanese": "三階",
+        "kana": "さんがい",
+        "romaji": "sangai"
+      },
+      {
+        "number": 4,
+        "japanese": "四階",
+        "kana": "よんかい",
+        "romaji": "yonkai"
+      },
+      {
+        "number": 5,
+        "japanese": "五階",
+        "kana": "ごかい",
+        "romaji": "gokai"
+      },
+      {
+        "number": 6,
+        "japanese": "六階",
+        "kana": "ろっかい",
+        "romaji": "rokkai"
+      },
+      {
+        "number": 7,
+        "japanese": "七階",
+        "kana": "ななかい",
+        "romaji": "nanakai"
+      },
+      {
+        "number": 8,
+        "japanese": "八階",
+        "kana": "はっかい",
+        "romaji": "hakkai"
+      },
+      {
+        "number": 9,
+        "japanese": "九階",
+        "kana": "きゅうかい",
+        "romaji": "kyuukai"
+      },
+      {
+        "number": 10,
+        "japanese": "十階",
+        "kana": "じゅっかい",
+        "romaji": "jukkai"
+      }
+    ],
+    "notes": "三階 commonly さんがい.",
+    "verifiedYear": 2026
+  },
+  {
+    "id": "counter-e498218a9b",
+    "type": "counter",
+    "counter": "回",
+    "reading": "かい",
+    "romaji": "kai",
+    "categories": [
+      "Events & Frequency"
+    ],
+    "frequencyTier": "Essential",
+    "usedFor": "times, occurrences, repetitions",
+    "explanation": "Used to count times, occurrences, repetitions.",
+    "countTable": [],
+    "notes": "Frequency counter.",
+    "verifiedYear": 2026
+  },
+  {
+    "id": "counter-58103607aa",
+    "type": "counter",
+    "counter": "杯",
+    "reading": "はい",
+    "romaji": "hai",
+    "categories": [
+      "Food & Drink"
+    ],
+    "frequencyTier": "Essential",
+    "usedFor": "cups, glasses, bowls",
+    "explanation": "Used to count cups, glasses, bowls.",
+    "countTable": [
+      {
+        "number": 1,
+        "japanese": "一杯",
+        "kana": "いっぱい",
+        "romaji": "ippai"
+      },
+      {
+        "number": 2,
+        "japanese": "二杯",
+        "kana": "にはい",
+        "romaji": "nihai"
+      },
+      {
+        "number": 3,
+        "japanese": "三杯",
+        "kana": "さんばい",
+        "romaji": "sanbai"
+      },
+      {
+        "number": 4,
+        "japanese": "四杯",
+        "kana": "よんはい",
+        "romaji": "yonhai"
+      },
+      {
+        "number": 5,
+        "japanese": "五杯",
+        "kana": "ごはい",
+        "romaji": "gohai"
+      },
+      {
+        "number": 6,
+        "japanese": "六杯",
+        "kana": "ろっぱい",
+        "romaji": "roppai"
+      },
+      {
+        "number": 7,
+        "japanese": "七杯",
+        "kana": "ななはい",
+        "romaji": "nanahai"
+      },
+      {
+        "number": 8,
+        "japanese": "八杯",
+        "kana": "はっぱい",
+        "romaji": "happai"
+      },
+      {
+        "number": 9,
+        "japanese": "九杯",
+        "kana": "きゅうはい",
+        "romaji": "kyuuhai"
+      },
+      {
+        "number": 10,
+        "japanese": "十杯",
+        "kana": "じゅっぱい",
+        "romaji": "juppai"
+      }
+    ],
+    "notes": "hai/bai/pai sound changes.",
+    "verifiedYear": 2026
+  },
+  {
+    "id": "counter-ba1c0cf4db",
+    "type": "counter",
+    "counter": "つ",
+    "reading": "つ",
+    "romaji": "tsu",
+    "categories": [
+      "General"
+    ],
+    "frequencyTier": "Essential",
+    "usedFor": "general things, especially 1–10",
+    "explanation": "Used to count general things, especially 1–10.",
+    "countTable": [
+      {
+        "number": 1,
+        "japanese": "一つ",
+        "kana": "ひとつ",
+        "romaji": "hitotsu"
+      },
+      {
+        "number": 2,
+        "japanese": "二つ",
+        "kana": "ふたつ",
+        "romaji": "futatsu"
+      },
+      {
+        "number": 3,
+        "japanese": "三つ",
+        "kana": "みっつ",
+        "romaji": "mittsu"
+      },
+      {
+        "number": 4,
+        "japanese": "四つ",
+        "kana": "よっつ",
+        "romaji": "yottsu"
+      },
+      {
+        "number": 5,
+        "japanese": "五つ",
+        "kana": "いつつ",
+        "romaji": "itsutsu"
+      },
+      {
+        "number": 6,
+        "japanese": "六つ",
+        "kana": "むっつ",
+        "romaji": "muttsu"
+      },
+      {
+        "number": 7,
+        "japanese": "七つ",
+        "kana": "ななつ",
+        "romaji": "nanatsu"
+      },
+      {
+        "number": 8,
+        "japanese": "八つ",
+        "kana": "やっつ",
+        "romaji": "yattsu"
+      },
+      {
+        "number": 9,
+        "japanese": "九つ",
+        "kana": "ここのつ",
+        "romaji": "kokonotsu"
+      },
+      {
+        "number": 10,
+        "japanese": "十",
+        "kana": "とお",
+        "romaji": "too"
+      }
+    ],
+    "notes": "Very flexible native-Japanese general counter.",
+    "verifiedYear": 2026
+  },
+  {
+    "id": "counter-fe1e780e54",
+    "type": "counter",
+    "counter": "個",
+    "reading": "こ",
+    "romaji": "ko",
+    "categories": [
+      "General"
+    ],
+    "frequencyTier": "Essential",
+    "usedFor": "small, compact, discrete objects",
+    "explanation": "Used to count small, compact, discrete objects.",
+    "countTable": [
+      {
+        "number": 1,
+        "japanese": "一個",
+        "kana": "いっこ",
+        "romaji": "ikko"
+      },
+      {
+        "number": 2,
+        "japanese": "二個",
+        "kana": "にこ",
+        "romaji": "niko"
+      },
+      {
+        "number": 3,
+        "japanese": "三個",
+        "kana": "さんこ",
+        "romaji": "sanko"
+      },
+      {
+        "number": 4,
+        "japanese": "四個",
+        "kana": "よんこ",
+        "romaji": "yonko"
+      },
+      {
+        "number": 5,
+        "japanese": "五個",
+        "kana": "ごこ",
+        "romaji": "goko"
+      },
+      {
+        "number": 6,
+        "japanese": "六個",
+        "kana": "ろっこ",
+        "romaji": "rokko"
+      },
+      {
+        "number": 7,
+        "japanese": "七個",
+        "kana": "ななこ",
+        "romaji": "nanako"
+      },
+      {
+        "number": 8,
+        "japanese": "八個",
+        "kana": "はっこ",
+        "romaji": "hakko"
+      },
+      {
+        "number": 9,
+        "japanese": "九個",
+        "kana": "きゅうこ",
+        "romaji": "kyuuko"
+      },
+      {
+        "number": 10,
+        "japanese": "十個",
+        "kana": "じゅっこ",
+        "romaji": "jukko"
+      }
+    ],
+    "notes": "Flexible general counter for bounded objects.",
+    "verifiedYear": 2026
+  },
+  {
+    "id": "counter-c5022ed45b",
+    "type": "counter",
+    "counter": "台",
+    "reading": "だい",
+    "romaji": "dai",
+    "categories": [
+      "Machines & Vehicles"
+    ],
+    "frequencyTier": "Essential",
+    "usedFor": "machines, appliances, vehicles, large instruments",
+    "explanation": "Used to count machines, appliances, vehicles, large instruments.",
+    "countTable": [],
+    "notes": "Regular pronunciation.",
+    "verifiedYear": 2026
+  },
+  {
+    "id": "counter-b2f1b4748f",
+    "type": "counter",
+    "counter": "円",
+    "reading": "えん",
+    "romaji": "en",
+    "categories": [
+      "Money & Commerce"
+    ],
+    "frequencyTier": "Essential",
+    "usedFor": "yen",
+    "explanation": "Used to count yen.",
+    "countTable": [],
+    "notes": "Currency unit.",
+    "verifiedYear": 2026
+  },
+  {
+    "id": "counter-9fb45486b9",
+    "type": "counter",
+    "counter": "本",
+    "reading": "ほん",
+    "romaji": "hon",
+    "categories": [
+      "Objects by Shape"
+    ],
+    "frequencyTier": "Essential",
+    "usedFor": "long/cylindrical/stick-like objects",
+    "explanation": "Used to count long/cylindrical/stick-like objects.",
+    "countTable": [
+      {
+        "number": 1,
+        "japanese": "一本",
+        "kana": "いっぽん",
+        "romaji": "ippon"
+      },
+      {
+        "number": 2,
+        "japanese": "二本",
+        "kana": "にほん",
+        "romaji": "nihon"
+      },
+      {
+        "number": 3,
+        "japanese": "三本",
+        "kana": "さんぼん",
+        "romaji": "sanbon"
+      },
+      {
+        "number": 4,
+        "japanese": "四本",
+        "kana": "よんほん",
+        "romaji": "yonhon"
+      },
+      {
+        "number": 5,
+        "japanese": "五本",
+        "kana": "ごほん",
+        "romaji": "gohon"
+      },
+      {
+        "number": 6,
+        "japanese": "六本",
+        "kana": "ろっぽん",
+        "romaji": "roppon"
+      },
+      {
+        "number": 7,
+        "japanese": "七本",
+        "kana": "ななほん",
+        "romaji": "nanahon"
+      },
+      {
+        "number": 8,
+        "japanese": "八本",
+        "kana": "はっぽん",
+        "romaji": "happon"
+      },
+      {
+        "number": 9,
+        "japanese": "九本",
+        "kana": "きゅうほん",
+        "romaji": "kyuuhon"
+      },
+      {
+        "number": 10,
+        "japanese": "十本",
+        "kana": "じゅっぽん",
+        "romaji": "juppon"
+      }
+    ],
+    "notes": "hon/bon/pon sound changes.",
+    "verifiedYear": 2026
+  },
+  {
+    "id": "counter-96160a0525",
+    "type": "counter",
+    "counter": "枚",
+    "reading": "まい",
+    "romaji": "mai",
+    "categories": [
+      "Objects by Shape"
+    ],
+    "frequencyTier": "Essential",
+    "usedFor": "flat/thin objects, paper, tickets, clothes",
+    "explanation": "Used to count flat/thin objects, paper, tickets, clothes.",
+    "countTable": [],
+    "notes": "Relatively regular pronunciation.",
+    "verifiedYear": 2026
+  },
+  {
+    "id": "counter-cecd0cd8c2",
+    "type": "counter",
+    "counter": "番",
+    "reading": "ばん",
+    "romaji": "ban",
+    "categories": [
+      "Order & Ranking"
+    ],
+    "frequencyTier": "Essential",
+    "usedFor": "order, turn, number, rank",
+    "explanation": "Used to count order, turn, number, rank.",
+    "countTable": [],
+    "notes": "Often with 目 for ordinal.",
+    "verifiedYear": 2026
+  },
+  {
+    "id": "counter-a839730f0d",
+    "type": "counter",
+    "counter": "人",
+    "reading": "にん / り",
+    "romaji": "nin / ri",
+    "categories": [
+      "People"
+    ],
+    "frequencyTier": "Essential",
+    "usedFor": "people",
+    "explanation": "Used to count people.",
+    "countTable": [
+      {
+        "number": 1,
+        "japanese": "一人",
+        "kana": "ひとり",
+        "romaji": "hitori"
+      },
+      {
+        "number": 2,
+        "japanese": "二人",
+        "kana": "ふたり",
+        "romaji": "futari"
+      },
+      {
+        "number": 3,
+        "japanese": "三人",
+        "kana": "さんにん",
+        "romaji": "sannin"
+      },
+      {
+        "number": 4,
+        "japanese": "四人",
+        "kana": "よにん",
+        "romaji": "yonin"
+      },
+      {
+        "number": 5,
+        "japanese": "五人",
+        "kana": "ごにん",
+        "romaji": "gonin"
+      },
+      {
+        "number": 6,
+        "japanese": "六人",
+        "kana": "ろくにん",
+        "romaji": "rokunin"
+      },
+      {
+        "number": 7,
+        "japanese": "七人",
+        "kana": "ななにん",
+        "romaji": "nananin"
+      },
+      {
+        "number": 8,
+        "japanese": "八人",
+        "kana": "はちにん",
+        "romaji": "hachinin"
+      },
+      {
+        "number": 9,
+        "japanese": "九人",
+        "kana": "きゅうにん",
+        "romaji": "kyuunin"
+      },
+      {
+        "number": 10,
+        "japanese": "十人",
+        "kana": "じゅうにん",
+        "romaji": "juunin"
+      }
+    ],
+    "notes": "一人=ひとり, 二人=ふたり.",
+    "verifiedYear": 2026
+  },
+  {
+    "id": "counter-5ba7bfe5dd",
+    "type": "counter",
+    "counter": "名",
+    "reading": "めい",
+    "romaji": "mei",
+    "categories": [
+      "People"
+    ],
+    "frequencyTier": "Essential",
+    "usedFor": "people in polite/formal service",
+    "explanation": "Used to count people in polite/formal service.",
+    "countTable": [],
+    "notes": "Common in restaurants, hotels, events, reservations.",
+    "verifiedYear": 2026
+  },
+  {
+    "id": "counter-76cb394970",
+    "type": "counter",
+    "counter": "か月 / ヶ月 / 箇月",
+    "reading": "かげつ",
+    "romaji": "kagetsu",
+    "categories": [
+      "Time"
+    ],
+    "frequencyTier": "Essential",
+    "usedFor": "duration in months",
+    "explanation": "Used to count duration in months.",
+    "countTable": [],
+    "notes": "Common spellings vary.",
+    "verifiedYear": 2026
+  },
+  {
+    "id": "counter-3cd79782ab",
+    "type": "counter",
+    "counter": "分",
+    "reading": "ふん / ぷん",
+    "romaji": "fun / pun",
+    "categories": [
+      "Time"
+    ],
+    "frequencyTier": "Essential",
+    "usedFor": "minutes",
+    "explanation": "Used to count minutes.",
+    "countTable": [
+      {
+        "number": 1,
+        "japanese": "一分",
+        "kana": "いっぷん",
+        "romaji": "ippun"
+      },
+      {
+        "number": 2,
+        "japanese": "二分",
+        "kana": "にふん",
+        "romaji": "nifun"
+      },
+      {
+        "number": 3,
+        "japanese": "三分",
+        "kana": "さんぷん",
+        "romaji": "sanpun"
+      },
+      {
+        "number": 4,
+        "japanese": "四分",
+        "kana": "よんぷん",
+        "romaji": "yonpun"
+      },
+      {
+        "number": 5,
+        "japanese": "五分",
+        "kana": "ごふん",
+        "romaji": "gofun"
+      },
+      {
+        "number": 6,
+        "japanese": "六分",
+        "kana": "ろっぷん",
+        "romaji": "roppun"
+      },
+      {
+        "number": 7,
+        "japanese": "七分",
+        "kana": "ななふん",
+        "romaji": "nanafun"
+      },
+      {
+        "number": 8,
+        "japanese": "八分",
+        "kana": "はっぷん",
+        "romaji": "happun"
+      },
+      {
+        "number": 9,
+        "japanese": "九分",
+        "kana": "きゅうふん",
+        "romaji": "kyuufun"
+      },
+      {
+        "number": 10,
+        "japanese": "十分",
+        "kana": "じゅっぷん",
+        "romaji": "juppun"
+      }
+    ],
+    "notes": "Important sound changes.",
+    "verifiedYear": 2026
+  },
+  {
+    "id": "counter-0ba70d4ae5",
+    "type": "counter",
+    "counter": "年",
+    "reading": "ねん",
+    "romaji": "nen",
+    "categories": [
+      "Time"
+    ],
+    "frequencyTier": "Essential",
+    "usedFor": "years and school years",
+    "explanation": "Used to count years and school years.",
+    "countTable": [],
+    "notes": "Regular Sino-Japanese.",
+    "verifiedYear": 2026
+  },
+  {
+    "id": "counter-2c8c1991d9",
+    "type": "counter",
+    "counter": "日",
+    "reading": "か / にち",
+    "romaji": "ka / nichi",
+    "categories": [
+      "Time"
+    ],
+    "frequencyTier": "Essential",
+    "usedFor": "days and days of month",
+    "explanation": "Used to count days and days of month.",
+    "countTable": [
+      {
+        "number": 1,
+        "japanese": "一日",
+        "kana": "ついたち",
+        "romaji": "tsuitachi"
+      },
+      {
+        "number": 2,
+        "japanese": "二日",
+        "kana": "ふつか",
+        "romaji": "futsuka"
+      },
+      {
+        "number": 3,
+        "japanese": "三日",
+        "kana": "みっか",
+        "romaji": "mikka"
+      },
+      {
+        "number": 4,
+        "japanese": "四日",
+        "kana": "よっか",
+        "romaji": "yokka"
+      },
+      {
+        "number": 5,
+        "japanese": "五日",
+        "kana": "いつか",
+        "romaji": "itsuka"
+      },
+      {
+        "number": 6,
+        "japanese": "六日",
+        "kana": "むいか",
+        "romaji": "muika"
+      },
+      {
+        "number": 7,
+        "japanese": "七日",
+        "kana": "なのか",
+        "romaji": "nanoka"
+      },
+      {
+        "number": 8,
+        "japanese": "八日",
+        "kana": "ようか",
+        "romaji": "youka"
+      },
+      {
+        "number": 9,
+        "japanese": "九日",
+        "kana": "ここのか",
+        "romaji": "kokonoka"
+      },
+      {
+        "number": 10,
+        "japanese": "十日",
+        "kana": "とおか",
+        "romaji": "tooka"
+      },
+      {
+        "number": 14,
+        "japanese": "十四日",
+        "kana": "じゅうよっか",
+        "romaji": "juuyokka"
+      },
+      {
+        "number": 20,
+        "japanese": "二十日",
+        "kana": "はつか",
+        "romaji": "hatsuka"
+      },
+      {
+        "number": 24,
+        "japanese": "二十四日",
+        "kana": "にじゅうよっか",
+        "romaji": "nijuuyokka"
+      }
+    ],
+    "notes": "Many irregular readings.",
+    "verifiedYear": 2026
+  },
+  {
+    "id": "counter-84cc410fb8",
+    "type": "counter",
+    "counter": "時",
+    "reading": "じ",
+    "romaji": "ji",
+    "categories": [
+      "Time"
+    ],
+    "frequencyTier": "Essential",
+    "usedFor": "clock hours / o'clock",
+    "explanation": "Used to count clock hours / o'clock.",
+    "countTable": [],
+    "notes": "4=よじ, 7=しちじ, 9=くじ.",
+    "verifiedYear": 2026
+  },
+  {
+    "id": "counter-78e514e895",
+    "type": "counter",
+    "counter": "時間",
+    "reading": "じかん",
+    "romaji": "jikan",
+    "categories": [
+      "Time"
+    ],
+    "frequencyTier": "Essential",
+    "usedFor": "duration in hours",
+    "explanation": "Used to count duration in hours.",
+    "countTable": [],
+    "notes": "Different from 時 clock time.",
+    "verifiedYear": 2026
+  },
+  {
+    "id": "counter-f7ea235379",
+    "type": "counter",
+    "counter": "月",
+    "reading": "がつ",
+    "romaji": "gatsu",
+    "categories": [
+      "Time"
+    ],
+    "frequencyTier": "Essential",
+    "usedFor": "calendar months",
+    "explanation": "Used to count calendar months.",
+    "countTable": [],
+    "notes": "April/July/September readings differ.",
+    "verifiedYear": 2026
+  },
+  {
+    "id": "counter-2def1fc4bc",
+    "type": "counter",
+    "counter": "秒",
+    "reading": "びょう",
+    "romaji": "byou",
+    "categories": [
+      "Time"
+    ],
+    "frequencyTier": "Essential",
+    "usedFor": "seconds",
+    "explanation": "Used to count seconds.",
+    "countTable": [],
+    "notes": "Regular Sino-Japanese counting.",
+    "verifiedYear": 2026
+  },
+  {
+    "id": "counter-5ea27cebfd",
+    "type": "counter",
+    "counter": "泊",
+    "reading": "はく",
+    "romaji": "haku",
+    "categories": [
+      "Travel & Lodging"
+    ],
+    "frequencyTier": "Essential",
+    "usedFor": "overnight stays/nights",
+    "explanation": "Used to count overnight stays/nights.",
+    "countTable": [],
+    "notes": "Very useful for hotels/travel.",
+    "verifiedYear": 2026
+  },
+  {
+    "id": "counter-4f1ff1ac47",
+    "type": "counter",
+    "counter": "才",
+    "reading": "さい",
+    "romaji": "sai",
+    "categories": [
+      "Age"
+    ],
+    "frequencyTier": "Common",
+    "usedFor": "age; simplified variant of 歳",
+    "explanation": "Used to count age; simplified variant of 歳.",
+    "countTable": [],
+    "notes": "Prefer 歳 formally.",
+    "verifiedYear": 2026
+  },
+  {
+    "id": "counter-5f9a2db555",
+    "type": "counter",
+    "counter": "羽",
+    "reading": "わ",
+    "romaji": "wa",
+    "categories": [
+      "Animals"
+    ],
+    "frequencyTier": "Common",
+    "usedFor": "birds and traditionally rabbits",
+    "explanation": "Used to count birds and traditionally rabbits.",
+    "countTable": [],
+    "notes": "Traditional bird/rabbit counter.",
+    "verifiedYear": 2026
+  },
+  {
+    "id": "counter-94bcd82cd1",
+    "type": "counter",
+    "counter": "頭",
+    "reading": "とう",
+    "romaji": "tou",
+    "categories": [
+      "Animals"
+    ],
+    "frequencyTier": "Common",
+    "usedFor": "large animals and livestock",
+    "explanation": "Used to count large animals and livestock.",
+    "countTable": [],
+    "notes": "Also used for some professionally managed animals.",
+    "verifiedYear": 2026
+  },
+  {
+    "id": "counter-a480c62d6a",
+    "type": "counter",
+    "counter": "作",
+    "reading": "さく",
+    "romaji": "saku",
+    "categories": [
+      "Books & Media"
+    ],
+    "frequencyTier": "Common",
+    "usedFor": "creative works, films, literary works",
+    "explanation": "Used to count creative works, films, literary works.",
+    "countTable": [],
+    "notes": "Counts works.",
+    "verifiedYear": 2026
+  },
+  {
+    "id": "counter-e1a84a2484",
+    "type": "counter",
+    "counter": "巻",
+    "reading": "かん",
+    "romaji": "kan",
+    "categories": [
+      "Books & Media"
+    ],
+    "frequencyTier": "Common",
+    "usedFor": "volumes in a series, scrolls",
+    "explanation": "Used to count volumes in a series, scrolls.",
+    "countTable": [],
+    "notes": "Common for manga volumes.",
+    "verifiedYear": 2026
+  },
+  {
+    "id": "counter-84582e9d2c",
+    "type": "counter",
+    "counter": "曲",
+    "reading": "きょく",
+    "romaji": "kyoku",
+    "categories": [
+      "Books & Media"
+    ],
+    "frequencyTier": "Common",
+    "usedFor": "songs and musical pieces",
+    "explanation": "Used to count songs and musical pieces.",
+    "countTable": [],
+    "notes": "Playlists/concerts/karaoke.",
+    "verifiedYear": 2026
+  },
+  {
+    "id": "counter-8b2e6de812",
+    "type": "counter",
+    "counter": "話",
+    "reading": "わ",
+    "romaji": "wa",
+    "categories": [
+      "Books & Media"
+    ],
+    "frequencyTier": "Common",
+    "usedFor": "episodes, stories, installments",
+    "explanation": "Used to count episodes, stories, installments.",
+    "countTable": [],
+    "notes": "Common for anime/drama episodes.",
+    "verifiedYear": 2026
+  },
+  {
+    "id": "counter-b986fe09d8",
+    "type": "counter",
+    "counter": "部",
+    "reading": "ぶ",
+    "romaji": "bu",
+    "categories": [
+      "Books & Media"
+    ],
+    "frequencyTier": "Common",
+    "usedFor": "copies of printed material/documents",
+    "explanation": "Used to count copies of printed material/documents.",
+    "countTable": [],
+    "notes": "Print copies/editions.",
+    "verifiedYear": 2026
+  },
+  {
+    "id": "counter-839aef8f4c",
+    "type": "counter",
+    "counter": "室",
+    "reading": "しつ",
+    "romaji": "shitsu",
+    "categories": [
+      "Buildings & Rooms"
+    ],
+    "frequencyTier": "Common",
+    "usedFor": "rooms, especially formal/institutional",
+    "explanation": "Used to count rooms, especially formal/institutional.",
+    "countTable": [],
+    "notes": "Hotels/institutions.",
+    "verifiedYear": 2026
+  },
+  {
+    "id": "counter-129b972372",
+    "type": "counter",
+    "counter": "戸",
+    "reading": "こ",
+    "romaji": "ko",
+    "categories": [
+      "Buildings & Rooms"
+    ],
+    "frequencyTier": "Common",
+    "usedFor": "households/residential units",
+    "explanation": "Used to count households/residential units.",
+    "countTable": [],
+    "notes": "Housing/statistics.",
+    "verifiedYear": 2026
+  },
+  {
+    "id": "counter-3471b165c0",
+    "type": "counter",
+    "counter": "棟",
+    "reading": "とう",
+    "romaji": "tou",
+    "categories": [
+      "Buildings & Rooms"
+    ],
+    "frequencyTier": "Common",
+    "usedFor": "buildings/blocks/structures",
+    "explanation": "Used to count buildings/blocks/structures.",
+    "countTable": [],
+    "notes": "Distinct building structures.",
+    "verifiedYear": 2026
+  },
+  {
+    "id": "counter-c9f6f9d6e8",
+    "type": "counter",
+    "counter": "軒",
+    "reading": "けん",
+    "romaji": "ken",
+    "categories": [
+      "Buildings & Rooms"
+    ],
+    "frequencyTier": "Common",
+    "usedFor": "houses, shops, restaurants, buildings",
+    "explanation": "Used to count houses, shops, restaurants, buildings.",
+    "countTable": [],
+    "notes": "Useful for establishments.",
+    "verifiedYear": 2026
+  },
+  {
+    "id": "counter-10c56ae24d",
+    "type": "counter",
+    "counter": "部屋",
+    "reading": "へや",
+    "romaji": "heya",
+    "categories": [
+      "Buildings & Rooms"
+    ],
+    "frequencyTier": "Common",
+    "usedFor": "rooms",
+    "explanation": "Used to count rooms.",
+    "countTable": [],
+    "notes": "Everyday room counting.",
+    "verifiedYear": 2026
+  },
+  {
+    "id": "counter-f508e35cc4",
+    "type": "counter",
+    "counter": "着",
+    "reading": "ちゃく",
+    "romaji": "chaku",
+    "categories": [
+      "Clothing & Wearables"
+    ],
+    "frequencyTier": "Common",
+    "usedFor": "garments, outfits, suits, dresses",
+    "explanation": "Used to count garments, outfits, suits, dresses.",
+    "countTable": [],
+    "notes": "Clothing as worn items.",
+    "verifiedYear": 2026
+  },
+  {
+    "id": "counter-1f3d7e6eea",
+    "type": "counter",
+    "counter": "足",
+    "reading": "そく",
+    "romaji": "soku",
+    "categories": [
+      "Clothing & Wearables"
+    ],
+    "frequencyTier": "Common",
+    "usedFor": "pairs of shoes, socks, footwear",
+    "explanation": "Used to count pairs of shoes, socks, footwear.",
+    "countTable": [],
+    "notes": "Counts pairs.",
+    "verifiedYear": 2026
+  },
+  {
+    "id": "counter-1ecadfceec",
+    "type": "counter",
+    "counter": "瓶",
+    "reading": "びん",
+    "romaji": "bin",
+    "categories": [
+      "Containers"
+    ],
+    "frequencyTier": "Common",
+    "usedFor": "bottles/jars",
+    "explanation": "Used to count bottles/jars.",
+    "countTable": [],
+    "notes": "本 is also natural for many bottles.",
+    "verifiedYear": 2026
+  },
+  {
+    "id": "counter-78d252230f",
+    "type": "counter",
+    "counter": "箱",
+    "reading": "はこ",
+    "romaji": "hako",
+    "categories": [
+      "Containers"
+    ],
+    "frequencyTier": "Common",
+    "usedFor": "boxes/cartons",
+    "explanation": "Used to count boxes/cartons.",
+    "countTable": [],
+    "notes": "一箱/二箱 often hitohako/futahako.",
+    "verifiedYear": 2026
+  },
+  {
+    "id": "counter-9a0d50ad8c",
+    "type": "counter",
+    "counter": "缶",
+    "reading": "かん",
+    "romaji": "kan",
+    "categories": [
+      "Containers"
+    ],
+    "frequencyTier": "Common",
+    "usedFor": "cans/tins",
+    "explanation": "Used to count cans/tins.",
+    "countTable": [],
+    "notes": "Used for filled cans/tins.",
+    "verifiedYear": 2026
+  },
+  {
+    "id": "counter-3dcb0ed7db",
+    "type": "counter",
+    "counter": "袋",
+    "reading": "ふくろ",
+    "romaji": "fukuro",
+    "categories": [
+      "Containers"
+    ],
+    "frequencyTier": "Common",
+    "usedFor": "bags, sacks, pouches",
+    "explanation": "Used to count bags, sacks, pouches.",
+    "countTable": [],
+    "notes": "一袋/二袋 often hitofukuro/futafukuro.",
+    "verifiedYear": 2026
+  },
+  {
+    "id": "counter-5544c6787a",
+    "type": "counter",
+    "counter": "通",
+    "reading": "つう",
+    "romaji": "tsuu",
+    "categories": [
+      "Documents & Communication"
+    ],
+    "frequencyTier": "Common",
+    "usedFor": "letters, emails, notices, documents",
+    "explanation": "Used to count letters, emails, notices, documents.",
+    "countTable": [],
+    "notes": "Formal correspondence.",
+    "verifiedYear": 2026
+  },
+  {
+    "id": "counter-c35b20319d",
+    "type": "counter",
+    "counter": "単位",
+    "reading": "たんい",
+    "romaji": "tan'i",
+    "categories": [
+      "Education"
+    ],
+    "frequencyTier": "Common",
+    "usedFor": "academic credits/units",
+    "explanation": "Used to count academic credits/units.",
+    "countTable": [],
+    "notes": "Academic unit.",
+    "verifiedYear": 2026
+  },
+  {
+    "id": "counter-f156f728ba",
+    "type": "counter",
+    "counter": "科目",
+    "reading": "かもく",
+    "romaji": "kamoku",
+    "categories": [
+      "Education"
+    ],
+    "frequencyTier": "Common",
+    "usedFor": "subjects/courses",
+    "explanation": "Used to count subjects/courses.",
+    "countTable": [],
+    "notes": "Course count.",
+    "verifiedYear": 2026
+  },
+  {
+    "id": "counter-f948fbfc03",
+    "type": "counter",
+    "counter": "限",
+    "reading": "げん",
+    "romaji": "gen",
+    "categories": [
+      "Education"
+    ],
+    "frequencyTier": "Common",
+    "usedFor": "class periods",
+    "explanation": "Used to count class periods.",
+    "countTable": [],
+    "notes": "一限, 二限.",
+    "verifiedYear": 2026
+  },
+  {
+    "id": "counter-157260f65d",
+    "type": "counter",
+    "counter": "ゲーム",
+    "reading": "げーむ",
+    "romaji": "geemu",
+    "categories": [
+      "Entertainment"
+    ],
+    "frequencyTier": "Common",
+    "usedFor": "games/matches",
+    "explanation": "Used to count games/matches.",
+    "countTable": [],
+    "notes": "Loanword.",
+    "verifiedYear": 2026
+  },
+  {
+    "id": "counter-4c0a03d8bb",
+    "type": "counter",
+    "counter": "ステージ",
+    "reading": "すてーじ",
+    "romaji": "suteeji",
+    "categories": [
+      "Entertainment"
+    ],
+    "frequencyTier": "Common",
+    "usedFor": "stages/sets/performances",
+    "explanation": "Used to count stages/sets/performances.",
+    "countTable": [],
+    "notes": "Loanword.",
+    "verifiedYear": 2026
+  },
+  {
+    "id": "counter-f5ced98248",
+    "type": "counter",
+    "counter": "公演",
+    "reading": "こうえん",
+    "romaji": "kouen",
+    "categories": [
+      "Entertainment"
+    ],
+    "frequencyTier": "Common",
+    "usedFor": "performances/shows",
+    "explanation": "Used to count performances/shows.",
+    "countTable": [],
+    "notes": "Noun used counter-like.",
+    "verifiedYear": 2026
+  },
+  {
+    "id": "counter-34defe804e",
+    "type": "counter",
+    "counter": "件",
+    "reading": "けん",
+    "romaji": "ken",
+    "categories": [
+      "Events & Frequency"
+    ],
+    "frequencyTier": "Common",
+    "usedFor": "cases, matters, incidents, messages",
+    "explanation": "Used to count cases, matters, incidents, messages.",
+    "countTable": [],
+    "notes": "Office/news/digital contexts.",
+    "verifiedYear": 2026
+  },
+  {
+    "id": "counter-5593d2cd25",
+    "type": "counter",
+    "counter": "例",
+    "reading": "れい",
+    "romaji": "rei",
+    "categories": [
+      "Events & Frequency"
+    ],
+    "frequencyTier": "Common",
+    "usedFor": "examples/cases",
+    "explanation": "Used to count examples/cases.",
+    "countTable": [],
+    "notes": "Examples/cases.",
+    "verifiedYear": 2026
+  },
+  {
+    "id": "counter-b6d6c6b4b2",
+    "type": "counter",
+    "counter": "問",
+    "reading": "もん",
+    "romaji": "mon",
+    "categories": [
+      "Events & Frequency"
+    ],
+    "frequencyTier": "Common",
+    "usedFor": "questions/problems",
+    "explanation": "Used to count questions/problems.",
+    "countTable": [],
+    "notes": "Tests/exercises.",
+    "verifiedYear": 2026
+  },
+  {
+    "id": "counter-975b0d365c",
+    "type": "counter",
+    "counter": "度",
+    "reading": "ど",
+    "romaji": "do",
+    "categories": [
+      "Events & Frequency"
+    ],
+    "frequencyTier": "Common",
+    "usedFor": "times/occasions; degrees",
+    "explanation": "Used to count times/occasions; degrees.",
+    "countTable": [],
+    "notes": "Also measurement.",
+    "verifiedYear": 2026
+  },
+  {
+    "id": "counter-67c880187c",
+    "type": "counter",
+    "counter": "戦",
+    "reading": "せん",
+    "romaji": "sen",
+    "categories": [
+      "Events & Frequency"
+    ],
+    "frequencyTier": "Common",
+    "usedFor": "matches, battles, game rounds",
+    "explanation": "Used to count matches, battles, game rounds.",
+    "countTable": [],
+    "notes": "Sports/games.",
+    "verifiedYear": 2026
+  },
+  {
+    "id": "counter-b74d99fb40",
+    "type": "counter",
+    "counter": "試合",
+    "reading": "しあい",
+    "romaji": "shiai",
+    "categories": [
+      "Events & Frequency"
+    ],
+    "frequencyTier": "Common",
+    "usedFor": "sports matches/games",
+    "explanation": "Used to count sports matches/games.",
+    "countTable": [],
+    "notes": "Noun used counter-like.",
+    "verifiedYear": 2026
+  },
+  {
+    "id": "counter-10f75c87e6",
+    "type": "counter",
+    "counter": "題",
+    "reading": "だい",
+    "romaji": "dai",
+    "categories": [
+      "Events & Frequency"
+    ],
+    "frequencyTier": "Common",
+    "usedFor": "problems/topics/tasks",
+    "explanation": "Used to count problems/topics/tasks.",
+    "countTable": [],
+    "notes": "School/work.",
+    "verifiedYear": 2026
+  },
+  {
+    "id": "counter-ce7e5957d3",
+    "type": "counter",
+    "counter": "丁",
+    "reading": "ちょう",
+    "romaji": "chou",
+    "categories": [
+      "Food & Drink"
+    ],
+    "frequencyTier": "Common",
+    "usedFor": "blocks of tofu and certain portions/items",
+    "explanation": "Used to count blocks of tofu and certain portions/items.",
+    "countTable": [],
+    "notes": "Traditional, context-sensitive.",
+    "verifiedYear": 2026
+  },
+  {
+    "id": "counter-8ef1f76931",
+    "type": "counter",
+    "counter": "串",
+    "reading": "くし",
+    "romaji": "kushi",
+    "categories": [
+      "Food & Drink"
+    ],
+    "frequencyTier": "Common",
+    "usedFor": "skewers/items on skewers",
+    "explanation": "Used to count skewers/items on skewers.",
+    "countTable": [],
+    "notes": "Yakitori/skewered food.",
+    "verifiedYear": 2026
+  },
+  {
+    "id": "counter-5eed6d1645",
+    "type": "counter",
+    "counter": "人前",
+    "reading": "にんまえ",
+    "romaji": "ninmae",
+    "categories": [
+      "Food & Drink"
+    ],
+    "frequencyTier": "Common",
+    "usedFor": "servings/portions for people",
+    "explanation": "Used to count servings/portions for people.",
+    "countTable": [],
+    "notes": "Restaurant/recipe usage.",
+    "verifiedYear": 2026
+  },
+  {
+    "id": "counter-bce14fc3de",
+    "type": "counter",
+    "counter": "切れ",
+    "reading": "きれ",
+    "romaji": "kire",
+    "categories": [
+      "Food & Drink"
+    ],
+    "frequencyTier": "Common",
+    "usedFor": "slices/cut pieces of food",
+    "explanation": "Used to count slices/cut pieces of food.",
+    "countTable": [],
+    "notes": "Bread, cake, sashimi, meat.",
+    "verifiedYear": 2026
+  },
+  {
+    "id": "counter-609c5a6c5e",
+    "type": "counter",
+    "counter": "口",
+    "reading": "くち",
+    "romaji": "kuchi",
+    "categories": [
+      "Food & Drink"
+    ],
+    "frequencyTier": "Common",
+    "usedFor": "bites, sips, mouthfuls",
+    "explanation": "Used to count bites, sips, mouthfuls.",
+    "countTable": [],
+    "notes": "Also has finance/specialized senses.",
+    "verifiedYear": 2026
+  },
+  {
+    "id": "counter-941986a9d9",
+    "type": "counter",
+    "counter": "品",
+    "reading": "しな / ひん",
+    "romaji": "shina / hin",
+    "categories": [
+      "Food & Drink"
+    ],
+    "frequencyTier": "Common",
+    "usedFor": "dishes, menu items, products",
+    "explanation": "Used to count dishes, menu items, products.",
+    "countTable": [],
+    "notes": "Reading varies by usage.",
+    "verifiedYear": 2026
+  },
+  {
+    "id": "counter-db4bb3db30",
+    "type": "counter",
+    "counter": "房",
+    "reading": "ふさ",
+    "romaji": "fusa",
+    "categories": [
+      "Food & Drink"
+    ],
+    "frequencyTier": "Common",
+    "usedFor": "clusters/bunches such as grapes/bananas",
+    "explanation": "Used to count clusters/bunches such as grapes/bananas.",
+    "countTable": [],
+    "notes": "Cluster counter.",
+    "verifiedYear": 2026
+  },
+  {
+    "id": "counter-8e1286b028",
+    "type": "counter",
+    "counter": "玉",
+    "reading": "たま",
+    "romaji": "tama",
+    "categories": [
+      "Food & Drink"
+    ],
+    "frequencyTier": "Common",
+    "usedFor": "round produce, balls of noodles/yarn",
+    "explanation": "Used to count round produce, balls of noodles/yarn.",
+    "countTable": [],
+    "notes": "個 often works too.",
+    "verifiedYear": 2026
+  },
+  {
+    "id": "counter-b96ba41632",
+    "type": "counter",
+    "counter": "皿",
+    "reading": "さら",
+    "romaji": "sara",
+    "categories": [
+      "Food & Drink"
+    ],
+    "frequencyTier": "Common",
+    "usedFor": "plates/dishes/servings",
+    "explanation": "Used to count plates/dishes/servings.",
+    "countTable": [],
+    "notes": "Useful in restaurants.",
+    "verifiedYear": 2026
+  },
+  {
+    "id": "counter-f8b162c4c9",
+    "type": "counter",
+    "counter": "粒",
+    "reading": "つぶ",
+    "romaji": "tsubu",
+    "categories": [
+      "Food & Drink"
+    ],
+    "frequencyTier": "Common",
+    "usedFor": "grains, pills, tiny round particles",
+    "explanation": "Used to count grains, pills, tiny round particles.",
+    "countTable": [],
+    "notes": "Rice grains/pills/candies.",
+    "verifiedYear": 2026
+  },
+  {
+    "id": "counter-cc653c30f6",
+    "type": "counter",
+    "counter": "膳",
+    "reading": "ぜん",
+    "romaji": "zen",
+    "categories": [
+      "Food & Drink"
+    ],
+    "frequencyTier": "Common",
+    "usedFor": "meals, trays, traditional servings",
+    "explanation": "Used to count meals, trays, traditional servings.",
+    "countTable": [],
+    "notes": "Traditional food-service counter.",
+    "verifiedYear": 2026
+  },
+  {
+    "id": "counter-b084f75073",
+    "type": "counter",
+    "counter": "食",
+    "reading": "しょく",
+    "romaji": "shoku",
+    "categories": [
+      "Food & Drink"
+    ],
+    "frequencyTier": "Common",
+    "usedFor": "meals/servings",
+    "explanation": "Used to count meals/servings.",
+    "countTable": [],
+    "notes": "Number of meals.",
+    "verifiedYear": 2026
+  },
+  {
+    "id": "counter-4913a1b0ac",
+    "type": "counter",
+    "counter": "店",
+    "reading": "てん",
+    "romaji": "ten",
+    "categories": [
+      "Institutions"
+    ],
+    "frequencyTier": "Common",
+    "usedFor": "shops/stores/branches",
+    "explanation": "Used to count shops/stores/branches.",
+    "countTable": [],
+    "notes": "Retail/business.",
+    "verifiedYear": 2026
+  },
+  {
+    "id": "counter-4c571face2",
+    "type": "counter",
+    "counter": "校",
+    "reading": "こう",
+    "romaji": "kou",
+    "categories": [
+      "Institutions"
+    ],
+    "frequencyTier": "Common",
+    "usedFor": "schools",
+    "explanation": "Used to count schools.",
+    "countTable": [],
+    "notes": "Counts schools.",
+    "verifiedYear": 2026
+  },
+  {
+    "id": "counter-47a095ac91",
+    "type": "counter",
+    "counter": "社",
+    "reading": "しゃ",
+    "romaji": "sha",
+    "categories": [
+      "Institutions"
+    ],
+    "frequencyTier": "Common",
+    "usedFor": "companies; shrines in some contexts",
+    "explanation": "Used to count companies; shrines in some contexts.",
+    "countTable": [],
+    "notes": "Business contexts.",
+    "verifiedYear": 2026
+  },
+  {
+    "id": "counter-c2aab0fb7f",
+    "type": "counter",
+    "counter": "ページ",
+    "reading": "ぺーじ",
+    "romaji": "peeji",
+    "categories": [
+      "Language & Text"
+    ],
+    "frequencyTier": "Common",
+    "usedFor": "pages",
+    "explanation": "Used to count pages.",
+    "countTable": [],
+    "notes": "Loanword counter/unit.",
+    "verifiedYear": 2026
+  },
+  {
+    "id": "counter-3b9ebcef9d",
+    "type": "counter",
+    "counter": "字",
+    "reading": "じ",
+    "romaji": "ji",
+    "categories": [
+      "Language & Text"
+    ],
+    "frequencyTier": "Common",
+    "usedFor": "written characters/symbols",
+    "explanation": "Used to count written characters/symbols.",
+    "countTable": [],
+    "notes": "Overlaps with 文字.",
+    "verifiedYear": 2026
+  },
+  {
+    "id": "counter-178e6d48c7",
+    "type": "counter",
+    "counter": "文字",
+    "reading": "もじ",
+    "romaji": "moji",
+    "categories": [
+      "Language & Text"
+    ],
+    "frequencyTier": "Common",
+    "usedFor": "written characters/letters",
+    "explanation": "Used to count written characters/letters.",
+    "countTable": [],
+    "notes": "Character counts.",
+    "verifiedYear": 2026
+  },
+  {
+    "id": "counter-7eedf72768",
+    "type": "counter",
+    "counter": "行",
+    "reading": "ぎょう",
+    "romaji": "gyou",
+    "categories": [
+      "Language & Text"
+    ],
+    "frequencyTier": "Common",
+    "usedFor": "lines of text",
+    "explanation": "Used to count lines of text.",
+    "countTable": [],
+    "notes": "Rows/lines in writing.",
+    "verifiedYear": 2026
+  },
+  {
+    "id": "counter-ddd181532e",
+    "type": "counter",
+    "counter": "語",
+    "reading": "ご",
+    "romaji": "go",
+    "categories": [
+      "Language & Text"
+    ],
+    "frequencyTier": "Common",
+    "usedFor": "words/vocabulary items",
+    "explanation": "Used to count words/vocabulary items.",
+    "countTable": [],
+    "notes": "Useful in study contexts.",
+    "verifiedYear": 2026
+  },
+  {
+    "id": "counter-0d91623450",
+    "type": "counter",
+    "counter": "両",
+    "reading": "りょう",
+    "romaji": "ryou",
+    "categories": [
+      "Machines & Vehicles"
+    ],
+    "frequencyTier": "Common",
+    "usedFor": "railway cars/train cars",
+    "explanation": "Used to count railway cars/train cars.",
+    "countTable": [],
+    "notes": "Especially common for train cars.",
+    "verifiedYear": 2026
+  },
+  {
+    "id": "counter-5165939d9f",
+    "type": "counter",
+    "counter": "機",
+    "reading": "き",
+    "romaji": "ki",
+    "categories": [
+      "Machines & Vehicles"
+    ],
+    "frequencyTier": "Common",
+    "usedFor": "aircraft and machinery",
+    "explanation": "Used to count aircraft and machinery.",
+    "countTable": [],
+    "notes": "Common for airplanes/helicopters.",
+    "verifiedYear": 2026
+  },
+  {
+    "id": "counter-56b0ef56d2",
+    "type": "counter",
+    "counter": "隻",
+    "reading": "せき",
+    "romaji": "seki",
+    "categories": [
+      "Machines & Vehicles"
+    ],
+    "frequencyTier": "Common",
+    "usedFor": "large ships/vessels",
+    "explanation": "Used to count large ships/vessels.",
+    "countTable": [],
+    "notes": "Traditional ship counter.",
+    "verifiedYear": 2026
+  },
+  {
+    "id": "counter-28780738a2",
+    "type": "counter",
+    "counter": "ドル",
+    "reading": "どる",
+    "romaji": "doru",
+    "categories": [
+      "Money & Commerce"
+    ],
+    "frequencyTier": "Common",
+    "usedFor": "dollars",
+    "explanation": "Used to count dollars.",
+    "countTable": [],
+    "notes": "Currency unit.",
+    "verifiedYear": 2026
+  },
+  {
+    "id": "counter-3b4a8114ff",
+    "type": "counter",
+    "counter": "周",
+    "reading": "しゅう",
+    "romaji": "shuu",
+    "categories": [
+      "Movement & Distance"
+    ],
+    "frequencyTier": "Common",
+    "usedFor": "laps, circuits, rounds",
+    "explanation": "Used to count laps, circuits, rounds.",
+    "countTable": [],
+    "notes": "Complete circuits.",
+    "verifiedYear": 2026
+  },
+  {
+    "id": "counter-4c726678ba",
+    "type": "counter",
+    "counter": "歩",
+    "reading": "ほ",
+    "romaji": "ho",
+    "categories": [
+      "Movement & Distance"
+    ],
+    "frequencyTier": "Common",
+    "usedFor": "steps",
+    "explanation": "Used to count steps.",
+    "countTable": [],
+    "notes": "Physical/figurative.",
+    "verifiedYear": 2026
+  },
+  {
+    "id": "counter-0959b03806",
+    "type": "counter",
+    "counter": "輪",
+    "reading": "りん",
+    "romaji": "rin",
+    "categories": [
+      "Nature"
+    ],
+    "frequencyTier": "Common",
+    "usedFor": "flowers/blossoms; rings/wheels",
+    "explanation": "Used to count flowers/blossoms; rings/wheels.",
+    "countTable": [],
+    "notes": "Individual flowers.",
+    "verifiedYear": 2026
+  },
+  {
+    "id": "counter-d7b54d599f",
+    "type": "counter",
+    "counter": "鉢",
+    "reading": "はち",
+    "romaji": "hachi",
+    "categories": [
+      "Nature"
+    ],
+    "frequencyTier": "Common",
+    "usedFor": "potted plants/pots",
+    "explanation": "Used to count potted plants/pots.",
+    "countTable": [],
+    "notes": "Pots/planters.",
+    "verifiedYear": 2026
+  },
+  {
+    "id": "counter-81f570c094",
+    "type": "counter",
+    "counter": "株",
+    "reading": "かぶ",
+    "romaji": "kabu",
+    "categories": [
+      "Nature & Finance"
+    ],
+    "frequencyTier": "Common",
+    "usedFor": "plants/clumps; shares of stock",
+    "explanation": "Used to count plants/clumps; shares of stock.",
+    "countTable": [],
+    "notes": "Two common domains.",
+    "verifiedYear": 2026
+  },
+  {
+    "id": "counter-ce8df9ef8c",
+    "type": "counter",
+    "counter": "位",
+    "reading": "い",
+    "romaji": "i",
+    "categories": [
+      "Order & Ranking"
+    ],
+    "frequencyTier": "Common",
+    "usedFor": "rank/place",
+    "explanation": "Used to count rank/place.",
+    "countTable": [],
+    "notes": "一位, 二位.",
+    "verifiedYear": 2026
+  },
+  {
+    "id": "counter-3b89e74004",
+    "type": "counter",
+    "counter": "段",
+    "reading": "だん",
+    "romaji": "dan",
+    "categories": [
+      "Order & Ranking"
+    ],
+    "frequencyTier": "Common",
+    "usedFor": "steps, levels, ranks, stages",
+    "explanation": "Used to count steps, levels, ranks, stages.",
+    "countTable": [],
+    "notes": "Martial arts/stairs/tiers.",
+    "verifiedYear": 2026
+  },
+  {
+    "id": "counter-fc2f186c61",
+    "type": "counter",
+    "counter": "点",
+    "reading": "てん",
+    "romaji": "ten",
+    "categories": [
+      "Order & Ranking"
+    ],
+    "frequencyTier": "Common",
+    "usedFor": "points, scores, items, works",
+    "explanation": "Used to count points, scores, items, works.",
+    "countTable": [],
+    "notes": "Broad counter/unit.",
+    "verifiedYear": 2026
+  },
+  {
+    "id": "counter-9a01d4715c",
+    "type": "counter",
+    "counter": "票",
+    "reading": "ひょう",
+    "romaji": "hyou",
+    "categories": [
+      "Order & Ranking"
+    ],
+    "frequencyTier": "Common",
+    "usedFor": "votes/ballots",
+    "explanation": "Used to count votes/ballots.",
+    "countTable": [],
+    "notes": "Elections/polls.",
+    "verifiedYear": 2026
+  },
+  {
+    "id": "counter-2e8e7fc761",
+    "type": "counter",
+    "counter": "級",
+    "reading": "きゅう",
+    "romaji": "kyuu",
+    "categories": [
+      "Order & Ranking"
+    ],
+    "frequencyTier": "Common",
+    "usedFor": "grades/levels/classes",
+    "explanation": "Used to count grades/levels/classes.",
+    "countTable": [],
+    "notes": "Proficiency/sports.",
+    "verifiedYear": 2026
+  },
+  {
+    "id": "counter-3fe1abea08",
+    "type": "counter",
+    "counter": "列",
+    "reading": "れつ",
+    "romaji": "retsu",
+    "categories": [
+      "People & Service"
+    ],
+    "frequencyTier": "Common",
+    "usedFor": "rows/lines",
+    "explanation": "Used to count rows/lines.",
+    "countTable": [],
+    "notes": "Seats/queues.",
+    "verifiedYear": 2026
+  },
+  {
+    "id": "counter-73ec8e4649",
+    "type": "counter",
+    "counter": "席",
+    "reading": "せき",
+    "romaji": "seki",
+    "categories": [
+      "People & Service"
+    ],
+    "frequencyTier": "Common",
+    "usedFor": "seats/places/reservation seats",
+    "explanation": "Used to count seats/places/reservation seats.",
+    "countTable": [],
+    "notes": "Useful for reservations.",
+    "verifiedYear": 2026
+  },
+  {
+    "id": "counter-24e748fcd1",
+    "type": "counter",
+    "counter": "セット",
+    "reading": "せっと",
+    "romaji": "setto",
+    "categories": [
+      "Sets & Groups"
+    ],
+    "frequencyTier": "Common",
+    "usedFor": "sets",
+    "explanation": "Used to count sets.",
+    "countTable": [],
+    "notes": "Common retail/food loanword.",
+    "verifiedYear": 2026
+  },
+  {
+    "id": "counter-ed17901fdf",
+    "type": "counter",
+    "counter": "束",
+    "reading": "たば",
+    "romaji": "taba",
+    "categories": [
+      "Sets & Groups"
+    ],
+    "frequencyTier": "Common",
+    "usedFor": "bundles, bunches, sheaves",
+    "explanation": "Used to count bundles, bunches, sheaves.",
+    "countTable": [],
+    "notes": "一束/二束 may use native readings.",
+    "verifiedYear": 2026
+  },
+  {
+    "id": "counter-a483b073aa",
+    "type": "counter",
+    "counter": "組",
+    "reading": "くみ",
+    "romaji": "kumi",
+    "categories": [
+      "Sets & Groups"
+    ],
+    "frequencyTier": "Common",
+    "usedFor": "sets, groups, pairs, couples, class groups",
+    "explanation": "Used to count sets, groups, pairs, couples, class groups.",
+    "countTable": [],
+    "notes": "一組/二組 often hitokumi/futakumi.",
+    "verifiedYear": 2026
+  },
+  {
+    "id": "counter-8d50e3608d",
+    "type": "counter",
+    "counter": "世紀",
+    "reading": "せいき",
+    "romaji": "seiki",
+    "categories": [
+      "Time"
+    ],
+    "frequencyTier": "Common",
+    "usedFor": "centuries",
+    "explanation": "Used to count centuries.",
+    "countTable": [],
+    "notes": "Time unit.",
+    "verifiedYear": 2026
+  },
+  {
+    "id": "counter-b8815b89c5",
+    "type": "counter",
+    "counter": "代",
+    "reading": "だい",
+    "romaji": "dai",
+    "categories": [
+      "Time"
+    ],
+    "frequencyTier": "Common",
+    "usedFor": "decades, generations, age ranges",
+    "explanation": "Used to count decades, generations, age ranges.",
+    "countTable": [],
+    "notes": "20代 etc.",
+    "verifiedYear": 2026
+  },
+  {
+    "id": "counter-74aa260b9e",
+    "type": "counter",
+    "counter": "週",
+    "reading": "しゅう",
+    "romaji": "shuu",
+    "categories": [
+      "Time"
+    ],
+    "frequencyTier": "Common",
+    "usedFor": "weeks",
+    "explanation": "Used to count weeks.",
+    "countTable": [],
+    "notes": "週間 often duration.",
+    "verifiedYear": 2026
+  },
+  {
+    "id": "counter-5eba755729",
+    "type": "counter",
+    "counter": "週間",
+    "reading": "しゅうかん",
+    "romaji": "shuukan",
+    "categories": [
+      "Time"
+    ],
+    "frequencyTier": "Common",
+    "usedFor": "duration in weeks",
+    "explanation": "Used to count duration in weeks.",
+    "countTable": [],
+    "notes": "Duration expression.",
+    "verifiedYear": 2026
+  },
+  {
+    "id": "counter-7a07408df6",
+    "type": "counter",
+    "counter": "便",
+    "reading": "びん",
+    "romaji": "bin",
+    "categories": [
+      "Travel & Transport"
+    ],
+    "frequencyTier": "Common",
+    "usedFor": "flights, scheduled buses, departures, deliveries",
+    "explanation": "Used to count flights, scheduled buses, departures, deliveries.",
+    "countTable": [],
+    "notes": "Very useful in travel.",
+    "verifiedYear": 2026
+  },
+  {
+    "id": "counter-7898480b0d",
+    "type": "counter",
+    "counter": "キロ",
+    "reading": "きろ",
+    "romaji": "kiro",
+    "categories": [
+      "Units & Measurement"
+    ],
+    "frequencyTier": "Common",
+    "usedFor": "kilometres or kilograms by context",
+    "explanation": "Used to count kilometres or kilograms by context.",
+    "countTable": [],
+    "notes": "Loanword unit.",
+    "verifiedYear": 2026
+  },
+  {
+    "id": "counter-042ce5cff3",
+    "type": "counter",
+    "counter": "キログラム",
+    "reading": "きろぐらむ",
+    "romaji": "kiroguramu",
+    "categories": [
+      "Units & Measurement"
+    ],
+    "frequencyTier": "Common",
+    "usedFor": "kilograms",
+    "explanation": "Used to count kilograms.",
+    "countTable": [],
+    "notes": "Measurement.",
+    "verifiedYear": 2026
+  },
+  {
+    "id": "counter-54dc72b9c2",
+    "type": "counter",
+    "counter": "グラム",
+    "reading": "ぐらむ",
+    "romaji": "guramu",
+    "categories": [
+      "Units & Measurement"
+    ],
+    "frequencyTier": "Common",
+    "usedFor": "grams",
+    "explanation": "Used to count grams.",
+    "countTable": [],
+    "notes": "Measurement.",
+    "verifiedYear": 2026
+  },
+  {
+    "id": "counter-cd31529f76",
+    "type": "counter",
+    "counter": "センチ",
+    "reading": "せんち",
+    "romaji": "senchi",
+    "categories": [
+      "Units & Measurement"
+    ],
+    "frequencyTier": "Common",
+    "usedFor": "centimetres",
+    "explanation": "Used to count centimetres.",
+    "countTable": [],
+    "notes": "Measurement.",
+    "verifiedYear": 2026
+  },
+  {
+    "id": "counter-9256616bb5",
+    "type": "counter",
+    "counter": "ミリ",
+    "reading": "みり",
+    "romaji": "miri",
+    "categories": [
+      "Units & Measurement"
+    ],
+    "frequencyTier": "Common",
+    "usedFor": "millimetres",
+    "explanation": "Used to count millimetres.",
+    "countTable": [],
+    "notes": "Measurement.",
+    "verifiedYear": 2026
+  },
+  {
+    "id": "counter-b446d790f5",
+    "type": "counter",
+    "counter": "ミリリットル",
+    "reading": "みりりっとる",
+    "romaji": "miririttoru",
+    "categories": [
+      "Units & Measurement"
+    ],
+    "frequencyTier": "Common",
+    "usedFor": "millilitres",
+    "explanation": "Used to count millilitres.",
+    "countTable": [],
+    "notes": "Measurement.",
+    "verifiedYear": 2026
+  },
+  {
+    "id": "counter-dc29d74f1a",
+    "type": "counter",
+    "counter": "メートル",
+    "reading": "めーとる",
+    "romaji": "meetoru",
+    "categories": [
+      "Units & Measurement"
+    ],
+    "frequencyTier": "Common",
+    "usedFor": "metres",
+    "explanation": "Used to count metres.",
+    "countTable": [],
+    "notes": "Measurement.",
+    "verifiedYear": 2026
+  },
+  {
+    "id": "counter-42b172c6ec",
+    "type": "counter",
+    "counter": "リットル",
+    "reading": "りっとる",
+    "romaji": "rittoru",
+    "categories": [
+      "Units & Measurement"
+    ],
+    "frequencyTier": "Common",
+    "usedFor": "litres",
+    "explanation": "Used to count litres.",
+    "countTable": [],
+    "notes": "Measurement.",
+    "verifiedYear": 2026
+  },
+  {
+    "id": "counter-9dc90af1ea",
+    "type": "counter",
+    "counter": "尾",
+    "reading": "び",
+    "romaji": "bi",
+    "categories": [
+      "Animals"
+    ],
+    "frequencyTier": "Specialized",
+    "usedFor": "fish, especially formal/commercial counting",
+    "explanation": "Used to count fish, especially formal/commercial counting.",
+    "countTable": [],
+    "notes": "Common in fishing/market contexts.",
+    "verifiedYear": 2026
+  },
+  {
+    "id": "counter-2cc88074e9",
+    "type": "counter",
+    "counter": "句",
+    "reading": "く",
+    "romaji": "ku",
+    "categories": [
+      "Books & Media"
+    ],
+    "frequencyTier": "Specialized",
+    "usedFor": "haiku, phrases, clauses",
+    "explanation": "Used to count haiku, phrases, clauses.",
+    "countTable": [],
+    "notes": "Poetry/language counter.",
+    "verifiedYear": 2026
+  },
+  {
+    "id": "counter-773e9c0de1",
+    "type": "counter",
+    "counter": "編",
+    "reading": "へん",
+    "romaji": "hen",
+    "categories": [
+      "Books & Media"
+    ],
+    "frequencyTier": "Specialized",
+    "usedFor": "compiled works, stories, sections",
+    "explanation": "Used to count compiled works, stories, sections.",
+    "countTable": [],
+    "notes": "Context-sensitive.",
+    "verifiedYear": 2026
+  },
+  {
+    "id": "counter-bf731f9ba7",
+    "type": "counter",
+    "counter": "首",
+    "reading": "しゅ",
+    "romaji": "shu",
+    "categories": [
+      "Books & Media"
+    ],
+    "frequencyTier": "Specialized",
+    "usedFor": "waka/tanka poems",
+    "explanation": "Used to count waka/tanka poems.",
+    "countTable": [],
+    "notes": "Literary counter.",
+    "verifiedYear": 2026
+  },
+  {
+    "id": "counter-3cb52514fe",
+    "type": "counter",
+    "counter": "貫",
+    "reading": "かん",
+    "romaji": "kan",
+    "categories": [
+      "Food & Drink"
+    ],
+    "frequencyTier": "Specialized",
+    "usedFor": "pieces of nigiri sushi",
+    "explanation": "Used to count pieces of nigiri sushi.",
+    "countTable": [],
+    "notes": "Restaurant usage varies.",
+    "verifiedYear": 2026
+  },
+  {
+    "id": "counter-507061e99a",
+    "type": "counter",
+    "counter": "院",
+    "reading": "いん",
+    "romaji": "in",
+    "categories": [
+      "Institutions"
+    ],
+    "frequencyTier": "Specialized",
+    "usedFor": "hospitals/clinics/academies in formal counts",
+    "explanation": "Used to count hospitals/clinics/academies in formal counts.",
+    "countTable": [],
+    "notes": "Context-dependent.",
+    "verifiedYear": 2026
+  },
+  {
+    "id": "counter-b707f2a17b",
+    "type": "counter",
+    "counter": "館",
+    "reading": "かん",
+    "romaji": "kan",
+    "categories": [
+      "Institutions"
+    ],
+    "frequencyTier": "Specialized",
+    "usedFor": "facilities/buildings in formal counts",
+    "explanation": "Used to count facilities/buildings in formal counts.",
+    "countTable": [],
+    "notes": "Context-dependent.",
+    "verifiedYear": 2026
+  },
+  {
+    "id": "counter-c91d764f01",
+    "type": "counter",
+    "counter": "艇",
+    "reading": "てい",
+    "romaji": "tei",
+    "categories": [
+      "Machines & Vehicles"
+    ],
+    "frequencyTier": "Specialized",
+    "usedFor": "small craft, racing boats, yachts",
+    "explanation": "Used to count small craft, racing boats, yachts.",
+    "countTable": [],
+    "notes": "Small/vessel craft.",
+    "verifiedYear": 2026
+  },
+  {
+    "id": "counter-79ba8d298a",
+    "type": "counter",
+    "counter": "艘",
+    "reading": "そう",
+    "romaji": "sou",
+    "categories": [
+      "Machines & Vehicles"
+    ],
+    "frequencyTier": "Specialized",
+    "usedFor": "boats and watercraft",
+    "explanation": "Used to count boats and watercraft.",
+    "countTable": [],
+    "notes": "Often used for boats.",
+    "verifiedYear": 2026
+  },
+  {
+    "id": "counter-94351d012b",
+    "type": "counter",
+    "counter": "局",
+    "reading": "きょく",
+    "romaji": "kyoku",
+    "categories": [
+      "Media & Organizations"
+    ],
+    "frequencyTier": "Specialized",
+    "usedFor": "broadcast stations/bureaus",
+    "explanation": "Used to count broadcast stations/bureaus.",
+    "countTable": [],
+    "notes": "Context-dependent.",
+    "verifiedYear": 2026
+  },
+  {
+    "id": "counter-3345db12a5",
+    "type": "counter",
+    "counter": "等",
+    "reading": "とう",
+    "romaji": "tou",
+    "categories": [
+      "Order & Ranking"
+    ],
+    "frequencyTier": "Specialized",
+    "usedFor": "grade/class/rank",
+    "explanation": "Used to count grade/class/rank.",
+    "countTable": [],
+    "notes": "Classification/prizes.",
+    "verifiedYear": 2026
+  },
+  {
+    "id": "counter-a743f61d6b",
+    "type": "counter",
+    "counter": "方",
+    "reading": "かた",
+    "romaji": "kata",
+    "categories": [
+      "People"
+    ],
+    "frequencyTier": "Specialized",
+    "usedFor": "people in respectful phrasing",
+    "explanation": "Used to count people in respectful phrasing.",
+    "countTable": [],
+    "notes": "Respectful person-counting expression.",
+    "verifiedYear": 2026
+  },
+  {
+    "id": "counter-91e6265c4a",
+    "type": "counter",
+    "counter": "卓",
+    "reading": "たく",
+    "romaji": "taku",
+    "categories": [
+      "People & Service"
+    ],
+    "frequencyTier": "Specialized",
+    "usedFor": "tables in restaurant/banquet contexts",
+    "explanation": "Used to count tables in restaurant/banquet contexts.",
+    "countTable": [],
+    "notes": "Service context.",
+    "verifiedYear": 2026
+  },
+  {
+    "id": "counter-936e1710b6",
+    "type": "counter",
+    "counter": "対",
+    "reading": "つい",
+    "romaji": "tsui",
+    "categories": [
+      "Sets & Groups"
+    ],
+    "frequencyTier": "Specialized",
+    "usedFor": "pairs, matched sets",
+    "explanation": "Used to count pairs, matched sets.",
+    "countTable": [],
+    "notes": "Matched pairs/oppositions.",
+    "verifiedYear": 2026
+  },
+  {
+    "id": "counter-c971a42323",
+    "type": "counter",
+    "counter": "区間",
+    "reading": "くかん",
+    "romaji": "kukan",
+    "categories": [
+      "Travel & Transport"
+    ],
+    "frequencyTier": "Specialized",
+    "usedFor": "route sections/segments",
+    "explanation": "Used to count route sections/segments.",
+    "countTable": [],
+    "notes": "Transport/planning.",
+    "verifiedYear": 2026
+  },
+  {
+    "id": "counter-a5ae823399",
+    "type": "counter",
+    "counter": "駅",
+    "reading": "えき",
+    "romaji": "eki",
+    "categories": [
+      "Travel & Transport"
+    ],
+    "frequencyTier": "Specialized",
+    "usedFor": "stations/stops in route expressions",
+    "explanation": "Used to count stations/stops in route expressions.",
+    "countTable": [],
+    "notes": "Route context.",
+    "verifiedYear": 2026
+  },
+  {
+    "id": "counter-9489dbc82a",
+    "type": "counter",
+    "counter": "把",
+    "reading": "わ",
+    "romaji": "wa",
+    "categories": [
+      "Sets & Groups"
+    ],
+    "frequencyTier": "Rare",
+    "usedFor": "small handful-sized bundles",
+    "explanation": "Used to count small handful-sized bundles.",
+    "countTable": [],
+    "notes": "Traditional and less common.",
+    "verifiedYear": 2026
+  }
+]

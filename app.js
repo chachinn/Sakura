@@ -522,6 +522,7 @@ let travelRenderRevision = 0;
 let flashcardDeck = [];
 let flashcardIndex = 0;
 let flashcardRevealed = false;
+let filteredFlashcardKeys = null;
 let searchType = "all";
 let searchLevels = [...globalLevels];
 let recentSearches = readJson(STORAGE.recentSearches, []);
@@ -549,6 +550,14 @@ let sentenceBuilderSession = null;
 let personalitiesBankPromise = null;
 let personalitiesSession = null;
 let practiceRomajiVisible = false;
+let countersData = null;
+let countersDataPromise = null;
+let currentCounter = null;
+let countersRomajiVisible = false;
+let etiquetteData = null;
+let etiquetteDataPromise = null;
+let currentEtiquetteEntry = null;
+let etiquetteRomajiVisible = false;
 let normalizedNativeDataCache = null;
 let normalizedSlangDataCache = null;
 let pendingTravelPhraseId = "";
@@ -2101,13 +2110,68 @@ function itemReading(item) {
     return item?.reading || item?.kana || "";
 }
 
-function renderSavedItems() {
+function savedItemMastery(item) {
+    return getMastery(item)?.mastery || "New";
+}
+
+function savedItemCategories(item) {
+    return Array.isArray(item?.categories) ? item.categories : item?.category ? [item.category] : [];
+}
+
+function savedItemSearchText(item) {
+    return searchText([itemTitle(item), itemReading(item), item?.romaji, item?.meaning, item?.naturalMeaning, item?.english, item?.exampleSentence].filter(Boolean).join(" "));
+}
+
+function syncSavedFilterVisibility() {
+    const type = document.getElementById("saved-type-filter").value;
+    const levelLabel = document.getElementById("saved-level-filter-label");
+    const slangLabel = document.getElementById("saved-slang-category-label");
+    levelLabel.hidden = !["all", "kanji", "vocabulary"].includes(type);
+    slangLabel.hidden = type !== "slang";
+    if (levelLabel.hidden) document.getElementById("saved-level-filter").value = "all";
+    if (slangLabel.hidden) document.getElementById("saved-slang-category-filter").value = "all";
+}
+
+function renderSavedSlangCategoryOptions() {
+    const select = document.getElementById("saved-slang-category-filter");
+    if (!select) return;
+    select.innerHTML = '<option value="all">All categories</option>' + SLANG_CATEGORY_OPTIONS.slice(1).map(([value, label]) => `<option value="${escapeSearchHtml(value)}">${escapeSearchHtml(label)}</option>`).join("");
+}
+
+function filteredSavedItems() {
+    const query = searchText(document.getElementById("saved-search-input").value);
     const type = document.getElementById("saved-type-filter").value;
     const level = document.getElementById("saved-level-filter").value;
-    const filtered = savedItems.filter(item => (type === "all" || item.type === type) && (level === "all" || item.jlpt === level));
-    document.getElementById("saved-items").innerHTML = filtered.map(item => `<article class="saved-item-card"><span class="tag">${item.jlpt || item.difficulty || item.category || item.type}</span><button class="saved-item-open" type="button" data-open-saved-key="${itemKey(item)}"><strong class="saved-item-title">${itemTitle(item)}</strong><span>${itemReading(item)}</span><span>${item.meaning || item.english || ""}</span></button><button class="remove-saved-button" type="button" data-remove-key="${itemKey(item)}">Remove</button></article>`).join("");
+    const slangCategory = document.getElementById("saved-slang-category-filter").value;
+    const status = document.getElementById("saved-status-filter").value;
+    const mastery = document.getElementById("saved-mastery-filter").value;
+    const sort = document.getElementById("saved-sort").value;
+    return savedItems.map((item, index) => ({ item, index, savedTime:Number.isNaN(Date.parse(item.savedAt)) ? null : Date.parse(item.savedAt) }))
+        .filter(({ item }) => (!query || savedItemSearchText(item).includes(query))
+            && (type === "all" || item.type === type)
+            && (level === "all" || item.jlpt === level)
+            && (slangCategory === "all" || (item.type === "slang" && savedItemCategories(item).includes(slangCategory)))
+            && (status === "all" || flashcardStatuses[itemKey(item)] === status)
+            && (mastery === "all" || savedItemMastery(item) === mastery))
+        .sort((left, right) => {
+            if (left.savedTime !== null && right.savedTime !== null) return sort === "oldest" ? left.savedTime - right.savedTime : right.savedTime - left.savedTime;
+            return sort === "oldest" ? left.index - right.index : right.index - left.index;
+        })
+        .map(entry => entry.item);
+}
+
+function renderSavedItems() {
+    syncSavedFilterVisibility();
+    const filtered = filteredSavedItems();
+    document.getElementById("saved-items").innerHTML = filtered.map(item => {
+        const key = escapeSearchHtml(itemKey(item));
+        const mastery = savedItemMastery(item);
+        return `<article class="saved-item-card"><div class="saved-card-badges"><span class="tag">${escapeSearchHtml(item.jlpt || item.difficulty || savedItemCategories(item)[0] || item.type)}</span><span class="mastery-badge">${escapeSearchHtml(mastery)}</span></div><button class="saved-item-open" type="button" data-open-saved-key="${key}"><strong class="saved-item-title">${escapeSearchHtml(itemTitle(item))}</strong><span>${escapeSearchHtml(itemReading(item))}</span><span>${escapeSearchHtml(item.meaning || item.naturalMeaning || item.english || "")}</span></button><button class="remove-saved-button" type="button" data-remove-key="${key}">Remove</button></article>`;
+    }).join("");
     document.getElementById("saved-empty").hidden = filtered.length > 0;
-    document.getElementById("start-flashcards").disabled = savedItems.length === 0;
+    document.getElementById("saved-empty").textContent = savedItems.length ? "No saved items match these filters." : "Your garden is waiting. Tap the heart on any Japanese card to save it here.";
+    document.getElementById("saved-filter-summary").textContent = `${filtered.length} of ${savedItems.length} saved items`;
+    document.getElementById("start-flashcards").disabled = filtered.length === 0;
 }
 
 function openSavedItem(item) {
@@ -2979,7 +3043,9 @@ function buildFlashcardDeck() {
     const type = document.getElementById("deck-type-filter").value;
     const reviewOnly = document.getElementById("review-only-filter").checked;
     const levels = selectedFlashcardLevels();
-    flashcardDeck = savedItems.filter(item => (type === "all" || item.type === type) && (!item.jlpt || levels.includes(item.jlpt)) && (!reviewOnly || flashcardStatuses[itemKey(item)] === "review"));
+    flashcardDeck = filteredFlashcardKeys
+        ? savedItems.filter(item => filteredFlashcardKeys.has(itemKey(item)))
+        : savedItems.filter(item => (type === "all" || item.type === type) && (!item.jlpt || levels.includes(item.jlpt)) && (!reviewOnly || flashcardStatuses[itemKey(item)] === "review"));
     flashcardIndex = 0;
     flashcardRevealed = false;
     renderFlashcard();
@@ -3002,13 +3068,27 @@ function renderFlashcard() {
 function renderFlashcardLevels() {
     const container = document.getElementById("flashcard-levels");
     container.innerHTML = "";
-    JLPT_LEVELS.forEach(level => container.appendChild(createLevelChip(level, true, buildFlashcardDeck)));
+    JLPT_LEVELS.forEach(level => container.appendChild(createLevelChip(level, true, resetFlashcardSourceAndBuild)));
 }
 
-function showSavedTab(name) {
+function showSavedTab(name, preserveFilteredDeck = false) {
     document.querySelectorAll("[data-saved-tab]").forEach(button => button.classList.toggle("active", button.dataset.savedTab === name));
     document.querySelectorAll("[data-saved-panel]").forEach(panel => { panel.hidden = panel.dataset.savedPanel !== name; });
-    if (name === "flashcards") buildFlashcardDeck();
+    if (name === "flashcards") {
+        if (!preserveFilteredDeck) filteredFlashcardKeys = null;
+        buildFlashcardDeck();
+    }
+    else renderSavedItems();
+}
+
+function startFilteredFlashcards() {
+    filteredFlashcardKeys = new Set(filteredSavedItems().map(itemKey));
+    showSavedTab("flashcards", true);
+}
+
+function resetFlashcardSourceAndBuild() {
+    filteredFlashcardKeys = null;
+    buildFlashcardDeck();
 }
 
 function shuffleDeck() {
@@ -3683,6 +3763,254 @@ function nextPersonalitiesEntry() {
     renderPersonalitiesEntry();
 }
 
+function validateCountersData(records) {
+    if (!Array.isArray(records) || !records.length) return false;
+    const ids = new Set();
+    const identities = new Set();
+    const frequencies = new Set(["Essential", "Common", "Specialized", "Rare"]);
+    return records.every(record => {
+        const identity = `${record?.counter || ""}\u0000${record?.reading || ""}`;
+        const coreValid = record?.type === "counter" && typeof record.id === "string" && record.id
+            && typeof record.counter === "string" && record.counter.trim()
+            && typeof record.reading === "string" && record.reading.trim()
+            && typeof record.romaji === "string" && record.romaji.trim()
+            && Array.isArray(record.categories) && record.categories.length
+            && frequencies.has(record.frequencyTier)
+            && typeof record.usedFor === "string" && record.usedFor.trim()
+            && typeof record.explanation === "string" && record.explanation.trim()
+            && Array.isArray(record.countTable);
+        const rowsValid = record?.countTable?.every(row => Number.isFinite(Number(row.number)) && [row.japanese, row.kana, row.romaji].every(value => typeof value === "string" && value.trim()));
+        if (!coreValid || !rowsValid || ids.has(record.id) || identities.has(identity)) return false;
+        ids.add(record.id);
+        identities.add(identity);
+        return true;
+    });
+}
+
+function loadCountersData() {
+    if (countersData) return Promise.resolve(countersData);
+    if (countersDataPromise) return countersDataPromise;
+    countersDataPromise = fetch("./data/counters.json?v=1")
+        .then(response => { if (!response.ok) throw new Error(`Counters data returned ${response.status}.`); return response.json(); })
+        .then(records => {
+            if (!validateCountersData(records)) throw new Error("Counters data validation failed.");
+            countersData = records;
+            return countersData;
+        })
+        .catch(error => { countersDataPromise = null; throw error; });
+    return countersDataPromise;
+}
+
+function counterSearchText(counter) {
+    return searchText([counter.counter, counter.reading, counter.romaji, counter.usedFor, ...(counter.categories || []), counter.explanation, counter.notes, counter.learnerCaution].filter(Boolean).join(" "));
+}
+
+function filteredCounters() {
+    const query = searchText(document.getElementById("counters-search").value);
+    const category = document.getElementById("counters-category-filter").value;
+    const frequency = document.getElementById("counters-frequency-filter").value;
+    return (countersData || []).filter(counter => (!query || counterSearchText(counter).includes(query))
+        && (category === "all" || counter.categories.includes(category))
+        && (frequency === "all" || counter.frequencyTier === frequency));
+}
+
+function applyCountersRomajiVisibility() {
+    document.querySelectorAll("[data-counter-romaji]").forEach(element => { element.hidden = !countersRomajiVisible; });
+    ["counters-romaji-toggle", "counter-detail-romaji-toggle"].forEach(id => {
+        const button = document.getElementById(id);
+        button.textContent = countersRomajiVisible ? "Hide Romaji" : "Show Romaji";
+        button.setAttribute("aria-pressed", String(countersRomajiVisible));
+    });
+}
+
+function renderCounterFilters() {
+    const select = document.getElementById("counters-category-filter");
+    const selected = select.value;
+    const categories = [...new Set((countersData || []).flatMap(counter => counter.categories))];
+    select.innerHTML = '<option value="all">All Counters</option>' + categories.map(category => `<option value="${escapeSearchHtml(category)}">${escapeSearchHtml(category)}</option>`).join("");
+    select.value = categories.includes(selected) ? selected : "all";
+}
+
+function renderCounters() {
+    if (!countersData) return;
+    const counters = filteredCounters();
+    document.getElementById("counters-count").textContent = `${counters.length} of ${countersData.length} counters`;
+    document.getElementById("counters-list").innerHTML = counters.map(counter => `<button class="counter-card" type="button" data-counter-id="${escapeSearchHtml(counter.id)}"><span class="counter-card-character">${escapeSearchHtml(counter.counter)}</span><span class="counter-card-reading">${escapeSearchHtml(counter.reading)}</span><span class="counter-romaji" data-counter-romaji hidden>${escapeSearchHtml(counter.romaji)}</span><strong>${escapeSearchHtml(counter.usedFor)}</strong><span class="tag">${escapeSearchHtml(counter.frequencyTier)}</span></button>`).join("");
+    document.getElementById("counters-empty").hidden = counters.length > 0;
+    applyCountersRomajiVisibility();
+}
+
+function renderCounterDetail(counter) {
+    if (!counter) return;
+    currentCounter = counter;
+    document.getElementById("counters-home").hidden = true;
+    document.getElementById("counter-detail").hidden = false;
+    document.getElementById("counter-detail-heading").textContent = `${counter.counter} Counter`;
+    document.getElementById("counter-detail-character").textContent = counter.counter;
+    document.getElementById("counter-detail-reading").textContent = counter.reading;
+    document.getElementById("counter-detail-romaji").textContent = counter.romaji;
+    document.getElementById("counter-detail-romaji").dataset.counterRomaji = "";
+    document.getElementById("counter-detail-frequency").textContent = counter.frequencyTier;
+    document.getElementById("counter-detail-categories").innerHTML = counter.categories.map(category => `<span class="tag">${escapeSearchHtml(category)}</span>`).join("");
+    document.getElementById("counter-detail-used-for").textContent = counter.usedFor;
+    document.getElementById("counter-detail-explanation").textContent = counter.explanation;
+    const notes = [counter.notes, counter.learnerCaution].filter(Boolean).join("\n");
+    document.getElementById("counter-detail-notes").textContent = notes;
+    document.getElementById("counter-detail-notes-section").hidden = !notes;
+    const hasTable = counter.countTable.length > 0;
+    document.getElementById("counter-table-section").hidden = !hasTable;
+    document.getElementById("counter-no-table").hidden = hasTable;
+    document.getElementById("counter-count-table").innerHTML = hasTable ? counter.countTable.map(row => `<article class="counter-count-row"><span>${escapeSearchHtml(row.number)}</span><strong>${escapeSearchHtml(row.japanese)}</strong><span>${escapeSearchHtml(row.kana)}</span><span class="counter-romaji" data-counter-romaji hidden>${escapeSearchHtml(row.romaji)}</span></article>`).join("") : "";
+    applyCountersRomajiVisibility();
+    window.scrollTo({ top:0, behavior:"smooth" });
+}
+
+function closeCounterDetail() {
+    currentCounter = null;
+    document.getElementById("counter-detail").hidden = true;
+    document.getElementById("counters-home").hidden = false;
+    window.scrollTo({ top:0, behavior:"smooth" });
+}
+
+async function openCounters() {
+    currentCounter = null;
+    document.getElementById("counters-home").hidden = false;
+    document.getElementById("counter-detail").hidden = true;
+    document.getElementById("counters-loading").hidden = false;
+    try {
+        await loadCountersData();
+        if (currentRoute !== "counters") return;
+        renderCounterFilters();
+        renderCounters();
+        document.getElementById("counters-loading").hidden = true;
+    }
+    catch (error) {
+        console.warn("Japanese Counters could not load.", error);
+        document.getElementById("counters-loading").textContent = "Japanese Counters could not be prepared. Please try again after Sakura updates.";
+    }
+}
+
+const ETIQUETTE_IMPORTANCE = new Set(["Essential", "Common", "Useful", "Contextual", "Specialized", "Fun"]);
+
+function validateEtiquetteData(records) {
+    if (!Array.isArray(records) || records.length !== 136) return false;
+    const ids = new Set();
+    const slugs = new Set();
+    return records.every(record => {
+        const strings = ["id", "type", "slug", "title", "japaneseTerm", "kana", "romaji", "category", "importance", "summary", "do", "avoid", "whyItMatters", "whatYoullSeeInJapan", "travelerTip", "contextNote", "imageKey"];
+        const illustration = record?.illustration;
+        const valid = strings.every(key => typeof record?.[key] === "string" && record[key].trim())
+            && record.type === "etiquette" && ETIQUETTE_IMPORTANCE.has(record.importance)
+            && illustration && ["character", "pose", "expression", "setting"].every(key => typeof illustration[key] === "string" && illustration[key].trim())
+            && Array.isArray(illustration.props);
+        if (!valid || ids.has(record.id) || slugs.has(record.slug)) return false;
+        ids.add(record.id);
+        slugs.add(record.slug);
+        return true;
+    });
+}
+
+function loadEtiquetteData() {
+    if (etiquetteData) return Promise.resolve(etiquetteData);
+    if (etiquetteDataPromise) return etiquetteDataPromise;
+    etiquetteDataPromise = fetch("./data/etiquette.json?v=1")
+        .then(response => { if (!response.ok) throw new Error(`Etiquette data returned ${response.status}.`); return response.json(); })
+        .then(records => {
+            if (!validateEtiquetteData(records)) throw new Error("Etiquette data validation failed.");
+            etiquetteData = records;
+            return records;
+        })
+        .catch(error => { etiquetteDataPromise = null; throw error; });
+    return etiquetteDataPromise;
+}
+
+function etiquetteSearchText(entry) {
+    return searchText([entry.title, entry.japaneseTerm, entry.kana, entry.romaji, entry.category, entry.summary, entry.do, entry.avoid, entry.travelerTip, entry.contextNote].join(" "));
+}
+
+function filteredEtiquette() {
+    const query = searchText(document.getElementById("etiquette-search").value);
+    const category = document.getElementById("etiquette-category-filter").value;
+    const importance = document.getElementById("etiquette-importance-filter").value;
+    return (etiquetteData || []).filter(entry => (!query || etiquetteSearchText(entry).includes(query))
+        && (category === "all" || entry.category === category)
+        && (importance === "all" || entry.importance === importance));
+}
+
+function etiquetteIllustration(entry) {
+    const details = [entry.illustration.pose, entry.illustration.expression, entry.illustration.setting].filter(Boolean).join(" · ");
+    return `<div class="etiquette-chibi" aria-hidden="true"><span>🌸</span><b>さくら</b></div><small>${escapeSearchHtml(details)}</small>`;
+}
+
+function applyEtiquetteRomajiVisibility() {
+    document.querySelectorAll("[data-etiquette-romaji]").forEach(element => { element.hidden = !etiquetteRomajiVisible; });
+    ["etiquette-romaji-toggle", "etiquette-detail-romaji-toggle"].forEach(id => {
+        const button = document.getElementById(id);
+        button.textContent = etiquetteRomajiVisible ? "Hide Romaji" : "Show Romaji";
+        button.setAttribute("aria-pressed", String(etiquetteRomajiVisible));
+    });
+}
+
+function renderEtiquetteFilters() {
+    const select = document.getElementById("etiquette-category-filter");
+    const selected = select.value;
+    const categories = [...new Set((etiquetteData || []).map(entry => entry.category))];
+    select.innerHTML = '<option value="all">All</option>' + categories.map(category => `<option value="${escapeSearchHtml(category)}">${escapeSearchHtml(category)}</option>`).join("");
+    select.value = categories.includes(selected) ? selected : "all";
+}
+
+function renderEtiquette() {
+    if (!etiquetteData) return;
+    const entries = filteredEtiquette();
+    document.getElementById("etiquette-count").textContent = `${entries.length} of ${etiquetteData.length} entries`;
+    document.getElementById("etiquette-list").innerHTML = entries.map(entry => `<button class="etiquette-card" type="button" data-etiquette-id="${escapeSearchHtml(entry.id)}"><span class="etiquette-card-illustration etiquette-illustration" data-image-key="${escapeSearchHtml(entry.imageKey)}">${etiquetteIllustration(entry)}</span><span class="etiquette-card-copy"><strong>${escapeSearchHtml(entry.title)}</strong><span class="etiquette-japanese">${escapeSearchHtml(entry.japaneseTerm)}</span><span class="etiquette-kana">${escapeSearchHtml(entry.kana)}</span><span class="etiquette-romaji" data-etiquette-romaji hidden>${escapeSearchHtml(entry.romaji)}</span><span class="etiquette-summary">${escapeSearchHtml(entry.summary)}</span><span class="tag-row"><span class="tag">${escapeSearchHtml(entry.importance)}</span><span class="tag">${escapeSearchHtml(entry.category)}</span></span></span></button>`).join("");
+    document.getElementById("etiquette-empty").hidden = entries.length > 0;
+    applyEtiquetteRomajiVisibility();
+}
+
+function renderEtiquetteDetail(entry) {
+    if (!entry) return;
+    currentEtiquetteEntry = entry;
+    document.getElementById("etiquette-home").hidden = true;
+    document.getElementById("etiquette-detail").hidden = false;
+    document.getElementById("etiquette-detail-heading").textContent = entry.title;
+    const illustration = document.getElementById("etiquette-detail-illustration");
+    illustration.dataset.imageKey = entry.imageKey;
+    illustration.dataset.guideCharacter = entry.illustration.character;
+    illustration.innerHTML = etiquetteIllustration(entry);
+    const values = { japanese:entry.japaneseTerm, kana:entry.kana, romaji:entry.romaji, importance:entry.importance, category:entry.category, summary:entry.summary, do:entry.do, avoid:entry.avoid, why:entry.whyItMatters, see:entry.whatYoullSeeInJapan, tip:entry.travelerTip, context:entry.contextNote };
+    Object.entries(values).forEach(([key, value]) => { document.getElementById(`etiquette-detail-${key}`).textContent = value; });
+    applyEtiquetteRomajiVisibility();
+    window.scrollTo({ top:0, behavior:"smooth" });
+}
+
+function closeEtiquetteDetail() {
+    currentEtiquetteEntry = null;
+    document.getElementById("etiquette-detail").hidden = true;
+    document.getElementById("etiquette-home").hidden = false;
+    window.scrollTo({ top:0, behavior:"smooth" });
+}
+
+async function openEtiquette() {
+    currentEtiquetteEntry = null;
+    document.getElementById("etiquette-home").hidden = false;
+    document.getElementById("etiquette-detail").hidden = true;
+    const loading = document.getElementById("etiquette-loading");
+    loading.hidden = false;
+    loading.textContent = "Preparing Gestures & Etiquette…";
+    try {
+        await loadEtiquetteData();
+        if (currentRoute !== "etiquette") return;
+        renderEtiquetteFilters();
+        renderEtiquette();
+        loading.hidden = true;
+    }
+    catch (error) {
+        console.warn("Japanese Gestures & Etiquette could not load.", error);
+        loading.textContent = "Gestures & Etiquette could not be prepared. Please try again after Sakura updates.";
+    }
+}
+
 function openHubDrawer() {
     const layer = document.getElementById("hub-drawer-layer");
     if (!layer || layer.classList.contains("open")) return;
@@ -3722,11 +4050,14 @@ function showRoute(route, updateHash = true) {
     const viewRoute = nativeMode ? "native" : travelCategory ? "travel-category" : deckRouteMatch ? "travel-deck" : normalizedRoute;
     currentRoute = normalizedRoute;
     if (normalizedRoute === "home") renderDailyProgress();
+    if (normalizedRoute === "saved") renderSavedItems();
     if (normalizedRoute === "library") initializeLibrary();
     if (normalizedRoute === "search") buildSearchIndex();
     if (normalizedRoute === "practice-what-would-you-say") openWhatWouldYouSay();
     if (normalizedRoute === "practice-sentence-builder") openSentenceBuilder();
     if (normalizedRoute === "practice-one-line-many-personalities") openPersonalitiesPractice();
+    if (normalizedRoute === "counters") openCounters();
+    if (normalizedRoute === "etiquette") openEtiquette();
     if (nativeMode) {
         currentNativeMode = nativeMode;
         document.getElementById("native-heading").textContent = nativeMode === "slang" ? "Slang" : "Native Japanese";
@@ -3753,7 +4084,7 @@ function showRoute(route, updateHash = true) {
     if (normalizedRoute === "travel-yen") renderYenConverter();
     if (normalizedRoute === "travel") renderTravelHeaderCountdown();
     if (deckRouteMatch) renderCurrentTravelDeck();
-    const mainRoute = travelCategory || isTravelUtilityRoute ? "travel" : ["practice-what-would-you-say", "practice-sentence-builder", "practice-one-line-many-personalities"].includes(normalizedRoute) ? "practice" : ["search", "translate", "learn-native", "learn-slang", "library"].includes(normalizedRoute) || (normalizedRoute.includes("detail") && detailReturnRoute === "library") ? "learn" : normalizedRoute.replace("-detail", "");
+    const mainRoute = travelCategory || isTravelUtilityRoute ? "travel" : ["practice-what-would-you-say", "practice-sentence-builder", "practice-one-line-many-personalities"].includes(normalizedRoute) ? "practice" : ["search", "translate", "learn-native", "learn-slang", "library", "counters", "etiquette"].includes(normalizedRoute) || (normalizedRoute.includes("detail") && detailReturnRoute === "library") ? "learn" : normalizedRoute.replace("-detail", "");
     document.querySelectorAll(".nav-button").forEach(button => button.classList.toggle("active", button.dataset.route === mainRoute || (normalizedRoute.includes("detail") && button.dataset.route === detailReturnRoute)));
     const learnView = normalizedRoute === "learn" ? "library" : nativeMode;
     document.querySelectorAll("[data-learn-view]").forEach(button => {
@@ -4209,6 +4540,30 @@ function addListeners() {
         const bank = await loadPersonalitiesBank();
         if (validatePersonalitiesBank(bank)) startPersonalitiesSession(bank);
     });
+    document.getElementById("counters-search").addEventListener("input", renderCounters);
+    document.getElementById("counters-category-filter").addEventListener("change", renderCounters);
+    document.getElementById("counters-frequency-filter").addEventListener("change", renderCounters);
+    document.getElementById("counters-list").addEventListener("click", event => {
+        const card = event.target.closest("[data-counter-id]");
+        if (card) renderCounterDetail(countersData?.find(counter => counter.id === card.dataset.counterId));
+    });
+    document.getElementById("close-counter-detail").addEventListener("click", closeCounterDetail);
+    ["counters-romaji-toggle", "counter-detail-romaji-toggle"].forEach(id => document.getElementById(id).addEventListener("click", () => {
+        countersRomajiVisible = !countersRomajiVisible;
+        applyCountersRomajiVisibility();
+    }));
+    document.getElementById("etiquette-search").addEventListener("input", renderEtiquette);
+    document.getElementById("etiquette-category-filter").addEventListener("change", renderEtiquette);
+    document.getElementById("etiquette-importance-filter").addEventListener("change", renderEtiquette);
+    document.getElementById("etiquette-list").addEventListener("click", event => {
+        const card = event.target.closest("[data-etiquette-id]");
+        if (card) renderEtiquetteDetail(etiquetteData?.find(entry => entry.id === card.dataset.etiquetteId));
+    });
+    document.getElementById("close-etiquette-detail").addEventListener("click", closeEtiquetteDetail);
+    ["etiquette-romaji-toggle", "etiquette-detail-romaji-toggle"].forEach(id => document.getElementById(id).addEventListener("click", () => {
+        etiquetteRomajiVisible = !etiquetteRomajiVisible;
+        applyEtiquetteRomajiVisibility();
+    }));
     document.getElementById("travel-mode-toggle").addEventListener("change", event => setTravelModeEnabled(event.target.checked));
     document.getElementById("header-appearance").addEventListener("click", openAppearanceSettings);
     document.querySelectorAll("[data-hub-action]").forEach(button => button.addEventListener("click", () => {
@@ -4470,8 +4825,8 @@ function addListeners() {
     document.getElementById("save-native-item").addEventListener("click", () => toggleSaved(currentNativeItem));
 
     document.querySelectorAll("[data-saved-tab]").forEach(button => button.addEventListener("click", () => showSavedTab(button.dataset.savedTab)));
-    document.getElementById("saved-type-filter").addEventListener("change", renderSavedItems);
-    document.getElementById("saved-level-filter").addEventListener("change", renderSavedItems);
+    document.getElementById("saved-search-input").addEventListener("input", renderSavedItems);
+    ["saved-type-filter", "saved-level-filter", "saved-slang-category-filter", "saved-status-filter", "saved-mastery-filter", "saved-sort"].forEach(id => document.getElementById(id).addEventListener("change", renderSavedItems));
     document.getElementById("saved-items").addEventListener("click", event => {
         const removeButton = event.target.closest("[data-remove-key]");
         const openButton = event.target.closest("[data-open-saved-key]");
@@ -4486,9 +4841,9 @@ function addListeners() {
         writeJson(STORAGE.statuses, flashcardStatuses);
         updateSavedUi();
     });
-    document.getElementById("start-flashcards").addEventListener("click", () => showSavedTab("flashcards"));
-    document.getElementById("deck-type-filter").addEventListener("change", buildFlashcardDeck);
-    document.getElementById("review-only-filter").addEventListener("change", buildFlashcardDeck);
+    document.getElementById("start-flashcards").addEventListener("click", startFilteredFlashcards);
+    document.getElementById("deck-type-filter").addEventListener("change", resetFlashcardSourceAndBuild);
+    document.getElementById("review-only-filter").addEventListener("change", resetFlashcardSourceAndBuild);
     document.getElementById("flashcard").addEventListener("click", () => { flashcardRevealed = !flashcardRevealed; renderFlashcard(); });
     document.getElementById("reveal-flashcard").addEventListener("click", () => { flashcardRevealed = true; renderFlashcard(); });
     document.getElementById("previous-flashcard").addEventListener("click", () => { if (flashcardDeck.length) flashcardIndex = (flashcardIndex - 1 + flashcardDeck.length) % flashcardDeck.length; flashcardRevealed = false; renderFlashcard(); });
@@ -4568,6 +4923,7 @@ function initializeApp() {
     renderGlobalLevels();
     renderAllSectionControls();
     renderFlashcardLevels();
+    renderSavedSlangCategoryOptions();
     renderSearchJlptFilters();
     renderRecentSearches();
     renderTranslationChips();
@@ -4595,7 +4951,7 @@ function initializeApp() {
     const requestedRoute = location.hash.replace("#", "");
     const travelRoutes = Object.keys(window.TRAVEL_CATEGORIES || {}).map(category => `travel-${category}`);
     const validDeckRoute = /^travel-deck-deck-.+/.test(requestedRoute);
-    showRoute(["home", "hub", "library", "learn", "learn-native", "learn-slang", "search", "translate", "quiz", "practice", "practice-what-would-you-say", "practice-sentence-builder", "practice-one-line-many-personalities", "native", "travel", "travel-my-phrases", "travel-decks", "travel-notes", "travel-countdown", "travel-offline", "travel-yen", "saved", ...travelRoutes].includes(requestedRoute) || validDeckRoute ? requestedRoute : "home", false);
+    showRoute(["home", "hub", "library", "learn", "learn-native", "learn-slang", "counters", "etiquette", "search", "translate", "quiz", "practice", "practice-what-would-you-say", "practice-sentence-builder", "practice-one-line-many-personalities", "native", "travel", "travel-my-phrases", "travel-decks", "travel-notes", "travel-countdown", "travel-offline", "travel-yen", "saved", ...travelRoutes].includes(requestedRoute) || validDeckRoute ? requestedRoute : "home", false);
     initializePwaUpdates();
 }
 

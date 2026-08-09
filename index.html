@@ -11,7 +11,7 @@
     <script>try { document.documentElement.dataset.theme = localStorage.getItem("sakuraAppearanceTheme") || "pink"; } catch (error) { document.documentElement.dataset.theme = "pink"; }</script>
     <link rel="manifest" href="manifest.webmanifest">
     <link rel="apple-touch-icon" href="icons/icon-180.png">
-    <link rel="stylesheet" href="style.css?v=51">
+    <link rel="stylesheet" href="style.css?v=54">
 </head>
 <body>
     <div class="app-shell">
@@ -141,6 +141,8 @@
                 <section class="hub-section" aria-labelledby="hub-learning-heading"><h2 id="hub-learning-heading">Learning</h2><div class="hub-link-list">
                     <button class="hub-link" type="button" data-route="library"><span aria-hidden="true">▤</span><span><strong>Library</strong><small>Browse Sakura’s learning collection.</small></span><b aria-hidden="true">›</b></button>
                     <button class="hub-link" type="button" data-route="practice"><span aria-hidden="true">✎</span><span><strong>Practice</strong><small>Use Japanese in guided activities.</small></span><b aria-hidden="true">›</b></button>
+                    <button class="hub-link" type="button" data-route="counters"><span aria-hidden="true">本</span><span><strong>Counters</strong><small>Learn how Japanese counts everyday things.</small></span><b aria-hidden="true">›</b></button>
+                    <button class="hub-link" type="button" data-route="etiquette"><span aria-hidden="true">礼</span><span><strong>Gestures &amp; Etiquette</strong><small>Understand everyday manners and customs in Japan.</small></span><b aria-hidden="true">›</b></button>
                     <button class="hub-link" type="button" data-hub-action="flashcards"><span aria-hidden="true">◫</span><span><strong>Flashcards</strong><small>Review the Japanese you saved.</small></span><b aria-hidden="true">›</b></button>
                     <button class="hub-link" type="button" data-route="translate"><span aria-hidden="true">文</span><span><strong>English to Japanese</strong><small>Natural, context-aware suggestions.</small></span><b aria-hidden="true">›</b></button>
                 </div></section>
@@ -205,6 +207,51 @@
                     </article>
                 </div>
                 <button class="feature-card translation-launch-card" type="button" data-route="translate"><span class="feature-icon">文</span><span><strong>English to Japanese</strong><small>Natural, context-aware suggestions</small></span><b>→</b></button>
+            </section>
+
+            <section id="counters-view" class="view counters-view" data-view="counters" aria-labelledby="counters-heading" hidden>
+                <div id="counters-home">
+                    <header class="counters-heading"><button class="back-button" type="button" data-route="home" aria-label="Back from Japanese Counters">‹</button><div><span class="section-kicker">Reference garden</span><h1 id="counters-heading">Japanese Counters</h1><p>Learn how Japanese counts people, objects, animals, time, food, travel, and more.</p></div></header>
+                    <div class="counters-toolbar">
+                        <input id="counters-search" type="search" placeholder="Search counters, uses, or readings" autocomplete="off" aria-label="Search Japanese Counters">
+                        <div class="counters-filter-grid"><label>Category<select id="counters-category-filter"><option value="all">All Counters</option></select></label><label>Frequency<select id="counters-frequency-filter"><option value="all">All</option><option>Essential</option><option>Common</option><option>Specialized</option><option>Rare</option></select></label></div>
+                        <div class="counters-toolbar-status"><span id="counters-count">0 counters</span><button id="counters-romaji-toggle" class="secondary-button" type="button" aria-pressed="false">Show Romaji</button></div>
+                    </div>
+                    <p id="counters-loading" class="counters-loading" role="status">Preparing Japanese Counters…</p>
+                    <div id="counters-list" class="counters-grid"></div>
+                    <div id="counters-empty" class="search-empty-state" hidden><span aria-hidden="true">🌸</span><strong>No counters match.</strong><p>Try another reading, use, category, or frequency.</p></div>
+                </div>
+                <article id="counter-detail" class="counter-detail" hidden>
+                    <header class="counter-detail-header"><button id="close-counter-detail" class="back-button" type="button" aria-label="Back to all counters">‹</button><div><span class="section-kicker">Counter reference</span><h1 id="counter-detail-heading">Counter</h1></div><button id="counter-detail-romaji-toggle" class="secondary-button" type="button" aria-pressed="false">Show Romaji</button></header>
+                    <section class="counter-detail-hero"><strong id="counter-detail-character"></strong><div><p id="counter-detail-reading"></p><p id="counter-detail-romaji" class="counter-romaji" hidden></p><span id="counter-detail-frequency" class="tag"></span></div></section>
+                    <div id="counter-detail-categories" class="tag-row"></div>
+                    <section class="counter-reference-section"><h2>Used for</h2><p id="counter-detail-used-for"></p></section>
+                    <section class="counter-reference-section"><h2>How it works</h2><p id="counter-detail-explanation"></p></section>
+                    <section id="counter-detail-notes-section" class="counter-reference-section"><h2>Notes &amp; learner caution</h2><p id="counter-detail-notes"></p></section>
+                    <section id="counter-table-section" class="counter-reference-section counter-table-section"><div class="counter-table-heading"><div><span class="section-kicker">Stored forms</span><h2>Number forms</h2></div><span>Sound changes highlighted</span></div><div id="counter-count-table" class="counter-count-table"></div></section>
+                    <p id="counter-no-table" class="counter-no-table" hidden>This counter is a reference entry. Detailed number forms have not been curated yet.</p>
+                </article>
+            </section>
+
+            <section id="etiquette-view" class="view etiquette-view" data-view="etiquette" aria-labelledby="etiquette-heading" hidden>
+                <div id="etiquette-home">
+                    <header class="etiquette-heading"><button class="back-button" type="button" data-route="home" aria-label="Back from Japanese Gestures and Etiquette">‹</button><div><span class="section-kicker">Culture garden</span><h1 id="etiquette-heading">Japanese Gestures &amp; Etiquette</h1><p>Learn how people actually behave in Japan — gestures, manners, travel etiquette, dining, trains, onsen, shrines, and more.</p></div></header>
+                    <div class="etiquette-toolbar">
+                        <input id="etiquette-search" type="search" placeholder="Search gestures, manners, or situations" autocomplete="off" aria-label="Search Japanese Gestures and Etiquette">
+                        <div class="etiquette-filter-grid"><label>Category<select id="etiquette-category-filter"><option value="all">All</option></select></label><label>Importance<select id="etiquette-importance-filter"><option value="all">All</option><option>Essential</option><option>Common</option><option>Useful</option><option>Contextual</option><option>Specialized</option><option>Fun</option></select></label></div>
+                        <div class="etiquette-toolbar-status"><span id="etiquette-count">0 entries</span><button id="etiquette-romaji-toggle" class="secondary-button" type="button" aria-pressed="false">Show Romaji</button></div>
+                    </div>
+                    <p id="etiquette-loading" class="etiquette-loading" role="status">Preparing Gestures &amp; Etiquette…</p>
+                    <div id="etiquette-list" class="etiquette-grid"></div>
+                    <div id="etiquette-empty" class="search-empty-state" hidden><span aria-hidden="true">🌸</span><strong>No etiquette entries match.</strong><p>Try another term, situation, category, or importance.</p></div>
+                </div>
+                <article id="etiquette-detail" class="etiquette-detail" hidden>
+                    <header class="etiquette-detail-header"><button id="close-etiquette-detail" class="back-button" type="button" aria-label="Back to all etiquette entries">‹</button><div><span class="section-kicker">Cultural reference</span><h1 id="etiquette-detail-heading">Etiquette</h1></div><button id="etiquette-detail-romaji-toggle" class="secondary-button" type="button" aria-pressed="false">Show Romaji</button></header>
+                    <section class="etiquette-detail-hero"><div id="etiquette-detail-illustration" class="etiquette-illustration"></div><div class="etiquette-detail-intro"><p id="etiquette-detail-japanese" class="etiquette-japanese"></p><p id="etiquette-detail-kana" class="etiquette-kana"></p><p id="etiquette-detail-romaji" class="etiquette-romaji" data-etiquette-romaji hidden></p><div class="tag-row"><span id="etiquette-detail-importance" class="tag"></span><span id="etiquette-detail-category" class="tag"></span></div><p id="etiquette-detail-summary"></p></div></section>
+                    <div class="etiquette-detail-sections">
+                        <section><h2>Do</h2><p id="etiquette-detail-do"></p></section><section class="etiquette-avoid"><h2>Avoid</h2><p id="etiquette-detail-avoid"></p></section><section><h2>Why it matters</h2><p id="etiquette-detail-why"></p></section><section><h2>What you’ll actually see in Japan</h2><p id="etiquette-detail-see"></p></section><section><h2>Traveler tip</h2><p id="etiquette-detail-tip"></p></section><section><h2>Context</h2><p id="etiquette-detail-context"></p></section>
+                    </div>
+                </article>
             </section>
 
             <section id="search-view" class="view" data-view="search" aria-labelledby="search-heading" hidden>
@@ -517,10 +564,19 @@
                 <div class="tab-bar" role="tablist" aria-label="Saved study mode"><button class="tab-button active" type="button" data-saved-tab="items">Saved Items</button><button class="tab-button" type="button" data-saved-tab="flashcards">Flashcards</button></div>
 
                 <div id="saved-items-panel" data-saved-panel="items">
-                    <div class="filter-row saved-filters"><label>Type<select id="saved-type-filter"><option value="all">All</option><option value="kanji">Kanji</option><option value="vocabulary">Vocabulary</option><option value="native">Native Japanese</option><option value="slang">Slang</option><option value="travel">Travel</option><option value="translation">Translations</option></select></label><label>JLPT<select id="saved-level-filter"><option value="all">All</option><option>N5</option><option>N4</option><option>N3</option><option>N2</option><option>N1</option></select></label><button id="clear-saved" class="text-danger-button" type="button">Clear all</button></div>
+                    <div class="saved-search-row"><input id="saved-search-input" type="search" placeholder="Search your saved Japanese" autocomplete="off" aria-label="Search Saved items"><button id="clear-saved" class="text-danger-button" type="button">Clear all</button></div>
+                    <div class="saved-filter-grid">
+                        <label>Type<select id="saved-type-filter"><option value="all">All</option><option value="kanji">Kanji</option><option value="vocabulary">Vocabulary</option><option value="slang">Slang</option><option value="native">Native Japanese</option><option value="travel">Travel</option><option value="translation">Translations</option></select></label>
+                        <label id="saved-level-filter-label">JLPT<select id="saved-level-filter"><option value="all">All</option><option>N5</option><option>N4</option><option>N3</option><option>N2</option><option>N1</option></select></label>
+                        <label id="saved-slang-category-label" hidden>Slang category<select id="saved-slang-category-filter"><option value="all">All categories</option></select></label>
+                        <label>Status<select id="saved-status-filter"><option value="all">All</option><option value="known">Known</option><option value="review">Needs Review</option></select></label>
+                        <label>Mastery<select id="saved-mastery-filter"><option value="all">All</option><option>New</option><option>Learning</option><option>Familiar</option><option>Mastered</option></select></label>
+                        <label>Sort<select id="saved-sort"><option value="newest">Newest Saved</option><option value="oldest">Oldest Saved</option></select></label>
+                    </div>
+                    <p id="saved-filter-summary" class="saved-filter-summary" aria-live="polite"></p>
                     <div id="saved-items" class="saved-grid"></div>
                     <p id="saved-empty" class="empty-state">Your garden is waiting. Tap the heart on any Japanese card to save it here.</p>
-                    <button id="start-flashcards" class="primary-button full-width-button" type="button">Study with Flashcards</button>
+                    <button id="start-flashcards" class="primary-button full-width-button" type="button">Study Filtered Items with Flashcards</button>
                 </div>
 
                 <div id="flashcards-panel" data-saved-panel="flashcards" hidden>
