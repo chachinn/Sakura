@@ -578,6 +578,8 @@ let currentEtiquetteEntry = null;
 let etiquetteRomajiVisible = false;
 let chibiGuide = normalizeChibiGuide(readJson(STORAGE.chibiGuide, DEFAULT_CHIBI_GUIDE));
 let chibiGuideDraft = { ...chibiGuide };
+let chibiAssetManifest = null;
+let chibiAssetManifestPromise = null;
 let chibiCompanionTimer = 0;
 let chibiCompanionResetTimer = 0;
 let chibiCompanionBusy = false;
@@ -3977,7 +3979,7 @@ function chibiTone(hex, amount) {
     return `#${channels.map(channel => Math.round(channel + (target - channel) * weight).toString(16).padStart(2, "0")).join("")}`;
 }
 
-function renderChibiGuide(settings = chibiGuide, illustration = {}, compact = false) {
+function renderLegacyProceduralChibiGuide(settings = chibiGuide, illustration = {}, compact = false) {
     const guide = normalizeChibiGuide(settings);
     const skin = CHIBI_OPTIONS.skinTone.find(option => option[0] === guide.skinTone)?.[2] || "#EFC3A7";
     const pose = chibiPoseFamily(illustration);
@@ -4030,6 +4032,114 @@ function renderChibiGuide(settings = chibiGuide, illustration = {}, compact = fa
     const glasses = guide.glasses ? '<g class="svg-glasses"><path d="M61 108q31-18 57 4l-4 35q-30 17-52-5Zm81 4q27-22 57-4l-1 34q-23 22-52 5Z"/><path d="M117 119q13-8 26 0"/></g>' : "";
     const classes = ["sakura-guide-svg", `svg-pose-${pose}`, `svg-expression-${expression}`, compact ? "sakura-guide-compact" : ""].filter(Boolean).join(" ");
     return `<svg class="${classes}" viewBox="0 0 260 360" role="img" aria-label="Customized adult Sakura anime chibi guide" style="--svg-skin:${skin};--svg-skin-shade:${skinShade};--svg-hair:${guide.hairColor};--svg-hair-shadow:${hairShadow};--svg-hair-shade:${hairShade};--svg-hair-light:${hairLight};--svg-outfit:${outfitColors[0]};--svg-outfit-detail:${outfitColors[1]}" data-pose-family="${pose}" xmlns="http://www.w3.org/2000/svg"><g class="svg-character-pose"><g class="svg-hair-back" fill="${guide.hairColor}">${hairBack}</g><g class="svg-legs"><path class="svg-leg" d="M101 297q-5 27 1 43 9 10 23 0l2-43Z"/><path class="svg-leg" d="M133 297l2 43q14 10 23 0 6-16 1-43Z"/><path class="svg-shoe" d="M96 329q14-8 31 1l-1 21q-18 13-38 0-2-14 8-22Z"/><path class="svg-shoe" d="M133 330q17-9 31-1 10 8 8 22-20 13-38 0Z"/><path class="svg-shoe-detail" d="M92 340q16-9 34 1m9 0q18-10 34-1"/></g><g class="svg-body"><path class="svg-neck" d="M116 184q14 8 28 0l2 24h-32Z"/><g class="svg-outfit-layers">${outfit}</g><g class="svg-arm svg-arm-left"><path class="svg-limb" d="M82 220q-18 14-28 43-5 13 4 20 9 6 17-5l25-42Z"/><path class="svg-hand" d="M55 273q-12 7-8 17 3 8 11 3l7-7 5 5q7-2 6-10l-8-10Z"/></g><g class="svg-arm svg-arm-right"><path class="svg-limb" d="M178 220q18 14 28 43 5 13-4 20-9 6-17-5l-25-42Z"/><path class="svg-hand" d="M205 273q12 7 8 17-3 8-11 3l-7-7-5 5q-7-2-6-10l8-10Z"/></g></g><g class="svg-head"><path class="svg-face" d="M45 91C49 36 87 15 132 16c48 0 84 29 85 81 1 52-20 91-57 106-20 8-41 9-62 1-39-14-59-57-53-113Z"/><path class="svg-ear" d="M48 112q-19-8-18 18 2 25 24 24Zm164 0q19-8 18 18-2 25-24 24Z"/><path d="M67 93q19-18 43-9m39 0q24-9 43 9" class="svg-brow"/>${eyes}<path class="svg-nose" d="M129 149l-3 4 5 1"/>${blush}${mouth}</g><g class="svg-hair-front" fill="${guide.hairColor}">${fringe}</g><g class="svg-side-locks" fill="${hairShade}">${sideLocks}</g>${accessory}${glasses}${prop ? `<text x="211" y="268" class="svg-prop">${prop}</text>` : ""}</g></svg>`;
+}
+
+const CHIBI_LAYER_ORDER = Object.freeze(["back-hair", "rear-pose", "skin-body", "outfit", "face-eyes", "front-hair", "glasses", "accessory", "front-arms", "prop", "foreground"]);
+
+function validateChibiAssetManifest(manifest) {
+    return manifest && manifest.version === 1
+        && typeof manifest.basePath === "string" && /^\.\/assets\/chibi\/$/.test(manifest.basePath)
+        && Array.isArray(manifest.layerOrder) && CHIBI_LAYER_ORDER.every((layer, index) => manifest.layerOrder[index] === layer)
+        && manifest.poses?.neutral && manifest.skinTones && manifest.hairStyles && manifest.eyeColors && manifest.outfits && manifest.accessories
+        && manifest.placeholder && [manifest.placeholder.symbol, manifest.placeholder.title, manifest.placeholder.message].every(value => typeof value === "string" && value.trim());
+}
+
+function refreshChibiAssetVisuals() {
+    if (currentRoute === "chibi-guide") renderChibiCustomizer();
+    if (currentRoute === "etiquette" && etiquetteData) {
+        if (currentEtiquetteEntry) renderEtiquetteDetail(currentEtiquetteEntry);
+        else renderEtiquette();
+    }
+    updateChibiCompanion();
+}
+
+function loadChibiAssetManifest() {
+    if (chibiAssetManifest) return Promise.resolve(chibiAssetManifest);
+    if (chibiAssetManifestPromise) return chibiAssetManifestPromise;
+    chibiAssetManifestPromise = fetch("./data/chibi-assets.json?v=1")
+        .then(response => { if (!response.ok) throw new Error(`Chibi asset manifest returned ${response.status}.`); return response.json(); })
+        .then(manifest => {
+            if (!validateChibiAssetManifest(manifest)) throw new Error("Chibi asset manifest validation failed.");
+            chibiAssetManifest = manifest;
+            window.queueMicrotask(refreshChibiAssetVisuals);
+            return manifest;
+        })
+        .catch(error => {
+            chibiAssetManifestPromise = null;
+            console.warn("Chibi illustrated assets could not be prepared; using the Sakura placeholder.", error);
+            return null;
+        });
+    return chibiAssetManifestPromise;
+}
+
+function chibiManifestEntry(collection, key, fallback = "") {
+    let entry = collection?.[key];
+    const visited = new Set();
+    while (entry && !entry.ready && entry.fallback && !visited.has(entry.fallback)) {
+        visited.add(entry.fallback);
+        entry = collection[entry.fallback];
+    }
+    return entry?.ready ? entry : (fallback && collection?.[fallback]?.ready ? collection[fallback] : null);
+}
+
+function chibiEyeAssetKey(color) {
+    const option = CHIBI_OPTIONS.eyeColor.find(item => item[0].toLowerCase() === String(color).toLowerCase());
+    return option ? option[1].toLowerCase().replace(/\s+/g, "-") : "brown";
+}
+
+function chibiPropAssetKey(illustration = {}) {
+    const description = searchText([...(illustration.props || []), illustration.pose, illustration.setting].join(" "));
+    return [[/phone|smartphone|device/,"phone"],[/chopstick|bowl|food|restaurant/,"chopsticks"],[/umbrella/,"umbrella"],[/backpack|bag|suitcase|luggage/,"suitcase"],[/gift|present/,"gift"],[/ladle|shrine|temple/,"shrine-ladle"],[/towel|bath|onsen/,"towel"],[/credit card|payment|wallet/,"credit-card"],[/passport|airport/,"passport"]].find(([pattern]) => pattern.test(description))?.[1] || "";
+}
+
+function chibiLayerItems(value) {
+    return (Array.isArray(value) ? value : value ? [value] : []).filter(item => typeof item === "string" && item.trim());
+}
+
+function safeChibiAssetPath(path) {
+    const clean = String(path || "").replace(/\\/g, "/").replace(/^\.\//, "");
+    if (!clean || clean.includes("..") || clean.startsWith("/") || /^[a-z]+:/i.test(clean)) return "";
+    return `${chibiAssetManifest.basePath}${clean}`;
+}
+
+function resolveChibiAssetLayers(guide, illustration) {
+    if (!chibiAssetManifest) return [];
+    const requestedPose = chibiPoseFamily(illustration);
+    const pose = chibiManifestEntry(chibiAssetManifest.poses, requestedPose, chibiAssetManifest.fallbackPose);
+    const skin = chibiManifestEntry(chibiAssetManifest.skinTones, guide.skinTone, "light-medium");
+    const hairBase = chibiManifestEntry(chibiAssetManifest.hairStyles, guide.hairStyle, "shoulder");
+    const hair = hairBase?.variants?.[guide.hairColor.toLowerCase()]?.ready ? hairBase.variants[guide.hairColor.toLowerCase()] : hairBase;
+    const eyeKey = chibiEyeAssetKey(guide.eyeColor);
+    const eyeBase = chibiManifestEntry(chibiAssetManifest.eyeColors, eyeKey, "brown");
+    const eyes = eyeBase?.variants?.[guide.eyeColor.toLowerCase()]?.ready ? eyeBase.variants[guide.eyeColor.toLowerCase()] : eyeBase;
+    const outfit = chibiManifestEntry(chibiAssetManifest.outfits, guide.outfit, "sakura-casual");
+    const accessory = chibiManifestEntry(chibiAssetManifest.accessories, guide.accessory, "none");
+    const glasses = guide.glasses ? chibiManifestEntry(chibiAssetManifest.accessories, "glasses") : null;
+    const prop = chibiManifestEntry(chibiAssetManifest.props, chibiPropAssetKey(illustration));
+    const sources = {
+        "back-hair": hair?.layers?.["back-hair"],
+        "rear-pose": pose?.layers?.["rear-pose"],
+        "skin-body": [...chibiLayerItems(pose?.layers?.["skin-body"]), ...chibiLayerItems(skin?.layers?.["skin-body"])],
+        outfit: outfit?.layers?.outfit,
+        "face-eyes": eyes?.layers?.["face-eyes"],
+        "front-hair": hair?.layers?.["front-hair"],
+        glasses: glasses?.layers?.glasses,
+        accessory: accessory?.layers?.accessory,
+        "front-arms": pose?.layers?.["front-arms"],
+        prop: prop?.layers?.prop,
+        foreground: pose?.layers?.foreground
+    };
+    return CHIBI_LAYER_ORDER.flatMap((layer, zIndex) => chibiLayerItems(sources[layer]).map(path => ({ layer, zIndex, src:safeChibiAssetPath(path) })).filter(item => item.src));
+}
+
+function renderChibiGuide(settings = chibiGuide, illustration = {}, compact = false) {
+    loadChibiAssetManifest();
+    const guide = normalizeChibiGuide(settings);
+    const pose = chibiPoseFamily(illustration);
+    const placeholder = chibiAssetManifest?.placeholder || { symbol:"🌸", title:"Sakura Guide", message:"Artwork coming soon" };
+    const layers = resolveChibiAssetLayers(guide, illustration);
+    const images = layers.map(item => `<img class="chibi-asset-layer" data-chibi-asset-layer="${escapeSearchHtml(item.layer)}" style="--chibi-layer:${item.zIndex}" src="${escapeSearchHtml(item.src)}" alt="" decoding="async" loading="lazy" hidden>`).join("");
+    return `<div class="chibi-asset-renderer ${compact ? "chibi-asset-compact" : ""}" data-pose-family="${escapeSearchHtml(pose)}"><div class="chibi-art-placeholder" aria-label="${escapeSearchHtml(placeholder.title)} — ${escapeSearchHtml(placeholder.message)}"><span aria-hidden="true">${escapeSearchHtml(placeholder.symbol)}</span><strong>${escapeSearchHtml(placeholder.title)}</strong><small>${escapeSearchHtml(placeholder.message)}</small></div><div class="chibi-asset-layers" aria-hidden="true">${images}</div></div>`;
 }
 
 function chibiOptionButtons(key, options, color = false) {
@@ -4742,6 +4852,21 @@ function openAppearanceSettings() {
 }
 
 function addListeners() {
+    const settleChibiAssetLayer = (image, state) => {
+        image.dataset.assetState = state;
+        const renderer = image.closest(".chibi-asset-renderer");
+        const images = [...renderer.querySelectorAll("[data-chibi-asset-layer]")];
+        if (!images.length || !images.every(item => item.dataset.assetState)) return;
+        const loaded = images.filter(item => item.dataset.assetState === "loaded");
+        loaded.forEach(item => { item.hidden = false; });
+        renderer.classList.toggle("has-art", loaded.length > 0);
+    };
+    document.addEventListener("load", event => {
+        if (event.target.matches?.("[data-chibi-asset-layer]")) settleChibiAssetLayer(event.target, "loaded");
+    }, true);
+    document.addEventListener("error", event => {
+        if (event.target.matches?.("[data-chibi-asset-layer]")) settleChibiAssetLayer(event.target, "error");
+    }, true);
     document.addEventListener("click", event => {
         if (!event.target.closest("[data-practice-romaji-toggle]")) return;
         practiceRomajiVisible = !practiceRomajiVisible;

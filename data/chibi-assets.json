@@ -1,0 +1,79 @@
+{
+  "version": 1,
+  "basePath": "./assets/chibi/",
+  "fallbackPose": "neutral",
+  "placeholder": {
+    "symbol": "🌸",
+    "title": "Sakura Guide",
+    "message": "Artwork coming soon"
+  },
+  "layerOrder": [
+    "back-hair",
+    "rear-pose",
+    "skin-body",
+    "outfit",
+    "face-eyes",
+    "front-hair",
+    "glasses",
+    "accessory",
+    "front-arms",
+    "prop",
+    "foreground"
+  ],
+  "poses": {
+    "neutral": { "ready": false, "layers": {} },
+    "small-bow": { "ready": false, "fallback": "neutral", "layers": {} },
+    "formal-bow": { "ready": false, "fallback": "small-bow", "layers": {} },
+    "explaining": { "ready": false, "fallback": "neutral", "layers": {} },
+    "hands-together": { "ready": false, "fallback": "neutral", "layers": {} },
+    "holding": { "ready": false, "fallback": "neutral", "layers": {} },
+    "sitting": { "ready": false, "fallback": "neutral", "layers": {} },
+    "walking": { "ready": false, "fallback": "neutral", "layers": {} },
+    "waving": { "ready": false, "fallback": "neutral", "layers": {} },
+    "dining": { "ready": false, "fallback": "holding", "layers": {} }
+  },
+  "skinTones": {
+    "light": { "ready": false, "layers": {} },
+    "light-medium": { "ready": false, "fallback": "light", "layers": {} },
+    "medium": { "ready": false, "fallback": "light-medium", "layers": {} },
+    "medium-deep": { "ready": false, "fallback": "medium", "layers": {} },
+    "deep": { "ready": false, "fallback": "medium-deep", "layers": {} }
+  },
+  "hairStyles": {
+    "bob": { "ready": false, "variants": {}, "layers": {} },
+    "long": { "ready": false, "variants": {}, "layers": {} },
+    "ponytail": { "ready": false, "variants": {}, "layers": {} },
+    "twin-tails": { "ready": false, "variants": {}, "layers": {} },
+    "shoulder": { "ready": false, "variants": {}, "layers": {} },
+    "bun": { "ready": false, "variants": {}, "layers": {} }
+  },
+  "eyeColors": {
+    "brown": { "ready": false, "variants": {}, "layers": {} },
+    "dark-brown": { "ready": false, "variants": {}, "layers": {} },
+    "hazel": { "ready": false, "variants": {}, "layers": {} },
+    "blue": { "ready": false, "variants": {}, "layers": {} },
+    "green": { "ready": false, "variants": {}, "layers": {} },
+    "pink": { "ready": false, "variants": {}, "layers": {} },
+    "purple": { "ready": false, "variants": {}, "layers": {} }
+  },
+  "outfits": {
+    "sakura-casual": { "ready": false, "layers": {} },
+    "school-inspired": { "ready": false, "layers": {} },
+    "travel": { "ready": false, "layers": {} },
+    "cafe": { "ready": false, "layers": {} },
+    "yukata": { "ready": false, "layers": {} }
+  },
+  "accessories": {
+    "none": { "ready": true, "layers": {} },
+    "sakura-clip": { "ready": false, "layers": {} },
+    "ribbon": { "ready": false, "layers": {} },
+    "beret": { "ready": false, "layers": {} },
+    "glasses": { "ready": false, "layers": {} }
+  },
+  "props": {},
+  "colorStrategy": {
+    "hair": ["color-specific-variants", "tintable-mask"],
+    "eyes": ["color-specific-variants", "tintable-mask"],
+    "cssFiltersAllowed": false
+  }
+}
