@@ -14,6 +14,7 @@ const STORAGE = {
     dailyProgress: "sakuraDailyProgress",
     kanaQuizGroups: "sakuraKanaQuizGroups",
     recentSearches: "chaRecentSearches",
+    kaomojiUsage: "sakuraKaomojiUsage",
     userNative: "sakura_user_native_entries",
     userSlang: "sakura_user_slang_entries",
     nativeHistory: "sakura_native_recent_history",
@@ -582,6 +583,20 @@ let etiquetteData = null;
 let etiquetteDataPromise = null;
 let currentEtiquetteEntry = null;
 let etiquetteRomajiVisible = false;
+const KAOMOJI_VISIBLE_LIMIT = 50;
+const KAOMOJI_DEFAULT_TAGS = Object.freeze([
+    "hello", "good morning", "happy", "cute", "thanks", "thank you", "good luck",
+    "love", "laughing", "cat", "dog", "animal", "sorry", "excited", "hugging",
+    "wink", "good night", "congratulations", "support"
+]);
+let kaomojiData = null;
+let kaomojiDataPromise = null;
+let kaomojiById = new Map();
+let kaomojiUsage = readJson(STORAGE.kaomojiUsage, {});
+if (!kaomojiUsage || typeof kaomojiUsage !== "object" || Array.isArray(kaomojiUsage)) kaomojiUsage = {};
+let kaomojiSearchTimer = null;
+let kaomojiCopyToastTimer = null;
+let kaomojiUniversalLoadScheduled = false;
 let chibiGuide = normalizeChibiGuide(readJson(STORAGE.chibiGuide, DEFAULT_CHIBI_GUIDE));
 let chibiGuideDraft = { ...chibiGuide };
 let chibiAssetManifest = null;
@@ -1533,7 +1548,7 @@ function slangData() {
 }
 
 function searchMainText(item) {
-    return item.character || item.word || item.expression || item.japanese || "";
+    return item.kaomoji || item.character || item.word || item.expression || item.japanese || "";
 }
 
 function searchReading(item) {
@@ -1613,10 +1628,22 @@ function prepareTravelSearch() {
 
 function prepareTravelSearchForCurrentQuery() {
     const input = document.getElementById("universal-search-input");
-    if (!input?.value.trim()) return;
+    if (!input?.value.trim() || !["all", "travel"].includes(searchType)) return;
     prepareTravelSearch().then(() => {
         if (currentRoute === "search" && input.value.trim()) renderSearchResults();
     });
+}
+
+function prepareKaomojiSearchForCurrentQuery() {
+    const input = document.getElementById("universal-search-input");
+    if (!input?.value.trim() || !["all", "kaomoji"].includes(searchType) || kaomojiData || kaomojiUniversalLoadScheduled) return;
+    kaomojiUniversalLoadScheduled = true;
+    loadKaomojiData()
+        .then(() => {
+            if (currentRoute === "search" && input.value.trim() && ["all", "kaomoji"].includes(searchType)) renderSearchResults();
+        })
+        .catch(error => console.warn("Universal Search: Kaomoji data could not load.", error))
+        .finally(() => { kaomojiUniversalLoadScheduled = false; });
 }
 
 function searchIndex() {
@@ -1673,7 +1700,7 @@ function filteredSearchResults(query) {
     const normalized = searchText(query);
     if (!normalized) return [];
     const seen = new Set();
-    return [...smartTravelSearchResults(query), ...searchIndex().map(item => ({ item, score: searchScore(item, normalized) }))]
+    return [...smartTravelSearchResults(query), ...kaomojiUniversalSearchResults(query), ...searchIndex().map(item => ({ item, score: searchScore(item, normalized) }))]
         .filter(result => result.score > 0)
         .filter(result => searchType === "all" || result.item.type === searchType)
         .filter(result => !["kanji", "vocabulary"].includes(result.item.type) || searchLevels.includes(result.item.jlpt))
@@ -1691,7 +1718,7 @@ function escapeSearchHtml(value) {
 }
 
 function searchTypeLabel(type) {
-    return ({ kanji: "Kanji", vocabulary: "Vocabulary", native: "Native", slang: "Slang", travel: "Travel", translation:"Translation" })[type] || type;
+    return ({ kanji: "Kanji", vocabulary: "Vocabulary", native: "Native", slang: "Slang", travel: "Travel", kaomoji:"Kaomoji", translation:"Translation" })[type] || type;
 }
 
 function searchResultMeta(item) {
@@ -1699,6 +1726,7 @@ function searchResultMeta(item) {
         const category = travelCategoryMetadata(item.category)?.title || travelTagLabel(item.category);
         return [category, travelTagLabel(item.priority)].filter(Boolean).join(" · ");
     }
+    if (item.type === "kaomoji") return item.category || "";
     return item.jlpt || item.difficulty || "";
 }
 
@@ -1718,17 +1746,18 @@ function renderSearchResults() {
     transientSearchItems = new Map(results.filter(result => result.item.transient).map(result => [itemKey(result.item), result.item]));
     document.getElementById("search-result-summary").textContent = `${results.length} ${results.length === 1 ? "result" : "results"} for “${query}”`;
     document.getElementById("search-results").innerHTML = visibleResults.map(({ item }) => {
-        const saved = !item.transient && isSaved(item);
+        const isKaomoji = item.type === "kaomoji";
+        const saved = !isKaomoji && !item.transient && isSaved(item);
         const reading = searchReading(item);
         const meta = searchResultMeta(item);
-        return `<article class="search-result-card" data-search-key="${escapeSearchHtml(itemKey(item))}">
-            <button class="search-result-main" type="button" data-search-open="${escapeSearchHtml(itemKey(item))}">
-                <span class="search-result-topline"><span class="search-type-tag">${searchTypeLabel(item.type)}</span>${item.smartVariant ? `<span class="status-label">Suggested phrase</span>` : ""}${meta ? `<span class="tag">${escapeSearchHtml(meta)}</span>` : ""}</span>
+        return `<article class="search-result-card ${isKaomoji ? "kaomoji-search-result" : ""}" data-search-key="${escapeSearchHtml(itemKey(item))}">
+            <button class="search-result-main" type="button" data-search-open="${escapeSearchHtml(itemKey(item))}"${isKaomoji ? ` aria-label="Copy ${escapeSearchHtml(searchMainText(item))}"` : ""}>
+                <span class="search-result-topline"><span class="search-type-tag">${searchTypeLabel(item.type)}</span>${isKaomoji ? `<span class="status-label">Tap to copy</span>` : item.smartVariant ? `<span class="status-label">Suggested phrase</span>` : ""}${meta ? `<span class="tag">${escapeSearchHtml(meta)}</span>` : ""}</span>
                 <h2>${escapeSearchHtml(searchMainText(item))}</h2>
                 ${reading ? `<p class="search-result-reading">${escapeSearchHtml(reading)}${item.romaji && !reading.includes(item.romaji) ? ` · ${escapeSearchHtml(item.romaji)}` : ""}</p>` : ""}
                 <p class="search-result-meaning">${escapeSearchHtml(item.meaning || item.english)}</p>
             </button>
-            ${item.transient ? "" : `<button class="save-button search-result-save ${saved ? "saved" : ""}" type="button" data-search-save="${escapeSearchHtml(itemKey(item))}" aria-label="${saved ? "Unsave" : "Save"} ${escapeSearchHtml(searchMainText(item))}" aria-pressed="${saved}">${saved ? "♥" : "♡"}</button>`}
+            ${item.transient || isKaomoji ? "" : `<button class="save-button search-result-save ${saved ? "saved" : ""}" type="button" data-search-save="${escapeSearchHtml(itemKey(item))}" aria-label="${saved ? "Unsave" : "Save"} ${escapeSearchHtml(searchMainText(item))}" aria-pressed="${saved}">${saved ? "♥" : "♡"}</button>`}
         </article>`;
     }).join("");
     document.getElementById("search-empty").hidden = results.length > 0;
@@ -1742,6 +1771,7 @@ function resetSearchResultLimit() {
 }
 
 function findSearchItem(key) {
+    if (String(key || "").startsWith("kaomoji:")) return kaomojiById.get(String(key).slice("kaomoji:".length));
     return transientSearchItems.get(key) || searchIndex().find(item => itemKey(item) === key);
 }
 
@@ -1792,12 +1822,14 @@ function openSearch(returnRoute = currentRoute) {
         if (currentRoute === "search") renderSearchResults();
     });
     prepareTravelSearchForCurrentQuery();
+    prepareKaomojiSearchForCurrentQuery();
     requestAnimationFrame(() => document.getElementById("universal-search-input").focus());
 }
 
 function openSearchResult(item) {
     if (!item) return;
     addRecentSearch(document.getElementById("universal-search-input").value);
+    if (item.type === "kaomoji") { copyKaomojiItem(item); return; }
     if (item.type === "kanji") openKanjiDetail(item, "search");
     else if (item.type === "vocabulary") openWordDetail(item, "search");
     else if (item.type === "travel" && travelCategoryMetadata(item.category)) {
@@ -3794,6 +3826,274 @@ function nextPersonalitiesEntry() {
     renderPersonalitiesEntry();
 }
 
+
+/* =====================================================
+   Kaomoji quick-copy library
+   Lazy-loaded, 50 visible items max, usage-ranked.
+===================================================== */
+
+function normalizeKaomojiSearch(value) {
+    return String(value || "").normalize("NFKC").replace(/[\u3000\s]+/g, " ").trim().toLocaleLowerCase();
+}
+
+function normalizeKaomojiRecord(record, index) {
+    const tags = [...new Set([...(Array.isArray(record.tags) ? record.tags : []), record.category].filter(Boolean).map(value => String(value).trim()).filter(Boolean))];
+    const searchTerms = Array.isArray(record.searchTerms) ? record.searchTerms.map(value => String(value).trim()).filter(Boolean) : [];
+    const label = String(record.label || record.category || "Kaomoji").trim();
+    const category = String(record.category || "Other").trim();
+    const mood = String(record.mood || "").trim();
+    const semanticSource = [label, category, mood, ...tags, ...searchTerms].filter(Boolean).join(" ");
+    const tagSearch = tags.map(searchText);
+    const categorySearch = searchText(category);
+    let fallbackRank = -1;
+    KAOMOJI_DEFAULT_TAGS.forEach((value, index) => {
+        if (categorySearch === value || tagSearch.includes(value)) fallbackRank = Math.max(fallbackRank, KAOMOJI_DEFAULT_TAGS.length - index);
+    });
+    return {
+        id:String(record.id),
+        type:"kaomoji",
+        kaomoji:String(record.kaomoji),
+        expression:String(record.kaomoji),
+        label,
+        category,
+        tags,
+        mood,
+        intensity:String(record.intensity || ""),
+        animationHint:String(record.animationHint || ""),
+        searchTerms,
+        meaning:label,
+        english:label,
+        _kaomojiIndex:index,
+        _kaomojiRawSearch:normalizeKaomojiSearch(`${record.kaomoji} ${semanticSource}`),
+        _kaomojiSemanticSearch:searchText(semanticSource),
+        _kaomojiLabelSearch:searchText(label),
+        _kaomojiCategorySearch:categorySearch,
+        _kaomojiTagSearch:tagSearch,
+        _kaomojiFallbackRank:fallbackRank
+    };
+}
+
+function loadKaomojiData() {
+    if (kaomojiData) return Promise.resolve(kaomojiData);
+    if (kaomojiDataPromise) return kaomojiDataPromise;
+    kaomojiDataPromise = fetch("./data/kaomoji.json?v=1")
+        .then(response => {
+            if (!response.ok) throw new Error(`Kaomoji data returned ${response.status}.`);
+            return response.json();
+        })
+        .then(payload => {
+            if (!payload || !Array.isArray(payload.records) || !payload.records.length) throw new Error("Kaomoji data validation failed.");
+            const seenIds = new Set();
+            const seenFaces = new Set();
+            kaomojiData = payload.records
+                .filter(record => record && typeof record.id === "string" && record.id && typeof record.kaomoji === "string" && record.kaomoji.trim())
+                .filter(record => {
+                    if (seenIds.has(record.id) || seenFaces.has(record.kaomoji)) return false;
+                    seenIds.add(record.id);
+                    seenFaces.add(record.kaomoji);
+                    return true;
+                })
+                .map(normalizeKaomojiRecord);
+            if (!kaomojiData.length) throw new Error("Kaomoji data did not contain usable records.");
+            kaomojiById = new Map(kaomojiData.map(item => [item.id, item]));
+            return kaomojiData;
+        })
+        .catch(error => {
+            kaomojiDataPromise = null;
+            throw error;
+        });
+    return kaomojiDataPromise;
+}
+
+function kaomojiUsageStats(id) {
+    const value = kaomojiUsage[id];
+    if (!value || typeof value !== "object") return { count:0, lastUsed:0 };
+    const count = Number(value.count);
+    const lastUsed = Number(value.lastUsed);
+    return {
+        count:Number.isFinite(count) ? Math.max(0, Math.floor(count)) : 0,
+        lastUsed:Number.isFinite(lastUsed) ? Math.max(0, lastUsed) : 0
+    };
+}
+
+function recordKaomojiUse(id) {
+    const previous = kaomojiUsageStats(id);
+    kaomojiUsage[id] = { count:previous.count + 1, lastUsed:Date.now() };
+    writeJson(STORAGE.kaomojiUsage, kaomojiUsage);
+}
+
+function defaultKaomojiItems() {
+    if (!kaomojiData) return [];
+    return kaomojiData
+        .map(item => ({ item, usage:kaomojiUsageStats(item.id) }))
+        .sort((a, b) => b.usage.count - a.usage.count
+            || b.usage.lastUsed - a.usage.lastUsed
+            || b.item._kaomojiFallbackRank - a.item._kaomojiFallbackRank
+            || a.item._kaomojiIndex - b.item._kaomojiIndex)
+        .slice(0, KAOMOJI_VISIBLE_LIMIT)
+        .map(result => result.item);
+}
+
+function prepareKaomojiQuery(query) {
+    const raw = normalizeKaomojiSearch(query);
+    const semantic = searchText(query);
+    return {
+        original:String(query || "").trim(),
+        raw,
+        semantic,
+        tokens:semantic.split(/\s+/).filter(Boolean)
+    };
+}
+
+function kaomojiSearchScore(item, preparedQuery) {
+    const { raw, semantic, original, tokens } = preparedQuery;
+    if (!raw && !semantic) return 0;
+    let score = 0;
+    const rawFace = normalizeKaomojiSearch(item.kaomoji);
+    if (raw && rawFace === raw) score = 1700;
+    else if (raw && original && item.kaomoji.includes(original)) score = Math.max(score, 1450);
+    if (semantic) {
+        if (item._kaomojiLabelSearch === semantic) score = Math.max(score, 1350);
+        if (item._kaomojiCategorySearch === semantic) score = Math.max(score, 1280);
+        if (item._kaomojiTagSearch.includes(semantic)) score = Math.max(score, 1240);
+        if (item._kaomojiSemanticSearch.startsWith(semantic)) score = Math.max(score, 1050);
+        else if (item._kaomojiSemanticSearch.includes(semantic)) score = Math.max(score, 900);
+        if (tokens.length > 1) {
+            let matched = 0;
+            for (const token of tokens) if (item._kaomojiSemanticSearch.includes(token)) matched += 1;
+            if (matched === tokens.length) score = Math.max(score, 1120 + Math.min(80, tokens.length * 10));
+            else if (matched) score = Math.max(score, 450 + matched * 70);
+        }
+    }
+    return score;
+}
+
+function findKaomojiMatches(query, limit = KAOMOJI_VISIBLE_LIMIT) {
+    if (!kaomojiData) return [];
+    const preparedQuery = prepareKaomojiQuery(query);
+    const matches = [];
+    for (const item of kaomojiData) {
+        const score = kaomojiSearchScore(item, preparedQuery);
+        if (score <= 0) continue;
+        matches.push({ item, score, usage:kaomojiUsageStats(item.id) });
+    }
+    matches.sort((a, b) => b.score - a.score
+        || b.usage.count - a.usage.count
+        || b.usage.lastUsed - a.usage.lastUsed
+        || a.item._kaomojiIndex - b.item._kaomojiIndex);
+    return matches.slice(0, limit).map(({ item, score }) => ({ item, score }));
+}
+
+function kaomojiUniversalSearchResults(query) {
+    if (!kaomojiData || !["all", "kaomoji"].includes(searchType)) return [];
+    const limit = searchType === "kaomoji" ? KAOMOJI_VISIBLE_LIMIT : 18;
+    return findKaomojiMatches(query, limit);
+}
+
+function renderKaomoji() {
+    if (!kaomojiData) return;
+    const input = document.getElementById("kaomoji-search");
+    const query = input.value.trim();
+    const matches = query ? findKaomojiMatches(query, KAOMOJI_VISIBLE_LIMIT) : defaultKaomojiItems().map(item => ({ item, score:0 }));
+    const items = matches.map(result => result.item);
+    const list = document.getElementById("kaomoji-list");
+    list.innerHTML = items.map(item => `<button class="kaomoji-card" type="button" data-kaomoji-copy="${escapeSearchHtml(item.id)}" aria-label="Copy ${escapeSearchHtml(item.kaomoji)}">
+        <span class="kaomoji-glyph">${escapeSearchHtml(item.kaomoji)}</span>
+        <span class="kaomoji-card-meta"><strong>${escapeSearchHtml(item.label)}</strong><small>${escapeSearchHtml(item.category)}</small></span>
+        <span class="kaomoji-copy-label" aria-hidden="true">Copy</span>
+    </button>`).join("");
+    const summary = document.getElementById("kaomoji-result-summary");
+    summary.textContent = query
+        ? `${items.length}${matches.length === KAOMOJI_VISIBLE_LIMIT ? "+" : ""} matching kaomoji`
+        : `${items.length} quick picks · ${kaomojiData.length.toLocaleString()} available`;
+    document.getElementById("clear-kaomoji-search").hidden = !query;
+    document.getElementById("kaomoji-empty").hidden = items.length > 0;
+}
+
+function scheduleKaomojiRender() {
+    window.clearTimeout(kaomojiSearchTimer);
+    const input = document.getElementById("kaomoji-search");
+    if (!input.value.trim()) { renderKaomoji(); return; }
+    kaomojiSearchTimer = window.setTimeout(renderKaomoji, 120);
+}
+
+function showKaomojiCopyToast(message = "Copied!") {
+    const toast = document.getElementById("kaomoji-copy-toast");
+    if (!toast) return;
+    window.clearTimeout(kaomojiCopyToastTimer);
+    toast.textContent = message;
+    toast.hidden = false;
+    toast.classList.add("show");
+    kaomojiCopyToastTimer = window.setTimeout(() => {
+        toast.classList.remove("show");
+        window.setTimeout(() => { if (!toast.classList.contains("show")) toast.hidden = true; }, 160);
+    }, 950);
+}
+
+async function copyPlainText(text) {
+    if (navigator.clipboard?.writeText) {
+        try {
+            await navigator.clipboard.writeText(text);
+            return true;
+        }
+        catch (error) {
+            console.info("Clipboard API unavailable; using fallback.", error);
+        }
+    }
+    const textarea = document.createElement("textarea");
+    textarea.value = text;
+    textarea.setAttribute("readonly", "");
+    textarea.style.position = "fixed";
+    textarea.style.opacity = "0";
+    textarea.style.pointerEvents = "none";
+    document.body.appendChild(textarea);
+    textarea.select();
+    textarea.setSelectionRange(0, textarea.value.length);
+    let copied = false;
+    try { copied = document.execCommand("copy"); }
+    catch (error) { console.info("Clipboard fallback unavailable.", error); }
+    textarea.remove();
+    return copied;
+}
+
+async function copyKaomojiItem(item) {
+    if (!item?.kaomoji) return;
+    const copied = await copyPlainText(item.kaomoji);
+    if (!copied) {
+        showKaomojiCopyToast("Copy unavailable — press and hold instead.");
+        return;
+    }
+    recordKaomojiUse(item.id);
+    showKaomojiCopyToast("Copied!");
+}
+
+function openKaomoji() {
+    const loading = document.getElementById("kaomoji-loading");
+    const list = document.getElementById("kaomoji-list");
+    const empty = document.getElementById("kaomoji-empty");
+    if (kaomojiData) {
+        loading.hidden = true;
+        renderKaomoji();
+        return;
+    }
+    loading.hidden = false;
+    loading.textContent = "Preparing Kaomoji…";
+    list.innerHTML = "";
+    empty.hidden = true;
+    loadKaomojiData()
+        .then(() => {
+            if (currentRoute !== "kaomoji") return;
+            loading.hidden = true;
+            renderKaomoji();
+        })
+        .catch(error => {
+            console.warn("Kaomoji could not load.", error);
+            if (currentRoute !== "kaomoji") return;
+            loading.hidden = false;
+            loading.textContent = "Kaomoji could not be prepared. Check that data/kaomoji.json is in the project, then reopen Sakura.";
+        });
+}
+
 function validateCountersData(records) {
     if (!Array.isArray(records) || !records.length) return false;
     const ids = new Set();
@@ -4454,6 +4754,7 @@ function showRoute(route, updateHash = true) {
     if (normalizedRoute === "practice-one-line-many-personalities") openPersonalitiesPractice();
     if (normalizedRoute === "counters") openCounters();
     if (normalizedRoute === "etiquette") openEtiquette();
+    if (normalizedRoute === "kaomoji") openKaomoji();
     if (normalizedRoute === "chibi-guide") openChibiGuide();
     if (nativeMode) {
         currentNativeMode = nativeMode;
@@ -5134,12 +5435,14 @@ function addListeners() {
         resetSearchResultLimit();
         renderSearchResults();
         prepareTravelSearchForCurrentQuery();
+        prepareKaomojiSearchForCurrentQuery();
     });
     document.getElementById("search-form").addEventListener("submit", event => {
         event.preventDefault();
         addRecentSearch(document.getElementById("universal-search-input").value);
         renderSearchResults();
         prepareTravelSearchForCurrentQuery();
+        prepareKaomojiSearchForCurrentQuery();
     });
     document.getElementById("clear-search-input").addEventListener("click", () => {
         document.getElementById("universal-search-input").value = "";
@@ -5156,6 +5459,7 @@ function addListeners() {
         document.getElementById("search-jlpt-panel").hidden = !["all", "kanji", "vocabulary"].includes(searchType);
         renderSearchResults();
         if (["all", "travel"].includes(searchType)) prepareTravelSearchForCurrentQuery();
+        if (["all", "kaomoji"].includes(searchType)) prepareKaomojiSearchForCurrentQuery();
     });
     document.getElementById("show-more-search-results").addEventListener("click", () => {
         searchVisibleCount += 40;
@@ -5185,12 +5489,32 @@ function addListeners() {
             resetSearchResultLimit();
             renderSearchResults();
             prepareTravelSearchForCurrentQuery();
+            prepareKaomojiSearchForCurrentQuery();
         }
     });
     document.getElementById("clear-recent-searches").addEventListener("click", () => {
         recentSearches = [];
         writeJson(STORAGE.recentSearches, recentSearches);
         renderRecentSearches();
+    });
+
+    document.getElementById("kaomoji-search-form").addEventListener("submit", event => {
+        event.preventDefault();
+        window.clearTimeout(kaomojiSearchTimer);
+        renderKaomoji();
+    });
+    document.getElementById("kaomoji-search").addEventListener("input", scheduleKaomojiRender);
+    document.getElementById("clear-kaomoji-search").addEventListener("click", () => {
+        const input = document.getElementById("kaomoji-search");
+        input.value = "";
+        window.clearTimeout(kaomojiSearchTimer);
+        renderKaomoji();
+        input.focus();
+    });
+    document.getElementById("kaomoji-list").addEventListener("click", event => {
+        const button = event.target.closest("[data-kaomoji-copy]");
+        if (!button) return;
+        copyKaomojiItem(kaomojiById.get(button.dataset.kaomojiCopy));
     });
 
     document.querySelectorAll("[data-open-detail]").forEach(button => button.addEventListener("click", () => button.dataset.openDetail === "kanji" ? openKanjiDetail(currentDailyKanji, "home") : openWordDetail(currentDailyWord, "home")));
@@ -5386,7 +5710,7 @@ function initializeApp() {
     const requestedRoute = location.hash.replace("#", "");
     const travelRoutes = Object.keys(window.TRAVEL_CATEGORIES || {}).map(category => `travel-${category}`);
     const validDeckRoute = /^travel-deck-deck-.+/.test(requestedRoute);
-    showRoute(["home", "hub", "library", "learn", "learn-native", "learn-slang", "counters", "etiquette", "chibi-guide", "search", "translate", "quiz", "practice", "practice-what-would-you-say", "practice-sentence-builder", "practice-one-line-many-personalities", "native", "travel", "travel-my-phrases", "travel-decks", "travel-notes", "travel-countdown", "travel-offline", "travel-yen", "saved", ...travelRoutes].includes(requestedRoute) || validDeckRoute ? requestedRoute : "home", false);
+    showRoute(["home", "hub", "library", "learn", "learn-native", "learn-slang", "counters", "etiquette", "kaomoji", "chibi-guide", "search", "translate", "quiz", "practice", "practice-what-would-you-say", "practice-sentence-builder", "practice-one-line-many-personalities", "native", "travel", "travel-my-phrases", "travel-decks", "travel-notes", "travel-countdown", "travel-offline", "travel-yen", "saved", ...travelRoutes].includes(requestedRoute) || validDeckRoute ? requestedRoute : "home", false);
     initializePwaUpdates();
 }
 

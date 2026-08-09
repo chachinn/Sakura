@@ -11,7 +11,7 @@
     <script>try { document.documentElement.dataset.theme = localStorage.getItem("sakuraAppearanceTheme") || "pink"; } catch (error) { document.documentElement.dataset.theme = "pink"; }</script>
     <link rel="manifest" href="manifest.webmanifest">
     <link rel="apple-touch-icon" href="icons/icon-180.png">
-    <link rel="stylesheet" href="style.css?v=62">
+    <link rel="stylesheet" href="style.css?v=63">
 </head>
 <body>
     <div class="app-shell">
@@ -144,6 +144,7 @@
                     <button class="hub-link" type="button" data-route="practice"><span aria-hidden="true">✎</span><span><strong>Practice</strong><small>Use Japanese in guided activities.</small></span><b aria-hidden="true">›</b></button>
                     <button class="hub-link" type="button" data-route="counters"><span aria-hidden="true">本</span><span><strong>Counters</strong><small>Learn how Japanese counts everyday things.</small></span><b aria-hidden="true">›</b></button>
                     <button class="hub-link" type="button" data-route="etiquette"><span aria-hidden="true">礼</span><span><strong>Gestures &amp; Etiquette</strong><small>Understand everyday manners and customs in Japan.</small></span><b aria-hidden="true">›</b></button>
+                    <button class="hub-link" type="button" data-route="kaomoji"><span aria-hidden="true">顔</span><span><strong>Kaomoji</strong><small>Search cute Japanese faces and tap to copy.</small></span><b aria-hidden="true">›</b></button>
                     <button class="hub-link" type="button" data-hub-action="flashcards"><span aria-hidden="true">◫</span><span><strong>Flashcards</strong><small>Review the Japanese you saved.</small></span><b aria-hidden="true">›</b></button>
                     <button class="hub-link" type="button" data-route="translate"><span aria-hidden="true">文</span><span><strong>English to Japanese</strong><small>Natural, context-aware suggestions.</small></span><b aria-hidden="true">›</b></button>
                 </div></section>
@@ -266,6 +267,21 @@
                 </article>
             </section>
 
+            <section id="kaomoji-view" class="view kaomoji-view" data-view="kaomoji" aria-labelledby="kaomoji-heading" hidden>
+                <header class="kaomoji-heading"><button class="back-button" type="button" data-route="home" aria-label="Back from Kaomoji">‹</button><div><span class="section-kicker">かわいい顔文字</span><h1 id="kaomoji-heading">Kaomoji</h1><p>Tap any kaomoji to copy it instantly. Your most-used faces rise to the top.</p></div></header>
+                <section class="kaomoji-panel" aria-label="Kaomoji quick copy library">
+                    <form id="kaomoji-search-form" class="kaomoji-search-form" role="search">
+                        <span aria-hidden="true">⌕</span>
+                        <input id="kaomoji-search" type="search" placeholder="Search happy, cute cat, good morning…" autocomplete="off" enterkeyhint="search" aria-label="Search Kaomoji">
+                        <button id="clear-kaomoji-search" type="button" aria-label="Clear Kaomoji search" hidden>×</button>
+                    </form>
+                    <div class="kaomoji-toolbar-status"><span id="kaomoji-result-summary">50 quick picks</span><small>Maximum 50 shown at once for speed.</small></div>
+                    <p id="kaomoji-loading" class="kaomoji-loading" role="status">Preparing Kaomoji…</p>
+                    <div id="kaomoji-list" class="kaomoji-grid" aria-live="polite"></div>
+                    <div id="kaomoji-empty" class="search-empty-state" hidden><span aria-hidden="true">(｡•́︿•̀｡)</span><strong>No kaomoji match.</strong><p>Try a mood, message, animal, or expression such as “good luck”, “cute cat”, or “sorry”.</p></div>
+                </section>
+            </section>
+
             <section id="search-view" class="view" data-view="search" aria-labelledby="search-heading" hidden>
                 <div class="search-page-heading">
                     <button id="close-search" class="back-button" type="button" aria-label="Back from search">‹</button>
@@ -273,7 +289,7 @@
                 </div>
                 <form id="search-form" class="universal-search-form" role="search">
                     <span aria-hidden="true">⌕</span>
-                    <input id="universal-search-input" type="search" placeholder="Kanji, kana, romaji, or English" autocomplete="off" enterkeyhint="search" aria-label="Search Sakura">
+                    <input id="universal-search-input" type="search" placeholder="Kanji, words, travel, kaomoji, or English" autocomplete="off" enterkeyhint="search" aria-label="Search Sakura">
                     <button id="clear-search-input" type="button" aria-label="Clear search" hidden>×</button>
                     <button class="search-submit-button" type="submit" aria-label="Submit search">→</button>
                 </form>
@@ -285,6 +301,7 @@
                     <button class="search-filter-chip" type="button" data-search-type="native">Native</button>
                     <button class="search-filter-chip" type="button" data-search-type="slang">Slang</button>
                     <button class="search-filter-chip" type="button" data-search-type="travel">Travel</button>
+                    <button class="search-filter-chip" type="button" data-search-type="kaomoji">Kaomoji</button>
                 </div>
                 <section id="search-jlpt-panel" class="search-jlpt-panel" aria-labelledby="search-jlpt-heading">
                     <div class="search-filter-heading"><h2 id="search-jlpt-heading">JLPT Levels</h2><span id="search-jlpt-summary">All levels</span></div>
@@ -631,6 +648,8 @@
     </div>
 
     <button id="chibi-companion" class="chibi-companion" type="button" aria-label="Sakura Guide companion. Tap for a reaction." hidden><span id="chibi-companion-bubble" class="chibi-companion-bubble" hidden></span><span id="chibi-companion-character" class="chibi-companion-character" aria-hidden="true"></span></button>
+
+    <div id="kaomoji-copy-toast" class="kaomoji-copy-toast" role="status" aria-live="polite" hidden>Copied!</div>
 
     <dialog id="settings-dialog" class="settings-dialog">
         <div class="settings-card appearance-settings-card">

@@ -1,17 +1,18 @@
-const SHELL_CACHE_VERSION = "sakura-shell-v93";
+const SHELL_CACHE_VERSION = "sakura-shell-v94";
 const KANJI_CONTENT_CACHE_VERSION = "sakura-kanji-content-v1";
 const TRAVEL_CONTENT_CACHE_VERSION = "sakura-travel-content-v1";
 const VOCABULARY_CONTENT_CACHE_VERSION = "sakura-vocabulary-content-v1";
 
 const APP_SHELL = [
     "./index.html",
-    "./style.css?v=62",
+    "./style.css?v=63",
     "./app.js?v=72",
     "./data/practice-what-would-you-say.js?v=2",
     "./data/practice-sentence-builder.js?v=2",
     "./data/practice-one-line-many-personalities.js?v=2",
     "./data/counters.json?v=1",
     "./data/etiquette.json?v=1",
+    "./data/kaomoji.json?v=1",
     "./avatar/sakura.png",
     "./avatar/mochi.png",
     "./avatar/hikari.png",
@@ -166,8 +167,11 @@ self.addEventListener(
                 return;
             }
 
+            const networkRequest = requestUrl.pathname.endsWith("/app.js")
+                ? new Request(request, { cache:"no-cache" })
+                : request;
             event.respondWith(
-                fetch(request)
+                fetch(networkRequest)
                     .then(
                         response => {
                             if (response.ok) {
