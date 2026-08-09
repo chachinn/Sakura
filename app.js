@@ -11,6 +11,7 @@ const STORAGE = {
     quizStats: "chaQuizStats",
     activeQuiz: "chaActiveQuizType",
     mastery: "sakuraMastery",
+    dailyProgress: "sakuraDailyProgress",
     kanaQuizGroups: "sakuraKanaQuizGroups",
     recentSearches: "chaRecentSearches",
     userNative: "sakura_user_native_entries",
@@ -158,6 +159,109 @@ function readJson(key, fallback) {
 
 function writeJson(key, value) {
     localStorage.setItem(key, JSON.stringify(value));
+}
+
+const DAILY_GOALS = Object.freeze([5, 10, 20, 30]);
+
+function localDateKey(date = new Date()) {
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, "0");
+    const day = String(date.getDate()).padStart(2, "0");
+    return `${year}-${month}-${day}`;
+}
+
+function isValidLocalDateKey(value) {
+    if (!/^\d{4}-\d{2}-\d{2}$/.test(String(value || ""))) return false;
+    const [year, month, day] = value.split("-").map(Number);
+    return localDateKey(new Date(year, month - 1, day, 12)) === value;
+}
+
+function previousLocalDateKey(dateKey) {
+    if (!isValidLocalDateKey(dateKey)) return "";
+    const [year, month, day] = dateKey.split("-").map(Number);
+    return localDateKey(new Date(year, month - 1, day - 1, 12));
+}
+
+function normalizeDailyProgress(value, today = localDateKey()) {
+    const source = value && typeof value === "object" && !Array.isArray(value) ? value : {};
+    const storedDate = isValidLocalDateKey(source.date) ? source.date : today;
+    const count = name => {
+        const number = Number(source[name]);
+        return Number.isFinite(number) ? Math.max(0, Math.floor(number)) : 0;
+    };
+    return {
+        date: today,
+        completedReviewsToday: storedDate === today ? count("completedReviewsToday") : 0,
+        dailyGoal: DAILY_GOALS.includes(Number(source.dailyGoal)) ? Number(source.dailyGoal) : 10,
+        currentStreak: count("currentStreak"),
+        longestStreak: Math.max(count("longestStreak"), count("currentStreak")),
+        lastCompletedDate: isValidLocalDateKey(source.lastCompletedDate) ? source.lastCompletedDate : ""
+    };
+}
+
+let dailyProgress = normalizeDailyProgress(readJson(STORAGE.dailyProgress, {}));
+
+function persistDailyProgress() {
+    writeJson(STORAGE.dailyProgress, dailyProgress);
+}
+
+persistDailyProgress();
+
+function refreshDailyProgressDate() {
+    const normalized = normalizeDailyProgress(dailyProgress);
+    const changed = normalized.date !== dailyProgress.date || normalized.completedReviewsToday !== dailyProgress.completedReviewsToday;
+    dailyProgress = normalized;
+    if (changed) persistDailyProgress();
+    return dailyProgress;
+}
+
+function completeDailyGoalIfNeeded() {
+    refreshDailyProgressDate();
+    if (dailyProgress.completedReviewsToday < dailyProgress.dailyGoal || dailyProgress.lastCompletedDate === dailyProgress.date) return false;
+    // Opening Sakura never breaks a streak. The next completed day decides whether it continues or restarts.
+    dailyProgress.currentStreak = dailyProgress.lastCompletedDate === previousLocalDateKey(dailyProgress.date) ? dailyProgress.currentStreak + 1 : 1;
+    dailyProgress.longestStreak = Math.max(dailyProgress.longestStreak, dailyProgress.currentStreak);
+    dailyProgress.lastCompletedDate = dailyProgress.date;
+    persistDailyProgress();
+    return true;
+}
+
+function renderDailyProgress() {
+    refreshDailyProgressDate();
+    completeDailyGoalIfNeeded();
+    const count = dailyProgress.completedReviewsToday;
+    const goal = dailyProgress.dailyGoal;
+    const countElement = document.getElementById("daily-study-count");
+    if (!countElement) return;
+    countElement.textContent = `${count} / ${goal}`;
+    document.getElementById("daily-current-streak").textContent = dailyProgress.currentStreak;
+    document.getElementById("daily-longest-streak").textContent = dailyProgress.longestStreak;
+    document.getElementById("daily-goal-select").value = goal;
+    const progress = document.querySelector(".daily-study-progress");
+    progress.setAttribute("aria-valuemax", goal);
+    progress.setAttribute("aria-valuenow", Math.min(count, goal));
+    document.getElementById("daily-study-progress-bar").style.width = `${Math.min(100, (count / goal) * 100)}%`;
+    const complete = count >= goal;
+    document.getElementById("daily-goal-status").textContent = complete ? "Goal complete 🌸" : `${Math.max(0, goal - count)} to bloom`;
+    document.querySelector(".daily-study-card").classList.toggle("complete", complete);
+}
+
+function recordDailyStudyAction() {
+    refreshDailyProgressDate();
+    dailyProgress.completedReviewsToday += 1;
+    persistDailyProgress();
+    completeDailyGoalIfNeeded();
+    renderDailyProgress();
+}
+
+function setDailyGoal(value) {
+    const goal = Number(value);
+    if (!DAILY_GOALS.includes(goal)) return;
+    refreshDailyProgressDate();
+    dailyProgress.dailyGoal = goal;
+    persistDailyProgress();
+    completeDailyGoalIfNeeded();
+    renderDailyProgress();
 }
 
 const MASTERY_STATES = Object.freeze(["New", "Learning", "Familiar", "Mastered"]);
@@ -386,6 +490,7 @@ let quizStats = {
 };
 const quizTransitionLocks = { kana: false, kanji: false, vocabulary: false };
 const quizTransitionTimers = { kana: null, kanji: null, vocabulary: null };
+const dailyQuestionCredited = { kanji: false, vocabulary: false };
 
 let currentRoute = "home";
 let hubDrawerReturnFocus = null;
@@ -1021,6 +1126,7 @@ function newKanjiQuiz() {
     const pool = itemsForLevels(window.KANJI_DATA, "kanjiQuiz");
     const index = pickIndex(pool, currentKanjiQuiz, 1, true);
     currentKanjiQuiz = index < 0 ? null : pool[index];
+    dailyQuestionCredited.kanji = false;
     document.getElementById("kanji-quiz-character").textContent = currentKanjiQuiz?.character || "—";
     document.getElementById("kanji-quiz-answer").value = "";
     setFeedback("kanji-quiz-feedback", currentKanjiQuiz ? "" : "No content is available for these levels.", "incorrect");
@@ -1032,6 +1138,7 @@ function newVocabularyQuiz() {
     const pool = itemsForLevels(window.VOCABULARY_DATA, "vocabularyQuiz");
     const index = pickIndex(pool, currentVocabularyQuiz, 1, true);
     currentVocabularyQuiz = index < 0 ? null : pool[index];
+    dailyQuestionCredited.vocabulary = false;
     document.getElementById("vocabulary-quiz-word").textContent = currentVocabularyQuiz?.word || "—";
     document.getElementById("vocabulary-quiz-reading").textContent = currentVocabularyQuiz?.kana || "No content is available for these levels.";
     document.getElementById("vocabulary-quiz-answer").value = "";
@@ -1167,6 +1274,7 @@ function isKanjiQuizAnswerCorrect(item, rawAnswer) {
 
 function checkKanjiQuiz() {
     if (quizTransitionLocks.kanji || !currentKanjiQuiz) return;
+    if (!dailyQuestionCredited.kanji) { dailyQuestionCredited.kanji = true; recordDailyStudyAction(); }
     const correct = isKanjiQuizAnswerCorrect(currentKanjiQuiz, document.getElementById("kanji-quiz-answer").value);
     recordMasteryResult(currentKanjiQuiz, correct);
     if (correct) completeCorrectAnswer("kanji", "kanji-quiz-feedback", `Correct! ${currentKanjiQuiz.character}: ${currentKanjiQuiz.meaning}`, newKanjiQuiz);
@@ -1177,6 +1285,7 @@ function checkKanjiQuiz() {
 
 function checkVocabularyQuiz() {
     if (quizTransitionLocks.vocabulary || !currentVocabularyQuiz) return;
+    if (!dailyQuestionCredited.vocabulary) { dailyQuestionCredited.vocabulary = true; recordDailyStudyAction(); }
     const answer = normalizeAnswer(document.getElementById("vocabulary-quiz-answer").value);
     const meanings = currentVocabularyQuiz.meaning.split(/[;,]/).map(normalizeAnswer);
     const correct = answer && meanings.some(value => value === answer || value.includes(answer));
@@ -3225,7 +3334,7 @@ function renderWhatWouldYouSayQuestion() {
     document.getElementById("wwys-progress").textContent = `${session.index + 1} / ${session.questions.length}`;
     document.getElementById("wwys-scenario").textContent = question.scenario;
     document.getElementById("wwys-prompt").textContent = question.prompt;
-    document.getElementById("wwys-choices").innerHTML = question.choices.map((choice, index) => `<button class="practice-choice" type="button" data-wwys-choice="${index}"><strong>${escapeSearchHtml(choice.japanese)}</strong></button>`).join("");
+    document.getElementById("wwys-choices").innerHTML = question.choices.map((choice, index) => `<button class="practice-choice" type="button" data-wwys-choice="${index}"><strong>${escapeSearchHtml(choice.japanese)}</strong><span class="practice-choice-romaji" data-practice-romaji hidden>${escapeSearchHtml(choice.romaji)}</span></button>`).join("");
     document.getElementById("wwys-feedback").hidden = true;
     session.answered = false;
     applyPracticeRomajiVisibility();
@@ -3612,6 +3721,7 @@ function showRoute(route, updateHash = true) {
     const isTravelUtilityRoute = ["travel-my-phrases", "travel-decks", "travel-notes", "travel-countdown", "travel-offline", "travel-yen"].includes(normalizedRoute) || Boolean(deckRouteMatch);
     const viewRoute = nativeMode ? "native" : travelCategory ? "travel-category" : deckRouteMatch ? "travel-deck" : normalizedRoute;
     currentRoute = normalizedRoute;
+    if (normalizedRoute === "home") renderDailyProgress();
     if (normalizedRoute === "library") initializeLibrary();
     if (normalizedRoute === "search") buildSearchIndex();
     if (normalizedRoute === "practice-what-would-you-say") openWhatWouldYouSay();
@@ -4392,6 +4502,7 @@ function addListeners() {
     document.getElementById("close-settings").addEventListener("click", () => settings.close());
     document.getElementById("done-settings").addEventListener("click", () => settings.close());
     document.getElementById("theme-options").addEventListener("click", event => { const button=event.target.closest("[data-theme-choice]"); if(button) applyTheme(button.dataset.themeChoice); });
+    document.getElementById("daily-goal-select").addEventListener("change", event => setDailyGoal(event.target.value));
     document.getElementById("apply-custom-accent").addEventListener("click", () => applyCustomAccent(document.getElementById("custom-accent-input").value));
     document.getElementById("custom-accent-input").addEventListener("keydown", event => { if(event.key === "Enter"){ event.preventDefault(); applyCustomAccent(event.currentTarget.value); } });
     document.getElementById("custom-accent-input").addEventListener("input", event => { const hex=normalizeCustomHex(event.currentTarget.value); document.getElementById("custom-accent-preview").style.setProperty("--preview-color",hex||"var(--color-primary)"); setCustomAccentMessage(""); });

@@ -11,7 +11,7 @@
     <script>try { document.documentElement.dataset.theme = localStorage.getItem("sakuraAppearanceTheme") || "pink"; } catch (error) { document.documentElement.dataset.theme = "pink"; }</script>
     <link rel="manifest" href="manifest.webmanifest">
     <link rel="apple-touch-icon" href="icons/icon-180.png">
-    <link rel="stylesheet" href="style.css?v=49">
+    <link rel="stylesheet" href="style.css?v=51">
 </head>
 <body>
     <div class="app-shell">
@@ -36,6 +36,17 @@
                         <p>A little Japanese every day, and your garden will bloom.</p>
                     </div>
                     <button class="home-continue-button" type="button" data-route="learn"><span aria-hidden="true">学</span><strong>Continue Learning</strong></button>
+                </section>
+
+                <section class="daily-study-card" aria-labelledby="daily-study-heading">
+                    <div class="daily-study-topline">
+                        <div><span class="section-kicker">Daily Study</span><h2 id="daily-study-heading"><span id="daily-study-count">0 / 10</span> today</h2></div>
+                        <label class="daily-goal-control" for="daily-goal-select">Goal
+                            <select id="daily-goal-select" aria-label="Daily study goal"><option value="5">5</option><option value="10" selected>10</option><option value="20">20</option><option value="30">30</option></select>
+                        </label>
+                    </div>
+                    <div class="daily-study-progress" role="progressbar" aria-label="Today's study progress" aria-valuemin="0" aria-valuemax="10" aria-valuenow="0"><span id="daily-study-progress-bar"></span></div>
+                    <div class="daily-study-stats"><span><small>Current streak</small><strong>🌸 <b id="daily-current-streak">0</b> days</strong></span><span><small>Longest</small><strong><b id="daily-longest-streak">0</b> days</strong></span><span id="daily-goal-status" class="daily-goal-status">Keep growing</span></div>
                 </section>
 
                 <section class="level-panel home-level-panel" aria-labelledby="global-level-heading">
