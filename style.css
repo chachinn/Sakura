@@ -4315,31 +4315,37 @@ body.wallpaper-enabled .etiquette-toolbar,body.wallpaper-enabled .etiquette-card
 /* Chibi Guide V2: original illustrated SVG layers. */
 .sakura-guide-svg { width:190px; height:260px; display:block; overflow:visible; filter:drop-shadow(0 10px 10px rgba(50,27,41,.18)); }
 .sakura-guide-svg * { vector-effect:non-scaling-stroke; transform-box:fill-box; }
-.svg-hair-back { stroke:color-mix(in srgb,var(--svg-hair) 72%,#281a24); stroke-width:4; stroke-linejoin:round; }
-.svg-hair-back path,.svg-hair-back circle { filter:drop-shadow(0 3px 0 color-mix(in srgb,var(--svg-hair) 70%,white)); }
-.svg-face,.svg-neck,.svg-legs > path:not(.svg-shoe),.svg-arm path,.svg-arm circle { fill:var(--svg-skin); stroke:#704b4d; stroke-width:3.5; stroke-linejoin:round; }
+.svg-hair-back { stroke:color-mix(in srgb,var(--svg-hair) 68%,#281a24); stroke-width:4.6; stroke-linejoin:round; }
+.svg-hair-back path,.svg-hair-back circle { filter:drop-shadow(0 2px 0 color-mix(in srgb,var(--svg-hair) 82%,white)); }
+.svg-hair-shadow { fill:var(--svg-hair-shadow); stroke:none; opacity:.72; filter:none!important; }
+.svg-face,.svg-neck,.svg-leg,.svg-limb,.svg-hand { fill:var(--svg-skin); stroke:#704b4d; stroke-linejoin:round; }
+.svg-face { stroke-width:4.8; }.svg-neck,.svg-leg,.svg-limb { stroke-width:3.8; }.svg-hand { stroke-width:3.4; }
 .svg-head { transform-origin:center; }
-.svg-brow { fill:none; stroke:color-mix(in srgb,var(--svg-hair) 70%,#4c3037); stroke-width:4; stroke-linecap:round; }
-.svg-eye-white { fill:#fffdfd; stroke:#513b48; stroke-width:4; }
-.svg-pupil { fill:#28202d; }.svg-eye-shine { fill:white; }.svg-eye-line { fill:none; stroke:#513b48; stroke-width:5; stroke-linecap:round; }
+.svg-brow { fill:none; stroke:color-mix(in srgb,var(--svg-hair) 62%,#4c3037); stroke-width:3.4; stroke-linecap:round; }
+.svg-eye-white { fill:#fffdfd; stroke:#4b3444; stroke-width:2.6; stroke-linejoin:round; }
+.svg-iris { stroke:color-mix(in srgb,currentColor 20%,#4b3444); stroke-width:1; }.svg-pupil { fill:#292031; }.svg-eye-shine { fill:white; }.svg-eye-line { fill:none; stroke:#493340; stroke-width:5.2; stroke-linecap:round; }
+.svg-upper-lash { fill:none; stroke:#3d2937; stroke-width:6; stroke-linecap:round; }.svg-lashes { fill:none; stroke:#3d2937; stroke-width:3.8; stroke-linecap:round; }.svg-lower-eye { fill:none; stroke:color-mix(in srgb,var(--svg-outfit) 50%,#9b7184); stroke-width:1.7; stroke-linecap:round; opacity:.65; }
 .svg-mouth-line { fill:none; stroke:#9e4f65; stroke-width:3.5; stroke-linecap:round; }.svg-mouth-fill { fill:#df7890; stroke:#8e465a; stroke-width:3; }
-.svg-blush { fill:#e98ba1; opacity:.48; }
-.svg-hair-front { stroke:color-mix(in srgb,var(--svg-hair) 72%,#281a24); stroke-width:4; stroke-linejoin:round; }
-.svg-hair-highlight { fill:none; stroke:rgba(255,255,255,.52); stroke-width:9; stroke-linecap:round; }
+.svg-tongue { fill:none; stroke:#f5afbd; stroke-width:4; stroke-linecap:round; }.svg-nose { fill:none; stroke:var(--svg-skin-shade); stroke-width:1.5; stroke-linecap:round; opacity:.55; }
+.svg-blush-marks > path { fill:none; stroke:#e889a2; stroke-width:2.2; stroke-linecap:round; opacity:.68; }.svg-blush-soft { stroke-width:7!important; opacity:.18!important; }
+.svg-hair-front { stroke:color-mix(in srgb,var(--svg-hair) 68%,#281a24); stroke-width:4.6; stroke-linejoin:round; }
+.svg-hair-strands { fill:var(--svg-hair-shade); opacity:.9; stroke-width:3.4; }
+.svg-hair-highlight { fill:none; stroke:var(--svg-hair-light); stroke-width:7; stroke-linecap:round; opacity:.7; }
+.svg-side-locks { stroke:color-mix(in srgb,var(--svg-hair) 68%,#281a24); stroke-width:3.6; stroke-linejoin:round; }
 .svg-body,.svg-arm { transform-origin:center top; }
-.svg-outfit { fill:var(--svg-outfit); stroke:#654350; stroke-width:4; stroke-linejoin:round; }.svg-outfit-detail { fill:var(--svg-outfit-detail); opacity:.9; }.svg-collar { fill:var(--svg-outfit-detail); stroke:#654350; stroke-width:3; stroke-linejoin:round; }
-.svg-shoe { fill:#453c4c; stroke:#2b2630; stroke-width:4; }.svg-shoe::after { fill:white; }
+.svg-outfit-layers path { stroke:#654350; stroke-width:3.4; stroke-linejoin:round; }.svg-top,.svg-jacket,.svg-yukata { fill:var(--svg-outfit); }.svg-sleeve,.svg-puff-sleeve,.svg-yukata-sleeve { fill:var(--svg-outfit-detail); }.svg-collar,.svg-apron { fill:var(--svg-outfit-detail); }.svg-skirt,.svg-trouser { fill:color-mix(in srgb,var(--svg-outfit) 86%,#4c3e55); }.svg-fold,.svg-button-line,.svg-yukata-lapel { fill:none; stroke:color-mix(in srgb,var(--svg-outfit) 65%,#4a3544)!important; stroke-width:2.2!important; stroke-linecap:round; }.svg-button { fill:var(--svg-outfit-detail); stroke:#654350; stroke-width:1.5; }.svg-apron-pocket { fill:color-mix(in srgb,var(--svg-outfit-detail) 88%,white); }.svg-obi { fill:var(--svg-outfit-detail); }.svg-obi-knot { fill:color-mix(in srgb,var(--svg-outfit-detail) 74%,var(--svg-outfit)); }
+.svg-shoe { fill:#443a49; stroke:#28232d; stroke-width:4; stroke-linejoin:round; }.svg-shoe-detail { fill:none; stroke:#e9dfe6; stroke-width:3; stroke-linecap:round; }
 .svg-glasses rect,.svg-glasses path { fill:none; stroke:#514653; stroke-width:4; stroke-linecap:round; }
-.svg-accessory { fill:#ed7fa3; stroke:#8e4c69; stroke-width:2; }.svg-beret { fill:#a56f99; stroke:#5c405b; stroke-width:4; }
+.svg-accessory { fill:#ed7fa3; stroke:#8e4c69; stroke-width:2.5; }.svg-accessory circle:last-child { fill:#ffd6e2; }.svg-beret { fill:#a56f99; stroke:#5c405b; stroke-width:4; }
 .svg-prop { font-size:36px; paint-order:stroke; stroke:rgba(255,255,255,.8); stroke-width:4; }
-.svg-pose-small-bow .svg-head,.svg-pose-small-bow .svg-body { transform:rotate(9deg) translate(8px,4px); transform-origin:center top; }
-.svg-pose-formal-bow .svg-head,.svg-pose-formal-bow .svg-body { transform:rotate(20deg) translate(18px,8px); transform-origin:center top; }
+.svg-pose-small-bow .svg-head,.svg-pose-small-bow .svg-hair-back,.svg-pose-small-bow .svg-hair-front,.svg-pose-small-bow .svg-side-locks,.svg-pose-small-bow .svg-body { transform:rotate(9deg) translate(8px,4px); transform-origin:center top; }
+.svg-pose-formal-bow .svg-head,.svg-pose-formal-bow .svg-hair-back,.svg-pose-formal-bow .svg-hair-front,.svg-pose-formal-bow .svg-side-locks,.svg-pose-formal-bow .svg-body { transform:rotate(20deg) translate(18px,8px); transform-origin:center top; }
 .svg-pose-explaining .svg-arm-right,.svg-pose-waving .svg-arm-right { transform:rotate(-118deg) translateY(-3px); }
 .svg-pose-hands-together .svg-arm-left { transform:rotate(-42deg); }.svg-pose-hands-together .svg-arm-right { transform:rotate(42deg); }
 .svg-pose-holding .svg-arm-left,.svg-pose-dining .svg-arm-left { transform:rotate(-34deg); }.svg-pose-holding .svg-arm-right,.svg-pose-dining .svg-arm-right { transform:rotate(34deg); }
 .svg-pose-sitting .svg-body { transform:translateY(16px); }.svg-pose-sitting .svg-legs { transform:translateY(13px) scaleY(.7); transform-origin:center top; }
 .svg-pose-walking .svg-legs > path:first-child { transform:rotate(10deg); transform-origin:top; }.svg-pose-walking .svg-legs > path:nth-child(2) { transform:rotate(-10deg); transform-origin:top; }
-.svg-expression-excited .svg-eye-white { transform:scaleY(1.08); transform-origin:center; }.svg-expression-proud .svg-brow { transform:translateY(-3px); }
+.svg-expression-excited .svg-eye-white { transform:scaleY(1.08); transform-origin:center; }.svg-expression-proud .svg-brow { transform:translateY(-4px); }.svg-expression-surprised .svg-brow{transform:translateY(-8px)}.svg-expression-worried .svg-brow{transform:translateY(3px) rotate(-3deg)}.svg-expression-thinking .svg-brow{transform:translateY(-2px) rotate(3deg)}.svg-expression-embarrassed .svg-brow{transform:translateY(2px)}
 .sakura-guide-compact { width:92px; height:126px; }
 .etiquette-illustration .sakura-guide-compact { margin:-4px 0; }
 .chibi-preview-stage .sakura-guide-svg { width:180px; height:246px; }
