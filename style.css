@@ -4329,17 +4329,19 @@ body.wallpaper-enabled .etiquette-toolbar,body.wallpaper-enabled .etiquette-card
 .svg-tongue { fill:none; stroke:#f5afbd; stroke-width:4; stroke-linecap:round; }.svg-nose { fill:none; stroke:var(--svg-skin-shade); stroke-width:1.5; stroke-linecap:round; opacity:.55; }
 .svg-blush-marks > path { fill:none; stroke:#e889a2; stroke-width:2.2; stroke-linecap:round; opacity:.68; }.svg-blush-soft { stroke-width:7!important; opacity:.18!important; }
 .svg-hair-front { stroke:color-mix(in srgb,var(--svg-hair) 68%,#281a24); stroke-width:4.6; stroke-linejoin:round; }
-.svg-hair-strands { fill:var(--svg-hair-shade); opacity:.9; stroke-width:3.4; }
+.svg-bang { fill:var(--svg-hair); stroke-width:3.1; }
 .svg-hair-highlight { fill:none; stroke:var(--svg-hair-light); stroke-width:7; stroke-linecap:round; opacity:.7; }
 .svg-side-locks { stroke:color-mix(in srgb,var(--svg-hair) 68%,#281a24); stroke-width:3.6; stroke-linejoin:round; }
+.svg-ear { fill:var(--svg-skin); stroke:#704b4d; stroke-width:3.4; stroke-linejoin:round; }
+.svg-character-pose { transform-origin:130px 180px; transform-box:view-box; }
 .svg-body,.svg-arm { transform-origin:center top; }
 .svg-outfit-layers path { stroke:#654350; stroke-width:3.4; stroke-linejoin:round; }.svg-top,.svg-jacket,.svg-yukata { fill:var(--svg-outfit); }.svg-sleeve,.svg-puff-sleeve,.svg-yukata-sleeve { fill:var(--svg-outfit-detail); }.svg-collar,.svg-apron { fill:var(--svg-outfit-detail); }.svg-skirt,.svg-trouser { fill:color-mix(in srgb,var(--svg-outfit) 86%,#4c3e55); }.svg-fold,.svg-button-line,.svg-yukata-lapel { fill:none; stroke:color-mix(in srgb,var(--svg-outfit) 65%,#4a3544)!important; stroke-width:2.2!important; stroke-linecap:round; }.svg-button { fill:var(--svg-outfit-detail); stroke:#654350; stroke-width:1.5; }.svg-apron-pocket { fill:color-mix(in srgb,var(--svg-outfit-detail) 88%,white); }.svg-obi { fill:var(--svg-outfit-detail); }.svg-obi-knot { fill:color-mix(in srgb,var(--svg-outfit-detail) 74%,var(--svg-outfit)); }
 .svg-shoe { fill:#443a49; stroke:#28232d; stroke-width:4; stroke-linejoin:round; }.svg-shoe-detail { fill:none; stroke:#e9dfe6; stroke-width:3; stroke-linecap:round; }
 .svg-glasses rect,.svg-glasses path { fill:none; stroke:#514653; stroke-width:4; stroke-linecap:round; }
 .svg-accessory { fill:#ed7fa3; stroke:#8e4c69; stroke-width:2.5; }.svg-accessory circle:last-child { fill:#ffd6e2; }.svg-beret { fill:#a56f99; stroke:#5c405b; stroke-width:4; }
 .svg-prop { font-size:36px; paint-order:stroke; stroke:rgba(255,255,255,.8); stroke-width:4; }
-.svg-pose-small-bow .svg-head,.svg-pose-small-bow .svg-hair-back,.svg-pose-small-bow .svg-hair-front,.svg-pose-small-bow .svg-side-locks,.svg-pose-small-bow .svg-body { transform:rotate(9deg) translate(8px,4px); transform-origin:center top; }
-.svg-pose-formal-bow .svg-head,.svg-pose-formal-bow .svg-hair-back,.svg-pose-formal-bow .svg-hair-front,.svg-pose-formal-bow .svg-side-locks,.svg-pose-formal-bow .svg-body { transform:rotate(20deg) translate(18px,8px); transform-origin:center top; }
+.svg-pose-small-bow .svg-character-pose { transform:rotate(7deg) translate(7px,3px); }
+.svg-pose-formal-bow .svg-character-pose { transform:rotate(14deg) translate(13px,7px); }
 .svg-pose-explaining .svg-arm-right,.svg-pose-waving .svg-arm-right { transform:rotate(-118deg) translateY(-3px); }
 .svg-pose-hands-together .svg-arm-left { transform:rotate(-42deg); }.svg-pose-hands-together .svg-arm-right { transform:rotate(42deg); }
 .svg-pose-holding .svg-arm-left,.svg-pose-dining .svg-arm-left { transform:rotate(-34deg); }.svg-pose-holding .svg-arm-right,.svg-pose-dining .svg-arm-right { transform:rotate(34deg); }
