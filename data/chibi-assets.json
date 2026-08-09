@@ -1,5 +1,5 @@
 {
-  "version": 1,
+  "version": 2,
   "basePath": "./assets/chibi/",
   "fallbackPose": "neutral",
   "placeholder": {
@@ -21,7 +21,7 @@
     "foreground"
   ],
   "poses": {
-    "neutral": { "ready": false, "layers": {} },
+    "neutral": { "ready": true, "layers": { "foreground": "default/sakura-guide-default.webp" } },
     "small-bow": { "ready": false, "fallback": "neutral", "layers": {} },
     "formal-bow": { "ready": false, "fallback": "small-bow", "layers": {} },
     "explaining": { "ready": false, "fallback": "neutral", "layers": {} },

@@ -4037,7 +4037,7 @@ function renderLegacyProceduralChibiGuide(settings = chibiGuide, illustration = 
 const CHIBI_LAYER_ORDER = Object.freeze(["back-hair", "rear-pose", "skin-body", "outfit", "face-eyes", "front-hair", "glasses", "accessory", "front-arms", "prop", "foreground"]);
 
 function validateChibiAssetManifest(manifest) {
-    return manifest && manifest.version === 1
+    return manifest && manifest.version === 2
         && typeof manifest.basePath === "string" && /^\.\/assets\/chibi\/$/.test(manifest.basePath)
         && Array.isArray(manifest.layerOrder) && CHIBI_LAYER_ORDER.every((layer, index) => manifest.layerOrder[index] === layer)
         && manifest.poses?.neutral && manifest.skinTones && manifest.hairStyles && manifest.eyeColors && manifest.outfits && manifest.accessories
@@ -4056,7 +4056,7 @@ function refreshChibiAssetVisuals() {
 function loadChibiAssetManifest() {
     if (chibiAssetManifest) return Promise.resolve(chibiAssetManifest);
     if (chibiAssetManifestPromise) return chibiAssetManifestPromise;
-    chibiAssetManifestPromise = fetch("./data/chibi-assets.json?v=1")
+    chibiAssetManifestPromise = fetch("./data/chibi-assets.json?v=2")
         .then(response => { if (!response.ok) throw new Error(`Chibi asset manifest returned ${response.status}.`); return response.json(); })
         .then(manifest => {
             if (!validateChibiAssetManifest(manifest)) throw new Error("Chibi asset manifest validation failed.");
