@@ -11,12 +11,12 @@
     <script>try { document.documentElement.dataset.theme = localStorage.getItem("sakuraAppearanceTheme") || "pink"; } catch (error) { document.documentElement.dataset.theme = "pink"; }</script>
     <link rel="manifest" href="manifest.webmanifest">
     <link rel="apple-touch-icon" href="icons/icon-180.png">
-    <link rel="stylesheet" href="style.css?v=42">
+    <link rel="stylesheet" href="style.css?v=44">
 </head>
 <body>
     <div class="app-shell">
         <header class="app-header">
-            <button id="open-hub" class="icon-button" type="button" aria-label="Open Sakura Hub">☰</button>
+            <button id="open-hub" class="icon-button" type="button" aria-label="Open Sakura Hub" aria-controls="hub-drawer-layer" aria-expanded="false">☰</button>
             <a class="app-brand" href="#home" data-route="home" aria-label="Sakura home">
                 <strong>Sakura</strong>
                 <span aria-hidden="true">🌸</span>
@@ -118,8 +118,10 @@
                 </section>
             </section>
 
-            <section id="hub-view" class="view hub-view" data-view="hub" aria-labelledby="hub-heading" hidden>
-                <header class="hub-heading"><button class="back-button" type="button" data-route="home" aria-label="Back to Home">‹</button><div><span class="section-kicker">More from Sakura</span><h1 id="hub-heading">Sakura Hub</h1><p>Useful places for learning, planning, and making Sakura yours.</p></div></header>
+            <div id="hub-drawer-layer" class="hub-drawer-layer" hidden>
+                <button id="hub-drawer-overlay" class="hub-drawer-overlay" type="button" aria-label="Close Sakura menu"></button>
+                <aside id="hub-view" class="hub-view hub-drawer" role="dialog" aria-modal="true" aria-labelledby="hub-heading">
+                <header class="hub-heading"><div><span class="section-kicker">Your Japanese garden</span><h1 id="hub-heading">Sakura <span aria-hidden="true">🌸</span></h1></div><button id="close-hub" class="icon-button hub-close-button" type="button" aria-label="Close Sakura menu">×</button></header>
                 <section class="hub-section" aria-labelledby="hub-sakura-heading"><h2 id="hub-sakura-heading">Sakura</h2><div class="hub-link-list">
                     <button class="hub-link" type="button" data-route="home"><span aria-hidden="true">⌂</span><span><strong>Home</strong><small>Return to your learning garden.</small></span><b aria-hidden="true">›</b></button>
                     <button class="hub-link" type="button" data-hub-action="appearance"><span aria-hidden="true">✿</span><span><strong>Appearance</strong><small>Themes, wallpaper, and framing.</small></span><b aria-hidden="true">›</b></button>
@@ -140,7 +142,8 @@
                     <button class="hub-link" type="button" data-route="travel-offline"><span aria-hidden="true">⇩</span><span><strong>Offline Travel Pack</strong></span><b aria-hidden="true">›</b></button>
                     <button class="hub-link" type="button" data-route="travel-yen"><span aria-hidden="true">¥</span><span><strong>Yen Converter</strong></span><b aria-hidden="true">›</b></button>
                 </div></section>
-            </section>
+                </aside>
+            </div>
 
             <section id="library-view" class="view library-view" data-view="library" aria-labelledby="library-heading" hidden>
                 <header class="library-heading"><button class="back-button" type="button" data-route="hub" aria-label="Back to Sakura Hub">‹</button><div><span class="section-kicker">Your learning collection</span><h1 id="library-heading">Sakura Library</h1><p>Browse everything growing in Sakura.</p></div></header>
@@ -269,11 +272,32 @@
 
             <section id="practice-view" class="view practice-view" data-view="practice" aria-labelledby="practice-view-heading" hidden>
                 <div class="page-heading"><span class="section-kicker">🌱 Practice garden</span><h1 id="practice-view-heading">Practice</h1><p>Use the Japanese you’re learning.</p></div>
-                <div class="practice-coming-grid" aria-label="Upcoming practice activities">
-                    <article class="practice-coming-card"><span aria-hidden="true">💬</span><div><h2>What Would You Say?</h2><p>Choose natural Japanese for everyday moments.</p></div><em>Coming soon</em></article>
+                <div class="practice-coming-grid" aria-label="Practice activities">
+                    <button class="practice-coming-card practice-active-card" type="button" data-route="practice-what-would-you-say"><span aria-hidden="true">💬</span><span><h2>What Would You Say?</h2><p>Choose natural Japanese for everyday moments.</p></span><b aria-hidden="true">→</b></button>
                     <article class="practice-coming-card"><span aria-hidden="true">🧩</span><div><h2>Sentence Builder</h2><p>Arrange Japanese into clear, natural sentences.</p></div><em>Coming soon</em></article>
                     <article class="practice-coming-card"><span aria-hidden="true">🎭</span><div><h2>One Line, Many Personalities</h2><p>See how tone changes the same idea.</p></div><em>Coming soon</em></article>
                 </div>
+            </section>
+
+            <section id="practice-what-would-you-say-view" class="view practice-activity-view" data-view="practice-what-would-you-say" aria-labelledby="wwys-heading" hidden>
+                <div class="practice-activity-heading"><button class="back-button" type="button" data-route="practice" aria-label="Back to Practice">‹</button><div><span class="section-kicker">🌸 Real-life practice</span><h1 id="wwys-heading">What Would You Say?</h1></div></div>
+                <div id="wwys-loading" class="practice-loading" role="status">Preparing your practice…</div>
+                <article id="wwys-question-card" class="practice-question-card" hidden>
+                    <div class="practice-progress-row"><span id="wwys-category" class="tag"></span><span id="wwys-difficulty" class="tag"></span><strong id="wwys-progress">1 / 10</strong></div>
+                    <section class="practice-scenario"><span>Scenario</span><p id="wwys-scenario"></p></section>
+                    <section class="practice-prompt"><span>What would you say?</span><p id="wwys-prompt"></p></section>
+                    <div id="wwys-choices" class="practice-choice-list" role="group" aria-label="Answer choices"></div>
+                    <section id="wwys-feedback" class="practice-feedback" aria-live="polite" hidden>
+                        <h2 id="wwys-feedback-title"></h2>
+                        <div class="practice-answer-reading"><strong id="wwys-answer-japanese"></strong><span id="wwys-answer-kana"></span><span id="wwys-answer-romaji"></span><span id="wwys-answer-english"></span></div>
+                        <p id="wwys-explanation"></p>
+                        <button id="wwys-next" class="primary-button full-width-button" type="button">Next</button>
+                    </section>
+                </article>
+                <article id="wwys-results" class="practice-results-card" hidden>
+                    <span aria-hidden="true">🌸</span><h2>Practice complete</h2><p><strong id="wwys-final-score">0 / 10</strong> correct</p>
+                    <div><button id="wwys-practice-again" class="primary-button" type="button">Practice Again</button><button class="secondary-button" type="button" data-route="practice">Back to Practice</button></div>
+                </article>
             </section>
 
             <section id="native-view" class="view" data-view="native" aria-labelledby="native-heading" hidden>

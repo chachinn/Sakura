@@ -288,6 +288,7 @@ const quizTransitionLocks = { kana: false, kanji: false, vocabulary: false };
 const quizTransitionTimers = { kana: null, kanji: null, vocabulary: null };
 
 let currentRoute = "home";
+let hubDrawerReturnFocus = null;
 let detailReturnRoute = "home";
 let currentDailyKanji = null;
 let currentDailyWord = null;
@@ -336,6 +337,8 @@ let libraryFilter = "N5";
 let libraryVisibleCount = LIBRARY_BATCH_SIZE;
 let libraryLoadingRevision = 0;
 let libraryCurrentItems = [];
+let whatWouldYouSayBankPromise = null;
+let whatWouldYouSaySession = null;
 let normalizedNativeDataCache = null;
 let normalizedSlangDataCache = null;
 let pendingTravelPhraseId = "";
@@ -3044,8 +3047,165 @@ function openLibraryItem(item) {
     }
 }
 
+function loadWhatWouldYouSayBank() {
+    if (Array.isArray(window.WHAT_WOULD_YOU_SAY_DATA)) return Promise.resolve(window.WHAT_WOULD_YOU_SAY_DATA);
+    if (whatWouldYouSayBankPromise) return whatWouldYouSayBankPromise;
+    whatWouldYouSayBankPromise = new Promise((resolve, reject) => {
+        const script = document.createElement("script");
+        script.src = "./data/practice-what-would-you-say.js?v=1";
+        script.onload = () => Array.isArray(window.WHAT_WOULD_YOU_SAY_DATA) ? resolve(window.WHAT_WOULD_YOU_SAY_DATA) : reject(new Error("Practice questions are unavailable."));
+        script.onerror = () => reject(new Error("Practice questions could not be loaded."));
+        document.head.appendChild(script);
+    });
+    return whatWouldYouSayBankPromise;
+}
+
+function validateWhatWouldYouSayBank(bank) {
+    const ids = new Set();
+    return Array.isArray(bank) && bank.length >= 10 && bank.every(question => {
+        const valid = question && typeof question.id === "string" && !ids.has(question.id)
+            && ["Travel", "Everyday", "Real-world"].includes(question.category)
+            && ["Beginner", "Intermediate", "Advanced"].includes(question.difficulty)
+            && typeof question.scenario === "string" && typeof question.prompt === "string"
+            && Array.isArray(question.choices) && question.choices.length === 4
+            && Number.isInteger(question.correctChoice) && question.correctChoice >= 0 && question.correctChoice < question.choices.length
+            && question.choices.every(choice => [choice.japanese, choice.kana, choice.romaji, choice.english].every(value => typeof value === "string" && value.trim()))
+            && typeof question.explanation === "string" && question.explanation.trim();
+        if (valid) ids.add(question.id);
+        return Boolean(valid);
+    });
+}
+
+function shuffledPracticeQuestions(bank) {
+    const questions = bank.slice();
+    for (let index = questions.length - 1; index > 0; index -= 1) {
+        const target = Math.floor(Math.random() * (index + 1));
+        [questions[index], questions[target]] = [questions[target], questions[index]];
+    }
+    return questions;
+}
+
+function preparePracticeQuestion(question) {
+    const correctAnswer = question.choices[question.correctChoice];
+    const choices = question.choices.slice();
+    for (let index = choices.length - 1; index > 0; index -= 1) {
+        const target = Math.floor(Math.random() * (index + 1));
+        [choices[index], choices[target]] = [choices[target], choices[index]];
+    }
+    return { ...question, choices, correctChoice:choices.indexOf(correctAnswer) };
+}
+
+function renderWhatWouldYouSayQuestion() {
+    const session = whatWouldYouSaySession;
+    if (!session) return;
+    const question = session.questions[session.index];
+    document.getElementById("wwys-loading").hidden = true;
+    document.getElementById("wwys-results").hidden = true;
+    document.getElementById("wwys-question-card").hidden = false;
+    document.getElementById("wwys-category").textContent = question.category;
+    document.getElementById("wwys-difficulty").textContent = question.difficulty;
+    document.getElementById("wwys-progress").textContent = `${session.index + 1} / ${session.questions.length}`;
+    document.getElementById("wwys-scenario").textContent = question.scenario;
+    document.getElementById("wwys-prompt").textContent = question.prompt;
+    document.getElementById("wwys-choices").innerHTML = question.choices.map((choice, index) => `<button class="practice-choice" type="button" data-wwys-choice="${index}"><strong>${escapeSearchHtml(choice.japanese)}</strong></button>`).join("");
+    document.getElementById("wwys-feedback").hidden = true;
+    session.answered = false;
+}
+
+function startWhatWouldYouSaySession(bank) {
+    whatWouldYouSaySession = { questions:shuffledPracticeQuestions(bank).slice(0, 10).map(preparePracticeQuestion), index:0, correct:0, answered:false };
+    renderWhatWouldYouSayQuestion();
+}
+
+async function openWhatWouldYouSay() {
+    const loading = document.getElementById("wwys-loading");
+    loading.hidden = false;
+    loading.textContent = "Preparing your practice…";
+    try {
+        const bank = await loadWhatWouldYouSayBank();
+        if (!validateWhatWouldYouSayBank(bank)) throw new Error("Practice question validation failed.");
+        if (currentRoute !== "practice-what-would-you-say") return;
+        if (!whatWouldYouSaySession) startWhatWouldYouSaySession(bank);
+        else if (whatWouldYouSaySession.index < whatWouldYouSaySession.questions.length) renderWhatWouldYouSayQuestion();
+    }
+    catch (error) {
+        console.warn("What Would You Say? could not start.", error);
+        loading.textContent = "Practice could not be prepared. Check your connection and try again.";
+    }
+}
+
+function answerWhatWouldYouSay(choiceIndex) {
+    const session = whatWouldYouSaySession;
+    if (!session || session.answered) return;
+    const question = session.questions[session.index];
+    session.answered = true;
+    const correct = choiceIndex === question.correctChoice;
+    if (correct) session.correct += 1;
+    document.querySelectorAll("[data-wwys-choice]").forEach(button => {
+        const index = Number(button.dataset.wwysChoice);
+        button.disabled = true;
+        button.classList.toggle("correct", index === question.correctChoice);
+        button.classList.toggle("incorrect", index === choiceIndex && !correct);
+        button.classList.toggle("selected", index === choiceIndex);
+        if (index === question.correctChoice) button.setAttribute("aria-label", `Correct answer: ${question.choices[index].japanese}`);
+    });
+    const answer = question.choices[question.correctChoice];
+    const feedback = document.getElementById("wwys-feedback");
+    feedback.hidden = false;
+    feedback.classList.toggle("correct", correct);
+    feedback.classList.toggle("incorrect", !correct);
+    document.getElementById("wwys-feedback-title").textContent = correct ? "✓ Correct" : "Not quite";
+    document.getElementById("wwys-answer-japanese").textContent = answer.japanese;
+    document.getElementById("wwys-answer-kana").textContent = answer.kana;
+    document.getElementById("wwys-answer-romaji").textContent = answer.romaji;
+    document.getElementById("wwys-answer-english").textContent = answer.english;
+    document.getElementById("wwys-explanation").textContent = question.explanation;
+    document.getElementById("wwys-next").textContent = session.index === session.questions.length - 1 ? "See Results" : "Next";
+    feedback.scrollIntoView({ block:"nearest", behavior:"smooth" });
+}
+
+function nextWhatWouldYouSay() {
+    const session = whatWouldYouSaySession;
+    if (!session?.answered) return;
+    if (session.index < session.questions.length - 1) {
+        session.index += 1;
+        renderWhatWouldYouSayQuestion();
+        return;
+    }
+    document.getElementById("wwys-question-card").hidden = true;
+    document.getElementById("wwys-results").hidden = false;
+    document.getElementById("wwys-final-score").textContent = `${session.correct} / ${session.questions.length}`;
+}
+
+function openHubDrawer() {
+    const layer = document.getElementById("hub-drawer-layer");
+    if (!layer || layer.classList.contains("open")) return;
+    hubDrawerReturnFocus = document.activeElement;
+    layer.hidden = false;
+    document.body.classList.add("hub-drawer-open");
+    document.getElementById("open-hub").setAttribute("aria-expanded", "true");
+    requestAnimationFrame(() => {
+        layer.classList.add("open");
+        document.getElementById("close-hub").focus({ preventScroll:true });
+    });
+}
+
+function closeHubDrawer(restoreFocus = true) {
+    const layer = document.getElementById("hub-drawer-layer");
+    if (!layer || layer.hidden) return;
+    layer.classList.remove("open");
+    document.body.classList.remove("hub-drawer-open");
+    document.getElementById("open-hub").setAttribute("aria-expanded", "false");
+    if (location.hash === "#hub") history.replaceState(null, "", `#${currentRoute}`);
+    window.setTimeout(() => { if (!layer.classList.contains("open")) layer.hidden = true; }, 270);
+    if (restoreFocus && hubDrawerReturnFocus instanceof HTMLElement) hubDrawerReturnFocus.focus({ preventScroll:true });
+    hubDrawerReturnFocus = null;
+}
+
 function showRoute(route, updateHash = true) {
     const normalizedRoute = route === "native" ? "learn-native" : route;
+    if (normalizedRoute === "hub") { openHubDrawer(); return; }
+    closeHubDrawer(false);
     const previousRoute = currentRoute;
     const nativeMode = normalizedRoute === "learn-slang" ? "slang" : normalizedRoute === "learn-native" ? "native" : null;
     const deckRouteMatch = normalizedRoute.match(/^travel-deck-(deck-.+)$/);
@@ -3057,6 +3217,7 @@ function showRoute(route, updateHash = true) {
     currentRoute = normalizedRoute;
     if (normalizedRoute === "library") initializeLibrary();
     if (normalizedRoute === "search") buildSearchIndex();
+    if (normalizedRoute === "practice-what-would-you-say") openWhatWouldYouSay();
     if (nativeMode) {
         currentNativeMode = nativeMode;
         document.getElementById("native-heading").textContent = nativeMode === "slang" ? "Slang" : "Native Japanese";
@@ -3083,7 +3244,7 @@ function showRoute(route, updateHash = true) {
     if (normalizedRoute === "travel-yen") renderYenConverter();
     if (normalizedRoute === "travel") renderTravelHeaderCountdown();
     if (deckRouteMatch) renderCurrentTravelDeck();
-    const mainRoute = travelCategory || isTravelUtilityRoute ? "travel" : ["search", "translate", "learn-native", "learn-slang", "library"].includes(normalizedRoute) || (normalizedRoute.includes("detail") && detailReturnRoute === "library") ? "learn" : normalizedRoute.replace("-detail", "");
+    const mainRoute = travelCategory || isTravelUtilityRoute ? "travel" : normalizedRoute === "practice-what-would-you-say" ? "practice" : ["search", "translate", "learn-native", "learn-slang", "library"].includes(normalizedRoute) || (normalizedRoute.includes("detail") && detailReturnRoute === "library") ? "learn" : normalizedRoute.replace("-detail", "");
     document.querySelectorAll(".nav-button").forEach(button => button.classList.toggle("active", button.dataset.route === mainRoute || (normalizedRoute.includes("detail") && button.dataset.route === detailReturnRoute)));
     const learnView = normalizedRoute === "learn" ? "library" : nativeMode;
     document.querySelectorAll("[data-learn-view]").forEach(button => {
@@ -3396,7 +3557,10 @@ function addListeners() {
         showRoute(control.dataset.route);
         if (quizTarget) showQuizTab(quizTarget);
     }));
-    document.getElementById("open-hub").addEventListener("click", () => showRoute("hub"));
+    document.getElementById("open-hub").addEventListener("click", openHubDrawer);
+    document.getElementById("close-hub").addEventListener("click", () => closeHubDrawer());
+    document.getElementById("hub-drawer-overlay").addEventListener("click", () => closeHubDrawer());
+    document.addEventListener("keydown", event => { if (event.key === "Escape") closeHubDrawer(); });
     document.getElementById("library-view").addEventListener("click", event => {
         const repository = event.target.closest("[data-library-repository]");
         const save = event.target.closest("[data-library-save]");
@@ -3417,9 +3581,19 @@ function addListeners() {
     document.getElementById("library-search-input").addEventListener("input", () => { libraryVisibleCount=LIBRARY_BATCH_SIZE; renderLibraryResults(); });
     document.getElementById("clear-library-search").addEventListener("click", () => { document.getElementById("library-search-input").value=""; libraryVisibleCount=LIBRARY_BATCH_SIZE; renderLibraryResults(); document.getElementById("library-search-input").focus(); });
     document.getElementById("library-show-more").addEventListener("click", () => { libraryVisibleCount += LIBRARY_BATCH_SIZE; renderLibraryResults(); });
+    document.getElementById("practice-what-would-you-say-view").addEventListener("click", event => {
+        const choice = event.target.closest("[data-wwys-choice]");
+        if (choice) answerWhatWouldYouSay(Number(choice.dataset.wwysChoice));
+    });
+    document.getElementById("wwys-next").addEventListener("click", nextWhatWouldYouSay);
+    document.getElementById("wwys-practice-again").addEventListener("click", async () => {
+        const bank = await loadWhatWouldYouSayBank();
+        if (validateWhatWouldYouSayBank(bank)) startWhatWouldYouSaySession(bank);
+    });
     document.getElementById("travel-mode-toggle").addEventListener("change", event => setTravelModeEnabled(event.target.checked));
     document.getElementById("header-appearance").addEventListener("click", openAppearanceSettings);
     document.querySelectorAll("[data-hub-action]").forEach(button => button.addEventListener("click", () => {
+        closeHubDrawer(false);
         if (button.dataset.hubAction === "appearance") openAppearanceSettings();
         if (button.dataset.hubAction === "search") openSearch("hub");
         if (button.dataset.hubAction === "flashcards") { showRoute("saved"); showSavedTab("flashcards"); }
@@ -3795,7 +3969,7 @@ function initializeApp() {
     const requestedRoute = location.hash.replace("#", "");
     const travelRoutes = Object.keys(window.TRAVEL_CATEGORIES || {}).map(category => `travel-${category}`);
     const validDeckRoute = /^travel-deck-deck-.+/.test(requestedRoute);
-    showRoute(["home", "hub", "library", "learn", "learn-native", "learn-slang", "search", "translate", "quiz", "practice", "native", "travel", "travel-my-phrases", "travel-decks", "travel-notes", "travel-countdown", "travel-offline", "travel-yen", "saved", ...travelRoutes].includes(requestedRoute) || validDeckRoute ? requestedRoute : "home", false);
+    showRoute(["home", "hub", "library", "learn", "learn-native", "learn-slang", "search", "translate", "quiz", "practice", "practice-what-would-you-say", "native", "travel", "travel-my-phrases", "travel-decks", "travel-notes", "travel-countdown", "travel-offline", "travel-yen", "saved", ...travelRoutes].includes(requestedRoute) || validDeckRoute ? requestedRoute : "home", false);
     initializePwaUpdates();
 }
 
