@@ -1,0 +1,32 @@
+[
+  {
+    "id": "vocab-n3-suddenly",
+    "type": "vocabulary",
+    "word": "突然",
+    "kana": "とつぜん",
+    "romaji": "totsuzen",
+    "meaning": "suddenly",
+    "jlpt": "N3",
+    "exampleSentence": "突然、雨が降り出しました。",
+    "exampleTranslation": "Suddenly, it started raining.",
+    "notes": "Common adverb.",
+    "dictionaryMeaning": "suddenly; abrupt",
+    "naturalMeaning": "suddenly; out of nowhere",
+    "naturalUsageNotes": "Common before a verb, or as 急な + noun when something is unexpected."
+  },
+  {
+    "id": "vocab-n3-experience",
+    "type": "vocabulary",
+    "word": "経験",
+    "kana": "けいけん",
+    "romaji": "keiken",
+    "meaning": "experience",
+    "jlpt": "N3",
+    "exampleSentence": "いい経験になりました。",
+    "exampleTranslation": "It became a good experience.",
+    "notes": "経験する means to experience.",
+    "dictionaryMeaning": "experience",
+    "naturalMeaning": "experience; to experience (経験する)",
+    "naturalUsageNotes": "Use 経験する for the verb and 経験がある for ‘have experience.’"
+  }
+]

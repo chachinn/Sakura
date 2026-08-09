@@ -794,6 +794,13 @@ a:focus-visible {
     font-size: 16px;
 }
 
+.learning-romaji {
+    color: var(--color-text-muted);
+    font-size: 13px;
+    font-style: normal;
+    line-height: 1.35;
+}
+
 .daily-meaning {
     font-size: 14px;
     font-weight: 650;
@@ -1470,6 +1477,10 @@ a:focus-visible {
 .reading-list dd {
     margin: 5px 0 0;
     font-size: 18px;
+}
+
+.reading-list dd.learning-romaji {
+    font-size: 15px;
 }
 
 .detail-section {
@@ -3829,7 +3840,7 @@ body.wallpaper-enabled #travel-view::before {
     padding: 12px 8px;
     display: grid;
     grid-template-columns: minmax(92px, .72fr) minmax(0, 1fr) auto;
-    grid-template-rows: auto auto auto;
+    grid-template-rows: auto auto auto auto;
     align-items: center;
     justify-items: start;
     column-gap: 13px;
@@ -3840,7 +3851,7 @@ body.wallpaper-enabled #travel-view::before {
 }
 
 #learn-view .learning-focus > span:first-child {
-    grid-row: 1 / 4;
+    grid-row: 1 / 5;
     align-self: center;
     justify-self: center;
     max-width: 100%;
@@ -3866,6 +3877,12 @@ body.wallpaper-enabled #travel-view::before {
     align-self: end;
     color: var(--color-primary-dark);
     font-size: 13px;
+}
+
+#learn-view .learning-focus small.learning-romaji {
+    align-self: center;
+    color: var(--color-text-muted);
+    font-size: 12px;
 }
 
 #learn-view .learning-focus strong {
@@ -3955,11 +3972,12 @@ body.wallpaper-enabled #learn-view .learning-focus {
 
     #learn-view .learning-focus em {
         grid-column: 2;
-        grid-row: 2;
+        grid-row: 5;
     }
 
     #learn-view .learning-focus .preview-action {
         grid-column: 1 / 3;
+        grid-row: 6;
         justify-self: center;
     }
 
@@ -4068,6 +4086,7 @@ body.wallpaper-enabled #learn-view .learning-focus {
     white-space: nowrap;
 }
 .travel-header-countdown[data-countdown-state="completed"] { color: var(--color-text-muted); }
+.search-show-more { margin-top: 14px; }
 .quiz-status-bar { align-items: center; flex-wrap: wrap; gap: 10px 16px; }
 .quiz-reset-button {
     min-height: 40px;

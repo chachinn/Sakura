@@ -11,7 +11,7 @@
     <script>try { document.documentElement.dataset.theme = localStorage.getItem("sakuraAppearanceTheme") || "pink"; } catch (error) { document.documentElement.dataset.theme = "pink"; }</script>
     <link rel="manifest" href="manifest.webmanifest">
     <link rel="apple-touch-icon" href="icons/icon-180.png">
-    <link rel="stylesheet" href="style.css?v=38">
+    <link rel="stylesheet" href="style.css?v=40">
 </head>
 <body>
     <div class="app-shell">
@@ -57,6 +57,7 @@
                             <button class="daily-card-body" type="button" data-open-detail="kanji" aria-label="Open kanji details">
                                 <span id="daily-kanji-character" class="daily-japanese">日</span>
                                 <span id="daily-kanji-reading" class="daily-reading">ひ / ニチ</span>
+                                <span id="daily-kanji-romaji" class="learning-romaji">hi / nichi</span>
                                 <span id="daily-kanji-meaning" class="daily-meaning">day; sun</span>
                                 <span id="daily-kanji-level" class="tag">N5</span>
                                 <span id="daily-kanji-example" class="daily-example">日本（にほん）— Japan</span>
@@ -77,7 +78,8 @@
                             </div>
                             <button class="daily-card-body" type="button" data-open-detail="word" aria-label="Open word details">
                                 <span id="daily-word-text" class="daily-japanese word-size">勉強</span>
-                                <span id="daily-word-reading" class="daily-reading">べんきょう · benkyou</span>
+                                <span id="daily-word-reading" class="daily-reading">べんきょう</span>
+                                <span id="daily-word-romaji" class="learning-romaji">benkyou</span>
                                 <span id="daily-word-meaning" class="daily-meaning">study</span>
                                 <span id="daily-word-tags" class="tag-row"><span class="tag">N5</span></span>
                                 <span id="daily-word-example" class="daily-example">図書館で勉強します。</span>
@@ -150,13 +152,13 @@
                 <div class="browse-grid">
                     <article class="learning-card kanji-garden-card">
                         <div class="card-topline"><div class="learning-card-heading"><span class="garden-section-mark" aria-hidden="true">花</span><div><h2>Kanji Garden</h2><p>Browse characters by JLPT level.</p></div></div><button id="save-browse-kanji" class="save-button" type="button" aria-label="Save current kanji">♡</button></div>
-                        <button id="open-browse-kanji-detail" class="learning-focus" type="button"><span id="browse-kanji-character">日</span><small id="browse-kanji-reading">ひ / ニチ</small><strong id="browse-kanji-meaning">day; sun</strong><em id="browse-kanji-level">N5</em><span class="preview-action">View details →</span></button>
+                        <button id="open-browse-kanji-detail" class="learning-focus" type="button"><span id="browse-kanji-character">日</span><small id="browse-kanji-reading">ひ / ニチ</small><small id="browse-kanji-romaji" class="learning-romaji">hi / nichi</small><strong id="browse-kanji-meaning">day; sun</strong><em id="browse-kanji-level">N5</em><span class="preview-action">View details →</span></button>
                         <div id="randomKanji-levels" class="section-level-control expanded-level-control"></div>
                         <div class="three-controls"><button id="previous-kanji" class="control-button" type="button">‹ Previous</button><button id="random-kanji" class="control-button accent-control" type="button">⤨ Random</button><button id="next-kanji" class="control-button" type="button">Next ›</button></div>
                     </article>
                     <article class="learning-card word-garden-card">
                         <div class="card-topline"><div class="learning-card-heading"><span class="garden-section-mark word-mark" aria-hidden="true">芽</span><div><h2>Word Garden</h2><p>Grow your vocabulary one word at a time.</p></div></div><button id="save-browse-word" class="save-button" type="button" aria-label="Save current word">♡</button></div>
-                        <button id="open-browse-word-detail" class="learning-focus" type="button"><span id="browse-word-text" class="word-focus">勉強</span><small id="browse-word-reading">べんきょう · benkyou</small><strong id="browse-word-meaning">study</strong><em id="browse-word-level">N5</em><span class="preview-action">View details →</span></button>
+                        <button id="open-browse-word-detail" class="learning-focus" type="button"><span id="browse-word-text" class="word-focus">勉強</span><small id="browse-word-reading">べんきょう</small><small id="browse-word-romaji" class="learning-romaji">benkyou</small><strong id="browse-word-meaning">study</strong><em id="browse-word-level">N5</em><span class="preview-action">View details →</span></button>
                         <div id="randomVocabulary-levels" class="section-level-control expanded-level-control"></div>
                         <div class="three-controls"><button id="previous-word" class="control-button" type="button">‹ Previous</button><button id="random-word" class="control-button accent-control" type="button">⤨ Random</button><button id="next-word" class="control-button" type="button">Next ›</button></div>
                     </article>
@@ -196,6 +198,7 @@
                 <section id="search-results-section" aria-live="polite" hidden>
                     <p id="search-result-summary" class="search-result-summary"></p>
                     <div id="search-results" class="search-results"></div>
+                    <button id="show-more-search-results" class="secondary-button full-width-button search-show-more" type="button" hidden>Show more</button>
                     <div id="search-empty" class="search-empty-state" hidden><span aria-hidden="true">🌸</span><strong>No matching Japanese found.</strong><p>Try another spelling, kana, romaji, or English word.</p></div>
                 </section>
             </section>
@@ -259,7 +262,8 @@
                 <article class="native-card">
                     <div class="card-topline"><span id="native-status" class="status-label">Still common</span><button id="save-native-item" class="save-button" type="button">♡</button></div>
                     <h2 id="native-expression">お疲れさま</h2>
-                    <p id="native-reading" class="native-reading">おつかれさま · otsukaresama</p>
+                    <p id="native-reading" class="native-reading">おつかれさま</p>
+                    <p id="native-romaji" class="learning-romaji">otsukaresama</p>
                     <p id="native-meaning" class="native-meaning">Good work / Thanks for your effort</p>
                     <div id="native-details" class="native-details"></div>
                     <p id="native-empty" class="empty-state" hidden>No content is available for these filters.</p>
@@ -425,7 +429,7 @@
 
             <section id="kanji-detail-view" class="view detail-view" data-view="kanji-detail" aria-labelledby="kanji-detail-heading" hidden>
                 <header class="detail-header"><button class="back-button" type="button" data-detail-back>‹</button><div><span class="section-kicker">Kanji study</span><h1 id="kanji-detail-heading">Kanji Detail</h1></div><button id="save-detail-kanji" class="save-button" type="button">♡</button></header>
-                <article class="detail-hero kanji-detail-hero"><div id="detail-kanji-character" class="detail-kanji-character">日</div><div><span id="detail-kanji-level" class="tag">N5</span><span class="detail-label">Literal Meaning</span><h2 id="detail-kanji-meaning">day; sun</h2><span class="detail-label">Core Concept</span><p id="detail-kanji-core-concept"></p><dl class="reading-list"><div><dt>Onyomi</dt><dd id="detail-kanji-onyomi">ニチ, ジツ</dd></div><div><dt>Kunyomi</dt><dd id="detail-kanji-kunyomi">ひ, び, か</dd></div></dl></div></article>
+                <article class="detail-hero kanji-detail-hero"><div id="detail-kanji-character" class="detail-kanji-character">日</div><div><span id="detail-kanji-level" class="tag">N5</span><span class="detail-label">Literal Meaning</span><h2 id="detail-kanji-meaning">day; sun</h2><span class="detail-label">Core Concept</span><p id="detail-kanji-core-concept"></p><dl class="reading-list"><div id="detail-kanji-primary-reading-group"><dt>Primary reading</dt><dd id="detail-kanji-primary-reading">ひ / ニチ</dd></div><div id="detail-kanji-romaji-group"><dt>Romaji</dt><dd id="detail-kanji-romaji" class="learning-romaji">hi / nichi</dd></div><div><dt>Onyomi</dt><dd id="detail-kanji-onyomi">ニチ, ジツ</dd></div><div><dt>Kunyomi</dt><dd id="detail-kanji-kunyomi">ひ, び, か</dd></div></dl></div></article>
                 <section class="detail-section"><h2>Most Common Words</h2><div id="detail-kanji-examples" class="example-word-grid"></div></section>
                 <section class="detail-section"><h2>Natural Usage Note</h2><p id="detail-kanji-usage-note"></p></section>
                 <section class="detail-section"><h2>Example Sentence</h2><p id="detail-kanji-sentence" class="japanese-sentence"></p><p id="detail-kanji-translation" class="translation"></p></section>
@@ -595,10 +599,10 @@
         <button id="apply-update" type="button">Update</button>
     </aside>
 
-    <script src="data/vocabulary.js?v=2"></script>
+    <script src="data/vocabulary.js?v=3"></script>
     <script src="data/native-japanese.js?v=2"></script>
     <script src="data/slang.js?v=2"></script>
-    <script src="data/travel.js?v=3"></script>
+    <script src="data/travel.js?v=4"></script>
     <script src="data/kanji.js"></script>
 </body>
 </html>

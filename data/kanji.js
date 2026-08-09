@@ -104,13 +104,14 @@
     });
 
     window.KANJI_DATA_READY = loadKanjiLevels(getStartupKanjiLevels())
-        .then(records => {
+        .then(async records => {
             window.KANJI_DATA = records;
             validateKanjiDataset(records);
+            await window.VOCABULARY_DATA_READY;
 
             if (!document.querySelector("script[data-sakura-app]")) {
                 const appScript = document.createElement("script");
-                appScript.src = "./app.js?v=46";
+                appScript.src = "./app.js?v=48";
                 appScript.dataset.sakuraApp = "true";
                 appScript.onerror = () => console.error("Sakura could not load app.js.");
                 document.body.appendChild(appScript);

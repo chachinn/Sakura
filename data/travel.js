@@ -17,6 +17,7 @@
     const files = Object.freeze(Object.fromEntries(Object.keys(categories).map(category => [category, `./data/travel/${category}.json`])));
     const loadedByCategory = new Map();
     const inFlightByCategory = new Map();
+    const generationByCategory = new Map(Object.keys(categories).map(category => [category, 0]));
     const validPriorities = new Set(["essential", "useful", "extra"]);
     const validPoliteness = new Set(["polite", "casual", "very-polite", "neutral"]);
 
@@ -59,18 +60,23 @@
         const validCategory = requireCategory(category);
         if (!refresh && loadedByCategory.has(validCategory)) return Promise.resolve(loadedByCategory.get(validCategory));
         if (inFlightByCategory.has(validCategory)) return inFlightByCategory.get(validCategory);
-        const request = (async () => {
+        const generation = generationByCategory.get(validCategory) || 0;
+        let request;
+        request = (async () => {
             const response = await fetch(files[validCategory]);
             if (!response.ok) throw new Error(`Could not load ${files[validCategory]} (HTTP ${response.status}).`);
             const records = await response.json();
             if (!Array.isArray(records)) throw new Error(`${files[validCategory]} must contain a JSON array.`);
             const validRecords = validateTravelRecords(records, validCategory);
+            if (generationByCategory.get(validCategory) !== generation) return [];
             loadedByCategory.set(validCategory, validRecords);
             return validRecords;
         })().catch(error => {
             console.error(`Travel loader: ${validCategory} could not be loaded.`, error);
             throw error;
-        }).finally(() => inFlightByCategory.delete(validCategory));
+        }).finally(() => {
+            if (inFlightByCategory.get(validCategory) === request) inFlightByCategory.delete(validCategory);
+        });
         inFlightByCategory.set(validCategory, request);
         return request;
     }
@@ -81,7 +87,12 @@
         refreshTravelCategory: category => loadTravelCategory(category, true),
         getTravelCategoryAsset: category => files[requireCategory(category)],
         forgetTravelCategories: categoriesToForget => {
-            (categoriesToForget || Object.keys(categories)).forEach(category => loadedByCategory.delete(requireCategory(category)));
+            (categoriesToForget || Object.keys(categories)).forEach(category => {
+                const validCategory = requireCategory(category);
+                generationByCategory.set(validCategory, (generationByCategory.get(validCategory) || 0) + 1);
+                loadedByCategory.delete(validCategory);
+                inFlightByCategory.delete(validCategory);
+            });
         },
         getLoadedTravelCategories: () => Object.keys(categories).filter(category => loadedByCategory.has(category)),
         getLoadedTravelPhrases: () => Object.keys(categories).flatMap(category => loadedByCategory.get(category) || []),

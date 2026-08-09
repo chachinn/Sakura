@@ -321,9 +321,15 @@ let searchLevels = [...globalLevels];
 let recentSearches = readJson(STORAGE.recentSearches, []);
 let searchReturnRoute = "learn";
 let universalSearchIndex = [];
+let searchIndexDirty = true;
+let searchWarmRevision = 0;
 let transientSearchItems = new Map();
 let travelSearchPreparation = null;
-let travelSearchPrepared = false;
+let searchVisibleCount = 40;
+const searchFieldCache = new WeakMap();
+const levelPoolCache = new WeakMap();
+let normalizedNativeDataCache = null;
+let normalizedSlangDataCache = null;
 let pendingTravelPhraseId = "";
 let userNativeEntries = readJson(STORAGE.userNative, []);
 let userSlangEntries = readJson(STORAGE.userSlang, []);
@@ -341,7 +347,9 @@ let translationContext = "Everyday";
 let translationTone = "Polite and natural";
 let translationLoading = false;
 const kanjiSelectionRevisions = new Map();
+const vocabularySelectionRevisions = new Map();
 const KANJI_FILTER_SECTIONS = new Set(["kanjiOfDay", "randomKanji", "kanjiQuiz"]);
+const VOCABULARY_FILTER_SECTIONS = new Set(["wordOfDay", "randomVocabulary", "vocabularyQuiz"]);
 
 async function ensureKanjiLevels(requestedLevels) {
     const levels = normalizeJlptLevels(requestedLevels);
@@ -362,7 +370,7 @@ async function ensureKanjiLevels(requestedLevels) {
         if (before !== after || window.KANJI_DATA.length !== loadedKanji.length) {
             window.KANJI_DATA = loadedKanji;
             validateKanjiDataset(window.KANJI_DATA);
-            buildSearchIndex();
+            invalidateSearchIndex();
         }
     }
 
@@ -385,7 +393,60 @@ async function loadKanjiForSelection(scope, levels, onSettled) {
     return loaded;
 }
 
+async function ensureVocabularyLevels(requestedLevels) {
+    const levels = normalizeJlptLevels(requestedLevels);
+    const loader = window.SakuraVocabularyLoader;
+    if (!loader) throw new Error("Sakura Vocabulary loader is unavailable.");
+    const before = loader.getLoadedVocabularyLevels().join("|");
+    let loadError = null;
+    try {
+        await loader.loadVocabularyLevels(levels);
+    }
+    catch (error) {
+        loadError = error;
+    }
+    finally {
+        const after = loader.getLoadedVocabularyLevels().join("|");
+        const loadedVocabulary = loader.getLoadedVocabulary();
+        if (before !== after || window.VOCABULARY_DATA.length !== loadedVocabulary.length) {
+            window.VOCABULARY_DATA = loadedVocabulary;
+            invalidateSearchIndex();
+        }
+    }
+    if (loadError) throw loadError;
+    return window.VOCABULARY_DATA;
+}
+
+async function loadVocabularyForSelection(scope, levels, onSettled) {
+    const revision = (vocabularySelectionRevisions.get(scope) || 0) + 1;
+    vocabularySelectionRevisions.set(scope, revision);
+    let loaded = false;
+    try {
+        await ensureVocabularyLevels(levels);
+        loaded = true;
+    }
+    catch (error) {
+        // The loader reports the failing level. Keep currently loaded Vocabulary usable.
+    }
+    if (vocabularySelectionRevisions.get(scope) === revision) onSettled?.(loaded);
+    return loaded;
+}
+
+async function loadGlobalLearningContent() {
+    const [kanjiLoaded, vocabularyLoaded] = await Promise.all([
+        loadKanjiForSelection("global", globalLevels),
+        loadVocabularyForSelection("global", globalLevels)
+    ]);
+    if (kanjiLoaded || vocabularyLoaded) refreshAllFilteredContent();
+}
+
 function refreshSectionForLevelChange(sectionName) {
+    if (VOCABULARY_FILTER_SECTIONS.has(sectionName)) {
+        loadVocabularyForSelection(sectionName, getActiveLevels(sectionName), loaded => {
+            if (loaded) refreshSection(sectionName);
+        });
+        return;
+    }
     if (!KANJI_FILTER_SECTIONS.has(sectionName)) {
         refreshSection(sectionName);
         return;
@@ -471,7 +532,15 @@ function getActiveLevels(sectionName) {
 
 function itemsForLevels(items, sectionName) {
     const levels = getActiveLevels(sectionName);
-    return items.filter(item => levels.includes(item.jlpt));
+    if (!Array.isArray(items)) return [];
+    let cachedPools = levelPoolCache.get(items);
+    if (!cachedPools) { cachedPools = new Map(); levelPoolCache.set(items, cachedPools); }
+    const key = levels.join("|");
+    if (!cachedPools.has(key)) {
+        const levelSet = new Set(levels);
+        cachedPools.set(key, items.filter(item => levelSet.has(item.jlpt)));
+    }
+    return cachedPools.get(key);
 }
 
 function createLevelChip(level, checked, onChange, disabled = false) {
@@ -495,9 +564,7 @@ function renderGlobalLevels() {
             writeJson(STORAGE.globalLevels, globalLevels);
             renderGlobalLevels();
             renderAllSectionControls();
-            loadKanjiForSelection("global", globalLevels, loaded => {
-                if (loaded) refreshAllFilteredContent();
-            });
+            loadGlobalLearningContent();
         }));
     });
     const allButton = document.createElement("button");
@@ -509,9 +576,7 @@ function renderGlobalLevels() {
         writeJson(STORAGE.globalLevels, globalLevels);
         renderGlobalLevels();
         renderAllSectionControls();
-        loadKanjiForSelection("global", globalLevels, loaded => {
-            if (loaded) refreshAllFilteredContent();
-        });
+        loadGlobalLearningContent();
     });
     container.appendChild(allButton);
     document.getElementById("global-level-summary").textContent = `Selected: ${globalLevels.length === JLPT_LEVELS.length ? "All" : globalLevels.join(" + ")}`;
@@ -605,10 +670,18 @@ async function enhanceVocabulary(item) {
     }
 }
 
+function renderOptionalText(id, value, containerId = "") {
+    const element = document.getElementById(id);
+    const text = typeof value === "string" ? value.trim() : "";
+    element.textContent = text;
+    (containerId ? document.getElementById(containerId) : element).hidden = !text;
+}
+
 function renderDailyKanji(item) {
     currentDailyKanji = item;
     document.getElementById("daily-kanji-character").textContent = item?.character || "—";
     document.getElementById("daily-kanji-reading").textContent = item?.reading || "No reading available";
+    renderOptionalText("daily-kanji-romaji", item?.romaji);
     document.getElementById("daily-kanji-meaning").textContent = item?.meaning || "No content for these levels";
     document.getElementById("daily-kanji-level").textContent = item?.jlpt || "—";
     const example = item?.examples?.[0];
@@ -626,7 +699,8 @@ function browseDailyKanji(direction = 1, random = false) {
 function renderDailyWord(item) {
     currentDailyWord = item;
     document.getElementById("daily-word-text").textContent = item?.word || "—";
-    document.getElementById("daily-word-reading").textContent = item ? `${item.kana} · ${item.romaji}` : "No reading available";
+    document.getElementById("daily-word-reading").textContent = item?.kana || "No reading available";
+    renderOptionalText("daily-word-romaji", item?.romaji);
     document.getElementById("daily-word-meaning").textContent = item?.meaning || "No content for these levels";
     document.getElementById("daily-word-tags").innerHTML = item ? `<span class="tag">${item.jlpt}</span><span class="tag">${partOfSpeech(item)}</span>` : "";
     document.getElementById("daily-word-example").textContent = item?.exampleSentence || "Choose another JLPT level.";
@@ -647,6 +721,7 @@ function renderBrowseKanji(item) {
     currentBrowseKanji = item;
     document.getElementById("browse-kanji-character").textContent = item?.character || "—";
     document.getElementById("browse-kanji-reading").textContent = item?.reading || "No reading available";
+    renderOptionalText("browse-kanji-romaji", item?.romaji);
     document.getElementById("browse-kanji-meaning").textContent = item?.meaning || "No content for these levels";
     document.getElementById("browse-kanji-level").textContent = item?.jlpt || "—";
     setSaveButton(document.getElementById("save-browse-kanji"), item);
@@ -661,7 +736,8 @@ function browseKanji(direction = 1, random = false) {
 function renderBrowseWord(item) {
     currentBrowseWord = item;
     document.getElementById("browse-word-text").textContent = item?.word || "—";
-    document.getElementById("browse-word-reading").textContent = item ? `${item.kana} · ${item.romaji}` : "No reading available";
+    document.getElementById("browse-word-reading").textContent = item?.kana || "No reading available";
+    renderOptionalText("browse-word-romaji", item?.romaji);
     document.getElementById("browse-word-meaning").textContent = item?.meaning || "No content for these levels";
     document.getElementById("browse-word-level").textContent = item?.jlpt || "—";
     setSaveButton(document.getElementById("save-browse-word"), item);
@@ -688,6 +764,8 @@ function renderKanjiDetail(item) {
     document.getElementById("detail-kanji-level").textContent = item?.jlpt || "—";
     document.getElementById("detail-kanji-meaning").textContent = item?.literalMeaning || item?.meaning || "No content available";
     document.getElementById("detail-kanji-core-concept").textContent = item?.coreConcept || item?.meaning || "No content available";
+    renderOptionalText("detail-kanji-primary-reading", item?.reading, "detail-kanji-primary-reading-group");
+    renderOptionalText("detail-kanji-romaji", item?.romaji, "detail-kanji-romaji-group");
     document.getElementById("detail-kanji-usage-note").textContent = item?.naturalUsageNotes || "This kanji is usually encountered as part of complete words.";
     document.getElementById("detail-kanji-onyomi").textContent = item?.onyomi?.join(", ") || "—";
     document.getElementById("detail-kanji-kunyomi").textContent = item?.kunyomi?.join(", ") || "—";
@@ -704,8 +782,8 @@ function renderWordDetail(item) {
     currentDetailWord = item;
     document.getElementById("detail-word-level").textContent = item?.jlpt || "—";
     document.getElementById("detail-word-text").textContent = item?.word || "—";
-    document.getElementById("detail-word-kana").textContent = item?.kana || "";
-    document.getElementById("detail-word-romaji").textContent = item?.romaji || "";
+    renderOptionalText("detail-word-kana", item?.kana);
+    renderOptionalText("detail-word-romaji", item?.romaji);
     document.getElementById("detail-word-dictionary-meaning").textContent = item?.dictionaryMeaning || item?.meaning || "No content available";
     document.getElementById("detail-word-meaning").textContent = item?.naturalMeaning || item?.meaning || "No content available";
     document.getElementById("detail-word-pos").textContent = partOfSpeech(item);
@@ -1164,15 +1242,24 @@ function normalizeContentEntry(entry, forcedType = entry?.type) {
     return { ...normalized, meaning: normalized.naturalMeaning, literal: normalized.literalMeaning, users: normalized.commonUsers, situation: normalized.commonSituation, whereSeen: normalized.whereUsed, safe: normalized.learnerSafety, status: normalized.currentStatus, rude: normalized.rudeOrRisky ? "Yes" : "No", notes: normalized.nuanceNotes };
 }
 
+function invalidateNormalizedContentCaches() {
+    normalizedNativeDataCache = null;
+    normalizedSlangDataCache = null;
+}
+
 function nativeData() {
-    return [...loadedSearchData("NATIVE_JAPANESE_DATA", "Native Japanese").filter(entry => !entry.slangCategories?.length), ...userNativeEntries].map(entry => normalizeContentEntry(entry, "native"));
+    if (!normalizedNativeDataCache) normalizedNativeDataCache = [...loadedSearchData("NATIVE_JAPANESE_DATA", "Native Japanese").filter(entry => !entry.slangCategories?.length), ...userNativeEntries].map(entry => normalizeContentEntry(entry, "native"));
+    return normalizedNativeDataCache;
 }
 
 function slangData() {
-    const migratedNative = loadedSearchData("NATIVE_JAPANESE_DATA", "Native Japanese")
-        .filter(entry => entry.slangCategories?.length)
-        .map(entry => ({ ...entry, categories: entry.slangCategories, migratedFrom: "native" }));
-    return [...loadedSearchData("SLANG_DATA", "Slang"), ...migratedNative, ...userSlangEntries].map(entry => normalizeContentEntry(entry, "slang"));
+    if (!normalizedSlangDataCache) {
+        const migratedNative = loadedSearchData("NATIVE_JAPANESE_DATA", "Native Japanese")
+            .filter(entry => entry.slangCategories?.length)
+            .map(entry => ({ ...entry, categories: entry.slangCategories, migratedFrom: "native" }));
+        normalizedSlangDataCache = [...loadedSearchData("SLANG_DATA", "Slang"), ...migratedNative, ...userSlangEntries].map(entry => normalizeContentEntry(entry, "slang"));
+    }
+    return normalizedSlangDataCache;
 }
 
 function searchMainText(item) {
@@ -1194,6 +1281,7 @@ function loadedSearchData(globalName, label) {
 }
 
 function buildSearchIndex() {
+    if (!searchIndexDirty) return universalSearchIndex;
     const groups = {
         Kanji: loadedSearchData("KANJI_DATA", "Kanji"),
         Vocabulary: loadedSearchData("VOCABULARY_DATA", "Vocabulary"),
@@ -1203,24 +1291,51 @@ function buildSearchIndex() {
         Translations: savedItems.filter(item => item.type === "translation")
     };
     universalSearchIndex = Object.values(groups).flat();
+    searchIndexDirty = false;
+    warmSearchFields(universalSearchIndex);
     console.info(`Indexed:\n${groups.Kanji.length} Kanji\n${groups.Vocabulary.length} Vocabulary\n${groups.Native.length} Native\n${groups.Slang.length} Slang\n${groups.Travel.length} Travel`);
+    return universalSearchIndex;
+}
+
+function invalidateSearchIndex() {
+    searchIndexDirty = true;
+    searchWarmRevision += 1;
+    if (currentRoute === "search") buildSearchIndex();
+}
+
+function warmSearchFields(items) {
+    const revision = ++searchWarmRevision;
+    let index = 0;
+    const schedule = callback => {
+        if ("requestIdleCallback" in window) window.requestIdleCallback(callback, { timeout:200 });
+        else setTimeout(() => callback(null), 0);
+    };
+    const warmChunk = deadline => {
+        if (revision !== searchWarmRevision) return;
+        let processed = 0;
+        while (index < items.length && processed < 120 && (!deadline || deadline.didTimeout || deadline.timeRemaining() > 1)) {
+            searchableFields(items[index]);
+            index += 1;
+            processed += 1;
+        }
+        if (index < items.length) schedule(warmChunk);
+    };
+    schedule(warmChunk);
 }
 
 function prepareTravelSearch() {
-    if (travelSearchPrepared) return Promise.resolve();
     if (travelSearchPreparation) return travelSearchPreparation;
     const loader = window.SakuraTravelLoader;
     const categories = Object.keys(window.TRAVEL_CATEGORIES || {});
-    if (!loader || !categories.length) {
-        travelSearchPrepared = true;
-        return Promise.resolve();
-    }
-    travelSearchPreparation = Promise.allSettled(categories.map(category => loader.loadTravelCategory(category)))
+    if (!loader || !categories.length) return Promise.resolve();
+    const loaded = new Set(loader.getLoadedTravelCategories());
+    const missing = categories.filter(category => !loaded.has(category));
+    if (!missing.length) return Promise.resolve();
+    travelSearchPreparation = Promise.allSettled(missing.map(category => loader.loadTravelCategory(category)))
         .then(results => {
-            const unavailable = categories.filter((category, index) => results[index].status === "rejected");
+            const unavailable = missing.filter((category, index) => results[index].status === "rejected");
             if (unavailable.length) console.warn(`Universal Search: Travel categories unavailable: ${unavailable.join(", ")}. Searching available Travel content.`);
-            buildSearchIndex();
-            travelSearchPrepared = true;
+            invalidateSearchIndex();
         })
         .finally(() => { travelSearchPreparation = null; });
     return travelSearchPreparation;
@@ -1228,7 +1343,7 @@ function prepareTravelSearch() {
 
 function prepareTravelSearchForCurrentQuery() {
     const input = document.getElementById("universal-search-input");
-    if (!input?.value.trim() || travelSearchPrepared) return;
+    if (!input?.value.trim()) return;
     prepareTravelSearch().then(() => {
         if (currentRoute === "search" && input.value.trim()) renderSearchResults();
     });
@@ -1239,29 +1354,45 @@ function searchIndex() {
 }
 
 function searchableFields(item) {
+    if (!item || typeof item !== "object") return [];
+    const cached = searchFieldCache.get(item);
+    if (cached) return cached.all;
     const exampleFields = [...(item.examples || []), ...(item.commonWords || [])].flatMap(example => [example.word, example.reading, example.kana, example.romaji, example.meaning]);
-    return [
+    const primary = [
         item.character, item.kanji, item.word, item.expression, item.japanese,
         item.kana, item.reading, item.romaji, item.meaning, item.english,
-        item.literal, item.notes, item.exampleSentence, item.exampleTranslation,
+        item.naturalMeaning, item.literalMeaning, item.dictionaryMeaning,
+        ...(item.onyomi || []), ...(item.kunyomi || []), ...exampleFields
+    ].filter(Boolean).map(searchText);
+    const all = [
+        ...primary, item.literal, item.notes, item.exampleSentence, item.exampleTranslation,
         item.dictionaryMeaning, item.coreConcept, item.naturalUsageNotes,
-        item.naturalMeaning, item.literalMeaning, item.commonUsers, item.commonSituation,
+        item.naturalUsage, item.commonUsers, item.commonSituation,
         item.whereUsed, item.learnerSafety, item.currentStatus, item.nuanceNotes,
         item.conversation, item.tone, item.formality, item.users, item.situation,
         item.whereSeen, item.status, item.safe, item.rude, item.category, item.subcategory,
-        ...(item.categories || []), ...(item.tags || []),
-        ...(item.onyomi || []), ...(item.kunyomi || []), ...exampleFields
+        item.politeness, item.priority, ...(item.categories || []), ...(item.tags || [])
     ].filter(Boolean).map(searchText);
+    const result = { all:[...new Set(all)], primary:new Set(primary) };
+    searchFieldCache.set(item, result);
+    return result.all;
 }
 
 function searchScore(item, query) {
     const fields = searchableFields(item);
+    const primary = searchFieldCache.get(item)?.primary || new Set();
     let score = 0;
     fields.forEach((field, index) => {
         if (field === query) score = Math.max(score, 1000 - index * 8);
         else if (field.startsWith(query)) score = Math.max(score, 700 - index * 6);
         else if (field.split(/\s+/).some(word => word.startsWith(query))) score = Math.max(score, 500 - index * 4);
         else if (field.includes(query)) score = Math.max(score, 300 - index * 2);
+        if (primary.has(field)) {
+            if (field === query) score = Math.max(score, 1200 - index * 4);
+            else if (field.startsWith(query)) score = Math.max(score, 1050 - index * 3);
+            else if (field.split(/\s+/).some(word => word.startsWith(query))) score = Math.max(score, 980 - index * 2);
+            else if (field.includes(query)) score = Math.max(score, 760 - index);
+        }
     });
     const queryTokens = query.split(/\s+/).filter(token => token.length > 1);
     if (queryTokens.length > 1 && queryTokens.every(token => fields.some(field => field.split(/\s+/).some(word => word.startsWith(token))))) score = Math.max(score, 180);
@@ -1313,9 +1444,10 @@ function renderSearchResults() {
     if (!query) return;
 
     const results = filteredSearchResults(query);
+    const visibleResults = results.slice(0, searchVisibleCount);
     transientSearchItems = new Map(results.filter(result => result.item.transient).map(result => [itemKey(result.item), result.item]));
     document.getElementById("search-result-summary").textContent = `${results.length} ${results.length === 1 ? "result" : "results"} for “${query}”`;
-    document.getElementById("search-results").innerHTML = results.map(({ item }) => {
+    document.getElementById("search-results").innerHTML = visibleResults.map(({ item }) => {
         const saved = !item.transient && isSaved(item);
         const reading = searchReading(item);
         const meta = searchResultMeta(item);
@@ -1330,6 +1462,13 @@ function renderSearchResults() {
         </article>`;
     }).join("");
     document.getElementById("search-empty").hidden = results.length > 0;
+    const showMore = document.getElementById("show-more-search-results");
+    showMore.hidden = visibleResults.length >= results.length;
+    showMore.textContent = showMore.hidden ? "Show more" : `Show ${Math.min(40, results.length - visibleResults.length)} more`;
+}
+
+function resetSearchResultLimit() {
+    searchVisibleCount = 40;
 }
 
 function findSearchItem(key) {
@@ -1358,8 +1497,9 @@ function renderSearchJlptFilters() {
         searchLevels = event.target.checked ? [...new Set([...searchLevels, level])] : searchLevels.filter(value => value !== level);
         if (!searchLevels.length) searchLevels = [...JLPT_LEVELS];
         searchLevels = normalizeJlptLevels(searchLevels, JLPT_LEVELS);
+        resetSearchResultLimit();
         renderSearchJlptFilters();
-        loadKanjiForSelection("search", searchLevels, () => renderSearchResults());
+        Promise.all([loadKanjiForSelection("search", searchLevels), loadVocabularyForSelection("search", searchLevels)]).then(() => renderSearchResults());
     })));
     const allButton = document.createElement("button");
     allButton.type = "button";
@@ -1367,8 +1507,9 @@ function renderSearchJlptFilters() {
     allButton.textContent = "◎ All";
     allButton.addEventListener("click", () => {
         searchLevels = [...JLPT_LEVELS];
+        resetSearchResultLimit();
         renderSearchJlptFilters();
-        loadKanjiForSelection("search", searchLevels, () => renderSearchResults());
+        Promise.all([loadKanjiForSelection("search", searchLevels), loadVocabularyForSelection("search", searchLevels)]).then(() => renderSearchResults());
     });
     container.appendChild(allButton);
     document.getElementById("search-jlpt-summary").textContent = searchLevels.length === JLPT_LEVELS.length ? "All levels" : searchLevels.join(" + ");
@@ -1377,9 +1518,10 @@ function renderSearchJlptFilters() {
 function openSearch(returnRoute = currentRoute) {
     searchReturnRoute = ["search", "kanji-detail", "word-detail"].includes(returnRoute) ? "learn" : returnRoute;
     showRoute("search");
-    loadKanjiForSelection("search", searchLevels, () => {
+    Promise.all([loadKanjiForSelection("search", searchLevels), loadVocabularyForSelection("search", searchLevels)]).then(() => {
         if (currentRoute === "search") renderSearchResults();
     });
+    prepareTravelSearchForCurrentQuery();
     requestAnimationFrame(() => document.getElementById("universal-search-input").focus());
 }
 
@@ -1413,7 +1555,8 @@ function persistUserEntries() {
     writeJson(STORAGE.userSlang, userSlangEntries);
     nativeQueues = { native: [], slang: [] };
     nativeQueueKeys = { native: "", slang: "" };
-    buildSearchIndex();
+    invalidateNormalizedContentCaches();
+    invalidateSearchIndex();
     refreshNativeCategories();
     renderMyEntries();
     updateSavedUi();
@@ -1560,7 +1703,8 @@ function renderNative(item) {
     empty.textContent = currentNativeMode === "slang" ? "No entries here yet 🌸 This collection is still growing." : "No content is available for these filters.";
     document.getElementById("native-status").textContent = item?.status || "No match";
     document.getElementById("native-expression").textContent = item?.expression || "—";
-    document.getElementById("native-reading").textContent = item ? `${item.kana} · ${item.romaji}` : "";
+    renderOptionalText("native-reading", item?.kana);
+    renderOptionalText("native-romaji", item?.romaji);
     document.getElementById("native-meaning").textContent = item?.meaning || "No content is available for these filters.";
     document.getElementById("native-details").innerHTML = item ? `
         <div class="detail-box"><strong>Literal meaning</strong><p>${item.literal}</p></div>
@@ -1690,7 +1834,7 @@ async function renderTravelCategory(category) {
     try {
         await window.SakuraTravelLoader.loadTravelCategory(category);
         if (revision !== travelRenderRevision || currentRoute !== `travel-${category}`) return;
-        buildSearchIndex();
+        invalidateSearchIndex();
         const pool = travelPhrasePool();
         currentTravelIndex = 0;
         const requestedPhrase = pendingTravelPhraseId ? pool.find(phrase => phrase.id === pendingTravelPhraseId) : null;
@@ -2352,7 +2496,7 @@ async function downloadTravelOfflinePack(refresh = false) {
         const complete = finalInspection.ready.length === categories.length;
         travelOfflinePackState = { status:complete ? "ready" : finalInspection.ready.length ? "partial" : "error", ready:finalInspection.ready, failed:finalInspection.missing, processed:pending.length };
         saveTravelOfflineMetadata(finalInspection.ready, complete, complete);
-        buildSearchIndex();
+        invalidateSearchIndex();
         message.textContent = complete ? "Travel Pack download complete." : "Some categories could not be downloaded. Your completed categories were kept.";
         renderTravelOfflinePack();
     })().catch(error => {
@@ -2374,7 +2518,7 @@ async function removeTravelOfflinePack() {
         await Promise.all(categories.map(category => cache.delete(travelOfflineAssetUrl(category))));
         window.SakuraTravelLoader?.forgetTravelCategories?.(categories);
         travelSearchPrepared = false;
-        buildSearchIndex();
+        invalidateSearchIndex();
         localStorage.removeItem(STORAGE.travelOfflinePack);
         travelOfflinePackMetadata = null;
         travelOfflinePackState = { status:"empty", ready:[], failed:[...categories], processed:0 };
@@ -2731,6 +2875,7 @@ function showRoute(route, updateHash = true) {
     const isTravelUtilityRoute = ["travel-my-phrases", "travel-decks", "travel-notes", "travel-countdown", "travel-offline", "travel-yen"].includes(normalizedRoute) || Boolean(deckRouteMatch);
     const viewRoute = nativeMode ? "native" : travelCategory ? "travel-category" : deckRouteMatch ? "travel-deck" : normalizedRoute;
     currentRoute = normalizedRoute;
+    if (normalizedRoute === "search") buildSearchIndex();
     if (nativeMode) {
         currentNativeMode = nativeMode;
         document.getElementById("native-heading").textContent = nativeMode === "slang" ? "Slang" : "Native Japanese";
@@ -3160,7 +3305,7 @@ function addListeners() {
     document.getElementById("translation-english").addEventListener("input",event=>{document.getElementById("translation-character-count").textContent=event.target.value.length;});
     document.getElementById("clear-translation").addEventListener("click",()=>{document.getElementById("translation-form").reset();document.getElementById("translation-character-count").textContent="0";document.getElementById("translation-message").textContent="";renderTranslationResult(null);});
     document.getElementById("copy-translation").addEventListener("click",async()=>{if(!currentTranslationResult)return;try{await navigator.clipboard.writeText(currentTranslationResult.japanese);document.getElementById("translation-message").textContent="Copied Japanese to the clipboard.";}catch{document.getElementById("translation-message").textContent="Copy is unavailable. Press and hold the Japanese text to copy it.";}});
-    document.getElementById("save-translation").addEventListener("click",()=>{const item=translationResultItem();if(!item)return;toggleSaved(item);buildSearchIndex();renderTranslationResult(currentTranslationResult);});
+    document.getElementById("save-translation").addEventListener("click",()=>{const item=translationResultItem();if(!item)return;toggleSaved(item);invalidateSearchIndex();renderTranslationResult(currentTranslationResult);});
     document.getElementById("translation-history").addEventListener("click",event=>{const remove=event.target.closest("[data-delete-translation-history]");if(remove){translationHistory=translationHistory.filter(item=>item.id!==remove.dataset.deleteTranslationHistory);writeJson(STORAGE.translationHistory,translationHistory);renderTranslationHistory();return;}const reuse=event.target.closest("[data-translation-history]");if(reuse){const item=translationHistory.find(record=>record.id===reuse.dataset.translationHistory);if(item){document.getElementById("translation-english").value=item.english;translationContext=item.context;translationTone=item.tone;renderTranslationChips();renderTranslationResult(item.result);}}});
     document.getElementById("clear-translation-history").addEventListener("click",()=>{if(window.confirm("Clear all translation history?")){translationHistory=[];writeJson(STORAGE.translationHistory,translationHistory);renderTranslationHistory();}});
     const entryDialog = document.getElementById("entry-manager-dialog");
@@ -3197,6 +3342,7 @@ function addListeners() {
     document.getElementById("open-learn-search").addEventListener("click", () => openSearch("learn"));
     document.getElementById("close-search").addEventListener("click", () => showRoute(searchReturnRoute));
     document.getElementById("universal-search-input").addEventListener("input", () => {
+        resetSearchResultLimit();
         renderSearchResults();
         prepareTravelSearchForCurrentQuery();
     });
@@ -3208,6 +3354,7 @@ function addListeners() {
     });
     document.getElementById("clear-search-input").addEventListener("click", () => {
         document.getElementById("universal-search-input").value = "";
+        resetSearchResultLimit();
         renderSearchResults();
         document.getElementById("universal-search-input").focus();
     });
@@ -3215,8 +3362,14 @@ function addListeners() {
         const button = event.target.closest("[data-search-type]");
         if (!button) return;
         searchType = button.dataset.searchType;
+        resetSearchResultLimit();
         document.querySelectorAll("[data-search-type]").forEach(filter => filter.classList.toggle("active", filter === button));
         document.getElementById("search-jlpt-panel").hidden = !["all", "kanji", "vocabulary"].includes(searchType);
+        renderSearchResults();
+        if (["all", "travel"].includes(searchType)) prepareTravelSearchForCurrentQuery();
+    });
+    document.getElementById("show-more-search-results").addEventListener("click", () => {
+        searchVisibleCount += 40;
         renderSearchResults();
     });
     document.getElementById("search-results").addEventListener("click", event => {
@@ -3240,6 +3393,7 @@ function addListeners() {
         const useButton = event.target.closest("[data-recent-index]");
         if (useButton) {
             document.getElementById("universal-search-input").value = recentSearches[Number(useButton.dataset.recentIndex)] || "";
+            resetSearchResultLimit();
             renderSearchResults();
             prepareTravelSearchForCurrentQuery();
         }
@@ -3408,7 +3562,6 @@ function initializeApp() {
     renderGlobalLevels();
     renderAllSectionControls();
     renderFlashcardLevels();
-    buildSearchIndex();
     renderSearchJlptFilters();
     renderRecentSearches();
     renderTranslationChips();

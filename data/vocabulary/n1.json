@@ -1,0 +1,32 @@
+[
+  {
+    "id": "vocab-n1-remarkable",
+    "type": "vocabulary",
+    "word": "著しい",
+    "kana": "いちじるしい",
+    "romaji": "ichijirushii",
+    "meaning": "remarkable; striking",
+    "jlpt": "N1",
+    "exampleSentence": "技術は著しく進歩しました。",
+    "exampleTranslation": "Technology advanced remarkably.",
+    "notes": "Often used in formal contexts.",
+    "dictionaryMeaning": "remarkable; striking",
+    "naturalMeaning": "marked; dramatic; remarkable",
+    "naturalUsageNotes": "More formal than すごい and often describes a clearly measurable change."
+  },
+  {
+    "id": "vocab-n1-consider",
+    "type": "vocabulary",
+    "word": "踏まえる",
+    "kana": "ふまえる",
+    "romaji": "fumaeru",
+    "meaning": "to take into account",
+    "jlpt": "N1",
+    "exampleSentence": "結果を踏まえて計画を直します。",
+    "exampleTranslation": "We will revise the plan based on the results.",
+    "notes": "Common in business and formal language.",
+    "dictionaryMeaning": "to step on; to tread on",
+    "naturalMeaning": "to take into account; to base a decision on",
+    "naturalUsageNotes": "In modern formal usage, ～を踏まえて means ‘taking … into account.’ Do not translate it as physically stepping on something in this pattern."
+  }
+]
