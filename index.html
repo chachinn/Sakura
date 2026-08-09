@@ -11,7 +11,7 @@
     <script>try { document.documentElement.dataset.theme = localStorage.getItem("sakuraAppearanceTheme") || "pink"; } catch (error) { document.documentElement.dataset.theme = "pink"; }</script>
     <link rel="manifest" href="manifest.webmanifest">
     <link rel="apple-touch-icon" href="icons/icon-180.png">
-    <link rel="stylesheet" href="style.css?v=60">
+    <link rel="stylesheet" href="style.css?v=61">
 </head>
 <body>
     <div class="app-shell">
@@ -242,6 +242,7 @@
                     <fieldset><legend>Hair Style</legend><div id="chibi-hair-style-options" class="chibi-choice-grid"></div></fieldset>
                     <fieldset><legend>Hair Color</legend><div id="chibi-hair-color-options" class="chibi-choice-grid chibi-color-grid"></div><label class="chibi-custom-color"><span>Custom HEX</span><input id="chibi-custom-hair-color" type="text" maxlength="7" placeholder="#5A3828" autocomplete="off" spellcheck="false"><button class="secondary-button" type="button" data-chibi-apply-color="hairColor">Apply</button></label></fieldset>
                     <fieldset><legend>Eye Color</legend><div id="chibi-eye-color-options" class="chibi-choice-grid chibi-color-grid"></div><label class="chibi-custom-color"><span>Custom HEX</span><input id="chibi-custom-eye-color" type="text" maxlength="7" placeholder="#6B4636" autocomplete="off" spellcheck="false"><button class="secondary-button" type="button" data-chibi-apply-color="eyeColor">Apply</button></label></fieldset>
+                    <fieldset><legend>Expression</legend><div id="chibi-expression-options" class="chibi-choice-grid"></div></fieldset>
                     <fieldset><legend>Outfit</legend><div id="chibi-outfit-options" class="chibi-choice-grid"></div></fieldset>
                     <fieldset><legend>Accessories</legend><div class="chibi-accessory-options"><label><input id="chibi-glasses" type="checkbox"><span>Glasses</span></label><div id="chibi-accessory-options" class="chibi-choice-grid"></div></div></fieldset>
                     <fieldset><legend>Companion</legend><div class="chibi-companion-settings"><label><span><strong>Show Sakura Guide</strong><small>Keep your companion above the bottom navigation.</small></span><input id="chibi-companion-enabled" type="checkbox" role="switch"></label><div><strong>Side</strong><div id="chibi-companion-side-options" class="chibi-choice-grid"></div></div><label><span><strong>Idle animations</strong><small>Occasional short, quiet actions.</small></span><input id="chibi-idle-animations" type="checkbox" role="switch"></label><label><span><strong>Speech bubbles</strong><small>Occasional short encouragement.</small></span><input id="chibi-speech-bubbles" type="checkbox" role="switch"></label><label><span><strong>Context reactions</strong><small>React to a few obvious Sakura moments.</small></span><input id="chibi-context-reactions" type="checkbox" role="switch"></label></div></fieldset>

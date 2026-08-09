@@ -1,18 +1,24 @@
-const SHELL_CACHE_VERSION = "sakura-shell-v91";
+const SHELL_CACHE_VERSION = "sakura-shell-v92";
 const KANJI_CONTENT_CACHE_VERSION = "sakura-kanji-content-v1";
 const TRAVEL_CONTENT_CACHE_VERSION = "sakura-travel-content-v1";
 const VOCABULARY_CONTENT_CACHE_VERSION = "sakura-vocabulary-content-v1";
 
 const APP_SHELL = [
     "./index.html",
-    "./style.css?v=60",
-    "./app.js?v=70",
+    "./style.css?v=61",
+    "./app.js?v=71",
     "./data/practice-what-would-you-say.js?v=2",
     "./data/practice-sentence-builder.js?v=2",
     "./data/practice-one-line-many-personalities.js?v=2",
     "./data/counters.json?v=1",
     "./data/etiquette.json?v=1",
-    "./data/chibi-assets.json?v=2",
+    "./assets/avatar/avatar-manifest.json?v=1",
+    "./assets/avatar/body/light.png",
+    "./assets/avatar/eyes/pink.png",
+    "./assets/avatar/expressions/neutral.png",
+    "./assets/avatar/hair-back/long/brown.png",
+    "./assets/avatar/hair-front/long/brown.png",
+    "./assets/avatar/outfits/sakura_casual.png",
     "./assets/chibi/default/sakura-guide-default.webp",
     "./data/kanji.js",
     "./data/vocabulary.js?v=4",
