@@ -11,7 +11,7 @@
     <script>try { document.documentElement.dataset.theme = localStorage.getItem("sakuraAppearanceTheme") || "pink"; } catch (error) { document.documentElement.dataset.theme = "pink"; }</script>
     <link rel="manifest" href="manifest.webmanifest">
     <link rel="apple-touch-icon" href="icons/icon-180.png">
-    <link rel="stylesheet" href="style.css?v=46">
+    <link rel="stylesheet" href="style.css?v=49">
 </head>
 <body>
     <div class="app-shell">
@@ -129,6 +129,7 @@
                 </div></section>
                 <section class="hub-section" aria-labelledby="hub-learning-heading"><h2 id="hub-learning-heading">Learning</h2><div class="hub-link-list">
                     <button class="hub-link" type="button" data-route="library"><span aria-hidden="true">▤</span><span><strong>Library</strong><small>Browse Sakura’s learning collection.</small></span><b aria-hidden="true">›</b></button>
+                    <button class="hub-link" type="button" data-route="practice"><span aria-hidden="true">✎</span><span><strong>Practice</strong><small>Use Japanese in guided activities.</small></span><b aria-hidden="true">›</b></button>
                     <button class="hub-link" type="button" data-hub-action="flashcards"><span aria-hidden="true">◫</span><span><strong>Flashcards</strong><small>Review the Japanese you saved.</small></span><b aria-hidden="true">›</b></button>
                     <button class="hub-link" type="button" data-route="translate"><span aria-hidden="true">文</span><span><strong>English to Japanese</strong><small>Natural, context-aware suggestions.</small></span><b aria-hidden="true">›</b></button>
                 </div></section>
@@ -280,7 +281,7 @@
             </section>
 
             <section id="practice-what-would-you-say-view" class="view practice-activity-view" data-view="practice-what-would-you-say" aria-labelledby="wwys-heading" hidden>
-                <div class="practice-activity-heading"><button class="back-button" type="button" data-route="practice" aria-label="Back to Practice">‹</button><div><span class="section-kicker">🌸 Real-life practice</span><h1 id="wwys-heading">What Would You Say?</h1></div></div>
+                <div class="practice-activity-heading"><button class="back-button" type="button" data-route="practice" aria-label="Back to Practice">‹</button><div><span class="section-kicker">🌸 Real-life practice</span><h1 id="wwys-heading">What Would You Say?</h1></div><button class="practice-romaji-toggle" type="button" data-practice-romaji-toggle aria-pressed="false">Show Romaji</button></div>
                 <div id="wwys-loading" class="practice-loading" role="status">Preparing your practice…</div>
                 <article id="wwys-question-card" class="practice-question-card" hidden>
                     <div class="practice-progress-row"><span id="wwys-category" class="tag"></span><span id="wwys-difficulty" class="tag"></span><strong id="wwys-progress">1 / 10</strong></div>
@@ -289,7 +290,7 @@
                     <div id="wwys-choices" class="practice-choice-list" role="group" aria-label="Answer choices"></div>
                     <section id="wwys-feedback" class="practice-feedback" aria-live="polite" hidden>
                         <h2 id="wwys-feedback-title"></h2>
-                        <div class="practice-answer-reading"><strong id="wwys-answer-japanese"></strong><span id="wwys-answer-kana"></span><span id="wwys-answer-romaji"></span><span id="wwys-answer-english"></span></div>
+                        <div class="practice-answer-reading"><strong id="wwys-answer-japanese"></strong><span id="wwys-answer-kana"></span><span id="wwys-answer-romaji" data-practice-romaji hidden></span><span id="wwys-answer-english"></span></div>
                         <p id="wwys-explanation"></p>
                         <button id="wwys-next" class="primary-button full-width-button" type="button">Next</button>
                     </section>
@@ -301,7 +302,7 @@
             </section>
 
             <section id="practice-sentence-builder-view" class="view practice-activity-view" data-view="practice-sentence-builder" aria-labelledby="sentence-builder-heading" hidden>
-                <div class="practice-activity-heading"><button class="back-button" type="button" data-route="practice" aria-label="Back to Practice">‹</button><div><span class="section-kicker">🌸 Word-order practice</span><h1 id="sentence-builder-heading">Sentence Builder</h1></div></div>
+                <div class="practice-activity-heading"><button class="back-button" type="button" data-route="practice" aria-label="Back to Practice">‹</button><div><span class="section-kicker">🌸 Word-order practice</span><h1 id="sentence-builder-heading">Sentence Builder</h1></div><button class="practice-romaji-toggle" type="button" data-practice-romaji-toggle aria-pressed="false">Show Romaji</button></div>
                 <div id="sentence-builder-loading" class="practice-loading" role="status">Preparing your practice…</div>
                 <article id="sentence-builder-question" class="practice-question-card sentence-builder-card" hidden>
                     <div class="practice-progress-row"><span id="sentence-builder-category" class="tag"></span><span id="sentence-builder-difficulty" class="tag"></span><strong id="sentence-builder-progress">1 / 10</strong></div>
@@ -311,7 +312,7 @@
                     <div class="sentence-builder-actions"><button id="sentence-builder-clear" class="secondary-button" type="button">Clear</button><button id="sentence-builder-check" class="primary-button" type="button" disabled>Check Answer</button></div>
                     <section id="sentence-builder-feedback" class="practice-feedback" aria-live="polite" hidden>
                         <h2 id="sentence-builder-feedback-title"></h2>
-                        <div class="practice-answer-reading"><strong id="sentence-builder-japanese"></strong><span id="sentence-builder-kana"></span><span id="sentence-builder-romaji"></span><span id="sentence-builder-result-english"></span></div>
+                        <div class="practice-answer-reading"><strong id="sentence-builder-japanese"></strong><span id="sentence-builder-kana"></span><span id="sentence-builder-romaji" data-practice-romaji hidden></span><span id="sentence-builder-result-english"></span></div>
                         <p id="sentence-builder-explanation"></p>
                         <button id="sentence-builder-next" class="primary-button full-width-button" type="button">Next</button>
                     </section>
@@ -323,7 +324,7 @@
             </section>
 
             <section id="practice-one-line-many-personalities-view" class="view practice-activity-view" data-view="practice-one-line-many-personalities" aria-labelledby="personalities-heading" hidden>
-                <div class="practice-activity-heading"><button class="back-button" type="button" data-route="practice" aria-label="Back to Practice">‹</button><div><span class="section-kicker">🌸 Tone and personality</span><h1 id="personalities-heading">One Line, Many Personalities</h1></div></div>
+                <div class="practice-activity-heading"><button class="back-button" type="button" data-route="practice" aria-label="Back to Practice">‹</button><div><span class="section-kicker">🌸 Tone and personality</span><h1 id="personalities-heading">One Line, Many Personalities</h1></div><button class="practice-romaji-toggle" type="button" data-practice-romaji-toggle aria-pressed="false">Show Romaji</button></div>
                 <div id="personalities-loading" class="practice-loading" role="status">Preparing your practice…</div>
                 <article id="personalities-question" class="practice-question-card personalities-question-card" hidden>
                     <div class="practice-progress-row"><span id="personalities-category" class="tag"></span><strong id="personalities-progress">1 / 10</strong></div>
@@ -331,7 +332,7 @@
                     <section class="personalities-options" aria-labelledby="personalities-options-heading"><strong id="personalities-options-heading">Choose a personality</strong><div id="personalities-chips" class="personalities-chip-list" role="tablist" aria-label="Tone and personality variants"></div></section>
                     <section id="personalities-detail" class="personality-detail-card" aria-live="polite" hidden>
                         <div class="personality-detail-heading"><span id="personalities-selected-label" class="tag"></span><span id="personalities-formality"></span></div>
-                        <h2 id="personalities-japanese"></h2><p id="personalities-kana"></p><p id="personalities-romaji" class="learning-romaji"></p><p id="personalities-english"></p>
+                        <h2 id="personalities-japanese"></h2><p id="personalities-kana"></p><p id="personalities-romaji" class="learning-romaji" data-practice-romaji hidden></p><p id="personalities-english"></p>
                         <div class="personality-nuance"><strong>Nuance</strong><p id="personalities-nuance"></p></div>
                         <div id="personalities-warning" class="personality-warning" hidden><strong>Use with care</strong><p></p></div>
                     </section>
@@ -358,6 +359,7 @@
                     <p id="native-reading" class="native-reading">おつかれさま</p>
                     <p id="native-romaji" class="learning-romaji">otsukaresama</p>
                     <p id="native-meaning" class="native-meaning">Good work / Thanks for your effort</p>
+                    <section id="slang-mastery-control" class="mastery-control" hidden></section>
                     <div id="native-details" class="native-details"></div>
                     <p id="native-empty" class="empty-state" hidden>No content is available for these filters.</p>
                 </article>
@@ -523,6 +525,7 @@
             <section id="kanji-detail-view" class="view detail-view" data-view="kanji-detail" aria-labelledby="kanji-detail-heading" hidden>
                 <header class="detail-header"><button class="back-button" type="button" data-detail-back>‹</button><div><span class="section-kicker">Kanji study</span><h1 id="kanji-detail-heading">Kanji Detail</h1></div><button id="save-detail-kanji" class="save-button" type="button">♡</button></header>
                 <article class="detail-hero kanji-detail-hero"><div id="detail-kanji-character" class="detail-kanji-character">日</div><div><span id="detail-kanji-level" class="tag">N5</span><span class="detail-label">Literal Meaning</span><h2 id="detail-kanji-meaning">day; sun</h2><span class="detail-label">Core Concept</span><p id="detail-kanji-core-concept"></p><dl class="reading-list"><div id="detail-kanji-primary-reading-group"><dt>Primary reading</dt><dd id="detail-kanji-primary-reading">ひ / ニチ</dd></div><div id="detail-kanji-romaji-group"><dt>Romaji</dt><dd id="detail-kanji-romaji" class="learning-romaji">hi / nichi</dd></div><div><dt>Onyomi</dt><dd id="detail-kanji-onyomi">ニチ, ジツ</dd></div><div><dt>Kunyomi</dt><dd id="detail-kanji-kunyomi">ひ, び, か</dd></div></dl></div></article>
+                <section id="kanji-mastery-control" class="mastery-control"></section>
                 <section class="detail-section"><h2>Most Common Words</h2><div id="detail-kanji-examples" class="example-word-grid"></div></section>
                 <section class="detail-section"><h2>Natural Usage Note</h2><p id="detail-kanji-usage-note"></p></section>
                 <section class="detail-section"><h2>Example Sentence</h2><p id="detail-kanji-sentence" class="japanese-sentence"></p><p id="detail-kanji-translation" class="translation"></p></section>
@@ -532,6 +535,7 @@
             <section id="word-detail-view" class="view detail-view" data-view="word-detail" aria-labelledby="word-detail-heading" hidden>
                 <header class="detail-header"><button class="back-button" type="button" data-detail-back>‹</button><div><span class="section-kicker">Vocabulary study</span><h1 id="word-detail-heading">Word Detail</h1></div><button id="save-detail-word" class="save-button" type="button">♡</button></header>
                 <article class="detail-hero word-detail-hero"><div><span id="detail-word-level" class="tag">N5</span><h2 id="detail-word-text">勉強</h2><p id="detail-word-kana">べんきょう</p><p id="detail-word-romaji">benkyou</p></div><div><span class="detail-label">Dictionary Meaning</span><strong id="detail-word-dictionary-meaning"></strong><span class="detail-label">Natural English Meaning</span><strong id="detail-word-meaning">study</strong><span class="detail-label">Part of speech</span><strong id="detail-word-pos">Noun / する verb</strong></div></article>
+                <section id="word-mastery-control" class="mastery-control"></section>
                 <section class="detail-section"><h2>Example Sentence</h2><p id="detail-word-sentence" class="japanese-sentence"></p><p id="detail-word-translation" class="translation"></p></section>
                 <section class="detail-section"><h2>Usage note</h2><p id="detail-word-notes"></p></section>
                 <div class="detail-controls"><button id="detail-previous-word" class="control-button" type="button">‹ Previous</button><button id="detail-random-word" class="control-button accent-control" type="button">⤨ Random</button><button id="detail-next-word" class="control-button" type="button">Next ›</button></div>
@@ -550,7 +554,14 @@
     <dialog id="settings-dialog" class="settings-dialog">
         <div class="settings-card appearance-settings-card">
             <div class="card-topline"><div><span class="section-kicker">Personalize</span><h2>Appearance</h2></div><button id="close-settings" class="icon-button" type="button" aria-label="Close settings">×</button></div>
-            <section class="appearance-section"><div class="appearance-section-heading"><h3>Color Theme</h3><span id="selected-theme-label">Sakura Pink</span></div><div id="theme-options" class="theme-options"></div></section>
+            <section class="appearance-section"><div class="appearance-section-heading"><h3>Color Theme</h3><span id="selected-theme-label">Sakura Pink</span></div><div id="theme-options" class="theme-options"></div>
+                <div class="custom-accent-control">
+                    <label for="custom-accent-input"><strong>Custom Color</strong><small>Use a six-digit HEX accent.</small></label>
+                    <div class="custom-accent-row"><span id="custom-accent-preview" class="custom-accent-preview" aria-hidden="true"></span><input id="custom-accent-input" type="text" inputmode="text" maxlength="7" autocomplete="off" autocapitalize="characters" spellcheck="false" placeholder="#D94F7A" aria-describedby="custom-accent-message"><button id="apply-custom-accent" class="secondary-button" type="button">Apply</button></div>
+                    <button id="reset-custom-accent" class="secondary-button full-width-button" type="button" hidden>Use Theme Color</button>
+                    <p id="custom-accent-message" class="form-message" role="status"></p>
+                </div>
+            </section>
             <section class="appearance-section"><div class="appearance-section-heading"><h3>Custom Wallpaper</h3><span id="wallpaper-status">Off</span></div>
                 <div id="wallpaper-empty" class="wallpaper-empty">Choose a photo from this device. It stays private and local to Sakura.</div>
                 <div id="wallpaper-preview-wrap" class="wallpaper-preview-wrap" hidden><img id="wallpaper-preview" alt="Selected wallpaper preview"><span id="wallpaper-preview-label">Saved wallpaper</span></div>

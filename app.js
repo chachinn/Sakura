@@ -10,12 +10,14 @@ const STORAGE = {
     sectionLevels: "chaSectionJlptLevels",
     quizStats: "chaQuizStats",
     activeQuiz: "chaActiveQuizType",
+    mastery: "sakuraMastery",
     kanaQuizGroups: "sakuraKanaQuizGroups",
     recentSearches: "chaRecentSearches",
     userNative: "sakura_user_native_entries",
     userSlang: "sakura_user_slang_entries",
     nativeHistory: "sakura_native_recent_history",
     appearanceTheme: "sakuraAppearanceTheme",
+    customAccent: "sakuraCustomAccentColor",
     wallpaperOverlay: "sakuraWallpaperOverlay",
     wallpaperFraming: "sakuraWallpaperFraming",
     translationHistory: "sakuraTranslationHistory",
@@ -55,6 +57,7 @@ const LEGACY_KANJI_IDS = {
 };
 const PERMANENT_KANJI_IDS = new Set(Object.values(LEGACY_KANJI_IDS));
 const SECTION_NAMES = ["kanjiOfDay", "wordOfDay", "randomKanji", "randomVocabulary", "kanjiQuiz", "vocabularyQuiz"];
+const DIRECT_LEVEL_SECTIONS = new Set(["randomKanji", "randomVocabulary", "kanjiQuiz", "vocabularyQuiz"]);
 const NATIVE_CATEGORIES = ["Everyday casual", "Natural polite speech", "Reactions", "Travel", "Workplace", "Friends", "Texting", "Restaurants", "Shopping", "Transportation", "Hotels", "Social situations"];
 const SLANG_CATEGORIES = ["Gyaru", "SNS / Social Media", "Internet", "Youth", "Casual Spoken", "Workplace / Office", "Anime / Otaku", "Oshi / Fandom", "Gaming", "Dating / Romance", "Friendship / Social", "School / Student", "Beauty / Fashion", "Food / Going Out", "Drinking / Nightlife", "Music / Concert", "Memes / Reactions", "Texting / LINE / DMs", "Gen Z / Reiwa", "Heisei / Retro", "Kansai", "Regional Dialects", "Strong Language / Insults", "Sarcasm / Passive Aggressive", "Fillers / Reaction Words", "Abbreviations", "Loanword Slang", "Things Textbooks Never Teach"];
 const SLANG_CATEGORY_OPTIONS = [
@@ -155,6 +158,96 @@ function readJson(key, fallback) {
 
 function writeJson(key, value) {
     localStorage.setItem(key, JSON.stringify(value));
+}
+
+const MASTERY_STATES = Object.freeze(["New", "Learning", "Familiar", "Mastered"]);
+
+function masteryIdentity(item) {
+    const type = item?.migratedFrom === "native" ? "native" : String(item?.type || "");
+    const id = String(item?.id || "");
+    return ["kanji", "vocabulary", "slang"].includes(type) && id ? { type, id, key:`${type}:${id}` } : null;
+}
+
+function normalizeMasteryProgress(value, identity) {
+    const source = value && typeof value === "object" && !Array.isArray(value) ? value : {};
+    const mastery = MASTERY_STATES.includes(source.mastery) ? source.mastery : "New";
+    const count = name => Math.max(0, Math.floor(Number(source[name]) || 0));
+    const lastReviewed = typeof source.lastReviewed === "string" && !Number.isNaN(Date.parse(source.lastReviewed)) ? source.lastReviewed : null;
+    return { type:identity.type, id:identity.id, mastery, timesSeen:count("timesSeen"), correctCount:count("correctCount"), incorrectCount:count("incorrectCount"), lastReviewed };
+}
+
+function readMasteryStore() {
+    const stored = readJson(STORAGE.mastery, {});
+    if (!stored || typeof stored !== "object" || Array.isArray(stored)) return {};
+    const safe = {};
+    Object.entries(stored).forEach(([key, value]) => {
+        const separator = key.indexOf(":");
+        if (separator < 1) return;
+        const identity = masteryIdentity({ type:key.slice(0, separator), id:key.slice(separator + 1) });
+        if (identity) safe[identity.key] = normalizeMasteryProgress(value, identity);
+    });
+    return safe;
+}
+
+let masteryProgress = readMasteryStore();
+
+function getMastery(item) {
+    const identity = masteryIdentity(item);
+    return identity ? normalizeMasteryProgress(masteryProgress[identity.key], identity) : null;
+}
+
+function persistMastery() {
+    writeJson(STORAGE.mastery, masteryProgress);
+}
+
+function setMastery(item, state) {
+    const identity = masteryIdentity(item);
+    if (!identity || !MASTERY_STATES.includes(state)) return null;
+    masteryProgress[identity.key] = { ...getMastery(identity), mastery:state };
+    persistMastery();
+    return masteryProgress[identity.key];
+}
+
+function recalculateMastery(progress) {
+    const correct = progress.correctCount;
+    const attempts = correct + progress.incorrectCount;
+    const accuracy = attempts ? correct / attempts : 0;
+    let evidenceState = attempts ? "Learning" : "New";
+    if (correct >= 6 && accuracy >= 0.85) evidenceState = "Mastered";
+    else if (correct >= 3 && accuracy >= 0.7) evidenceState = "Familiar";
+    const currentIndex = MASTERY_STATES.indexOf(progress.mastery);
+    const evidenceIndex = MASTERY_STATES.indexOf(evidenceState);
+    return MASTERY_STATES[evidenceIndex < currentIndex ? Math.max(evidenceIndex, currentIndex - 1) : evidenceIndex];
+}
+
+function recordMasteryResult(item, correct) {
+    const identity = masteryIdentity(item);
+    if (!identity) return null;
+    const progress = getMastery(identity);
+    progress.timesSeen += 1;
+    if (correct) progress.correctCount += 1;
+    else progress.incorrectCount += 1;
+    progress.lastReviewed = new Date().toISOString();
+    progress.mastery = recalculateMastery(progress);
+    masteryProgress[identity.key] = progress;
+    persistMastery();
+    return progress;
+}
+
+function renderMasteryControl(container, item) {
+    if (!container) return;
+    const progress = getMastery(item);
+    container.hidden = !progress;
+    if (!progress) { container.innerHTML = ""; return; }
+    container.dataset.masteryType = progress.type;
+    container.dataset.masteryId = progress.id;
+    container.innerHTML = `<div class="mastery-control-heading"><span>Mastery</span><strong>${progress.mastery}</strong></div><div class="mastery-state-options" role="group" aria-label="Set mastery state">${MASTERY_STATES.map(state => `<button class="mastery-state-button ${state === progress.mastery ? "active" : ""}" type="button" data-mastery-state="${state}" aria-pressed="${state === progress.mastery}">${state}</button>`).join("")}</div>`;
+}
+
+function refreshVisibleMasteryControls() {
+    renderMasteryControl(document.getElementById("kanji-mastery-control"), currentDetailKanji);
+    renderMasteryControl(document.getElementById("word-mastery-control"), currentDetailWord);
+    renderMasteryControl(document.getElementById("slang-mastery-control"), currentNativeMode === "slang" ? currentNativeItem : null);
 }
 
 function recordCompleteness(value) {
@@ -279,6 +372,13 @@ let yenConverterState = { currencies:{ top:"JPY", bottom:"PHP" }, activeSide:"to
 let globalLevels = normalizeJlptLevels(readJson(STORAGE.globalLevels, DEFAULT_LEVELS));
 let sectionSettings = readJson(STORAGE.sectionLevels, {});
 if (!sectionSettings || typeof sectionSettings !== "object" || Array.isArray(sectionSettings)) sectionSettings = {};
+DIRECT_LEVEL_SECTIONS.forEach(sectionName => {
+    const setting = sectionSettings[sectionName];
+    const hasDirectSetting = setting && !Object.prototype.hasOwnProperty.call(setting, "useGlobal");
+    const levels = setting?.useGlobal === false || hasDirectSetting ? normalizeJlptLevels(setting.levels, JLPT_LEVELS) : normalizeJlptLevels(globalLevels);
+    sectionSettings[sectionName] = { levels };
+});
+writeJson(STORAGE.sectionLevels, sectionSettings);
 let quizStats = {
     kana: { blooms: 0, misses: 0, questions: 0 },
     kanji: { blooms: 0, misses: 0, questions: 0 },
@@ -343,6 +443,7 @@ let sentenceBuilderBankPromise = null;
 let sentenceBuilderSession = null;
 let personalitiesBankPromise = null;
 let personalitiesSession = null;
+let practiceRomajiVisible = false;
 let normalizedNativeDataCache = null;
 let normalizedSlangDataCache = null;
 let pendingTravelPhraseId = "";
@@ -542,6 +643,7 @@ function getGlobalLevels() {
 
 function getActiveLevels(sectionName) {
     const setting = sectionSettings[sectionName];
+    if (DIRECT_LEVEL_SECTIONS.has(sectionName)) return normalizeJlptLevels(setting?.levels, globalLevels);
     if (!setting || setting.useGlobal !== false) return getGlobalLevels();
     return normalizeJlptLevels(setting.levels, JLPT_LEVELS);
 }
@@ -601,18 +703,17 @@ function renderGlobalLevels() {
 function renderSectionControl(sectionName) {
     const container = document.getElementById(`${sectionName}-levels`);
     if (!container) return;
-    const setting = sectionSettings[sectionName] || { useGlobal: true, levels: [...DEFAULT_LEVELS] };
+    const direct = DIRECT_LEVEL_SECTIONS.has(sectionName);
+    const setting = sectionSettings[sectionName] || (direct ? { levels:[...globalLevels] } : { useGlobal:true, levels:[...DEFAULT_LEVELS] });
     const activeLevels = getActiveLevels(sectionName);
     container.innerHTML = "";
 
     const top = document.createElement("div");
     top.className = "level-control-top";
-    top.innerHTML = `<span class="active-level-text">Active: ${activeLevels.length === JLPT_LEVELS.length ? "All" : activeLevels.join(" + ")}</span><label class="global-toggle"><span>Use Global</span><input type="checkbox" ${setting.useGlobal !== false ? "checked" : ""}></label>`;
-    top.querySelector("input").addEventListener("change", event => {
-        sectionSettings[sectionName] = { ...setting, useGlobal: event.target.checked };
-        writeJson(STORAGE.sectionLevels, sectionSettings);
-        renderAllSectionControls();
-        refreshSectionForLevelChange(sectionName);
+    top.innerHTML = `<span class="active-level-text">Active: ${activeLevels.length === JLPT_LEVELS.length ? "All" : activeLevels.join(" + ")}</span>${direct ? "" : `<label class="global-toggle"><span>Use Global</span><input type="checkbox" ${setting.useGlobal !== false ? "checked" : ""}></label>`}`;
+    if (!direct) top.querySelector("input").addEventListener("change", event => {
+        sectionSettings[sectionName] = { ...setting, useGlobal:event.target.checked };
+        writeJson(STORAGE.sectionLevels, sectionSettings); renderAllSectionControls(); refreshSectionForLevelChange(sectionName);
     });
     container.appendChild(top);
 
@@ -624,19 +725,19 @@ function renderSectionControl(sectionName) {
             const levels = event.target.checked
                 ? [...new Set([...(current.levels || []), level])]
                 : (current.levels || []).filter(value => value !== level);
-            sectionSettings[sectionName] = { useGlobal: false, levels: levels.length ? levels : [...JLPT_LEVELS] };
+            sectionSettings[sectionName] = direct ? { levels:levels.length ? levels : [...JLPT_LEVELS] } : { useGlobal:false, levels:levels.length ? levels : [...JLPT_LEVELS] };
             writeJson(STORAGE.sectionLevels, sectionSettings);
             renderAllSectionControls();
             refreshSectionForLevelChange(sectionName);
-        }, setting.useGlobal !== false));
+        }, !direct && setting.useGlobal !== false));
     });
     const allButton = document.createElement("button");
     allButton.type = "button";
-    allButton.className = `all-level-button ${!setting.useGlobal && activeLevels.length === JLPT_LEVELS.length ? "active" : ""}`;
+    allButton.className = `all-level-button ${(direct || !setting.useGlobal) && activeLevels.length === JLPT_LEVELS.length ? "active" : ""}`;
     allButton.textContent = "◎ All";
-    allButton.disabled = setting.useGlobal !== false;
+    allButton.disabled = !direct && setting.useGlobal !== false;
     allButton.addEventListener("click", () => {
-        sectionSettings[sectionName] = { useGlobal: false, levels: [...JLPT_LEVELS] };
+        sectionSettings[sectionName] = direct ? { levels:[...JLPT_LEVELS] } : { useGlobal:false, levels:[...JLPT_LEVELS] };
         writeJson(STORAGE.sectionLevels, sectionSettings);
         renderAllSectionControls();
         refreshSectionForLevelChange(sectionName);
@@ -792,6 +893,7 @@ function renderKanjiDetail(item) {
         return `<article class="example-word"><span><strong>${example.word}（${example.reading}）</strong><small>${example.meaning}</small></span><button class="example-save-button ${isSaved(savedExample) ? "saved" : ""}" type="button" data-example-id="${encodeURIComponent(JSON.stringify(savedExample))}" aria-label="Save ${example.word}">${isSaved(savedExample) ? "♥" : "♡"}</button></article>`;
     }).join("") || '<p class="empty-state">No example words available.</p>';
     setSaveButton(document.getElementById("save-detail-kanji"), item);
+    renderMasteryControl(document.getElementById("kanji-mastery-control"), item);
 }
 
 function renderWordDetail(item) {
@@ -807,6 +909,7 @@ function renderWordDetail(item) {
     document.getElementById("detail-word-translation").textContent = item?.exampleTranslation || "";
     document.getElementById("detail-word-notes").textContent = item?.naturalUsageNotes || item?.notes || "No usage note available.";
     setSaveButton(document.getElementById("save-detail-word"), item);
+    renderMasteryControl(document.getElementById("word-mastery-control"), item);
 }
 
 function openKanjiDetail(item, returnRoute = currentRoute) {
@@ -1065,6 +1168,7 @@ function isKanjiQuizAnswerCorrect(item, rawAnswer) {
 function checkKanjiQuiz() {
     if (quizTransitionLocks.kanji || !currentKanjiQuiz) return;
     const correct = isKanjiQuizAnswerCorrect(currentKanjiQuiz, document.getElementById("kanji-quiz-answer").value);
+    recordMasteryResult(currentKanjiQuiz, correct);
     if (correct) completeCorrectAnswer("kanji", "kanji-quiz-feedback", `Correct! ${currentKanjiQuiz.character}: ${currentKanjiQuiz.meaning}`, newKanjiQuiz);
     else { recordQuizMiss("kanji"); setFeedback("kanji-quiz-feedback", "Try again with a reading or English meaning.", "incorrect"); }
     return;
@@ -1076,6 +1180,7 @@ function checkVocabularyQuiz() {
     const answer = normalizeAnswer(document.getElementById("vocabulary-quiz-answer").value);
     const meanings = currentVocabularyQuiz.meaning.split(/[;,]/).map(normalizeAnswer);
     const correct = answer && meanings.some(value => value === answer || value.includes(answer));
+    recordMasteryResult(currentVocabularyQuiz, Boolean(correct));
     if (correct) completeCorrectAnswer("vocabulary", "vocabulary-quiz-feedback", `Correct! ${currentVocabularyQuiz.word}: ${currentVocabularyQuiz.meaning}`, newVocabularyQuiz);
     else { recordQuizMiss("vocabulary"); setFeedback("vocabulary-quiz-feedback", "Try again with the English meaning.", "incorrect"); }
     return;
@@ -1730,6 +1835,7 @@ function renderNative(item) {
         <div class="detail-box"><strong>Who &amp; where</strong><p>${item.users}<br>${item.whereSeen}</p></div>
         <div class="detail-box"><strong>Learner note</strong><p>Rude? ${item.rude}<br>Safe? ${item.safe}<br>${item.notes}</p></div>` : "";
     setSaveButton(document.getElementById("save-native-item"), item);
+    renderMasteryControl(document.getElementById("slang-mastery-control"), currentNativeMode === "slang" ? item : null);
 }
 
 function browseNative(direction = 1, random = false) {
@@ -3056,7 +3162,7 @@ function loadWhatWouldYouSayBank() {
     if (whatWouldYouSayBankPromise) return whatWouldYouSayBankPromise;
     whatWouldYouSayBankPromise = new Promise((resolve, reject) => {
         const script = document.createElement("script");
-        script.src = "./data/practice-what-would-you-say.js?v=1";
+        script.src = "./data/practice-what-would-you-say.js?v=2";
         script.onload = () => Array.isArray(window.WHAT_WOULD_YOU_SAY_DATA) ? resolve(window.WHAT_WOULD_YOU_SAY_DATA) : reject(new Error("Practice questions are unavailable."));
         script.onerror = () => reject(new Error("Practice questions could not be loaded."));
         document.head.appendChild(script);
@@ -3089,6 +3195,14 @@ function shuffledPracticeQuestions(bank) {
     return questions;
 }
 
+function applyPracticeRomajiVisibility() {
+    document.querySelectorAll("[data-practice-romaji]").forEach(element => { element.hidden = !practiceRomajiVisible; });
+    document.querySelectorAll("[data-practice-romaji-toggle]").forEach(button => {
+        button.textContent = practiceRomajiVisible ? "Hide Romaji" : "Show Romaji";
+        button.setAttribute("aria-pressed", String(practiceRomajiVisible));
+    });
+}
+
 function preparePracticeQuestion(question) {
     const correctAnswer = question.choices[question.correctChoice];
     const choices = question.choices.slice();
@@ -3114,6 +3228,7 @@ function renderWhatWouldYouSayQuestion() {
     document.getElementById("wwys-choices").innerHTML = question.choices.map((choice, index) => `<button class="practice-choice" type="button" data-wwys-choice="${index}"><strong>${escapeSearchHtml(choice.japanese)}</strong></button>`).join("");
     document.getElementById("wwys-feedback").hidden = true;
     session.answered = false;
+    applyPracticeRomajiVisibility();
 }
 
 function startWhatWouldYouSaySession(bank) {
@@ -3165,6 +3280,7 @@ function answerWhatWouldYouSay(choiceIndex) {
     document.getElementById("wwys-answer-english").textContent = answer.english;
     document.getElementById("wwys-explanation").textContent = question.explanation;
     document.getElementById("wwys-next").textContent = session.index === session.questions.length - 1 ? "See Results" : "Next";
+    applyPracticeRomajiVisibility();
     feedback.scrollIntoView({ block:"nearest", behavior:"smooth" });
 }
 
@@ -3186,7 +3302,7 @@ function loadSentenceBuilderBank() {
     if (sentenceBuilderBankPromise) return sentenceBuilderBankPromise;
     sentenceBuilderBankPromise = new Promise((resolve, reject) => {
         const script = document.createElement("script");
-        script.src = "./data/practice-sentence-builder.js?v=1";
+        script.src = "./data/practice-sentence-builder.js?v=2";
         script.onload = () => Array.isArray(window.SENTENCE_BUILDER_DATA) ? resolve(window.SENTENCE_BUILDER_DATA) : reject(new Error("Sentence Builder questions are unavailable."));
         script.onerror = () => reject(new Error("Sentence Builder questions could not be loaded."));
         document.head.appendChild(script);
@@ -3251,6 +3367,7 @@ function renderSentenceBuilderQuestion() {
     document.getElementById("sentence-builder-feedback").hidden = true;
     renderSentenceBuilderChunks();
     if (question.answered) showSentenceBuilderFeedback(question, question.wasCorrect);
+    applyPracticeRomajiVisibility();
 }
 
 function startSentenceBuilderSession(bank) {
@@ -3324,6 +3441,7 @@ function showSentenceBuilderFeedback(question, correct) {
     document.getElementById("sentence-builder-result-english").textContent = question.english;
     document.getElementById("sentence-builder-explanation").textContent = question.explanation;
     document.getElementById("sentence-builder-next").textContent = session.index === session.questions.length - 1 ? "See Results" : "Next";
+    applyPracticeRomajiVisibility();
 }
 
 function renderSentenceBuilderResults() {
@@ -3353,7 +3471,7 @@ function loadPersonalitiesBank() {
     if (personalitiesBankPromise) return personalitiesBankPromise;
     personalitiesBankPromise = new Promise((resolve, reject) => {
         const script = document.createElement("script");
-        script.src = "./data/practice-one-line-many-personalities.js?v=1";
+        script.src = "./data/practice-one-line-many-personalities.js?v=2";
         script.onload = () => Array.isArray(window.ONE_LINE_MANY_PERSONALITIES_DATA) ? resolve(window.ONE_LINE_MANY_PERSONALITIES_DATA) : reject(new Error("Personality practice content is unavailable."));
         script.onerror = () => reject(new Error("Personality practice content could not be loaded."));
         document.head.appendChild(script);
@@ -3404,6 +3522,7 @@ function selectPersonalityVariant(index) {
     const warning = document.getElementById("personalities-warning");
     warning.hidden = !variant.warning;
     warning.querySelector("p").textContent = variant.warning || "";
+    applyPracticeRomajiVisibility();
 }
 
 function renderPersonalitiesEntry() {
@@ -3422,6 +3541,7 @@ function renderPersonalitiesEntry() {
     document.getElementById("personalities-detail").hidden = true;
     document.getElementById("personalities-next").textContent = session.index === session.entries.length - 1 ? "Finish Session" : "Next";
     if (entry.selectedVariant >= 0) selectPersonalityVariant(entry.selectedVariant);
+    applyPracticeRomajiVisibility();
 }
 
 function startPersonalitiesSession(bank) {
@@ -3623,8 +3743,76 @@ async function wallpaperRecord(action, value) {
     });
 }
 
-function applyTheme(theme) {
+const CUSTOM_ACCENT_PROPERTIES = ["--color-primary", "--color-primary-dark", "--color-primary-soft", "--color-secondary", "--color-background", "--color-surface-soft", "--color-border", "--color-shadow", "--blossom-theme-accent"];
+
+function normalizeCustomHex(value) {
+    const candidate = String(value || "").trim();
+    const match = candidate.match(/^#?([0-9a-f]{6})$/i);
+    return match ? `#${match[1].toUpperCase()}` : "";
+}
+
+function hexToRgb(hex) {
+    const number = Number.parseInt(hex.slice(1), 16);
+    return { r:(number >> 16) & 255, g:(number >> 8) & 255, b:number & 255 };
+}
+
+function mixRgb(rgb, target, amount) {
+    const channel = key => Math.round(rgb[key] + (target[key] - rgb[key]) * amount);
+    return `rgb(${channel("r")} ${channel("g")} ${channel("b")})`;
+}
+
+function contrastSafeAccent(rgb) {
+    const linear = value => { const channel=value/255; return channel <= .04045 ? channel/12.92 : ((channel+.055)/1.055) ** 2.4; };
+    const luminance = value => .2126*linear(value.r) + .7152*linear(value.g) + .0722*linear(value.b);
+    if (1.05 / (luminance(rgb) + .05) >= 4.5) return `rgb(${rgb.r} ${rgb.g} ${rgb.b})`;
+    for (let amount=.05; amount<=.65; amount+=.05) {
+        const mixed = { r:Math.round(rgb.r*(1-amount)), g:Math.round(rgb.g*(1-amount)), b:Math.round(rgb.b*(1-amount)) };
+        if (1.05 / (luminance(mixed) + .05) >= 4.5) return `rgb(${mixed.r} ${mixed.g} ${mixed.b})`;
+    }
+    return mixRgb(rgb, { r:0, g:0, b:0 }, .65);
+}
+
+function clearCustomAccent({ persist=true, render=true } = {}) {
+    CUSTOM_ACCENT_PROPERTIES.forEach(property => document.documentElement.style.removeProperty(property));
+    document.documentElement.removeAttribute("data-custom-accent");
+    if (persist) localStorage.removeItem(STORAGE.customAccent);
+    if (render) renderAppearanceControls();
+}
+
+function applyCustomAccent(value, { persist=true, announce=true } = {}) {
+    const hex = normalizeCustomHex(value);
+    if (!hex) {
+        if (announce) setCustomAccentMessage("Enter a six-digit HEX color, such as #D94F7A.", true);
+        return false;
+    }
+    const rgb = hexToRgb(hex);
+    const root = document.documentElement;
+    root.style.setProperty("--color-primary", contrastSafeAccent(rgb));
+    root.style.setProperty("--color-primary-dark", mixRgb(rgb, { r:35, g:28, b:34 }, .38));
+    root.style.setProperty("--color-primary-soft", mixRgb(rgb, { r:255, g:255, b:255 }, .88));
+    root.style.setProperty("--color-secondary", mixRgb(rgb, { r:205, g:156, b:185 }, .48));
+    root.style.setProperty("--color-background", mixRgb(rgb, { r:255, g:252, b:251 }, .94));
+    root.style.setProperty("--color-surface-soft", mixRgb(rgb, { r:255, g:255, b:255 }, .91));
+    root.style.setProperty("--color-border", mixRgb(rgb, { r:239, g:231, b:234 }, .82));
+    root.style.setProperty("--color-shadow", `rgba(${rgb.r},${rgb.g},${rgb.b},.11)`);
+    root.style.setProperty("--blossom-theme-accent", mixRgb(rgb, { r:255, g:224, b:234 }, .58));
+    root.dataset.customAccent = "true";
+    if (persist) localStorage.setItem(STORAGE.customAccent, hex);
+    renderAppearanceControls();
+    if (announce) setCustomAccentMessage(`${hex} is now Sakura's accent color.`);
+    return true;
+}
+
+function setCustomAccentMessage(message, isError=false) {
+    const element = document.getElementById("custom-accent-message");
+    if (!element) return;
+    element.textContent = message;
+    element.dataset.error = String(isError);
+}
+
+function applyTheme(theme, { clearCustom=true } = {}) {
     const selected = THEMES[theme] ? theme : "pink";
+    if (clearCustom) clearCustomAccent({ render:false });
     document.documentElement.dataset.theme = selected;
     localStorage.setItem(STORAGE.appearanceTheme, selected);
     renderAppearanceControls();
@@ -3757,8 +3945,16 @@ function renderAppearanceControls() {
     const container = document.getElementById("theme-options");
     if (!container) return;
     const active = document.documentElement.dataset.theme || "pink";
-    container.innerHTML = Object.entries(THEMES).map(([key, theme]) => `<button class="theme-card ${key === active ? "active" : ""}" type="button" data-theme-choice="${key}"><span class="theme-swatch" style="--swatch:${theme.swatch}"></span><strong>${theme.name}</strong><span class="theme-check">${key === active ? "✓" : ""}</span></button>`).join("");
-    document.getElementById("selected-theme-label").textContent = THEMES[active].name;
+    const customHex = normalizeCustomHex(localStorage.getItem(STORAGE.customAccent));
+    const customActive = document.documentElement.dataset.customAccent === "true" && Boolean(customHex);
+    container.innerHTML = Object.entries(THEMES).map(([key, theme]) => `<button class="theme-card ${!customActive && key === active ? "active" : ""}" type="button" data-theme-choice="${key}"><span class="theme-swatch" style="--swatch:${theme.swatch}"></span><strong>${theme.name}</strong><span class="theme-check">${!customActive && key === active ? "✓" : ""}</span></button>`).join("");
+    document.getElementById("selected-theme-label").textContent = customActive ? `Custom ${customHex}` : THEMES[active].name;
+    const input = document.getElementById("custom-accent-input");
+    const preview = document.getElementById("custom-accent-preview");
+    const reset = document.getElementById("reset-custom-accent");
+    if (input && document.activeElement !== input) input.value = customActive ? customHex : "";
+    if (preview) preview.style.setProperty("--preview-color", customActive ? customHex : THEMES[active].swatch);
+    if (reset) reset.hidden = !customActive;
     applyOverlay(localStorage.getItem(STORAGE.wallpaperOverlay) || "medium");
 }
 
@@ -3830,6 +4026,18 @@ function openAppearanceSettings() {
 }
 
 function addListeners() {
+    document.addEventListener("click", event => {
+        if (!event.target.closest("[data-practice-romaji-toggle]")) return;
+        practiceRomajiVisible = !practiceRomajiVisible;
+        applyPracticeRomajiVisibility();
+    });
+    document.addEventListener("click", event => {
+        const button = event.target.closest("[data-mastery-state]");
+        const container = button?.closest("[data-mastery-type][data-mastery-id]");
+        if (!button || !container) return;
+        setMastery({ type:container.dataset.masteryType, id:container.dataset.masteryId }, button.dataset.masteryState);
+        refreshVisibleMasteryControls();
+    });
     document.querySelectorAll("[data-route]").forEach(control => control.addEventListener("click", event => {
         event.preventDefault();
         const quizTarget = control.dataset.quizTarget;
@@ -4184,6 +4392,10 @@ function addListeners() {
     document.getElementById("close-settings").addEventListener("click", () => settings.close());
     document.getElementById("done-settings").addEventListener("click", () => settings.close());
     document.getElementById("theme-options").addEventListener("click", event => { const button=event.target.closest("[data-theme-choice]"); if(button) applyTheme(button.dataset.themeChoice); });
+    document.getElementById("apply-custom-accent").addEventListener("click", () => applyCustomAccent(document.getElementById("custom-accent-input").value));
+    document.getElementById("custom-accent-input").addEventListener("keydown", event => { if(event.key === "Enter"){ event.preventDefault(); applyCustomAccent(event.currentTarget.value); } });
+    document.getElementById("custom-accent-input").addEventListener("input", event => { const hex=normalizeCustomHex(event.currentTarget.value); document.getElementById("custom-accent-preview").style.setProperty("--preview-color",hex||"var(--color-primary)"); setCustomAccentMessage(""); });
+    document.getElementById("reset-custom-accent").addEventListener("click", () => { clearCustomAccent(); setCustomAccentMessage("The selected preset theme is active again."); });
     document.getElementById("overlay-options").addEventListener("click", event => { const button=event.target.closest("[data-overlay]"); if(button) applyOverlay(button.dataset.overlay); });
     document.getElementById("choose-wallpaper").addEventListener("click", () => document.getElementById("wallpaper-file-input").click());
     document.getElementById("wallpaper-file-input").addEventListener("change", event => { if(event.target.files[0]) previewWallpaperFile(event.target.files[0]); event.target.value=""; });
@@ -4236,7 +4448,9 @@ function addListeners() {
 
 function initializeApp() {
     if (!Array.isArray(globalLevels) || !globalLevels.length) globalLevels = [...DEFAULT_LEVELS];
-    applyTheme(localStorage.getItem(STORAGE.appearanceTheme) || "pink");
+    applyTheme(localStorage.getItem(STORAGE.appearanceTheme) || "pink", { clearCustom:false });
+    const storedCustomAccent = normalizeCustomHex(localStorage.getItem(STORAGE.customAccent));
+    if (storedCustomAccent) applyCustomAccent(storedCustomAccent, { persist:false, announce:false });
     applyOverlay(localStorage.getItem(STORAGE.wallpaperOverlay) || "medium");
     applyWallpaperFraming(wallpaperFraming);
     loadStoredWallpaper();

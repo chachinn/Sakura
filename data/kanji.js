@@ -111,7 +111,7 @@
 
             if (!document.querySelector("script[data-sakura-app]")) {
                 const appScript = document.createElement("script");
-                appScript.src = "./app.js?v=54";
+                appScript.src = "./app.js?v=58";
                 appScript.dataset.sakuraApp = "true";
                 appScript.onerror = () => console.error("Sakura could not load app.js.");
                 document.body.appendChild(appScript);
