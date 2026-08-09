@@ -329,7 +329,7 @@ let searchVisibleCount = 40;
 const searchFieldCache = new WeakMap();
 const levelPoolCache = new WeakMap();
 const LIBRARY_BATCH_SIZE = 48;
-const LIBRARY_TOTALS = Object.freeze({ kanji:306, vocabulary:1506 });
+const LIBRARY_TOTALS = Object.freeze({ kanji:306, vocabulary:1506, travel:720 });
 let libraryInitialized = false;
 let libraryRepository = "";
 let libraryFilter = "N5";
@@ -2881,6 +2881,7 @@ function initializeLibrary() {
     document.getElementById("library-vocabulary-count").textContent = LIBRARY_TOTALS.vocabulary.toLocaleString();
     document.getElementById("library-slang-count").textContent = slangData().length.toLocaleString();
     document.getElementById("library-kana-count").textContent = KANA_DATA.length.toLocaleString();
+    document.getElementById("library-travel-count").textContent = LIBRARY_TOTALS.travel.toLocaleString();
 }
 
 function libraryHome() {
@@ -2891,14 +2892,24 @@ function libraryHome() {
 }
 
 function libraryFilterOptions(type) {
-    if (["kanji", "vocabulary"].includes(type)) return ["All", "N5", "N4", "N3", "N2", "N1"];
+    if (type === "kanji") return [{value:"All",label:"All Kanji"}, ...["N5","N4","N3","N2","N1"].map(value=>({value,label:value}))];
+    if (type === "vocabulary") return [{value:"All",label:"All Vocabulary"}, ...["N5","N4","N3","N2","N1"].map(value=>({value,label:value}))];
     if (type === "slang") return SLANG_CATEGORY_OPTIONS.map(([value, label]) => ({ value, label }));
-    return ["All", "Basic", "Dakuten", "Handakuten", "Yoon", "Extended"].map(value => ({ value, label:value === "Yoon" ? "Yōon" : value === "Extended" ? "Extended Katakana" : value }));
+    if (type === "travel") return [{value:"All",label:"All Travel"}, ...Object.entries(window.TRAVEL_CATEGORIES || {}).map(([value,metadata])=>({value,label:metadata.title}))];
+    return [
+        {value:"All",label:"All Kana"}, {value:"script:Hiragana",label:"Hiragana"}, {value:"script:Katakana",label:"Katakana"},
+        {value:"group:Basic",label:"Basic"}, {value:"group:Dakuten",label:"Dakuten"}, {value:"group:Handakuten",label:"Handakuten"},
+        {value:"group:Yoon",label:"Yōon"}, {value:"group:Extended",label:"Extended Katakana"}
+    ];
 }
 
 function renderLibraryFilters() {
-    const options = libraryFilterOptions(libraryRepository).map(option => typeof option === "string" ? { value:option, label:option } : option);
-    document.getElementById("library-filter-controls").innerHTML = options.map(option => `<button type="button" class="filter-chip ${option.value === libraryFilter ? "active" : ""}" data-library-filter="${escapeSearchHtml(option.value)}" aria-pressed="${option.value === libraryFilter}">${escapeSearchHtml(option.label)}</button>`).join("");
+    document.getElementById("library-collection-select").value = libraryRepository;
+    const options = libraryFilterOptions(libraryRepository);
+    const category = document.getElementById("library-category-select");
+    category.innerHTML = options.map(option => `<option value="${escapeSearchHtml(option.value)}">${escapeSearchHtml(option.label)}</option>`).join("");
+    category.value = options.some(option=>option.value===libraryFilter) ? libraryFilter : options[0]?.value || "All";
+    libraryFilter = category.value;
 }
 
 function libraryKanaItem(item, index) {
@@ -2910,6 +2921,7 @@ function librarySource(type = libraryRepository) {
     if (type === "vocabulary") return window.SakuraVocabularyLoader?.getLoadedVocabulary() || [];
     if (type === "slang") return slangData();
     if (type === "kana") return KANA_DATA.map(libraryKanaItem);
+    if (type === "travel") return window.SakuraTravelLoader?.getLoadedTravelPhrases() || [];
     return [];
 }
 
@@ -2920,6 +2932,7 @@ function libraryMatches(item, query) {
     if (libraryRepository === "vocabulary") values = [item.word, item.kana, item.romaji, item.meaning];
     if (libraryRepository === "slang") values = [item.expression, item.kana, item.romaji, item.meaning, ...(item.categories || [])];
     if (libraryRepository === "kana") values = [item.kana, item.romaji, item.script, item.group];
+    if (libraryRepository === "travel") values = [item.japanese, item.reading, item.romaji, item.english];
     return values.some(value => searchText(value).includes(query));
 }
 
@@ -2932,7 +2945,9 @@ function filteredLibraryItems() {
         seen.add(identity);
         if (["kanji", "vocabulary"].includes(libraryRepository) && libraryFilter !== "All" && item.jlpt !== libraryFilter) return false;
         if (libraryRepository === "slang" && libraryFilter !== "All" && !item.categories.includes(libraryFilter)) return false;
-        if (libraryRepository === "kana" && libraryFilter !== "All" && item.group !== libraryFilter) return false;
+        if (libraryRepository === "kana" && libraryFilter.startsWith("script:") && item.script !== libraryFilter.slice(7)) return false;
+        if (libraryRepository === "kana" && libraryFilter.startsWith("group:") && item.group !== libraryFilter.slice(6)) return false;
+        if (libraryRepository === "travel" && libraryFilter !== "All" && item.category !== libraryFilter) return false;
         return libraryMatches(item, query);
     });
 }
@@ -2942,6 +2957,7 @@ function libraryCard(item) {
     if (item.type === "kanji") return `<article class="library-item-card"><button type="button" class="library-item-main" data-library-open="${key}"><strong class="library-japanese">${escapeSearchHtml(item.character)}</strong><span>${escapeSearchHtml(item.reading || "")}</span><span class="learning-romaji">${escapeSearchHtml(item.romaji || "")}</span><b>${escapeSearchHtml(item.meaning)}</b><em>${escapeSearchHtml(item.jlpt)}</em></button><button type="button" class="library-save ${isSaved(item) ? "saved" : ""}" data-library-save="${key}" aria-label="${isSaved(item) ? "Unsave" : "Save"} ${escapeSearchHtml(item.character)}">${isSaved(item) ? "♥" : "♡"}</button></article>`;
     if (item.type === "vocabulary") return `<article class="library-item-card"><button type="button" class="library-item-main" data-library-open="${key}"><strong class="library-japanese library-word">${escapeSearchHtml(item.word)}</strong><span>${escapeSearchHtml(item.kana || "")}</span><span class="learning-romaji">${escapeSearchHtml(item.romaji || "")}</span><b>${escapeSearchHtml(item.meaning)}</b><em>${escapeSearchHtml(item.jlpt)}</em></button><button type="button" class="library-save ${isSaved(item) ? "saved" : ""}" data-library-save="${key}" aria-label="${isSaved(item) ? "Unsave" : "Save"} ${escapeSearchHtml(item.word)}">${isSaved(item) ? "♥" : "♡"}</button></article>`;
     if (item.type === "slang") return `<article class="library-item-card"><button type="button" class="library-item-main" data-library-open="${key}"><strong class="library-japanese library-word">${escapeSearchHtml(item.expression)}</strong><span>${escapeSearchHtml(item.kana || "")}</span><span class="learning-romaji">${escapeSearchHtml(item.romaji || "")}</span><b>${escapeSearchHtml(item.meaning)}</b><em>${escapeSearchHtml(item.categories.slice(0,2).join(" · "))}</em></button><button type="button" class="library-save ${isSaved(item) ? "saved" : ""}" data-library-save="${key}" aria-label="${isSaved(item) ? "Unsave" : "Save"} ${escapeSearchHtml(item.expression)}">${isSaved(item) ? "♥" : "♡"}</button></article>`;
+    if (item.type === "travel") return `<article class="library-item-card library-travel-card"><button type="button" class="library-item-main" data-library-open="${key}"><strong class="library-japanese library-word">${escapeSearchHtml(item.japanese)}</strong><span>${escapeSearchHtml(item.reading || "")}</span><span class="learning-romaji">${escapeSearchHtml(item.romaji || "")}</span><b>${escapeSearchHtml(item.english)}</b><em>${escapeSearchHtml(travelCategoryMetadata(item.category)?.title || item.category)}</em></button><button type="button" class="library-save ${isSaved(item) ? "saved" : ""}" data-library-save="${key}" aria-label="${isSaved(item) ? "Unsave" : "Save"} ${escapeSearchHtml(item.japanese)}">${isSaved(item) ? "♥" : "♡"}</button></article>`;
     return `<article class="library-item-card kana-library-card"><div class="library-item-main"><strong class="library-japanese">${escapeSearchHtml(item.kana)}</strong><b>${escapeSearchHtml(item.romaji)}</b><span>${escapeSearchHtml(item.script)}</span><em>${escapeSearchHtml(item.group === "Yoon" ? "Yōon" : item.group)}</em></div></article>`;
 }
 
@@ -2971,6 +2987,23 @@ async function loadLibraryLevels(type, filter, revision) {
     }
 }
 
+async function loadLibraryTravel(filter, revision) {
+    const categories = filter === "All" ? Object.keys(window.TRAVEL_CATEGORIES || {}) : [filter];
+    document.getElementById("library-status").textContent = filter === "All" ? "Loading Travel collections…" : `Loading ${travelCategoryMetadata(filter)?.title || "Travel"}…`;
+    document.getElementById("library-empty").hidden = true;
+    try {
+        for (const category of categories) {
+            await window.SakuraTravelLoader.loadTravelCategory(category);
+            if (revision !== libraryLoadingRevision || currentRoute !== "library") return;
+            renderLibraryResults();
+        }
+        invalidateSearchIndex();
+    }
+    catch {
+        if (revision === libraryLoadingRevision) document.getElementById("library-status").textContent = "This Travel collection could not be loaded. Check your connection and try again.";
+    }
+}
+
 function openLibraryRepository(type) {
     initializeLibrary();
     libraryRepository = type;
@@ -2979,13 +3012,13 @@ function openLibraryRepository(type) {
     document.getElementById("library-home").hidden = true;
     document.getElementById("library-repository").hidden = false;
     document.getElementById("library-search-input").value = "";
-    const titles = { kanji:"Kanji", vocabulary:"Vocabulary", slang:"Slang", kana:"Kana" };
+    const titles = { kana:"Kana", kanji:"Kanji", vocabulary:"Vocabulary", slang:"Slang", travel:"Travel" };
     document.getElementById("library-repository-title").textContent = titles[type];
     document.getElementById("library-repository-summary").textContent = `Browse Sakura’s ${titles[type].toLowerCase()} collection.`;
-    document.querySelectorAll("[data-library-tab]").forEach(button => { const active=button.dataset.libraryTab===type; button.classList.toggle("active",active); button.setAttribute("aria-selected",String(active)); });
     renderLibraryFilters();
     renderLibraryResults();
     if (["kanji", "vocabulary"].includes(type)) loadLibraryLevels(type, libraryFilter, ++libraryLoadingRevision);
+    if (type === "travel") loadLibraryTravel(libraryFilter, ++libraryLoadingRevision);
 }
 
 function findLibraryItem(encodedKey) {
@@ -3004,10 +3037,16 @@ function openLibraryItem(item) {
         document.getElementById("native-category-filter").value = "All";
         renderNative(item);
     }
+    else if (item.type === "travel" && travelCategoryMetadata(item.category)) {
+        pendingTravelPhraseId = item.id;
+        currentTravelFilter = "All";
+        showRoute(`travel-${item.category}`, false);
+    }
 }
 
 function showRoute(route, updateHash = true) {
     const normalizedRoute = route === "native" ? "learn-native" : route;
+    const previousRoute = currentRoute;
     const nativeMode = normalizedRoute === "learn-slang" ? "slang" : normalizedRoute === "learn-native" ? "native" : null;
     const deckRouteMatch = normalizedRoute.match(/^travel-deck-(deck-.+)$/);
     if (deckRouteMatch) currentTravelDeckId = deckRouteMatch[1];
@@ -3030,7 +3069,12 @@ function showRoute(route, updateHash = true) {
         view.hidden = !active;
         view.classList.toggle("active-view", active);
     });
-    if (travelCategory) renderTravelCategory(travelCategory);
+    if (travelCategory) {
+        const travelBack = document.querySelector("#travel-category-view .back-button");
+        travelBack.dataset.route = previousRoute === "library" ? "library" : "travel";
+        travelBack.setAttribute("aria-label", previousRoute === "library" ? "Back to Library" : "Back to Travel");
+        renderTravelCategory(travelCategory);
+    }
     if (normalizedRoute === "travel-my-phrases") renderMyTravelPhrases();
     if (normalizedRoute === "travel-decks") renderTravelDecks();
     if (normalizedRoute === "travel-notes") renderTravelNotes();
@@ -3355,23 +3399,21 @@ function addListeners() {
     document.getElementById("open-hub").addEventListener("click", () => showRoute("hub"));
     document.getElementById("library-view").addEventListener("click", event => {
         const repository = event.target.closest("[data-library-repository]");
-        const tab = event.target.closest("[data-library-tab]");
-        const filter = event.target.closest("[data-library-filter]");
         const save = event.target.closest("[data-library-save]");
         const open = event.target.closest("[data-library-open]");
         if (repository) openLibraryRepository(repository.dataset.libraryRepository);
-        else if (tab) openLibraryRepository(tab.dataset.libraryTab);
-        else if (filter) {
-            libraryFilter = filter.dataset.libraryFilter;
-            libraryVisibleCount = LIBRARY_BATCH_SIZE;
-            renderLibraryFilters();
-            renderLibraryResults();
-            if (["kanji", "vocabulary"].includes(libraryRepository)) loadLibraryLevels(libraryRepository, libraryFilter, ++libraryLoadingRevision);
-        }
         else if (save) { toggleSaved(findLibraryItem(save.dataset.librarySave)); }
         else if (open) openLibraryItem(findLibraryItem(open.dataset.libraryOpen));
     });
     document.getElementById("library-repository-back").addEventListener("click", libraryHome);
+    document.getElementById("library-collection-select").addEventListener("change", event => openLibraryRepository(event.target.value));
+    document.getElementById("library-category-select").addEventListener("change", event => {
+        libraryFilter = event.target.value;
+        libraryVisibleCount = LIBRARY_BATCH_SIZE;
+        renderLibraryResults();
+        if (["kanji", "vocabulary"].includes(libraryRepository)) loadLibraryLevels(libraryRepository, libraryFilter, ++libraryLoadingRevision);
+        if (libraryRepository === "travel") loadLibraryTravel(libraryFilter, ++libraryLoadingRevision);
+    });
     document.getElementById("library-search-input").addEventListener("input", () => { libraryVisibleCount=LIBRARY_BATCH_SIZE; renderLibraryResults(); });
     document.getElementById("clear-library-search").addEventListener("click", () => { document.getElementById("library-search-input").value=""; libraryVisibleCount=LIBRARY_BATCH_SIZE; renderLibraryResults(); document.getElementById("library-search-input").focus(); });
     document.getElementById("library-show-more").addEventListener("click", () => { libraryVisibleCount += LIBRARY_BATCH_SIZE; renderLibraryResults(); });

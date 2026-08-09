@@ -2695,18 +2695,14 @@ body.wallpaper-enabled .wallpaper-editor-sheet { background:color-mix(in srgb,va
 .library-repository-card strong { font-size:1rem; }
 .library-repository-card small { color:var(--color-text-muted); }
 .library-repository-icon { width:54px; height:54px; display:grid; place-items:center; border-radius:16px; background:var(--color-primary-soft); color:var(--color-primary-dark); font-size:1.65rem; font-weight:800; }
-.library-tabs,.library-filter-controls { display:flex; gap:7px; overflow-x:auto; scrollbar-width:none; }
-.library-tabs::-webkit-scrollbar,.library-filter-controls::-webkit-scrollbar { display:none; }
-.library-tabs { margin-bottom:12px; padding:4px; border:1px solid var(--color-border); border-radius:15px; background:var(--color-surface-soft); }
-.library-tabs button { flex:1 0 auto; min-height:40px; padding:8px 12px; border:0; border-radius:11px; background:transparent; color:var(--color-text-muted); font-weight:750; }
-.library-tabs button.active { background:var(--color-surface); color:var(--color-primary-dark); box-shadow:0 4px 12px var(--color-shadow); }
+.library-browser-selectors { display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1.25fr); gap:9px; margin-bottom:11px; }
+.library-browser-selectors label { min-width:0; display:grid; gap:5px; color:var(--color-text-muted); font-size:.72rem; font-weight:800; }
+.library-browser-selectors select { width:100%; min-width:0; min-height:46px; padding:0 34px 0 11px; overflow:hidden; border:1px solid var(--color-border); border-radius:14px; background:var(--color-surface); color:var(--color-text); font:inherit; font-size:16px; font-weight:750; text-overflow:ellipsis; box-shadow:0 5px 15px var(--color-shadow); }
+.library-browser-selectors select:focus { border-color:var(--color-primary); outline:3px solid var(--color-primary-soft); }
 .library-search { display:grid; grid-template-columns:auto minmax(0,1fr) 40px; align-items:center; gap:7px; min-height:48px; margin-bottom:11px; padding:0 8px 0 14px; border:1px solid var(--color-border); border-radius:16px; background:var(--color-surface); box-shadow:0 5px 15px var(--color-shadow); }
 .library-search:focus-within { border-color:var(--color-primary); box-shadow:0 0 0 3px var(--color-primary-soft); }
 .library-search input { width:100%; min-height:46px; padding:0; border:0; outline:0; background:transparent; color:var(--color-text); font:inherit; font-size:16px; }
 .library-search button { width:38px; height:38px; border:0; border-radius:12px; background:transparent; color:var(--color-text-muted); font-size:1.25rem; }
-.library-filter-controls { margin-bottom:8px; padding-bottom:3px; }
-.library-filter-controls .filter-chip { flex:0 0 auto; min-height:40px; padding:8px 13px; border:1px solid var(--color-border); border-radius:999px; background:var(--color-surface); color:var(--color-text-muted); font-weight:750; }
-.library-filter-controls .filter-chip.active { border-color:var(--color-primary); background:var(--color-primary); color:white; }
 .library-status { min-height:20px; margin:5px 2px 9px; color:var(--color-text-muted); font-size:.76rem; }
 .library-results { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px; }
 .library-item-card { position:relative; min-width:0; overflow:hidden; border:1px solid var(--color-border); border-radius:17px; background:color-mix(in srgb,var(--color-surface) 95%,transparent); box-shadow:0 6px 18px var(--color-shadow); }
@@ -2721,9 +2717,11 @@ body.wallpaper-enabled .wallpaper-editor-sheet { background:color-mix(in srgb,va
 .library-save.saved { background:var(--color-primary-soft); }
 .kana-library-card .library-item-main { min-height:145px; padding-right:13px; align-items:center; text-align:center; }
 .kana-library-card .library-japanese { font-size:2.6rem; }
+.library-travel-card .library-item-main { min-height:210px; }
+.library-travel-card .library-word { font-size:1.15rem; line-height:1.4; }
 .library-view #library-show-more { margin-top:12px; }
 body.wallpaper-enabled .library-repository-card,body.wallpaper-enabled .library-item-card,body.wallpaper-enabled .library-search { background:color-mix(in srgb,var(--color-surface) 91%,transparent); backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px); }
-@media(max-width:350px){.library-results{grid-template-columns:1fr}.library-item-main{min-height:150px}}
+@media(max-width:350px){.library-browser-selectors{grid-template-columns:1fr}.library-results{grid-template-columns:1fr}.library-item-main{min-height:150px}.library-travel-card .library-item-main{min-height:180px}}
 .native-top-controls { margin:12px 0 8px; padding:8px; border:1px solid var(--color-border); border-radius:16px; background:var(--color-surface); box-shadow:var(--shadow); }
 .native-translate-link,.search-translate-link { width:100%; min-height:42px; border:0; background:transparent; color:var(--color-primary-dark); font-weight:750; text-align:center; }
 .translation-launch-card { width:100%; margin-bottom:18px; }

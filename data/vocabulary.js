@@ -7,8 +7,8 @@
 
     const levels = Object.freeze(["N5", "N4", "N3", "N2", "N1"]);
     const files = Object.freeze({
-        N5: "./data/vocabulary/n5.json",
-        N4: "./data/vocabulary/n4.json",
+        N5: "./data/vocabulary/n5.json?v=2",
+        N4: "./data/vocabulary/n4.json?v=2",
         N3: "./data/vocabulary/n3.json",
         N2: "./data/vocabulary/n2.json",
         N1: "./data/vocabulary/n1.json"
