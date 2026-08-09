@@ -4316,8 +4316,8 @@ body.wallpaper-enabled .etiquette-toolbar,body.wallpaper-enabled .etiquette-card
 .chibi-asset-renderer { position:relative; width:180px; aspect-ratio:13/18; display:grid; place-items:center; overflow:hidden; border:1px solid color-mix(in srgb,var(--color-primary) 25%,var(--color-border)); border-radius:24px; background:linear-gradient(155deg,color-mix(in srgb,var(--color-primary-soft) 72%,white),var(--color-surface)); box-shadow:0 10px 24px color-mix(in srgb,var(--color-shadow) 72%,transparent); isolation:isolate; }
 .chibi-asset-layers,.chibi-asset-layer { position:absolute; inset:0; width:100%; height:100%; }
 .chibi-asset-layers { z-index:2; pointer-events:none; }
-.chibi-asset-layer { display:block; object-fit:contain; object-position:center bottom; z-index:var(--chibi-layer,1); }
-.chibi-asset-layer[hidden] { display:none; }
+.chibi-asset-layer { display:block; object-fit:contain; object-position:center bottom; z-index:var(--chibi-layer,1); visibility:hidden; }
+.chibi-asset-layer.is-loaded { visibility:visible; }
 .chibi-art-placeholder { position:relative; z-index:1; width:100%; height:100%; padding:18px; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:5px; color:var(--color-text); text-align:center; }
 .chibi-art-placeholder::before { content:""; position:absolute; inset:12%; z-index:-1; border-radius:48% 52% 46% 54%; background:color-mix(in srgb,var(--color-primary-soft) 78%,transparent); filter:blur(2px); }
 .chibi-art-placeholder > span { font-size:2.75rem; line-height:1; filter:drop-shadow(0 5px 8px color-mix(in srgb,var(--color-shadow) 75%,transparent)); }

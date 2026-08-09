@@ -4138,7 +4138,7 @@ function renderChibiGuide(settings = chibiGuide, illustration = {}, compact = fa
     const pose = chibiPoseFamily(illustration);
     const placeholder = chibiAssetManifest?.placeholder || { symbol:"🌸", title:"Sakura Guide", message:"Artwork coming soon" };
     const layers = resolveChibiAssetLayers(guide, illustration);
-    const images = layers.map(item => `<img class="chibi-asset-layer" data-chibi-asset-layer="${escapeSearchHtml(item.layer)}" style="--chibi-layer:${item.zIndex}" src="${escapeSearchHtml(item.src)}" alt="" decoding="async" loading="lazy" hidden>`).join("");
+    const images = layers.map(item => `<img class="chibi-asset-layer" data-chibi-asset-layer="${escapeSearchHtml(item.layer)}" style="--chibi-layer:${item.zIndex}" src="${escapeSearchHtml(item.src)}" alt="" decoding="async">`).join("");
     return `<div class="chibi-asset-renderer ${compact ? "chibi-asset-compact" : ""}" data-pose-family="${escapeSearchHtml(pose)}"><div class="chibi-art-placeholder" aria-label="${escapeSearchHtml(placeholder.title)} — ${escapeSearchHtml(placeholder.message)}"><span aria-hidden="true">${escapeSearchHtml(placeholder.symbol)}</span><strong>${escapeSearchHtml(placeholder.title)}</strong><small>${escapeSearchHtml(placeholder.message)}</small></div><div class="chibi-asset-layers" aria-hidden="true">${images}</div></div>`;
 }
 
@@ -4858,7 +4858,7 @@ function addListeners() {
         const images = [...renderer.querySelectorAll("[data-chibi-asset-layer]")];
         if (!images.length || !images.every(item => item.dataset.assetState)) return;
         const loaded = images.filter(item => item.dataset.assetState === "loaded");
-        loaded.forEach(item => { item.hidden = false; });
+        images.forEach(item => item.classList.toggle("is-loaded", item.dataset.assetState === "loaded"));
         renderer.classList.toggle("has-art", loaded.length > 0);
     };
     document.addEventListener("load", event => {
@@ -4867,6 +4867,9 @@ function addListeners() {
     document.addEventListener("error", event => {
         if (event.target.matches?.("[data-chibi-asset-layer]")) settleChibiAssetLayer(event.target, "error");
     }, true);
+    document.querySelectorAll("[data-chibi-asset-layer]").forEach(image => {
+        if (image.complete) settleChibiAssetLayer(image, image.naturalWidth > 0 ? "loaded" : "error");
+    });
     document.addEventListener("click", event => {
         if (!event.target.closest("[data-practice-romaji-toggle]")) return;
         practiceRomajiVisible = !practiceRomajiVisible;
