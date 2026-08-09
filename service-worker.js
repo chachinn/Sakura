@@ -1,25 +1,32 @@
-const SHELL_CACHE_VERSION = "sakura-shell-v92";
+const SHELL_CACHE_VERSION = "sakura-shell-v93";
 const KANJI_CONTENT_CACHE_VERSION = "sakura-kanji-content-v1";
 const TRAVEL_CONTENT_CACHE_VERSION = "sakura-travel-content-v1";
 const VOCABULARY_CONTENT_CACHE_VERSION = "sakura-vocabulary-content-v1";
 
 const APP_SHELL = [
     "./index.html",
-    "./style.css?v=61",
-    "./app.js?v=71",
+    "./style.css?v=62",
+    "./app.js?v=72",
     "./data/practice-what-would-you-say.js?v=2",
     "./data/practice-sentence-builder.js?v=2",
     "./data/practice-one-line-many-personalities.js?v=2",
     "./data/counters.json?v=1",
     "./data/etiquette.json?v=1",
-    "./assets/avatar/avatar-manifest.json?v=1",
-    "./assets/avatar/body/light.png",
-    "./assets/avatar/eyes/pink.png",
-    "./assets/avatar/expressions/neutral.png",
-    "./assets/avatar/hair-back/long/brown.png",
-    "./assets/avatar/hair-front/long/brown.png",
-    "./assets/avatar/outfits/sakura_casual.png",
-    "./assets/chibi/default/sakura-guide-default.webp",
+    "./avatar/sakura.png",
+    "./avatar/mochi.png",
+    "./avatar/hikari.png",
+    "./avatar/yui.png",
+    "./avatar/aoi.png",
+    "./avatar/haru.png",
+    "./avatar/sora.png",
+    "./avatar/shiro.png",
+    "./avatar/latte.png",
+    "./avatar/choco.png",
+    "./avatar/pudding.png",
+    "./avatar/ayame.png",
+    "./avatar/midori.png",
+    "./avatar/hina.png",
+    "./avatar/luna.png",
     "./data/kanji.js",
     "./data/vocabulary.js?v=4",
     "./data/native-japanese.js?v=2",

@@ -75,7 +75,12 @@ const APPEARANCE_STORE = "wallpapers";
 const WALLPAPER_RECORD = "activeWallpaper";
 const DEFAULT_WALLPAPER_FRAMING = Object.freeze({ positionX: 50, positionY: 50, zoom: 1 });
 const THEMES = { pink:{name:"Sakura Pink",swatch:"#ef5b87"},purple:{name:"Lavender Purple",swatch:"#9b70c8"},blue:{name:"Sky Blue",swatch:"#68a9dc"},green:{name:"Mint Green",swatch:"#68b99a"},yellow:{name:"Soft Yellow",swatch:"#d6a94d"} };
-const DEFAULT_CHIBI_GUIDE = Object.freeze({ skinTone:"light", hairStyle:"long", hairColor:"#76503A", eyeColor:"#CC6F94", expression:"neutral", outfit:"sakura-casual", glasses:false, accessory:"none", companionEnabled:false, companionSide:"right", idleAnimations:true, speechBubbles:true, contextReactions:true });
+const DEFAULT_CHIBI_GUIDE = Object.freeze({ character:"sakura", companionEnabled:false, companionSide:"right", idleAnimations:true, speechBubbles:true, contextReactions:true });
+const SAKURA_GUIDES = Object.freeze([
+    ["sakura","Sakura"], ["mochi","Mochi"], ["hikari","Hikari"], ["yui","Yui"], ["aoi","Aoi"],
+    ["haru","Haru"], ["sora","Sora"], ["shiro","Shiro"], ["latte","Latte"], ["choco","Choco"],
+    ["pudding","Pudding"], ["ayame","Ayame"], ["midori","Midori"], ["hina","Hina"], ["luna","Luna"]
+]);
 const CHIBI_OPTIONS = Object.freeze({
     skinTone:[ ["light","Light","#F9D9C7"], ["light-medium","Light-Medium","#EFC3A7"], ["medium","Medium","#D99C73"], ["medium-deep","Medium-Deep","#A96848"], ["deep","Deep","#6F4231"] ],
     hairStyle:[ ["bob","Short Bob"], ["long","Long Straight"], ["ponytail","Ponytail"], ["twin-tails","Twin Tails"], ["shoulder","Shoulder Length"], ["bun","Bun"] ],
@@ -3923,14 +3928,8 @@ function validChibiHex(value) {
 function normalizeChibiGuide(value) {
     const source = value && typeof value === "object" ? value : {};
     return {
-        skinTone: CHIBI_OPTIONS.skinTone.some(option => option[0] === source.skinTone) ? source.skinTone : DEFAULT_CHIBI_GUIDE.skinTone,
-        hairStyle: CHIBI_OPTIONS.hairStyle.some(option => option[0] === source.hairStyle) ? source.hairStyle : DEFAULT_CHIBI_GUIDE.hairStyle,
-        hairColor: validChibiHex(source.hairColor) ? source.hairColor.toUpperCase() : DEFAULT_CHIBI_GUIDE.hairColor,
-        eyeColor: validChibiHex(source.eyeColor) ? source.eyeColor.toUpperCase() : DEFAULT_CHIBI_GUIDE.eyeColor,
-        expression: CHIBI_OPTIONS.expression.some(option => option[0] === source.expression) ? source.expression : DEFAULT_CHIBI_GUIDE.expression,
-        outfit: CHIBI_OPTIONS.outfit.some(option => option[0] === source.outfit) ? source.outfit : DEFAULT_CHIBI_GUIDE.outfit,
-        glasses: source.glasses === true,
-        accessory: CHIBI_OPTIONS.accessory.some(option => option[0] === source.accessory) ? source.accessory : DEFAULT_CHIBI_GUIDE.accessory,
+        ...source,
+        character: SAKURA_GUIDES.some(option => option[0] === source.character) ? source.character : DEFAULT_CHIBI_GUIDE.character,
         companionEnabled: source.companionEnabled === true,
         companionSide: ["left", "right"].includes(source.companionSide) ? source.companionSide : DEFAULT_CHIBI_GUIDE.companionSide,
         idleAnimations: source.idleAnimations !== false,
@@ -4063,28 +4062,11 @@ function refreshChibiAssetVisuals() {
 }
 
 function loadChibiAssetManifest() {
-    if (chibiAssetManifest) return Promise.resolve(chibiAssetManifest);
-    if (chibiAssetManifestPromise) return chibiAssetManifestPromise;
-    chibiAssetManifestPromise = fetch("./assets/avatar/avatar-manifest.json?v=1")
-        .then(response => { if (!response.ok) throw new Error(`Chibi asset manifest returned ${response.status}.`); return response.json(); })
-        .then(manifest => {
-            if (!validateChibiAssetManifest(manifest)) throw new Error("Chibi asset manifest validation failed.");
-            chibiAssetManifest = manifest;
-            window.queueMicrotask(refreshChibiAssetVisuals);
-            return manifest;
-        })
-        .catch(error => {
-            chibiAssetManifestPromise = null;
-            console.warn("Chibi illustrated assets could not be prepared; using the Sakura placeholder.", error);
-            return null;
-        });
-    return chibiAssetManifestPromise;
+    return Promise.resolve(null);
 }
 
 function safeChibiAssetPath(path) {
-    const clean = String(path || "").replace(/\\/g, "/").replace(/^\.\//, "");
-    if (!clean || clean.includes("..") || clean.startsWith("/") || /^[a-z]+:/i.test(clean)) return "";
-    return `./assets/avatar/${clean}`;
+    return "";
 }
 
 function chibiAssetItem(collection, id, fallback) {
@@ -4137,7 +4119,7 @@ function resolveChibiAssetLayers(guide, illustration) {
     return layers.map(([layer, path, zIndex]) => ({ layer, zIndex, src:safeChibiAssetPath(path) })).filter(item => item.src);
 }
 
-function renderChibiGuide(settings = chibiGuide, illustration = {}, compact = false) {
+function renderRetiredModularChibiGuide(settings = chibiGuide, illustration = {}, compact = false) {
     loadChibiAssetManifest();
     const guide = normalizeChibiGuide(settings);
     const pose = chibiPoseFamily(illustration);
@@ -4157,7 +4139,7 @@ function chibiOptionButtons(key, options, color = false) {
     }).join("");
 }
 
-function renderChibiCustomizer() {
+function renderRetiredModularChibiCustomizer() {
     document.getElementById("chibi-skin-options").innerHTML = chibiOptionButtons("skinTone", CHIBI_OPTIONS.skinTone.map(option => [option[0], option[1], option[2]]));
     document.querySelectorAll("#chibi-skin-options [data-chibi-value]").forEach((button, index) => button.insertAdjacentHTML("afterbegin", `<i style="--option-color:${CHIBI_OPTIONS.skinTone[index][2]}" aria-hidden="true"></i>`));
     document.getElementById("chibi-hair-style-options").innerHTML = chibiOptionButtons("hairStyle", CHIBI_OPTIONS.hairStyle);
@@ -4190,6 +4172,30 @@ function applyChibiCustomColor(key) {
     message.textContent = "The closest available illustrated color is shown in the preview.";
     message.classList.remove("error");
     renderChibiCustomizer();
+}
+
+function getGuideImage(character = "sakura") {
+    const validCharacter = SAKURA_GUIDES.some(option => option[0] === character) ? character : "sakura";
+    return `./avatar/${validCharacter}.png`;
+}
+
+function renderChibiGuide(settings = chibiGuide, illustration = {}, compact = false) {
+    const guide = normalizeChibiGuide(settings);
+    const name = SAKURA_GUIDES.find(option => option[0] === guide.character)?.[1] || "Sakura";
+    return `<div class="guide-image-renderer ${compact ? "guide-image-compact" : ""}" data-pose-family="${escapeSearchHtml(chibiPoseFamily(illustration))}"><img src="${getGuideImage(guide.character)}" alt="${escapeSearchHtml(name)} Sakura Guide" decoding="async"></div>`;
+}
+
+function renderChibiCustomizer() {
+    document.getElementById("chibi-character-options").innerHTML = SAKURA_GUIDES.map(([character, name]) => {
+        const selected = chibiGuideDraft.character === character;
+        return `<button type="button" data-chibi-character="${character}" class="guide-preset-card ${selected ? "selected" : ""}" aria-pressed="${selected}"><img src="${getGuideImage(character)}" alt="" loading="lazy" decoding="async"><span>${name}</span>${selected ? '<i aria-hidden="true">✓</i>' : ""}</button>`;
+    }).join("");
+    document.getElementById("chibi-companion-side-options").innerHTML = chibiOptionButtons("companionSide", [["left","Left"],["right","Right"]]);
+    document.getElementById("chibi-companion-enabled").checked = chibiGuideDraft.companionEnabled;
+    document.getElementById("chibi-idle-animations").checked = chibiGuideDraft.idleAnimations;
+    document.getElementById("chibi-speech-bubbles").checked = chibiGuideDraft.speechBubbles;
+    document.getElementById("chibi-context-reactions").checked = chibiGuideDraft.contextReactions;
+    document.getElementById("chibi-guide-preview").innerHTML = renderChibiGuide(chibiGuideDraft);
 }
 
 function saveChibiGuide() {
@@ -4327,7 +4333,7 @@ function filteredEtiquette() {
 
 function etiquetteIllustration(entry) {
     const details = [entry.illustration.pose, entry.illustration.expression, entry.illustration.setting].filter(Boolean).join(" · ");
-    return `${renderChibiGuide(chibiGuide, entry.illustration, true)}<small>${escapeSearchHtml(details)}</small>`;
+    return `${renderChibiGuide({ ...chibiGuide, character:"sakura" }, entry.illustration, true)}<small>${escapeSearchHtml(details)}</small>`;
 }
 
 function applyEtiquetteRomajiVisibility() {
@@ -4858,24 +4864,6 @@ function openAppearanceSettings() {
 }
 
 function addListeners() {
-    const settleChibiAssetLayer = (image, state) => {
-        image.dataset.assetState = state;
-        const renderer = image.closest(".chibi-asset-renderer");
-        const images = [...renderer.querySelectorAll("[data-chibi-asset-layer]")];
-        if (!images.length || !images.every(item => item.dataset.assetState)) return;
-        const loaded = images.filter(item => item.dataset.assetState === "loaded");
-        images.forEach(item => item.classList.toggle("is-loaded", item.dataset.assetState === "loaded"));
-        renderer.classList.toggle("has-art", loaded.length > 0);
-    };
-    document.addEventListener("load", event => {
-        if (event.target.matches?.("[data-chibi-asset-layer]")) settleChibiAssetLayer(event.target, "loaded");
-    }, true);
-    document.addEventListener("error", event => {
-        if (event.target.matches?.("[data-chibi-asset-layer]")) settleChibiAssetLayer(event.target, "error");
-    }, true);
-    document.querySelectorAll("[data-chibi-asset-layer]").forEach(image => {
-        if (image.complete) settleChibiAssetLayer(image, image.naturalWidth > 0 ? "loaded" : "error");
-    });
     document.addEventListener("click", event => {
         if (!event.target.closest("[data-practice-romaji-toggle]")) return;
         practiceRomajiVisible = !practiceRomajiVisible;
@@ -4978,17 +4966,17 @@ function addListeners() {
         showRoute("chibi-guide");
     });
     document.getElementById("chibi-guide-form").addEventListener("click", event => {
+        const character = event.target.closest("[data-chibi-character]");
         const option = event.target.closest("[data-chibi-key]");
-        const color = event.target.closest("[data-chibi-apply-color]");
+        if (character) {
+            chibiGuideDraft.character = character.dataset.chibiCharacter;
+            renderChibiCustomizer();
+            return;
+        }
         if (option) {
             chibiGuideDraft[option.dataset.chibiKey] = option.dataset.chibiValue;
             renderChibiCustomizer();
         }
-        if (color) applyChibiCustomColor(color.dataset.chibiApplyColor);
-    });
-    document.getElementById("chibi-glasses").addEventListener("change", event => {
-        chibiGuideDraft.glasses = event.target.checked;
-        renderChibiCustomizer();
     });
     [["chibi-companion-enabled","companionEnabled"],["chibi-idle-animations","idleAnimations"],["chibi-speech-bubbles","speechBubbles"],["chibi-context-reactions","contextReactions"]].forEach(([id, key]) => {
         document.getElementById(id).addEventListener("change", event => {
@@ -5001,8 +4989,8 @@ function addListeners() {
         saveChibiGuide();
     });
     document.getElementById("reset-chibi-guide").addEventListener("click", () => {
-        chibiGuideDraft = { ...DEFAULT_CHIBI_GUIDE };
-        chibiGuide = { ...DEFAULT_CHIBI_GUIDE };
+        chibiGuideDraft = normalizeChibiGuide({ ...chibiGuide, character:"sakura" });
+        chibiGuide = { ...chibiGuideDraft };
         writeJson(STORAGE.chibiGuide, chibiGuide);
         renderChibiCustomizer();
         document.getElementById("chibi-guide-message").textContent = "The default Sakura guide has been restored.";

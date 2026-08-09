@@ -4327,6 +4327,15 @@ body.wallpaper-enabled .etiquette-toolbar,body.wallpaper-enabled .etiquette-card
 .chibi-asset-compact { width:90px; border-radius:16px; }
 .etiquette-illustration .chibi-asset-compact { margin:-4px 0; }
 .chibi-preview-stage .chibi-asset-renderer { width:180px; }
+.guide-image-renderer { width:180px; aspect-ratio:2/3; display:grid; place-items:center; overflow:hidden; }
+.guide-image-renderer > img { display:block; width:100%; height:100%; object-fit:contain; object-position:center bottom; }
+.guide-image-compact { width:90px; }
+.guide-preset-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px; }
+.guide-preset-card { position:relative; min-width:0; min-height:150px; padding:8px 8px 10px; display:grid; grid-template-rows:112px auto; place-items:center; gap:5px; overflow:hidden; border:1px solid var(--color-border); border-radius:16px; background:var(--color-surface-soft); color:var(--color-text); font:inherit; font-weight:800; }
+.guide-preset-card img { width:100%; height:112px; object-fit:contain; object-position:center bottom; }
+.guide-preset-card.selected { border:2px solid var(--color-primary); background:var(--color-primary-soft); box-shadow:0 7px 18px var(--color-shadow); }
+.guide-preset-card i { position:absolute; top:7px; right:7px; width:24px; height:24px; display:grid; place-items:center; border-radius:50%; background:var(--color-primary); color:white; font-style:normal; }
+.chibi-preview-stage .guide-image-renderer { width:180px; }
 .sakura-guide-svg { width:190px; height:260px; display:block; overflow:visible; filter:drop-shadow(0 10px 10px rgba(50,27,41,.18)); }
 .sakura-guide-svg * { vector-effect:non-scaling-stroke; transform-box:fill-box; }
 .svg-hair-back { stroke:color-mix(in srgb,var(--svg-hair) 68%,#281a24); stroke-width:4.6; stroke-linejoin:round; }
@@ -4375,6 +4384,7 @@ body.wallpaper-enabled .etiquette-toolbar,body.wallpaper-enabled .etiquette-card
 .chibi-companion-character { position:absolute; inset:auto 3px 0; display:grid; place-items:end center; }
 .chibi-companion-character .sakura-guide-svg { width:94px; height:128px; }
 .chibi-companion-character .chibi-asset-renderer { width:94px; border:0; border-radius:18px; box-shadow:none; background:color-mix(in srgb,var(--color-surface) 86%,transparent); }
+.chibi-companion-character .guide-image-renderer { width:94px; }
 .chibi-companion-character .chibi-art-placeholder { padding:8px; gap:2px; }
 .chibi-companion-character .chibi-art-placeholder > span { font-size:2rem; }
 .chibi-companion-character .chibi-art-placeholder strong { font-size:.63rem; }
@@ -4382,15 +4392,15 @@ body.wallpaper-enabled .etiquette-toolbar,body.wallpaper-enabled .etiquette-card
 .chibi-companion-bubble { position:absolute; z-index:3; bottom:112px; width:max-content; max-width:min(190px,70vw); padding:8px 10px; border:1px solid var(--color-border); border-radius:14px 14px 4px 14px; background:color-mix(in srgb,var(--color-surface) 96%,transparent); box-shadow:0 7px 20px var(--color-shadow); backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px); text-align:left; }
 .chibi-companion[data-side="right"] .chibi-companion-bubble { right:10px; }.chibi-companion[data-side="left"] .chibi-companion-bubble { left:10px; border-radius:14px 14px 14px 4px; }
 .chibi-companion-bubble strong,.chibi-companion-bubble small { display:block; white-space:normal; overflow-wrap:anywhere; }.chibi-companion-bubble strong { color:var(--color-primary-dark); font-size:.78rem; }.chibi-companion-bubble small { margin-top:2px; font-size:.64rem; }
-.chibi-companion[data-action="wave"] .sakura-guide-svg,.chibi-companion[data-action="happy"] .sakura-guide-svg,.chibi-companion[data-action="wave"] .chibi-asset-renderer,.chibi-companion[data-action="happy"] .chibi-asset-renderer { animation:chibi-wave 1.2s ease-in-out; }
-.chibi-companion[data-action="hop"] .sakura-guide-svg,.chibi-companion[data-action="hop"] .chibi-asset-renderer { animation:chibi-hop 1.15s ease-in-out; }.chibi-companion[data-action="walk"] { animation:chibi-walk 2s ease-in-out; }.chibi-companion[data-action="peek"] { transform:translateX(24px); }.chibi-companion[data-side="left"][data-action="peek"] { transform:translateX(-24px); }
+.chibi-companion[data-action="wave"] .sakura-guide-svg,.chibi-companion[data-action="happy"] .sakura-guide-svg,.chibi-companion[data-action="wave"] .chibi-asset-renderer,.chibi-companion[data-action="happy"] .chibi-asset-renderer,.chibi-companion[data-action="wave"] .guide-image-renderer,.chibi-companion[data-action="happy"] .guide-image-renderer { animation:chibi-wave 1.2s ease-in-out; }
+.chibi-companion[data-action="hop"] .sakura-guide-svg,.chibi-companion[data-action="hop"] .chibi-asset-renderer,.chibi-companion[data-action="hop"] .guide-image-renderer { animation:chibi-hop 1.15s ease-in-out; }.chibi-companion[data-action="walk"] { animation:chibi-walk 2s ease-in-out; }.chibi-companion[data-action="peek"] { transform:translateX(24px); }.chibi-companion[data-side="left"][data-action="peek"] { transform:translateX(-24px); }
 @keyframes chibi-wave { 0%,100%{transform:rotate(0)} 30%{transform:rotate(-3deg)} 65%{transform:rotate(3deg)} }
 @keyframes chibi-hop { 0%,100%{transform:translateY(0)} 45%{transform:translateY(-18px) scale(1.03)} 70%{transform:translateY(2px)} }
 @keyframes chibi-walk { 0%,100%{transform:translateX(0)} 45%{transform:translateX(-44px)} 55%{transform:translateX(-44px)} }.chibi-companion[data-side="left"][data-action="walk"] { animation-name:chibi-walk-left; }
 @keyframes chibi-walk-left { 0%,100%{transform:translateX(0)} 45%{transform:translateX(44px)} 55%{transform:translateX(44px)} }
 body.wallpaper-enabled .chibi-companion-bubble { background:color-mix(in srgb,var(--color-surface) 91%,transparent); }
-@media(max-width:350px){.sakura-guide-svg{width:168px;height:230px}.chibi-preview-stage .sakura-guide-svg,.chibi-preview-stage .chibi-asset-renderer{width:165px}.chibi-companion{width:92px;height:119px}.chibi-companion-character .sakura-guide-svg,.chibi-companion-character .chibi-asset-renderer{width:85px}.chibi-companion-bubble{bottom:101px;max-width:65vw}}
-@media(prefers-reduced-motion:reduce){.chibi-companion,.chibi-companion .sakura-guide-svg,.chibi-companion .chibi-asset-renderer{animation:none!important;transition:none!important}.chibi-companion[data-action]{transform:none!important}}
+@media(max-width:350px){.sakura-guide-svg{width:168px;height:230px}.chibi-preview-stage .sakura-guide-svg,.chibi-preview-stage .chibi-asset-renderer,.chibi-preview-stage .guide-image-renderer{width:165px}.chibi-companion{width:92px;height:119px}.chibi-companion-character .sakura-guide-svg,.chibi-companion-character .chibi-asset-renderer,.chibi-companion-character .guide-image-renderer{width:85px}.chibi-companion-bubble{bottom:101px;max-width:65vw}}
+@media(prefers-reduced-motion:reduce){.chibi-companion,.chibi-companion .sakura-guide-svg,.chibi-companion .chibi-asset-renderer,.chibi-companion .guide-image-renderer{animation:none!important;transition:none!important}.chibi-companion[data-action]{transform:none!important}}
 .travel-main-heading { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: start; gap: 12px; }
 .travel-main-heading h1, .travel-main-heading p { margin-right: 0; }
 .travel-header-countdown {
