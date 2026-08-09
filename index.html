@@ -11,7 +11,7 @@
     <script>try { document.documentElement.dataset.theme = localStorage.getItem("sakuraAppearanceTheme") || "pink"; } catch (error) { document.documentElement.dataset.theme = "pink"; }</script>
     <link rel="manifest" href="manifest.webmanifest">
     <link rel="apple-touch-icon" href="icons/icon-180.png">
-    <link rel="stylesheet" href="style.css?v=55">
+    <link rel="stylesheet" href="style.css?v=56">
 </head>
 <body>
     <div class="app-shell">
@@ -136,6 +136,7 @@
                 <section class="hub-section" aria-labelledby="hub-sakura-heading"><h2 id="hub-sakura-heading">Sakura</h2><div class="hub-link-list">
                     <button class="hub-link" type="button" data-route="home"><span aria-hidden="true">⌂</span><span><strong>Home</strong><small>Return to your learning garden.</small></span><b aria-hidden="true">›</b></button>
                     <button class="hub-link" type="button" data-hub-action="appearance"><span aria-hidden="true">✿</span><span><strong>Appearance</strong><small>Themes, wallpaper, and framing.</small></span><b aria-hidden="true">›</b></button>
+                    <button class="hub-link" type="button" data-route="chibi-guide"><span aria-hidden="true">🌸</span><span><strong>Chibi Guide</strong><small>Customize and summon your Sakura companion.</small></span><b aria-hidden="true">›</b></button>
                     <button class="hub-link" type="button" data-hub-action="search"><span aria-hidden="true">⌕</span><span><strong>Universal Search</strong><small>Find Japanese across Sakura.</small></span><b aria-hidden="true">›</b></button>
                 </div></section>
                 <section class="hub-section" aria-labelledby="hub-learning-heading"><h2 id="hub-learning-heading">Learning</h2><div class="hub-link-list">
@@ -234,7 +235,7 @@
             </section>
 
             <section id="chibi-guide-view" class="view chibi-guide-view" data-view="chibi-guide" aria-labelledby="chibi-guide-heading" hidden>
-                <header class="chibi-guide-heading"><button class="back-button" type="button" data-route="home" aria-label="Back from Chibi Guide">‹</button><div><span class="section-kicker">Personalize</span><h1 id="chibi-guide-heading">Chibi Guide</h1><p>Create the adult Sakura guide who appears throughout Gestures &amp; Etiquette.</p></div></header>
+                <header class="chibi-guide-heading"><button class="back-button" type="button" data-route="home" aria-label="Back from Chibi Guide">‹</button><div><span class="section-kicker">Your little companion</span><h1 id="chibi-guide-heading">Sakura Guide</h1><p>Customize your little companion.</p></div></header>
                 <section class="chibi-preview-card" aria-label="Live Chibi Guide preview"><div id="chibi-guide-preview" class="chibi-preview-stage"></div><div><strong>Your Sakura Guide</strong><span>Adult chibi guide · live preview</span></div></section>
                 <form id="chibi-guide-form" class="chibi-guide-form">
                     <fieldset><legend>Skin Tone</legend><div id="chibi-skin-options" class="chibi-choice-grid chibi-color-grid"></div></fieldset>
@@ -243,6 +244,7 @@
                     <fieldset><legend>Eye Color</legend><div id="chibi-eye-color-options" class="chibi-choice-grid chibi-color-grid"></div><label class="chibi-custom-color"><span>Custom HEX</span><input id="chibi-custom-eye-color" type="text" maxlength="7" placeholder="#6B4636" autocomplete="off" spellcheck="false"><button class="secondary-button" type="button" data-chibi-apply-color="eyeColor">Apply</button></label></fieldset>
                     <fieldset><legend>Outfit</legend><div id="chibi-outfit-options" class="chibi-choice-grid"></div></fieldset>
                     <fieldset><legend>Accessories</legend><div class="chibi-accessory-options"><label><input id="chibi-glasses" type="checkbox"><span>Glasses</span></label><div id="chibi-accessory-options" class="chibi-choice-grid"></div></div></fieldset>
+                    <fieldset><legend>Companion</legend><div class="chibi-companion-settings"><label><span><strong>Show Sakura Guide</strong><small>Keep your companion above the bottom navigation.</small></span><input id="chibi-companion-enabled" type="checkbox" role="switch"></label><div><strong>Side</strong><div id="chibi-companion-side-options" class="chibi-choice-grid"></div></div><label><span><strong>Idle animations</strong><small>Occasional short, quiet actions.</small></span><input id="chibi-idle-animations" type="checkbox" role="switch"></label><label><span><strong>Speech bubbles</strong><small>Occasional short encouragement.</small></span><input id="chibi-speech-bubbles" type="checkbox" role="switch"></label><label><span><strong>Context reactions</strong><small>React to a few obvious Sakura moments.</small></span><input id="chibi-context-reactions" type="checkbox" role="switch"></label></div></fieldset>
                     <p id="chibi-guide-message" class="form-message" role="status"></p>
                     <div class="chibi-guide-actions"><button id="reset-chibi-guide" class="secondary-button" type="button">Reset to Default</button><button class="primary-button" type="submit">Save Guide</button></div>
                 </form>
@@ -633,6 +635,8 @@
         </nav>
     </div>
 
+    <button id="chibi-companion" class="chibi-companion" type="button" aria-label="Sakura Guide companion. Tap for a reaction." hidden><span id="chibi-companion-bubble" class="chibi-companion-bubble" hidden></span><span id="chibi-companion-character" class="chibi-companion-character" aria-hidden="true"></span></button>
+
     <dialog id="settings-dialog" class="settings-dialog">
         <div class="settings-card appearance-settings-card">
             <div class="card-topline"><div><span class="section-kicker">Personalize</span><h2>Appearance</h2></div><button id="close-settings" class="icon-button" type="button" aria-label="Close settings">×</button></div>
@@ -644,7 +648,7 @@
                     <p id="custom-accent-message" class="form-message" role="status"></p>
                 </div>
             </section>
-            <section class="appearance-section"><div class="appearance-section-heading"><h3>Chibi Guide</h3><span>Etiquette guide</span></div><p class="appearance-feature-copy">Customize the adult Sakura guide used in Gestures &amp; Etiquette.</p><button id="open-chibi-guide" class="secondary-button full-width-button" type="button">Customize Chibi Guide</button></section>
+            <section class="appearance-section"><div class="appearance-section-heading"><h3>Chibi Guide</h3><span>Your companion</span></div><p class="appearance-feature-copy">Customize and summon the adult Sakura guide.</p><button id="open-chibi-guide" class="secondary-button full-width-button" type="button">Open Chibi Guide</button></section>
             <section class="appearance-section"><div class="appearance-section-heading"><h3>Custom Wallpaper</h3><span id="wallpaper-status">Off</span></div>
                 <div id="wallpaper-empty" class="wallpaper-empty">Choose a photo from this device. It stays private and local to Sakura.</div>
                 <div id="wallpaper-preview-wrap" class="wallpaper-preview-wrap" hidden><img id="wallpaper-preview" alt="Selected wallpaper preview"><span id="wallpaper-preview-label">Saved wallpaper</span></div>

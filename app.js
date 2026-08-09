@@ -75,16 +75,23 @@ const APPEARANCE_STORE = "wallpapers";
 const WALLPAPER_RECORD = "activeWallpaper";
 const DEFAULT_WALLPAPER_FRAMING = Object.freeze({ positionX: 50, positionY: 50, zoom: 1 });
 const THEMES = { pink:{name:"Sakura Pink",swatch:"#ef5b87"},purple:{name:"Lavender Purple",swatch:"#9b70c8"},blue:{name:"Sky Blue",swatch:"#68a9dc"},green:{name:"Mint Green",swatch:"#68b99a"},yellow:{name:"Soft Yellow",swatch:"#d6a94d"} };
-const DEFAULT_CHIBI_GUIDE = Object.freeze({ skinTone:"light-medium", hairStyle:"shoulder", hairColor:"#4A3028", eyeColor:"#6B4636", outfit:"sakura-casual", glasses:false, accessory:"sakura-clip" });
+const DEFAULT_CHIBI_GUIDE = Object.freeze({ skinTone:"light-medium", hairStyle:"shoulder", hairColor:"#4A3028", eyeColor:"#6B4636", outfit:"sakura-casual", glasses:false, accessory:"sakura-clip", companionEnabled:false, companionSide:"right", idleAnimations:true, speechBubbles:true, contextReactions:true });
 const CHIBI_OPTIONS = Object.freeze({
     skinTone:[ ["light","Light","#F9D9C7"], ["light-medium","Light-Medium","#EFC3A7"], ["medium","Medium","#D99C73"], ["medium-deep","Medium-Deep","#A96848"], ["deep","Deep","#6F4231"] ],
     hairStyle:[ ["bob","Short Bob"], ["long","Long Straight"], ["ponytail","Ponytail"], ["twin-tails","Twin Tails"], ["shoulder","Shoulder Length"], ["bun","Bun"] ],
     hairColor:[ ["#17171C","Black"], ["#3B2722","Dark Brown"], ["#76503A","Brown"], ["#D9B878","Blonde"], ["#E887A8","Pink"], ["#A982C5","Lavender"], ["#668EB8","Blue"], ["#D9D7DD","White/Silver"] ],
     eyeColor:[ ["#6B4636","Brown"], ["#382822","Dark Brown"], ["#8A7042","Hazel"], ["#4F83B6","Blue"], ["#4F8B69","Green"], ["#CC6F94","Pink"], ["#795AA3","Purple"] ],
-    outfit:[ ["sakura-casual","Sakura Casual"], ["school-inspired","School-Inspired"], ["travel","Travel Outfit"], ["cafe","Café Outfit"], ["yukata","Kimono/Yukata-Inspired"] ],
+    outfit:[ ["sakura-casual","Sakura Casual"], ["school-inspired","Preppy / Academic"], ["travel","Travel Outfit"], ["cafe","Café Outfit"], ["yukata","Yukata-Inspired"] ],
     accessory:[ ["none","None"], ["sakura-clip","Sakura Hair Clip"], ["ribbon","Ribbon"], ["beret","Beret"] ]
 });
 const CHIBI_POSE_FAMILIES = Object.freeze(["neutral", "small-bow", "formal-bow", "explaining", "hands-together", "holding", "sitting", "walking", "waving", "dining"]);
+const CHIBI_SPEECH = Object.freeze([
+    { japanese:"おかえり！", romaji:"okaeri!", english:"Welcome back!" },
+    { japanese:"がんばって！", romaji:"ganbatte!", english:"You can do it!" },
+    { japanese:"いい感じ！", romaji:"ii kanji!", english:"Looking good!" },
+    { japanese:"おつかれさま！", romaji:"otsukaresama!", english:"Nice work!" },
+    { japanese:"すごい！", romaji:"sugoi!", english:"Amazing!" }
+]);
 const TRANSLATION_CONTEXTS = ["Everyday","Travel","Restaurant","Café","Shopping","Hotel","Train","Airport","Workplace","Friends","Social media","Other"];
 const TRANSLATION_TONES = ["Polite and natural","Casual","Very polite","Friendly","Social media / texting"];
 const KANA_QUIZ_GROUPS = ["Basic", "Dakuten", "Handakuten", "Yoon", "Extended"];
@@ -571,6 +578,9 @@ let currentEtiquetteEntry = null;
 let etiquetteRomajiVisible = false;
 let chibiGuide = normalizeChibiGuide(readJson(STORAGE.chibiGuide, DEFAULT_CHIBI_GUIDE));
 let chibiGuideDraft = { ...chibiGuide };
+let chibiCompanionTimer = 0;
+let chibiCompanionResetTimer = 0;
+let chibiCompanionBusy = false;
 let normalizedNativeDataCache = null;
 let normalizedSlangDataCache = null;
 let pendingTravelPhraseId = "";
@@ -3916,7 +3926,12 @@ function normalizeChibiGuide(value) {
         eyeColor: validChibiHex(source.eyeColor) ? source.eyeColor.toUpperCase() : DEFAULT_CHIBI_GUIDE.eyeColor,
         outfit: CHIBI_OPTIONS.outfit.some(option => option[0] === source.outfit) ? source.outfit : DEFAULT_CHIBI_GUIDE.outfit,
         glasses: source.glasses === true,
-        accessory: CHIBI_OPTIONS.accessory.some(option => option[0] === source.accessory) ? source.accessory : DEFAULT_CHIBI_GUIDE.accessory
+        accessory: CHIBI_OPTIONS.accessory.some(option => option[0] === source.accessory) ? source.accessory : DEFAULT_CHIBI_GUIDE.accessory,
+        companionEnabled: source.companionEnabled === true,
+        companionSide: ["left", "right"].includes(source.companionSide) ? source.companionSide : DEFAULT_CHIBI_GUIDE.companionSide,
+        idleAnimations: source.idleAnimations !== false,
+        speechBubbles: source.speechBubbles !== false,
+        contextReactions: source.contextReactions !== false
     };
 }
 
@@ -3942,9 +3957,16 @@ function chibiProp(illustration = {}) {
 
 function chibiExpressionClass(illustration = {}) {
     const expression = searchText(illustration.expression || "");
-    if (/surpris|shock|concern|worried/.test(expression)) return "surprised";
-    if (/serious|formal|calm|neutral/.test(expression)) return "calm";
-    return "smile";
+    if (/wink/.test(expression)) return "wink";
+    if (/excit|delight|celebrat/.test(expression)) return "excited";
+    if (/surpris|shock/.test(expression)) return "surprised";
+    if (/think|ponder|curious/.test(expression)) return "thinking";
+    if (/sleep|tired|yawn/.test(expression)) return "sleepy";
+    if (/embarrass|shy|awkward/.test(expression)) return "embarrassed";
+    if (/concern|worried|nervous/.test(expression)) return "worried";
+    if (/proud|confident/.test(expression)) return "proud";
+    if (/happy|smile|warm|cheer/.test(expression)) return "happy";
+    return "neutral";
 }
 
 function renderChibiGuide(settings = chibiGuide, illustration = {}, compact = false) {
@@ -3952,8 +3974,24 @@ function renderChibiGuide(settings = chibiGuide, illustration = {}, compact = fa
     const skin = CHIBI_OPTIONS.skinTone.find(option => option[0] === guide.skinTone)?.[2] || "#EFC3A7";
     const pose = chibiPoseFamily(illustration);
     const prop = chibiProp(illustration);
-    const classes = ["chibi-guide", `chibi-hair-${guide.hairStyle}`, `chibi-outfit-${guide.outfit}`, `chibi-accessory-${guide.accessory}`, `chibi-pose-${pose}`, `chibi-expression-${chibiExpressionClass(illustration)}`, compact ? "chibi-compact" : ""].filter(Boolean).join(" ");
-    return `<div class="${classes}" style="--chibi-skin:${skin};--chibi-hair:${guide.hairColor};--chibi-eyes:${guide.eyeColor}" data-pose-family="${pose}"><span class="chibi-hair-back"></span><span class="chibi-body"><i class="chibi-outfit"></i><i class="chibi-arm chibi-arm-left"></i><i class="chibi-arm chibi-arm-right"></i><i class="chibi-leg chibi-leg-left"></i><i class="chibi-leg chibi-leg-right"></i></span><span class="chibi-head"><i class="chibi-eye chibi-eye-left"></i><i class="chibi-eye chibi-eye-right"></i><i class="chibi-mouth"></i>${guide.glasses ? '<i class="chibi-glasses"></i>' : ""}</span><span class="chibi-hair-front"></span><span class="chibi-accessory"></span>${prop ? `<span class="chibi-prop" aria-hidden="true">${prop}</span>` : ""}</div>`;
+    const expression = chibiExpressionClass(illustration);
+    const outfitColors = { "sakura-casual":["#E76F99","#FFF0F5"], "school-inspired":["#6E668D","#EADFE8"], travel:["#5F9FA7","#F2C078"], cafe:["#9A695B","#F5E2D2"], yukata:["#9677B5","#F3AFC4"] }[guide.outfit] || ["#E76F99","#FFF0F5"];
+    const hairBack = {
+        bob:'<path d="M47 125C24 88 38 27 120 22s103 55 80 107c-11 25-33 34-48 28l-64 2c-20 7-33-9-41-34Z"/>',
+        long:'<path d="M44 127C20 77 45 20 121 20s103 55 86 113l9 111c-20 17-42 5-51-12-19 24-75 24-94 0-10 18-34 27-51 10l17-109Z"/>',
+        ponytail:'<path d="M44 128C22 77 45 21 120 21s97 45 83 104c-11 38-31 42-49 31H83c-17 6-31-8-39-28Z"/><path d="M184 72c46 3 55 48 30 105-11 24-30 35-49 22 18-35 20-72 4-103Z"/>',
+        "twin-tails":'<path d="M45 126C23 75 47 20 120 20s97 48 82 105c-9 32-29 40-47 31H84c-18 6-32-8-39-30Z"/><path d="M49 73C10 71-2 119 18 178c7 22 27 32 43 18-15-40-13-75 4-103Z"/><path d="M191 72c40-2 52 46 32 105-8 23-28 33-44 19 16-39 14-74-3-103Z"/>',
+        shoulder:'<path d="M43 128C19 76 44 19 120 19s103 57 82 113l7 65c-17 17-34 7-45-8-21 17-66 17-87 0-11 15-29 24-45 8l7-65Z"/>',
+        bun:'<circle cx="121" cy="23" r="31"/><path d="M43 128C21 77 45 24 120 24s100 49 82 103c-10 34-29 39-48 29H84c-18 6-32-8-41-28Z"/>'
+    }[guide.hairStyle] || "";
+    const eye = (cx, wink = false) => wink ? `<path d="M${cx-12} 102q12 11 24 0" class="svg-eye-line"/>` : `<ellipse cx="${cx}" cy="101" rx="15" ry="21" class="svg-eye-white"/><ellipse cx="${cx}" cy="104" rx="10" ry="16" fill="${guide.eyeColor}"/><ellipse cx="${cx}" cy="108" rx="6" ry="10" class="svg-pupil"/><circle cx="${cx-4}" cy="97" r="4" class="svg-eye-shine"/><circle cx="${cx+4}" cy="108" r="2" class="svg-eye-shine"/>`;
+    const eyes = expression === "wink" ? eye(91, true) + eye(149) : ["sleepy","thinking"].includes(expression) ? `<path d="M77 103q14 ${expression === "sleepy" ? 10 : 4} 28 0M135 103q14 ${expression === "sleepy" ? 10 : 4} 28 0" class="svg-eye-line"/>` : eye(91) + eye(149);
+    const mouth = expression === "surprised" ? '<ellipse cx="120" cy="137" rx="7" ry="9" class="svg-mouth-fill"/>' : expression === "worried" ? '<path d="M108 141q12-10 24 0" class="svg-mouth-line"/>' : expression === "neutral" || expression === "thinking" ? '<path d="M111 138q9 4 18 0" class="svg-mouth-line"/>' : '<path d="M105 135q15 19 30 0c-4 20-26 20-30 0Z" class="svg-mouth-fill"/>';
+    const blush = ["happy","excited","embarrassed","wink"].includes(expression) ? '<ellipse cx="75" cy="130" rx="13" ry="6" class="svg-blush"/><ellipse cx="165" cy="130" rx="13" ry="6" class="svg-blush"/>' : "";
+    const accessory = guide.accessory === "sakura-clip" ? '<g class="svg-accessory" transform="translate(171 64)"><circle r="8"/><circle cx="9" r="8"/><circle cx="4.5" cy="-8" r="8"/><circle cx="4.5" cy="8" r="8"/><circle cx="4.5" r="4"/></g>' : guide.accessory === "ribbon" ? '<path class="svg-accessory" d="M174 57l-18-13 3 26 15-8 15 8 3-26Z"/>' : guide.accessory === "beret" ? '<path class="svg-beret" d="M61 45c20-34 95-44 126-5 7 8-1 17-11 13-35-14-69-10-104 8-11 6-18-7-11-16Z"/>' : "";
+    const glasses = guide.glasses ? '<g class="svg-glasses"><rect x="71" y="87" width="40" height="30" rx="13"/><rect x="129" y="87" width="40" height="30" rx="13"/><path d="M111 99h18"/></g>' : "";
+    const classes = ["sakura-guide-svg", `svg-pose-${pose}`, `svg-expression-${expression}`, compact ? "sakura-guide-compact" : ""].filter(Boolean).join(" ");
+    return `<svg class="${classes}" viewBox="0 0 240 320" role="img" aria-label="Customized adult Sakura chibi guide" style="--svg-skin:${skin};--svg-hair:${guide.hairColor};--svg-outfit:${outfitColors[0]};--svg-outfit-detail:${outfitColors[1]}" data-pose-family="${pose}" xmlns="http://www.w3.org/2000/svg"><g class="svg-hair-back" fill="${guide.hairColor}">${hairBack}</g><g class="svg-legs"><path d="M91 251v40q0 12 16 12h6v-52Z"/><path d="M127 251v52h7q16 0 16-12v-40Z"/><path class="svg-shoe" d="M88 289h28v19H83q-5-12 5-19Z"/><path class="svg-shoe" d="M124 289h28q10 7 5 19h-33Z"/></g><g class="svg-body"><path class="svg-neck" d="M108 151h24v25h-24Z"/><path class="svg-outfit" d="M78 169q42-22 84 0l14 84q-56 24-112 0Z"/><path class="svg-outfit-detail" d="M110 166h20l13 78h-46Z"/><path class="svg-collar" d="M91 168l28 22-16 11-21-27ZM149 168l-28 22 16 11 21-27Z"/><g class="svg-arm svg-arm-left"><path d="M82 174q-19 9-24 49c-2 15 18 19 24 4l17-43Z"/><circle cx="61" cy="225" r="11"/></g><g class="svg-arm svg-arm-right"><path d="M158 174q19 9 24 49c2 15-18 19-24 4l-17-43Z"/><circle cx="179" cy="225" r="11"/></g></g><g class="svg-head"><ellipse cx="120" cy="103" rx="72" ry="68" class="svg-face"/><path d="M73 82q12-15 30-8M137 74q18-7 30 8" class="svg-brow"/>${eyes}${blush}${mouth}${glasses}</g><g class="svg-hair-front" fill="${guide.hairColor}"><path d="M53 83c-3-54 34-76 70-75 43 0 78 29 65 80-10-13-18-26-23-40-8 20-19 33-35 45l-4-35c-15 24-35 36-64 43 2-9-2-14-9-18Z"/><path class="svg-hair-highlight" d="M92 27q31-17 60 4-24-4-49 14Z"/></g>${accessory}${prop ? `<text x="190" y="224" class="svg-prop">${prop}</text>` : ""}</svg>`;
 }
 
 function chibiOptionButtons(key, options, color = false) {
@@ -3974,7 +4012,12 @@ function renderChibiCustomizer() {
     document.getElementById("chibi-eye-color-options").innerHTML = chibiOptionButtons("eyeColor", CHIBI_OPTIONS.eyeColor, true);
     document.getElementById("chibi-outfit-options").innerHTML = chibiOptionButtons("outfit", CHIBI_OPTIONS.outfit);
     document.getElementById("chibi-accessory-options").innerHTML = chibiOptionButtons("accessory", CHIBI_OPTIONS.accessory);
+    document.getElementById("chibi-companion-side-options").innerHTML = chibiOptionButtons("companionSide", [["left","Left"],["right","Right"]]);
     document.getElementById("chibi-glasses").checked = chibiGuideDraft.glasses;
+    document.getElementById("chibi-companion-enabled").checked = chibiGuideDraft.companionEnabled;
+    document.getElementById("chibi-idle-animations").checked = chibiGuideDraft.idleAnimations;
+    document.getElementById("chibi-speech-bubbles").checked = chibiGuideDraft.speechBubbles;
+    document.getElementById("chibi-context-reactions").checked = chibiGuideDraft.contextReactions;
     document.getElementById("chibi-guide-preview").innerHTML = renderChibiGuide(chibiGuideDraft, { pose:"standing neutral", expression:"warm smile", setting:"soft Sakura garden", props:[] });
 }
 
@@ -4000,6 +4043,85 @@ function saveChibiGuide() {
     writeJson(STORAGE.chibiGuide, chibiGuide);
     document.getElementById("chibi-guide-message").textContent = "Your Sakura guide is saved on this device.";
     if (etiquetteData) renderEtiquette();
+    updateChibiCompanion();
+}
+
+function chibiReducedMotion() {
+    return window.matchMedia?.("(prefers-reduced-motion: reduce)").matches === true;
+}
+
+function clearChibiCompanionTimers() {
+    window.clearTimeout(chibiCompanionTimer);
+    window.clearTimeout(chibiCompanionResetTimer);
+    chibiCompanionTimer = 0;
+    chibiCompanionResetTimer = 0;
+    chibiCompanionBusy = false;
+}
+
+function renderChibiCompanion(illustration = { pose:"standing neutral", expression:"happy", setting:"Sakura app", props:[] }) {
+    const character = document.getElementById("chibi-companion-character");
+    if (!character) return;
+    character.innerHTML = renderChibiGuide(chibiGuide, illustration, true);
+}
+
+function hideChibiBubble() {
+    const bubble = document.getElementById("chibi-companion-bubble");
+    if (bubble) { bubble.hidden = true; bubble.innerHTML = ""; }
+}
+
+function showChibiBubble(entry = CHIBI_SPEECH[Math.floor(Math.random() * CHIBI_SPEECH.length)]) {
+    if (!chibiGuide.speechBubbles) return;
+    const bubble = document.getElementById("chibi-companion-bubble");
+    bubble.innerHTML = `<strong>${escapeSearchHtml(entry.japanese)}</strong><small>${escapeSearchHtml(entry.english)}</small>`;
+    bubble.hidden = false;
+}
+
+function scheduleChibiCompanionIdle() {
+    window.clearTimeout(chibiCompanionTimer);
+    if (!chibiGuide.companionEnabled || !chibiGuide.idleAnimations || chibiReducedMotion() || currentRoute === "chibi-guide") return;
+    chibiCompanionTimer = window.setTimeout(() => performChibiCompanionAction(), 18000 + Math.floor(Math.random() * 18000));
+}
+
+function performChibiCompanionAction(requested = "") {
+    if (!chibiGuide.companionEnabled || chibiCompanionBusy) return;
+    const companion = document.getElementById("chibi-companion");
+    const reduced = chibiReducedMotion();
+    const actions = reduced ? ["wink", "happy", "surprised", "thinking"] : ["wave", "wink", "bow", "sit", "look", "think", "peek", "hop", "walk", "sleepy", "happy"];
+    const action = actions.includes(requested) ? requested : actions[Math.floor(Math.random() * actions.length)];
+    const illustrationByAction = {
+        wave:{ pose:"waving", expression:"happy" }, wink:{ pose:"standing neutral", expression:"wink" }, bow:{ pose:"small bow", expression:"happy" }, sit:{ pose:"sitting", expression:"neutral" }, look:{ pose:"standing neutral", expression:"thinking" }, think:{ pose:"explaining", expression:"thinking", props:["smartphone"] }, peek:{ pose:"standing neutral", expression:"surprised" }, hop:{ pose:"standing neutral", expression:"excited" }, walk:{ pose:"walking", expression:"happy" }, sleepy:{ pose:"sitting", expression:"sleepy" }, happy:{ pose:"waving", expression:"excited" }, surprised:{ pose:"standing neutral", expression:"surprised" }, thinking:{ pose:"standing neutral", expression:"thinking" }
+    };
+    const illustration = { setting:"Sakura app", props:[], ...(illustrationByAction[action] || illustrationByAction.happy) };
+    chibiCompanionBusy = true;
+    companion.dataset.action = action;
+    renderChibiCompanion(illustration);
+    if (chibiGuide.speechBubbles && (requested || Math.random() < .28)) showChibiBubble();
+    chibiCompanionResetTimer = window.setTimeout(() => {
+        delete companion.dataset.action;
+        hideChibiBubble();
+        renderChibiCompanion();
+        chibiCompanionBusy = false;
+        scheduleChibiCompanionIdle();
+    }, reduced ? 1200 : 2100);
+}
+
+function updateChibiCompanion() {
+    const companion = document.getElementById("chibi-companion");
+    if (!companion) return;
+    clearChibiCompanionTimers();
+    hideChibiBubble();
+    companion.dataset.side = chibiGuide.companionSide;
+    companion.hidden = !chibiGuide.companionEnabled || currentRoute === "chibi-guide";
+    if (!companion.hidden) {
+        renderChibiCompanion();
+        scheduleChibiCompanionIdle();
+    }
+}
+
+function chibiContextReaction(route) {
+    if (!chibiGuide.companionEnabled || !chibiGuide.contextReactions || currentRoute === "chibi-guide") return;
+    if (route === "etiquette") performChibiCompanionAction("wave");
+    else if (route === "travel" || route.startsWith("travel-")) performChibiCompanionAction("happy");
 }
 
 const ETIQUETTE_IMPORTANCE = new Set(["Essential", "Common", "Useful", "Contextual", "Specialized", "Fun"]);
@@ -4161,6 +4283,8 @@ function showRoute(route, updateHash = true) {
     const isTravelUtilityRoute = ["travel-my-phrases", "travel-decks", "travel-notes", "travel-countdown", "travel-offline", "travel-yen"].includes(normalizedRoute) || Boolean(deckRouteMatch);
     const viewRoute = nativeMode ? "native" : travelCategory ? "travel-category" : deckRouteMatch ? "travel-deck" : normalizedRoute;
     currentRoute = normalizedRoute;
+    updateChibiCompanion();
+    chibiContextReaction(normalizedRoute);
     if (normalizedRoute === "home") renderDailyProgress();
     if (normalizedRoute === "saved") renderSavedItems();
     if (normalizedRoute === "library") initializeLibrary();
@@ -4694,6 +4818,12 @@ function addListeners() {
         chibiGuideDraft.glasses = event.target.checked;
         renderChibiCustomizer();
     });
+    [["chibi-companion-enabled","companionEnabled"],["chibi-idle-animations","idleAnimations"],["chibi-speech-bubbles","speechBubbles"],["chibi-context-reactions","contextReactions"]].forEach(([id, key]) => {
+        document.getElementById(id).addEventListener("change", event => {
+            chibiGuideDraft[key] = event.target.checked;
+            renderChibiCustomizer();
+        });
+    });
     document.getElementById("chibi-guide-form").addEventListener("submit", event => {
         event.preventDefault();
         saveChibiGuide();
@@ -4705,7 +4835,10 @@ function addListeners() {
         renderChibiCustomizer();
         document.getElementById("chibi-guide-message").textContent = "The default Sakura guide has been restored.";
         if (etiquetteData) renderEtiquette();
+        updateChibiCompanion();
     });
+    document.getElementById("chibi-companion").addEventListener("click", () => performChibiCompanionAction());
+    window.matchMedia?.("(prefers-reduced-motion: reduce)").addEventListener?.("change", updateChibiCompanion);
     document.getElementById("travel-mode-toggle").addEventListener("change", event => setTravelModeEnabled(event.target.checked));
     document.getElementById("header-appearance").addEventListener("click", openAppearanceSettings);
     document.querySelectorAll("[data-hub-action]").forEach(button => button.addEventListener("click", () => {

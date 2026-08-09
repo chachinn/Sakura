@@ -4311,44 +4311,59 @@ body.wallpaper-enabled .etiquette-toolbar,body.wallpaper-enabled .etiquette-card
 .chibi-guide-actions button { min-height:48px; margin:0; }
 .appearance-feature-copy { margin:8px 0 11px; color:var(--color-text-muted); font-size:.8rem; line-height:1.45; }
 
-/* Reusable layered Sakura guide: one character, shared pose and prop layers. */
-.chibi-guide { --chibi-skin:#EFC3A7; --chibi-hair:#4A3028; --chibi-eyes:#6B4636; position:relative; width:120px; height:180px; flex:none; filter:drop-shadow(0 8px 8px rgba(55,35,48,.14)); }
-.chibi-hair-back,.chibi-head,.chibi-hair-front,.chibi-body,.chibi-accessory,.chibi-prop,.chibi-body i,.chibi-head i { position:absolute; display:block; box-sizing:border-box; }
-.chibi-hair-back { z-index:1; top:16px; left:22px; width:76px; height:92px; border-radius:42px 42px 28px 28px; background:var(--chibi-hair); }
-.chibi-head { z-index:3; top:28px; left:30px; width:60px; height:62px; border:1px solid color-mix(in srgb,var(--chibi-skin) 72%,#7a4c3b); border-radius:48% 48% 46% 46%; background:var(--chibi-skin); }
-.chibi-eye { top:29px; width:8px; height:11px; border-radius:50%; background:var(--chibi-eyes); box-shadow:inset 2px 2px 0 rgba(255,255,255,.6); }
-.chibi-eye-left { left:14px; }.chibi-eye-right { right:14px; }
-.chibi-mouth { left:25px; top:46px; width:11px; height:6px; border-bottom:2px solid #9b5360; border-radius:50%; }
-.chibi-expression-surprised .chibi-mouth { width:7px; height:7px; left:27px; border:2px solid #9b5360; border-radius:50%; }
-.chibi-expression-calm .chibi-mouth { height:1px; top:49px; border-radius:0; }
-.chibi-hair-front { z-index:4; top:18px; left:25px; width:70px; height:42px; border-radius:45px 45px 42% 42%; background:var(--chibi-hair); clip-path:polygon(0 0,100% 0,100% 45%,75% 38%,64% 90%,52% 50%,38% 92%,27% 42%,0 62%); }
-.chibi-body { z-index:2; top:84px; left:32px; width:56px; height:70px; transform-origin:50% 8%; }
-.chibi-outfit { inset:0 3px 13px; border-radius:19px 19px 13px 13px; background:#ef789c; border:1px solid rgba(80,42,55,.18); }
-.chibi-outfit::after { content:""; position:absolute; left:20px; top:5px; width:8px; height:30px; border-radius:5px; background:rgba(255,255,255,.55); }
-.chibi-outfit-school-inspired .chibi-outfit { background:#766c9d; }.chibi-outfit-school-inspired .chibi-outfit::after { width:22px; height:9px; left:14px; top:7px; background:#f3d9df; }
-.chibi-outfit-travel .chibi-outfit { background:#6fa9ad; }.chibi-outfit-travel .chibi-outfit::after { left:7px; width:36px; height:5px; top:26px; background:#d2a36d; }
-.chibi-outfit-cafe .chibi-outfit { background:#ad7b67; }.chibi-outfit-cafe .chibi-outfit::after { left:11px; width:28px; height:35px; top:14px; background:#f7e7d7; }
-.chibi-outfit-yukata .chibi-outfit { background:#a686be; }.chibi-outfit-yukata .chibi-outfit::after { left:6px; width:39px; height:7px; top:29px; background:#f4b5c6; }
-.chibi-arm { z-index:-1; top:8px; width:15px; height:48px; border-radius:10px; background:var(--chibi-skin); transform-origin:50% 7px; }
-.chibi-arm-left { left:-5px; transform:rotate(12deg); }.chibi-arm-right { right:-5px; transform:rotate(-12deg); }
-.chibi-leg { z-index:-2; top:53px; width:15px; height:40px; border-radius:9px; background:var(--chibi-skin); }
-.chibi-leg-left { left:10px; }.chibi-leg-right { right:10px; }
-.chibi-glasses { z-index:2; left:8px; top:25px; width:19px; height:15px; border:2px solid #6d5864; border-radius:7px; box-shadow:23px 0 0 -2px var(--chibi-skin),23px 0 0 0 #6d5864; }
-.chibi-glasses::after { content:""; position:absolute; left:17px; top:5px; width:7px; border-top:2px solid #6d5864; }
-.chibi-accessory { z-index:6; }
-.chibi-accessory-sakura-clip .chibi-accessory { top:31px; right:18px; width:18px; height:18px; border-radius:50%; background:#ef8faf; box-shadow:6px 0 #f5afc4,3px -5px #f9c6d5,3px 5px #e9749b; }
-.chibi-accessory-ribbon .chibi-accessory { top:21px; right:17px; width:14px; height:13px; background:#ef7098; clip-path:polygon(50% 35%,0 0,8% 100%,50% 63%,92% 100%,100% 0); }
-.chibi-accessory-beret .chibi-accessory { top:10px; left:26px; width:65px; height:25px; border-radius:60% 60% 30% 30%; background:#b1779e; transform:rotate(-6deg); }
-.chibi-hair-bob .chibi-hair-back { height:74px; }.chibi-hair-long .chibi-hair-back { height:142px; }.chibi-hair-ponytail .chibi-hair-back::after { content:""; position:absolute; right:-27px; top:29px; width:35px; height:82px; border-radius:50%; background:var(--chibi-hair); transform:rotate(-13deg); }
-.chibi-hair-twin-tails .chibi-hair-back::before,.chibi-hair-twin-tails .chibi-hair-back::after { content:""; position:absolute; top:30px; width:31px; height:78px; border-radius:50%; background:var(--chibi-hair); }.chibi-hair-twin-tails .chibi-hair-back::before{left:-24px;transform:rotate(13deg)}.chibi-hair-twin-tails .chibi-hair-back::after{right:-24px;transform:rotate(-13deg)}
-.chibi-hair-shoulder .chibi-hair-back { height:108px; }.chibi-hair-bun .chibi-hair-back::after { content:""; position:absolute; left:22px; top:-25px; width:34px; height:34px; border-radius:50%; background:var(--chibi-hair); }
-.chibi-pose-small-bow .chibi-head,.chibi-pose-small-bow .chibi-body { transform:rotate(11deg) translate(5px,2px); }.chibi-pose-formal-bow .chibi-head,.chibi-pose-formal-bow .chibi-body { transform:rotate(25deg) translate(12px,5px); }
-.chibi-pose-explaining .chibi-arm-right,.chibi-pose-waving .chibi-arm-right { transform:rotate(-128deg); }.chibi-pose-hands-together .chibi-arm-left{transform:rotate(-48deg)}.chibi-pose-hands-together .chibi-arm-right{transform:rotate(48deg)}
-.chibi-pose-holding .chibi-arm-left,.chibi-pose-dining .chibi-arm-left { transform:rotate(-42deg); }.chibi-pose-holding .chibi-arm-right,.chibi-pose-dining .chibi-arm-right { transform:rotate(42deg); }
-.chibi-pose-sitting .chibi-body { transform:translateY(13px); }.chibi-pose-sitting .chibi-leg-left{transform:rotate(74deg);transform-origin:top}.chibi-pose-sitting .chibi-leg-right{transform:rotate(-74deg);transform-origin:top}.chibi-pose-walking .chibi-leg-left{transform:rotate(18deg);transform-origin:top}.chibi-pose-walking .chibi-leg-right{transform:rotate(-18deg);transform-origin:top}
-.chibi-prop { z-index:8; right:-6px; bottom:25px; font-size:28px; filter:drop-shadow(0 3px 3px rgba(40,25,35,.14)); }
-.chibi-compact { transform:scale(.56); transform-origin:center; margin:-39px -24px; }
 @media(max-width:350px){.chibi-choice-grid{grid-template-columns:1fr}.chibi-custom-color{grid-template-columns:1fr auto}.chibi-custom-color > span{grid-column:1/-1}.chibi-guide-actions{grid-template-columns:1fr;bottom:calc(78px + env(safe-area-inset-bottom))}}
+/* Chibi Guide V2: original illustrated SVG layers. */
+.sakura-guide-svg { width:190px; height:260px; display:block; overflow:visible; filter:drop-shadow(0 10px 10px rgba(50,27,41,.18)); }
+.sakura-guide-svg * { vector-effect:non-scaling-stroke; transform-box:fill-box; }
+.svg-hair-back { stroke:color-mix(in srgb,var(--svg-hair) 72%,#281a24); stroke-width:4; stroke-linejoin:round; }
+.svg-hair-back path,.svg-hair-back circle { filter:drop-shadow(0 3px 0 color-mix(in srgb,var(--svg-hair) 70%,white)); }
+.svg-face,.svg-neck,.svg-legs > path:not(.svg-shoe),.svg-arm path,.svg-arm circle { fill:var(--svg-skin); stroke:#704b4d; stroke-width:3.5; stroke-linejoin:round; }
+.svg-head { transform-origin:center; }
+.svg-brow { fill:none; stroke:color-mix(in srgb,var(--svg-hair) 70%,#4c3037); stroke-width:4; stroke-linecap:round; }
+.svg-eye-white { fill:#fffdfd; stroke:#513b48; stroke-width:4; }
+.svg-pupil { fill:#28202d; }.svg-eye-shine { fill:white; }.svg-eye-line { fill:none; stroke:#513b48; stroke-width:5; stroke-linecap:round; }
+.svg-mouth-line { fill:none; stroke:#9e4f65; stroke-width:3.5; stroke-linecap:round; }.svg-mouth-fill { fill:#df7890; stroke:#8e465a; stroke-width:3; }
+.svg-blush { fill:#e98ba1; opacity:.48; }
+.svg-hair-front { stroke:color-mix(in srgb,var(--svg-hair) 72%,#281a24); stroke-width:4; stroke-linejoin:round; }
+.svg-hair-highlight { fill:none; stroke:rgba(255,255,255,.52); stroke-width:9; stroke-linecap:round; }
+.svg-body,.svg-arm { transform-origin:center top; }
+.svg-outfit { fill:var(--svg-outfit); stroke:#654350; stroke-width:4; stroke-linejoin:round; }.svg-outfit-detail { fill:var(--svg-outfit-detail); opacity:.9; }.svg-collar { fill:var(--svg-outfit-detail); stroke:#654350; stroke-width:3; stroke-linejoin:round; }
+.svg-shoe { fill:#453c4c; stroke:#2b2630; stroke-width:4; }.svg-shoe::after { fill:white; }
+.svg-glasses rect,.svg-glasses path { fill:none; stroke:#514653; stroke-width:4; stroke-linecap:round; }
+.svg-accessory { fill:#ed7fa3; stroke:#8e4c69; stroke-width:2; }.svg-beret { fill:#a56f99; stroke:#5c405b; stroke-width:4; }
+.svg-prop { font-size:36px; paint-order:stroke; stroke:rgba(255,255,255,.8); stroke-width:4; }
+.svg-pose-small-bow .svg-head,.svg-pose-small-bow .svg-body { transform:rotate(9deg) translate(8px,4px); transform-origin:center top; }
+.svg-pose-formal-bow .svg-head,.svg-pose-formal-bow .svg-body { transform:rotate(20deg) translate(18px,8px); transform-origin:center top; }
+.svg-pose-explaining .svg-arm-right,.svg-pose-waving .svg-arm-right { transform:rotate(-118deg) translateY(-3px); }
+.svg-pose-hands-together .svg-arm-left { transform:rotate(-42deg); }.svg-pose-hands-together .svg-arm-right { transform:rotate(42deg); }
+.svg-pose-holding .svg-arm-left,.svg-pose-dining .svg-arm-left { transform:rotate(-34deg); }.svg-pose-holding .svg-arm-right,.svg-pose-dining .svg-arm-right { transform:rotate(34deg); }
+.svg-pose-sitting .svg-body { transform:translateY(16px); }.svg-pose-sitting .svg-legs { transform:translateY(13px) scaleY(.7); transform-origin:center top; }
+.svg-pose-walking .svg-legs > path:first-child { transform:rotate(10deg); transform-origin:top; }.svg-pose-walking .svg-legs > path:nth-child(2) { transform:rotate(-10deg); transform-origin:top; }
+.svg-expression-excited .svg-eye-white { transform:scaleY(1.08); transform-origin:center; }.svg-expression-proud .svg-brow { transform:translateY(-3px); }
+.sakura-guide-compact { width:92px; height:126px; }
+.etiquette-illustration .sakura-guide-compact { margin:-4px 0; }
+.chibi-preview-stage .sakura-guide-svg { width:180px; height:246px; }
+.chibi-companion-settings { display:grid; gap:9px; }
+.chibi-companion-settings > label { min-height:54px; padding:9px 11px; display:grid; grid-template-columns:minmax(0,1fr) auto; align-items:center; gap:10px; border:1px solid var(--color-border); border-radius:14px; background:var(--color-surface-soft); }
+.chibi-companion-settings > label strong,.chibi-companion-settings > label small { display:block; }.chibi-companion-settings > label small { margin-top:3px; color:var(--color-text-muted); font-size:.68rem; line-height:1.35; }
+.chibi-companion-settings > label input { width:46px; height:27px; accent-color:var(--color-primary); }
+.chibi-companion-settings > div > strong { display:block; margin:2px 0 7px; font-size:.78rem; }
+.chibi-companion { position:fixed; z-index:980; bottom:calc(82px + env(safe-area-inset-bottom)); width:104px; height:132px; padding:0; border:0; background:transparent; color:var(--color-text); filter:drop-shadow(0 7px 9px rgba(38,24,34,.2)); transition:transform .35s ease,opacity .2s ease; touch-action:manipulation; }
+.chibi-companion[hidden] { display:none; }.chibi-companion[data-side="right"] { right:max(4px,env(safe-area-inset-right)); }.chibi-companion[data-side="left"] { left:max(4px,env(safe-area-inset-left)); }
+.chibi-companion-character { position:absolute; inset:auto 3px 0; display:grid; place-items:end center; }
+.chibi-companion-character .sakura-guide-svg { width:94px; height:128px; }
+.chibi-companion-bubble { position:absolute; z-index:3; bottom:112px; width:max-content; max-width:min(190px,70vw); padding:8px 10px; border:1px solid var(--color-border); border-radius:14px 14px 4px 14px; background:color-mix(in srgb,var(--color-surface) 96%,transparent); box-shadow:0 7px 20px var(--color-shadow); backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px); text-align:left; }
+.chibi-companion[data-side="right"] .chibi-companion-bubble { right:10px; }.chibi-companion[data-side="left"] .chibi-companion-bubble { left:10px; border-radius:14px 14px 14px 4px; }
+.chibi-companion-bubble strong,.chibi-companion-bubble small { display:block; white-space:normal; overflow-wrap:anywhere; }.chibi-companion-bubble strong { color:var(--color-primary-dark); font-size:.78rem; }.chibi-companion-bubble small { margin-top:2px; font-size:.64rem; }
+.chibi-companion[data-action="wave"] .sakura-guide-svg,.chibi-companion[data-action="happy"] .sakura-guide-svg { animation:chibi-wave 1.2s ease-in-out; }
+.chibi-companion[data-action="hop"] .sakura-guide-svg { animation:chibi-hop 1.15s ease-in-out; }.chibi-companion[data-action="walk"] { animation:chibi-walk 2s ease-in-out; }.chibi-companion[data-action="peek"] { transform:translateX(24px); }.chibi-companion[data-side="left"][data-action="peek"] { transform:translateX(-24px); }
+@keyframes chibi-wave { 0%,100%{transform:rotate(0)} 30%{transform:rotate(-3deg)} 65%{transform:rotate(3deg)} }
+@keyframes chibi-hop { 0%,100%{transform:translateY(0)} 45%{transform:translateY(-18px) scale(1.03)} 70%{transform:translateY(2px)} }
+@keyframes chibi-walk { 0%,100%{transform:translateX(0)} 45%{transform:translateX(-44px)} 55%{transform:translateX(-44px)} }.chibi-companion[data-side="left"][data-action="walk"] { animation-name:chibi-walk-left; }
+@keyframes chibi-walk-left { 0%,100%{transform:translateX(0)} 45%{transform:translateX(44px)} 55%{transform:translateX(44px)} }
+body.wallpaper-enabled .chibi-companion-bubble { background:color-mix(in srgb,var(--color-surface) 91%,transparent); }
+@media(max-width:350px){.sakura-guide-svg{width:168px;height:230px}.chibi-preview-stage .sakura-guide-svg{width:165px;height:226px}.chibi-companion{width:92px;height:119px}.chibi-companion-character .sakura-guide-svg{width:85px;height:116px}.chibi-companion-bubble{bottom:101px;max-width:65vw}}
+@media(prefers-reduced-motion:reduce){.chibi-companion,.chibi-companion .sakura-guide-svg{animation:none!important;transition:none!important}.chibi-companion[data-action]{transform:none!important}}
 .travel-main-heading { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: start; gap: 12px; }
 .travel-main-heading h1, .travel-main-heading p { margin-right: 0; }
 .travel-header-countdown {
