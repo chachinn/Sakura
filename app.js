@@ -18,6 +18,7 @@ const STORAGE = {
     userSlang: "sakura_user_slang_entries",
     nativeHistory: "sakura_native_recent_history",
     appearanceTheme: "sakuraAppearanceTheme",
+    chibiGuide: "sakuraChibiGuide",
     customAccent: "sakuraCustomAccentColor",
     wallpaperOverlay: "sakuraWallpaperOverlay",
     wallpaperFraming: "sakuraWallpaperFraming",
@@ -74,6 +75,16 @@ const APPEARANCE_STORE = "wallpapers";
 const WALLPAPER_RECORD = "activeWallpaper";
 const DEFAULT_WALLPAPER_FRAMING = Object.freeze({ positionX: 50, positionY: 50, zoom: 1 });
 const THEMES = { pink:{name:"Sakura Pink",swatch:"#ef5b87"},purple:{name:"Lavender Purple",swatch:"#9b70c8"},blue:{name:"Sky Blue",swatch:"#68a9dc"},green:{name:"Mint Green",swatch:"#68b99a"},yellow:{name:"Soft Yellow",swatch:"#d6a94d"} };
+const DEFAULT_CHIBI_GUIDE = Object.freeze({ skinTone:"light-medium", hairStyle:"shoulder", hairColor:"#4A3028", eyeColor:"#6B4636", outfit:"sakura-casual", glasses:false, accessory:"sakura-clip" });
+const CHIBI_OPTIONS = Object.freeze({
+    skinTone:[ ["light","Light","#F9D9C7"], ["light-medium","Light-Medium","#EFC3A7"], ["medium","Medium","#D99C73"], ["medium-deep","Medium-Deep","#A96848"], ["deep","Deep","#6F4231"] ],
+    hairStyle:[ ["bob","Short Bob"], ["long","Long Straight"], ["ponytail","Ponytail"], ["twin-tails","Twin Tails"], ["shoulder","Shoulder Length"], ["bun","Bun"] ],
+    hairColor:[ ["#17171C","Black"], ["#3B2722","Dark Brown"], ["#76503A","Brown"], ["#D9B878","Blonde"], ["#E887A8","Pink"], ["#A982C5","Lavender"], ["#668EB8","Blue"], ["#D9D7DD","White/Silver"] ],
+    eyeColor:[ ["#6B4636","Brown"], ["#382822","Dark Brown"], ["#8A7042","Hazel"], ["#4F83B6","Blue"], ["#4F8B69","Green"], ["#CC6F94","Pink"], ["#795AA3","Purple"] ],
+    outfit:[ ["sakura-casual","Sakura Casual"], ["school-inspired","School-Inspired"], ["travel","Travel Outfit"], ["cafe","Café Outfit"], ["yukata","Kimono/Yukata-Inspired"] ],
+    accessory:[ ["none","None"], ["sakura-clip","Sakura Hair Clip"], ["ribbon","Ribbon"], ["beret","Beret"] ]
+});
+const CHIBI_POSE_FAMILIES = Object.freeze(["neutral", "small-bow", "formal-bow", "explaining", "hands-together", "holding", "sitting", "walking", "waving", "dining"]);
 const TRANSLATION_CONTEXTS = ["Everyday","Travel","Restaurant","Café","Shopping","Hotel","Train","Airport","Workplace","Friends","Social media","Other"];
 const TRANSLATION_TONES = ["Polite and natural","Casual","Very polite","Friendly","Social media / texting"];
 const KANA_QUIZ_GROUPS = ["Basic", "Dakuten", "Handakuten", "Yoon", "Extended"];
@@ -558,6 +569,8 @@ let etiquetteData = null;
 let etiquetteDataPromise = null;
 let currentEtiquetteEntry = null;
 let etiquetteRomajiVisible = false;
+let chibiGuide = normalizeChibiGuide(readJson(STORAGE.chibiGuide, DEFAULT_CHIBI_GUIDE));
+let chibiGuideDraft = { ...chibiGuide };
 let normalizedNativeDataCache = null;
 let normalizedSlangDataCache = null;
 let pendingTravelPhraseId = "";
@@ -3890,6 +3903,105 @@ async function openCounters() {
     }
 }
 
+function validChibiHex(value) {
+    return /^#[0-9a-f]{6}$/i.test(String(value || ""));
+}
+
+function normalizeChibiGuide(value) {
+    const source = value && typeof value === "object" ? value : {};
+    return {
+        skinTone: CHIBI_OPTIONS.skinTone.some(option => option[0] === source.skinTone) ? source.skinTone : DEFAULT_CHIBI_GUIDE.skinTone,
+        hairStyle: CHIBI_OPTIONS.hairStyle.some(option => option[0] === source.hairStyle) ? source.hairStyle : DEFAULT_CHIBI_GUIDE.hairStyle,
+        hairColor: validChibiHex(source.hairColor) ? source.hairColor.toUpperCase() : DEFAULT_CHIBI_GUIDE.hairColor,
+        eyeColor: validChibiHex(source.eyeColor) ? source.eyeColor.toUpperCase() : DEFAULT_CHIBI_GUIDE.eyeColor,
+        outfit: CHIBI_OPTIONS.outfit.some(option => option[0] === source.outfit) ? source.outfit : DEFAULT_CHIBI_GUIDE.outfit,
+        glasses: source.glasses === true,
+        accessory: CHIBI_OPTIONS.accessory.some(option => option[0] === source.accessory) ? source.accessory : DEFAULT_CHIBI_GUIDE.accessory
+    };
+}
+
+function chibiPoseFamily(illustration = {}) {
+    const pose = searchText(`${illustration.pose || ""} ${illustration.setting || ""}`);
+    if (/deep|formal bow|bowing deeply/.test(pose)) return "formal-bow";
+    if (/bow|leaning forward/.test(pose)) return "small-bow";
+    if (/point|explain|showing|indicating/.test(pose)) return "explaining";
+    if (/hands together|palms together|praying|prayer/.test(pose)) return "hands-together";
+    if (/sit|seated|kneeling|seiza|bath|onsen/.test(pose)) return "sitting";
+    if (/walk|stepping|moving/.test(pose)) return "walking";
+    if (/wave|raising hand|stop gesture|no gesture/.test(pose)) return "waving";
+    if (/eat|chopstick|bowl|drink|dining/.test(pose)) return "dining";
+    if (/hold|carrying|presenting|offering|using|phone|device/.test(pose)) return "holding";
+    return "neutral";
+}
+
+function chibiProp(illustration = {}) {
+    const description = searchText([...(illustration.props || []), illustration.pose, illustration.setting].join(" "));
+    const props = [[/phone|smartphone|device/,"📱"],[/chopstick|bowl|food|eat|restaurant/,"🥢"],[/umbrella/,"☂️"],[/backpack|bag|suitcase|luggage/,"🧳"],[/train|station|transit/,"🚉"],[/gift|present/,"🎁"],[/ladle|shrine|temple/,"⛩️"],[/towel|bath|onsen/,"♨️"],[/credit card|payment|wallet|cash/,"💳"],[/passport|airport/,"🛂"]];
+    return props.find(([pattern]) => pattern.test(description))?.[1] || "";
+}
+
+function chibiExpressionClass(illustration = {}) {
+    const expression = searchText(illustration.expression || "");
+    if (/surpris|shock|concern|worried/.test(expression)) return "surprised";
+    if (/serious|formal|calm|neutral/.test(expression)) return "calm";
+    return "smile";
+}
+
+function renderChibiGuide(settings = chibiGuide, illustration = {}, compact = false) {
+    const guide = normalizeChibiGuide(settings);
+    const skin = CHIBI_OPTIONS.skinTone.find(option => option[0] === guide.skinTone)?.[2] || "#EFC3A7";
+    const pose = chibiPoseFamily(illustration);
+    const prop = chibiProp(illustration);
+    const classes = ["chibi-guide", `chibi-hair-${guide.hairStyle}`, `chibi-outfit-${guide.outfit}`, `chibi-accessory-${guide.accessory}`, `chibi-pose-${pose}`, `chibi-expression-${chibiExpressionClass(illustration)}`, compact ? "chibi-compact" : ""].filter(Boolean).join(" ");
+    return `<div class="${classes}" style="--chibi-skin:${skin};--chibi-hair:${guide.hairColor};--chibi-eyes:${guide.eyeColor}" data-pose-family="${pose}"><span class="chibi-hair-back"></span><span class="chibi-body"><i class="chibi-outfit"></i><i class="chibi-arm chibi-arm-left"></i><i class="chibi-arm chibi-arm-right"></i><i class="chibi-leg chibi-leg-left"></i><i class="chibi-leg chibi-leg-right"></i></span><span class="chibi-head"><i class="chibi-eye chibi-eye-left"></i><i class="chibi-eye chibi-eye-right"></i><i class="chibi-mouth"></i>${guide.glasses ? '<i class="chibi-glasses"></i>' : ""}</span><span class="chibi-hair-front"></span><span class="chibi-accessory"></span>${prop ? `<span class="chibi-prop" aria-hidden="true">${prop}</span>` : ""}</div>`;
+}
+
+function chibiOptionButtons(key, options, color = false) {
+    return options.map(option => {
+        const value = option[0];
+        const label = option[1];
+        const selected = String(chibiGuideDraft[key]).toLowerCase() === String(value).toLowerCase();
+        const swatch = color ? `<i style="--option-color:${escapeSearchHtml(value)}" aria-hidden="true"></i>` : "";
+        return `<button type="button" data-chibi-key="${key}" data-chibi-value="${escapeSearchHtml(value)}" class="${selected ? "selected" : ""}" aria-pressed="${selected}">${swatch}<span>${escapeSearchHtml(label)}</span></button>`;
+    }).join("");
+}
+
+function renderChibiCustomizer() {
+    document.getElementById("chibi-skin-options").innerHTML = chibiOptionButtons("skinTone", CHIBI_OPTIONS.skinTone.map(option => [option[0], option[1], option[2]]));
+    document.querySelectorAll("#chibi-skin-options [data-chibi-value]").forEach((button, index) => button.insertAdjacentHTML("afterbegin", `<i style="--option-color:${CHIBI_OPTIONS.skinTone[index][2]}" aria-hidden="true"></i>`));
+    document.getElementById("chibi-hair-style-options").innerHTML = chibiOptionButtons("hairStyle", CHIBI_OPTIONS.hairStyle);
+    document.getElementById("chibi-hair-color-options").innerHTML = chibiOptionButtons("hairColor", CHIBI_OPTIONS.hairColor, true);
+    document.getElementById("chibi-eye-color-options").innerHTML = chibiOptionButtons("eyeColor", CHIBI_OPTIONS.eyeColor, true);
+    document.getElementById("chibi-outfit-options").innerHTML = chibiOptionButtons("outfit", CHIBI_OPTIONS.outfit);
+    document.getElementById("chibi-accessory-options").innerHTML = chibiOptionButtons("accessory", CHIBI_OPTIONS.accessory);
+    document.getElementById("chibi-glasses").checked = chibiGuideDraft.glasses;
+    document.getElementById("chibi-guide-preview").innerHTML = renderChibiGuide(chibiGuideDraft, { pose:"standing neutral", expression:"warm smile", setting:"soft Sakura garden", props:[] });
+}
+
+function openChibiGuide() {
+    chibiGuideDraft = { ...chibiGuide };
+    document.getElementById("chibi-guide-message").textContent = "";
+    renderChibiCustomizer();
+}
+
+function applyChibiCustomColor(key) {
+    const input = document.getElementById(key === "hairColor" ? "chibi-custom-hair-color" : "chibi-custom-eye-color");
+    const value = input.value.trim();
+    const message = document.getElementById("chibi-guide-message");
+    if (!validChibiHex(value)) { message.textContent = "Enter a six-digit HEX color such as #D97FA2."; message.classList.add("error"); return; }
+    chibiGuideDraft[key] = value.toUpperCase();
+    message.textContent = "Custom color applied to the preview.";
+    message.classList.remove("error");
+    renderChibiCustomizer();
+}
+
+function saveChibiGuide() {
+    chibiGuide = normalizeChibiGuide(chibiGuideDraft);
+    writeJson(STORAGE.chibiGuide, chibiGuide);
+    document.getElementById("chibi-guide-message").textContent = "Your Sakura guide is saved on this device.";
+    if (etiquetteData) renderEtiquette();
+}
+
 const ETIQUETTE_IMPORTANCE = new Set(["Essential", "Common", "Useful", "Contextual", "Specialized", "Fun"]);
 
 function validateEtiquetteData(records) {
@@ -3939,7 +4051,7 @@ function filteredEtiquette() {
 
 function etiquetteIllustration(entry) {
     const details = [entry.illustration.pose, entry.illustration.expression, entry.illustration.setting].filter(Boolean).join(" · ");
-    return `<div class="etiquette-chibi" aria-hidden="true"><span>🌸</span><b>さくら</b></div><small>${escapeSearchHtml(details)}</small>`;
+    return `${renderChibiGuide(chibiGuide, entry.illustration, true)}<small>${escapeSearchHtml(details)}</small>`;
 }
 
 function applyEtiquetteRomajiVisibility() {
@@ -4058,6 +4170,7 @@ function showRoute(route, updateHash = true) {
     if (normalizedRoute === "practice-one-line-many-personalities") openPersonalitiesPractice();
     if (normalizedRoute === "counters") openCounters();
     if (normalizedRoute === "etiquette") openEtiquette();
+    if (normalizedRoute === "chibi-guide") openChibiGuide();
     if (nativeMode) {
         currentNativeMode = nativeMode;
         document.getElementById("native-heading").textContent = nativeMode === "slang" ? "Slang" : "Native Japanese";
@@ -4084,7 +4197,7 @@ function showRoute(route, updateHash = true) {
     if (normalizedRoute === "travel-yen") renderYenConverter();
     if (normalizedRoute === "travel") renderTravelHeaderCountdown();
     if (deckRouteMatch) renderCurrentTravelDeck();
-    const mainRoute = travelCategory || isTravelUtilityRoute ? "travel" : ["practice-what-would-you-say", "practice-sentence-builder", "practice-one-line-many-personalities"].includes(normalizedRoute) ? "practice" : ["search", "translate", "learn-native", "learn-slang", "library", "counters", "etiquette"].includes(normalizedRoute) || (normalizedRoute.includes("detail") && detailReturnRoute === "library") ? "learn" : normalizedRoute.replace("-detail", "");
+    const mainRoute = travelCategory || isTravelUtilityRoute ? "travel" : ["practice-what-would-you-say", "practice-sentence-builder", "practice-one-line-many-personalities"].includes(normalizedRoute) ? "practice" : ["search", "translate", "learn-native", "learn-slang", "library", "counters", "etiquette", "chibi-guide"].includes(normalizedRoute) || (normalizedRoute.includes("detail") && detailReturnRoute === "library") ? "learn" : normalizedRoute.replace("-detail", "");
     document.querySelectorAll(".nav-button").forEach(button => button.classList.toggle("active", button.dataset.route === mainRoute || (normalizedRoute.includes("detail") && button.dataset.route === detailReturnRoute)));
     const learnView = normalizedRoute === "learn" ? "library" : nativeMode;
     document.querySelectorAll("[data-learn-view]").forEach(button => {
@@ -4564,6 +4677,35 @@ function addListeners() {
         etiquetteRomajiVisible = !etiquetteRomajiVisible;
         applyEtiquetteRomajiVisibility();
     }));
+    document.getElementById("open-chibi-guide").addEventListener("click", () => {
+        document.getElementById("settings-dialog").close();
+        showRoute("chibi-guide");
+    });
+    document.getElementById("chibi-guide-form").addEventListener("click", event => {
+        const option = event.target.closest("[data-chibi-key]");
+        const color = event.target.closest("[data-chibi-apply-color]");
+        if (option) {
+            chibiGuideDraft[option.dataset.chibiKey] = option.dataset.chibiValue;
+            renderChibiCustomizer();
+        }
+        if (color) applyChibiCustomColor(color.dataset.chibiApplyColor);
+    });
+    document.getElementById("chibi-glasses").addEventListener("change", event => {
+        chibiGuideDraft.glasses = event.target.checked;
+        renderChibiCustomizer();
+    });
+    document.getElementById("chibi-guide-form").addEventListener("submit", event => {
+        event.preventDefault();
+        saveChibiGuide();
+    });
+    document.getElementById("reset-chibi-guide").addEventListener("click", () => {
+        chibiGuideDraft = { ...DEFAULT_CHIBI_GUIDE };
+        chibiGuide = { ...DEFAULT_CHIBI_GUIDE };
+        writeJson(STORAGE.chibiGuide, chibiGuide);
+        renderChibiCustomizer();
+        document.getElementById("chibi-guide-message").textContent = "The default Sakura guide has been restored.";
+        if (etiquetteData) renderEtiquette();
+    });
     document.getElementById("travel-mode-toggle").addEventListener("change", event => setTravelModeEnabled(event.target.checked));
     document.getElementById("header-appearance").addEventListener("click", openAppearanceSettings);
     document.querySelectorAll("[data-hub-action]").forEach(button => button.addEventListener("click", () => {
@@ -4951,7 +5093,7 @@ function initializeApp() {
     const requestedRoute = location.hash.replace("#", "");
     const travelRoutes = Object.keys(window.TRAVEL_CATEGORIES || {}).map(category => `travel-${category}`);
     const validDeckRoute = /^travel-deck-deck-.+/.test(requestedRoute);
-    showRoute(["home", "hub", "library", "learn", "learn-native", "learn-slang", "counters", "etiquette", "search", "translate", "quiz", "practice", "practice-what-would-you-say", "practice-sentence-builder", "practice-one-line-many-personalities", "native", "travel", "travel-my-phrases", "travel-decks", "travel-notes", "travel-countdown", "travel-offline", "travel-yen", "saved", ...travelRoutes].includes(requestedRoute) || validDeckRoute ? requestedRoute : "home", false);
+    showRoute(["home", "hub", "library", "learn", "learn-native", "learn-slang", "counters", "etiquette", "chibi-guide", "search", "translate", "quiz", "practice", "practice-what-would-you-say", "practice-sentence-builder", "practice-one-line-many-personalities", "native", "travel", "travel-my-phrases", "travel-decks", "travel-notes", "travel-countdown", "travel-offline", "travel-yen", "saved", ...travelRoutes].includes(requestedRoute) || validDeckRoute ? requestedRoute : "home", false);
     initializePwaUpdates();
 }
 

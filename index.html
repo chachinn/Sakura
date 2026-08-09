@@ -11,7 +11,7 @@
     <script>try { document.documentElement.dataset.theme = localStorage.getItem("sakuraAppearanceTheme") || "pink"; } catch (error) { document.documentElement.dataset.theme = "pink"; }</script>
     <link rel="manifest" href="manifest.webmanifest">
     <link rel="apple-touch-icon" href="icons/icon-180.png">
-    <link rel="stylesheet" href="style.css?v=54">
+    <link rel="stylesheet" href="style.css?v=55">
 </head>
 <body>
     <div class="app-shell">
@@ -231,6 +231,21 @@
                     <section id="counter-table-section" class="counter-reference-section counter-table-section"><div class="counter-table-heading"><div><span class="section-kicker">Stored forms</span><h2>Number forms</h2></div><span>Sound changes highlighted</span></div><div id="counter-count-table" class="counter-count-table"></div></section>
                     <p id="counter-no-table" class="counter-no-table" hidden>This counter is a reference entry. Detailed number forms have not been curated yet.</p>
                 </article>
+            </section>
+
+            <section id="chibi-guide-view" class="view chibi-guide-view" data-view="chibi-guide" aria-labelledby="chibi-guide-heading" hidden>
+                <header class="chibi-guide-heading"><button class="back-button" type="button" data-route="home" aria-label="Back from Chibi Guide">‹</button><div><span class="section-kicker">Personalize</span><h1 id="chibi-guide-heading">Chibi Guide</h1><p>Create the adult Sakura guide who appears throughout Gestures &amp; Etiquette.</p></div></header>
+                <section class="chibi-preview-card" aria-label="Live Chibi Guide preview"><div id="chibi-guide-preview" class="chibi-preview-stage"></div><div><strong>Your Sakura Guide</strong><span>Adult chibi guide · live preview</span></div></section>
+                <form id="chibi-guide-form" class="chibi-guide-form">
+                    <fieldset><legend>Skin Tone</legend><div id="chibi-skin-options" class="chibi-choice-grid chibi-color-grid"></div></fieldset>
+                    <fieldset><legend>Hair Style</legend><div id="chibi-hair-style-options" class="chibi-choice-grid"></div></fieldset>
+                    <fieldset><legend>Hair Color</legend><div id="chibi-hair-color-options" class="chibi-choice-grid chibi-color-grid"></div><label class="chibi-custom-color"><span>Custom HEX</span><input id="chibi-custom-hair-color" type="text" maxlength="7" placeholder="#5A3828" autocomplete="off" spellcheck="false"><button class="secondary-button" type="button" data-chibi-apply-color="hairColor">Apply</button></label></fieldset>
+                    <fieldset><legend>Eye Color</legend><div id="chibi-eye-color-options" class="chibi-choice-grid chibi-color-grid"></div><label class="chibi-custom-color"><span>Custom HEX</span><input id="chibi-custom-eye-color" type="text" maxlength="7" placeholder="#6B4636" autocomplete="off" spellcheck="false"><button class="secondary-button" type="button" data-chibi-apply-color="eyeColor">Apply</button></label></fieldset>
+                    <fieldset><legend>Outfit</legend><div id="chibi-outfit-options" class="chibi-choice-grid"></div></fieldset>
+                    <fieldset><legend>Accessories</legend><div class="chibi-accessory-options"><label><input id="chibi-glasses" type="checkbox"><span>Glasses</span></label><div id="chibi-accessory-options" class="chibi-choice-grid"></div></div></fieldset>
+                    <p id="chibi-guide-message" class="form-message" role="status"></p>
+                    <div class="chibi-guide-actions"><button id="reset-chibi-guide" class="secondary-button" type="button">Reset to Default</button><button class="primary-button" type="submit">Save Guide</button></div>
+                </form>
             </section>
 
             <section id="etiquette-view" class="view etiquette-view" data-view="etiquette" aria-labelledby="etiquette-heading" hidden>
@@ -629,6 +644,7 @@
                     <p id="custom-accent-message" class="form-message" role="status"></p>
                 </div>
             </section>
+            <section class="appearance-section"><div class="appearance-section-heading"><h3>Chibi Guide</h3><span>Etiquette guide</span></div><p class="appearance-feature-copy">Customize the adult Sakura guide used in Gestures &amp; Etiquette.</p><button id="open-chibi-guide" class="secondary-button full-width-button" type="button">Customize Chibi Guide</button></section>
             <section class="appearance-section"><div class="appearance-section-heading"><h3>Custom Wallpaper</h3><span id="wallpaper-status">Off</span></div>
                 <div id="wallpaper-empty" class="wallpaper-empty">Choose a photo from this device. It stays private and local to Sakura.</div>
                 <div id="wallpaper-preview-wrap" class="wallpaper-preview-wrap" hidden><img id="wallpaper-preview" alt="Selected wallpaper preview"><span id="wallpaper-preview-label">Saved wallpaper</span></div>

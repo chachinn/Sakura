@@ -4262,9 +4262,6 @@ body.wallpaper-enabled .counters-toolbar,body.wallpaper-enabled .counter-card,bo
 .etiquette-card { width:100%; min-width:0; padding:12px; display:grid; grid-template-columns:94px minmax(0,1fr); align-items:stretch; gap:12px; border:1px solid var(--color-border); border-radius:20px; background:var(--color-surface); color:var(--color-text); text-align:left; box-shadow:var(--shadow-card); }
 .etiquette-illustration { min-width:0; min-height:122px; padding:8px; display:grid; place-items:center; align-content:center; gap:6px; overflow:hidden; border:1px solid color-mix(in srgb,var(--color-primary) 22%,var(--color-border)); border-radius:16px; background:linear-gradient(145deg,var(--color-primary-soft),var(--color-surface-soft)); text-align:center; }
 .etiquette-illustration small { width:100%; color:var(--color-text-muted); font-size:.58rem; line-height:1.25; overflow-wrap:anywhere; }
-.etiquette-chibi { width:58px; height:58px; display:grid; place-items:center; align-content:center; border:2px solid color-mix(in srgb,var(--color-primary) 45%,white); border-radius:50%; background:var(--color-surface); box-shadow:0 7px 16px var(--color-shadow); }
-.etiquette-chibi span { font-size:1.35rem; line-height:1; }
-.etiquette-chibi b { color:var(--color-primary-dark); font-size:.58rem; }
 .etiquette-card-copy { min-width:0; display:flex; flex-direction:column; align-items:flex-start; gap:3px; }
 .etiquette-card-copy > strong { font-size:1rem; line-height:1.3; overflow-wrap:anywhere; }
 .etiquette-japanese { color:var(--color-primary-dark); font-size:1.08rem; font-weight:850; overflow-wrap:anywhere; }
@@ -4288,6 +4285,70 @@ body.wallpaper-enabled .counters-toolbar,body.wallpaper-enabled .counter-card,bo
 .etiquette-detail-sections .etiquette-avoid h2 { color:color-mix(in srgb,var(--color-error) 75%,var(--color-text)); }
 body.wallpaper-enabled .etiquette-toolbar,body.wallpaper-enabled .etiquette-card,body.wallpaper-enabled .etiquette-detail-hero,body.wallpaper-enabled .etiquette-detail-sections section { background:color-mix(in srgb,var(--color-surface) 91%,transparent); backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px); }
 @media(max-width:350px){.etiquette-filter-grid{grid-template-columns:1fr}.etiquette-card{grid-template-columns:82px minmax(0,1fr)}.etiquette-detail-header{grid-template-columns:auto minmax(0,1fr)}.etiquette-detail-header button:last-child{grid-column:2;justify-self:start}.etiquette-detail-hero{grid-template-columns:1fr}.etiquette-detail-hero > .etiquette-illustration{min-height:145px}}
+.chibi-guide-view { padding-bottom:calc(108px + env(safe-area-inset-bottom)); }
+.chibi-guide-heading { display:grid; grid-template-columns:auto minmax(0,1fr); align-items:start; gap:10px; margin-bottom:14px; }
+.chibi-guide-heading h1 { margin:2px 0 4px; font-size:1.6rem; }
+.chibi-guide-heading p { margin:0; color:var(--color-text-muted); font-size:.84rem; line-height:1.45; }
+.chibi-preview-card { min-height:250px; padding:18px; display:grid; place-items:center; gap:10px; border:1px solid var(--color-border); border-radius:24px; background:linear-gradient(145deg,var(--color-primary-soft),var(--color-surface)); box-shadow:var(--shadow-card); text-align:center; }
+.chibi-preview-stage { min-height:190px; display:grid; place-items:center; }
+.chibi-preview-card > div:last-child { display:grid; gap:2px; }
+.chibi-preview-card > div:last-child span { color:var(--color-text-muted); font-size:.75rem; }
+.chibi-guide-form { display:grid; gap:11px; margin-top:12px; }
+.chibi-guide-form fieldset { min-width:0; margin:0; padding:14px; border:1px solid var(--color-border); border-radius:18px; background:var(--color-surface); }
+.chibi-guide-form legend { padding:0 5px; color:var(--color-primary-dark); font-size:.82rem; font-weight:850; }
+.chibi-choice-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:7px; }
+.chibi-choice-grid button { min-width:0; min-height:44px; padding:7px 9px; display:flex; align-items:center; gap:7px; border:1px solid var(--color-border); border-radius:13px; background:var(--color-surface-soft); color:var(--color-text); font:inherit; font-size:.73rem; font-weight:750; text-align:left; }
+.chibi-choice-grid button.selected { border-color:var(--color-primary); background:var(--color-primary-soft); color:var(--color-primary-dark); box-shadow:inset 0 0 0 1px var(--color-primary); }
+.chibi-choice-grid button.selected::after { content:"✓"; margin-left:auto; font-weight:900; }
+.chibi-color-grid button i { flex:0 0 24px; width:24px; height:24px; border:2px solid var(--color-surface); border-radius:50%; background:var(--option-color); box-shadow:0 0 0 1px var(--color-border); }
+.chibi-custom-color { display:grid; grid-template-columns:auto minmax(0,1fr) auto; align-items:center; gap:8px; margin-top:9px; color:var(--color-text-muted); font-size:.72rem; font-weight:800; }
+.chibi-custom-color input { width:100%; min-width:0; min-height:42px; padding:8px 10px; border:1px solid var(--color-border); border-radius:11px; background:var(--color-surface-soft); color:var(--color-text); font:inherit; font-size:16px; }
+.chibi-custom-color button { min-height:42px; margin:0; }
+.chibi-accessory-options { display:grid; gap:9px; }
+.chibi-accessory-options > label { min-height:44px; padding:9px 11px; display:flex; align-items:center; gap:9px; border:1px solid var(--color-border); border-radius:13px; background:var(--color-surface-soft); font-weight:750; }
+.chibi-accessory-options input { width:22px; height:22px; accent-color:var(--color-primary); }
+.chibi-guide-actions { position:sticky; bottom:calc(82px + env(safe-area-inset-bottom)); z-index:4; display:grid; grid-template-columns:1fr 1fr; gap:8px; padding:9px; border:1px solid var(--color-border); border-radius:17px; background:color-mix(in srgb,var(--color-surface) 94%,transparent); box-shadow:0 8px 24px var(--color-shadow); backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px); }
+.chibi-guide-actions button { min-height:48px; margin:0; }
+.appearance-feature-copy { margin:8px 0 11px; color:var(--color-text-muted); font-size:.8rem; line-height:1.45; }
+
+/* Reusable layered Sakura guide: one character, shared pose and prop layers. */
+.chibi-guide { --chibi-skin:#EFC3A7; --chibi-hair:#4A3028; --chibi-eyes:#6B4636; position:relative; width:120px; height:180px; flex:none; filter:drop-shadow(0 8px 8px rgba(55,35,48,.14)); }
+.chibi-hair-back,.chibi-head,.chibi-hair-front,.chibi-body,.chibi-accessory,.chibi-prop,.chibi-body i,.chibi-head i { position:absolute; display:block; box-sizing:border-box; }
+.chibi-hair-back { z-index:1; top:16px; left:22px; width:76px; height:92px; border-radius:42px 42px 28px 28px; background:var(--chibi-hair); }
+.chibi-head { z-index:3; top:28px; left:30px; width:60px; height:62px; border:1px solid color-mix(in srgb,var(--chibi-skin) 72%,#7a4c3b); border-radius:48% 48% 46% 46%; background:var(--chibi-skin); }
+.chibi-eye { top:29px; width:8px; height:11px; border-radius:50%; background:var(--chibi-eyes); box-shadow:inset 2px 2px 0 rgba(255,255,255,.6); }
+.chibi-eye-left { left:14px; }.chibi-eye-right { right:14px; }
+.chibi-mouth { left:25px; top:46px; width:11px; height:6px; border-bottom:2px solid #9b5360; border-radius:50%; }
+.chibi-expression-surprised .chibi-mouth { width:7px; height:7px; left:27px; border:2px solid #9b5360; border-radius:50%; }
+.chibi-expression-calm .chibi-mouth { height:1px; top:49px; border-radius:0; }
+.chibi-hair-front { z-index:4; top:18px; left:25px; width:70px; height:42px; border-radius:45px 45px 42% 42%; background:var(--chibi-hair); clip-path:polygon(0 0,100% 0,100% 45%,75% 38%,64% 90%,52% 50%,38% 92%,27% 42%,0 62%); }
+.chibi-body { z-index:2; top:84px; left:32px; width:56px; height:70px; transform-origin:50% 8%; }
+.chibi-outfit { inset:0 3px 13px; border-radius:19px 19px 13px 13px; background:#ef789c; border:1px solid rgba(80,42,55,.18); }
+.chibi-outfit::after { content:""; position:absolute; left:20px; top:5px; width:8px; height:30px; border-radius:5px; background:rgba(255,255,255,.55); }
+.chibi-outfit-school-inspired .chibi-outfit { background:#766c9d; }.chibi-outfit-school-inspired .chibi-outfit::after { width:22px; height:9px; left:14px; top:7px; background:#f3d9df; }
+.chibi-outfit-travel .chibi-outfit { background:#6fa9ad; }.chibi-outfit-travel .chibi-outfit::after { left:7px; width:36px; height:5px; top:26px; background:#d2a36d; }
+.chibi-outfit-cafe .chibi-outfit { background:#ad7b67; }.chibi-outfit-cafe .chibi-outfit::after { left:11px; width:28px; height:35px; top:14px; background:#f7e7d7; }
+.chibi-outfit-yukata .chibi-outfit { background:#a686be; }.chibi-outfit-yukata .chibi-outfit::after { left:6px; width:39px; height:7px; top:29px; background:#f4b5c6; }
+.chibi-arm { z-index:-1; top:8px; width:15px; height:48px; border-radius:10px; background:var(--chibi-skin); transform-origin:50% 7px; }
+.chibi-arm-left { left:-5px; transform:rotate(12deg); }.chibi-arm-right { right:-5px; transform:rotate(-12deg); }
+.chibi-leg { z-index:-2; top:53px; width:15px; height:40px; border-radius:9px; background:var(--chibi-skin); }
+.chibi-leg-left { left:10px; }.chibi-leg-right { right:10px; }
+.chibi-glasses { z-index:2; left:8px; top:25px; width:19px; height:15px; border:2px solid #6d5864; border-radius:7px; box-shadow:23px 0 0 -2px var(--chibi-skin),23px 0 0 0 #6d5864; }
+.chibi-glasses::after { content:""; position:absolute; left:17px; top:5px; width:7px; border-top:2px solid #6d5864; }
+.chibi-accessory { z-index:6; }
+.chibi-accessory-sakura-clip .chibi-accessory { top:31px; right:18px; width:18px; height:18px; border-radius:50%; background:#ef8faf; box-shadow:6px 0 #f5afc4,3px -5px #f9c6d5,3px 5px #e9749b; }
+.chibi-accessory-ribbon .chibi-accessory { top:21px; right:17px; width:14px; height:13px; background:#ef7098; clip-path:polygon(50% 35%,0 0,8% 100%,50% 63%,92% 100%,100% 0); }
+.chibi-accessory-beret .chibi-accessory { top:10px; left:26px; width:65px; height:25px; border-radius:60% 60% 30% 30%; background:#b1779e; transform:rotate(-6deg); }
+.chibi-hair-bob .chibi-hair-back { height:74px; }.chibi-hair-long .chibi-hair-back { height:142px; }.chibi-hair-ponytail .chibi-hair-back::after { content:""; position:absolute; right:-27px; top:29px; width:35px; height:82px; border-radius:50%; background:var(--chibi-hair); transform:rotate(-13deg); }
+.chibi-hair-twin-tails .chibi-hair-back::before,.chibi-hair-twin-tails .chibi-hair-back::after { content:""; position:absolute; top:30px; width:31px; height:78px; border-radius:50%; background:var(--chibi-hair); }.chibi-hair-twin-tails .chibi-hair-back::before{left:-24px;transform:rotate(13deg)}.chibi-hair-twin-tails .chibi-hair-back::after{right:-24px;transform:rotate(-13deg)}
+.chibi-hair-shoulder .chibi-hair-back { height:108px; }.chibi-hair-bun .chibi-hair-back::after { content:""; position:absolute; left:22px; top:-25px; width:34px; height:34px; border-radius:50%; background:var(--chibi-hair); }
+.chibi-pose-small-bow .chibi-head,.chibi-pose-small-bow .chibi-body { transform:rotate(11deg) translate(5px,2px); }.chibi-pose-formal-bow .chibi-head,.chibi-pose-formal-bow .chibi-body { transform:rotate(25deg) translate(12px,5px); }
+.chibi-pose-explaining .chibi-arm-right,.chibi-pose-waving .chibi-arm-right { transform:rotate(-128deg); }.chibi-pose-hands-together .chibi-arm-left{transform:rotate(-48deg)}.chibi-pose-hands-together .chibi-arm-right{transform:rotate(48deg)}
+.chibi-pose-holding .chibi-arm-left,.chibi-pose-dining .chibi-arm-left { transform:rotate(-42deg); }.chibi-pose-holding .chibi-arm-right,.chibi-pose-dining .chibi-arm-right { transform:rotate(42deg); }
+.chibi-pose-sitting .chibi-body { transform:translateY(13px); }.chibi-pose-sitting .chibi-leg-left{transform:rotate(74deg);transform-origin:top}.chibi-pose-sitting .chibi-leg-right{transform:rotate(-74deg);transform-origin:top}.chibi-pose-walking .chibi-leg-left{transform:rotate(18deg);transform-origin:top}.chibi-pose-walking .chibi-leg-right{transform:rotate(-18deg);transform-origin:top}
+.chibi-prop { z-index:8; right:-6px; bottom:25px; font-size:28px; filter:drop-shadow(0 3px 3px rgba(40,25,35,.14)); }
+.chibi-compact { transform:scale(.56); transform-origin:center; margin:-39px -24px; }
+@media(max-width:350px){.chibi-choice-grid{grid-template-columns:1fr}.chibi-custom-color{grid-template-columns:1fr auto}.chibi-custom-color > span{grid-column:1/-1}.chibi-guide-actions{grid-template-columns:1fr;bottom:calc(78px + env(safe-area-inset-bottom))}}
 .travel-main-heading { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: start; gap: 12px; }
 .travel-main-heading h1, .travel-main-heading p { margin-right: 0; }
 .travel-header-countdown {
