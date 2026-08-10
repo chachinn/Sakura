@@ -11,7 +11,7 @@
     <script>try { document.documentElement.dataset.theme = localStorage.getItem("sakuraAppearanceTheme") || "pink"; } catch (error) { document.documentElement.dataset.theme = "pink"; }</script>
     <link rel="manifest" href="manifest.webmanifest">
     <link rel="apple-touch-icon" href="icons/icon-180.png">
-    <link rel="stylesheet" href="style.css?v=63">
+    <link rel="stylesheet" href="style.css?v=64">
 </head>
 <body>
     <div class="app-shell">
@@ -337,7 +337,7 @@
                 </article>
 
                 <article id="kanji-quiz-panel" class="quiz-card" data-quiz-panel="kanji" hidden>
-                    <div class="quiz-card-heading"><span class="quiz-icon pink-feature">漢</span><div><h2>Kanji Quiz</h2><p>Enter a reading or meaning.</p></div></div>
+                    <div class="quiz-card-heading"><span class="quiz-icon pink-feature">漢</span><div><h2>Kanji Quiz</h2><p>Enter a reading or meaning.</p></div><button id="kanji-quiz-romaji-toggle" class="quiz-romaji-toggle" type="button" aria-pressed="false">Show Romaji</button></div>
                     <div id="kanjiQuiz-levels" class="section-level-control expanded-level-control"></div>
                     <div class="quiz-status-bar"><span>🌸 Blooms <strong id="kanji-quiz-blooms">0</strong></span><span>🍂 Misses <strong id="kanji-quiz-misses">0</strong></span><button class="quiz-reset-button" type="button" data-reset-quiz="kanji" aria-label="Reset Kanji Quiz">↻ Reset</button></div>
                     <div id="kanji-quiz-character" class="quiz-character">日</div>
@@ -647,7 +647,7 @@
         </nav>
     </div>
 
-    <button id="chibi-companion" class="chibi-companion" type="button" aria-label="Sakura Guide companion. Tap for a reaction." hidden><span id="chibi-companion-bubble" class="chibi-companion-bubble" hidden></span><span id="chibi-companion-character" class="chibi-companion-character" aria-hidden="true"></span></button>
+    <button id="chibi-companion" class="chibi-companion" type="button" aria-label="Sakura Guide companion. Drag to move, or tap for a reaction." hidden><span id="chibi-companion-bubble" class="chibi-companion-bubble" hidden></span><span id="chibi-companion-character" class="chibi-companion-character" aria-hidden="true"></span></button>
 
     <div id="kaomoji-copy-toast" class="kaomoji-copy-toast" role="status" aria-live="polite" hidden>Copied!</div>
 

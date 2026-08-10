@@ -15,6 +15,8 @@ const STORAGE = {
     kanaQuizGroups: "sakuraKanaQuizGroups",
     recentSearches: "chaRecentSearches",
     kaomojiUsage: "sakuraKaomojiUsage",
+    quizRomaji: "sakuraKanjiQuizRomajiVisible",
+    chibiPosition: "sakuraChibiCompanionPosition",
     userNative: "sakura_user_native_entries",
     userSlang: "sakura_user_slang_entries",
     nativeHistory: "sakura_native_recent_history",
@@ -516,6 +518,8 @@ let quizStats = {
 const quizTransitionLocks = { kana: false, kanji: false, vocabulary: false };
 const quizTransitionTimers = { kana: null, kanji: null, vocabulary: null };
 const dailyQuestionCredited = { kanji: false, vocabulary: false };
+let kanjiQuizRomajiVisible = readJson(STORAGE.quizRomaji, false) === true;
+let kanjiQuizFeedbackRevealed = false;
 
 let currentRoute = "home";
 let hubDrawerReturnFocus = null;
@@ -604,6 +608,9 @@ let chibiAssetManifestPromise = null;
 let chibiCompanionTimer = 0;
 let chibiCompanionResetTimer = 0;
 let chibiCompanionBusy = false;
+let chibiCompanionPosition = normalizeChibiCompanionPosition(readJson(STORAGE.chibiPosition, null));
+let chibiCompanionDragState = null;
+let chibiCompanionSuppressClick = false;
 let normalizedNativeDataCache = null;
 let normalizedSlangDataCache = null;
 let pendingTravelPhraseId = "";
@@ -1145,6 +1152,31 @@ function kanaToRomaji(value) {
     return result;
 }
 
+
+function kanjiQuizReadingWithRomaji(reading) {
+    const kana = String(reading || "").trim();
+    if (!kana || !kanjiQuizRomajiVisible) return kana;
+    const romaji = kanaToRomaji(kana);
+    return romaji && romaji !== kana ? `${kana} (${romaji})` : kana;
+}
+
+function kanjiQuizRevealText(item = currentKanjiQuiz) {
+    if (!item) return "No content available.";
+    const on = (item.onyomi || []).map(kanjiQuizReadingWithRomaji).join(", ") || "—";
+    const kun = (item.kunyomi || []).map(kanjiQuizReadingWithRomaji).join(", ") || "—";
+    return `${item.meaning} · On: ${on} · Kun: ${kun}`;
+}
+
+function applyKanjiQuizRomajiVisibility() {
+    const button = document.getElementById("kanji-quiz-romaji-toggle");
+    if (!button) return;
+    button.textContent = kanjiQuizRomajiVisible ? "Hide Romaji" : "Show Romaji";
+    button.setAttribute("aria-pressed", String(kanjiQuizRomajiVisible));
+    if (kanjiQuizFeedbackRevealed && currentKanjiQuiz) {
+        setFeedback("kanji-quiz-feedback", kanjiQuizRevealText(currentKanjiQuiz));
+    }
+}
+
 function renderKanaQuizGroups() {
     const container = document.getElementById("kana-quiz-groups");
     if (!container) return;
@@ -1182,6 +1214,7 @@ function newKanjiQuiz() {
     const index = pickIndex(pool, currentKanjiQuiz, 1, true);
     currentKanjiQuiz = index < 0 ? null : pool[index];
     dailyQuestionCredited.kanji = false;
+    kanjiQuizFeedbackRevealed = false;
     document.getElementById("kanji-quiz-character").textContent = currentKanjiQuiz?.character || "—";
     document.getElementById("kanji-quiz-answer").value = "";
     setFeedback("kanji-quiz-feedback", currentKanjiQuiz ? "" : "No content is available for these levels.", "incorrect");
@@ -4565,6 +4598,129 @@ function performChibiCompanionAction(requested = "") {
     }, reduced ? 1200 : 2100);
 }
 
+
+function normalizeChibiCompanionPosition(value) {
+    if (!value || typeof value !== "object") return null;
+    const x = Number(value.x);
+    const y = Number(value.y);
+    return Number.isFinite(x) && Number.isFinite(y) ? { x, y } : null;
+}
+
+function chibiCompanionBounds() {
+    const companion = document.getElementById("chibi-companion");
+    if (!companion) return null;
+    const rect = companion.getBoundingClientRect();
+    const shellRect = document.querySelector(".app-shell")?.getBoundingClientRect();
+    const headerRect = document.querySelector(".app-header")?.getBoundingClientRect();
+    const navRect = document.querySelector(".bottom-navigation")?.getBoundingClientRect();
+    const width = rect.width || 104;
+    const height = rect.height || 132;
+    const minX = Math.max(4, shellRect?.left ?? 4);
+    const maxX = Math.max(minX, Math.min(window.innerWidth - width - 4, (shellRect?.right ?? window.innerWidth) - width - 4));
+    const minY = Math.max(4, (headerRect?.bottom ?? 0) + 4);
+    const bottomEdge = Math.min(window.innerHeight - 4, navRect?.top ?? window.innerHeight - 86);
+    const maxY = Math.max(minY, bottomEdge - height - 6);
+    return { minX, maxX, minY, maxY, width, height };
+}
+
+function clampChibiCompanionPosition(x, y) {
+    const bounds = chibiCompanionBounds();
+    if (!bounds) return { x:Number(x) || 0, y:Number(y) || 0 };
+    return {
+        x: Math.min(bounds.maxX, Math.max(bounds.minX, Number(x) || bounds.minX)),
+        y: Math.min(bounds.maxY, Math.max(bounds.minY, Number(y) || bounds.minY))
+    };
+}
+
+function setChibiCompanionVisualPosition(position, persist = false) {
+    const companion = document.getElementById("chibi-companion");
+    if (!companion || !position) return;
+    const clamped = clampChibiCompanionPosition(position.x, position.y);
+    companion.style.left = `${Math.round(clamped.x)}px`;
+    companion.style.top = `${Math.round(clamped.y)}px`;
+    companion.style.right = "auto";
+    companion.style.bottom = "auto";
+    companion.dataset.dragged = "true";
+    companion.dataset.side = clamped.x + companion.getBoundingClientRect().width / 2 < window.innerWidth / 2 ? "left" : "right";
+    chibiCompanionPosition = clamped;
+    if (persist) writeJson(STORAGE.chibiPosition, chibiCompanionPosition);
+}
+
+function clearChibiCompanionPosition() {
+    chibiCompanionPosition = null;
+    localStorage.removeItem(STORAGE.chibiPosition);
+    const companion = document.getElementById("chibi-companion");
+    if (!companion) return;
+    companion.style.removeProperty("left");
+    companion.style.removeProperty("top");
+    companion.style.removeProperty("right");
+    companion.style.removeProperty("bottom");
+    delete companion.dataset.dragged;
+    companion.dataset.side = chibiGuide.companionSide;
+}
+
+function applyChibiCompanionPosition() {
+    const companion = document.getElementById("chibi-companion");
+    if (!companion) return;
+    if (chibiCompanionPosition) setChibiCompanionVisualPosition(chibiCompanionPosition, false);
+    else {
+        companion.style.removeProperty("left");
+        companion.style.removeProperty("top");
+        companion.style.removeProperty("right");
+        companion.style.removeProperty("bottom");
+        delete companion.dataset.dragged;
+        companion.dataset.side = chibiGuide.companionSide;
+    }
+}
+
+function startChibiCompanionDrag(event) {
+    if (event.button !== undefined && event.button !== 0) return;
+    const companion = document.getElementById("chibi-companion");
+    if (!companion || companion.hidden) return;
+    const rect = companion.getBoundingClientRect();
+    chibiCompanionDragState = {
+        pointerId: event.pointerId,
+        startPointerX: event.clientX,
+        startPointerY: event.clientY,
+        startX: rect.left,
+        startY: rect.top,
+        moved: false
+    };
+    companion.setPointerCapture?.(event.pointerId);
+    companion.classList.add("dragging");
+    window.clearTimeout(chibiCompanionTimer);
+    hideChibiBubble();
+}
+
+function moveChibiCompanionDrag(event) {
+    const state = chibiCompanionDragState;
+    if (!state || state.pointerId !== event.pointerId) return;
+    const dx = event.clientX - state.startPointerX;
+    const dy = event.clientY - state.startPointerY;
+    if (!state.moved && Math.hypot(dx, dy) < 5) return;
+    state.moved = true;
+    event.preventDefault();
+    const companion = document.getElementById("chibi-companion");
+    if (companion) delete companion.dataset.action;
+    setChibiCompanionVisualPosition({ x:state.startX + dx, y:state.startY + dy }, false);
+}
+
+function finishChibiCompanionDrag(event) {
+    const state = chibiCompanionDragState;
+    if (!state || state.pointerId !== event.pointerId) return;
+    const companion = document.getElementById("chibi-companion");
+    if (companion?.hasPointerCapture?.(event.pointerId)) companion.releasePointerCapture(event.pointerId);
+    companion?.classList.remove("dragging");
+    chibiCompanionDragState = null;
+    if (state.moved && companion) {
+        const rect = companion.getBoundingClientRect();
+        setChibiCompanionVisualPosition({ x:rect.left, y:rect.top }, true);
+        chibiCompanionSuppressClick = true;
+        window.setTimeout(() => { chibiCompanionSuppressClick = false; }, 250);
+    }
+    scheduleChibiCompanionIdle();
+}
+
 function updateChibiCompanion() {
     const companion = document.getElementById("chibi-companion");
     if (!companion) return;
@@ -4574,6 +4730,7 @@ function updateChibiCompanion() {
     companion.hidden = !chibiGuide.companionEnabled || currentRoute === "chibi-guide";
     if (!companion.hidden) {
         renderChibiCompanion();
+        requestAnimationFrame(applyChibiCompanionPosition);
         scheduleChibiCompanionIdle();
     }
 }
@@ -5276,6 +5433,7 @@ function addListeners() {
         }
         if (option) {
             chibiGuideDraft[option.dataset.chibiKey] = option.dataset.chibiValue;
+            if (option.dataset.chibiKey === "companionSide") clearChibiCompanionPosition();
             renderChibiCustomizer();
         }
     });
@@ -5298,7 +5456,18 @@ function addListeners() {
         if (etiquetteData) renderEtiquette();
         updateChibiCompanion();
     });
-    document.getElementById("chibi-companion").addEventListener("click", () => performChibiCompanionAction());
+    const chibiCompanion = document.getElementById("chibi-companion");
+    chibiCompanion.addEventListener("pointerdown", startChibiCompanionDrag);
+    chibiCompanion.addEventListener("pointermove", moveChibiCompanionDrag);
+    chibiCompanion.addEventListener("pointerup", finishChibiCompanionDrag);
+    chibiCompanion.addEventListener("pointercancel", finishChibiCompanionDrag);
+    chibiCompanion.addEventListener("click", () => {
+        if (chibiCompanionSuppressClick) return;
+        performChibiCompanionAction();
+    });
+    window.addEventListener("resize", () => {
+        if (chibiCompanionPosition && !chibiCompanion.hidden) requestAnimationFrame(applyChibiCompanionPosition);
+    }, { passive:true });
     window.matchMedia?.("(prefers-reduced-motion: reduce)").addEventListener?.("change", updateChibiCompanion);
     document.getElementById("travel-mode-toggle").addEventListener("change", event => setTravelModeEnabled(event.target.checked));
     document.getElementById("header-appearance").addEventListener("click", openAppearanceSettings);
@@ -5568,7 +5737,15 @@ function addListeners() {
     document.getElementById("next-kana").addEventListener("click", newKana);
     document.getElementById("kana-answer").addEventListener("keydown", event => { if (event.key === "Enter") checkKana(); });
     document.getElementById("check-kanji-quiz").addEventListener("click", checkKanjiQuiz);
-    document.getElementById("reveal-kanji-quiz").addEventListener("click", () => setFeedback("kanji-quiz-feedback", currentKanjiQuiz ? `${currentKanjiQuiz.meaning} · On: ${currentKanjiQuiz.onyomi.join(", ")} · Kun: ${currentKanjiQuiz.kunyomi.join(", ")}` : "No content available."));
+    document.getElementById("reveal-kanji-quiz").addEventListener("click", () => {
+        kanjiQuizFeedbackRevealed = true;
+        setFeedback("kanji-quiz-feedback", kanjiQuizRevealText(currentKanjiQuiz));
+    });
+    document.getElementById("kanji-quiz-romaji-toggle").addEventListener("click", () => {
+        kanjiQuizRomajiVisible = !kanjiQuizRomajiVisible;
+        writeJson(STORAGE.quizRomaji, kanjiQuizRomajiVisible);
+        applyKanjiQuizRomajiVisibility();
+    });
     document.getElementById("next-kanji-quiz").addEventListener("click", newKanjiQuiz);
     document.getElementById("kanji-quiz-answer").addEventListener("keydown", event => { if (event.key === "Enter") checkKanjiQuiz(); });
     document.getElementById("check-vocabulary-quiz").addEventListener("click", checkVocabularyQuiz);
@@ -5700,6 +5877,7 @@ function initializeApp() {
     browseKanji(1, true);
     browseWord(1, true);
     renderKanaQuizGroups();
+    applyKanjiQuizRomajiVisibility();
     newKana();
     newKanjiQuiz();
     newVocabularyQuiz();
