@@ -3,7 +3,7 @@
   "cityName": "Tokyo",
   "operator": "Multiple operators",
   "verifiedOn": "2026-08-10",
-  "sourceNote": "Static offline reference using official JR East, Tokyo Metro and Toei Transportation line/station information. Not live service data. Landmark names and areas were expanded using official city tourism resources; station links are a static orientation aid, not live journey planning.",
+  "sourceNote": "Static offline reference using official JR East, Tokyo Metro and Toei Transportation line/station information. Not live service data. The Marunouchi Honancho branch is represented separately so its branch geometry is not shown as a false linear continuation. Landmark names and areas were expanded using official city tourism resources; station links are a static orientation aid, not live journey planning.",
   "notice": "Offline orientation guide only. Train types, through-services, platform assignments, delays and temporary service changes can vary. Always follow current station signs and operator announcements.",
   "lines": [
     {
@@ -881,7 +881,46 @@
           ]
         }
       ],
-      "serviceNote": "This guide shows the main M01–M25 route. The Honancho branch is not included in this first offline reference."
+      "serviceNote": "The Honancho branch is listed separately as the Marunouchi Line Branch (Mb03–Mb05) because it branches at Nakano-sakaue (M06)."
+    },
+    {
+      "id": "metro-marunouchi-branch",
+      "name": "Marunouchi Line Branch",
+      "jp": "丸ノ内線 方南町支線",
+      "code": "Mb",
+      "accent": "#e60012",
+      "operator": "Tokyo Metro",
+      "loop": false,
+      "directionForward": "toward Nakano-sakaue",
+      "directionReverse": "toward Honancho",
+      "summary": "Honancho branch of the Marunouchi Line, connecting Honancho with the main line at Nakano-sakaue.",
+      "serviceNote": "Branch station numbering uses Mb03–Mb05. At Nakano-sakaue (M06), follow current signs for main-line trains toward Ogikubo or Ikebukuro.",
+      "stations": [
+        {
+          "code": "Mb03",
+          "name": "Honancho",
+          "jp": "方南町"
+        },
+        {
+          "code": "Mb04",
+          "name": "Nakano-fujimicho",
+          "jp": "中野富士見町"
+        },
+        {
+          "code": "Mb05",
+          "name": "Nakano-shimbashi",
+          "jp": "中野新橋"
+        },
+        {
+          "code": "M06",
+          "name": "Nakano-sakaue",
+          "jp": "中野坂上",
+          "connections": [
+            "Tokyo Metro Marunouchi main line",
+            "Toei Oedo Line"
+          ]
+        }
+      ]
     },
     {
       "id": "metro-hibiya",

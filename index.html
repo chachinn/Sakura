@@ -11,7 +11,7 @@
     <script>try { document.documentElement.dataset.theme = localStorage.getItem("sakuraAppearanceTheme") || "pink"; } catch (error) { document.documentElement.dataset.theme = "pink"; }</script>
     <link rel="manifest" href="manifest.webmanifest">
     <link rel="apple-touch-icon" href="icons/icon-180.png">
-    <link rel="stylesheet" href="style.css?v=68">
+    <link rel="stylesheet" href="style.css?v=69">
 </head>
 <body>
     <div class="app-shell">
@@ -672,7 +672,7 @@
                 </article>
 
                 <p id="rail-city-note" class="rail-disclaimer"></p>
-                <p id="rail-loading" class="travel-category-status" role="status" aria-live="polite" hidden></p>
+                <p id="rail-loading" class="travel-category-status rail-loading-status" role="status" aria-live="polite" aria-atomic="true" hidden></p>
             </section>
 
             <section id="travel-my-phrases-view" class="view" data-view="travel-my-phrases" aria-labelledby="travel-my-phrases-heading" hidden>
@@ -907,6 +907,6 @@
     <script src="data/slang.js?v=2"></script>
     <script src="data/slang-expansions.js?v=6"></script>
     <script src="data/travel.js?v=4"></script>
-    <script src="data/kanji.js"></script>
+    <script src="data/kanji.js?v=2"></script>
 </body>
 </html>
