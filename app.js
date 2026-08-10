@@ -2175,9 +2175,9 @@ function browseNative(direction = 1, random = false) {
 
 
 const RAIL_CITY_FILES = {
-    tokyo: "./data/rail/tokyo.json?v=2",
-    osaka: "./data/rail/osaka.json?v=2",
-    kyoto: "./data/rail/kyoto.json?v=2"
+    tokyo: "./data/rail/tokyo.json?v=3",
+    osaka: "./data/rail/osaka.json?v=3",
+    kyoto: "./data/rail/kyoto.json?v=3"
 };
 
 function normalizeRailPrefs() {
@@ -2240,6 +2240,42 @@ function railSearchScore(query, station, line) {
     if (lineName === normalized || operator === normalized) return 65;
     if (railStationSearchText(station, line).includes(normalized)) return 45;
     return 0;
+}
+
+function railLandmarkSearchText(landmark) {
+    return normalizeSearchText([
+        landmark.name,
+        landmark.jp,
+        landmark.area,
+        landmark.category,
+        ...(landmark.aliases || []),
+        ...(landmark.keywords || []),
+        landmark.accessNote || ""
+    ].join(" "));
+}
+
+function railLandmarkSearchScore(query, landmark) {
+    const normalized = normalizeSearchText(query);
+    if (!normalized) return 0;
+    const name = normalizeSearchText(landmark.name);
+    const jp = normalizeSearchText(landmark.jp);
+    const aliases = (landmark.aliases || []).map(normalizeSearchText);
+    const area = normalizeSearchText(landmark.area);
+    const category = normalizeSearchText(landmark.category);
+    if (name === normalized || jp === normalized || aliases.includes(normalized)) return 135;
+    if (name.startsWith(normalized) || aliases.some(value => value.startsWith(normalized))) return 120;
+    if (name.includes(normalized) || jp.includes(normalized) || aliases.some(value => value.includes(normalized))) return 105;
+    if (area === normalized || category === normalized) return 70;
+    if (railLandmarkSearchText(landmark).includes(normalized)) return 55;
+    return 0;
+}
+
+function railLandmarkPrimaryRef(landmark) {
+    const first = landmark?.railRefs?.[0];
+    if (!first || !railGuideCityData) return null;
+    const line = railGuideCityData.lines.find(item => item.id === first.lineId);
+    const station = line?.stations.find(item => item.code === first.stationCode);
+    return line && station ? { line, station } : null;
 }
 
 function railOperators() {
@@ -2404,20 +2440,47 @@ function renderRailSearch(query = "") {
         results.innerHTML = "";
         return;
     }
+
     const matches = [];
+    for (const landmark of railGuideCityData.landmarks || []) {
+        const score = railLandmarkSearchScore(normalized, landmark);
+        if (score > 0) matches.push({ type:"landmark", landmark, score });
+    }
     for (const line of railGuideCityData.lines) {
         for (const station of line.stations) {
             const score = railSearchScore(normalized, station, line);
-            if (score > 0) matches.push({ line, station, score });
+            if (score > 0) matches.push({ type:"station", line, station, score });
         }
     }
-    matches.sort((a,b) => b.score - a.score || a.station.name.localeCompare(b.station.name) || a.line.name.localeCompare(b.line.name));
+
+    matches.sort((a,b) => {
+        if (b.score !== a.score) return b.score - a.score;
+        if (a.type !== b.type) return a.type === "landmark" ? -1 : 1;
+        const aName = a.type === "landmark" ? a.landmark.name : a.station.name;
+        const bName = b.type === "landmark" ? b.landmark.name : b.station.name;
+        return aName.localeCompare(bName);
+    });
+
     const topMatches = matches.slice(0, 15);
     results.hidden = false;
-    results.innerHTML = topMatches.length ? topMatches.map(({line,station}) => `<button type="button" data-rail-search-line="${escapeSearchHtml(line.id)}" data-rail-search-station="${escapeSearchHtml(station.code)}">
-        <span class="rail-search-code" style="--rail-line:${escapeSearchHtml(line.accent || "#d75a82")}">${escapeSearchHtml(station.code)}</span>
-        <span><strong>${escapeSearchHtml(station.name)}</strong><small>${station.jp ? `${escapeSearchHtml(station.jp)} · ` : ""}${escapeSearchHtml(line.operator || "")} · ${escapeSearchHtml(line.name)}</small></span>
-    </button>`).join("") : `<p>No matching station, line, operator, code, landmark or connection in ${escapeSearchHtml(railGuideCityData.cityName)}.</p>`;
+    results.innerHTML = topMatches.length ? topMatches.map(match => {
+        if (match.type === "landmark") {
+            const landmark = match.landmark;
+            const primary = railLandmarkPrimaryRef(landmark);
+            const stationCopy = primary
+                ? `${escapeSearchHtml(primary.station.code)} ${escapeSearchHtml(primary.station.name)} · ${escapeSearchHtml(primary.line.name)}`
+                : "See access note";
+            return `<button type="button" data-rail-landmark="${escapeSearchHtml(landmark.id)}">
+                <span class="rail-search-code" style="--rail-line:#d75a82">⌖</span>
+                <span><strong>${escapeSearchHtml(landmark.name)}</strong><small>Landmark · ${escapeSearchHtml(landmark.area)} · ${escapeSearchHtml(landmark.category)}</small><small>Nearest guide station: ${stationCopy}</small></span>
+            </button>`;
+        }
+        const {line, station} = match;
+        return `<button type="button" data-rail-search-line="${escapeSearchHtml(line.id)}" data-rail-search-station="${escapeSearchHtml(station.code)}">
+            <span class="rail-search-code" style="--rail-line:${escapeSearchHtml(line.accent || "#d75a82")}">${escapeSearchHtml(station.code)}</span>
+            <span><strong>${escapeSearchHtml(station.name)}</strong><small>${station.jp ? `${escapeSearchHtml(station.jp)} · ` : ""}${escapeSearchHtml(line.operator || "")} · ${escapeSearchHtml(line.name)}</small></span>
+        </button>`;
+    }).join("") : `<p>No matching landmark, station, line, operator, code, area, or connection in ${escapeSearchHtml(railGuideCityData.cityName)}.</p>`;
 }
 
 function renderRailGuide() {
@@ -2431,7 +2494,7 @@ function renderRailGuide() {
 
     document.getElementById("rail-city-title").textContent = `${railGuideCityData.cityName} Rail Lines`;
     const scope = document.getElementById("rail-search-scope");
-    if (scope) scope.textContent = `Searches all ${railGuideCityData.lines.length} lines in ${railGuideCityData.cityName}, regardless of operator filter.`;
+    if (scope) scope.textContent = `Searches ${railGuideCityData.landmarks?.length || 0} landmarks and all ${railGuideCityData.lines.length} lines in ${railGuideCityData.cityName}, regardless of operator filter.`;
     document.getElementById("rail-city-note").textContent = railGuideCityData.notice || "";
     document.getElementById("rail-line-code").textContent = line.code;
     document.getElementById("rail-line-code").style.setProperty("--rail-line", line.accent || "#d75a82");
@@ -5947,6 +6010,24 @@ function addListeners() {
         const stationButton = event.target.closest("[data-rail-station]");
         if (stationButton) {
             renderRailStationDetail(stationButton.dataset.railStation);
+            return;
+        }
+        const landmarkButton = event.target.closest("[data-rail-landmark]");
+        if (landmarkButton) {
+            const landmark = (railGuideCityData?.landmarks || []).find(item => item.id === landmarkButton.dataset.railLandmark);
+            const primary = railLandmarkPrimaryRef(landmark);
+            if (landmark && primary) {
+                document.getElementById("rail-search-input").value = "";
+                renderRailSearch("");
+                selectRailLine(primary.line.id, primary.station.code);
+                const detail = document.getElementById("rail-station-detail");
+                if (detail && !detail.hidden) {
+                    const landmarkNote = document.createElement("div");
+                    landmarkNote.className = "rail-station-extra";
+                    landmarkNote.innerHTML = `<strong>⌖ ${escapeSearchHtml(landmark.name)}</strong><p>${escapeSearchHtml(landmark.area)} · ${escapeSearchHtml(landmark.category)}</p>${landmark.accessNote ? `<p>${escapeSearchHtml(landmark.accessNote)}</p>` : ""}`;
+                    detail.appendChild(landmarkNote);
+                }
+            }
             return;
         }
         const searchButton = event.target.closest("[data-rail-search-line]");

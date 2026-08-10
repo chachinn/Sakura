@@ -3,7 +3,7 @@
   "cityName": "Kyoto",
   "operator": "Multiple operators",
   "verifiedOn": "2026-08-10",
-  "sourceNote": "Static offline reference using official JR West and Kyoto Municipal Transportation Bureau station information. Not live service data.",
+  "sourceNote": "Static offline reference using official JR West and Kyoto Municipal Transportation Bureau station information. Not live service data. Landmark names and areas were expanded using official city tourism resources; station links are a static orientation aid, not live journey planning.",
   "notice": "Offline orientation guide only. Through-services, platforms, delays and temporary service changes can vary. Follow current station and train destination signs.",
   "lines": [
     {
@@ -623,5 +623,1319 @@
   "operators": [
     "JR West",
     "Kyoto City Subway"
+  ],
+  "landmarks": [
+    {
+      "id": "kyoto-fushimi-inari",
+      "name": "Fushimi Inari Taisha",
+      "jp": "伏見稲荷大社",
+      "area": "Fushimi",
+      "category": "Shrine",
+      "railRefs": [
+        {
+          "lineId": "nara",
+          "stationCode": "D03"
+        }
+      ],
+      "aliases": [
+        "Fushimi Inari",
+        "Inari Shrine"
+      ],
+      "keywords": [
+        "torii",
+        "thousand gates",
+        "shrine"
+      ]
+    },
+    {
+      "id": "kyoto-tofukuji",
+      "name": "Tofukuji Temple",
+      "jp": "東福寺",
+      "area": "Tofukuji",
+      "category": "Temple",
+      "railRefs": [
+        {
+          "lineId": "nara",
+          "stationCode": "D02"
+        }
+      ],
+      "aliases": [
+        "Tofuku-ji"
+      ],
+      "keywords": [
+        "temple",
+        "autumn leaves"
+      ]
+    },
+    {
+      "id": "kyoto-kiyomizudera",
+      "name": "Kiyomizu-dera Temple",
+      "jp": "清水寺",
+      "area": "Higashiyama",
+      "category": "Temple",
+      "railRefs": [
+        {
+          "lineId": "subway-tozai",
+          "stationCode": "T10"
+        }
+      ],
+      "aliases": [
+        "Kiyomizudera",
+        "Kiyomizu Temple"
+      ],
+      "keywords": [
+        "temple",
+        "Higashiyama"
+      ],
+      "accessNote": "Higashiyama Station is in Sakura's current rail guide, but bus/taxi or a longer walk is usually involved for the final approach."
+    },
+    {
+      "id": "kyoto-sannenzaka",
+      "name": "Sannenzaka",
+      "jp": "産寧坂",
+      "area": "Higashiyama",
+      "category": "Historic street",
+      "railRefs": [
+        {
+          "lineId": "subway-tozai",
+          "stationCode": "T10"
+        }
+      ],
+      "aliases": [
+        "Sanneizaka",
+        "Sannen-zaka"
+      ],
+      "keywords": [
+        "historic street",
+        "Kiyomizu"
+      ]
+    },
+    {
+      "id": "kyoto-ninenzaka",
+      "name": "Ninenzaka",
+      "jp": "二年坂",
+      "area": "Higashiyama",
+      "category": "Historic street",
+      "railRefs": [
+        {
+          "lineId": "subway-tozai",
+          "stationCode": "T10"
+        }
+      ],
+      "aliases": [
+        "Ninen-zaka"
+      ],
+      "keywords": [
+        "historic street",
+        "Kiyomizu"
+      ]
+    },
+    {
+      "id": "kyoto-yasaka-pagoda",
+      "name": "Yasaka Pagoda (Hokan-ji)",
+      "jp": "八坂の塔",
+      "area": "Higashiyama",
+      "category": "Historic landmark",
+      "railRefs": [
+        {
+          "lineId": "subway-tozai",
+          "stationCode": "T10"
+        }
+      ],
+      "aliases": [
+        "Hokanji",
+        "Hokan-ji",
+        "Yasaka Tower"
+      ],
+      "keywords": [
+        "pagoda",
+        "Higashiyama"
+      ]
+    },
+    {
+      "id": "kyoto-yasaka-shrine",
+      "name": "Yasaka Shrine",
+      "jp": "八坂神社",
+      "area": "Gion",
+      "category": "Shrine",
+      "railRefs": [
+        {
+          "lineId": "subway-tozai",
+          "stationCode": "T10"
+        },
+        {
+          "lineId": "subway-tozai",
+          "stationCode": "T11"
+        }
+      ],
+      "aliases": [
+        "Yasaka Jinja",
+        "Gion Shrine"
+      ],
+      "keywords": [
+        "shrine",
+        "Gion"
+      ]
+    },
+    {
+      "id": "kyoto-gion",
+      "name": "Gion",
+      "jp": "祇園",
+      "area": "Gion",
+      "category": "Historic district",
+      "railRefs": [
+        {
+          "lineId": "subway-tozai",
+          "stationCode": "T11"
+        },
+        {
+          "lineId": "subway-tozai",
+          "stationCode": "T10"
+        }
+      ],
+      "aliases": [
+        "Gion District"
+      ],
+      "keywords": [
+        "geiko",
+        "maiko",
+        "historic streets"
+      ]
+    },
+    {
+      "id": "kyoto-hanamikoji",
+      "name": "Hanamikoji Street",
+      "jp": "花見小路通",
+      "area": "Gion",
+      "category": "Historic street",
+      "railRefs": [
+        {
+          "lineId": "subway-tozai",
+          "stationCode": "T11"
+        }
+      ],
+      "aliases": [
+        "Hanami-koji",
+        "Hanamikoji"
+      ],
+      "keywords": [
+        "Gion",
+        "historic street"
+      ]
+    },
+    {
+      "id": "kyoto-maruyama-park",
+      "name": "Maruyama Park",
+      "jp": "円山公園",
+      "area": "Gion / Higashiyama",
+      "category": "Park",
+      "railRefs": [
+        {
+          "lineId": "subway-tozai",
+          "stationCode": "T10"
+        }
+      ],
+      "aliases": [
+        "Maruyama Koen"
+      ],
+      "keywords": [
+        "park",
+        "cherry blossoms"
+      ]
+    },
+    {
+      "id": "kyoto-chionin",
+      "name": "Chion-in Temple",
+      "jp": "知恩院",
+      "area": "Higashiyama",
+      "category": "Temple",
+      "railRefs": [
+        {
+          "lineId": "subway-tozai",
+          "stationCode": "T10"
+        }
+      ],
+      "aliases": [
+        "Chionin",
+        "Chion-in"
+      ],
+      "keywords": [
+        "temple"
+      ]
+    },
+    {
+      "id": "kyoto-heian",
+      "name": "Heian Jingu Shrine",
+      "jp": "平安神宮",
+      "area": "Okazaki",
+      "category": "Shrine",
+      "railRefs": [
+        {
+          "lineId": "subway-tozai",
+          "stationCode": "T10"
+        }
+      ],
+      "aliases": [
+        "Heian Shrine",
+        "Heian Jingu"
+      ],
+      "keywords": [
+        "shrine",
+        "Okazaki"
+      ]
+    },
+    {
+      "id": "kyoto-kyocera-museum",
+      "name": "Kyoto City KYOCERA Museum of Art",
+      "jp": "京都市京セラ美術館",
+      "area": "Okazaki",
+      "category": "Museum",
+      "railRefs": [
+        {
+          "lineId": "subway-tozai",
+          "stationCode": "T10"
+        }
+      ],
+      "aliases": [
+        "Kyoto Municipal Museum of Art",
+        "Kyocera Museum Kyoto"
+      ],
+      "keywords": [
+        "art",
+        "museum"
+      ]
+    },
+    {
+      "id": "kyoto-nanzenji",
+      "name": "Nanzenji Temple",
+      "jp": "南禅寺",
+      "area": "Keage",
+      "category": "Temple",
+      "railRefs": [
+        {
+          "lineId": "subway-tozai",
+          "stationCode": "T09"
+        }
+      ],
+      "aliases": [
+        "Nanzen-ji"
+      ],
+      "keywords": [
+        "temple",
+        "aqueduct"
+      ]
+    },
+    {
+      "id": "kyoto-keage-incline",
+      "name": "Keage Incline",
+      "jp": "蹴上インクライン",
+      "area": "Keage",
+      "category": "Historic railway",
+      "railRefs": [
+        {
+          "lineId": "subway-tozai",
+          "stationCode": "T09"
+        }
+      ],
+      "aliases": [
+        "Keage Incline Railway"
+      ],
+      "keywords": [
+        "cherry blossoms",
+        "railway"
+      ]
+    },
+    {
+      "id": "kyoto-eikando",
+      "name": "Eikan-do Temple",
+      "jp": "永観堂",
+      "area": "Higashiyama",
+      "category": "Temple",
+      "railRefs": [
+        {
+          "lineId": "subway-tozai",
+          "stationCode": "T09"
+        }
+      ],
+      "aliases": [
+        "Eikando",
+        "Zenrinji"
+      ],
+      "keywords": [
+        "temple",
+        "autumn leaves"
+      ]
+    },
+    {
+      "id": "kyoto-philosophers-path",
+      "name": "Philosopher's Path",
+      "jp": "哲学の道",
+      "area": "Higashiyama",
+      "category": "Walking path",
+      "railRefs": [
+        {
+          "lineId": "subway-tozai",
+          "stationCode": "T09"
+        }
+      ],
+      "aliases": [
+        "Tetsugaku no Michi",
+        "Philosophers Path"
+      ],
+      "keywords": [
+        "walk",
+        "cherry blossoms"
+      ],
+      "accessNote": "Keage is a useful rail starting point in the current guide; the path extends north toward Ginkaku-ji."
+    },
+    {
+      "id": "kyoto-ginkakuji",
+      "name": "Ginkaku-ji (Silver Pavilion)",
+      "jp": "銀閣寺",
+      "area": "Higashiyama",
+      "category": "Temple",
+      "railRefs": [
+        {
+          "lineId": "subway-tozai",
+          "stationCode": "T09"
+        }
+      ],
+      "aliases": [
+        "Silver Pavilion",
+        "Ginkakuji"
+      ],
+      "keywords": [
+        "temple",
+        "garden"
+      ],
+      "accessNote": "Rail alone does not reach the temple directly; continue by bus/taxi or a longer walk from the subway area."
+    },
+    {
+      "id": "kyoto-kinkakuji",
+      "name": "Kinkaku-ji (Golden Pavilion)",
+      "jp": "金閣寺",
+      "area": "Northwest Kyoto",
+      "category": "Temple",
+      "railRefs": [
+        {
+          "lineId": "subway-karasuma",
+          "stationCode": "K04"
+        }
+      ],
+      "aliases": [
+        "Golden Pavilion",
+        "Kinkakuji"
+      ],
+      "keywords": [
+        "temple",
+        "golden pavilion"
+      ],
+      "accessNote": "Kitaoji is a practical subway transfer point; continue by city bus/taxi for the final leg."
+    },
+    {
+      "id": "kyoto-ryoanji",
+      "name": "Ryoan-ji Temple",
+      "jp": "龍安寺",
+      "area": "Northwest Kyoto",
+      "category": "Temple",
+      "railRefs": [
+        {
+          "lineId": "sagano",
+          "stationCode": "E06"
+        }
+      ],
+      "aliases": [
+        "Ryoanji"
+      ],
+      "keywords": [
+        "zen garden",
+        "rock garden"
+      ],
+      "accessNote": "Hanazono is represented in Sakura; local bus/taxi or a longer walk may be preferable for the final leg."
+    },
+    {
+      "id": "kyoto-ninnaji",
+      "name": "Ninna-ji Temple",
+      "jp": "仁和寺",
+      "area": "Northwest Kyoto",
+      "category": "Temple",
+      "railRefs": [
+        {
+          "lineId": "sagano",
+          "stationCode": "E06"
+        }
+      ],
+      "aliases": [
+        "Ninnaji"
+      ],
+      "keywords": [
+        "temple",
+        "Omuro"
+      ]
+    },
+    {
+      "id": "kyoto-imperial-palace",
+      "name": "Kyoto Imperial Palace",
+      "jp": "京都御所",
+      "area": "Central Kyoto",
+      "category": "Palace",
+      "railRefs": [
+        {
+          "lineId": "subway-karasuma",
+          "stationCode": "K06"
+        },
+        {
+          "lineId": "subway-karasuma",
+          "stationCode": "K07"
+        }
+      ],
+      "aliases": [
+        "Kyoto Gosho",
+        "Imperial Palace Kyoto"
+      ],
+      "keywords": [
+        "palace",
+        "Kyoto Gyoen"
+      ]
+    },
+    {
+      "id": "kyoto-gyoen",
+      "name": "Kyoto Gyoen National Garden",
+      "jp": "京都御苑",
+      "area": "Central Kyoto",
+      "category": "Park",
+      "railRefs": [
+        {
+          "lineId": "subway-karasuma",
+          "stationCode": "K06"
+        },
+        {
+          "lineId": "subway-karasuma",
+          "stationCode": "K07"
+        }
+      ],
+      "aliases": [
+        "Kyoto Imperial Palace Park",
+        "Kyoto Gyoen"
+      ],
+      "keywords": [
+        "park",
+        "palace"
+      ]
+    },
+    {
+      "id": "kyoto-nijo-castle",
+      "name": "Nijo Castle",
+      "jp": "二条城",
+      "area": "Nijo",
+      "category": "Castle",
+      "railRefs": [
+        {
+          "lineId": "subway-tozai",
+          "stationCode": "T14"
+        }
+      ],
+      "aliases": [
+        "Nijo-jo",
+        "Nijojo"
+      ],
+      "keywords": [
+        "castle",
+        "history"
+      ]
+    },
+    {
+      "id": "kyoto-nishiki",
+      "name": "Nishiki Market",
+      "jp": "錦市場",
+      "area": "Downtown Kyoto",
+      "category": "Market",
+      "railRefs": [
+        {
+          "lineId": "subway-karasuma",
+          "stationCode": "K09"
+        },
+        {
+          "lineId": "subway-tozai",
+          "stationCode": "T12"
+        }
+      ],
+      "aliases": [
+        "Kyoto's Kitchen",
+        "Nishiki Ichiba"
+      ],
+      "keywords": [
+        "food",
+        "market"
+      ]
+    },
+    {
+      "id": "kyoto-pontocho",
+      "name": "Pontocho Alley",
+      "jp": "先斗町",
+      "area": "Downtown Kyoto",
+      "category": "Historic alley",
+      "railRefs": [
+        {
+          "lineId": "subway-tozai",
+          "stationCode": "T11"
+        },
+        {
+          "lineId": "subway-tozai",
+          "stationCode": "T12"
+        }
+      ],
+      "aliases": [
+        "Ponto-cho",
+        "Pontocho"
+      ],
+      "keywords": [
+        "restaurants",
+        "Kamo River"
+      ]
+    },
+    {
+      "id": "kyoto-teramachi",
+      "name": "Teramachi Shopping Arcade",
+      "jp": "寺町通",
+      "area": "Downtown Kyoto",
+      "category": "Shopping street",
+      "railRefs": [
+        {
+          "lineId": "subway-tozai",
+          "stationCode": "T12"
+        },
+        {
+          "lineId": "subway-karasuma",
+          "stationCode": "K09"
+        }
+      ],
+      "aliases": [
+        "Teramachi Street"
+      ],
+      "keywords": [
+        "shopping",
+        "arcade"
+      ]
+    },
+    {
+      "id": "kyoto-shinkyogoku",
+      "name": "Shinkyogoku Shopping Street",
+      "jp": "新京極通",
+      "area": "Downtown Kyoto",
+      "category": "Shopping street",
+      "railRefs": [
+        {
+          "lineId": "subway-tozai",
+          "stationCode": "T12"
+        },
+        {
+          "lineId": "subway-karasuma",
+          "stationCode": "K09"
+        }
+      ],
+      "aliases": [
+        "Shinkyogoku"
+      ],
+      "keywords": [
+        "shopping",
+        "souvenirs"
+      ]
+    },
+    {
+      "id": "kyoto-manga-museum",
+      "name": "Kyoto International Manga Museum",
+      "jp": "京都国際マンガミュージアム",
+      "area": "Karasuma Oike",
+      "category": "Museum",
+      "railRefs": [
+        {
+          "lineId": "subway-karasuma",
+          "stationCode": "K08"
+        },
+        {
+          "lineId": "subway-tozai",
+          "stationCode": "T13"
+        }
+      ],
+      "aliases": [
+        "International Manga Museum Kyoto"
+      ],
+      "keywords": [
+        "manga",
+        "museum"
+      ]
+    },
+    {
+      "id": "kyoto-rokkakudo",
+      "name": "Rokkakudo Temple",
+      "jp": "六角堂",
+      "area": "Downtown Kyoto",
+      "category": "Temple",
+      "railRefs": [
+        {
+          "lineId": "subway-karasuma",
+          "stationCode": "K08"
+        },
+        {
+          "lineId": "subway-karasuma",
+          "stationCode": "K09"
+        }
+      ],
+      "aliases": [
+        "Chohoji",
+        "Choho-ji"
+      ],
+      "keywords": [
+        "temple",
+        "ikebana"
+      ]
+    },
+    {
+      "id": "kyoto-kyoto-station",
+      "name": "Kyoto Station",
+      "jp": "京都駅",
+      "area": "Kyoto Station",
+      "category": "Architecture / transport",
+      "railRefs": [
+        {
+          "lineId": "nara",
+          "stationCode": "D01"
+        },
+        {
+          "lineId": "sagano",
+          "stationCode": "E01"
+        },
+        {
+          "lineId": "subway-karasuma",
+          "stationCode": "K11"
+        }
+      ],
+      "aliases": [
+        "JR Kyoto Station"
+      ],
+      "keywords": [
+        "station",
+        "architecture",
+        "shopping"
+      ]
+    },
+    {
+      "id": "kyoto-tower",
+      "name": "Kyoto Tower",
+      "jp": "京都タワー",
+      "area": "Kyoto Station",
+      "category": "Observation",
+      "railRefs": [
+        {
+          "lineId": "subway-karasuma",
+          "stationCode": "K11"
+        },
+        {
+          "lineId": "nara",
+          "stationCode": "D01"
+        }
+      ],
+      "aliases": [
+        "Kyoto Tower Observation Deck"
+      ],
+      "keywords": [
+        "tower",
+        "observation"
+      ]
+    },
+    {
+      "id": "kyoto-higashi-honganji",
+      "name": "Higashi Hongan-ji Temple",
+      "jp": "東本願寺",
+      "area": "Kyoto Station / Gojo",
+      "category": "Temple",
+      "railRefs": [
+        {
+          "lineId": "subway-karasuma",
+          "stationCode": "K10"
+        },
+        {
+          "lineId": "subway-karasuma",
+          "stationCode": "K11"
+        }
+      ],
+      "aliases": [
+        "Higashi Honganji"
+      ],
+      "keywords": [
+        "temple"
+      ]
+    },
+    {
+      "id": "kyoto-nishi-honganji",
+      "name": "Nishi Hongan-ji Temple",
+      "jp": "西本願寺",
+      "area": "Kyoto Station west",
+      "category": "Temple",
+      "railRefs": [
+        {
+          "lineId": "sagano",
+          "stationCode": "E02"
+        },
+        {
+          "lineId": "subway-karasuma",
+          "stationCode": "K11"
+        }
+      ],
+      "aliases": [
+        "Nishi Honganji"
+      ],
+      "keywords": [
+        "temple"
+      ]
+    },
+    {
+      "id": "kyoto-toji",
+      "name": "To-ji Temple",
+      "jp": "東寺",
+      "area": "Kyoto Station south",
+      "category": "Temple",
+      "railRefs": [
+        {
+          "lineId": "subway-karasuma",
+          "stationCode": "K12"
+        },
+        {
+          "lineId": "subway-karasuma",
+          "stationCode": "K11"
+        }
+      ],
+      "aliases": [
+        "Toji",
+        "To-ji"
+      ],
+      "keywords": [
+        "pagoda",
+        "temple",
+        "flea market"
+      ]
+    },
+    {
+      "id": "kyoto-sanjusangendo",
+      "name": "Sanjusangen-do Temple",
+      "jp": "三十三間堂",
+      "area": "Higashiyama / Kyoto Station east",
+      "category": "Temple",
+      "railRefs": [
+        {
+          "lineId": "nara",
+          "stationCode": "D02"
+        },
+        {
+          "lineId": "subway-karasuma",
+          "stationCode": "K11"
+        }
+      ],
+      "aliases": [
+        "Sanjusangendo"
+      ],
+      "keywords": [
+        "1001 statues",
+        "temple"
+      ]
+    },
+    {
+      "id": "kyoto-national-museum",
+      "name": "Kyoto National Museum",
+      "jp": "京都国立博物館",
+      "area": "Higashiyama / Kyoto Station east",
+      "category": "Museum",
+      "railRefs": [
+        {
+          "lineId": "nara",
+          "stationCode": "D02"
+        },
+        {
+          "lineId": "subway-karasuma",
+          "stationCode": "K11"
+        }
+      ],
+      "aliases": [
+        "KNM"
+      ],
+      "keywords": [
+        "museum",
+        "art",
+        "history"
+      ]
+    },
+    {
+      "id": "kyoto-arashiyama-bamboo",
+      "name": "Arashiyama Bamboo Grove",
+      "jp": "嵐山竹林",
+      "area": "Arashiyama",
+      "category": "Nature / landmark",
+      "railRefs": [
+        {
+          "lineId": "sagano",
+          "stationCode": "E08"
+        }
+      ],
+      "aliases": [
+        "Bamboo Forest",
+        "Sagano Bamboo Grove",
+        "Arashiyama Bamboo Forest"
+      ],
+      "keywords": [
+        "bamboo",
+        "Arashiyama"
+      ]
+    },
+    {
+      "id": "kyoto-togetsukyo",
+      "name": "Togetsukyo Bridge",
+      "jp": "渡月橋",
+      "area": "Arashiyama",
+      "category": "Landmark",
+      "railRefs": [
+        {
+          "lineId": "sagano",
+          "stationCode": "E08"
+        }
+      ],
+      "aliases": [
+        "Togetsu-kyo",
+        "Moon Crossing Bridge"
+      ],
+      "keywords": [
+        "bridge",
+        "Arashiyama"
+      ]
+    },
+    {
+      "id": "kyoto-tenryuji",
+      "name": "Tenryu-ji Temple",
+      "jp": "天龍寺",
+      "area": "Arashiyama",
+      "category": "Temple",
+      "railRefs": [
+        {
+          "lineId": "sagano",
+          "stationCode": "E08"
+        }
+      ],
+      "aliases": [
+        "Tenryuji"
+      ],
+      "keywords": [
+        "temple",
+        "garden",
+        "Arashiyama"
+      ]
+    },
+    {
+      "id": "kyoto-okocho-sanso",
+      "name": "Okochi Sanso Garden",
+      "jp": "大河内山荘庭園",
+      "area": "Arashiyama",
+      "category": "Garden",
+      "railRefs": [
+        {
+          "lineId": "sagano",
+          "stationCode": "E08"
+        }
+      ],
+      "aliases": [
+        "Okochi Sanso"
+      ],
+      "keywords": [
+        "garden",
+        "Arashiyama"
+      ]
+    },
+    {
+      "id": "kyoto-monkey-park",
+      "name": "Arashiyama Monkey Park Iwatayama",
+      "jp": "嵐山モンキーパークいわたやま",
+      "area": "Arashiyama",
+      "category": "Animal attraction",
+      "railRefs": [
+        {
+          "lineId": "sagano",
+          "stationCode": "E08"
+        }
+      ],
+      "aliases": [
+        "Monkey Park Iwatayama",
+        "Arashiyama Monkey Park"
+      ],
+      "keywords": [
+        "monkeys",
+        "Arashiyama"
+      ]
+    },
+    {
+      "id": "kyoto-sagano-scenic",
+      "name": "Sagano Scenic Railway",
+      "jp": "嵯峨野観光鉄道",
+      "area": "Arashiyama",
+      "category": "Scenic railway",
+      "railRefs": [
+        {
+          "lineId": "sagano",
+          "stationCode": "E08"
+        }
+      ],
+      "aliases": [
+        "Sagano Romantic Train",
+        "Torokko Train",
+        "Romantic Train"
+      ],
+      "keywords": [
+        "train",
+        "scenic railway",
+        "Arashiyama"
+      ]
+    },
+    {
+      "id": "kyoto-daikakuji",
+      "name": "Daikaku-ji Temple",
+      "jp": "大覚寺",
+      "area": "Saga / Arashiyama",
+      "category": "Temple",
+      "railRefs": [
+        {
+          "lineId": "sagano",
+          "stationCode": "E08"
+        }
+      ],
+      "aliases": [
+        "Daikakuji"
+      ],
+      "keywords": [
+        "temple",
+        "pond"
+      ],
+      "accessNote": "Saga-Arashiyama is the rail base in Sakura; continue by bus/taxi or walk for the final leg."
+    },
+    {
+      "id": "kyoto-gioji",
+      "name": "Gio-ji Temple",
+      "jp": "祇王寺",
+      "area": "Saga / Arashiyama",
+      "category": "Temple",
+      "railRefs": [
+        {
+          "lineId": "sagano",
+          "stationCode": "E08"
+        }
+      ],
+      "aliases": [
+        "Gioji"
+      ],
+      "keywords": [
+        "moss garden",
+        "temple"
+      ],
+      "accessNote": "Continue from Saga-Arashiyama by local bus/taxi or walk."
+    },
+    {
+      "id": "kyoto-otagi",
+      "name": "Otagi Nenbutsu-ji Temple",
+      "jp": "愛宕念仏寺",
+      "area": "Saga / Arashiyama",
+      "category": "Temple",
+      "railRefs": [
+        {
+          "lineId": "sagano",
+          "stationCode": "E08"
+        }
+      ],
+      "aliases": [
+        "Otagi Nenbutsuji"
+      ],
+      "keywords": [
+        "rakan statues",
+        "temple"
+      ],
+      "accessNote": "Continue from Saga-Arashiyama by local bus/taxi; it is beyond the central bamboo-grove area."
+    },
+    {
+      "id": "kyoto-railway-museum",
+      "name": "Kyoto Railway Museum",
+      "jp": "京都鉄道博物館",
+      "area": "Umekoji",
+      "category": "Museum",
+      "railRefs": [
+        {
+          "lineId": "sagano",
+          "stationCode": "E02"
+        }
+      ],
+      "aliases": [
+        "Railway Museum Kyoto"
+      ],
+      "keywords": [
+        "trains",
+        "museum"
+      ]
+    },
+    {
+      "id": "kyoto-umekoji",
+      "name": "Umekoji Park",
+      "jp": "梅小路公園",
+      "area": "Umekoji",
+      "category": "Park",
+      "railRefs": [
+        {
+          "lineId": "sagano",
+          "stationCode": "E02"
+        }
+      ],
+      "aliases": [
+        "Umekoji Koen"
+      ],
+      "keywords": [
+        "park",
+        "aquarium area"
+      ]
+    },
+    {
+      "id": "kyoto-fushimi-sake",
+      "name": "Fushimi Sake District",
+      "jp": "伏見酒蔵",
+      "area": "Fushimi",
+      "category": "Historic district",
+      "railRefs": [
+        {
+          "lineId": "nara",
+          "stationCode": "D05"
+        }
+      ],
+      "aliases": [
+        "Fushimi Sake Breweries",
+        "Fushimi Sake Village"
+      ],
+      "keywords": [
+        "sake",
+        "breweries",
+        "canal"
+      ],
+      "accessNote": "Momoyama is represented in Sakura; parts of the sake district are also served by private railways not yet included."
+    },
+    {
+      "id": "kyoto-teradaya",
+      "name": "Teradaya Inn",
+      "jp": "寺田屋",
+      "area": "Fushimi",
+      "category": "Historic site",
+      "railRefs": [
+        {
+          "lineId": "nara",
+          "stationCode": "D05"
+        }
+      ],
+      "aliases": [
+        "Teradaya"
+      ],
+      "keywords": [
+        "Sakamoto Ryoma",
+        "history"
+      ],
+      "accessNote": "Continue from Momoyama by local walk/taxi; private-rail stations are closer to some Fushimi sights."
+    },
+    {
+      "id": "kyoto-gekkeikan",
+      "name": "Gekkeikan Okura Sake Museum",
+      "jp": "月桂冠大倉記念館",
+      "area": "Fushimi",
+      "category": "Museum / sake",
+      "railRefs": [
+        {
+          "lineId": "nara",
+          "stationCode": "D05"
+        }
+      ],
+      "aliases": [
+        "Gekkeikan Museum",
+        "Gekkeikan Okura"
+      ],
+      "keywords": [
+        "sake",
+        "museum"
+      ],
+      "accessNote": "Continue from Momoyama by local walk/taxi; private-rail stations are closer."
+    },
+    {
+      "id": "kyoto-daigoji",
+      "name": "Daigo-ji Temple",
+      "jp": "醍醐寺",
+      "area": "Daigo",
+      "category": "Temple",
+      "railRefs": [
+        {
+          "lineId": "subway-tozai",
+          "stationCode": "T03"
+        }
+      ],
+      "aliases": [
+        "Daigoji"
+      ],
+      "keywords": [
+        "temple",
+        "cherry blossoms"
+      ]
+    },
+    {
+      "id": "kyoto-toei-studio",
+      "name": "Toei Kyoto Studio Park",
+      "jp": "東映太秦映画村",
+      "area": "Uzumasa",
+      "category": "Theme park / film set",
+      "railRefs": [
+        {
+          "lineId": "sagano",
+          "stationCode": "E07"
+        },
+        {
+          "lineId": "subway-tozai",
+          "stationCode": "T17"
+        }
+      ],
+      "aliases": [
+        "Toei Eigamura",
+        "Kyoto Studio Park"
+      ],
+      "keywords": [
+        "samurai",
+        "ninja",
+        "film"
+      ]
+    },
+    {
+      "id": "kyoto-botanical",
+      "name": "Kyoto Botanical Gardens",
+      "jp": "京都府立植物園",
+      "area": "Kitayama",
+      "category": "Garden",
+      "railRefs": [
+        {
+          "lineId": "subway-karasuma",
+          "stationCode": "K03"
+        }
+      ],
+      "aliases": [
+        "Kyoto Botanical Garden"
+      ],
+      "keywords": [
+        "garden",
+        "plants"
+      ]
+    },
+    {
+      "id": "kyoto-shimogamo",
+      "name": "Shimogamo Shrine",
+      "jp": "下鴨神社",
+      "area": "North-central Kyoto",
+      "category": "Shrine",
+      "railRefs": [
+        {
+          "lineId": "subway-karasuma",
+          "stationCode": "K04"
+        },
+        {
+          "lineId": "subway-karasuma",
+          "stationCode": "K06"
+        }
+      ],
+      "aliases": [
+        "Shimogamo Jinja"
+      ],
+      "keywords": [
+        "shrine",
+        "Tadasu no Mori"
+      ],
+      "accessNote": "The shrine is not directly beside the subway; continue by bus/taxi or walk."
+    },
+    {
+      "id": "kyoto-kamigamo",
+      "name": "Kamigamo Shrine",
+      "jp": "上賀茂神社",
+      "area": "North Kyoto",
+      "category": "Shrine",
+      "railRefs": [
+        {
+          "lineId": "subway-karasuma",
+          "stationCode": "K04"
+        }
+      ],
+      "aliases": [
+        "Kamigamo Jinja"
+      ],
+      "keywords": [
+        "shrine"
+      ],
+      "accessNote": "Kitaoji is a practical subway transfer point; continue by bus/taxi."
+    },
+    {
+      "id": "kyoto-daitokuji",
+      "name": "Daitoku-ji Temple",
+      "jp": "大徳寺",
+      "area": "North Kyoto",
+      "category": "Temple complex",
+      "railRefs": [
+        {
+          "lineId": "subway-karasuma",
+          "stationCode": "K04"
+        }
+      ],
+      "aliases": [
+        "Daitokuji"
+      ],
+      "keywords": [
+        "zen",
+        "temple"
+      ],
+      "accessNote": "Continue from Kitaoji by bus/taxi or walk."
+    },
+    {
+      "id": "kyoto-ohara",
+      "name": "Ohara",
+      "jp": "大原",
+      "area": "Northern Kyoto",
+      "category": "Historic rural area",
+      "railRefs": [
+        {
+          "lineId": "subway-karasuma",
+          "stationCode": "K01"
+        }
+      ],
+      "aliases": [
+        "Ohara Kyoto"
+      ],
+      "keywords": [
+        "countryside",
+        "temples"
+      ],
+      "accessNote": "Kokusaikaikan is the closest subway endpoint in the current guide; continue by bus/taxi."
+    },
+    {
+      "id": "kyoto-sanzenin",
+      "name": "Sanzen-in Temple",
+      "jp": "三千院",
+      "area": "Ohara",
+      "category": "Temple",
+      "railRefs": [
+        {
+          "lineId": "subway-karasuma",
+          "stationCode": "K01"
+        }
+      ],
+      "aliases": [
+        "Sanzenin"
+      ],
+      "keywords": [
+        "temple",
+        "moss",
+        "Ohara"
+      ],
+      "accessNote": "Continue from Kokusaikaikan by bus/taxi toward Ohara."
+    }
   ]
 }

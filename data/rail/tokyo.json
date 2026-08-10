@@ -3,7 +3,7 @@
   "cityName": "Tokyo",
   "operator": "Multiple operators",
   "verifiedOn": "2026-08-10",
-  "sourceNote": "Static offline reference using official JR East, Tokyo Metro and Toei Transportation line/station information. Not live service data.",
+  "sourceNote": "Static offline reference using official JR East, Tokyo Metro and Toei Transportation line/station information. Not live service data. Landmark names and areas were expanded using official city tourism resources; station links are a static orientation aid, not live journey planning.",
   "notice": "Offline orientation guide only. Train types, through-services, platform assignments, delays and temporary service changes can vary. Always follow current station signs and operator announcements.",
   "lines": [
     {
@@ -2450,5 +2450,1790 @@
     "JR East",
     "Tokyo Metro",
     "Toei Subway"
+  ],
+  "landmarks": [
+    {
+      "id": "tokyo-shibuya-crossing",
+      "name": "Shibuya Scramble Crossing",
+      "jp": "渋谷スクランブル交差点",
+      "area": "Shibuya",
+      "category": "City icon",
+      "railRefs": [
+        {
+          "lineId": "yamanote",
+          "stationCode": "JY20"
+        },
+        {
+          "lineId": "metro-ginza",
+          "stationCode": "G01"
+        }
+      ],
+      "aliases": [
+        "Shibuya Crossing",
+        "Scramble Crossing"
+      ],
+      "keywords": [
+        "crossing",
+        "Hachiko",
+        "Shibuya"
+      ]
+    },
+    {
+      "id": "tokyo-hachiko",
+      "name": "Hachiko Statue",
+      "jp": "忠犬ハチ公像",
+      "area": "Shibuya",
+      "category": "Landmark",
+      "railRefs": [
+        {
+          "lineId": "yamanote",
+          "stationCode": "JY20"
+        }
+      ],
+      "aliases": [
+        "Hachiko",
+        "Hachi Statue"
+      ],
+      "keywords": [
+        "meeting spot",
+        "Shibuya"
+      ]
+    },
+    {
+      "id": "tokyo-shibuya-sky",
+      "name": "SHIBUYA SKY",
+      "jp": "渋谷スカイ",
+      "area": "Shibuya",
+      "category": "Observation",
+      "railRefs": [
+        {
+          "lineId": "yamanote",
+          "stationCode": "JY20"
+        },
+        {
+          "lineId": "metro-ginza",
+          "stationCode": "G01"
+        }
+      ],
+      "aliases": [
+        "Shibuya Sky",
+        "Shibuya Scramble Square"
+      ],
+      "keywords": [
+        "observation deck",
+        "view",
+        "rooftop"
+      ]
+    },
+    {
+      "id": "tokyo-miyashita-park",
+      "name": "MIYASHITA PARK",
+      "jp": "宮下公園",
+      "area": "Shibuya",
+      "category": "Shopping & park",
+      "railRefs": [
+        {
+          "lineId": "yamanote",
+          "stationCode": "JY20"
+        }
+      ],
+      "aliases": [
+        "Miyashita Park"
+      ],
+      "keywords": [
+        "shopping",
+        "rooftop park"
+      ]
+    },
+    {
+      "id": "tokyo-meiji-jingu",
+      "name": "Meiji Jingu",
+      "jp": "明治神宮",
+      "area": "Harajuku",
+      "category": "Shrine",
+      "railRefs": [
+        {
+          "lineId": "yamanote",
+          "stationCode": "JY19"
+        },
+        {
+          "lineId": "metro-chiyoda",
+          "stationCode": "C03"
+        }
+      ],
+      "aliases": [
+        "Meiji Shrine",
+        "Meiji Jingu Shrine"
+      ],
+      "keywords": [
+        "shrine",
+        "forest",
+        "Harajuku"
+      ]
+    },
+    {
+      "id": "tokyo-takeshita-street",
+      "name": "Takeshita Street",
+      "jp": "竹下通り",
+      "area": "Harajuku",
+      "category": "Shopping street",
+      "railRefs": [
+        {
+          "lineId": "yamanote",
+          "stationCode": "JY19"
+        }
+      ],
+      "aliases": [
+        "Takeshita-dori",
+        "Takeshita Dori"
+      ],
+      "keywords": [
+        "fashion",
+        "kawaii",
+        "Harajuku"
+      ]
+    },
+    {
+      "id": "tokyo-omotesando",
+      "name": "Omotesando",
+      "jp": "表参道",
+      "area": "Omotesando",
+      "category": "Shopping district",
+      "railRefs": [
+        {
+          "lineId": "metro-ginza",
+          "stationCode": "G02"
+        },
+        {
+          "lineId": "metro-chiyoda",
+          "stationCode": "C04"
+        }
+      ],
+      "aliases": [
+        "Omote-sando"
+      ],
+      "keywords": [
+        "fashion",
+        "shopping",
+        "architecture"
+      ]
+    },
+    {
+      "id": "tokyo-yoyogi-park",
+      "name": "Yoyogi Park",
+      "jp": "代々木公園",
+      "area": "Harajuku / Yoyogi",
+      "category": "Park",
+      "railRefs": [
+        {
+          "lineId": "metro-chiyoda",
+          "stationCode": "C02"
+        },
+        {
+          "lineId": "yamanote",
+          "stationCode": "JY19"
+        }
+      ],
+      "aliases": [
+        "Yoyogi Koen"
+      ],
+      "keywords": [
+        "park",
+        "picnic",
+        "Harajuku"
+      ]
+    },
+    {
+      "id": "tokyo-shinjuku-gyoen",
+      "name": "Shinjuku Gyoen National Garden",
+      "jp": "新宿御苑",
+      "area": "Shinjuku",
+      "category": "Garden",
+      "railRefs": [
+        {
+          "lineId": "metro-marunouchi",
+          "stationCode": "M10"
+        },
+        {
+          "lineId": "metro-marunouchi",
+          "stationCode": "M09"
+        }
+      ],
+      "aliases": [
+        "Shinjuku Gyoen",
+        "Shinjuku Garden"
+      ],
+      "keywords": [
+        "garden",
+        "cherry blossoms",
+        "park"
+      ]
+    },
+    {
+      "id": "tokyo-tocho",
+      "name": "Tokyo Metropolitan Government Building",
+      "jp": "東京都庁",
+      "area": "Shinjuku",
+      "category": "Observation",
+      "railRefs": [
+        {
+          "lineId": "toei-oedo",
+          "stationCode": "E28"
+        }
+      ],
+      "aliases": [
+        "Tokyo City Hall",
+        "Tocho",
+        "Metropolitan Government Building"
+      ],
+      "keywords": [
+        "free observatory",
+        "view",
+        "Shinjuku"
+      ]
+    },
+    {
+      "id": "tokyo-kabukicho",
+      "name": "Kabukicho",
+      "jp": "歌舞伎町",
+      "area": "Shinjuku",
+      "category": "Entertainment district",
+      "railRefs": [
+        {
+          "lineId": "toei-oedo",
+          "stationCode": "E01"
+        },
+        {
+          "lineId": "yamanote",
+          "stationCode": "JY17"
+        }
+      ],
+      "aliases": [
+        "Kabuki-cho"
+      ],
+      "keywords": [
+        "Godzilla",
+        "nightlife",
+        "Shinjuku"
+      ]
+    },
+    {
+      "id": "tokyo-golden-gai",
+      "name": "Shinjuku Golden Gai",
+      "jp": "新宿ゴールデン街",
+      "area": "Shinjuku",
+      "category": "Nightlife district",
+      "railRefs": [
+        {
+          "lineId": "metro-marunouchi",
+          "stationCode": "M09"
+        }
+      ],
+      "aliases": [
+        "Golden Gai"
+      ],
+      "keywords": [
+        "bars",
+        "nightlife"
+      ]
+    },
+    {
+      "id": "tokyo-omoide-yokocho",
+      "name": "Omoide Yokocho",
+      "jp": "思い出横丁",
+      "area": "Shinjuku",
+      "category": "Food alley",
+      "railRefs": [
+        {
+          "lineId": "yamanote",
+          "stationCode": "JY17"
+        }
+      ],
+      "aliases": [
+        "Memory Lane",
+        "Piss Alley"
+      ],
+      "keywords": [
+        "yakitori",
+        "food alley"
+      ]
+    },
+    {
+      "id": "tokyo-hanazono-shrine",
+      "name": "Hanazono Shrine",
+      "jp": "花園神社",
+      "area": "Shinjuku",
+      "category": "Shrine",
+      "railRefs": [
+        {
+          "lineId": "metro-marunouchi",
+          "stationCode": "M09"
+        }
+      ],
+      "aliases": [
+        "Hanazono Jinja"
+      ],
+      "keywords": [
+        "shrine",
+        "Shinjuku"
+      ]
+    },
+    {
+      "id": "tokyo-tokyo-tower",
+      "name": "Tokyo Tower",
+      "jp": "東京タワー",
+      "area": "Minato",
+      "category": "Observation",
+      "railRefs": [
+        {
+          "lineId": "toei-oedo",
+          "stationCode": "E21"
+        },
+        {
+          "lineId": "toei-mita",
+          "stationCode": "I05"
+        },
+        {
+          "lineId": "metro-hibiya",
+          "stationCode": "H05"
+        }
+      ],
+      "aliases": [
+        "Tokyo Tower Main Deck"
+      ],
+      "keywords": [
+        "tower",
+        "observation",
+        "Minato"
+      ]
+    },
+    {
+      "id": "tokyo-zojoji",
+      "name": "Zojoji Temple",
+      "jp": "増上寺",
+      "area": "Minato",
+      "category": "Temple",
+      "railRefs": [
+        {
+          "lineId": "toei-oedo",
+          "stationCode": "E20"
+        },
+        {
+          "lineId": "toei-mita",
+          "stationCode": "I05"
+        }
+      ],
+      "aliases": [
+        "Zojo-ji"
+      ],
+      "keywords": [
+        "temple",
+        "Tokyo Tower"
+      ]
+    },
+    {
+      "id": "tokyo-azabudai-hills",
+      "name": "Azabudai Hills",
+      "jp": "麻布台ヒルズ",
+      "area": "Azabudai",
+      "category": "Shopping & architecture",
+      "railRefs": [
+        {
+          "lineId": "metro-hibiya",
+          "stationCode": "H05"
+        }
+      ],
+      "aliases": [
+        "Azabudai"
+      ],
+      "keywords": [
+        "shopping",
+        "architecture",
+        "Minato"
+      ]
+    },
+    {
+      "id": "tokyo-teamlab-borderless",
+      "name": "teamLab Borderless",
+      "jp": "チームラボボーダレス",
+      "area": "Azabudai",
+      "category": "Digital art",
+      "railRefs": [
+        {
+          "lineId": "metro-hibiya",
+          "stationCode": "H05"
+        }
+      ],
+      "aliases": [
+        "TeamLab Borderless",
+        "Mori Building Digital Art Museum"
+      ],
+      "keywords": [
+        "digital art",
+        "museum",
+        "Azabudai Hills"
+      ]
+    },
+    {
+      "id": "tokyo-roppongi-hills",
+      "name": "Roppongi Hills",
+      "jp": "六本木ヒルズ",
+      "area": "Roppongi",
+      "category": "Shopping & observation",
+      "railRefs": [
+        {
+          "lineId": "metro-hibiya",
+          "stationCode": "H04"
+        },
+        {
+          "lineId": "toei-oedo",
+          "stationCode": "E23"
+        }
+      ],
+      "aliases": [
+        "Mori Tower"
+      ],
+      "keywords": [
+        "shopping",
+        "observation",
+        "Mori Art Museum"
+      ]
+    },
+    {
+      "id": "tokyo-mori-art",
+      "name": "Mori Art Museum",
+      "jp": "森美術館",
+      "area": "Roppongi",
+      "category": "Museum",
+      "railRefs": [
+        {
+          "lineId": "metro-hibiya",
+          "stationCode": "H04"
+        },
+        {
+          "lineId": "toei-oedo",
+          "stationCode": "E23"
+        }
+      ],
+      "aliases": [
+        "Mori Museum"
+      ],
+      "keywords": [
+        "art",
+        "museum",
+        "Roppongi Hills"
+      ]
+    },
+    {
+      "id": "tokyo-tokyo-midtown",
+      "name": "Tokyo Midtown",
+      "jp": "東京ミッドタウン",
+      "area": "Roppongi",
+      "category": "Shopping & culture",
+      "railRefs": [
+        {
+          "lineId": "toei-oedo",
+          "stationCode": "E23"
+        },
+        {
+          "lineId": "metro-hibiya",
+          "stationCode": "H04"
+        }
+      ],
+      "aliases": [
+        "Midtown Tokyo"
+      ],
+      "keywords": [
+        "shopping",
+        "design",
+        "Roppongi"
+      ]
+    },
+    {
+      "id": "tokyo-national-art-center",
+      "name": "The National Art Center, Tokyo",
+      "jp": "国立新美術館",
+      "area": "Roppongi / Nogizaka",
+      "category": "Museum",
+      "railRefs": [
+        {
+          "lineId": "metro-chiyoda",
+          "stationCode": "C05"
+        }
+      ],
+      "aliases": [
+        "National Art Center Tokyo",
+        "NACT"
+      ],
+      "keywords": [
+        "art",
+        "museum",
+        "Nogizaka"
+      ]
+    },
+    {
+      "id": "tokyo-imperial-palace",
+      "name": "Tokyo Imperial Palace",
+      "jp": "皇居",
+      "area": "Marunouchi",
+      "category": "Historic landmark",
+      "railRefs": [
+        {
+          "lineId": "metro-chiyoda",
+          "stationCode": "C10"
+        },
+        {
+          "lineId": "metro-tozai",
+          "stationCode": "T08"
+        }
+      ],
+      "aliases": [
+        "Imperial Palace",
+        "Kokyo"
+      ],
+      "keywords": [
+        "palace",
+        "Marunouchi",
+        "Edo Castle"
+      ]
+    },
+    {
+      "id": "tokyo-imperial-east-gardens",
+      "name": "Imperial Palace East Gardens",
+      "jp": "皇居東御苑",
+      "area": "Otemachi",
+      "category": "Garden",
+      "railRefs": [
+        {
+          "lineId": "metro-tozai",
+          "stationCode": "T09"
+        },
+        {
+          "lineId": "metro-chiyoda",
+          "stationCode": "C11"
+        }
+      ],
+      "aliases": [
+        "East Gardens of the Imperial Palace"
+      ],
+      "keywords": [
+        "garden",
+        "Edo Castle"
+      ]
+    },
+    {
+      "id": "tokyo-tokyo-station",
+      "name": "Tokyo Station Marunouchi Building",
+      "jp": "東京駅丸の内駅舎",
+      "area": "Marunouchi",
+      "category": "Architecture",
+      "railRefs": [
+        {
+          "lineId": "yamanote",
+          "stationCode": "JY01"
+        },
+        {
+          "lineId": "metro-marunouchi",
+          "stationCode": "M17"
+        }
+      ],
+      "aliases": [
+        "Tokyo Station",
+        "Marunouchi Station Building"
+      ],
+      "keywords": [
+        "red brick",
+        "station",
+        "architecture"
+      ]
+    },
+    {
+      "id": "tokyo-kitte",
+      "name": "KITTE Marunouchi",
+      "jp": "KITTE丸の内",
+      "area": "Marunouchi",
+      "category": "Shopping",
+      "railRefs": [
+        {
+          "lineId": "yamanote",
+          "stationCode": "JY01"
+        },
+        {
+          "lineId": "metro-marunouchi",
+          "stationCode": "M17"
+        }
+      ],
+      "aliases": [
+        "KITTE"
+      ],
+      "keywords": [
+        "shopping",
+        "Tokyo Station"
+      ]
+    },
+    {
+      "id": "tokyo-ginza",
+      "name": "Ginza",
+      "jp": "銀座",
+      "area": "Ginza",
+      "category": "Shopping district",
+      "railRefs": [
+        {
+          "lineId": "metro-ginza",
+          "stationCode": "G09"
+        },
+        {
+          "lineId": "metro-marunouchi",
+          "stationCode": "M16"
+        },
+        {
+          "lineId": "metro-hibiya",
+          "stationCode": "H09"
+        }
+      ],
+      "aliases": [
+        "Ginza District"
+      ],
+      "keywords": [
+        "luxury",
+        "shopping"
+      ]
+    },
+    {
+      "id": "tokyo-ginza-six",
+      "name": "GINZA SIX",
+      "jp": "ギンザ シックス",
+      "area": "Ginza",
+      "category": "Shopping",
+      "railRefs": [
+        {
+          "lineId": "metro-ginza",
+          "stationCode": "G09"
+        },
+        {
+          "lineId": "metro-hibiya",
+          "stationCode": "H09"
+        }
+      ],
+      "aliases": [
+        "Ginza Six"
+      ],
+      "keywords": [
+        "shopping",
+        "luxury"
+      ]
+    },
+    {
+      "id": "tokyo-kabukiza",
+      "name": "Kabukiza Theatre",
+      "jp": "歌舞伎座",
+      "area": "Ginza",
+      "category": "Theatre",
+      "railRefs": [
+        {
+          "lineId": "metro-hibiya",
+          "stationCode": "H10"
+        },
+        {
+          "lineId": "toei-asakusa",
+          "stationCode": "A11"
+        }
+      ],
+      "aliases": [
+        "Kabuki-za",
+        "Kabukiza"
+      ],
+      "keywords": [
+        "kabuki",
+        "theatre"
+      ]
+    },
+    {
+      "id": "tokyo-tsukiji",
+      "name": "Tsukiji Outer Market",
+      "jp": "築地場外市場",
+      "area": "Tsukiji",
+      "category": "Market",
+      "railRefs": [
+        {
+          "lineId": "metro-hibiya",
+          "stationCode": "H11"
+        },
+        {
+          "lineId": "toei-oedo",
+          "stationCode": "E18"
+        }
+      ],
+      "aliases": [
+        "Tsukiji Market",
+        "Tsukiji Jogai"
+      ],
+      "keywords": [
+        "sushi",
+        "seafood",
+        "market"
+      ]
+    },
+    {
+      "id": "tokyo-hamarikyu",
+      "name": "Hamarikyu Gardens",
+      "jp": "浜離宮恩賜庭園",
+      "area": "Shiodome",
+      "category": "Garden",
+      "railRefs": [
+        {
+          "lineId": "toei-oedo",
+          "stationCode": "E18"
+        },
+        {
+          "lineId": "toei-oedo",
+          "stationCode": "E19"
+        }
+      ],
+      "aliases": [
+        "Hama-rikyu Gardens",
+        "Hamarikyu"
+      ],
+      "keywords": [
+        "garden",
+        "tea house"
+      ]
+    },
+    {
+      "id": "tokyo-toyosu-market",
+      "name": "Toyosu Market",
+      "jp": "豊洲市場",
+      "area": "Toyosu",
+      "category": "Market",
+      "railRefs": [
+        {
+          "lineId": "metro-yurakucho",
+          "stationCode": "Y22"
+        }
+      ],
+      "aliases": [
+        "Toyosu Fish Market"
+      ],
+      "keywords": [
+        "seafood",
+        "tuna auction",
+        "market"
+      ],
+      "accessNote": "From Toyosu Station, transfer to local bay-area transport or continue by taxi/walk as appropriate."
+    },
+    {
+      "id": "tokyo-teamlab-planets",
+      "name": "teamLab Planets TOKYO",
+      "jp": "チームラボプラネッツ",
+      "area": "Toyosu",
+      "category": "Digital art",
+      "railRefs": [
+        {
+          "lineId": "metro-yurakucho",
+          "stationCode": "Y22"
+        }
+      ],
+      "aliases": [
+        "TeamLab Planets",
+        "teamLab Toyosu"
+      ],
+      "keywords": [
+        "digital art",
+        "museum",
+        "Toyosu"
+      ],
+      "accessNote": "Toyosu is the closest station currently in Sakura's rail guide; local bay-area transport may be more convenient for the final leg."
+    },
+    {
+      "id": "tokyo-skytree",
+      "name": "TOKYO SKYTREE",
+      "jp": "東京スカイツリー",
+      "area": "Oshiage",
+      "category": "Observation",
+      "railRefs": [
+        {
+          "lineId": "metro-hanzomon",
+          "stationCode": "Z14"
+        },
+        {
+          "lineId": "toei-asakusa",
+          "stationCode": "A20"
+        }
+      ],
+      "aliases": [
+        "Tokyo Skytree",
+        "Skytree"
+      ],
+      "keywords": [
+        "tower",
+        "observation",
+        "Oshiage"
+      ]
+    },
+    {
+      "id": "tokyo-solamachi",
+      "name": "Tokyo Solamachi",
+      "jp": "東京ソラマチ",
+      "area": "Oshiage",
+      "category": "Shopping",
+      "railRefs": [
+        {
+          "lineId": "metro-hanzomon",
+          "stationCode": "Z14"
+        },
+        {
+          "lineId": "toei-asakusa",
+          "stationCode": "A20"
+        }
+      ],
+      "aliases": [
+        "Solamachi",
+        "Tokyo Skytree Town"
+      ],
+      "keywords": [
+        "shopping",
+        "Skytree"
+      ]
+    },
+    {
+      "id": "tokyo-sensoji",
+      "name": "Sensoji Temple",
+      "jp": "浅草寺",
+      "area": "Asakusa",
+      "category": "Temple",
+      "railRefs": [
+        {
+          "lineId": "metro-ginza",
+          "stationCode": "G19"
+        },
+        {
+          "lineId": "toei-asakusa",
+          "stationCode": "A18"
+        }
+      ],
+      "aliases": [
+        "Senso-ji",
+        "Asakusa Temple"
+      ],
+      "keywords": [
+        "temple",
+        "Asakusa"
+      ]
+    },
+    {
+      "id": "tokyo-kaminarimon",
+      "name": "Kaminarimon Gate",
+      "jp": "雷門",
+      "area": "Asakusa",
+      "category": "Landmark",
+      "railRefs": [
+        {
+          "lineId": "metro-ginza",
+          "stationCode": "G19"
+        },
+        {
+          "lineId": "toei-asakusa",
+          "stationCode": "A18"
+        }
+      ],
+      "aliases": [
+        "Thunder Gate",
+        "Kaminarimon"
+      ],
+      "keywords": [
+        "Sensoji",
+        "Asakusa"
+      ]
+    },
+    {
+      "id": "tokyo-nakamise",
+      "name": "Nakamise Shopping Street",
+      "jp": "仲見世通り",
+      "area": "Asakusa",
+      "category": "Shopping street",
+      "railRefs": [
+        {
+          "lineId": "metro-ginza",
+          "stationCode": "G19"
+        },
+        {
+          "lineId": "toei-asakusa",
+          "stationCode": "A18"
+        }
+      ],
+      "aliases": [
+        "Nakamise-dori",
+        "Nakamise Dori"
+      ],
+      "keywords": [
+        "souvenirs",
+        "Sensoji"
+      ]
+    },
+    {
+      "id": "tokyo-kappabashi",
+      "name": "Kappabashi Kitchenware Town",
+      "jp": "かっぱ橋道具街",
+      "area": "Asakusa / Ueno",
+      "category": "Shopping street",
+      "railRefs": [
+        {
+          "lineId": "metro-ginza",
+          "stationCode": "G18"
+        }
+      ],
+      "aliases": [
+        "Kappabashi",
+        "Kitchen Town"
+      ],
+      "keywords": [
+        "kitchenware",
+        "knives",
+        "tableware"
+      ]
+    },
+    {
+      "id": "tokyo-ueno-park",
+      "name": "Ueno Park",
+      "jp": "上野恩賜公園",
+      "area": "Ueno",
+      "category": "Park",
+      "railRefs": [
+        {
+          "lineId": "yamanote",
+          "stationCode": "JY05"
+        },
+        {
+          "lineId": "metro-ginza",
+          "stationCode": "G16"
+        }
+      ],
+      "aliases": [
+        "Ueno Koen"
+      ],
+      "keywords": [
+        "park",
+        "museums",
+        "cherry blossoms"
+      ]
+    },
+    {
+      "id": "tokyo-national-museum",
+      "name": "Tokyo National Museum",
+      "jp": "東京国立博物館",
+      "area": "Ueno",
+      "category": "Museum",
+      "railRefs": [
+        {
+          "lineId": "yamanote",
+          "stationCode": "JY05"
+        },
+        {
+          "lineId": "metro-ginza",
+          "stationCode": "G16"
+        }
+      ],
+      "aliases": [
+        "TNM"
+      ],
+      "keywords": [
+        "museum",
+        "history",
+        "art"
+      ]
+    },
+    {
+      "id": "tokyo-metropolitan-art",
+      "name": "Tokyo Metropolitan Art Museum",
+      "jp": "東京都美術館",
+      "area": "Ueno",
+      "category": "Museum",
+      "railRefs": [
+        {
+          "lineId": "yamanote",
+          "stationCode": "JY05"
+        },
+        {
+          "lineId": "metro-ginza",
+          "stationCode": "G16"
+        }
+      ],
+      "aliases": [
+        "Tokyo Met Art Museum"
+      ],
+      "keywords": [
+        "museum",
+        "art",
+        "Ueno"
+      ]
+    },
+    {
+      "id": "tokyo-ueno-zoo",
+      "name": "Ueno Zoo",
+      "jp": "恩賜上野動物園",
+      "area": "Ueno",
+      "category": "Zoo",
+      "railRefs": [
+        {
+          "lineId": "yamanote",
+          "stationCode": "JY05"
+        },
+        {
+          "lineId": "metro-ginza",
+          "stationCode": "G16"
+        }
+      ],
+      "aliases": [
+        "Ueno Zoological Gardens"
+      ],
+      "keywords": [
+        "panda",
+        "zoo"
+      ]
+    },
+    {
+      "id": "tokyo-ameyoko",
+      "name": "Ameyoko Shopping Street",
+      "jp": "アメ横",
+      "area": "Ueno / Okachimachi",
+      "category": "Market street",
+      "railRefs": [
+        {
+          "lineId": "yamanote",
+          "stationCode": "JY04"
+        },
+        {
+          "lineId": "yamanote",
+          "stationCode": "JY05"
+        }
+      ],
+      "aliases": [
+        "Ameya-Yokocho",
+        "Ameyoko"
+      ],
+      "keywords": [
+        "market",
+        "street food",
+        "shopping"
+      ]
+    },
+    {
+      "id": "tokyo-nezu-shrine",
+      "name": "Nezu Shrine",
+      "jp": "根津神社",
+      "area": "Nezu",
+      "category": "Shrine",
+      "railRefs": [
+        {
+          "lineId": "metro-chiyoda",
+          "stationCode": "C14"
+        }
+      ],
+      "aliases": [
+        "Nezu Jinja"
+      ],
+      "keywords": [
+        "shrine",
+        "azalea",
+        "torii"
+      ]
+    },
+    {
+      "id": "tokyo-yanaka-ginza",
+      "name": "Yanaka Ginza",
+      "jp": "谷中銀座",
+      "area": "Yanaka",
+      "category": "Shopping street",
+      "railRefs": [
+        {
+          "lineId": "yamanote",
+          "stationCode": "JY07"
+        },
+        {
+          "lineId": "metro-chiyoda",
+          "stationCode": "C15"
+        }
+      ],
+      "aliases": [
+        "Yanaka Ginza Shopping Street"
+      ],
+      "keywords": [
+        "retro",
+        "shopping",
+        "cats"
+      ]
+    },
+    {
+      "id": "tokyo-akihabara",
+      "name": "Akihabara Electric Town",
+      "jp": "秋葉原電気街",
+      "area": "Akihabara",
+      "category": "Pop culture district",
+      "railRefs": [
+        {
+          "lineId": "yamanote",
+          "stationCode": "JY03"
+        },
+        {
+          "lineId": "metro-hibiya",
+          "stationCode": "H16"
+        }
+      ],
+      "aliases": [
+        "Akihabara",
+        "Akiba",
+        "Electric Town"
+      ],
+      "keywords": [
+        "anime",
+        "manga",
+        "electronics",
+        "games"
+      ]
+    },
+    {
+      "id": "tokyo-kanda-myojin",
+      "name": "Kanda Myojin Shrine",
+      "jp": "神田明神",
+      "area": "Kanda / Akihabara",
+      "category": "Shrine",
+      "railRefs": [
+        {
+          "lineId": "metro-marunouchi",
+          "stationCode": "M20"
+        },
+        {
+          "lineId": "yamanote",
+          "stationCode": "JY03"
+        }
+      ],
+      "aliases": [
+        "Kanda Shrine",
+        "Kanda Myojin"
+      ],
+      "keywords": [
+        "shrine",
+        "Akihabara"
+      ]
+    },
+    {
+      "id": "tokyo-jimbocho",
+      "name": "Jimbocho Book Town",
+      "jp": "神保町古書店街",
+      "area": "Jimbocho",
+      "category": "Book district",
+      "railRefs": [
+        {
+          "lineId": "metro-hanzomon",
+          "stationCode": "Z07"
+        },
+        {
+          "lineId": "toei-mita",
+          "stationCode": "I10"
+        },
+        {
+          "lineId": "toei-shinjuku",
+          "stationCode": "S06"
+        }
+      ],
+      "aliases": [
+        "Jinbocho",
+        "Jimbocho"
+      ],
+      "keywords": [
+        "books",
+        "used books",
+        "curry"
+      ]
+    },
+    {
+      "id": "tokyo-tokyo-dome",
+      "name": "Tokyo Dome",
+      "jp": "東京ドーム",
+      "area": "Korakuen / Suidobashi",
+      "category": "Stadium",
+      "railRefs": [
+        {
+          "lineId": "metro-marunouchi",
+          "stationCode": "M22"
+        },
+        {
+          "lineId": "toei-mita",
+          "stationCode": "I11"
+        }
+      ],
+      "aliases": [
+        "Tokyo Dome City"
+      ],
+      "keywords": [
+        "baseball",
+        "concert",
+        "amusement"
+      ]
+    },
+    {
+      "id": "tokyo-koishikawa-korakuen",
+      "name": "Koishikawa Korakuen Gardens",
+      "jp": "小石川後楽園",
+      "area": "Korakuen",
+      "category": "Garden",
+      "railRefs": [
+        {
+          "lineId": "metro-marunouchi",
+          "stationCode": "M22"
+        },
+        {
+          "lineId": "toei-mita",
+          "stationCode": "I11"
+        }
+      ],
+      "aliases": [
+        "Koishikawa Korakuen"
+      ],
+      "keywords": [
+        "garden",
+        "Edo"
+      ]
+    },
+    {
+      "id": "tokyo-yasukuni",
+      "name": "Yasukuni Shrine",
+      "jp": "靖国神社",
+      "area": "Kudanshita",
+      "category": "Shrine",
+      "railRefs": [
+        {
+          "lineId": "metro-tozai",
+          "stationCode": "T07"
+        },
+        {
+          "lineId": "metro-hanzomon",
+          "stationCode": "Z06"
+        },
+        {
+          "lineId": "toei-shinjuku",
+          "stationCode": "S05"
+        }
+      ],
+      "aliases": [
+        "Yasukuni Jinja"
+      ],
+      "keywords": [
+        "shrine",
+        "Kudanshita"
+      ]
+    },
+    {
+      "id": "tokyo-budokan",
+      "name": "Nippon Budokan",
+      "jp": "日本武道館",
+      "area": "Kudanshita",
+      "category": "Arena",
+      "railRefs": [
+        {
+          "lineId": "metro-tozai",
+          "stationCode": "T07"
+        },
+        {
+          "lineId": "metro-hanzomon",
+          "stationCode": "Z06"
+        },
+        {
+          "lineId": "toei-shinjuku",
+          "stationCode": "S05"
+        }
+      ],
+      "aliases": [
+        "Budokan",
+        "Japan Budokan"
+      ],
+      "keywords": [
+        "concert",
+        "martial arts"
+      ]
+    },
+    {
+      "id": "tokyo-ryogoku-kokugikan",
+      "name": "Ryogoku Kokugikan",
+      "jp": "両国国技館",
+      "area": "Ryogoku",
+      "category": "Arena",
+      "railRefs": [
+        {
+          "lineId": "toei-oedo",
+          "stationCode": "E12"
+        }
+      ],
+      "aliases": [
+        "Sumo Hall",
+        "Kokugikan"
+      ],
+      "keywords": [
+        "sumo",
+        "arena"
+      ]
+    },
+    {
+      "id": "tokyo-sumida-hokusai",
+      "name": "The Sumida Hokusai Museum",
+      "jp": "すみだ北斎美術館",
+      "area": "Ryogoku",
+      "category": "Museum",
+      "railRefs": [
+        {
+          "lineId": "toei-oedo",
+          "stationCode": "E12"
+        }
+      ],
+      "aliases": [
+        "Hokusai Museum"
+      ],
+      "keywords": [
+        "ukiyo-e",
+        "museum",
+        "Hokusai"
+      ]
+    },
+    {
+      "id": "tokyo-kiyosumi-garden",
+      "name": "Kiyosumi Gardens",
+      "jp": "清澄庭園",
+      "area": "Kiyosumi-shirakawa",
+      "category": "Garden",
+      "railRefs": [
+        {
+          "lineId": "metro-hanzomon",
+          "stationCode": "Z11"
+        },
+        {
+          "lineId": "toei-oedo",
+          "stationCode": "E14"
+        }
+      ],
+      "aliases": [
+        "Kiyosumi Teien"
+      ],
+      "keywords": [
+        "garden",
+        "pond"
+      ]
+    },
+    {
+      "id": "tokyo-sunshine-city",
+      "name": "Sunshine City",
+      "jp": "サンシャインシティ",
+      "area": "Ikebukuro",
+      "category": "Shopping & entertainment",
+      "railRefs": [
+        {
+          "lineId": "metro-yurakucho",
+          "stationCode": "Y10"
+        },
+        {
+          "lineId": "yamanote",
+          "stationCode": "JY13"
+        }
+      ],
+      "aliases": [
+        "Sunshine 60",
+        "Sunshine City Ikebukuro"
+      ],
+      "keywords": [
+        "aquarium",
+        "shopping",
+        "observation"
+      ]
+    },
+    {
+      "id": "tokyo-pokemon-mega",
+      "name": "Pokémon Center Mega Tokyo",
+      "jp": "ポケモンセンターメガトウキョー",
+      "area": "Ikebukuro",
+      "category": "Shopping",
+      "railRefs": [
+        {
+          "lineId": "metro-yurakucho",
+          "stationCode": "Y10"
+        },
+        {
+          "lineId": "yamanote",
+          "stationCode": "JY13"
+        }
+      ],
+      "aliases": [
+        "Pokemon Center Mega Tokyo",
+        "Pokemon Center Ikebukuro"
+      ],
+      "keywords": [
+        "Pokemon",
+        "Sunshine City"
+      ]
+    },
+    {
+      "id": "tokyo-waseda",
+      "name": "Waseda University",
+      "jp": "早稲田大学",
+      "area": "Waseda",
+      "category": "University",
+      "railRefs": [
+        {
+          "lineId": "metro-tozai",
+          "stationCode": "T04"
+        },
+        {
+          "lineId": "metro-fukutoshin",
+          "stationCode": "F11"
+        }
+      ],
+      "aliases": [
+        "Waseda"
+      ],
+      "keywords": [
+        "university",
+        "campus"
+      ]
+    },
+    {
+      "id": "tokyo-nakano-broadway",
+      "name": "Nakano Broadway",
+      "jp": "中野ブロードウェイ",
+      "area": "Nakano",
+      "category": "Shopping & pop culture",
+      "railRefs": [
+        {
+          "lineId": "metro-tozai",
+          "stationCode": "T01"
+        }
+      ],
+      "aliases": [
+        "Broadway Nakano"
+      ],
+      "keywords": [
+        "anime",
+        "manga",
+        "collectibles",
+        "shopping"
+      ]
+    },
+    {
+      "id": "tokyo-ebisu-garden",
+      "name": "Yebisu Garden Place",
+      "jp": "恵比寿ガーデンプレイス",
+      "area": "Ebisu",
+      "category": "Shopping & architecture",
+      "railRefs": [
+        {
+          "lineId": "yamanote",
+          "stationCode": "JY21"
+        },
+        {
+          "lineId": "metro-hibiya",
+          "stationCode": "H02"
+        }
+      ],
+      "aliases": [
+        "Ebisu Garden Place"
+      ],
+      "keywords": [
+        "shopping",
+        "architecture",
+        "Ebisu"
+      ]
+    },
+    {
+      "id": "tokyo-meguro-river",
+      "name": "Meguro River",
+      "jp": "目黒川",
+      "area": "Nakameguro",
+      "category": "River / cherry blossoms",
+      "railRefs": [
+        {
+          "lineId": "metro-hibiya",
+          "stationCode": "H01"
+        }
+      ],
+      "aliases": [
+        "Meguro-gawa",
+        "Nakameguro River"
+      ],
+      "keywords": [
+        "cherry blossoms",
+        "river",
+        "Nakameguro"
+      ]
+    },
+    {
+      "id": "tokyo-daikanyama-tsite",
+      "name": "Daikanyama T-Site",
+      "jp": "代官山T-SITE",
+      "area": "Daikanyama",
+      "category": "Books & shopping",
+      "railRefs": [
+        {
+          "lineId": "metro-hibiya",
+          "stationCode": "H01"
+        }
+      ],
+      "aliases": [
+        "T-Site Daikanyama",
+        "Tsutaya Daikanyama"
+      ],
+      "keywords": [
+        "books",
+        "design",
+        "shopping"
+      ],
+      "accessNote": "Nakameguro is the closest station currently represented in Sakura's rail guide; Daikanyama Station itself is on a private railway not yet included."
+    },
+    {
+      "id": "tokyo-toranomon-hills",
+      "name": "Toranomon Hills",
+      "jp": "虎ノ門ヒルズ",
+      "area": "Toranomon",
+      "category": "Shopping & architecture",
+      "railRefs": [
+        {
+          "lineId": "metro-hibiya",
+          "stationCode": "H06"
+        }
+      ],
+      "aliases": [
+        "Toranomon Hills Mori Tower"
+      ],
+      "keywords": [
+        "shopping",
+        "architecture"
+      ]
+    },
+    {
+      "id": "tokyo-akasaka-sacas",
+      "name": "Akasaka Sacas",
+      "jp": "赤坂サカス",
+      "area": "Akasaka",
+      "category": "Entertainment district",
+      "railRefs": [
+        {
+          "lineId": "metro-chiyoda",
+          "stationCode": "C06"
+        }
+      ],
+      "aliases": [
+        "Akasaka Sacas"
+      ],
+      "keywords": [
+        "TBS",
+        "shopping",
+        "Akasaka"
+      ]
+    },
+    {
+      "id": "tokyo-hie-shrine",
+      "name": "Hie Shrine",
+      "jp": "日枝神社",
+      "area": "Akasaka",
+      "category": "Shrine",
+      "railRefs": [
+        {
+          "lineId": "metro-ginza",
+          "stationCode": "G06"
+        },
+        {
+          "lineId": "metro-marunouchi",
+          "stationCode": "M13"
+        }
+      ],
+      "aliases": [
+        "Hie Jinja"
+      ],
+      "keywords": [
+        "torii",
+        "shrine"
+      ]
+    },
+    {
+      "id": "tokyo-national-diet",
+      "name": "National Diet Building",
+      "jp": "国会議事堂",
+      "area": "Nagatacho",
+      "category": "Government landmark",
+      "railRefs": [
+        {
+          "lineId": "metro-marunouchi",
+          "stationCode": "M14"
+        },
+        {
+          "lineId": "metro-chiyoda",
+          "stationCode": "C07"
+        }
+      ],
+      "aliases": [
+        "Diet Building",
+        "Kokkai"
+      ],
+      "keywords": [
+        "government",
+        "architecture"
+      ]
+    },
+    {
+      "id": "tokyo-sengakuji",
+      "name": "Sengakuji Temple",
+      "jp": "泉岳寺",
+      "area": "Sengakuji",
+      "category": "Temple",
+      "railRefs": [
+        {
+          "lineId": "toei-asakusa",
+          "stationCode": "A07"
+        }
+      ],
+      "aliases": [
+        "Sengaku-ji"
+      ],
+      "keywords": [
+        "47 ronin",
+        "temple"
+      ]
+    },
+    {
+      "id": "tokyo-tsukishima-monja",
+      "name": "Tsukishima Monja Street",
+      "jp": "月島もんじゃストリート",
+      "area": "Tsukishima",
+      "category": "Food street",
+      "railRefs": [
+        {
+          "lineId": "metro-yurakucho",
+          "stationCode": "Y21"
+        },
+        {
+          "lineId": "toei-oedo",
+          "stationCode": "E16"
+        }
+      ],
+      "aliases": [
+        "Monja Street",
+        "Monjayaki Street"
+      ],
+      "keywords": [
+        "monjayaki",
+        "food"
+      ]
+    },
+    {
+      "id": "tokyo-fukagawa-fudoson",
+      "name": "Fukagawa Fudoson",
+      "jp": "深川不動堂",
+      "area": "Monzen-nakacho",
+      "category": "Temple",
+      "railRefs": [
+        {
+          "lineId": "metro-tozai",
+          "stationCode": "T12"
+        },
+        {
+          "lineId": "toei-oedo",
+          "stationCode": "E15"
+        }
+      ],
+      "aliases": [
+        "Fukagawa Fudo-do"
+      ],
+      "keywords": [
+        "temple"
+      ]
+    },
+    {
+      "id": "tokyo-tomioka-hachiman",
+      "name": "Tomioka Hachimangu Shrine",
+      "jp": "富岡八幡宮",
+      "area": "Monzen-nakacho",
+      "category": "Shrine",
+      "railRefs": [
+        {
+          "lineId": "metro-tozai",
+          "stationCode": "T12"
+        },
+        {
+          "lineId": "toei-oedo",
+          "stationCode": "E15"
+        }
+      ],
+      "aliases": [
+        "Tomioka Hachiman Shrine"
+      ],
+      "keywords": [
+        "shrine"
+      ]
+    },
+    {
+      "id": "tokyo-yushima-tenjin",
+      "name": "Yushima Tenjin",
+      "jp": "湯島天満宮",
+      "area": "Yushima",
+      "category": "Shrine",
+      "railRefs": [
+        {
+          "lineId": "metro-chiyoda",
+          "stationCode": "C13"
+        }
+      ],
+      "aliases": [
+        "Yushima Tenmangu"
+      ],
+      "keywords": [
+        "plum blossoms",
+        "shrine"
+      ]
+    },
+    {
+      "id": "tokyo-sugamo-jizo",
+      "name": "Sugamo Jizo-dori Shopping Street",
+      "jp": "巣鴨地蔵通り商店街",
+      "area": "Sugamo",
+      "category": "Shopping street",
+      "railRefs": [
+        {
+          "lineId": "yamanote",
+          "stationCode": "JY11"
+        },
+        {
+          "lineId": "toei-mita",
+          "stationCode": "I15"
+        }
+      ],
+      "aliases": [
+        "Jizo-dori",
+        "Sugamo Shopping Street"
+      ],
+      "keywords": [
+        "shopping",
+        "retro"
+      ]
+    },
+    {
+      "id": "tokyo-rikugien",
+      "name": "Rikugien Gardens",
+      "jp": "六義園",
+      "area": "Komagome",
+      "category": "Garden",
+      "railRefs": [
+        {
+          "lineId": "yamanote",
+          "stationCode": "JY10"
+        },
+        {
+          "lineId": "metro-namboku",
+          "stationCode": "N14"
+        }
+      ],
+      "aliases": [
+        "Rikugi-en"
+      ],
+      "keywords": [
+        "garden",
+        "autumn leaves"
+      ]
+    }
   ]
 }

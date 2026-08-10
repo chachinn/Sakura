@@ -3,7 +3,7 @@
   "cityName": "Osaka",
   "operator": "Multiple operators",
   "verifiedOn": "2026-08-10",
-  "sourceNote": "Static offline reference using official JR West and Osaka Metro station information. Not live service data.",
+  "sourceNote": "Static offline reference using official JR West and Osaka Metro station information. Not live service data. Landmark names and areas were expanded using official city tourism resources; station links are a static orientation aid, not live journey planning.",
   "notice": "Offline orientation guide only. Express stopping patterns, through-services, platforms, delays and temporary changes can vary; follow current station signs.",
   "lines": [
     {
@@ -1269,5 +1269,1065 @@
   "operators": [
     "JR West",
     "Osaka Metro"
+  ],
+  "landmarks": [
+    {
+      "id": "osaka-dotonbori",
+      "name": "Dotonbori",
+      "jp": "道頓堀",
+      "area": "Namba",
+      "category": "Entertainment district",
+      "railRefs": [
+        {
+          "lineId": "metro-midosuji",
+          "stationCode": "M20"
+        },
+        {
+          "lineId": "metro-sennichimae",
+          "stationCode": "S16"
+        },
+        {
+          "lineId": "metro-yotsubashi",
+          "stationCode": "Y15"
+        }
+      ],
+      "aliases": [
+        "Dotonbori River"
+      ],
+      "keywords": [
+        "Glico",
+        "food",
+        "nightlife"
+      ]
+    },
+    {
+      "id": "osaka-glico",
+      "name": "Glico Running Man Sign",
+      "jp": "グリコサイン",
+      "area": "Dotonbori",
+      "category": "City icon",
+      "railRefs": [
+        {
+          "lineId": "metro-midosuji",
+          "stationCode": "M20"
+        },
+        {
+          "lineId": "metro-sennichimae",
+          "stationCode": "S16"
+        }
+      ],
+      "aliases": [
+        "Glico Man",
+        "Dotonbori Glico Sign"
+      ],
+      "keywords": [
+        "photo spot",
+        "Dotonbori"
+      ]
+    },
+    {
+      "id": "osaka-hozenji-yokocho",
+      "name": "Hozenji Yokocho",
+      "jp": "法善寺横丁",
+      "area": "Namba",
+      "category": "Historic alley",
+      "railRefs": [
+        {
+          "lineId": "metro-midosuji",
+          "stationCode": "M20"
+        },
+        {
+          "lineId": "metro-sennichimae",
+          "stationCode": "S16"
+        }
+      ],
+      "aliases": [
+        "Hozenji Alley"
+      ],
+      "keywords": [
+        "food alley",
+        "temple"
+      ]
+    },
+    {
+      "id": "osaka-kuromon",
+      "name": "Kuromon Ichiba Market",
+      "jp": "黒門市場",
+      "area": "Nippombashi",
+      "category": "Market",
+      "railRefs": [
+        {
+          "lineId": "metro-sennichimae",
+          "stationCode": "S17"
+        },
+        {
+          "lineId": "metro-sakaisuji",
+          "stationCode": "K17"
+        }
+      ],
+      "aliases": [
+        "Kuromon Market",
+        "Kuromon Ichiba"
+      ],
+      "keywords": [
+        "seafood",
+        "street food",
+        "market"
+      ]
+    },
+    {
+      "id": "osaka-namba-yasaka",
+      "name": "Namba Yasaka Shrine",
+      "jp": "難波八阪神社",
+      "area": "Namba",
+      "category": "Shrine",
+      "railRefs": [
+        {
+          "lineId": "metro-yotsubashi",
+          "stationCode": "Y15"
+        },
+        {
+          "lineId": "metro-midosuji",
+          "stationCode": "M20"
+        }
+      ],
+      "aliases": [
+        "Namba Yasaka Jinja",
+        "Lion Shrine"
+      ],
+      "keywords": [
+        "lion head",
+        "shrine"
+      ]
+    },
+    {
+      "id": "osaka-namba-parks",
+      "name": "Namba Parks",
+      "jp": "なんばパークス",
+      "area": "Namba",
+      "category": "Shopping",
+      "railRefs": [
+        {
+          "lineId": "metro-midosuji",
+          "stationCode": "M20"
+        },
+        {
+          "lineId": "metro-yotsubashi",
+          "stationCode": "Y15"
+        }
+      ],
+      "aliases": [
+        "Namba Parks Mall"
+      ],
+      "keywords": [
+        "shopping",
+        "rooftop garden"
+      ]
+    },
+    {
+      "id": "osaka-denden",
+      "name": "Den Den Town",
+      "jp": "でんでんタウン",
+      "area": "Nippombashi",
+      "category": "Pop culture district",
+      "railRefs": [
+        {
+          "lineId": "metro-sakaisuji",
+          "stationCode": "K18"
+        },
+        {
+          "lineId": "metro-sennichimae",
+          "stationCode": "S17"
+        }
+      ],
+      "aliases": [
+        "Nipponbashi Den Den Town",
+        "Osaka Akihabara"
+      ],
+      "keywords": [
+        "anime",
+        "electronics",
+        "games"
+      ]
+    },
+    {
+      "id": "osaka-doguyasuji",
+      "name": "Sennichimae Doguyasuji Shopping Street",
+      "jp": "千日前道具屋筋商店街",
+      "area": "Namba",
+      "category": "Shopping street",
+      "railRefs": [
+        {
+          "lineId": "metro-midosuji",
+          "stationCode": "M20"
+        },
+        {
+          "lineId": "metro-sennichimae",
+          "stationCode": "S16"
+        }
+      ],
+      "aliases": [
+        "Doguyasuji",
+        "Kitchenware Street"
+      ],
+      "keywords": [
+        "kitchenware",
+        "knives",
+        "tableware"
+      ]
+    },
+    {
+      "id": "osaka-amerikamura",
+      "name": "Amerikamura",
+      "jp": "アメリカ村",
+      "area": "Shinsaibashi",
+      "category": "Youth culture district",
+      "railRefs": [
+        {
+          "lineId": "metro-midosuji",
+          "stationCode": "M19"
+        },
+        {
+          "lineId": "metro-yotsubashi",
+          "stationCode": "Y14"
+        }
+      ],
+      "aliases": [
+        "America-mura",
+        "Ame-mura"
+      ],
+      "keywords": [
+        "fashion",
+        "streetwear"
+      ]
+    },
+    {
+      "id": "osaka-shinsaibashi",
+      "name": "Shinsaibashi-suji Shopping Street",
+      "jp": "心斎橋筋商店街",
+      "area": "Shinsaibashi",
+      "category": "Shopping street",
+      "railRefs": [
+        {
+          "lineId": "metro-midosuji",
+          "stationCode": "M19"
+        },
+        {
+          "lineId": "metro-nagahori",
+          "stationCode": "N15"
+        }
+      ],
+      "aliases": [
+        "Shinsaibashi Shopping Street"
+      ],
+      "keywords": [
+        "shopping"
+      ]
+    },
+    {
+      "id": "osaka-orange-street",
+      "name": "Orange Street",
+      "jp": "オレンジストリート",
+      "area": "Horie",
+      "category": "Shopping street",
+      "railRefs": [
+        {
+          "lineId": "metro-yotsubashi",
+          "stationCode": "Y14"
+        },
+        {
+          "lineId": "metro-nagahori",
+          "stationCode": "N14"
+        }
+      ],
+      "aliases": [
+        "Tachibana-dori",
+        "Horie Orange Street"
+      ],
+      "keywords": [
+        "fashion",
+        "furniture",
+        "cafes"
+      ]
+    },
+    {
+      "id": "osaka-castle",
+      "name": "Osaka Castle",
+      "jp": "大阪城",
+      "area": "Osaka Castle",
+      "category": "Castle",
+      "railRefs": [
+        {
+          "lineId": "osaka-loop",
+          "stationCode": "O07"
+        },
+        {
+          "lineId": "metro-tanimachi",
+          "stationCode": "T23"
+        },
+        {
+          "lineId": "metro-chuo",
+          "stationCode": "C18"
+        }
+      ],
+      "aliases": [
+        "Osaka-jo",
+        "Osakajo"
+      ],
+      "keywords": [
+        "castle",
+        "history"
+      ]
+    },
+    {
+      "id": "osaka-castle-park",
+      "name": "Osaka Castle Park",
+      "jp": "大阪城公園",
+      "area": "Osaka Castle",
+      "category": "Park",
+      "railRefs": [
+        {
+          "lineId": "osaka-loop",
+          "stationCode": "O07"
+        },
+        {
+          "lineId": "osaka-loop",
+          "stationCode": "O06"
+        }
+      ],
+      "aliases": [
+        "Osakajo Koen"
+      ],
+      "keywords": [
+        "park",
+        "cherry blossoms"
+      ]
+    },
+    {
+      "id": "osaka-miraiza",
+      "name": "MIRAIZA OSAKA-JO",
+      "jp": "ミライザ大阪城",
+      "area": "Osaka Castle",
+      "category": "Shopping & culture",
+      "railRefs": [
+        {
+          "lineId": "osaka-loop",
+          "stationCode": "O07"
+        },
+        {
+          "lineId": "metro-tanimachi",
+          "stationCode": "T23"
+        }
+      ],
+      "aliases": [
+        "Miraiza Osaka Castle"
+      ],
+      "keywords": [
+        "castle",
+        "shopping"
+      ]
+    },
+    {
+      "id": "osaka-history-museum",
+      "name": "Osaka Museum of History",
+      "jp": "大阪歴史博物館",
+      "area": "Tanimachi",
+      "category": "Museum",
+      "railRefs": [
+        {
+          "lineId": "metro-tanimachi",
+          "stationCode": "T23"
+        },
+        {
+          "lineId": "metro-chuo",
+          "stationCode": "C18"
+        }
+      ],
+      "aliases": [
+        "Osaka History Museum"
+      ],
+      "keywords": [
+        "museum",
+        "history",
+        "castle view"
+      ]
+    },
+    {
+      "id": "osaka-umeda-sky",
+      "name": "Umeda Sky Building",
+      "jp": "梅田スカイビル",
+      "area": "Umeda",
+      "category": "Observation",
+      "railRefs": [
+        {
+          "lineId": "osaka-loop",
+          "stationCode": "O11"
+        },
+        {
+          "lineId": "metro-midosuji",
+          "stationCode": "M16"
+        }
+      ],
+      "aliases": [
+        "Kuchu Teien Observatory",
+        "Floating Garden Observatory"
+      ],
+      "keywords": [
+        "observation",
+        "architecture"
+      ]
+    },
+    {
+      "id": "osaka-grand-front",
+      "name": "Grand Front Osaka",
+      "jp": "グランフロント大阪",
+      "area": "Umeda",
+      "category": "Shopping",
+      "railRefs": [
+        {
+          "lineId": "osaka-loop",
+          "stationCode": "O11"
+        },
+        {
+          "lineId": "metro-midosuji",
+          "stationCode": "M16"
+        }
+      ],
+      "aliases": [
+        "Grand Front"
+      ],
+      "keywords": [
+        "shopping",
+        "Osaka Station"
+      ]
+    },
+    {
+      "id": "osaka-station-city",
+      "name": "Osaka Station City",
+      "jp": "大阪ステーションシティ",
+      "area": "Umeda",
+      "category": "Shopping & architecture",
+      "railRefs": [
+        {
+          "lineId": "osaka-loop",
+          "stationCode": "O11"
+        }
+      ],
+      "aliases": [
+        "JR Osaka Station"
+      ],
+      "keywords": [
+        "station",
+        "shopping"
+      ]
+    },
+    {
+      "id": "osaka-hep-five",
+      "name": "HEP FIVE",
+      "jp": "ヘップファイブ",
+      "area": "Umeda",
+      "category": "Shopping & ferris wheel",
+      "railRefs": [
+        {
+          "lineId": "metro-midosuji",
+          "stationCode": "M16"
+        },
+        {
+          "lineId": "osaka-loop",
+          "stationCode": "O11"
+        }
+      ],
+      "aliases": [
+        "HEP Five Ferris Wheel"
+      ],
+      "keywords": [
+        "ferris wheel",
+        "shopping"
+      ]
+    },
+    {
+      "id": "osaka-nakanoshima-museum",
+      "name": "Nakanoshima Museum of Art, Osaka",
+      "jp": "大阪中之島美術館",
+      "area": "Nakanoshima",
+      "category": "Museum",
+      "railRefs": [
+        {
+          "lineId": "metro-yotsubashi",
+          "stationCode": "Y12"
+        }
+      ],
+      "aliases": [
+        "Nakanoshima Museum of Art"
+      ],
+      "keywords": [
+        "art",
+        "museum"
+      ]
+    },
+    {
+      "id": "osaka-science-museum",
+      "name": "Osaka Science Museum",
+      "jp": "大阪市立科学館",
+      "area": "Nakanoshima",
+      "category": "Museum",
+      "railRefs": [
+        {
+          "lineId": "metro-yotsubashi",
+          "stationCode": "Y12"
+        }
+      ],
+      "aliases": [
+        "Osaka Shiritsu Kagakukan"
+      ],
+      "keywords": [
+        "science",
+        "planetarium"
+      ]
+    },
+    {
+      "id": "osaka-national-art",
+      "name": "The National Museum of Art, Osaka",
+      "jp": "国立国際美術館",
+      "area": "Nakanoshima",
+      "category": "Museum",
+      "railRefs": [
+        {
+          "lineId": "metro-yotsubashi",
+          "stationCode": "Y12"
+        }
+      ],
+      "aliases": [
+        "National Museum of Art Osaka",
+        "NMAO"
+      ],
+      "keywords": [
+        "art",
+        "museum"
+      ]
+    },
+    {
+      "id": "osaka-nakanoshima-park",
+      "name": "Nakanoshima Park",
+      "jp": "中之島公園",
+      "area": "Nakanoshima",
+      "category": "Park",
+      "railRefs": [
+        {
+          "lineId": "metro-sakaisuji",
+          "stationCode": "K14"
+        },
+        {
+          "lineId": "metro-midosuji",
+          "stationCode": "M17"
+        }
+      ],
+      "aliases": [
+        "Nakanoshima Rose Garden"
+      ],
+      "keywords": [
+        "park",
+        "rose garden"
+      ]
+    },
+    {
+      "id": "osaka-central-public-hall",
+      "name": "Osaka City Central Public Hall",
+      "jp": "大阪市中央公会堂",
+      "area": "Nakanoshima",
+      "category": "Architecture",
+      "railRefs": [
+        {
+          "lineId": "metro-sakaisuji",
+          "stationCode": "K14"
+        },
+        {
+          "lineId": "metro-midosuji",
+          "stationCode": "M17"
+        }
+      ],
+      "aliases": [
+        "Central Public Hall"
+      ],
+      "keywords": [
+        "architecture",
+        "historic building"
+      ]
+    },
+    {
+      "id": "osaka-tenjinbashisuji",
+      "name": "Tenjinbashisuji Shopping Street",
+      "jp": "天神橋筋商店街",
+      "area": "Tenma",
+      "category": "Shopping street",
+      "railRefs": [
+        {
+          "lineId": "metro-tanimachi",
+          "stationCode": "T18"
+        },
+        {
+          "lineId": "metro-sakaisuji",
+          "stationCode": "K11"
+        },
+        {
+          "lineId": "osaka-loop",
+          "stationCode": "O10"
+        }
+      ],
+      "aliases": [
+        "Tenjinbashisuji"
+      ],
+      "keywords": [
+        "shopping",
+        "long shopping street"
+      ]
+    },
+    {
+      "id": "osaka-tenmangu",
+      "name": "Osaka Tenmangu Shrine",
+      "jp": "大阪天満宮",
+      "area": "Tenma",
+      "category": "Shrine",
+      "railRefs": [
+        {
+          "lineId": "metro-tanimachi",
+          "stationCode": "T21"
+        },
+        {
+          "lineId": "metro-sakaisuji",
+          "stationCode": "K13"
+        }
+      ],
+      "aliases": [
+        "Osaka Tenmangu"
+      ],
+      "keywords": [
+        "shrine",
+        "Tenjin Matsuri"
+      ]
+    },
+    {
+      "id": "osaka-shinsekai",
+      "name": "Shinsekai",
+      "jp": "新世界",
+      "area": "Tennoji / Ebisucho",
+      "category": "Entertainment district",
+      "railRefs": [
+        {
+          "lineId": "metro-midosuji",
+          "stationCode": "M22"
+        },
+        {
+          "lineId": "metro-sakaisuji",
+          "stationCode": "K19"
+        },
+        {
+          "lineId": "osaka-loop",
+          "stationCode": "O19"
+        }
+      ],
+      "aliases": [
+        "New World Osaka"
+      ],
+      "keywords": [
+        "Tsutenkaku",
+        "kushikatsu"
+      ]
+    },
+    {
+      "id": "osaka-tsutenkaku",
+      "name": "Tsutenkaku Tower",
+      "jp": "通天閣",
+      "area": "Shinsekai",
+      "category": "Observation",
+      "railRefs": [
+        {
+          "lineId": "metro-sakaisuji",
+          "stationCode": "K18"
+        },
+        {
+          "lineId": "metro-midosuji",
+          "stationCode": "M22"
+        }
+      ],
+      "aliases": [
+        "Tsutenkaku"
+      ],
+      "keywords": [
+        "tower",
+        "observation",
+        "Shinsekai"
+      ]
+    },
+    {
+      "id": "osaka-janjan",
+      "name": "Janjan Yokocho",
+      "jp": "ジャンジャン横丁",
+      "area": "Shinsekai",
+      "category": "Food alley",
+      "railRefs": [
+        {
+          "lineId": "metro-midosuji",
+          "stationCode": "M22"
+        },
+        {
+          "lineId": "metro-sakaisuji",
+          "stationCode": "K19"
+        }
+      ],
+      "aliases": [
+        "Janjan Alley"
+      ],
+      "keywords": [
+        "kushikatsu",
+        "food"
+      ]
+    },
+    {
+      "id": "osaka-abeno-harukas",
+      "name": "Abeno Harukas",
+      "jp": "あべのハルカス",
+      "area": "Tennoji",
+      "category": "Observation & shopping",
+      "railRefs": [
+        {
+          "lineId": "osaka-loop",
+          "stationCode": "O01"
+        },
+        {
+          "lineId": "metro-midosuji",
+          "stationCode": "M23"
+        },
+        {
+          "lineId": "metro-tanimachi",
+          "stationCode": "T27"
+        }
+      ],
+      "aliases": [
+        "Harukas 300"
+      ],
+      "keywords": [
+        "observation",
+        "shopping"
+      ]
+    },
+    {
+      "id": "osaka-tennoji-park",
+      "name": "Tennoji Park",
+      "jp": "天王寺公園",
+      "area": "Tennoji",
+      "category": "Park",
+      "railRefs": [
+        {
+          "lineId": "osaka-loop",
+          "stationCode": "O01"
+        },
+        {
+          "lineId": "metro-midosuji",
+          "stationCode": "M23"
+        }
+      ],
+      "aliases": [
+        "Tenshiba"
+      ],
+      "keywords": [
+        "park",
+        "zoo area"
+      ]
+    },
+    {
+      "id": "osaka-shitennoji",
+      "name": "Shitennoji Temple",
+      "jp": "四天王寺",
+      "area": "Tennoji",
+      "category": "Temple",
+      "railRefs": [
+        {
+          "lineId": "metro-tanimachi",
+          "stationCode": "T26"
+        }
+      ],
+      "aliases": [
+        "Shitenno-ji"
+      ],
+      "keywords": [
+        "temple",
+        "history"
+      ]
+    },
+    {
+      "id": "osaka-spa-world",
+      "name": "Spa World",
+      "jp": "スパワールド",
+      "area": "Shinsekai",
+      "category": "Onsen & leisure",
+      "railRefs": [
+        {
+          "lineId": "metro-midosuji",
+          "stationCode": "M22"
+        },
+        {
+          "lineId": "metro-sakaisuji",
+          "stationCode": "K19"
+        },
+        {
+          "lineId": "osaka-loop",
+          "stationCode": "O19"
+        }
+      ],
+      "aliases": [
+        "SpaWorld"
+      ],
+      "keywords": [
+        "onsen",
+        "pool",
+        "Shinsekai"
+      ]
+    },
+    {
+      "id": "osaka-usj",
+      "name": "Universal Studios Japan",
+      "jp": "ユニバーサル・スタジオ・ジャパン",
+      "area": "Universal City",
+      "category": "Theme park",
+      "railRefs": [
+        {
+          "lineId": "yumesaki",
+          "stationCode": "P16"
+        }
+      ],
+      "aliases": [
+        "USJ",
+        "Universal Studios Osaka"
+      ],
+      "keywords": [
+        "theme park",
+        "Super Nintendo World"
+      ]
+    },
+    {
+      "id": "osaka-kaiyukan",
+      "name": "KAIYUKAN Osaka Aquarium",
+      "jp": "海遊館",
+      "area": "Osaka Bay",
+      "category": "Aquarium",
+      "railRefs": [
+        {
+          "lineId": "metro-chuo",
+          "stationCode": "C11"
+        }
+      ],
+      "aliases": [
+        "Osaka Aquarium Kaiyukan",
+        "Kaiyukan"
+      ],
+      "keywords": [
+        "aquarium",
+        "Tempozan"
+      ]
+    },
+    {
+      "id": "osaka-tempozan-wheel",
+      "name": "Tempozan Giant Ferris Wheel",
+      "jp": "天保山大観覧車",
+      "area": "Osaka Bay",
+      "category": "Ferris wheel",
+      "railRefs": [
+        {
+          "lineId": "metro-chuo",
+          "stationCode": "C11"
+        }
+      ],
+      "aliases": [
+        "Tempozan Ferris Wheel"
+      ],
+      "keywords": [
+        "ferris wheel",
+        "Osaka Bay"
+      ]
+    },
+    {
+      "id": "osaka-legoland",
+      "name": "LEGOLAND Discovery Center Osaka",
+      "jp": "レゴランド・ディスカバリー・センター大阪",
+      "area": "Osaka Bay",
+      "category": "Family attraction",
+      "railRefs": [
+        {
+          "lineId": "metro-chuo",
+          "stationCode": "C11"
+        }
+      ],
+      "aliases": [
+        "Legoland Osaka"
+      ],
+      "keywords": [
+        "LEGO",
+        "Tempozan"
+      ]
+    },
+    {
+      "id": "osaka-kyocera-dome",
+      "name": "Kyocera Dome Osaka",
+      "jp": "京セラドーム大阪",
+      "area": "Dome-mae",
+      "category": "Stadium",
+      "railRefs": [
+        {
+          "lineId": "metro-nagahori",
+          "stationCode": "N12"
+        },
+        {
+          "lineId": "osaka-loop",
+          "stationCode": "O16"
+        }
+      ],
+      "aliases": [
+        "Osaka Dome",
+        "Kyocera Dome"
+      ],
+      "keywords": [
+        "baseball",
+        "concert"
+      ]
+    },
+    {
+      "id": "osaka-teamlab-botanical",
+      "name": "teamLab Botanical Garden Osaka",
+      "jp": "チームラボ ボタニカルガーデン 大阪",
+      "area": "Nagai",
+      "category": "Digital art / garden",
+      "railRefs": [
+        {
+          "lineId": "metro-midosuji",
+          "stationCode": "M26"
+        }
+      ],
+      "aliases": [
+        "TeamLab Osaka",
+        "teamLab Botanical Garden"
+      ],
+      "keywords": [
+        "digital art",
+        "night garden",
+        "Nagai"
+      ]
+    },
+    {
+      "id": "osaka-nagai-park",
+      "name": "Nagai Park",
+      "jp": "長居公園",
+      "area": "Nagai",
+      "category": "Park",
+      "railRefs": [
+        {
+          "lineId": "metro-midosuji",
+          "stationCode": "M26"
+        }
+      ],
+      "aliases": [
+        "Nagai Koen"
+      ],
+      "keywords": [
+        "park",
+        "stadium",
+        "botanical garden"
+      ]
+    },
+    {
+      "id": "osaka-housing-living",
+      "name": "Osaka Museum of Housing and Living",
+      "jp": "大阪くらしの今昔館",
+      "area": "Tenjinbashisuji",
+      "category": "Museum",
+      "railRefs": [
+        {
+          "lineId": "metro-tanimachi",
+          "stationCode": "T18"
+        },
+        {
+          "lineId": "metro-sakaisuji",
+          "stationCode": "K11"
+        }
+      ],
+      "aliases": [
+        "Museum of Housing and Living"
+      ],
+      "keywords": [
+        "Edo townscape",
+        "museum"
+      ]
+    },
+    {
+      "id": "osaka-tsuruhashi-korea",
+      "name": "Tsuruhashi Korea Town",
+      "jp": "鶴橋コリアンタウン",
+      "area": "Tsuruhashi",
+      "category": "Food & shopping district",
+      "railRefs": [
+        {
+          "lineId": "osaka-loop",
+          "stationCode": "O04"
+        },
+        {
+          "lineId": "metro-sennichimae",
+          "stationCode": "S19"
+        }
+      ],
+      "aliases": [
+        "Korea Town Osaka",
+        "Tsuruhashi Korean Town"
+      ],
+      "keywords": [
+        "Korean food",
+        "shopping"
+      ]
+    },
+    {
+      "id": "osaka-solaniwa",
+      "name": "Solaniwa Onsen OSAKA BAY TOWER",
+      "jp": "空庭温泉",
+      "area": "Bentencho",
+      "category": "Onsen",
+      "railRefs": [
+        {
+          "lineId": "osaka-loop",
+          "stationCode": "O15"
+        },
+        {
+          "lineId": "metro-chuo",
+          "stationCode": "C13"
+        }
+      ],
+      "aliases": [
+        "Solaniwa Onsen"
+      ],
+      "keywords": [
+        "onsen",
+        "Osaka Bay Tower"
+      ]
+    },
+    {
+      "id": "osaka-expocity",
+      "name": "EXPOCITY",
+      "jp": "EXPOCITY",
+      "area": "Suita",
+      "category": "Shopping & entertainment",
+      "railRefs": [
+        {
+          "lineId": "jr-kyoto",
+          "stationCode": "A41"
+        }
+      ],
+      "aliases": [
+        "Expocity Osaka"
+      ],
+      "keywords": [
+        "shopping",
+        "NIFREL",
+        "Expo Park"
+      ],
+      "accessNote": "JR Ibaraki is represented in Sakura; from there, local bus/monorail connections are normally used for the Expo Park area."
+    }
   ]
 }

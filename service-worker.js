@@ -1,4 +1,4 @@
-const SHELL_CACHE_VERSION = "sakura-shell-v100";
+const SHELL_CACHE_VERSION = "sakura-shell-v101";
 const KANJI_CONTENT_CACHE_VERSION = "sakura-kanji-content-v1";
 const TRAVEL_CONTENT_CACHE_VERSION = "sakura-travel-content-v1";
 const VOCABULARY_CONTENT_CACHE_VERSION = "sakura-vocabulary-content-v1";
@@ -13,9 +13,9 @@ const APP_SHELL = [
     "./data/counters.json?v=1",
     "./data/etiquette.json?v=1",
     "./data/kaomoji.json?v=1",
-    "./data/rail/tokyo.json?v=2",
-    "./data/rail/osaka.json?v=2",
-    "./data/rail/kyoto.json?v=2",
+    "./data/rail/tokyo.json?v=3",
+    "./data/rail/osaka.json?v=3",
+    "./data/rail/kyoto.json?v=3",
     "./avatar/sakura.png",
     "./avatar/mochi.png",
     "./avatar/hikari.png",
