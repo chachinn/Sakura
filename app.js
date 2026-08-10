@@ -2189,8 +2189,8 @@ function browseNative(direction = 1, random = false) {
 
 const RAIL_CITY_FILES = {
     tokyo: "./data/rail/tokyo.json?v=5",
-    osaka: "./data/rail/osaka.json?v=3",
-    kyoto: "./data/rail/kyoto.json?v=3"
+    osaka: "./data/rail/osaka.json?v=4",
+    kyoto: "./data/rail/kyoto.json?v=4"
 };
 
 function normalizeRailPrefs() {
@@ -2579,6 +2579,24 @@ function buildRailNetworkGraph() {
         }
     }
 
+    // Curated transfer links cover verified interchanges whose station names differ,
+    // such as JR Osaka Station ↔ the three Osaka Metro Umeda stations.
+    for (const link of railGuideCityData.transferLinks || []) {
+        const fromId = railNetworkNodeId(link.from?.lineId, link.from?.stationCode);
+        const toId = railNetworkNodeId(link.to?.lineId, link.to?.stationCode);
+        if (!nodes.has(fromId) || !nodes.has(toId)) continue;
+        const transferEdge = {
+            type:"transfer",
+            hubKey:"",
+            transferName:String(link.name || ""),
+            transferNote:String(link.note || ""),
+            transferKind:String(link.kind || "transfer"),
+            cost:Number.isFinite(Number(link.cost)) ? Number(link.cost) : 7
+        };
+        addEdge(fromId, toId, transferEdge);
+        addEdge(toId, fromId, transferEdge);
+    }
+
     const graph = { nodes, adjacency, hubs };
     railNetworkGraphCache.set(city, graph);
     return graph;
@@ -2699,7 +2717,10 @@ function railNetworkRouteSteps(route) {
                 fromLine:fromNode.line,
                 fromStation:fromNode.station,
                 toLine:toNode.line,
-                toStation:toNode.station
+                toStation:toNode.station,
+                transferName:edge.transferName || "",
+                transferNote:edge.transferNote || "",
+                transferKind:edge.transferKind || ""
             });
         }
     });
@@ -2735,9 +2756,13 @@ function renderRailNetworkRoute() {
     const steps = railNetworkRouteSteps(route);
     const stepHtml = steps.map((step, index) => {
         if (step.type === "transfer") {
+            const transferTitle = step.transferName || step.hub?.name || step.fromStation.name;
+            const guidanceKey = railNetworkHubKey(step.hub?.name || step.fromStation.name);
+            const cityGuidance = railGuideCityData.transferGuidance?.[guidanceKey] || "";
+            const transferNote = step.transferNote || cityGuidance || "Follow the station's current transfer signs. Sakura does not estimate platform or walking time.";
             return `<article class="rail-network-step transfer-step">
                 <span class="rail-network-step-number">${index + 1}</span>
-                <div><span class="rail-network-step-kicker">Transfer</span><h4>${escapeSearchHtml(step.hub?.name || step.fromStation.name)}</h4><p>${escapeSearchHtml(step.fromLine.code)} ${escapeSearchHtml(step.fromLine.name)} → ${escapeSearchHtml(step.toLine.code)} ${escapeSearchHtml(step.toLine.name)}</p><small>Follow the station's current transfer signs. Sakura does not estimate platform or walking time.</small></div>
+                <div><span class="rail-network-step-kicker">Transfer</span><h4>${escapeSearchHtml(transferTitle)}</h4><p>${escapeSearchHtml(step.fromLine.code)} ${escapeSearchHtml(step.fromLine.name)} → ${escapeSearchHtml(step.toLine.code)} ${escapeSearchHtml(step.toLine.name)}</p><small>${escapeSearchHtml(transferNote)}</small></div>
             </article>`;
         }
 

@@ -3,7 +3,7 @@
   "cityName": "Osaka",
   "operator": "Multiple operators",
   "verifiedOn": "2026-08-10",
-  "sourceNote": "Static offline reference using official JR West and Osaka Metro station information. Not live service data. Landmark names and areas were expanded using official city tourism resources; station links are a static orientation aid, not live journey planning.",
+  "sourceNote": "Static offline reference using official JR West and Osaka Metro station/line information. Osaka/Umeda transfer relationships were rechecked against Osaka Metro transfer guidance on 2026-08-10. This is not live timetable, fare, or disruption data.",
   "notice": "Offline orientation guide only. Express stopping patterns, through-services, platforms, delays and temporary changes can vary; follow current station signs.",
   "lines": [
     {
@@ -2328,6 +2328,98 @@
         "Expo Park"
       ],
       "accessNote": "JR Ibaraki is represented in Sakura; from there, local bus/monorail connections are normally used for the Expo Park area."
+    }
+  ],
+  "transferLinks": [
+    {
+      "id": "osaka-umeda-m-t",
+      "from": {
+        "lineId": "metro-midosuji",
+        "stationCode": "M16"
+      },
+      "to": {
+        "lineId": "metro-tanimachi",
+        "stationCode": "T20"
+      },
+      "name": "Umeda ↔ Higashi-Umeda",
+      "kind": "outside-gate",
+      "cost": 7,
+      "note": "Official Osaka Metro transfer between Umeda and Higashi-Umeda. This transfer is outside the ticket gates; follow current signs and fare/transfer rules."
+    },
+    {
+      "id": "osaka-umeda-m-y",
+      "from": {
+        "lineId": "metro-midosuji",
+        "stationCode": "M16"
+      },
+      "to": {
+        "lineId": "metro-yotsubashi",
+        "stationCode": "Y11"
+      },
+      "name": "Umeda ↔ Nishi-Umeda",
+      "kind": "outside-gate",
+      "cost": 7,
+      "note": "Official Osaka Metro transfer between Umeda and Nishi-Umeda. This transfer is outside the ticket gates; follow current signs and fare/transfer rules."
+    },
+    {
+      "id": "osaka-umeda-t-y",
+      "from": {
+        "lineId": "metro-tanimachi",
+        "stationCode": "T20"
+      },
+      "to": {
+        "lineId": "metro-yotsubashi",
+        "stationCode": "Y11"
+      },
+      "name": "Higashi-Umeda ↔ Nishi-Umeda",
+      "kind": "outside-gate",
+      "cost": 7,
+      "note": "Official Osaka Metro transfer between Higashi-Umeda and Nishi-Umeda. This transfer is outside the ticket gates; follow current signs and fare/transfer rules."
+    },
+    {
+      "id": "osaka-jr-umeda-m",
+      "from": {
+        "lineId": "osaka-loop",
+        "stationCode": "O11"
+      },
+      "to": {
+        "lineId": "metro-midosuji",
+        "stationCode": "M16"
+      },
+      "name": "JR Osaka ↔ Umeda",
+      "kind": "walk-transfer",
+      "cost": 7,
+      "note": "JR Osaka Station and Osaka Metro Umeda are connected through the Osaka/Umeda station area. Follow current JR/Osaka Metro signs and pass through the required gates."
+    },
+    {
+      "id": "osaka-jr-umeda-t",
+      "from": {
+        "lineId": "osaka-loop",
+        "stationCode": "O11"
+      },
+      "to": {
+        "lineId": "metro-tanimachi",
+        "stationCode": "T20"
+      },
+      "name": "JR Osaka ↔ Higashi-Umeda",
+      "kind": "walk-transfer",
+      "cost": 8,
+      "note": "JR Osaka Station and Osaka Metro Higashi-Umeda are connected through the Osaka/Umeda station area. Follow current signs and pass through the required gates."
+    },
+    {
+      "id": "osaka-jr-umeda-y",
+      "from": {
+        "lineId": "osaka-loop",
+        "stationCode": "O11"
+      },
+      "to": {
+        "lineId": "metro-yotsubashi",
+        "stationCode": "Y11"
+      },
+      "name": "JR Osaka ↔ Nishi-Umeda",
+      "kind": "walk-transfer",
+      "cost": 8,
+      "note": "JR Osaka Station and Osaka Metro Nishi-Umeda are connected through the Osaka/Umeda station area. Follow current signs and pass through the required gates."
     }
   ]
 }

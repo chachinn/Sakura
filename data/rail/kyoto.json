@@ -3,7 +3,7 @@
   "cityName": "Kyoto",
   "operator": "Multiple operators",
   "verifiedOn": "2026-08-10",
-  "sourceNote": "Static offline reference using official JR West and Kyoto Municipal Transportation Bureau station information. Not live service data. Landmark names and areas were expanded using official city tourism resources; station links are a static orientation aid, not live journey planning.",
+  "sourceNote": "Static offline reference using official JR West and Kyoto City Subway station/line information. Karasuma Oike subway transfer guidance was rechecked against Kyoto Municipal Transportation Bureau information on 2026-08-10. This is not live timetable, fare, or disruption data.",
   "notice": "Offline orientation guide only. Through-services, platforms, delays and temporary service changes can vary. Follow current station and train destination signs.",
   "lines": [
     {
@@ -1937,5 +1937,11 @@
       ],
       "accessNote": "Continue from Kokusaikaikan by bus/taxi toward Ohara."
     }
-  ]
+  ],
+  "transferGuidance": {
+    "karasuma oike": "Karasuma Line ↔ Tozai Line transfer. Kyoto City Subway states that this transfer can be made without passing through the ticket gates.",
+    "kyoto": "JR West ↔ Kyoto City Subway connection. Follow current station signs and the appropriate operator gates.",
+    "nijo": "JR Sagano Line ↔ Kyoto City Subway Tozai Line connection. Follow current station signs and the appropriate operator gates.",
+    "rokujizo": "JR Nara Line ↔ Kyoto City Subway Tozai Line connection. The rail facilities are separate; follow current local signs for the transfer."
+  }
 }
