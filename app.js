@@ -2206,18 +2206,67 @@ function saveRailPrefs() {
     writeJson(STORAGE.railGuidePrefs, railGuidePrefs);
 }
 
+function validateRailCityData(data, normalizedCity) {
+    return Boolean(
+        data &&
+        data.city === normalizedCity &&
+        Array.isArray(data.lines) &&
+        data.lines.length &&
+        data.lines.every(line =>
+            line &&
+            typeof line.id === "string" &&
+            line.id &&
+            typeof line.name === "string" &&
+            Array.isArray(line.stations) &&
+            line.stations.length
+        )
+    );
+}
+
+async function readRailResponse(response, normalizedCity) {
+    if (!response?.ok) throw new Error(`Rail guide data unavailable: ${normalizedCity} (HTTP ${response?.status || "unknown"})`);
+    const data = await response.json();
+    if (!validateRailCityData(data, normalizedCity)) throw new Error(`Rail guide data is invalid: ${normalizedCity}`);
+    return data;
+}
+
 async function loadRailCity(city) {
     normalizeRailPrefs();
     const normalizedCity = RAIL_CITY_FILES[city] ? city : "tokyo";
     if (railCityCache.has(normalizedCity)) return railCityCache.get(normalizedCity);
-    const response = await fetch(RAIL_CITY_FILES[normalizedCity]);
-    if (!response.ok) throw new Error(`Rail guide data unavailable: ${normalizedCity} (HTTP ${response.status})`);
-    const data = await response.json();
-    if (!data || data.city !== normalizedCity || !Array.isArray(data.lines) || !data.lines.length) {
-        throw new Error(`Rail guide data is invalid: ${normalizedCity}`);
+
+    const versionedUrl = RAIL_CITY_FILES[normalizedCity];
+    const unversionedUrl = versionedUrl.split("?")[0];
+    const attempts = [];
+
+    for (const url of [...new Set([versionedUrl, unversionedUrl])]) {
+        try {
+            const response = await fetch(url, { cache:"no-cache" });
+            const data = await readRailResponse(response, normalizedCity);
+            railCityCache.set(normalizedCity, data);
+            return data;
+        }
+        catch (error) {
+            attempts.push(`${url}: ${error?.message || error}`);
+        }
     }
-    railCityCache.set(normalizedCity, data);
-    return data;
+
+    if ("caches" in window) {
+        for (const url of [...new Set([versionedUrl, unversionedUrl])]) {
+            try {
+                const response = await caches.match(url);
+                if (!response) continue;
+                const data = await readRailResponse(response, normalizedCity);
+                railCityCache.set(normalizedCity, data);
+                return data;
+            }
+            catch (error) {
+                attempts.push(`cache ${url}: ${error?.message || error}`);
+            }
+        }
+    }
+
+    throw new Error(`Rail guide data could not be loaded for ${normalizedCity}. ${attempts.join(" | ")}`);
 }
 
 function currentRailLine() {
@@ -2987,57 +3036,84 @@ function renderRailSearch(query = "") {
     }).join("") : `<p>No matching landmark, station, line, operator, code, area, or connection in ${escapeSearchHtml(railGuideCityData.cityName)}.</p>`;
 }
 
+function railRenderSafely(label, renderer) {
+    try {
+        renderer();
+        return true;
+    }
+    catch (error) {
+        console.warn(`Rail Guide ${label} render recovered from an error.`, error);
+        return false;
+    }
+}
+
+function railSetText(id, value) {
+    const element = document.getElementById(id);
+    if (element) element.textContent = value ?? "";
+    return element;
+}
+
 function renderRailGuide() {
     const line = currentRailLine();
     if (!railGuideCityData || !line) return;
+
     railGuidePrefs.line = line.id;
     saveRailPrefs();
-    renderRailCityTabs();
-    renderRailOperatorTabs();
-    renderRailNetworkPlanner();
-    renderRailLineCards();
 
-    document.getElementById("rail-city-title").textContent = `${railGuideCityData.cityName} Rail Lines`;
+    railRenderSafely("city tabs", renderRailCityTabs);
+    railRenderSafely("operator tabs", renderRailOperatorTabs);
+    railRenderSafely("network planner", renderRailNetworkPlanner);
+    railRenderSafely("line list", renderRailLineCards);
+
+    railSetText("rail-city-title", `${railGuideCityData.cityName} Rail Lines`);
     const scope = document.getElementById("rail-search-scope");
     if (scope) scope.textContent = `Searches ${railGuideCityData.landmarks?.length || 0} landmarks and all ${railGuideCityData.lines.length} lines in ${railGuideCityData.cityName}, regardless of operator filter.`;
-    document.getElementById("rail-city-note").textContent = railGuideCityData.notice || "";
-    document.getElementById("rail-line-code").textContent = line.code;
-    document.getElementById("rail-line-code").style.setProperty("--rail-line", line.accent || "#d75a82");
-    document.getElementById("rail-line-name").textContent = line.name;
-    document.getElementById("rail-line-jp").textContent = `${line.operator || ""}${line.jp ? ` · ${line.jp}` : ""}`;
-    document.getElementById("rail-line-summary").textContent = line.summary || "";
-    const service = document.getElementById("rail-line-service-note");
-    service.hidden = !line.serviceNote;
-    service.textContent = line.serviceNote || "";
-    renderRailStationOptions(line);
-    renderRailJourney();
-    renderRailDiagram();
-    renderRailSearch(document.getElementById("rail-search-input")?.value || "");
-}
+    railSetText("rail-city-note", railGuideCityData.notice || "");
 
+    const lineCode = railSetText("rail-line-code", line.code);
+    if (lineCode) lineCode.style.setProperty("--rail-line", line.accent || "#d75a82");
+    railSetText("rail-line-name", line.name);
+    railSetText("rail-line-jp", `${line.operator || ""}${line.jp ? ` · ${line.jp}` : ""}`);
+    railSetText("rail-line-summary", line.summary || "");
+
+    const service = document.getElementById("rail-line-service-note");
+    if (service) {
+        service.hidden = !line.serviceNote;
+        service.textContent = line.serviceNote || "";
+    }
+
+    railRenderSafely("station selectors", () => renderRailStationOptions(line));
+    railRenderSafely("single-line direction", renderRailJourney);
+    railRenderSafely("route diagram", renderRailDiagram);
+    railRenderSafely("search", () => renderRailSearch(document.getElementById("rail-search-input")?.value || ""));
+}
 async function openRailGuide() {
     normalizeRailPrefs();
     const requestId = ++railGuideLoadRequestId;
     const requestedCity = railGuidePrefs.city;
     setRailLoadingState(`Preparing ${requestedCity.charAt(0).toUpperCase() + requestedCity.slice(1)} Rail Guide…`, "loading");
+
+    let data;
     try {
-        const data = await loadRailCity(requestedCity);
-        if (requestId !== railGuideLoadRequestId) return;
-        railGuideCityData = data;
-        if (!railGuideCityData?.lines?.some(line => line.id === railGuidePrefs.line)) {
-            railGuidePrefs.line = railGuideCityData?.lines?.[0]?.id || "";
-            railGuidePrefs.from = "";
-            railGuidePrefs.to = "";
-        }
-        saveRailPrefs();
-        renderRailGuide();
-        setRailLoadingState();
+        data = await loadRailCity(requestedCity);
     }
     catch (error) {
         if (requestId !== railGuideLoadRequestId) return;
-        console.warn("Rail Guide could not load.", error);
-        setRailLoadingState("Rail Guide could not load. Check your connection, then open Rail Guide again.", "error");
+        console.warn("Rail Guide data could not load.", error);
+        setRailLoadingState("Rail data is temporarily unavailable. Sakura will retry when you reopen Rail Guide.", "error");
+        return;
     }
+
+    if (requestId !== railGuideLoadRequestId) return;
+    railGuideCityData = data;
+    if (!railGuideCityData?.lines?.some(line => line.id === railGuidePrefs.line)) {
+        railGuidePrefs.line = railGuideCityData?.lines?.[0]?.id || "";
+        railGuidePrefs.from = "";
+        railGuidePrefs.to = "";
+    }
+    saveRailPrefs();
+    renderRailGuide();
+    setRailLoadingState();
 }
 
 async function selectRailCity(city) {
@@ -3051,29 +3127,30 @@ async function selectRailCity(city) {
     const label = city.charAt(0).toUpperCase() + city.slice(1);
     setRailLoadingState(`Loading ${label} rail data…`, "loading");
 
+    let data;
     try {
-        const data = await loadRailCity(city);
-        if (requestId !== railGuideLoadRequestId) return;
-
-        railGuideCityData = data;
-        railGuidePrefs.city = city;
-        railGuidePrefs.line = data.lines?.[0]?.id || "";
-        railGuidePrefs.operator = "all";
-        railGuidePrefs.from = "";
-        railGuidePrefs.to = "";
-        railNetworkPlannerState = { city, from:"", to:"" };
-        saveRailPrefs();
-        renderRailGuide();
-        setRailLoadingState();
+        data = await loadRailCity(city);
     }
     catch (error) {
         if (requestId !== railGuideLoadRequestId) return;
         console.warn(`Rail Guide could not switch to ${city}.`, error);
-        renderRailCityTabs();
-        setRailLoadingState(`Could not load ${label}. Your current city is unchanged. Check your connection and tap ${label} again.`, "error");
+        railRenderSafely("city tabs", renderRailCityTabs);
+        setRailLoadingState(`${label} rail data is temporarily unavailable. Your current city is unchanged. Tap ${label} again to retry.`, "error");
+        return;
     }
-}
 
+    if (requestId !== railGuideLoadRequestId) return;
+    railGuideCityData = data;
+    railGuidePrefs.city = city;
+    railGuidePrefs.line = data.lines?.[0]?.id || "";
+    railGuidePrefs.operator = "all";
+    railGuidePrefs.from = "";
+    railGuidePrefs.to = "";
+    railNetworkPlannerState = { city, from:"", to:"" };
+    saveRailPrefs();
+    renderRailGuide();
+    setRailLoadingState();
+}
 function selectRailLine(lineId, stationCode = "") {
     const line = railGuideCityData?.lines?.find(item => item.id === lineId);
     if (!line) return;
@@ -6697,6 +6774,7 @@ function addListeners() {
     });
     ["from","to"].forEach(side => {
         const input = document.getElementById(`rail-network-${side}-input`);
+        if (!input) return;
         input.addEventListener("input", event => {
             ensureRailNetworkPlannerCity();
             railNetworkPlannerState[side] = "";
