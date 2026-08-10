@@ -280,6 +280,13 @@ function playDailyGoalBloom() {
     }, 1800);
 }
 
+function setDailyCustomGoalVisibility(show) {
+    const row = document.querySelector(".daily-custom-goal-row");
+    if (!row) return;
+    row.hidden = !show;
+    if (!show) setDailyGoalMessage("");
+}
+
 function renderDailyProgress() {
     refreshDailyProgressDate();
     const newlyCompleted = completeDailyGoalIfNeeded();
@@ -293,9 +300,11 @@ function renderDailyProgress() {
 
     const select = document.getElementById("daily-goal-select");
     const customInput = document.getElementById("daily-custom-goal");
-    if (select) select.value = DAILY_GOALS.includes(goal) ? String(goal) : "custom";
+    const isCustomGoal = !DAILY_GOALS.includes(goal);
+    if (select) select.value = isCustomGoal ? "custom" : String(goal);
+    setDailyCustomGoalVisibility(isCustomGoal);
     if (customInput && document.activeElement !== customInput) {
-        customInput.value = DAILY_GOALS.includes(goal) ? "" : String(goal);
+        customInput.value = isCustomGoal ? String(goal) : "";
     }
 
     const progress = document.querySelector(".daily-study-progress");
@@ -902,8 +911,8 @@ function renderGlobalLevels() {
             globalLevels = event.target.checked
                 ? [...new Set([...globalLevels, level])]
                 : globalLevels.filter(value => value !== level);
-            if (!globalLevels.length) globalLevels = [...JLPT_LEVELS];
-            globalLevels = normalizeJlptLevels(globalLevels, JLPT_LEVELS);
+            if (!globalLevels.length) globalLevels = ["N5"];
+            globalLevels = normalizeJlptLevels(globalLevels, ["N5"]);
             writeJson(STORAGE.globalLevels, globalLevels);
             renderGlobalLevels();
             renderAllSectionControls();
@@ -915,7 +924,7 @@ function renderGlobalLevels() {
     allButton.className = `all-level-button ${globalLevels.length === JLPT_LEVELS.length ? "active" : ""}`;
     allButton.textContent = "◎ All";
     allButton.addEventListener("click", () => {
-        globalLevels = [...JLPT_LEVELS];
+        globalLevels = globalLevels.length === JLPT_LEVELS.length ? ["N5"] : [...JLPT_LEVELS];
         writeJson(STORAGE.globalLevels, globalLevels);
         renderGlobalLevels();
         renderAllSectionControls();
@@ -950,7 +959,7 @@ function renderSectionControl(sectionName) {
             const levels = event.target.checked
                 ? [...new Set([...(current.levels || []), level])]
                 : (current.levels || []).filter(value => value !== level);
-            sectionSettings[sectionName] = direct ? { levels:levels.length ? levels : [...JLPT_LEVELS] } : { useGlobal:false, levels:levels.length ? levels : [...JLPT_LEVELS] };
+            sectionSettings[sectionName] = direct ? { levels:levels.length ? levels : ["N5"] } : { useGlobal:false, levels:levels.length ? levels : ["N5"] };
             writeJson(STORAGE.sectionLevels, sectionSettings);
             renderAllSectionControls();
             refreshSectionForLevelChange(sectionName);
@@ -962,7 +971,8 @@ function renderSectionControl(sectionName) {
     allButton.textContent = "◎ All";
     allButton.disabled = !direct && setting.useGlobal !== false;
     allButton.addEventListener("click", () => {
-        sectionSettings[sectionName] = direct ? { levels:[...JLPT_LEVELS] } : { useGlobal:false, levels:[...JLPT_LEVELS] };
+        const nextLevels = activeLevels.length === JLPT_LEVELS.length ? ["N5"] : [...JLPT_LEVELS];
+        sectionSettings[sectionName] = direct ? { levels:nextLevels } : { useGlobal:false, levels:nextLevels };
         writeJson(STORAGE.sectionLevels, sectionSettings);
         renderAllSectionControls();
         refreshSectionForLevelChange(sectionName);
@@ -1907,8 +1917,8 @@ function renderSearchJlptFilters() {
     container.innerHTML = "";
     JLPT_LEVELS.forEach(level => container.appendChild(createLevelChip(level, searchLevels.includes(level), event => {
         searchLevels = event.target.checked ? [...new Set([...searchLevels, level])] : searchLevels.filter(value => value !== level);
-        if (!searchLevels.length) searchLevels = [...JLPT_LEVELS];
-        searchLevels = normalizeJlptLevels(searchLevels, JLPT_LEVELS);
+        if (!searchLevels.length) searchLevels = ["N5"];
+        searchLevels = normalizeJlptLevels(searchLevels, ["N5"]);
         resetSearchResultLimit();
         renderSearchJlptFilters();
         Promise.all([loadKanjiForSelection("search", searchLevels), loadVocabularyForSelection("search", searchLevels)]).then(() => renderSearchResults());
@@ -1918,7 +1928,7 @@ function renderSearchJlptFilters() {
     allButton.className = `all-level-button ${searchLevels.length === JLPT_LEVELS.length ? "active" : ""}`;
     allButton.textContent = "◎ All";
     allButton.addEventListener("click", () => {
-        searchLevels = [...JLPT_LEVELS];
+        searchLevels = searchLevels.length === JLPT_LEVELS.length ? ["N5"] : [...JLPT_LEVELS];
         resetSearchResultLimit();
         renderSearchJlptFilters();
         Promise.all([loadKanjiForSelection("search", searchLevels), loadVocabularyForSelection("search", searchLevels)]).then(() => renderSearchResults());
@@ -5886,9 +5896,11 @@ function addListeners() {
     document.getElementById("done-settings").addEventListener("click", () => settings.close());
     document.getElementById("theme-options").addEventListener("click", event => { const button=event.target.closest("[data-theme-choice]"); if(button) applyTheme(button.dataset.themeChoice); });
     document.getElementById("daily-goal-select").addEventListener("change", event => {
-        if (event.target.value === "custom") {
+        const isCustom = event.target.value === "custom";
+        setDailyCustomGoalVisibility(isCustom);
+        if (isCustom) {
             setDailyGoalMessage("Type any target from 1 to 999.");
-            document.getElementById("daily-custom-goal").focus();
+            requestAnimationFrame(() => document.getElementById("daily-custom-goal")?.focus());
             return;
         }
         setDailyGoal(event.target.value);

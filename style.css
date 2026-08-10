@@ -2048,6 +2048,118 @@ a:focus-visible {
     line-height: 1.4;
 }
 
+.travel-language-others {
+    margin-bottom: 0;
+}
+
+.travel-tools-section {
+    margin-top: 22px;
+    padding-top: 18px;
+    border-top: 1px dashed var(--color-border);
+}
+
+.travel-tools-heading {
+    margin-bottom: 15px;
+}
+
+.travel-tools-heading > div {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.travel-tools-heading h2 {
+    margin: 3px 0 0;
+    font-size: 18px;
+}
+
+.travel-tools-heading > p {
+    margin: 5px 0 0;
+    color: var(--color-text-muted);
+    font-size: 11px;
+    line-height: 1.45;
+}
+
+.travel-tools-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 17px 8px;
+}
+
+.travel-tool-button {
+    min-width: 0;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: var(--color-text);
+    font: inherit;
+    text-align: center;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.travel-tool-circle {
+    width: 72px;
+    height: 72px;
+    display: grid;
+    place-items: center;
+    border: 1px solid var(--color-border);
+    border-radius: 50%;
+    background: var(--color-primary-soft);
+    color: var(--color-primary-dark);
+    box-shadow: var(--shadow-card);
+    font-size: 27px;
+    font-weight: 850;
+    transition: transform .16s ease, box-shadow .16s ease, border-color .16s ease;
+}
+
+.travel-tool-button strong {
+    max-width: 92px;
+    font-size: 11px;
+    line-height: 1.18;
+}
+
+.travel-tool-button small {
+    max-width: 98px;
+    min-height: 20px;
+    color: var(--color-text-muted);
+    font-size: 8px;
+    line-height: 1.25;
+}
+
+.travel-tool-button:active .travel-tool-circle {
+    transform: scale(.95);
+    border-color: var(--color-primary);
+    box-shadow: var(--shadow);
+}
+
+@media (max-width: 350px) {
+    .travel-tool-circle {
+        width: 64px;
+        height: 64px;
+        font-size: 24px;
+    }
+
+    .travel-tools-grid {
+        gap-inline: 5px;
+    }
+
+    .travel-tool-button strong {
+        font-size: 10px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .travel-tool-circle {
+        transition: none;
+    }
+}
+
 .travel-countdown-detail {
     margin-top: 16px;
     padding: 22px 18px;
@@ -3573,6 +3685,7 @@ body {
     align-items: center;
     gap: 7px;
 }
+.daily-custom-goal-row[hidden] { display:none !important; }
 .daily-custom-goal-row label { color:var(--color-text-muted); font-size:10px; font-weight:800; white-space:nowrap; }
 .daily-custom-goal-row input {
     width:100%;

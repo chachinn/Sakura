@@ -11,7 +11,7 @@
     <script>try { document.documentElement.dataset.theme = localStorage.getItem("sakuraAppearanceTheme") || "pink"; } catch (error) { document.documentElement.dataset.theme = "pink"; }</script>
     <link rel="manifest" href="manifest.webmanifest">
     <link rel="apple-touch-icon" href="icons/icon-180.png">
-    <link rel="stylesheet" href="style.css?v=65">
+    <link rel="stylesheet" href="style.css?v=66">
 </head>
 <body>
     <div class="app-shell">
@@ -46,7 +46,7 @@
                             <select id="daily-goal-select" aria-label="Daily study goal"><option value="5">5</option><option value="10" selected>10</option><option value="20">20</option><option value="30">30</option><option value="custom">Custom…</option></select>
                         </label>
                     </div>
-                    <div class="daily-custom-goal-row">
+                    <div class="daily-custom-goal-row" hidden>
                         <label for="daily-custom-goal">Custom target</label>
                         <input id="daily-custom-goal" type="number" inputmode="numeric" min="1" max="999" step="1" placeholder="e.g. 15" aria-describedby="daily-goal-message">
                         <button id="set-daily-custom-goal" class="daily-custom-goal-button" type="button">Set</button>
@@ -487,13 +487,46 @@
                     <button class="travel-category-card" type="button" data-route="travel-taxi" data-travel-category="taxi"><span aria-hidden="true">車</span><div><h2>Taxi &amp; Directions</h2><p>Getting where you need to go.</p></div><b aria-hidden="true">→</b></button>
                     <button class="travel-category-card" type="button" data-route="travel-emergencies" data-travel-category="emergencies"><span aria-hidden="true">助</span><div><h2>Emergencies &amp; Health</h2><p>Essential help and care.</p></div><b aria-hidden="true">→</b></button>
                 </div>
-                <button class="travel-feature-card" type="button" data-route="travel-others" data-travel-category="others"><span aria-hidden="true">🌸</span><div><h2>Others</h2><p>Little moments around Japan.</p></div><b aria-hidden="true">→</b></button>
-                <button class="travel-feature-card travel-pouch-launch" type="button" data-route="travel-my-phrases"><span aria-hidden="true">♡</span><div><h2>My Travel Phrases</h2><p>Saved phrases ready for your trip.</p></div><b aria-hidden="true">→</b></button>
-                <button class="travel-feature-card" type="button" data-route="travel-decks"><span aria-hidden="true">🎴</span><div><h2>Phrase Decks</h2><p>Build collections for the moments ahead.</p></div><b aria-hidden="true">→</b></button>
-                <button class="travel-feature-card" type="button" data-route="travel-notes"><span aria-hidden="true">📝</span><div><h2>Personal Notes</h2><p>Keep trip details handy offline.</p></div><b aria-hidden="true">→</b></button>
-                <button class="travel-feature-card" type="button" data-route="travel-yen"><span aria-hidden="true">¥</span><div><h2>Yen Converter</h2><p>Calculate prices in yen and pesos.</p></div><b aria-hidden="true">→</b></button>
-                <button class="travel-feature-card" type="button" data-route="travel-countdown"><span aria-hidden="true">🗓️</span><div><h2>Travel Countdown</h2><p id="travel-countdown-card-summary">Plan your next adventure.</p></div><b aria-hidden="true">→</b></button>
-                <button class="travel-feature-card" type="button" data-route="travel-offline"><span aria-hidden="true">⇩</span><div><h2>Offline Travel Pack</h2><p id="travel-offline-card-summary">Prepare all 720 phrases for your trip.</p></div><b aria-hidden="true">→</b></button>
+                <button class="travel-feature-card travel-language-others" type="button" data-route="travel-others" data-travel-category="others"><span aria-hidden="true">🌸</span><div><h2>Others</h2><p>Little moments around Japan.</p></div><b aria-hidden="true">→</b></button>
+
+                <section class="travel-tools-section" aria-labelledby="travel-tools-heading">
+                    <div class="travel-tools-heading">
+                        <div><span class="section-kicker">✦ Trip extras</span><h2 id="travel-tools-heading">Travel Tools</h2></div>
+                        <p>Your useful extras, separate from the Japanese phrase library.</p>
+                    </div>
+                    <div class="travel-tools-grid">
+                        <button class="travel-tool-button" type="button" data-route="travel-my-phrases">
+                            <span class="travel-tool-circle" aria-hidden="true">♡</span>
+                            <strong>My Phrases</strong>
+                            <small>Saved Japanese</small>
+                        </button>
+                        <button class="travel-tool-button" type="button" data-route="travel-decks">
+                            <span class="travel-tool-circle" aria-hidden="true">🎴</span>
+                            <strong>Phrase Decks</strong>
+                            <small>Build collections</small>
+                        </button>
+                        <button class="travel-tool-button" type="button" data-route="travel-notes">
+                            <span class="travel-tool-circle" aria-hidden="true">📝</span>
+                            <strong>Notes</strong>
+                            <small>Trip details</small>
+                        </button>
+                        <button class="travel-tool-button" type="button" data-route="travel-yen">
+                            <span class="travel-tool-circle" aria-hidden="true">¥</span>
+                            <strong>Yen Converter</strong>
+                            <small>Quick calculations</small>
+                        </button>
+                        <button class="travel-tool-button" type="button" data-route="travel-countdown">
+                            <span class="travel-tool-circle" aria-hidden="true">🗓️</span>
+                            <strong>Countdown</strong>
+                            <small id="travel-countdown-card-summary">Plan your trip</small>
+                        </button>
+                        <button class="travel-tool-button" type="button" data-route="travel-offline">
+                            <span class="travel-tool-circle" aria-hidden="true">⇩</span>
+                            <strong>Offline Pack</strong>
+                            <small id="travel-offline-card-summary">720 phrases</small>
+                        </button>
+                    </div>
+                </section>
             </section>
 
             <section id="travel-yen-view" class="view" data-view="travel-yen" aria-labelledby="travel-yen-heading" hidden>
