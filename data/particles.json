@@ -1,0 +1,1229 @@
+[
+  {
+    "type": "particle",
+    "id": "p-wa",
+    "particle": "は",
+    "reading": "は",
+    "romaji": "wa",
+    "categories": [
+      "Topic",
+      "Contrast"
+    ],
+    "frequencyTier": "Essential",
+    "coreMeaning": "as for… / speaking of…",
+    "usedFor": "topic and contrast",
+    "explanation": "は tells the listener what the sentence is about and can contrast one topic with another.",
+    "patterns": [
+      {
+        "form": "N は …",
+        "meaning": "As for N…"
+      }
+    ],
+    "examples": [
+      {
+        "japanese": "私は学生です。",
+        "kana": "わたしは がくせいです。",
+        "romaji": "watashi wa gakusei desu.",
+        "english": "I am a student."
+      }
+    ],
+    "contrasts": [
+      {
+        "particle": "が",
+        "explanation": "が identifies/highlights the subject; は frames the topic."
+      }
+    ],
+    "notes": "",
+    "learnerCaution": "Particle は is pronounced wa."
+  },
+  {
+    "type": "particle",
+    "id": "p-ga",
+    "particle": "が",
+    "reading": "が",
+    "romaji": "ga",
+    "categories": [
+      "Subject",
+      "Focus"
+    ],
+    "frequencyTier": "Essential",
+    "coreMeaning": "subject / the one that…",
+    "usedFor": "subject, existence, focus",
+    "explanation": "が marks the grammatical subject, especially new or identified information.",
+    "patterns": [
+      {
+        "form": "N が V",
+        "meaning": "N is the subject"
+      }
+    ],
+    "examples": [
+      {
+        "japanese": "猫がいます。",
+        "kana": "ねこが います。",
+        "romaji": "neko ga imasu.",
+        "english": "There is a cat."
+      }
+    ],
+    "contrasts": [
+      {
+        "particle": "は",
+        "explanation": "は is topic/contrast; が is subject/focus."
+      }
+    ],
+    "notes": "",
+    "learnerCaution": ""
+  },
+  {
+    "type": "particle",
+    "id": "p-o",
+    "particle": "を",
+    "reading": "を",
+    "romaji": "o",
+    "categories": [
+      "Object",
+      "Movement"
+    ],
+    "frequencyTier": "Essential",
+    "coreMeaning": "object / through",
+    "usedFor": "direct object and movement path",
+    "explanation": "を marks a direct object and can mark a path crossed or left.",
+    "patterns": [
+      {
+        "form": "N を V",
+        "meaning": "Do V to N"
+      }
+    ],
+    "examples": [
+      {
+        "japanese": "本を読みます。",
+        "kana": "ほんを よみます。",
+        "romaji": "hon o yomimasu.",
+        "english": "I read a book."
+      }
+    ],
+    "contrasts": [],
+    "notes": "",
+    "learnerCaution": "Usually pronounced o."
+  },
+  {
+    "type": "particle",
+    "id": "p-ni",
+    "particle": "に",
+    "reading": "に",
+    "romaji": "ni",
+    "categories": [
+      "Time",
+      "Destination",
+      "Target",
+      "Existence"
+    ],
+    "frequencyTier": "Essential",
+    "coreMeaning": "to / at / on / for",
+    "usedFor": "destination, exact time, target, existence",
+    "explanation": "に points to a destination, target, exact time, recipient, or place of existence.",
+    "patterns": [
+      {
+        "form": "Place に 行く",
+        "meaning": "Go to a place"
+      },
+      {
+        "form": "Time に V",
+        "meaning": "Do V at a specific time"
+      }
+    ],
+    "examples": [
+      {
+        "japanese": "七時に起きます。",
+        "kana": "しちじに おきます。",
+        "romaji": "shichiji ni okimasu.",
+        "english": "I wake up at seven."
+      },
+      {
+        "japanese": "東京に行きます。",
+        "kana": "とうきょうに いきます。",
+        "romaji": "toukyou ni ikimasu.",
+        "english": "I am going to Tokyo."
+      }
+    ],
+    "contrasts": [
+      {
+        "particle": "で",
+        "explanation": "に marks destination/existence; で marks where an action occurs."
+      }
+    ],
+    "notes": "",
+    "learnerCaution": ""
+  },
+  {
+    "type": "particle",
+    "id": "p-e",
+    "particle": "へ",
+    "reading": "へ",
+    "romaji": "e",
+    "categories": [
+      "Direction"
+    ],
+    "frequencyTier": "Essential",
+    "coreMeaning": "toward / to",
+    "usedFor": "direction of movement",
+    "explanation": "へ emphasizes direction toward a destination.",
+    "patterns": [
+      {
+        "form": "Place へ 行く",
+        "meaning": "Go toward a place"
+      }
+    ],
+    "examples": [
+      {
+        "japanese": "京都へ行きます。",
+        "kana": "きょうとへ いきます。",
+        "romaji": "kyouto e ikimasu.",
+        "english": "I am going to Kyoto."
+      }
+    ],
+    "contrasts": [],
+    "notes": "",
+    "learnerCaution": "Particle へ is pronounced e."
+  },
+  {
+    "type": "particle",
+    "id": "p-de",
+    "particle": "で",
+    "reading": "で",
+    "romaji": "de",
+    "categories": [
+      "Location",
+      "Means"
+    ],
+    "frequencyTier": "Essential",
+    "coreMeaning": "at / by / with",
+    "usedFor": "action location and means",
+    "explanation": "で marks where an action happens or the means/tool used.",
+    "patterns": [
+      {
+        "form": "Place で V",
+        "meaning": "Do V at a place"
+      },
+      {
+        "form": "Means で V",
+        "meaning": "Do V by/with means"
+      }
+    ],
+    "examples": [
+      {
+        "japanese": "カフェで勉強します。",
+        "kana": "かふぇで べんきょうします。",
+        "romaji": "kafe de benkyou shimasu.",
+        "english": "I study at a café."
+      },
+      {
+        "japanese": "電車で行きます。",
+        "kana": "でんしゃで いきます。",
+        "romaji": "densha de ikimasu.",
+        "english": "I go by train."
+      }
+    ],
+    "contrasts": [],
+    "notes": "",
+    "learnerCaution": ""
+  },
+  {
+    "type": "particle",
+    "id": "p-to",
+    "particle": "と",
+    "reading": "と",
+    "romaji": "to",
+    "categories": [
+      "Quotation",
+      "Company",
+      "Listing"
+    ],
+    "frequencyTier": "Essential",
+    "coreMeaning": "with / and / quote",
+    "usedFor": "companion, complete list, quotation",
+    "explanation": "と can mean with, connect a complete list, or mark quoted content.",
+    "patterns": [
+      {
+        "form": "N と N",
+        "meaning": "N and N"
+      },
+      {
+        "form": "「…」と 言う",
+        "meaning": "Say “…”"
+      }
+    ],
+    "examples": [
+      {
+        "japanese": "友だちと行きます。",
+        "kana": "ともだちと いきます。",
+        "romaji": "tomodachi to ikimasu.",
+        "english": "I go with a friend."
+      }
+    ],
+    "contrasts": [
+      {
+        "particle": "や",
+        "explanation": "と is usually a complete list; や gives examples."
+      }
+    ],
+    "notes": "",
+    "learnerCaution": ""
+  },
+  {
+    "type": "particle",
+    "id": "p-mo",
+    "particle": "も",
+    "reading": "も",
+    "romaji": "mo",
+    "categories": [
+      "Addition",
+      "Emphasis"
+    ],
+    "frequencyTier": "Essential",
+    "coreMeaning": "also / too / even",
+    "usedFor": "addition and emphasis",
+    "explanation": "も adds another item to the same statement and can also mean even.",
+    "patterns": [
+      {
+        "form": "N も …",
+        "meaning": "N also…"
+      }
+    ],
+    "examples": [
+      {
+        "japanese": "私も行きます。",
+        "kana": "わたしも いきます。",
+        "romaji": "watashi mo ikimasu.",
+        "english": "I will go too."
+      }
+    ],
+    "contrasts": [],
+    "notes": "",
+    "learnerCaution": ""
+  },
+  {
+    "type": "particle",
+    "id": "p-no",
+    "particle": "の",
+    "reading": "の",
+    "romaji": "no",
+    "categories": [
+      "Possession",
+      "Modification",
+      "Nominalization"
+    ],
+    "frequencyTier": "Essential",
+    "coreMeaning": "of / ’s / one",
+    "usedFor": "linking nouns and nominalizing",
+    "explanation": "の links nouns and can replace a noun or make a clause noun-like.",
+    "patterns": [
+      {
+        "form": "A の B",
+        "meaning": "B of A / A’s B"
+      }
+    ],
+    "examples": [
+      {
+        "japanese": "日本の電車です。",
+        "kana": "にほんの でんしゃです。",
+        "romaji": "nihon no densha desu.",
+        "english": "It is a Japanese train."
+      }
+    ],
+    "contrasts": [],
+    "notes": "",
+    "learnerCaution": ""
+  },
+  {
+    "type": "particle",
+    "id": "p-kara",
+    "particle": "から",
+    "reading": "から",
+    "romaji": "kara",
+    "categories": [
+      "Origin",
+      "Reason"
+    ],
+    "frequencyTier": "Essential",
+    "coreMeaning": "from / because",
+    "usedFor": "starting point and reason",
+    "explanation": "から marks where/when something begins or gives a reason.",
+    "patterns": [
+      {
+        "form": "A から B まで",
+        "meaning": "From A to B"
+      },
+      {
+        "form": "Clause から",
+        "meaning": "Because…"
+      }
+    ],
+    "examples": [
+      {
+        "japanese": "九時から働きます。",
+        "kana": "くじから はたらきます。",
+        "romaji": "kuji kara hatarakimasu.",
+        "english": "I work from nine."
+      }
+    ],
+    "contrasts": [
+      {
+        "particle": "ので",
+        "explanation": "ので often sounds softer or more explanatory as a reason."
+      }
+    ],
+    "notes": "",
+    "learnerCaution": ""
+  },
+  {
+    "type": "particle",
+    "id": "p-made",
+    "particle": "まで",
+    "reading": "まで",
+    "romaji": "made",
+    "categories": [
+      "Limit",
+      "End point"
+    ],
+    "frequencyTier": "Essential",
+    "coreMeaning": "until / as far as",
+    "usedFor": "end point in time/place",
+    "explanation": "まで marks where, when, or how far something ends.",
+    "patterns": [
+      {
+        "form": "Time/Place まで",
+        "meaning": "Until/up to"
+      }
+    ],
+    "examples": [
+      {
+        "japanese": "五時まで働きます。",
+        "kana": "ごじまで はたらきます。",
+        "romaji": "goji made hatarakimasu.",
+        "english": "I work until five."
+      }
+    ],
+    "contrasts": [],
+    "notes": "",
+    "learnerCaution": ""
+  },
+  {
+    "type": "particle",
+    "id": "p-yori",
+    "particle": "より",
+    "reading": "より",
+    "romaji": "yori",
+    "categories": [
+      "Comparison"
+    ],
+    "frequencyTier": "Common",
+    "coreMeaning": "than",
+    "usedFor": "comparison baseline",
+    "explanation": "より marks what something is compared against.",
+    "patterns": [
+      {
+        "form": "A より B のほうが…",
+        "meaning": "B is more … than A"
+      }
+    ],
+    "examples": [
+      {
+        "japanese": "電車より新幹線のほうが速いです。",
+        "kana": "でんしゃより しんかんせんのほうが はやいです。",
+        "romaji": "densha yori shinkansen no hou ga hayai desu.",
+        "english": "The Shinkansen is faster than a regular train."
+      }
+    ],
+    "contrasts": [],
+    "notes": "",
+    "learnerCaution": ""
+  },
+  {
+    "type": "particle",
+    "id": "p-ya",
+    "particle": "や",
+    "reading": "や",
+    "romaji": "ya",
+    "categories": [
+      "Listing"
+    ],
+    "frequencyTier": "Essential",
+    "coreMeaning": "A, B, and so on",
+    "usedFor": "non-exhaustive listing",
+    "explanation": "や lists examples and implies there are other similar items.",
+    "patterns": [
+      {
+        "form": "A や B",
+        "meaning": "A, B, and things like that"
+      }
+    ],
+    "examples": [
+      {
+        "japanese": "寺や神社を見ました。",
+        "kana": "てらや じんじゃを みました。",
+        "romaji": "tera ya jinja o mimashita.",
+        "english": "I saw temples, shrines, and so on."
+      }
+    ],
+    "contrasts": [],
+    "notes": "",
+    "learnerCaution": ""
+  },
+  {
+    "type": "particle",
+    "id": "p-toka",
+    "particle": "とか",
+    "reading": "とか",
+    "romaji": "toka",
+    "categories": [
+      "Listing",
+      "Casual"
+    ],
+    "frequencyTier": "Common",
+    "coreMeaning": "things like / or",
+    "usedFor": "casual examples",
+    "explanation": "とか loosely lists examples in conversation.",
+    "patterns": [
+      {
+        "form": "A とか B とか",
+        "meaning": "Things like A and B"
+      }
+    ],
+    "examples": [
+      {
+        "japanese": "ラーメンとか寿司が食べたい。",
+        "kana": "らーめんとか すしが たべたい。",
+        "romaji": "raamen toka sushi ga tabetai.",
+        "english": "I want ramen, sushi, or something like that."
+      }
+    ],
+    "contrasts": [],
+    "notes": "",
+    "learnerCaution": ""
+  },
+  {
+    "type": "particle",
+    "id": "p-nado",
+    "particle": "など",
+    "reading": "など",
+    "romaji": "nado",
+    "categories": [
+      "Listing"
+    ],
+    "frequencyTier": "Common",
+    "coreMeaning": "etc. / and the like",
+    "usedFor": "examples and similar items",
+    "explanation": "など means etc. or and the like.",
+    "patterns": [
+      {
+        "form": "A や B など",
+        "meaning": "A, B, etc."
+      }
+    ],
+    "examples": [
+      {
+        "japanese": "東京や大阪などに行きました。",
+        "kana": "とうきょうや おおさかなどに いきました。",
+        "romaji": "toukyou ya oosaka nado ni ikimashita.",
+        "english": "I went to places such as Tokyo and Osaka."
+      }
+    ],
+    "contrasts": [],
+    "notes": "",
+    "learnerCaution": ""
+  },
+  {
+    "type": "particle",
+    "id": "p-ka",
+    "particle": "か",
+    "reading": "か",
+    "romaji": "ka",
+    "categories": [
+      "Question",
+      "Choice"
+    ],
+    "frequencyTier": "Essential",
+    "coreMeaning": "question / or / whether",
+    "usedFor": "questions and alternatives",
+    "explanation": "か marks a question, alternatives, or embedded uncertainty.",
+    "patterns": [
+      {
+        "form": "Sentence か",
+        "meaning": "Question"
+      },
+      {
+        "form": "A か B",
+        "meaning": "A or B"
+      }
+    ],
+    "examples": [
+      {
+        "japanese": "大丈夫ですか。",
+        "kana": "だいじょうぶですか。",
+        "romaji": "daijoubu desu ka.",
+        "english": "Are you okay?"
+      }
+    ],
+    "contrasts": [],
+    "notes": "",
+    "learnerCaution": ""
+  },
+  {
+    "type": "particle",
+    "id": "p-ne",
+    "particle": "ね",
+    "reading": "ね",
+    "romaji": "ne",
+    "categories": [
+      "Sentence ending",
+      "Agreement"
+    ],
+    "frequencyTier": "Essential",
+    "coreMeaning": "right? / isn’t it",
+    "usedFor": "shared agreement",
+    "explanation": "ね invites the listener to agree or share a feeling.",
+    "patterns": [
+      {
+        "form": "Sentence + ね",
+        "meaning": "Right? / isn’t it"
+      }
+    ],
+    "examples": [
+      {
+        "japanese": "きれいですね。",
+        "kana": "きれいですね。",
+        "romaji": "kirei desu ne.",
+        "english": "It is beautiful, isn’t it?"
+      }
+    ],
+    "contrasts": [],
+    "notes": "",
+    "learnerCaution": ""
+  },
+  {
+    "type": "particle",
+    "id": "p-yo",
+    "particle": "よ",
+    "reading": "よ",
+    "romaji": "yo",
+    "categories": [
+      "Sentence ending",
+      "Emphasis"
+    ],
+    "frequencyTier": "Essential",
+    "coreMeaning": "you know / I tell you",
+    "usedFor": "asserting information",
+    "explanation": "よ highlights information for the listener.",
+    "patterns": [
+      {
+        "form": "Sentence + よ",
+        "meaning": "You know / I tell you"
+      }
+    ],
+    "examples": [
+      {
+        "japanese": "この店、おいしいですよ。",
+        "kana": "このみせ、おいしいですよ。",
+        "romaji": "kono mise, oishii desu yo.",
+        "english": "This place is good, you know."
+      }
+    ],
+    "contrasts": [],
+    "notes": "",
+    "learnerCaution": ""
+  },
+  {
+    "type": "particle",
+    "id": "p-yone",
+    "particle": "よね",
+    "reading": "よね",
+    "romaji": "yo ne",
+    "categories": [
+      "Sentence ending",
+      "Agreement"
+    ],
+    "frequencyTier": "Common",
+    "coreMeaning": "right? / you know, right?",
+    "usedFor": "assertion plus agreement",
+    "explanation": "よね combines emphasis with a request for agreement.",
+    "patterns": [
+      {
+        "form": "Sentence + よね",
+        "meaning": "It is…, right?"
+      }
+    ],
+    "examples": [
+      {
+        "japanese": "明日は休みですよね。",
+        "kana": "あしたは やすみですよね。",
+        "romaji": "ashita wa yasumi desu yo ne.",
+        "english": "Tomorrow is a day off, right?"
+      }
+    ],
+    "contrasts": [],
+    "notes": "",
+    "learnerCaution": ""
+  },
+  {
+    "type": "particle",
+    "id": "p-naa",
+    "particle": "な／なあ",
+    "reading": "な／なあ",
+    "romaji": "na / naa",
+    "categories": [
+      "Sentence ending",
+      "Emotion"
+    ],
+    "frequencyTier": "Common",
+    "coreMeaning": "I wonder / wow / huh",
+    "usedFor": "reflection and emotion",
+    "explanation": "なあ expresses reflection, admiration, desire, or emotion in casual speech.",
+    "patterns": [
+      {
+        "form": "Sentence + なあ",
+        "meaning": "Reflective/emotional ending"
+      }
+    ],
+    "examples": [
+      {
+        "japanese": "日本に行きたいなあ。",
+        "kana": "にほんに いきたいなあ。",
+        "romaji": "nihon ni ikitai naa.",
+        "english": "I really want to go to Japan."
+      }
+    ],
+    "contrasts": [],
+    "notes": "",
+    "learnerCaution": "Do not confuse this with V-dictionary + な meaning “Don’t…”."
+  },
+  {
+    "type": "particle",
+    "id": "p-dake",
+    "particle": "だけ",
+    "reading": "だけ",
+    "romaji": "dake",
+    "categories": [
+      "Restriction"
+    ],
+    "frequencyTier": "Essential",
+    "coreMeaning": "only / just",
+    "usedFor": "limiting an item or amount",
+    "explanation": "だけ means only or just without requiring a negative predicate.",
+    "patterns": [
+      {
+        "form": "N だけ",
+        "meaning": "Only N"
+      }
+    ],
+    "examples": [
+      {
+        "japanese": "水だけ飲みます。",
+        "kana": "みずだけ のみます。",
+        "romaji": "mizu dake nomimasu.",
+        "english": "I only drink water."
+      }
+    ],
+    "contrasts": [
+      {
+        "particle": "しか",
+        "explanation": "しか also means only, but normally requires a negative predicate."
+      }
+    ],
+    "notes": "",
+    "learnerCaution": ""
+  },
+  {
+    "type": "particle",
+    "id": "p-shika",
+    "particle": "しか",
+    "reading": "しか",
+    "romaji": "shika",
+    "categories": [
+      "Restriction"
+    ],
+    "frequencyTier": "Common",
+    "coreMeaning": "nothing but / only",
+    "usedFor": "strong restriction",
+    "explanation": "しか requires a negative predicate and emphasizes that there is nothing beyond the stated amount/option.",
+    "patterns": [
+      {
+        "form": "N しか + negative",
+        "meaning": "Only N"
+      }
+    ],
+    "examples": [
+      {
+        "japanese": "千円しかありません。",
+        "kana": "せんえんしか ありません。",
+        "romaji": "sen en shika arimasen.",
+        "english": "I only have 1,000 yen."
+      }
+    ],
+    "contrasts": [],
+    "notes": "",
+    "learnerCaution": "Use a negative predicate after しか."
+  },
+  {
+    "type": "particle",
+    "id": "p-bakari",
+    "particle": "ばかり",
+    "reading": "ばかり",
+    "romaji": "bakari",
+    "categories": [
+      "Restriction",
+      "Approximation"
+    ],
+    "frequencyTier": "Common",
+    "coreMeaning": "nothing but / just did",
+    "usedFor": "concentration, approximation, recent completion",
+    "explanation": "ばかり can mean nothing but, about, or just did depending on its pattern.",
+    "patterns": [
+      {
+        "form": "N ばかり",
+        "meaning": "Nothing but N"
+      },
+      {
+        "form": "Vた ばかり",
+        "meaning": "Just did V"
+      }
+    ],
+    "examples": [
+      {
+        "japanese": "甘いものばかり食べています。",
+        "kana": "あまいものばかり たべています。",
+        "romaji": "amai mono bakari tabete imasu.",
+        "english": "I keep eating nothing but sweets."
+      }
+    ],
+    "contrasts": [],
+    "notes": "",
+    "learnerCaution": ""
+  },
+  {
+    "type": "particle",
+    "id": "p-hodo",
+    "particle": "ほど",
+    "reading": "ほど",
+    "romaji": "hodo",
+    "categories": [
+      "Degree",
+      "Comparison"
+    ],
+    "frequencyTier": "Common",
+    "coreMeaning": "to the extent / as much as",
+    "usedFor": "degree and comparison",
+    "explanation": "ほど marks degree or extent.",
+    "patterns": [
+      {
+        "form": "N ほど…ない",
+        "meaning": "Not as … as N"
+      }
+    ],
+    "examples": [
+      {
+        "japanese": "東京ほど人が多くないです。",
+        "kana": "とうきょうほど ひとが おおくないです。",
+        "romaji": "toukyou hodo hito ga ookunai desu.",
+        "english": "There are not as many people as in Tokyo."
+      }
+    ],
+    "contrasts": [],
+    "notes": "",
+    "learnerCaution": ""
+  },
+  {
+    "type": "particle",
+    "id": "p-kurai",
+    "particle": "くらい／ぐらい",
+    "reading": "くらい／ぐらい",
+    "romaji": "kurai / gurai",
+    "categories": [
+      "Approximation",
+      "Degree"
+    ],
+    "frequencyTier": "Common",
+    "coreMeaning": "about / approximately",
+    "usedFor": "approximate amount or degree",
+    "explanation": "くらい and ぐらい often mean about or approximately.",
+    "patterns": [
+      {
+        "form": "Number + くらい",
+        "meaning": "About [number]"
+      }
+    ],
+    "examples": [
+      {
+        "japanese": "駅まで十分ぐらいです。",
+        "kana": "えきまで じゅっぷんぐらいです。",
+        "romaji": "eki made juppun gurai desu.",
+        "english": "It is about ten minutes to the station."
+      }
+    ],
+    "contrasts": [],
+    "notes": "",
+    "learnerCaution": ""
+  },
+  {
+    "type": "particle",
+    "id": "p-koso",
+    "particle": "こそ",
+    "reading": "こそ",
+    "romaji": "koso",
+    "categories": [
+      "Emphasis",
+      "Focus"
+    ],
+    "frequencyTier": "Common",
+    "coreMeaning": "precisely / this is the one",
+    "usedFor": "strong focus",
+    "explanation": "こそ strongly emphasizes the word or phrase before it.",
+    "patterns": [
+      {
+        "form": "N こそ",
+        "meaning": "Precisely N / N above all"
+      }
+    ],
+    "examples": [
+      {
+        "japanese": "こちらこそ、ありがとうございます。",
+        "kana": "こちらこそ、ありがとうございます。",
+        "romaji": "kochira koso, arigatou gozaimasu.",
+        "english": "No, thank you / The pleasure is mine."
+      }
+    ],
+    "contrasts": [],
+    "notes": "",
+    "learnerCaution": ""
+  },
+  {
+    "type": "particle",
+    "id": "p-demo",
+    "particle": "でも",
+    "reading": "でも",
+    "romaji": "demo",
+    "categories": [
+      "Examples",
+      "Choice"
+    ],
+    "frequencyTier": "Common",
+    "coreMeaning": "even / or something like",
+    "usedFor": "suggesting examples and “even”",
+    "explanation": "でも can offer a casual example or mean even depending on context.",
+    "patterns": [
+      {
+        "form": "N でも",
+        "meaning": "N or something / even N"
+      }
+    ],
+    "examples": [
+      {
+        "japanese": "コーヒーでも飲みませんか。",
+        "kana": "こーひーでも のみませんか。",
+        "romaji": "koohii demo nomimasen ka.",
+        "english": "Would you like coffee or something?"
+      }
+    ],
+    "contrasts": [],
+    "notes": "",
+    "learnerCaution": ""
+  },
+  {
+    "type": "particle",
+    "id": "p-sae",
+    "particle": "さえ",
+    "reading": "さえ",
+    "romaji": "sae",
+    "categories": [
+      "Emphasis"
+    ],
+    "frequencyTier": "Advanced",
+    "coreMeaning": "even",
+    "usedFor": "extreme example",
+    "explanation": "さえ highlights an extreme or surprising example.",
+    "patterns": [
+      {
+        "form": "N さえ",
+        "meaning": "Even N"
+      }
+    ],
+    "examples": [
+      {
+        "japanese": "名前さえ知りません。",
+        "kana": "なまえさえ しりません。",
+        "romaji": "namae sae shirimasen.",
+        "english": "I do not even know the name."
+      }
+    ],
+    "contrasts": [],
+    "notes": "",
+    "learnerCaution": ""
+  },
+  {
+    "type": "particle",
+    "id": "p-tte",
+    "particle": "って",
+    "reading": "って",
+    "romaji": "tte",
+    "categories": [
+      "Quotation",
+      "Topic",
+      "Casual"
+    ],
+    "frequencyTier": "Common",
+    "coreMeaning": "quote / speaking of",
+    "usedFor": "casual quotation and topic marking",
+    "explanation": "って is common in speech as a casual quotation marker and topic marker.",
+    "patterns": [
+      {
+        "form": "「…」って言う",
+        "meaning": "Say “…” casually"
+      },
+      {
+        "form": "N って…",
+        "meaning": "Speaking of N…"
+      }
+    ],
+    "examples": [
+      {
+        "japanese": "明日行くって言ってた。",
+        "kana": "あした いくって いってた。",
+        "romaji": "ashita iku tte itteta.",
+        "english": "They said they were going tomorrow."
+      }
+    ],
+    "contrasts": [],
+    "notes": "",
+    "learnerCaution": "Casual; と/という is safer in formal contexts."
+  },
+  {
+    "type": "particle",
+    "id": "p-kana",
+    "particle": "かな",
+    "reading": "かな",
+    "romaji": "kana",
+    "categories": [
+      "Sentence ending",
+      "Uncertainty"
+    ],
+    "frequencyTier": "Common",
+    "coreMeaning": "I wonder",
+    "usedFor": "casual wondering",
+    "explanation": "かな expresses uncertainty or wondering, often to oneself.",
+    "patterns": [
+      {
+        "form": "Plain sentence + かな",
+        "meaning": "I wonder whether…"
+      }
+    ],
+    "examples": [
+      {
+        "japanese": "明日、晴れるかな。",
+        "kana": "あした、はれるかな。",
+        "romaji": "ashita, hareru kana.",
+        "english": "I wonder if it will be sunny tomorrow."
+      }
+    ],
+    "contrasts": [],
+    "notes": "",
+    "learnerCaution": ""
+  },
+  {
+    "type": "particle",
+    "id": "p-nitsuite",
+    "particle": "について",
+    "reading": "について",
+    "romaji": "ni tsuite",
+    "categories": [
+      "Compound particle",
+      "Topic"
+    ],
+    "frequencyTier": "Common",
+    "coreMeaning": "about / concerning",
+    "usedFor": "topic of discussion",
+    "explanation": "について introduces what is being discussed, studied, or asked about.",
+    "patterns": [
+      {
+        "form": "N について + V",
+        "meaning": "V about N"
+      }
+    ],
+    "examples": [
+      {
+        "japanese": "日本の文化について勉強しています。",
+        "kana": "にほんの ぶんかについて べんきょうしています。",
+        "romaji": "nihon no bunka ni tsuite benkyou shite imasu.",
+        "english": "I am studying Japanese culture."
+      }
+    ],
+    "contrasts": [],
+    "notes": "",
+    "learnerCaution": ""
+  },
+  {
+    "type": "particle",
+    "id": "p-nitaishite",
+    "particle": "に対して",
+    "reading": "にたいして",
+    "romaji": "ni taishite",
+    "categories": [
+      "Compound particle",
+      "Target",
+      "Contrast"
+    ],
+    "frequencyTier": "Advanced",
+    "coreMeaning": "toward / in contrast to",
+    "usedFor": "target or contrast",
+    "explanation": "に対して marks the target of an attitude/action or sets up a contrast.",
+    "patterns": [
+      {
+        "form": "N に対して + V",
+        "meaning": "V toward N"
+      }
+    ],
+    "examples": [
+      {
+        "japanese": "お客様に対して丁寧に話します。",
+        "kana": "おきゃくさまにたいして ていねいに はなします。",
+        "romaji": "okyakusama ni taishite teinei ni hanashimasu.",
+        "english": "We speak politely to customers."
+      }
+    ],
+    "contrasts": [],
+    "notes": "",
+    "learnerCaution": ""
+  },
+  {
+    "type": "particle",
+    "id": "p-nitotte",
+    "particle": "にとって",
+    "reading": "にとって",
+    "romaji": "ni totte",
+    "categories": [
+      "Compound particle",
+      "Perspective"
+    ],
+    "frequencyTier": "Advanced",
+    "coreMeaning": "for / from the perspective of",
+    "usedFor": "viewpoint",
+    "explanation": "にとって marks the person or group whose viewpoint a judgment is based on.",
+    "patterns": [
+      {
+        "form": "N にとって…",
+        "meaning": "For N / from N’s perspective"
+      }
+    ],
+    "examples": [
+      {
+        "japanese": "旅行者にとって便利なアプリです。",
+        "kana": "りょこうしゃにとって べんりな あぷりです。",
+        "romaji": "ryokousha ni totte benri na apuri desu.",
+        "english": "It is a convenient app for travelers."
+      }
+    ],
+    "contrasts": [],
+    "notes": "",
+    "learnerCaution": ""
+  },
+  {
+    "type": "particle",
+    "id": "p-niyotte",
+    "particle": "によって",
+    "reading": "によって",
+    "romaji": "ni yotte",
+    "categories": [
+      "Compound particle",
+      "Means",
+      "Cause"
+    ],
+    "frequencyTier": "Advanced",
+    "coreMeaning": "by / depending on / due to",
+    "usedFor": "means, cause, variation",
+    "explanation": "によって can express means, cause, variation by factor, or a passive agent.",
+    "patterns": [
+      {
+        "form": "N によって…",
+        "meaning": "By / depending on N"
+      }
+    ],
+    "examples": [
+      {
+        "japanese": "人によって考え方が違います。",
+        "kana": "ひとによって かんがえかたが ちがいます。",
+        "romaji": "hito ni yotte kangaekata ga chigaimasu.",
+        "english": "Ways of thinking differ depending on the person."
+      }
+    ],
+    "contrasts": [],
+    "notes": "",
+    "learnerCaution": ""
+  },
+  {
+    "type": "particle",
+    "id": "p-toshite",
+    "particle": "として",
+    "reading": "として",
+    "romaji": "to shite",
+    "categories": [
+      "Compound particle",
+      "Role"
+    ],
+    "frequencyTier": "Advanced",
+    "coreMeaning": "as / in the role of",
+    "usedFor": "role or capacity",
+    "explanation": "として marks the role or capacity in which someone/something functions.",
+    "patterns": [
+      {
+        "form": "N として…",
+        "meaning": "As N"
+      }
+    ],
+    "examples": [
+      {
+        "japanese": "医師として働いています。",
+        "kana": "いしとして はたらいています。",
+        "romaji": "ishi to shite hataraite imasu.",
+        "english": "I work as a doctor."
+      }
+    ],
+    "contrasts": [],
+    "notes": "",
+    "learnerCaution": ""
+  },
+  {
+    "type": "particle",
+    "id": "p-madeni",
+    "particle": "までに",
+    "reading": "までに",
+    "romaji": "made ni",
+    "categories": [
+      "Deadline",
+      "Time"
+    ],
+    "frequencyTier": "Common",
+    "coreMeaning": "by / no later than",
+    "usedFor": "deadline",
+    "explanation": "までに marks a deadline before which something must be completed.",
+    "patterns": [
+      {
+        "form": "Time までに V",
+        "meaning": "Do V by the deadline"
+      }
+    ],
+    "examples": [
+      {
+        "japanese": "九時までに来てください。",
+        "kana": "くじまでに きてください。",
+        "romaji": "kuji made ni kite kudasai.",
+        "english": "Please come by nine."
+      }
+    ],
+    "contrasts": [
+      {
+        "particle": "まで",
+        "explanation": "まで = continues until; までに = completed by a deadline."
+      }
+    ],
+    "notes": "",
+    "learnerCaution": ""
+  }
+]

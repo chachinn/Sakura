@@ -1,0 +1,2183 @@
+[
+  {
+    "type": "grammar",
+    "id": "g-desu",
+    "pattern": "です／だ",
+    "reading": "です／だ",
+    "romaji": "desu / da",
+    "jlpt": "N5",
+    "categories": [
+      "Basics"
+    ],
+    "meaning": "is / am / are",
+    "formation": [
+      "N / な-adjective + です",
+      "N / な-adjective + だ (plain)"
+    ],
+    "explanation": "Copula used with nouns and な-adjectives. です is polite; だ is plain.",
+    "examples": [
+      {
+        "japanese": "私は会社員です。",
+        "kana": "わたしは かいしゃいんです。",
+        "romaji": "watashi wa kaishain desu.",
+        "english": "I am an office worker."
+      }
+    ],
+    "nuance": "",
+    "commonMistakes": "Do not add だ directly after an い-adjective.",
+    "related": [],
+    "register": "Neutral"
+  },
+  {
+    "type": "grammar",
+    "id": "g-masu",
+    "pattern": "〜ます",
+    "reading": "〜ます",
+    "romaji": "-masu",
+    "jlpt": "N5",
+    "categories": [
+      "Basics",
+      "Politeness"
+    ],
+    "meaning": "polite non-past",
+    "formation": [
+      "Verb ます-stem + ます"
+    ],
+    "explanation": "Standard polite form for present/future actions and habits.",
+    "examples": [
+      {
+        "japanese": "毎日日本語を勉強します。",
+        "kana": "まいにち にほんごを べんきょうします。",
+        "romaji": "mainichi nihongo o benkyou shimasu.",
+        "english": "I study Japanese every day."
+      }
+    ],
+    "nuance": "",
+    "commonMistakes": "",
+    "related": [],
+    "register": "Polite"
+  },
+  {
+    "type": "grammar",
+    "id": "g-teiru",
+    "pattern": "〜ている",
+    "reading": "〜ている",
+    "romaji": "-te iru",
+    "jlpt": "N5",
+    "categories": [
+      "Aspect",
+      "State"
+    ],
+    "meaning": "be doing / be in a state",
+    "formation": [
+      "Verb て-form + いる"
+    ],
+    "explanation": "Describes an action in progress, habit, or resulting state depending on the verb.",
+    "examples": [
+      {
+        "japanese": "今、電車を待っています。",
+        "kana": "いま、でんしゃを まっています。",
+        "romaji": "ima, densha o matte imasu.",
+        "english": "I am waiting for the train now."
+      }
+    ],
+    "nuance": "Not every 〜ている maps directly to English “-ing”.",
+    "commonMistakes": "",
+    "related": [],
+    "register": "Neutral"
+  },
+  {
+    "type": "grammar",
+    "id": "g-tekudasai",
+    "pattern": "〜てください",
+    "reading": "〜てください",
+    "romaji": "-te kudasai",
+    "jlpt": "N5",
+    "categories": [
+      "Requests"
+    ],
+    "meaning": "please do…",
+    "formation": [
+      "Verb て-form + ください"
+    ],
+    "explanation": "A standard polite request.",
+    "examples": [
+      {
+        "japanese": "ここに名前を書いてください。",
+        "kana": "ここに なまえを かいてください。",
+        "romaji": "koko ni namae o kaite kudasai.",
+        "english": "Please write your name here."
+      }
+    ],
+    "nuance": "",
+    "commonMistakes": "",
+    "related": [],
+    "register": "Polite"
+  },
+  {
+    "type": "grammar",
+    "id": "g-temoii",
+    "pattern": "〜てもいい",
+    "reading": "〜てもいい",
+    "romaji": "-te mo ii",
+    "jlpt": "N5",
+    "categories": [
+      "Permission"
+    ],
+    "meaning": "may / it is okay to…",
+    "formation": [
+      "Verb て-form + もいい"
+    ],
+    "explanation": "Gives or asks permission.",
+    "examples": [
+      {
+        "japanese": "ここで写真を撮ってもいいですか。",
+        "kana": "ここで しゃしんを とってもいいですか。",
+        "romaji": "koko de shashin o totte mo ii desu ka.",
+        "english": "May I take a photo here?"
+      }
+    ],
+    "nuance": "",
+    "commonMistakes": "",
+    "related": [],
+    "register": "Neutral"
+  },
+  {
+    "type": "grammar",
+    "id": "g-tewaikenai",
+    "pattern": "〜てはいけない",
+    "reading": "〜てはいけない",
+    "romaji": "-te wa ikenai",
+    "jlpt": "N5",
+    "categories": [
+      "Prohibition"
+    ],
+    "meaning": "must not / may not",
+    "formation": [
+      "Verb て-form + はいけない"
+    ],
+    "explanation": "States that an action is prohibited.",
+    "examples": [
+      {
+        "japanese": "ここでタバコを吸ってはいけません。",
+        "kana": "ここで たばこを すってはいけません。",
+        "romaji": "koko de tabako o sutte wa ikemasen.",
+        "english": "You must not smoke here."
+      }
+    ],
+    "nuance": "",
+    "commonMistakes": "",
+    "related": [],
+    "register": "Neutral"
+  },
+  {
+    "type": "grammar",
+    "id": "g-naidekudasai",
+    "pattern": "〜ないでください",
+    "reading": "〜ないでください",
+    "romaji": "-naide kudasai",
+    "jlpt": "N5",
+    "categories": [
+      "Requests",
+      "Negation"
+    ],
+    "meaning": "please do not…",
+    "formation": [
+      "Verb ない-form + でください"
+    ],
+    "explanation": "A polite request not to do something.",
+    "examples": [
+      {
+        "japanese": "ここに荷物を置かないでください。",
+        "kana": "ここに にもつを おかないでください。",
+        "romaji": "koko ni nimotsu o okanaide kudasai.",
+        "english": "Please do not leave luggage here."
+      }
+    ],
+    "nuance": "",
+    "commonMistakes": "",
+    "related": [],
+    "register": "Neutral"
+  },
+  {
+    "type": "grammar",
+    "id": "g-tai",
+    "pattern": "〜たい",
+    "reading": "〜たい",
+    "romaji": "-tai",
+    "jlpt": "N5",
+    "categories": [
+      "Desire"
+    ],
+    "meaning": "want to do…",
+    "formation": [
+      "Verb ます-stem + たい"
+    ],
+    "explanation": "Expresses the speaker’s desire to do something.",
+    "examples": [
+      {
+        "japanese": "日本で温泉に入りたいです。",
+        "kana": "にほんで おんせんに はいりたいです。",
+        "romaji": "nihon de onsen ni hairitai desu.",
+        "english": "I want to go into an onsen in Japan."
+      }
+    ],
+    "nuance": "",
+    "commonMistakes": "Directly stating another person’s 〜たい as a fact can sound presumptive.",
+    "related": [],
+    "register": "Neutral"
+  },
+  {
+    "type": "grammar",
+    "id": "g-hoshii",
+    "pattern": "〜ほしい",
+    "reading": "〜ほしい",
+    "romaji": "-hoshii",
+    "jlpt": "N5",
+    "categories": [
+      "Desire"
+    ],
+    "meaning": "want (a thing)",
+    "formation": [
+      "N が ほしい"
+    ],
+    "explanation": "Expresses wanting a noun/thing.",
+    "examples": [
+      {
+        "japanese": "新しいカメラがほしいです。",
+        "kana": "あたらしい かめらが ほしいです。",
+        "romaji": "atarashii kamera ga hoshii desu.",
+        "english": "I want a new camera."
+      }
+    ],
+    "nuance": "",
+    "commonMistakes": "",
+    "related": [],
+    "register": "Neutral"
+  },
+  {
+    "type": "grammar",
+    "id": "g-mashou",
+    "pattern": "〜ましょう",
+    "reading": "〜ましょう",
+    "romaji": "-mashou",
+    "jlpt": "N5",
+    "categories": [
+      "Invitation"
+    ],
+    "meaning": "let’s…",
+    "formation": [
+      "Verb ます-stem + ましょう"
+    ],
+    "explanation": "A polite proposal to do something together.",
+    "examples": [
+      {
+        "japanese": "少し休みましょう。",
+        "kana": "すこし やすみましょう。",
+        "romaji": "sukoshi yasumimashou.",
+        "english": "Let’s take a short break."
+      }
+    ],
+    "nuance": "",
+    "commonMistakes": "",
+    "related": [],
+    "register": "Polite"
+  },
+  {
+    "type": "grammar",
+    "id": "g-masenka",
+    "pattern": "〜ませんか",
+    "reading": "〜ませんか",
+    "romaji": "-masen ka",
+    "jlpt": "N5",
+    "categories": [
+      "Invitation"
+    ],
+    "meaning": "would you like to…?",
+    "formation": [
+      "Verb ます-stem + ませんか"
+    ],
+    "explanation": "A polite invitation.",
+    "examples": [
+      {
+        "japanese": "一緒にご飯を食べませんか。",
+        "kana": "いっしょに ごはんを たべませんか。",
+        "romaji": "issho ni gohan o tabemasen ka.",
+        "english": "Would you like to eat together?"
+      }
+    ],
+    "nuance": "",
+    "commonMistakes": "",
+    "related": [],
+    "register": "Polite"
+  },
+  {
+    "type": "grammar",
+    "id": "g-kara",
+    "pattern": "〜から",
+    "reading": "〜から",
+    "romaji": "-kara",
+    "jlpt": "N5",
+    "categories": [
+      "Reason"
+    ],
+    "meaning": "because…",
+    "formation": [
+      "Plain clause + から",
+      "N / な-adjective + だから"
+    ],
+    "explanation": "Gives a direct reason or cause.",
+    "examples": [
+      {
+        "japanese": "疲れたから、今日は早く寝ます。",
+        "kana": "つかれたから、きょうは はやく ねます。",
+        "romaji": "tsukareta kara, kyou wa hayaku nemasu.",
+        "english": "Because I am tired, I will sleep early today."
+      }
+    ],
+    "nuance": "",
+    "commonMistakes": "",
+    "related": [
+      "〜ので"
+    ],
+    "register": "Neutral"
+  },
+  {
+    "type": "grammar",
+    "id": "g-node",
+    "pattern": "〜ので",
+    "reading": "〜ので",
+    "romaji": "-node",
+    "jlpt": "N5",
+    "categories": [
+      "Reason"
+    ],
+    "meaning": "because / since",
+    "formation": [
+      "Plain clause + ので",
+      "N / な-adjective + なので"
+    ],
+    "explanation": "Gives an explanatory reason, often softer than から.",
+    "examples": [
+      {
+        "japanese": "雨なので、タクシーで行きます。",
+        "kana": "あめなので、たくしーで いきます。",
+        "romaji": "ame na node, takushii de ikimasu.",
+        "english": "Since it is raining, I will go by taxi."
+      }
+    ],
+    "nuance": "",
+    "commonMistakes": "",
+    "related": [
+      "〜から"
+    ],
+    "register": "Neutral"
+  },
+  {
+    "type": "grammar",
+    "id": "g-kedo",
+    "pattern": "〜けど／〜が",
+    "reading": "〜けど／〜が",
+    "romaji": "-kedo / -ga",
+    "jlpt": "N5",
+    "categories": [
+      "Contrast",
+      "Softening"
+    ],
+    "meaning": "but / though",
+    "formation": [
+      "Plain clause + けど",
+      "Polite clause + が"
+    ],
+    "explanation": "Connects contrasting ideas and can soften what follows.",
+    "examples": [
+      {
+        "japanese": "行きたいけど、時間がありません。",
+        "kana": "いきたいけど、じかんが ありません。",
+        "romaji": "ikitai kedo, jikan ga arimasen.",
+        "english": "I want to go, but I do not have time."
+      }
+    ],
+    "nuance": "",
+    "commonMistakes": "",
+    "related": [],
+    "register": "Neutral"
+  },
+  {
+    "type": "grammar",
+    "id": "g-toki",
+    "pattern": "〜とき",
+    "reading": "〜とき",
+    "romaji": "-toki",
+    "jlpt": "N5",
+    "categories": [
+      "Time"
+    ],
+    "meaning": "when",
+    "formation": [
+      "Plain form + とき",
+      "N の + とき",
+      "な-adjective + なとき"
+    ],
+    "explanation": "Marks the time when an action or state occurs.",
+    "examples": [
+      {
+        "japanese": "日本に行くとき、SIMカードを買います。",
+        "kana": "にほんに いくとき、しむかーどを かいます。",
+        "romaji": "nihon ni iku toki, shimu kaado o kaimasu.",
+        "english": "When I go to Japan, I will buy a SIM card."
+      }
+    ],
+    "nuance": "",
+    "commonMistakes": "",
+    "related": [],
+    "register": "Neutral"
+  },
+  {
+    "type": "grammar",
+    "id": "g-maeni",
+    "pattern": "〜前に",
+    "reading": "〜まえに",
+    "romaji": "-mae ni",
+    "jlpt": "N5",
+    "categories": [
+      "Time",
+      "Sequence"
+    ],
+    "meaning": "before…",
+    "formation": [
+      "Verb dictionary + 前に",
+      "N の + 前に"
+    ],
+    "explanation": "One action happens before another.",
+    "examples": [
+      {
+        "japanese": "寝る前に歯を磨きます。",
+        "kana": "ねるまえに はを みがきます。",
+        "romaji": "neru mae ni ha o migakimasu.",
+        "english": "I brush my teeth before sleeping."
+      }
+    ],
+    "nuance": "",
+    "commonMistakes": "",
+    "related": [],
+    "register": "Neutral"
+  },
+  {
+    "type": "grammar",
+    "id": "g-atode",
+    "pattern": "〜あとで",
+    "reading": "〜あとで",
+    "romaji": "-ato de",
+    "jlpt": "N5",
+    "categories": [
+      "Time",
+      "Sequence"
+    ],
+    "meaning": "after / later",
+    "formation": [
+      "Verb past + あとで",
+      "N の + あとで"
+    ],
+    "explanation": "One action happens after another.",
+    "examples": [
+      {
+        "japanese": "仕事のあとで買い物します。",
+        "kana": "しごとのあとで かいものします。",
+        "romaji": "shigoto no ato de kaimono shimasu.",
+        "english": "I will shop after work."
+      }
+    ],
+    "nuance": "",
+    "commonMistakes": "",
+    "related": [],
+    "register": "Neutral"
+  },
+  {
+    "type": "grammar",
+    "id": "g-tekara",
+    "pattern": "〜てから",
+    "reading": "〜てから",
+    "romaji": "-te kara",
+    "jlpt": "N5",
+    "categories": [
+      "Time",
+      "Sequence"
+    ],
+    "meaning": "after doing…",
+    "formation": [
+      "Verb て-form + から"
+    ],
+    "explanation": "The second action follows completion of the first.",
+    "examples": [
+      {
+        "japanese": "チェックインしてから、晩ご飯を食べます。",
+        "kana": "ちぇっくいんしてから、ばんごはんを たべます。",
+        "romaji": "chekkuin shite kara, bangohan o tabemasu.",
+        "english": "After checking in, I will eat dinner."
+      }
+    ],
+    "nuance": "",
+    "commonMistakes": "",
+    "related": [],
+    "register": "Neutral"
+  },
+  {
+    "type": "grammar",
+    "id": "g-kotogadekiru",
+    "pattern": "〜ことができる",
+    "reading": "〜ことができる",
+    "romaji": "-koto ga dekiru",
+    "jlpt": "N5",
+    "categories": [
+      "Ability"
+    ],
+    "meaning": "can / be able to",
+    "formation": [
+      "Verb dictionary + ことができる"
+    ],
+    "explanation": "Expresses ability or possibility.",
+    "examples": [
+      {
+        "japanese": "ここでカードを使うことができます。",
+        "kana": "ここで かーどを つかうことが できます。",
+        "romaji": "koko de kaado o tsukau koto ga dekimasu.",
+        "english": "You can use a card here."
+      }
+    ],
+    "nuance": "",
+    "commonMistakes": "",
+    "related": [],
+    "register": "Neutral"
+  },
+  {
+    "type": "grammar",
+    "id": "g-takotogaaru",
+    "pattern": "〜たことがある",
+    "reading": "〜たことがある",
+    "romaji": "-ta koto ga aru",
+    "jlpt": "N5",
+    "categories": [
+      "Experience"
+    ],
+    "meaning": "have done before",
+    "formation": [
+      "Verb past + ことがある"
+    ],
+    "explanation": "Expresses past experience.",
+    "examples": [
+      {
+        "japanese": "京都に行ったことがあります。",
+        "kana": "きょうとに いったことが あります。",
+        "romaji": "kyouto ni itta koto ga arimasu.",
+        "english": "I have been to Kyoto."
+      }
+    ],
+    "nuance": "",
+    "commonMistakes": "",
+    "related": [],
+    "register": "Neutral"
+  },
+  {
+    "type": "grammar",
+    "id": "g-toomou",
+    "pattern": "〜と思う",
+    "reading": "〜とおもう",
+    "romaji": "-to omou",
+    "jlpt": "N4",
+    "categories": [
+      "Opinion"
+    ],
+    "meaning": "I think that…",
+    "formation": [
+      "Plain clause + と思う"
+    ],
+    "explanation": "Marks the content of a thought or opinion.",
+    "examples": [
+      {
+        "japanese": "この店はおいしいと思います。",
+        "kana": "このみせは おいしいと おもいます。",
+        "romaji": "kono mise wa oishii to omoimasu.",
+        "english": "I think this restaurant is good."
+      }
+    ],
+    "nuance": "",
+    "commonMistakes": "",
+    "related": [],
+    "register": "Neutral"
+  },
+  {
+    "type": "grammar",
+    "id": "g-toiu",
+    "pattern": "〜と言う",
+    "reading": "〜という",
+    "romaji": "-to iu",
+    "jlpt": "N4",
+    "categories": [
+      "Quotation"
+    ],
+    "meaning": "say that / called",
+    "formation": [
+      "Quoted clause + と言う",
+      "Name + という + N"
+    ],
+    "explanation": "Marks quoted speech or identifies something by name.",
+    "examples": [
+      {
+        "japanese": "田中さんは明日来ると言いました。",
+        "kana": "たなかさんは あした くると いいました。",
+        "romaji": "Tanaka-san wa ashita kuru to iimashita.",
+        "english": "Tanaka said they would come tomorrow."
+      }
+    ],
+    "nuance": "",
+    "commonMistakes": "",
+    "related": [],
+    "register": "Neutral"
+  },
+  {
+    "type": "grammar",
+    "id": "g-tsumori",
+    "pattern": "〜つもり",
+    "reading": "〜つもり",
+    "romaji": "-tsumori",
+    "jlpt": "N4",
+    "categories": [
+      "Intentions"
+    ],
+    "meaning": "intend to / plan to",
+    "formation": [
+      "Verb dictionary / ない + つもり"
+    ],
+    "explanation": "Expresses a settled personal intention.",
+    "examples": [
+      {
+        "japanese": "来年JLPTを受けるつもりです。",
+        "kana": "らいねん じぇーえるぴーてぃーを うけるつもりです。",
+        "romaji": "rainen JLPT o ukeru tsumori desu.",
+        "english": "I intend to take the JLPT next year."
+      }
+    ],
+    "nuance": "",
+    "commonMistakes": "",
+    "related": [],
+    "register": "Neutral"
+  },
+  {
+    "type": "grammar",
+    "id": "g-yotei",
+    "pattern": "〜予定",
+    "reading": "〜よてい",
+    "romaji": "-yotei",
+    "jlpt": "N4",
+    "categories": [
+      "Plans",
+      "Schedule"
+    ],
+    "meaning": "scheduled / plan to",
+    "formation": [
+      "Verb dictionary + 予定だ",
+      "N の予定だ"
+    ],
+    "explanation": "Expresses an arranged plan or schedule.",
+    "examples": [
+      {
+        "japanese": "十月に日本へ行く予定です。",
+        "kana": "じゅうがつに にほんへ いくよていです。",
+        "romaji": "juugatsu ni nihon e iku yotei desu.",
+        "english": "I plan to go to Japan in October."
+      }
+    ],
+    "nuance": "",
+    "commonMistakes": "",
+    "related": [],
+    "register": "Neutral"
+  },
+  {
+    "type": "grammar",
+    "id": "g-nagara",
+    "pattern": "〜ながら",
+    "reading": "〜ながら",
+    "romaji": "-nagara",
+    "jlpt": "N4",
+    "categories": [
+      "Simultaneous actions"
+    ],
+    "meaning": "while doing…",
+    "formation": [
+      "Verb ます-stem + ながら"
+    ],
+    "explanation": "Two actions are performed by the same subject at the same time.",
+    "examples": [
+      {
+        "japanese": "音楽を聞きながら勉強します。",
+        "kana": "おんがくを ききながら べんきょうします。",
+        "romaji": "ongaku o kikinagara benkyou shimasu.",
+        "english": "I study while listening to music."
+      }
+    ],
+    "nuance": "",
+    "commonMistakes": "",
+    "related": [],
+    "register": "Neutral"
+  },
+  {
+    "type": "grammar",
+    "id": "g-sugiru",
+    "pattern": "〜すぎる",
+    "reading": "〜すぎる",
+    "romaji": "-sugiru",
+    "jlpt": "N4",
+    "categories": [
+      "Degree"
+    ],
+    "meaning": "too much / too…",
+    "formation": [
+      "Verb ます-stem + すぎる",
+      "い-adjective stem + すぎる",
+      "な-adjective + すぎる"
+    ],
+    "explanation": "Expresses excess beyond a suitable amount.",
+    "examples": [
+      {
+        "japanese": "このかばんは高すぎます。",
+        "kana": "このかばんは たかすぎます。",
+        "romaji": "kono kaban wa takasugimasu.",
+        "english": "This bag is too expensive."
+      }
+    ],
+    "nuance": "",
+    "commonMistakes": "",
+    "related": [],
+    "register": "Neutral"
+  },
+  {
+    "type": "grammar",
+    "id": "g-yasuinikui",
+    "pattern": "〜やすい／〜にくい",
+    "reading": "〜やすい／〜にくい",
+    "romaji": "-yasui / -nikui",
+    "jlpt": "N4",
+    "categories": [
+      "Ease",
+      "Difficulty"
+    ],
+    "meaning": "easy to / hard to",
+    "formation": [
+      "Verb ます-stem + やすい / にくい"
+    ],
+    "explanation": "Describes how easy or difficult an action is.",
+    "examples": [
+      {
+        "japanese": "このアプリは使いやすいです。",
+        "kana": "このあぷりは つかいやすいです。",
+        "romaji": "kono apuri wa tsukaiyasui desu.",
+        "english": "This app is easy to use."
+      }
+    ],
+    "nuance": "",
+    "commonMistakes": "",
+    "related": [],
+    "register": "Neutral"
+  },
+  {
+    "type": "grammar",
+    "id": "g-nakereba",
+    "pattern": "〜なければならない",
+    "reading": "〜なければならない",
+    "romaji": "-nakereba naranai",
+    "jlpt": "N4",
+    "categories": [
+      "Obligation"
+    ],
+    "meaning": "must / have to",
+    "formation": [
+      "Verb ない-form → ない + ければならない"
+    ],
+    "explanation": "Expresses necessity or obligation.",
+    "examples": [
+      {
+        "japanese": "明日は早く起きなければなりません。",
+        "kana": "あしたは はやく おきなければなりません。",
+        "romaji": "ashita wa hayaku okinakereba narimasen.",
+        "english": "I have to wake up early tomorrow."
+      }
+    ],
+    "nuance": "Conversation often shortens this to 〜なきゃ or 〜ないと.",
+    "commonMistakes": "",
+    "related": [],
+    "register": "Neutral"
+  },
+  {
+    "type": "grammar",
+    "id": "g-nakutemoii",
+    "pattern": "〜なくてもいい",
+    "reading": "〜なくてもいい",
+    "romaji": "-nakute mo ii",
+    "jlpt": "N4",
+    "categories": [
+      "No obligation"
+    ],
+    "meaning": "do not have to",
+    "formation": [
+      "Verb ない-form → ない + くてもいい"
+    ],
+    "explanation": "States that an action is not necessary.",
+    "examples": [
+      {
+        "japanese": "予約しなくてもいいです。",
+        "kana": "よやくしなくても いいです。",
+        "romaji": "yoyaku shinakute mo ii desu.",
+        "english": "You do not have to make a reservation."
+      }
+    ],
+    "nuance": "",
+    "commonMistakes": "",
+    "related": [],
+    "register": "Neutral"
+  },
+  {
+    "type": "grammar",
+    "id": "g-temiru",
+    "pattern": "〜てみる",
+    "reading": "〜てみる",
+    "romaji": "-te miru",
+    "jlpt": "N4",
+    "categories": [
+      "Attempt"
+    ],
+    "meaning": "try doing…",
+    "formation": [
+      "Verb て-form + みる"
+    ],
+    "explanation": "Try an action and see how it goes.",
+    "examples": [
+      {
+        "japanese": "この抹茶を飲んでみたいです。",
+        "kana": "このまっちゃを のんでみたいです。",
+        "romaji": "kono matcha o nonde mitai desu.",
+        "english": "I would like to try this matcha."
+      }
+    ],
+    "nuance": "",
+    "commonMistakes": "",
+    "related": [],
+    "register": "Neutral"
+  },
+  {
+    "type": "grammar",
+    "id": "g-teshimau",
+    "pattern": "〜てしまう",
+    "reading": "〜てしまう",
+    "romaji": "-te shimau",
+    "jlpt": "N4",
+    "categories": [
+      "Completion",
+      "Regret"
+    ],
+    "meaning": "finish completely / accidentally…",
+    "formation": [
+      "Verb て-form + しまう"
+    ],
+    "explanation": "Can indicate full completion or an unintended/regrettable action.",
+    "examples": [
+      {
+        "japanese": "財布を忘れてしまいました。",
+        "kana": "さいふを わすれてしまいました。",
+        "romaji": "saifu o wasurete shimaimashita.",
+        "english": "I accidentally forgot my wallet."
+      }
+    ],
+    "nuance": "Casual contractions include 〜ちゃう / 〜じゃう.",
+    "commonMistakes": "",
+    "related": [],
+    "register": "Neutral"
+  },
+  {
+    "type": "grammar",
+    "id": "g-teoku",
+    "pattern": "〜ておく",
+    "reading": "〜ておく",
+    "romaji": "-te oku",
+    "jlpt": "N4",
+    "categories": [
+      "Preparation"
+    ],
+    "meaning": "do in advance / leave as is",
+    "formation": [
+      "Verb て-form + おく"
+    ],
+    "explanation": "Do something in preparation for later or leave a state as it is.",
+    "examples": [
+      {
+        "japanese": "旅行の前にホテルを予約しておきます。",
+        "kana": "りょこうのまえに ほてるを よやくしておきます。",
+        "romaji": "ryokou no mae ni hoteru o yoyaku shite okimasu.",
+        "english": "I will reserve the hotel in advance."
+      }
+    ],
+    "nuance": "Casual speech often contracts 〜ておく to 〜とく.",
+    "commonMistakes": "",
+    "related": [],
+    "register": "Neutral"
+  },
+  {
+    "type": "grammar",
+    "id": "g-sou",
+    "pattern": "〜そうだ（様態）",
+    "reading": "〜そうだ",
+    "romaji": "-sou da",
+    "jlpt": "N4",
+    "categories": [
+      "Appearance"
+    ],
+    "meaning": "looks like / seems about to",
+    "formation": [
+      "Verb ます-stem + そうだ",
+      "い-adjective stem + そうだ",
+      "な-adjective + そうだ"
+    ],
+    "explanation": "Describes an appearance or impression based on observation.",
+    "examples": [
+      {
+        "japanese": "このケーキはおいしそうです。",
+        "kana": "このけーきは おいしそうです。",
+        "romaji": "kono keeki wa oishisou desu.",
+        "english": "This cake looks delicious."
+      }
+    ],
+    "nuance": "",
+    "commonMistakes": "いい becomes よさそう, not いいそう.",
+    "related": [],
+    "register": "Neutral"
+  },
+  {
+    "type": "grammar",
+    "id": "g-sou-hearsay",
+    "pattern": "〜そうだ（伝聞）",
+    "reading": "〜そうだ",
+    "romaji": "-sou da",
+    "jlpt": "N4",
+    "categories": [
+      "Hearsay"
+    ],
+    "meaning": "I heard that…",
+    "formation": [
+      "Plain clause + そうだ"
+    ],
+    "explanation": "Reports information heard from another source.",
+    "examples": [
+      {
+        "japanese": "明日は雨だそうです。",
+        "kana": "あしたは あめだそうです。",
+        "romaji": "ashita wa ame da sou desu.",
+        "english": "I heard it will rain tomorrow."
+      }
+    ],
+    "nuance": "",
+    "commonMistakes": "",
+    "related": [],
+    "register": "Neutral"
+  },
+  {
+    "type": "grammar",
+    "id": "g-rashii",
+    "pattern": "〜らしい",
+    "reading": "〜らしい",
+    "romaji": "-rashii",
+    "jlpt": "N4",
+    "categories": [
+      "Hearsay",
+      "Inference"
+    ],
+    "meaning": "apparently / seems",
+    "formation": [
+      "Plain form + らしい"
+    ],
+    "explanation": "Reports information or an inference that seems credible.",
+    "examples": [
+      {
+        "japanese": "あの店は人気があるらしいです。",
+        "kana": "あのみせは にんきが あるらしいです。",
+        "romaji": "ano mise wa ninki ga aru rashii desu.",
+        "english": "Apparently that restaurant is popular."
+      }
+    ],
+    "nuance": "",
+    "commonMistakes": "",
+    "related": [],
+    "register": "Neutral"
+  },
+  {
+    "type": "grammar",
+    "id": "g-kamoshirenai",
+    "pattern": "〜かもしれない",
+    "reading": "〜かもしれない",
+    "romaji": "-kamo shirenai",
+    "jlpt": "N4",
+    "categories": [
+      "Uncertainty"
+    ],
+    "meaning": "might / may",
+    "formation": [
+      "Plain form + かもしれない"
+    ],
+    "explanation": "Expresses an uncertain possibility.",
+    "examples": [
+      {
+        "japanese": "電車が少し遅れるかもしれません。",
+        "kana": "でんしゃが すこし おくれるかもしれません。",
+        "romaji": "densha ga sukoshi okureru kamo shiremasen.",
+        "english": "The train might be a little late."
+      }
+    ],
+    "nuance": "",
+    "commonMistakes": "",
+    "related": [],
+    "register": "Neutral"
+  },
+  {
+    "type": "grammar",
+    "id": "g-hazu",
+    "pattern": "〜はず",
+    "reading": "〜はず",
+    "romaji": "-hazu",
+    "jlpt": "N4",
+    "categories": [
+      "Expectation"
+    ],
+    "meaning": "should / expected to",
+    "formation": [
+      "Plain form + はず",
+      "N の + はず",
+      "な-adjective + なはず"
+    ],
+    "explanation": "Expresses a logical expectation.",
+    "examples": [
+      {
+        "japanese": "店はまだ開いているはずです。",
+        "kana": "みせは まだ あいているはずです。",
+        "romaji": "mise wa mada aite iru hazu desu.",
+        "english": "The shop should still be open."
+      }
+    ],
+    "nuance": "",
+    "commonMistakes": "",
+    "related": [],
+    "register": "Neutral"
+  },
+  {
+    "type": "grammar",
+    "id": "g-kadooka",
+    "pattern": "〜かどうか",
+    "reading": "〜かどうか",
+    "romaji": "-ka dou ka",
+    "jlpt": "N4",
+    "categories": [
+      "Embedded questions"
+    ],
+    "meaning": "whether or not",
+    "formation": [
+      "Plain clause + かどうか"
+    ],
+    "explanation": "Embeds a yes/no question inside a larger sentence.",
+    "examples": [
+      {
+        "japanese": "予約が必要かどうか確認します。",
+        "kana": "よやくが ひつようかどうか かくにんします。",
+        "romaji": "yoyaku ga hitsuyou ka dou ka kakunin shimasu.",
+        "english": "I will check whether a reservation is necessary."
+      }
+    ],
+    "nuance": "",
+    "commonMistakes": "",
+    "related": [],
+    "register": "Neutral"
+  },
+  {
+    "type": "grammar",
+    "id": "g-nara",
+    "pattern": "〜なら",
+    "reading": "〜なら",
+    "romaji": "-nara",
+    "jlpt": "N4",
+    "categories": [
+      "Conditionals"
+    ],
+    "meaning": "if it is / if you mean…",
+    "formation": [
+      "N / な-adjective + なら",
+      "Plain clause + なら"
+    ],
+    "explanation": "Sets a condition based on information or a topic in the conversation.",
+    "examples": [
+      {
+        "japanese": "京都に行くなら、秋もおすすめです。",
+        "kana": "きょうとに いくなら、あきも おすすめです。",
+        "romaji": "kyouto ni iku nara, aki mo osusume desu.",
+        "english": "If you are going to Kyoto, autumn is also recommended."
+      }
+    ],
+    "nuance": "",
+    "commonMistakes": "",
+    "related": [],
+    "register": "Neutral"
+  },
+  {
+    "type": "grammar",
+    "id": "g-tara",
+    "pattern": "〜たら",
+    "reading": "〜たら",
+    "romaji": "-tara",
+    "jlpt": "N4",
+    "categories": [
+      "Conditionals",
+      "Time"
+    ],
+    "meaning": "if / when",
+    "formation": [
+      "Past plain form + ら"
+    ],
+    "explanation": "A versatile conditional for hypothetical situations or when something happens.",
+    "examples": [
+      {
+        "japanese": "駅に着いたら、連絡してください。",
+        "kana": "えきに ついたら、れんらくしてください。",
+        "romaji": "eki ni tsuitara, renraku shite kudasai.",
+        "english": "When you arrive at the station, please contact me."
+      }
+    ],
+    "nuance": "",
+    "commonMistakes": "",
+    "related": [],
+    "register": "Neutral"
+  },
+  {
+    "type": "grammar",
+    "id": "g-ba",
+    "pattern": "〜ば",
+    "reading": "〜ば",
+    "romaji": "-ba",
+    "jlpt": "N4",
+    "categories": [
+      "Conditionals"
+    ],
+    "meaning": "if",
+    "formation": [
+      "Verb ば-form",
+      "い-adjective → ければ"
+    ],
+    "explanation": "A conditional often used for logical/general conditions.",
+    "examples": [
+      {
+        "japanese": "時間があれば、行きます。",
+        "kana": "じかんが あれば、いきます。",
+        "romaji": "jikan ga areba, ikimasu.",
+        "english": "If I have time, I will go."
+      }
+    ],
+    "nuance": "",
+    "commonMistakes": "",
+    "related": [],
+    "register": "Neutral"
+  },
+  {
+    "type": "grammar",
+    "id": "g-to-cond",
+    "pattern": "〜と（条件）",
+    "reading": "〜と",
+    "romaji": "-to",
+    "jlpt": "N4",
+    "categories": [
+      "Conditionals"
+    ],
+    "meaning": "when / whenever (automatic result)",
+    "formation": [
+      "Plain non-past + と"
+    ],
+    "explanation": "Used for natural, habitual, mechanical, or reliably expected results.",
+    "examples": [
+      {
+        "japanese": "このボタンを押すと、ドアが開きます。",
+        "kana": "このぼたんを おすと、どあが あきます。",
+        "romaji": "kono botan o osu to, doa ga akimasu.",
+        "english": "When you press this button, the door opens."
+      }
+    ],
+    "nuance": "",
+    "commonMistakes": "",
+    "related": [],
+    "register": "Neutral"
+  },
+  {
+    "type": "grammar",
+    "id": "g-younisuru",
+    "pattern": "〜ようにする",
+    "reading": "〜ようにする",
+    "romaji": "-you ni suru",
+    "jlpt": "N4",
+    "categories": [
+      "Habits",
+      "Effort"
+    ],
+    "meaning": "make an effort to",
+    "formation": [
+      "Verb dictionary / ない + ようにする"
+    ],
+    "explanation": "Expresses a conscious effort to establish a habit or ensure a result.",
+    "examples": [
+      {
+        "japanese": "毎日、日本語を話すようにしています。",
+        "kana": "まいにち、にほんごを はなすようにしています。",
+        "romaji": "mainichi, nihongo o hanasu you ni shite imasu.",
+        "english": "I make a point of speaking Japanese every day."
+      }
+    ],
+    "nuance": "",
+    "commonMistakes": "",
+    "related": [],
+    "register": "Neutral"
+  },
+  {
+    "type": "grammar",
+    "id": "g-youninaru",
+    "pattern": "〜ようになる",
+    "reading": "〜ようになる",
+    "romaji": "-you ni naru",
+    "jlpt": "N4",
+    "categories": [
+      "Change",
+      "Ability"
+    ],
+    "meaning": "come to / become able to",
+    "formation": [
+      "Verb dictionary / ない + ようになる"
+    ],
+    "explanation": "Expresses a change in ability, habit, or state over time.",
+    "examples": [
+      {
+        "japanese": "少し日本語が話せるようになりました。",
+        "kana": "すこし にほんごが はなせるようになりました。",
+        "romaji": "sukoshi nihongo ga hanaseru you ni narimashita.",
+        "english": "I have become able to speak a little Japanese."
+      }
+    ],
+    "nuance": "",
+    "commonMistakes": "",
+    "related": [],
+    "register": "Neutral"
+  },
+  {
+    "type": "grammar",
+    "id": "g-noni",
+    "pattern": "〜のに",
+    "reading": "〜のに",
+    "romaji": "-noni",
+    "jlpt": "N4",
+    "categories": [
+      "Concession"
+    ],
+    "meaning": "although / even though",
+    "formation": [
+      "Plain form + のに",
+      "N / な-adjective + なのに"
+    ],
+    "explanation": "Connects a fact with an unexpected result and often carries emotion.",
+    "examples": [
+      {
+        "japanese": "早く出たのに、電車に間に合いませんでした。",
+        "kana": "はやく でたのに、でんしゃに まにあいませんでした。",
+        "romaji": "hayaku deta noni, densha ni maniaimasen deshita.",
+        "english": "Even though I left early, I did not make the train."
+      }
+    ],
+    "nuance": "",
+    "commonMistakes": "",
+    "related": [],
+    "register": "Neutral"
+  },
+  {
+    "type": "grammar",
+    "id": "g-shi",
+    "pattern": "〜し",
+    "reading": "〜し",
+    "romaji": "-shi",
+    "jlpt": "N4",
+    "categories": [
+      "Reasons",
+      "Listing"
+    ],
+    "meaning": "and / besides",
+    "formation": [
+      "Plain form + し"
+    ],
+    "explanation": "Lists multiple reasons or qualities and often implies more.",
+    "examples": [
+      {
+        "japanese": "このホテルは駅に近いし、安いです。",
+        "kana": "このほてるは えきに ちかいし、やすいです。",
+        "romaji": "kono hoteru wa eki ni chikai shi, yasui desu.",
+        "english": "This hotel is close to the station, and it is cheap too."
+      }
+    ],
+    "nuance": "",
+    "commonMistakes": "",
+    "related": [],
+    "register": "Neutral"
+  },
+  {
+    "type": "grammar",
+    "id": "g-kotonisuru",
+    "pattern": "〜ことにする",
+    "reading": "〜ことにする",
+    "romaji": "-koto ni suru",
+    "jlpt": "N3",
+    "categories": [
+      "Decision"
+    ],
+    "meaning": "decide to",
+    "formation": [
+      "Verb dictionary / ない + ことにする"
+    ],
+    "explanation": "Expresses a decision made by the speaker/agent.",
+    "examples": [
+      {
+        "japanese": "来月から毎朝勉強することにしました。",
+        "kana": "らいげつから まいあさ べんきょうすることにしました。",
+        "romaji": "raigetsu kara maiasa benkyou suru koto ni shimashita.",
+        "english": "I decided to study every morning starting next month."
+      }
+    ],
+    "nuance": "",
+    "commonMistakes": "",
+    "related": [],
+    "register": "Neutral"
+  },
+  {
+    "type": "grammar",
+    "id": "g-kotoninaru",
+    "pattern": "〜ことになる",
+    "reading": "〜ことになる",
+    "romaji": "-koto ni naru",
+    "jlpt": "N3",
+    "categories": [
+      "Decision",
+      "Outcome"
+    ],
+    "meaning": "it has been decided / end up",
+    "formation": [
+      "Verb dictionary / ない + ことになる"
+    ],
+    "explanation": "Describes a decision/outcome determined by circumstances or others.",
+    "examples": [
+      {
+        "japanese": "来月、大阪へ出張することになりました。",
+        "kana": "らいげつ、おおさかへ しゅっちょうすることになりました。",
+        "romaji": "raigetsu, oosaka e shucchou suru koto ni narimashita.",
+        "english": "It has been decided that I will go to Osaka on business next month."
+      }
+    ],
+    "nuance": "",
+    "commonMistakes": "",
+    "related": [],
+    "register": "Neutral"
+  },
+  {
+    "type": "grammar",
+    "id": "g-youni",
+    "pattern": "〜ように",
+    "reading": "〜ように",
+    "romaji": "-you ni",
+    "jlpt": "N3",
+    "categories": [
+      "Purpose"
+    ],
+    "meaning": "so that",
+    "formation": [
+      "Potential/non-volitional verb + ように",
+      "Negative verb + ように"
+    ],
+    "explanation": "Marks a desired result, especially one not fully under direct control.",
+    "examples": [
+      {
+        "japanese": "忘れないように、メモします。",
+        "kana": "わすれないように、めもします。",
+        "romaji": "wasurenai you ni, memo shimasu.",
+        "english": "I will make a note so that I do not forget."
+      }
+    ],
+    "nuance": "",
+    "commonMistakes": "",
+    "related": [],
+    "register": "Neutral"
+  },
+  {
+    "type": "grammar",
+    "id": "g-tameni",
+    "pattern": "〜ために",
+    "reading": "〜ために",
+    "romaji": "-tame ni",
+    "jlpt": "N3",
+    "categories": [
+      "Purpose"
+    ],
+    "meaning": "in order to / for the sake of",
+    "formation": [
+      "Volitional verb dictionary + ために",
+      "N の + ために"
+    ],
+    "explanation": "Expresses a deliberate purpose or goal.",
+    "examples": [
+      {
+        "japanese": "日本で働くために、日本語を勉強しています。",
+        "kana": "にほんで はたらくために、にほんごを べんきょうしています。",
+        "romaji": "nihon de hataraku tame ni, nihongo o benkyou shite imasu.",
+        "english": "I am studying Japanese in order to work in Japan."
+      }
+    ],
+    "nuance": "",
+    "commonMistakes": "",
+    "related": [],
+    "register": "Neutral"
+  },
+  {
+    "type": "grammar",
+    "id": "g-okage",
+    "pattern": "〜おかげで",
+    "reading": "〜おかげで",
+    "romaji": "-okage de",
+    "jlpt": "N3",
+    "categories": [
+      "Cause"
+    ],
+    "meaning": "thanks to",
+    "formation": [
+      "Plain form + おかげで",
+      "N の + おかげで"
+    ],
+    "explanation": "Credits a cause for a positive result.",
+    "examples": [
+      {
+        "japanese": "友だちのおかげで、道に迷いませんでした。",
+        "kana": "ともだちの おかげで、みちに まよいませんでした。",
+        "romaji": "tomodachi no okage de, michi ni mayoimasen deshita.",
+        "english": "Thanks to my friend, I did not get lost."
+      }
+    ],
+    "nuance": "",
+    "commonMistakes": "",
+    "related": [],
+    "register": "Neutral"
+  },
+  {
+    "type": "grammar",
+    "id": "g-sei",
+    "pattern": "〜せいで",
+    "reading": "〜せいで",
+    "romaji": "-sei de",
+    "jlpt": "N3",
+    "categories": [
+      "Cause"
+    ],
+    "meaning": "because of (negative)",
+    "formation": [
+      "Plain form + せいで",
+      "N の + せいで"
+    ],
+    "explanation": "Blames a cause for an undesirable result.",
+    "examples": [
+      {
+        "japanese": "雨のせいで、試合が中止になりました。",
+        "kana": "あめのせいで、しあいが ちゅうしになりました。",
+        "romaji": "ame no sei de, shiai ga chuushi ni narimashita.",
+        "english": "Because of the rain, the game was canceled."
+      }
+    ],
+    "nuance": "",
+    "commonMistakes": "",
+    "related": [],
+    "register": "Neutral"
+  },
+  {
+    "type": "grammar",
+    "id": "g-wakeda",
+    "pattern": "〜わけだ",
+    "reading": "〜わけだ",
+    "romaji": "-wake da",
+    "jlpt": "N3",
+    "categories": [
+      "Explanation"
+    ],
+    "meaning": "no wonder / that means",
+    "formation": [
+      "Plain form + わけだ"
+    ],
+    "explanation": "Presents a logical conclusion or explanation.",
+    "examples": [
+      {
+        "japanese": "毎日練習しているんですね。上手なわけです。",
+        "kana": "まいにち れんしゅうしているんですね。じょうずなわけです。",
+        "romaji": "mainichi renshuu shite iru n desu ne. jouzu na wake desu.",
+        "english": "You practice every day. No wonder you are good."
+      }
+    ],
+    "nuance": "",
+    "commonMistakes": "",
+    "related": [],
+    "register": "Neutral"
+  },
+  {
+    "type": "grammar",
+    "id": "g-wakedenai",
+    "pattern": "〜わけではない",
+    "reading": "〜わけではない",
+    "romaji": "-wake dewa nai",
+    "jlpt": "N3",
+    "categories": [
+      "Partial negation"
+    ],
+    "meaning": "it does not mean that…",
+    "formation": [
+      "Plain form + わけではない"
+    ],
+    "explanation": "Rejects an overly broad conclusion without denying everything.",
+    "examples": [
+      {
+        "japanese": "嫌いなわけではないけど、今日は食べたくない。",
+        "kana": "きらいなわけではないけど、きょうは たべたくない。",
+        "romaji": "kirai na wake dewa nai kedo, kyou wa tabetakunai.",
+        "english": "It is not that I dislike it; I just do not want it today."
+      }
+    ],
+    "nuance": "",
+    "commonMistakes": "",
+    "related": [],
+    "register": "Neutral"
+  },
+  {
+    "type": "grammar",
+    "id": "g-wakeganai",
+    "pattern": "〜わけがない",
+    "reading": "〜わけがない",
+    "romaji": "-wake ga nai",
+    "jlpt": "N3",
+    "categories": [
+      "Impossibility"
+    ],
+    "meaning": "there is no way…",
+    "formation": [
+      "Plain form + わけがない"
+    ],
+    "explanation": "Strongly states that something is impossible or cannot be true.",
+    "examples": [
+      {
+        "japanese": "そんな高いホテルに毎週泊まれるわけがない。",
+        "kana": "そんな たかいほてるに まいしゅう とまれるわけがない。",
+        "romaji": "sonna takai hoteru ni maishuu tomareru wake ga nai.",
+        "english": "There is no way I could stay at such an expensive hotel every week."
+      }
+    ],
+    "nuance": "",
+    "commonMistakes": "",
+    "related": [],
+    "register": "Neutral"
+  },
+  {
+    "type": "grammar",
+    "id": "g-tabini",
+    "pattern": "〜たびに",
+    "reading": "〜たびに",
+    "romaji": "-tabi ni",
+    "jlpt": "N3",
+    "categories": [
+      "Frequency",
+      "Time"
+    ],
+    "meaning": "every time…",
+    "formation": [
+      "Verb dictionary + たびに",
+      "N の + たびに"
+    ],
+    "explanation": "Something happens on every occasion of another event.",
+    "examples": [
+      {
+        "japanese": "日本に行くたびに、新しい店を見つけます。",
+        "kana": "にほんに いくたびに、あたらしいみせを みつけます。",
+        "romaji": "nihon ni iku tabi ni, atarashii mise o mitsukemasu.",
+        "english": "Every time I go to Japan, I find a new shop."
+      }
+    ],
+    "nuance": "",
+    "commonMistakes": "",
+    "related": [],
+    "register": "Neutral"
+  },
+  {
+    "type": "grammar",
+    "id": "g-uchini",
+    "pattern": "〜うちに",
+    "reading": "〜うちに",
+    "romaji": "-uchi ni",
+    "jlpt": "N3",
+    "categories": [
+      "Time",
+      "Opportunity"
+    ],
+    "meaning": "while / before a state changes",
+    "formation": [
+      "Plain non-past + うちに",
+      "N の + うちに"
+    ],
+    "explanation": "Do something while a favorable condition still holds, or describe a change during a period.",
+    "examples": [
+      {
+        "japanese": "温かいうちに食べてください。",
+        "kana": "あたたかいうちに たべてください。",
+        "romaji": "atatakai uchi ni tabete kudasai.",
+        "english": "Please eat it while it is still warm."
+      }
+    ],
+    "nuance": "",
+    "commonMistakes": "",
+    "related": [],
+    "register": "Neutral"
+  },
+  {
+    "type": "grammar",
+    "id": "g-nitsurete",
+    "pattern": "〜につれて",
+    "reading": "〜につれて",
+    "romaji": "-ni tsurete",
+    "jlpt": "N3",
+    "categories": [
+      "Change"
+    ],
+    "meaning": "as… changes, … changes",
+    "formation": [
+      "Verb dictionary + につれて",
+      "N + につれて"
+    ],
+    "explanation": "One gradual change occurs together with another.",
+    "examples": [
+      {
+        "japanese": "日本語が上手になるにつれて、会話が楽しくなりました。",
+        "kana": "にほんごが じょうずになるにつれて、かいわが たのしくなりました。",
+        "romaji": "nihongo ga jouzu ni naru ni tsurete, kaiwa ga tanoshiku narimashita.",
+        "english": "As my Japanese improved, conversation became more enjoyable."
+      }
+    ],
+    "nuance": "",
+    "commonMistakes": "",
+    "related": [],
+    "register": "Neutral"
+  },
+  {
+    "type": "grammar",
+    "id": "g-nitsuite",
+    "pattern": "〜について",
+    "reading": "〜について",
+    "romaji": "-ni tsuite",
+    "jlpt": "N3",
+    "categories": [
+      "Topic"
+    ],
+    "meaning": "about / concerning",
+    "formation": [
+      "N + について",
+      "N + についての + N"
+    ],
+    "explanation": "Introduces the subject matter of discussion, study, or inquiry.",
+    "examples": [
+      {
+        "japanese": "日本の交通について調べています。",
+        "kana": "にほんの こうつうについて しらべています。",
+        "romaji": "nihon no koutsuu ni tsuite shirabete imasu.",
+        "english": "I am researching transportation in Japan."
+      }
+    ],
+    "nuance": "",
+    "commonMistakes": "",
+    "related": [],
+    "register": "Neutral"
+  },
+  {
+    "type": "grammar",
+    "id": "g-nitaishite",
+    "pattern": "〜に対して",
+    "reading": "〜にたいして",
+    "romaji": "-ni taishite",
+    "jlpt": "N3",
+    "categories": [
+      "Target",
+      "Contrast"
+    ],
+    "meaning": "toward / in contrast to",
+    "formation": [
+      "N + に対して",
+      "A のに対して B"
+    ],
+    "explanation": "Marks the target of an attitude/action or contrasts two sides.",
+    "examples": [
+      {
+        "japanese": "お客様に対して失礼な言い方です。",
+        "kana": "おきゃくさまにたいして しつれいな いいかたです。",
+        "romaji": "okyakusama ni taishite shitsurei na iikata desu.",
+        "english": "That is a rude way to speak to a customer."
+      }
+    ],
+    "nuance": "",
+    "commonMistakes": "",
+    "related": [],
+    "register": "Neutral"
+  },
+  {
+    "type": "grammar",
+    "id": "g-niyotte",
+    "pattern": "〜によって",
+    "reading": "〜によって",
+    "romaji": "-ni yotte",
+    "jlpt": "N3",
+    "categories": [
+      "Means",
+      "Variation"
+    ],
+    "meaning": "by / depending on",
+    "formation": [
+      "N + によって"
+    ],
+    "explanation": "Expresses means, cause, or variation by factor.",
+    "examples": [
+      {
+        "japanese": "季節によって営業時間が変わります。",
+        "kana": "きせつによって えいぎょうじかんが かわります。",
+        "romaji": "kisetsu ni yotte eigyou jikan ga kawarimasu.",
+        "english": "Opening hours change depending on the season."
+      }
+    ],
+    "nuance": "",
+    "commonMistakes": "",
+    "related": [],
+    "register": "Neutral"
+  },
+  {
+    "type": "grammar",
+    "id": "g-toshite",
+    "pattern": "〜として",
+    "reading": "〜として",
+    "romaji": "-to shite",
+    "jlpt": "N3",
+    "categories": [
+      "Role"
+    ],
+    "meaning": "as / in the role of",
+    "formation": [
+      "N + として"
+    ],
+    "explanation": "Indicates the role or capacity in which something functions.",
+    "examples": [
+      {
+        "japanese": "学生として日本に住みました。",
+        "kana": "がくせいとして にほんに すみました。",
+        "romaji": "gakusei to shite nihon ni sumimashita.",
+        "english": "I lived in Japan as a student."
+      }
+    ],
+    "nuance": "",
+    "commonMistakes": "",
+    "related": [],
+    "register": "Neutral"
+  },
+  {
+    "type": "grammar",
+    "id": "g-bahodo",
+    "pattern": "〜ば〜ほど",
+    "reading": "〜ば〜ほど",
+    "romaji": "-ba -hodo",
+    "jlpt": "N3",
+    "categories": [
+      "Degree"
+    ],
+    "meaning": "the more…, the more…",
+    "formation": [
+      "Verb ば-form + same verb + ほど"
+    ],
+    "explanation": "Shows a proportional relationship.",
+    "examples": [
+      {
+        "japanese": "使えば使うほど、便利さが分かります。",
+        "kana": "つかえば つかうほど、べんりさが わかります。",
+        "romaji": "tsukaeba tsukau hodo, benrisa ga wakarimasu.",
+        "english": "The more you use it, the more you understand how convenient it is."
+      }
+    ],
+    "nuance": "",
+    "commonMistakes": "",
+    "related": [],
+    "register": "Neutral"
+  },
+  {
+    "type": "grammar",
+    "id": "g-monono",
+    "pattern": "〜ものの",
+    "reading": "〜ものの",
+    "romaji": "-mono no",
+    "jlpt": "N2",
+    "categories": [
+      "Concession"
+    ],
+    "meaning": "although / even though",
+    "formation": [
+      "Plain form + ものの"
+    ],
+    "explanation": "A relatively formal concessive expression.",
+    "examples": [
+      {
+        "japanese": "予約したものの、行けなくなりました。",
+        "kana": "よやくしたものの、いけなくなりました。",
+        "romaji": "yoyaku shita mono no, ikenaku narimashita.",
+        "english": "Although I made a reservation, I ended up unable to go."
+      }
+    ],
+    "nuance": "",
+    "commonMistakes": "",
+    "related": [],
+    "register": "Formal/written"
+  },
+  {
+    "type": "grammar",
+    "id": "g-nimokakawarazu",
+    "pattern": "〜にもかかわらず",
+    "reading": "〜にもかかわらず",
+    "romaji": "-nimo kakawarazu",
+    "jlpt": "N2",
+    "categories": [
+      "Concession"
+    ],
+    "meaning": "despite / in spite of",
+    "formation": [
+      "Plain form / N + にもかかわらず"
+    ],
+    "explanation": "Something happens despite a fact that suggests otherwise.",
+    "examples": [
+      {
+        "japanese": "大雨にもかかわらず、イベントは開催されました。",
+        "kana": "おおあめにもかかわらず、いべんとは かいさいされました。",
+        "romaji": "ooame ni mo kakawarazu, ibento wa kaisai saremashita.",
+        "english": "Despite the heavy rain, the event was held."
+      }
+    ],
+    "nuance": "",
+    "commonMistakes": "",
+    "related": [],
+    "register": "Formal"
+  },
+  {
+    "type": "grammar",
+    "id": "g-ippoude",
+    "pattern": "〜一方で",
+    "reading": "〜いっぽうで",
+    "romaji": "-ippou de",
+    "jlpt": "N2",
+    "categories": [
+      "Contrast"
+    ],
+    "meaning": "on the other hand",
+    "formation": [
+      "Plain form + 一方で"
+    ],
+    "explanation": "Presents a contrasting aspect or parallel situation.",
+    "examples": [
+      {
+        "japanese": "この町は便利な一方で、家賃が高いです。",
+        "kana": "このまちは べんりないっぽうで、やちんが たかいです。",
+        "romaji": "kono machi wa benri na ippou de, yachin ga takai desu.",
+        "english": "This town is convenient; on the other hand, rent is high."
+      }
+    ],
+    "nuance": "",
+    "commonMistakes": "",
+    "related": [],
+    "register": "Neutral"
+  },
+  {
+    "type": "grammar",
+    "id": "g-nikuwaete",
+    "pattern": "〜に加えて",
+    "reading": "〜にくわえて",
+    "romaji": "-ni kuwaete",
+    "jlpt": "N2",
+    "categories": [
+      "Addition"
+    ],
+    "meaning": "in addition to",
+    "formation": [
+      "N + に加えて"
+    ],
+    "explanation": "Adds another factor or item in formal-neutral style.",
+    "examples": [
+      {
+        "japanese": "雨に加えて、風も強くなってきました。",
+        "kana": "あめにくわえて、かぜも つよくなってきました。",
+        "romaji": "ame ni kuwaete, kaze mo tsuyoku natte kimashita.",
+        "english": "In addition to the rain, the wind has gotten stronger."
+      }
+    ],
+    "nuance": "",
+    "commonMistakes": "",
+    "related": [],
+    "register": "Neutral"
+  },
+  {
+    "type": "grammar",
+    "id": "g-nioujite",
+    "pattern": "〜に応じて",
+    "reading": "〜におうじて",
+    "romaji": "-ni oujite",
+    "jlpt": "N2",
+    "categories": [
+      "Adjustment"
+    ],
+    "meaning": "according to / in response to",
+    "formation": [
+      "N + に応じて"
+    ],
+    "explanation": "An action or condition changes according to needs/circumstances.",
+    "examples": [
+      {
+        "japanese": "予算に応じてプランを選べます。",
+        "kana": "よさんにおうじて ぷらんを えらべます。",
+        "romaji": "yosan ni oujite puran o erabemasu.",
+        "english": "You can choose a plan according to your budget."
+      }
+    ],
+    "nuance": "",
+    "commonMistakes": "",
+    "related": [],
+    "register": "Neutral"
+  },
+  {
+    "type": "grammar",
+    "id": "g-niwataru",
+    "pattern": "〜にわたって",
+    "reading": "〜にわたって",
+    "romaji": "-ni watatte",
+    "jlpt": "N2",
+    "categories": [
+      "Range"
+    ],
+    "meaning": "over / throughout",
+    "formation": [
+      "N + にわたって"
+    ],
+    "explanation": "Expresses a span across time, space, or range.",
+    "examples": [
+      {
+        "japanese": "三日間にわたって会議が行われました。",
+        "kana": "みっかかんにわたって かいぎが おこなわれました。",
+        "romaji": "mikkakan ni watatte kaigi ga okonawaremashita.",
+        "english": "The conference was held over three days."
+      }
+    ],
+    "nuance": "",
+    "commonMistakes": "",
+    "related": [],
+    "register": "Formal"
+  },
+  {
+    "type": "grammar",
+    "id": "g-zaru",
+    "pattern": "〜ざるを得ない",
+    "reading": "〜ざるをえない",
+    "romaji": "-zaru o enai",
+    "jlpt": "N2",
+    "categories": [
+      "Necessity"
+    ],
+    "meaning": "have no choice but to",
+    "formation": [
+      "Verb ない-form → ない + ざるを得ない",
+      "する → せざるを得ない"
+    ],
+    "explanation": "Circumstances force an action even if it is not desired.",
+    "examples": [
+      {
+        "japanese": "タクシーを使わざるを得ませんでした。",
+        "kana": "たくしーを つかわざるをえませんでした。",
+        "romaji": "takushii o tsukawazaru o emasen deshita.",
+        "english": "I had no choice but to take a taxi."
+      }
+    ],
+    "nuance": "",
+    "commonMistakes": "",
+    "related": [],
+    "register": "Formal"
+  },
+  {
+    "type": "grammar",
+    "id": "g-nisuginai",
+    "pattern": "〜にすぎない",
+    "reading": "〜にすぎない",
+    "romaji": "-ni suginai",
+    "jlpt": "N2",
+    "categories": [
+      "Limitation"
+    ],
+    "meaning": "nothing more than / merely",
+    "formation": [
+      "N / plain form + にすぎない"
+    ],
+    "explanation": "Downplays something as merely what is stated.",
+    "examples": [
+      {
+        "japanese": "これは一つの例にすぎません。",
+        "kana": "これは ひとつの れいにすぎません。",
+        "romaji": "kore wa hitotsu no rei ni sugimasen.",
+        "english": "This is merely one example."
+      }
+    ],
+    "nuance": "",
+    "commonMistakes": "",
+    "related": [],
+    "register": "Formal"
+  },
+  {
+    "type": "grammar",
+    "id": "g-towakagiranai",
+    "pattern": "〜とは限らない",
+    "reading": "〜とはかぎらない",
+    "romaji": "-to wa kagiranai",
+    "jlpt": "N2",
+    "categories": [
+      "Partial negation"
+    ],
+    "meaning": "not necessarily",
+    "formation": [
+      "Plain form + とは限らない"
+    ],
+    "explanation": "Rejects the idea that something is always true.",
+    "examples": [
+      {
+        "japanese": "高い店がおいしいとは限りません。",
+        "kana": "たかいみせが おいしいとは かぎりません。",
+        "romaji": "takai mise ga oishii to wa kagirimasen.",
+        "english": "Expensive restaurants are not necessarily delicious."
+      }
+    ],
+    "nuance": "",
+    "commonMistakes": "",
+    "related": [],
+    "register": "Neutral"
+  },
+  {
+    "type": "grammar",
+    "id": "g-nihokanaranai",
+    "pattern": "〜にほかならない",
+    "reading": "〜にほかならない",
+    "romaji": "-ni hoka naranai",
+    "jlpt": "N1",
+    "categories": [
+      "Emphasis"
+    ],
+    "meaning": "nothing other than / precisely",
+    "formation": [
+      "N + にほかならない"
+    ],
+    "explanation": "Strongly identifies something as exactly the reason or essence.",
+    "examples": [
+      {
+        "japanese": "成功は努力の結果にほかなりません。",
+        "kana": "せいこうは どりょくの けっかにほかなりません。",
+        "romaji": "seikou wa doryoku no kekka ni hoka narimasen.",
+        "english": "The success is nothing other than the result of hard work."
+      }
+    ],
+    "nuance": "",
+    "commonMistakes": "",
+    "related": [],
+    "register": "Formal/written"
+  },
+  {
+    "type": "grammar",
+    "id": "g-naidewasumanai",
+    "pattern": "〜ないでは済まない",
+    "reading": "〜ないではすまない",
+    "romaji": "-nai dewa sumanai",
+    "jlpt": "N1",
+    "categories": [
+      "Necessity"
+    ],
+    "meaning": "cannot get away without doing",
+    "formation": [
+      "Verb ない-form + ないでは済まない"
+    ],
+    "explanation": "Responsibility or circumstances make an action unavoidable.",
+    "examples": [
+      {
+        "japanese": "迷惑をかけたので、謝らないでは済みません。",
+        "kana": "めいわくを かけたので、あやまらないでは すみません。",
+        "romaji": "meiwaku o kaketa node, ayamaranai dewa sumimasen.",
+        "english": "Since I caused trouble, I cannot get away without apologizing."
+      }
+    ],
+    "nuance": "",
+    "commonMistakes": "",
+    "related": [],
+    "register": "Formal/strong"
+  },
+  {
+    "type": "grammar",
+    "id": "g-toatte",
+    "pattern": "〜とあって",
+    "reading": "〜とあって",
+    "romaji": "-to atte",
+    "jlpt": "N1",
+    "categories": [
+      "Reason"
+    ],
+    "meaning": "because it is a special case of…",
+    "formation": [
+      "Plain form / N + とあって"
+    ],
+    "explanation": "Explains a notable result by emphasizing the special situation.",
+    "examples": [
+      {
+        "japanese": "連休初日とあって、駅はとても混んでいました。",
+        "kana": "れんきゅう しょにちとあって、えきは とても こんでいました。",
+        "romaji": "renkyuu shonichi to atte, eki wa totemo konde imashita.",
+        "english": "Because it was the first day of a long holiday, the station was very crowded."
+      }
+    ],
+    "nuance": "",
+    "commonMistakes": "",
+    "related": [],
+    "register": "Written/formal"
+  },
+  {
+    "type": "grammar",
+    "id": "g-omotte",
+    "pattern": "〜をもって",
+    "reading": "〜をもって",
+    "romaji": "-o motte",
+    "jlpt": "N1",
+    "categories": [
+      "Formal boundary"
+    ],
+    "meaning": "as of / by means of",
+    "formation": [
+      "N + をもって"
+    ],
+    "explanation": "A formal expression marking a boundary point or means.",
+    "examples": [
+      {
+        "japanese": "本日をもって受付を終了します。",
+        "kana": "ほんじつをもって うけつけを しゅうりょうします。",
+        "romaji": "honjitsu o motte uketsuke o shuuryou shimasu.",
+        "english": "Applications close as of today."
+      }
+    ],
+    "nuance": "",
+    "commonMistakes": "",
+    "related": [],
+    "register": "Formal/official"
+  }
+]
