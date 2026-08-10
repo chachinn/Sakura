@@ -4714,7 +4714,7 @@ function validateCountersData(records) {
 function loadCountersData() {
     if (countersData) return Promise.resolve(countersData);
     if (countersDataPromise) return countersDataPromise;
-    countersDataPromise = fetch("./data/counters.json?v=1")
+    countersDataPromise = fetch("./data/counters.json?v=2")
         .then(response => { if (!response.ok) throw new Error(`Counters data returned ${response.status}.`); return response.json(); })
         .then(records => {
             if (!validateCountersData(records)) throw new Error("Counters data validation failed.");
@@ -4769,7 +4769,7 @@ function renderCounterDetail(counter) {
     currentCounter = counter;
     document.getElementById("counters-home").hidden = true;
     document.getElementById("counter-detail").hidden = false;
-    document.getElementById("counter-detail-heading").textContent = `${counter.counter} Counter`;
+    document.getElementById("counter-detail-heading").textContent = counter.referenceKind === "numbers" ? "Japanese Numbers" : `${counter.counter} Counter`;
     document.getElementById("counter-detail-character").textContent = counter.counter;
     document.getElementById("counter-detail-reading").textContent = counter.reading;
     document.getElementById("counter-detail-romaji").textContent = counter.romaji;
@@ -4874,9 +4874,20 @@ function closeParticleDetail(){ currentParticle=null; document.getElementById("p
 async function openParticles(){ currentParticle=null; document.getElementById("particles-home").hidden=false; document.getElementById("particle-detail").hidden=true; const l=document.getElementById("particles-loading"); l.hidden=false; l.textContent="Preparing Japanese Particles…"; try{await loadParticlesData(); if(currentRoute!=="particles")return; renderParticleFilters(); renderParticles(); l.hidden=true;}catch(e){console.warn("Japanese Particles could not load.",e); if(currentRoute==="particles"){l.hidden=false;l.textContent="Japanese Particles could not be prepared. Please try again after Sakura updates.";}} }
 
 function validateGrammarData(records){ if(!Array.isArray(records)||!records.length)return false; const ids=new Set(); return records.every(x=>{const v=x?.type==="grammar"&&typeof x.id==="string"&&x.id&&typeof x.pattern==="string"&&x.pattern.trim()&&typeof x.reading==="string"&&x.reading.trim()&&typeof x.romaji==="string"&&x.romaji.trim()&&JLPT_LEVELS.includes(x.jlpt)&&Array.isArray(x.categories)&&x.categories.length&&typeof x.meaning==="string"&&x.meaning.trim()&&Array.isArray(x.formation)&&x.formation.length&&typeof x.explanation==="string"&&x.explanation.trim()&&Array.isArray(x.examples)&&x.examples.length; if(!v||ids.has(x.id))return false; ids.add(x.id); return true;}); }
-function loadGrammarData(){ if(grammarData)return Promise.resolve(grammarData); if(grammarDataPromise)return grammarDataPromise; grammarDataPromise=fetch("./data/grammar.json?v=1").then(r=>{if(!r.ok)throw new Error(`Grammar data returned ${r.status}.`);return r.json();}).then(records=>{if(!validateGrammarData(records))throw new Error("Grammar data validation failed."); grammarData=records; return records;}).catch(e=>{grammarDataPromise=null;throw e;}); return grammarDataPromise; }
+function loadGrammarData(){ if(grammarData)return Promise.resolve(grammarData); if(grammarDataPromise)return grammarDataPromise; grammarDataPromise=fetch("./data/grammar.json?v=2").then(r=>{if(!r.ok)throw new Error(`Grammar data returned ${r.status}.`);return r.json();}).then(records=>{if(!validateGrammarData(records))throw new Error("Grammar data validation failed."); grammarData=records; return records;}).catch(e=>{grammarDataPromise=null;throw e;}); return grammarDataPromise; }
 function grammarSearchText(x){return searchText([x.pattern,x.reading,x.romaji,x.jlpt,x.meaning,x.explanation,x.nuance,x.commonMistakes,x.register,...(x.categories||[]),...(x.formation||[]),...(x.related||[]),...(x.examples||[]).flatMap(v=>[v.japanese,v.kana,v.romaji,v.english])].filter(Boolean).join(" "));}
-function filteredGrammar(){const q=searchText(document.getElementById("grammar-search").value),l=document.getElementById("grammar-level-filter").value,c=document.getElementById("grammar-category-filter").value;return (grammarData||[]).filter(x=>(!q||grammarSearchText(x).includes(q))&&(l==="all"||x.jlpt===l)&&(c==="all"||x.categories.includes(c)));}
+function filteredGrammar(){
+    const query=searchText(document.getElementById("grammar-search").value);
+    const compactQuery=query.replace(/[\s\-_/・〜～]+/g,"");
+    const level=document.getElementById("grammar-level-filter").value;
+    const category=document.getElementById("grammar-category-filter").value;
+    return (grammarData||[]).filter(item=>{
+        const haystack=grammarSearchText(item);
+        const compactHaystack=haystack.replace(/[\s\-_/・〜～]+/g,"");
+        const matchesQuery=!query||haystack.includes(query)||(compactQuery&&compactHaystack.includes(compactQuery));
+        return matchesQuery&&(level==="all"||item.jlpt===level)&&(category==="all"||item.categories.includes(category));
+    });
+}
 function applyGrammarRomajiVisibility(){document.querySelectorAll("[data-grammar-romaji]").forEach(el=>{el.hidden=!grammarRomajiVisible;});["grammar-romaji-toggle","grammar-detail-romaji-toggle"].forEach(id=>{const b=document.getElementById(id);if(b){b.textContent=grammarRomajiVisible?"Hide Romaji":"Show Romaji";b.setAttribute("aria-pressed",String(grammarRomajiVisible));}});}
 function renderGrammarFilters(){const s=document.getElementById("grammar-category-filter"),selected=s.value,cats=[...new Set((grammarData||[]).flatMap(x=>x.categories))].sort();s.innerHTML='<option value="all">All Categories</option>'+cats.map(x=>`<option value="${escapeSearchHtml(x)}">${escapeSearchHtml(x)}</option>`).join("");s.value=cats.includes(selected)?selected:"all";}
 function renderGrammar(){if(!grammarData)return;const items=filteredGrammar();document.getElementById("grammar-count").textContent=`${items.length} of ${grammarData.length} grammar points`;document.getElementById("grammar-list").innerHTML=items.map(x=>`<button class="grammar-card" type="button" data-grammar-id="${escapeSearchHtml(x.id)}"><div class="grammar-card-top"><span class="grammar-level-badge">${escapeSearchHtml(x.jlpt)}</span><span>${escapeSearchHtml(x.register||"Neutral")}</span></div><strong>${escapeSearchHtml(x.pattern)}</strong><span class="grammar-card-reading">${escapeSearchHtml(x.reading)}</span><span class="counter-romaji" data-grammar-romaji hidden>${escapeSearchHtml(x.romaji)}</span><p>${escapeSearchHtml(x.meaning)}</p></button>`).join("");document.getElementById("grammar-empty").hidden=items.length>0;applyGrammarRomajiVisibility();}
