@@ -2175,15 +2175,16 @@ function browseNative(direction = 1, random = false) {
 
 
 const RAIL_CITY_FILES = {
-    tokyo: "./data/rail/tokyo.json?v=1",
-    osaka: "./data/rail/osaka.json?v=1",
-    kyoto: "./data/rail/kyoto.json?v=1"
+    tokyo: "./data/rail/tokyo.json?v=2",
+    osaka: "./data/rail/osaka.json?v=2",
+    kyoto: "./data/rail/kyoto.json?v=2"
 };
 
 function normalizeRailPrefs() {
     const validCities = Object.keys(RAIL_CITY_FILES);
     if (!validCities.includes(railGuidePrefs.city)) railGuidePrefs.city = "tokyo";
     railGuidePrefs.line = String(railGuidePrefs.line || "");
+    railGuidePrefs.operator = String(railGuidePrefs.operator || "all");
     railGuidePrefs.from = String(railGuidePrefs.from || "");
     railGuidePrefs.to = String(railGuidePrefs.to || "");
 }
@@ -2207,8 +2208,45 @@ function currentRailLine() {
     return railGuideCityData?.lines?.find(line => line.id === railGuidePrefs.line) || railGuideCityData?.lines?.[0] || null;
 }
 
-function railStationSearchText(station) {
-    return normalizeSearchText([station.code, station.name, station.jp, ...(station.connections || []), station.nearby || ""].join(" "));
+function railStationSearchText(station, line) {
+    return normalizeSearchText([
+        station.code,
+        station.name,
+        station.jp,
+        ...(station.aliases || []),
+        ...(station.connections || []),
+        station.nearby || "",
+        line?.name || "",
+        line?.jp || "",
+        line?.code || "",
+        line?.operator || ""
+    ].join(" "));
+}
+
+function railSearchScore(query, station, line) {
+    const normalized = normalizeSearchText(query);
+    if (!normalized) return 0;
+    const code = normalizeSearchText(station.code);
+    const name = normalizeSearchText(station.name);
+    const jp = normalizeSearchText(station.jp);
+    const aliases = (station.aliases || []).map(normalizeSearchText);
+    const lineName = normalizeSearchText(line?.name);
+    const operator = normalizeSearchText(line?.operator);
+    if (code === normalized) return 120;
+    if (name === normalized || jp === normalized || aliases.includes(normalized)) return 110;
+    if (code.startsWith(normalized)) return 100;
+    if (name.startsWith(normalized) || aliases.some(value => value.startsWith(normalized))) return 90;
+    if (name.includes(normalized) || jp.includes(normalized) || aliases.some(value => value.includes(normalized))) return 80;
+    if (lineName === normalized || operator === normalized) return 65;
+    if (railStationSearchText(station, line).includes(normalized)) return 45;
+    return 0;
+}
+
+function railOperators() {
+    if (!railGuideCityData) return [];
+    return railGuideCityData.operators?.length
+        ? railGuideCityData.operators
+        : [...new Set(railGuideCityData.lines.map(line => line.operator).filter(Boolean))];
 }
 
 function railJourney(line, fromCode, toCode) {
@@ -2260,14 +2298,27 @@ function renderRailCityTabs() {
     container.innerHTML = cities.map(([id,label]) => `<button class="rail-city-chip ${railGuidePrefs.city === id ? "active" : ""}" type="button" data-rail-city="${id}" aria-pressed="${railGuidePrefs.city === id}">${label}</button>`).join("");
 }
 
+function renderRailOperatorTabs() {
+    const container = document.getElementById("rail-operator-tabs");
+    if (!container || !railGuideCityData) return;
+    const operators = railOperators();
+    if (!["all", ...operators].includes(railGuidePrefs.operator)) railGuidePrefs.operator = "all";
+    const options = [["all","All"], ...operators.map(operator => [operator, operator])];
+    container.innerHTML = options.map(([value,label]) => `<button class="rail-operator-chip ${railGuidePrefs.operator === value ? "active" : ""}" type="button" data-rail-operator="${escapeSearchHtml(value)}" aria-pressed="${railGuidePrefs.operator === value}">${escapeSearchHtml(label)}</button>`).join("");
+}
+
 function renderRailLineCards() {
     const container = document.getElementById("rail-line-list");
     if (!container || !railGuideCityData) return;
-    container.innerHTML = railGuideCityData.lines.map(line => `<button class="rail-line-card ${line.id === currentRailLine()?.id ? "active" : ""}" type="button" data-rail-line="${escapeSearchHtml(line.id)}" style="--rail-line:${escapeSearchHtml(line.accent || "#d75a82")}">
+    const selected = currentRailLine();
+    const lines = railGuidePrefs.operator === "all"
+        ? railGuideCityData.lines
+        : railGuideCityData.lines.filter(line => line.operator === railGuidePrefs.operator);
+    container.innerHTML = lines.map(line => `<button class="rail-line-card ${line.id === selected?.id ? "active" : ""}" type="button" data-rail-line="${escapeSearchHtml(line.id)}" style="--rail-line:${escapeSearchHtml(line.accent || "#d75a82")}">
         <span class="rail-line-code">${escapeSearchHtml(line.code)}</span>
-        <span><strong>${escapeSearchHtml(line.name)}</strong><small>${escapeSearchHtml(line.jp)} · ${line.loop ? "Loop" : `${line.stations.length} stations`}</small></span>
+        <span><strong>${escapeSearchHtml(line.name)}</strong><small>${escapeSearchHtml(line.operator || "")}${line.jp ? ` · ${escapeSearchHtml(line.jp)}` : ""} · ${line.loop ? "Loop" : `${line.stations.length} stations`}</small></span>
         <b aria-hidden="true">›</b>
-    </button>`).join("");
+    </button>`).join("") || `<p class="rail-line-empty">No lines in this operator filter.</p>`;
 }
 
 function renderRailStationOptions(line) {
@@ -2315,9 +2366,12 @@ function renderRailStationDetail(stationCode) {
         return;
     }
     card.hidden = false;
+    const stationTitle = station.jp
+        ? `${escapeSearchHtml(station.jp)} <small>${escapeSearchHtml(station.name)}</small>`
+        : `${escapeSearchHtml(station.name)}`;
     card.innerHTML = `<div class="rail-station-detail-heading">
         <span class="rail-station-code" style="--rail-line:${escapeSearchHtml(line.accent || "#d75a82")}">${escapeSearchHtml(station.code)}</span>
-        <div><h3>${escapeSearchHtml(station.jp)} <small>${escapeSearchHtml(station.name)}</small></h3><p>${escapeSearchHtml(line.name)}</p></div>
+        <div><h3>${stationTitle}</h3><p>${escapeSearchHtml(line.operator || "")} · ${escapeSearchHtml(line.name)}</p></div>
     </div>
     ${station.nearby ? `<div class="rail-detail-row"><strong>Nearby</strong><p>${escapeSearchHtml(station.nearby)}</p></div>` : ""}
     ${station.connections?.length ? `<div class="rail-detail-row"><strong>Connections</strong><p>${station.connections.map(escapeSearchHtml).join(" · ")}</p></div>` : ""}
@@ -2336,7 +2390,7 @@ function renderRailDiagram() {
         const selected = highlighted.has(station.code);
         return `<button class="rail-station-node ${selected ? "journey-active" : ""}" type="button" data-rail-station="${escapeSearchHtml(station.code)}" aria-label="Open ${escapeSearchHtml(station.name)} station details">
             <span class="rail-node-dot"></span>
-            <span class="rail-node-copy"><b>${escapeSearchHtml(station.code)}</b><strong>${escapeSearchHtml(station.name)}</strong><small>${escapeSearchHtml(station.jp)}</small></span>
+            <span class="rail-node-copy"><b>${escapeSearchHtml(station.code)}</b><strong>${escapeSearchHtml(station.name)}</strong>${station.jp ? `<small>${escapeSearchHtml(station.jp)}</small>` : ""}</span>
         </button>`;
     }).join("");
 }
@@ -2353,18 +2407,17 @@ function renderRailSearch(query = "") {
     const matches = [];
     for (const line of railGuideCityData.lines) {
         for (const station of line.stations) {
-            if (railStationSearchText(station).includes(normalized)) {
-                matches.push({ line, station });
-                if (matches.length >= 12) break;
-            }
+            const score = railSearchScore(normalized, station, line);
+            if (score > 0) matches.push({ line, station, score });
         }
-        if (matches.length >= 12) break;
     }
+    matches.sort((a,b) => b.score - a.score || a.station.name.localeCompare(b.station.name) || a.line.name.localeCompare(b.line.name));
+    const topMatches = matches.slice(0, 15);
     results.hidden = false;
-    results.innerHTML = matches.length ? matches.map(({line,station}) => `<button type="button" data-rail-search-line="${escapeSearchHtml(line.id)}" data-rail-search-station="${escapeSearchHtml(station.code)}">
+    results.innerHTML = topMatches.length ? topMatches.map(({line,station}) => `<button type="button" data-rail-search-line="${escapeSearchHtml(line.id)}" data-rail-search-station="${escapeSearchHtml(station.code)}">
         <span class="rail-search-code" style="--rail-line:${escapeSearchHtml(line.accent || "#d75a82")}">${escapeSearchHtml(station.code)}</span>
-        <span><strong>${escapeSearchHtml(station.name)}</strong><small>${escapeSearchHtml(station.jp)} · ${escapeSearchHtml(line.name)}</small></span>
-    </button>`).join("") : `<p>No matching station in ${escapeSearchHtml(railGuideCityData.cityName)}.</p>`;
+        <span><strong>${escapeSearchHtml(station.name)}</strong><small>${station.jp ? `${escapeSearchHtml(station.jp)} · ` : ""}${escapeSearchHtml(line.operator || "")} · ${escapeSearchHtml(line.name)}</small></span>
+    </button>`).join("") : `<p>No matching station, line, operator, code, landmark or connection in ${escapeSearchHtml(railGuideCityData.cityName)}.</p>`;
 }
 
 function renderRailGuide() {
@@ -2373,14 +2426,17 @@ function renderRailGuide() {
     railGuidePrefs.line = line.id;
     saveRailPrefs();
     renderRailCityTabs();
+    renderRailOperatorTabs();
     renderRailLineCards();
 
-    document.getElementById("rail-city-title").textContent = `${railGuideCityData.cityName} JR Guide`;
+    document.getElementById("rail-city-title").textContent = `${railGuideCityData.cityName} Rail Lines`;
+    const scope = document.getElementById("rail-search-scope");
+    if (scope) scope.textContent = `Searches all ${railGuideCityData.lines.length} lines in ${railGuideCityData.cityName}, regardless of operator filter.`;
     document.getElementById("rail-city-note").textContent = railGuideCityData.notice || "";
     document.getElementById("rail-line-code").textContent = line.code;
     document.getElementById("rail-line-code").style.setProperty("--rail-line", line.accent || "#d75a82");
     document.getElementById("rail-line-name").textContent = line.name;
-    document.getElementById("rail-line-jp").textContent = line.jp;
+    document.getElementById("rail-line-jp").textContent = `${line.operator || ""}${line.jp ? ` · ${line.jp}` : ""}`;
     document.getElementById("rail-line-summary").textContent = line.summary || "";
     const service = document.getElementById("rail-line-service-note");
     service.hidden = !line.serviceNote;
@@ -2396,7 +2452,7 @@ async function openRailGuide() {
     const loading = document.getElementById("rail-loading");
     if (loading) {
         loading.hidden = false;
-        loading.textContent = "Preparing JR Rail Guide…";
+        loading.textContent = "Preparing Rail Guide…";
     }
     try {
         railGuideCityData = await loadRailCity(railGuidePrefs.city);
@@ -2421,6 +2477,7 @@ async function selectRailCity(city) {
     if (!RAIL_CITY_FILES[city] || city === railGuidePrefs.city && railGuideCityData) return;
     railGuidePrefs.city = city;
     railGuidePrefs.line = "";
+    railGuidePrefs.operator = "all";
     railGuidePrefs.from = "";
     railGuidePrefs.to = "";
     saveRailPrefs();
@@ -2434,6 +2491,7 @@ function selectRailLine(lineId, stationCode = "") {
     const line = railGuideCityData?.lines?.find(item => item.id === lineId);
     if (!line) return;
     railGuidePrefs.line = line.id;
+    if (stationCode) railGuidePrefs.operator = line.operator || "all";
     railGuidePrefs.from = "";
     railGuidePrefs.to = "";
     if (stationCode && line.stations.some(station => station.code === stationCode)) {
@@ -5866,6 +5924,21 @@ function addListeners() {
             await selectRailCity(cityButton.dataset.railCity);
             return;
         }
+        const operatorButton = event.target.closest("[data-rail-operator]");
+        if (operatorButton) {
+            railGuidePrefs.operator = operatorButton.dataset.railOperator || "all";
+            const visibleLines = railGuidePrefs.operator === "all"
+                ? railGuideCityData?.lines || []
+                : (railGuideCityData?.lines || []).filter(line => line.operator === railGuidePrefs.operator);
+            if (!visibleLines.some(line => line.id === currentRailLine()?.id) && visibleLines[0]) {
+                railGuidePrefs.line = visibleLines[0].id;
+                railGuidePrefs.from = "";
+                railGuidePrefs.to = "";
+            }
+            saveRailPrefs();
+            renderRailGuide();
+            return;
+        }
         const lineButton = event.target.closest("[data-rail-line]");
         if (lineButton) {
             selectRailLine(lineButton.dataset.railLine);
@@ -5905,7 +5978,13 @@ function addListeners() {
     });
     document.getElementById("rail-search-input").addEventListener("input", event => {
         window.clearTimeout(railGuideSearchTimer);
-        railGuideSearchTimer = window.setTimeout(() => renderRailSearch(event.target.value), 120);
+        railGuideSearchTimer = window.setTimeout(() => renderRailSearch(event.target.value), 100);
+    });
+    document.getElementById("rail-search-clear").addEventListener("click", () => {
+        const input = document.getElementById("rail-search-input");
+        input.value = "";
+        renderRailSearch("");
+        input.focus();
     });
 
     document.getElementById("travel-category-filters").addEventListener("click", event => {

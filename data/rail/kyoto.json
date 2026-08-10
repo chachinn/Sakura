@@ -1,10 +1,10 @@
 {
   "city": "kyoto",
   "cityName": "Kyoto",
-  "operator": "JR West",
+  "operator": "Multiple operators",
   "verifiedOn": "2026-08-10",
-  "sourceNote": "Static reference built from JR West's official Kinki station-number route map and Kyoto travel information. Not live service data.",
-  "notice": "Use this as an offline orientation guide. Train types, stopping patterns, platforms and service changes can vary; follow current station signs and announcements.",
+  "sourceNote": "Static offline reference using official JR West and Kyoto Municipal Transportation Bureau station information. Not live service data.",
+  "notice": "Offline orientation guide only. Through-services, platforms, delays and temporary service changes can vary. Follow current station and train destination signs.",
   "lines": [
     {
       "id": "nara",
@@ -148,7 +148,8 @@
           ],
           "nearby": "Nara Park access"
         }
-      ]
+      ],
+      "operator": "JR West"
     },
     {
       "id": "sagano",
@@ -256,7 +257,8 @@
           "name": "Sonobe",
           "jp": "園部"
         }
-      ]
+      ],
+      "operator": "JR West"
     },
     {
       "id": "jr-kyoto",
@@ -371,7 +373,255 @@
             "Osaka Metro via Umeda"
           ]
         }
-      ]
+      ],
+      "operator": "JR West"
+    },
+    {
+      "id": "subway-karasuma",
+      "name": "Karasuma Line",
+      "jp": "烏丸線",
+      "code": "K",
+      "accent": "#3aa55d",
+      "operator": "Kyoto City Subway",
+      "loop": false,
+      "directionForward": "toward Takeda",
+      "directionReverse": "toward Kokusaikaikan",
+      "summary": "Kyoto's north-south subway through central Kyoto and Kyoto Station.",
+      "stations": [
+        {
+          "code": "K01",
+          "name": "Kokusaikaikan",
+          "jp": "国際会館",
+          "nearby": "Kyoto International Conference Center",
+          "aliases": [
+            "Kyoto International Conference Center"
+          ]
+        },
+        {
+          "code": "K02",
+          "name": "Matsugasaki",
+          "jp": "松ヶ崎"
+        },
+        {
+          "code": "K03",
+          "name": "Kitayama",
+          "jp": "北山"
+        },
+        {
+          "code": "K04",
+          "name": "Kitaoji",
+          "jp": "北大路"
+        },
+        {
+          "code": "K05",
+          "name": "Kuramaguchi",
+          "jp": "鞍馬口"
+        },
+        {
+          "code": "K06",
+          "name": "Imadegawa",
+          "jp": "今出川"
+        },
+        {
+          "code": "K07",
+          "name": "Marutamachi",
+          "jp": "丸太町"
+        },
+        {
+          "code": "K08",
+          "name": "Karasuma Oike",
+          "jp": "烏丸御池",
+          "nearby": "Kyoto downtown · transfer between both subway lines",
+          "connections": [
+            "Karasuma Line",
+            "Tozai Line"
+          ]
+        },
+        {
+          "code": "K09",
+          "name": "Shijo",
+          "jp": "四条",
+          "nearby": "Shijo-Karasuma · central shopping",
+          "connections": [
+            "Hankyu Karasuma Station nearby"
+          ]
+        },
+        {
+          "code": "K10",
+          "name": "Gojo",
+          "jp": "五条"
+        },
+        {
+          "code": "K11",
+          "name": "Kyoto",
+          "jp": "京都",
+          "nearby": "Kyoto Station · Shinkansen/JR hub",
+          "connections": [
+            "JR lines",
+            "Shinkansen",
+            "Kintetsu"
+          ]
+        },
+        {
+          "code": "K12",
+          "name": "Kujo",
+          "jp": "九条"
+        },
+        {
+          "code": "K13",
+          "name": "Jujo",
+          "jp": "十条"
+        },
+        {
+          "code": "K14",
+          "name": "Kuinabashi",
+          "jp": "くいな橋"
+        },
+        {
+          "code": "K15",
+          "name": "Takeda",
+          "jp": "竹田",
+          "connections": [
+            "Kintetsu Kyoto Line"
+          ]
+        }
+      ],
+      "serviceNote": "Some Karasuma Line trains continue onto the Kintetsu Line beyond Takeda. The guide here covers subway K01–K15."
+    },
+    {
+      "id": "subway-tozai",
+      "name": "Tozai Line",
+      "jp": "東西線",
+      "code": "T",
+      "accent": "#e75b45",
+      "operator": "Kyoto City Subway",
+      "loop": false,
+      "directionForward": "toward Uzumasa Tenjingawa",
+      "directionReverse": "toward Rokujizo",
+      "summary": "Kyoto's east-west subway linking Yamashina, Higashiyama/Sanjo, downtown, Nijo Castle and western Kyoto.",
+      "stations": [
+        {
+          "code": "T01",
+          "name": "Rokujizo",
+          "jp": "六地蔵"
+        },
+        {
+          "code": "T02",
+          "name": "Ishida",
+          "jp": "石田"
+        },
+        {
+          "code": "T03",
+          "name": "Daigo",
+          "jp": "醍醐"
+        },
+        {
+          "code": "T04",
+          "name": "Ono",
+          "jp": "小野"
+        },
+        {
+          "code": "T05",
+          "name": "Nagitsuji",
+          "jp": "椥辻"
+        },
+        {
+          "code": "T06",
+          "name": "Higashino",
+          "jp": "東野"
+        },
+        {
+          "code": "T07",
+          "name": "Yamashina",
+          "jp": "山科",
+          "connections": [
+            "JR / Keihan nearby"
+          ]
+        },
+        {
+          "code": "T08",
+          "name": "Misasagi",
+          "jp": "御陵",
+          "connections": [
+            "Keihan Keishin through-services"
+          ]
+        },
+        {
+          "code": "T09",
+          "name": "Keage",
+          "jp": "蹴上",
+          "nearby": "Nanzen-ji · Keage Incline"
+        },
+        {
+          "code": "T10",
+          "name": "Higashiyama",
+          "jp": "東山",
+          "nearby": "Heian Shrine · museums"
+        },
+        {
+          "code": "T11",
+          "name": "Sanjo Keihan",
+          "jp": "三条京阪",
+          "nearby": "Sanjo · Kamo River · Keihan transfer",
+          "connections": [
+            "Keihan Main Line at Sanjo"
+          ]
+        },
+        {
+          "code": "T12",
+          "name": "Kyoto Shiyakusho-mae (Kyoto City Hall)",
+          "jp": "京都市役所前",
+          "nearby": "City Hall · Teramachi/Kawaramachi area",
+          "aliases": [
+            "Kyoto Shiyakusho-mae",
+            "Kyoto City Hall"
+          ]
+        },
+        {
+          "code": "T13",
+          "name": "Karasuma Oike",
+          "jp": "烏丸御池",
+          "nearby": "Kyoto downtown · transfer between both subway lines",
+          "connections": [
+            "Karasuma Line",
+            "Tozai Line"
+          ]
+        },
+        {
+          "code": "T14",
+          "name": "Nijojo-mae (Nijo-jo Castle)",
+          "jp": "二条城前",
+          "nearby": "Nijo Castle",
+          "aliases": [
+            "Nijojo-mae",
+            "Nijo Castle"
+          ]
+        },
+        {
+          "code": "T15",
+          "name": "Nijo",
+          "jp": "二条",
+          "nearby": "Nijo Castle / JR transfer area",
+          "connections": [
+            "JR Sagano Line"
+          ]
+        },
+        {
+          "code": "T16",
+          "name": "Nishioji Oike",
+          "jp": "西大路御池"
+        },
+        {
+          "code": "T17",
+          "name": "Uzumasa Tenjingawa",
+          "jp": "太秦天神川"
+        }
+      ],
+      "serviceNote": "Some trains between Misasagi and Uzumasa Tenjingawa through-run with the Keihan Keishin Line. Check the destination display."
     }
+  ],
+  "operators": [
+    "JR West",
+    "Kyoto City Subway"
   ]
 }

@@ -1,10 +1,10 @@
 {
   "city": "tokyo",
   "cityName": "Tokyo",
-  "operator": "JR East",
+  "operator": "Multiple operators",
   "verifiedOn": "2026-08-10",
-  "sourceNote": "Static reference built from JR East's official metropolitan station-numbering map and station information. Not live service data.",
-  "notice": "Use this as an offline orientation guide. Stopping patterns, platform assignments, delays and service changes can vary; always follow current station signs and announcements.",
+  "sourceNote": "Static offline reference using official JR East, Tokyo Metro and Toei Transportation line/station information. Not live service data.",
+  "notice": "Offline orientation guide only. Train types, through-services, platform assignments, delays and temporary service changes can vary. Always follow current station signs and operator announcements.",
   "lines": [
     {
       "id": "yamanote",
@@ -279,7 +279,8 @@
           ],
           "nearby": "Ginza"
         }
-      ]
+      ],
+      "operator": "JR East"
     },
     {
       "id": "chuo-rapid-core",
@@ -391,7 +392,8 @@
           "jp": "三鷹",
           "nearby": "Ghibli Museum area"
         }
-      ]
+      ],
+      "operator": "JR East"
     },
     {
       "id": "keihin-tohoku-core",
@@ -574,7 +576,1879 @@
           ],
           "nearby": "Major Yokohama hub"
         }
+      ],
+      "operator": "JR East"
+    },
+    {
+      "id": "metro-ginza",
+      "name": "Ginza Line",
+      "jp": "銀座線",
+      "code": "G",
+      "accent": "#f39700",
+      "operator": "Tokyo Metro",
+      "loop": false,
+      "directionForward": "toward Asakusa",
+      "directionReverse": "toward Shibuya",
+      "summary": "A central Tokyo subway line linking Shibuya, Ginza, Ueno and Asakusa.",
+      "stations": [
+        {
+          "code": "G01",
+          "name": "Shibuya",
+          "jp": "",
+          "nearby": "Shibuya Scramble · Hachiko",
+          "connections": [
+            "JR lines",
+            "Tokyo Metro",
+            "Tokyu",
+            "Keio Inokashira"
+          ]
+        },
+        {
+          "code": "G02",
+          "name": "Omote-sando",
+          "jp": ""
+        },
+        {
+          "code": "G03",
+          "name": "Gaiemmae",
+          "jp": ""
+        },
+        {
+          "code": "G04",
+          "name": "Aoyama-itchome",
+          "jp": ""
+        },
+        {
+          "code": "G05",
+          "name": "Akasaka-mitsuke",
+          "jp": ""
+        },
+        {
+          "code": "G06",
+          "name": "Tameike-sanno",
+          "jp": ""
+        },
+        {
+          "code": "G07",
+          "name": "Toranomon",
+          "jp": ""
+        },
+        {
+          "code": "G08",
+          "name": "Shimbashi",
+          "jp": ""
+        },
+        {
+          "code": "G09",
+          "name": "Ginza",
+          "jp": "",
+          "nearby": "Ginza shopping district",
+          "connections": [
+            "Tokyo Metro Ginza/Marunouchi/Hibiya"
+          ]
+        },
+        {
+          "code": "G10",
+          "name": "Kyobashi",
+          "jp": ""
+        },
+        {
+          "code": "G11",
+          "name": "Nihombashi",
+          "jp": "",
+          "connections": [
+            "Tokyo Metro Ginza/Tozai",
+            "Toei Asakusa"
+          ]
+        },
+        {
+          "code": "G12",
+          "name": "Mitsukoshimae",
+          "jp": ""
+        },
+        {
+          "code": "G13",
+          "name": "Kanda",
+          "jp": ""
+        },
+        {
+          "code": "G14",
+          "name": "Suehirocho",
+          "jp": ""
+        },
+        {
+          "code": "G15",
+          "name": "Ueno-hirokoji",
+          "jp": ""
+        },
+        {
+          "code": "G16",
+          "name": "Ueno",
+          "jp": "",
+          "nearby": "Ueno Park · museums · Ameyoko",
+          "connections": [
+            "JR lines",
+            "Tokyo Metro Ginza/Hibiya",
+            "Keisei Ueno nearby"
+          ]
+        },
+        {
+          "code": "G17",
+          "name": "Inaricho",
+          "jp": ""
+        },
+        {
+          "code": "G18",
+          "name": "Tawaramachi",
+          "jp": ""
+        },
+        {
+          "code": "G19",
+          "name": "Asakusa",
+          "jp": "",
+          "nearby": "Senso-ji · Kaminarimon",
+          "connections": [
+            "Tokyo Metro Ginza",
+            "Toei Asakusa",
+            "Tobu"
+          ]
+        }
       ]
+    },
+    {
+      "id": "metro-marunouchi",
+      "name": "Marunouchi Line",
+      "jp": "丸ノ内線",
+      "code": "M",
+      "accent": "#e60012",
+      "operator": "Tokyo Metro",
+      "loop": false,
+      "directionForward": "toward Ikebukuro",
+      "directionReverse": "toward Ogikubo",
+      "summary": "Useful east-west/north-west route through Shinjuku, Tokyo, Ginza and Ikebukuro.",
+      "stations": [
+        {
+          "code": "M01",
+          "name": "Ogikubo",
+          "jp": ""
+        },
+        {
+          "code": "M02",
+          "name": "Minami-asagaya",
+          "jp": ""
+        },
+        {
+          "code": "M03",
+          "name": "Shin-koenji",
+          "jp": ""
+        },
+        {
+          "code": "M04",
+          "name": "Higashi-koenji",
+          "jp": ""
+        },
+        {
+          "code": "M05",
+          "name": "Shin-nakano",
+          "jp": ""
+        },
+        {
+          "code": "M06",
+          "name": "Nakano-sakaue",
+          "jp": ""
+        },
+        {
+          "code": "M07",
+          "name": "Nishi-shinjuku",
+          "jp": ""
+        },
+        {
+          "code": "M08",
+          "name": "Shinjuku",
+          "jp": "",
+          "nearby": "Shinjuku Gyoen · Kabukicho · major rail hub",
+          "connections": [
+            "JR lines",
+            "Toei",
+            "Odakyu",
+            "Keio"
+          ]
+        },
+        {
+          "code": "M09",
+          "name": "Shinjuku-sanchome",
+          "jp": "",
+          "nearby": "Shinjuku shopping · Shinjuku Gyoen east side",
+          "connections": [
+            "Tokyo Metro Marunouchi/Fukutoshin",
+            "Toei Shinjuku"
+          ]
+        },
+        {
+          "code": "M10",
+          "name": "Shinjuku-gyoemmae",
+          "jp": ""
+        },
+        {
+          "code": "M11",
+          "name": "Yotsuya-sanchome",
+          "jp": ""
+        },
+        {
+          "code": "M12",
+          "name": "Yotsuya",
+          "jp": ""
+        },
+        {
+          "code": "M13",
+          "name": "Akasaka-mitsuke",
+          "jp": ""
+        },
+        {
+          "code": "M14",
+          "name": "Kokkai-gijidomae",
+          "jp": ""
+        },
+        {
+          "code": "M15",
+          "name": "Kasumigaseki",
+          "jp": ""
+        },
+        {
+          "code": "M16",
+          "name": "Ginza",
+          "jp": "",
+          "nearby": "Ginza shopping district",
+          "connections": [
+            "Tokyo Metro Ginza/Marunouchi/Hibiya"
+          ]
+        },
+        {
+          "code": "M17",
+          "name": "Tokyo",
+          "jp": "",
+          "nearby": "Tokyo Station · Marunouchi"
+        },
+        {
+          "code": "M18",
+          "name": "Otemachi",
+          "jp": "",
+          "connections": [
+            "Tokyo Metro Marunouchi/Tozai/Chiyoda/Hanzomon",
+            "Toei Mita"
+          ]
+        },
+        {
+          "code": "M19",
+          "name": "Awajicho",
+          "jp": ""
+        },
+        {
+          "code": "M20",
+          "name": "Ochanomizu",
+          "jp": ""
+        },
+        {
+          "code": "M21",
+          "name": "Hongo-sanchome",
+          "jp": ""
+        },
+        {
+          "code": "M22",
+          "name": "Korakuen",
+          "jp": "",
+          "nearby": "Tokyo Dome"
+        },
+        {
+          "code": "M23",
+          "name": "Myogadani",
+          "jp": ""
+        },
+        {
+          "code": "M24",
+          "name": "Shin-otsuka",
+          "jp": ""
+        },
+        {
+          "code": "M25",
+          "name": "Ikebukuro",
+          "jp": "",
+          "connections": [
+            "JR lines",
+            "Tokyo Metro Marunouchi/Yurakucho/Fukutoshin",
+            "Seibu",
+            "Tobu"
+          ]
+        }
+      ],
+      "serviceNote": "This guide shows the main M01–M25 route. The Honancho branch is not included in this first offline reference."
+    },
+    {
+      "id": "metro-hibiya",
+      "name": "Hibiya Line",
+      "jp": "日比谷線",
+      "code": "H",
+      "accent": "#9caeb7",
+      "operator": "Tokyo Metro",
+      "loop": false,
+      "directionForward": "toward Kita-senju",
+      "directionReverse": "toward Naka-meguro",
+      "summary": "Runs through Roppongi, Hibiya/Ginza, Tsukiji, Akihabara and Ueno.",
+      "stations": [
+        {
+          "code": "H01",
+          "name": "Naka-meguro",
+          "jp": ""
+        },
+        {
+          "code": "H02",
+          "name": "Ebisu",
+          "jp": ""
+        },
+        {
+          "code": "H03",
+          "name": "Hiro-o",
+          "jp": ""
+        },
+        {
+          "code": "H04",
+          "name": "Roppongi",
+          "jp": "",
+          "nearby": "Roppongi Hills · Tokyo Midtown",
+          "connections": [
+            "Tokyo Metro Hibiya",
+            "Toei Oedo"
+          ]
+        },
+        {
+          "code": "H05",
+          "name": "Kamiyacho",
+          "jp": ""
+        },
+        {
+          "code": "H06",
+          "name": "Toranomon Hills",
+          "jp": ""
+        },
+        {
+          "code": "H07",
+          "name": "Kasumigaseki",
+          "jp": ""
+        },
+        {
+          "code": "H08",
+          "name": "Hibiya",
+          "jp": "",
+          "nearby": "Hibiya Park · Imperial Palace area",
+          "connections": [
+            "Tokyo Metro Hibiya/Chiyoda",
+            "Toei Mita",
+            "Yurakucho nearby"
+          ]
+        },
+        {
+          "code": "H09",
+          "name": "Ginza",
+          "jp": "",
+          "nearby": "Ginza shopping district",
+          "connections": [
+            "Tokyo Metro Ginza/Marunouchi/Hibiya"
+          ]
+        },
+        {
+          "code": "H10",
+          "name": "Higashi-ginza",
+          "jp": ""
+        },
+        {
+          "code": "H11",
+          "name": "Tsukiji",
+          "jp": "",
+          "nearby": "Tsukiji Outer Market"
+        },
+        {
+          "code": "H12",
+          "name": "Hatchobori",
+          "jp": ""
+        },
+        {
+          "code": "H13",
+          "name": "Kayabacho",
+          "jp": ""
+        },
+        {
+          "code": "H14",
+          "name": "Ningyocho",
+          "jp": ""
+        },
+        {
+          "code": "H15",
+          "name": "Kodemmacho",
+          "jp": ""
+        },
+        {
+          "code": "H16",
+          "name": "Akihabara",
+          "jp": "",
+          "nearby": "Electric Town",
+          "connections": [
+            "JR lines",
+            "Tsukuba Express",
+            "Tokyo Metro Hibiya"
+          ]
+        },
+        {
+          "code": "H17",
+          "name": "Naka-okachimachi",
+          "jp": ""
+        },
+        {
+          "code": "H18",
+          "name": "Ueno",
+          "jp": "",
+          "nearby": "Ueno Park · museums · Ameyoko",
+          "connections": [
+            "JR lines",
+            "Tokyo Metro Ginza/Hibiya",
+            "Keisei Ueno nearby"
+          ]
+        },
+        {
+          "code": "H19",
+          "name": "Iriya",
+          "jp": ""
+        },
+        {
+          "code": "H20",
+          "name": "Minowa",
+          "jp": ""
+        },
+        {
+          "code": "H21",
+          "name": "Minami-senju",
+          "jp": ""
+        },
+        {
+          "code": "H22",
+          "name": "Kita-senju",
+          "jp": ""
+        }
+      ]
+    },
+    {
+      "id": "metro-tozai",
+      "name": "Tozai Line",
+      "jp": "東西線",
+      "code": "T",
+      "accent": "#00a7db",
+      "operator": "Tokyo Metro",
+      "loop": false,
+      "directionForward": "toward Nishi-funabashi",
+      "directionReverse": "toward Nakano",
+      "summary": "Crosses Tokyo east-west via Takadanobaba, Iidabashi, Otemachi and Nihombashi.",
+      "stations": [
+        {
+          "code": "T01",
+          "name": "Nakano",
+          "jp": ""
+        },
+        {
+          "code": "T02",
+          "name": "Ochiai",
+          "jp": ""
+        },
+        {
+          "code": "T03",
+          "name": "Takadanobaba",
+          "jp": "",
+          "nearby": "Waseda / Takadanobaba area",
+          "connections": [
+            "JR Yamanote",
+            "Tokyo Metro Tozai",
+            "Seibu Shinjuku"
+          ]
+        },
+        {
+          "code": "T04",
+          "name": "Waseda",
+          "jp": ""
+        },
+        {
+          "code": "T05",
+          "name": "Kagurazaka",
+          "jp": ""
+        },
+        {
+          "code": "T06",
+          "name": "Iidabashi",
+          "jp": "",
+          "connections": [
+            "Tokyo Metro Tozai/Yurakucho/Namboku",
+            "Toei Oedo",
+            "JR Chuo-Sobu"
+          ]
+        },
+        {
+          "code": "T07",
+          "name": "Kudanshita",
+          "jp": "",
+          "connections": [
+            "Tokyo Metro Tozai/Hanzomon",
+            "Toei Shinjuku"
+          ]
+        },
+        {
+          "code": "T08",
+          "name": "Takebashi",
+          "jp": ""
+        },
+        {
+          "code": "T09",
+          "name": "Otemachi",
+          "jp": "",
+          "connections": [
+            "Tokyo Metro Marunouchi/Tozai/Chiyoda/Hanzomon",
+            "Toei Mita"
+          ]
+        },
+        {
+          "code": "T10",
+          "name": "Nihombashi",
+          "jp": "",
+          "connections": [
+            "Tokyo Metro Ginza/Tozai",
+            "Toei Asakusa"
+          ]
+        },
+        {
+          "code": "T11",
+          "name": "Kayabacho",
+          "jp": ""
+        },
+        {
+          "code": "T12",
+          "name": "Monzen-nakacho",
+          "jp": ""
+        },
+        {
+          "code": "T13",
+          "name": "Kiba",
+          "jp": ""
+        },
+        {
+          "code": "T14",
+          "name": "Toyocho",
+          "jp": ""
+        },
+        {
+          "code": "T15",
+          "name": "Minami-sunamachi",
+          "jp": ""
+        },
+        {
+          "code": "T16",
+          "name": "Nishi-kasai",
+          "jp": ""
+        },
+        {
+          "code": "T17",
+          "name": "Kasai",
+          "jp": ""
+        },
+        {
+          "code": "T18",
+          "name": "Urayasu",
+          "jp": ""
+        },
+        {
+          "code": "T19",
+          "name": "Minami-gyotoku",
+          "jp": ""
+        },
+        {
+          "code": "T20",
+          "name": "Gyotoku",
+          "jp": ""
+        },
+        {
+          "code": "T21",
+          "name": "Myoden",
+          "jp": ""
+        },
+        {
+          "code": "T22",
+          "name": "Baraki-nakayama",
+          "jp": ""
+        },
+        {
+          "code": "T23",
+          "name": "Nishi-funabashi",
+          "jp": ""
+        }
+      ],
+      "serviceNote": "Rapid and commuter-rapid stopping patterns differ from local trains. The station sequence here is for orientation; check the train type on current signs."
+    },
+    {
+      "id": "metro-chiyoda",
+      "name": "Chiyoda Line",
+      "jp": "千代田線",
+      "code": "C",
+      "accent": "#00bb85",
+      "operator": "Tokyo Metro",
+      "loop": false,
+      "directionForward": "toward Kita-ayase",
+      "directionReverse": "toward Yoyogi-uehara",
+      "summary": "Links Harajuku/Omote-sando with central Tokyo, Nezu, Kita-senju and Kita-ayase.",
+      "stations": [
+        {
+          "code": "C01",
+          "name": "Yoyogi-uehara",
+          "jp": ""
+        },
+        {
+          "code": "C02",
+          "name": "Yoyogi-koen",
+          "jp": ""
+        },
+        {
+          "code": "C03",
+          "name": "Meiji-jingumae <Harajuku>",
+          "jp": "",
+          "nearby": "Meiji Jingu · Harajuku",
+          "aliases": [
+            "Meiji-jingumae",
+            "Harajuku"
+          ]
+        },
+        {
+          "code": "C04",
+          "name": "Omote-sando",
+          "jp": ""
+        },
+        {
+          "code": "C05",
+          "name": "Nogizaka",
+          "jp": ""
+        },
+        {
+          "code": "C06",
+          "name": "Akasaka",
+          "jp": ""
+        },
+        {
+          "code": "C07",
+          "name": "Kokkai-gijidomae",
+          "jp": ""
+        },
+        {
+          "code": "C08",
+          "name": "Kasumigaseki",
+          "jp": ""
+        },
+        {
+          "code": "C09",
+          "name": "Hibiya",
+          "jp": "",
+          "nearby": "Hibiya Park · Imperial Palace area",
+          "connections": [
+            "Tokyo Metro Hibiya/Chiyoda",
+            "Toei Mita",
+            "Yurakucho nearby"
+          ]
+        },
+        {
+          "code": "C10",
+          "name": "Nijubashimae <Marunouchi>",
+          "jp": "",
+          "aliases": [
+            "Nijubashimae",
+            "Marunouchi"
+          ]
+        },
+        {
+          "code": "C11",
+          "name": "Otemachi",
+          "jp": "",
+          "connections": [
+            "Tokyo Metro Marunouchi/Tozai/Chiyoda/Hanzomon",
+            "Toei Mita"
+          ]
+        },
+        {
+          "code": "C12",
+          "name": "Shin-ochanomizu",
+          "jp": ""
+        },
+        {
+          "code": "C13",
+          "name": "Yushima",
+          "jp": ""
+        },
+        {
+          "code": "C14",
+          "name": "Nezu",
+          "jp": ""
+        },
+        {
+          "code": "C15",
+          "name": "Sendagi",
+          "jp": ""
+        },
+        {
+          "code": "C16",
+          "name": "Nishi-nippori",
+          "jp": ""
+        },
+        {
+          "code": "C17",
+          "name": "Machiya",
+          "jp": ""
+        },
+        {
+          "code": "C18",
+          "name": "Kita-senju",
+          "jp": ""
+        },
+        {
+          "code": "C19",
+          "name": "Ayase",
+          "jp": ""
+        },
+        {
+          "code": "C20",
+          "name": "Kita-ayase",
+          "jp": ""
+        }
+      ]
+    },
+    {
+      "id": "metro-yurakucho",
+      "name": "Yurakucho Line",
+      "jp": "有楽町線",
+      "code": "Y",
+      "accent": "#c1a470",
+      "operator": "Tokyo Metro",
+      "loop": false,
+      "directionForward": "toward Shin-kiba",
+      "directionReverse": "toward Wakoshi",
+      "summary": "Useful for Ikebukuro, Iidabashi, Yurakucho/Ginza, Tsukishima, Toyosu and Shin-kiba.",
+      "stations": [
+        {
+          "code": "Y01",
+          "name": "Wakoshi",
+          "jp": ""
+        },
+        {
+          "code": "Y02",
+          "name": "Chikatetsu-narimasu",
+          "jp": ""
+        },
+        {
+          "code": "Y03",
+          "name": "Chikatetsu-akatsuka",
+          "jp": ""
+        },
+        {
+          "code": "Y04",
+          "name": "Heiwadai",
+          "jp": ""
+        },
+        {
+          "code": "Y05",
+          "name": "Hikawadai",
+          "jp": ""
+        },
+        {
+          "code": "Y06",
+          "name": "Kotake-mukaihara",
+          "jp": ""
+        },
+        {
+          "code": "Y07",
+          "name": "Senkawa",
+          "jp": ""
+        },
+        {
+          "code": "Y08",
+          "name": "Kanamecho",
+          "jp": ""
+        },
+        {
+          "code": "Y09",
+          "name": "Ikebukuro",
+          "jp": "",
+          "connections": [
+            "JR lines",
+            "Tokyo Metro Marunouchi/Yurakucho/Fukutoshin",
+            "Seibu",
+            "Tobu"
+          ]
+        },
+        {
+          "code": "Y10",
+          "name": "Higashi-ikebukuro",
+          "jp": ""
+        },
+        {
+          "code": "Y11",
+          "name": "Gokokuji",
+          "jp": ""
+        },
+        {
+          "code": "Y12",
+          "name": "Edogawabashi",
+          "jp": ""
+        },
+        {
+          "code": "Y13",
+          "name": "Iidabashi",
+          "jp": "",
+          "connections": [
+            "Tokyo Metro Tozai/Yurakucho/Namboku",
+            "Toei Oedo",
+            "JR Chuo-Sobu"
+          ]
+        },
+        {
+          "code": "Y14",
+          "name": "Ichigaya",
+          "jp": ""
+        },
+        {
+          "code": "Y15",
+          "name": "Kojimachi",
+          "jp": ""
+        },
+        {
+          "code": "Y16",
+          "name": "Nagatacho",
+          "jp": ""
+        },
+        {
+          "code": "Y17",
+          "name": "Sakuradamon",
+          "jp": ""
+        },
+        {
+          "code": "Y18",
+          "name": "Yurakucho",
+          "jp": ""
+        },
+        {
+          "code": "Y19",
+          "name": "Ginza-itchome",
+          "jp": ""
+        },
+        {
+          "code": "Y20",
+          "name": "Shintomicho",
+          "jp": ""
+        },
+        {
+          "code": "Y21",
+          "name": "Tsukishima",
+          "jp": ""
+        },
+        {
+          "code": "Y22",
+          "name": "Toyosu",
+          "jp": "",
+          "nearby": "Toyosu Market area · teamLab Planets"
+        },
+        {
+          "code": "Y23",
+          "name": "Tatsumi",
+          "jp": ""
+        },
+        {
+          "code": "Y24",
+          "name": "Shin-kiba",
+          "jp": ""
+        }
+      ]
+    },
+    {
+      "id": "metro-hanzomon",
+      "name": "Hanzomon Line",
+      "jp": "半蔵門線",
+      "code": "Z",
+      "accent": "#8f76d6",
+      "operator": "Tokyo Metro",
+      "loop": false,
+      "directionForward": "toward Oshiage <SKYTREE>",
+      "directionReverse": "toward Shibuya",
+      "summary": "Connects Shibuya/Omote-sando with Otemachi, Kiyosumi-shirakawa, Kinshicho and Tokyo Skytree.",
+      "stations": [
+        {
+          "code": "Z01",
+          "name": "Shibuya",
+          "jp": "",
+          "nearby": "Shibuya Scramble · Hachiko",
+          "connections": [
+            "JR lines",
+            "Tokyo Metro",
+            "Tokyu",
+            "Keio Inokashira"
+          ]
+        },
+        {
+          "code": "Z02",
+          "name": "Omote-sando",
+          "jp": ""
+        },
+        {
+          "code": "Z03",
+          "name": "Aoyama-itchome",
+          "jp": ""
+        },
+        {
+          "code": "Z04",
+          "name": "Nagatacho",
+          "jp": ""
+        },
+        {
+          "code": "Z05",
+          "name": "Hanzomon",
+          "jp": ""
+        },
+        {
+          "code": "Z06",
+          "name": "Kudanshita",
+          "jp": "",
+          "connections": [
+            "Tokyo Metro Tozai/Hanzomon",
+            "Toei Shinjuku"
+          ]
+        },
+        {
+          "code": "Z07",
+          "name": "Jimbocho",
+          "jp": ""
+        },
+        {
+          "code": "Z08",
+          "name": "Otemachi",
+          "jp": "",
+          "connections": [
+            "Tokyo Metro Marunouchi/Tozai/Chiyoda/Hanzomon",
+            "Toei Mita"
+          ]
+        },
+        {
+          "code": "Z09",
+          "name": "Mitsukoshimae",
+          "jp": ""
+        },
+        {
+          "code": "Z10",
+          "name": "Suitengumae",
+          "jp": ""
+        },
+        {
+          "code": "Z11",
+          "name": "Kiyosumi-shirakawa",
+          "jp": ""
+        },
+        {
+          "code": "Z12",
+          "name": "Sumiyoshi",
+          "jp": ""
+        },
+        {
+          "code": "Z13",
+          "name": "Kinshicho",
+          "jp": ""
+        },
+        {
+          "code": "Z14",
+          "name": "Oshiage <SKYTREE>",
+          "jp": "",
+          "nearby": "Tokyo Skytree",
+          "aliases": [
+            "Oshiage",
+            "Skytree"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "metro-namboku",
+      "name": "Namboku Line",
+      "jp": "南北線",
+      "code": "N",
+      "accent": "#00ada9",
+      "operator": "Tokyo Metro",
+      "loop": false,
+      "directionForward": "toward Akabane-iwabuchi",
+      "directionReverse": "toward Meguro",
+      "summary": "North-south subway through Meguro, Azabu-juban, Iidabashi and Komagome.",
+      "stations": [
+        {
+          "code": "N01",
+          "name": "Meguro",
+          "jp": ""
+        },
+        {
+          "code": "N02",
+          "name": "Shirokanedai",
+          "jp": ""
+        },
+        {
+          "code": "N03",
+          "name": "Shirokane-takanawa",
+          "jp": ""
+        },
+        {
+          "code": "N04",
+          "name": "Azabu-juban",
+          "jp": ""
+        },
+        {
+          "code": "N05",
+          "name": "Roppongi-itchome",
+          "jp": ""
+        },
+        {
+          "code": "N06",
+          "name": "Tameike-sanno",
+          "jp": ""
+        },
+        {
+          "code": "N07",
+          "name": "Nagatacho",
+          "jp": ""
+        },
+        {
+          "code": "N08",
+          "name": "Yotsuya",
+          "jp": ""
+        },
+        {
+          "code": "N09",
+          "name": "Ichigaya",
+          "jp": ""
+        },
+        {
+          "code": "N10",
+          "name": "Iidabashi",
+          "jp": "",
+          "connections": [
+            "Tokyo Metro Tozai/Yurakucho/Namboku",
+            "Toei Oedo",
+            "JR Chuo-Sobu"
+          ]
+        },
+        {
+          "code": "N11",
+          "name": "Korakuen",
+          "jp": "",
+          "nearby": "Tokyo Dome"
+        },
+        {
+          "code": "N12",
+          "name": "Todaimae",
+          "jp": ""
+        },
+        {
+          "code": "N13",
+          "name": "Hon-komagome",
+          "jp": ""
+        },
+        {
+          "code": "N14",
+          "name": "Komagome",
+          "jp": ""
+        },
+        {
+          "code": "N15",
+          "name": "Nishigahara",
+          "jp": ""
+        },
+        {
+          "code": "N16",
+          "name": "Oji",
+          "jp": ""
+        },
+        {
+          "code": "N17",
+          "name": "Oji-kamiya",
+          "jp": ""
+        },
+        {
+          "code": "N18",
+          "name": "Shimo",
+          "jp": ""
+        },
+        {
+          "code": "N19",
+          "name": "Akabane-iwabuchi",
+          "jp": ""
+        }
+      ]
+    },
+    {
+      "id": "metro-fukutoshin",
+      "name": "Fukutoshin Line",
+      "jp": "副都心線",
+      "code": "F",
+      "accent": "#9c5e31",
+      "operator": "Tokyo Metro",
+      "loop": false,
+      "directionForward": "toward Shibuya",
+      "directionReverse": "toward Wakoshi",
+      "summary": "Fast north-south link through Ikebukuro, Shinjuku-sanchome, Harajuku and Shibuya.",
+      "stations": [
+        {
+          "code": "F01",
+          "name": "Wakoshi",
+          "jp": ""
+        },
+        {
+          "code": "F02",
+          "name": "Chikatetsu-narimasu",
+          "jp": ""
+        },
+        {
+          "code": "F03",
+          "name": "Chikatetsu-akatsuka",
+          "jp": ""
+        },
+        {
+          "code": "F04",
+          "name": "Heiwadai",
+          "jp": ""
+        },
+        {
+          "code": "F05",
+          "name": "Hikawadai",
+          "jp": ""
+        },
+        {
+          "code": "F06",
+          "name": "Kotake-mukaihara",
+          "jp": ""
+        },
+        {
+          "code": "F07",
+          "name": "Senkawa",
+          "jp": ""
+        },
+        {
+          "code": "F08",
+          "name": "Kanamecho",
+          "jp": ""
+        },
+        {
+          "code": "F09",
+          "name": "Ikebukuro",
+          "jp": "",
+          "connections": [
+            "JR lines",
+            "Tokyo Metro Marunouchi/Yurakucho/Fukutoshin",
+            "Seibu",
+            "Tobu"
+          ]
+        },
+        {
+          "code": "F10",
+          "name": "Zoshigaya",
+          "jp": ""
+        },
+        {
+          "code": "F11",
+          "name": "Nishi-waseda",
+          "jp": "",
+          "nearby": "Waseda University area"
+        },
+        {
+          "code": "F12",
+          "name": "Higashi-shinjuku",
+          "jp": ""
+        },
+        {
+          "code": "F13",
+          "name": "Shinjuku-sanchome",
+          "jp": "",
+          "nearby": "Shinjuku shopping · Shinjuku Gyoen east side",
+          "connections": [
+            "Tokyo Metro Marunouchi/Fukutoshin",
+            "Toei Shinjuku"
+          ]
+        },
+        {
+          "code": "F14",
+          "name": "Kita-sando",
+          "jp": ""
+        },
+        {
+          "code": "F15",
+          "name": "Meiji-jingumae <Harajuku>",
+          "jp": "",
+          "nearby": "Meiji Jingu · Harajuku",
+          "aliases": [
+            "Meiji-jingumae",
+            "Harajuku"
+          ]
+        },
+        {
+          "code": "F16",
+          "name": "Shibuya",
+          "jp": "",
+          "nearby": "Shibuya Scramble · Hachiko",
+          "connections": [
+            "JR lines",
+            "Tokyo Metro",
+            "Tokyu",
+            "Keio Inokashira"
+          ]
+        }
+      ],
+      "serviceNote": "Express and commuter-express stopping patterns differ from local trains. Use live signs for the train type."
+    },
+    {
+      "id": "toei-asakusa",
+      "name": "Asakusa Line",
+      "jp": "浅草線",
+      "code": "A",
+      "accent": "#e85298",
+      "operator": "Toei Subway",
+      "loop": false,
+      "directionForward": "toward Oshiage",
+      "directionReverse": "toward Nishi-magome",
+      "summary": "Toei route through Gotanda, Sengakuji, Shimbashi, Nihombashi and Asakusa; many services through-run to other railways.",
+      "stations": [
+        {
+          "code": "A01",
+          "name": "Nishi-magome",
+          "jp": ""
+        },
+        {
+          "code": "A02",
+          "name": "Magome",
+          "jp": ""
+        },
+        {
+          "code": "A03",
+          "name": "Nakanobu",
+          "jp": ""
+        },
+        {
+          "code": "A04",
+          "name": "Togoshi",
+          "jp": ""
+        },
+        {
+          "code": "A05",
+          "name": "Gotanda",
+          "jp": ""
+        },
+        {
+          "code": "A06",
+          "name": "Takanawadai",
+          "jp": ""
+        },
+        {
+          "code": "A07",
+          "name": "Sengakuji",
+          "jp": ""
+        },
+        {
+          "code": "A08",
+          "name": "Mita",
+          "jp": ""
+        },
+        {
+          "code": "A09",
+          "name": "Daimon",
+          "jp": ""
+        },
+        {
+          "code": "A10",
+          "name": "Shimbashi",
+          "jp": ""
+        },
+        {
+          "code": "A11",
+          "name": "Higashi-ginza",
+          "jp": ""
+        },
+        {
+          "code": "A12",
+          "name": "Takaracho",
+          "jp": ""
+        },
+        {
+          "code": "A13",
+          "name": "Nihombashi",
+          "jp": "",
+          "connections": [
+            "Tokyo Metro Ginza/Tozai",
+            "Toei Asakusa"
+          ]
+        },
+        {
+          "code": "A14",
+          "name": "Ningyocho",
+          "jp": ""
+        },
+        {
+          "code": "A15",
+          "name": "Higashi-nihombashi",
+          "jp": ""
+        },
+        {
+          "code": "A16",
+          "name": "Asakusabashi",
+          "jp": ""
+        },
+        {
+          "code": "A17",
+          "name": "Kuramae",
+          "jp": ""
+        },
+        {
+          "code": "A18",
+          "name": "Asakusa",
+          "jp": "",
+          "nearby": "Senso-ji · Kaminarimon",
+          "connections": [
+            "Tokyo Metro Ginza",
+            "Toei Asakusa",
+            "Tobu"
+          ]
+        },
+        {
+          "code": "A19",
+          "name": "Honjo-azumabashi",
+          "jp": ""
+        },
+        {
+          "code": "A20",
+          "name": "Oshiage",
+          "jp": ""
+        }
+      ]
+    },
+    {
+      "id": "toei-mita",
+      "name": "Mita Line",
+      "jp": "三田線",
+      "code": "I",
+      "accent": "#0079c2",
+      "operator": "Toei Subway",
+      "loop": false,
+      "directionForward": "toward Nishi-takashimadaira",
+      "directionReverse": "toward Meguro",
+      "summary": "Runs from Meguro through Mita/Hibiya/Otemachi toward northern Tokyo.",
+      "stations": [
+        {
+          "code": "I01",
+          "name": "Meguro",
+          "jp": ""
+        },
+        {
+          "code": "I02",
+          "name": "Shirokanedai",
+          "jp": ""
+        },
+        {
+          "code": "I03",
+          "name": "Shirokane-takanawa",
+          "jp": ""
+        },
+        {
+          "code": "I04",
+          "name": "Mita",
+          "jp": ""
+        },
+        {
+          "code": "I05",
+          "name": "Shibakoen",
+          "jp": ""
+        },
+        {
+          "code": "I06",
+          "name": "Onarimon",
+          "jp": ""
+        },
+        {
+          "code": "I07",
+          "name": "Uchisaiwaicho",
+          "jp": ""
+        },
+        {
+          "code": "I08",
+          "name": "Hibiya",
+          "jp": "",
+          "nearby": "Hibiya Park · Imperial Palace area",
+          "connections": [
+            "Tokyo Metro Hibiya/Chiyoda",
+            "Toei Mita",
+            "Yurakucho nearby"
+          ]
+        },
+        {
+          "code": "I09",
+          "name": "Otemachi",
+          "jp": "",
+          "connections": [
+            "Tokyo Metro Marunouchi/Tozai/Chiyoda/Hanzomon",
+            "Toei Mita"
+          ]
+        },
+        {
+          "code": "I10",
+          "name": "Jimbocho",
+          "jp": ""
+        },
+        {
+          "code": "I11",
+          "name": "Suidobashi",
+          "jp": ""
+        },
+        {
+          "code": "I12",
+          "name": "Kasuga",
+          "jp": ""
+        },
+        {
+          "code": "I13",
+          "name": "Hakusan",
+          "jp": ""
+        },
+        {
+          "code": "I14",
+          "name": "Sengoku",
+          "jp": ""
+        },
+        {
+          "code": "I15",
+          "name": "Sugamo",
+          "jp": ""
+        },
+        {
+          "code": "I16",
+          "name": "Nishi-sugamo",
+          "jp": ""
+        },
+        {
+          "code": "I17",
+          "name": "Shin-itabashi",
+          "jp": ""
+        },
+        {
+          "code": "I18",
+          "name": "Itabashikuyakushomae",
+          "jp": ""
+        },
+        {
+          "code": "I19",
+          "name": "Itabashihoncho",
+          "jp": ""
+        },
+        {
+          "code": "I20",
+          "name": "Motohasunuma",
+          "jp": ""
+        },
+        {
+          "code": "I21",
+          "name": "Shimura-sakaue",
+          "jp": ""
+        },
+        {
+          "code": "I22",
+          "name": "Shimura-sanchome",
+          "jp": ""
+        },
+        {
+          "code": "I23",
+          "name": "Hasune",
+          "jp": ""
+        },
+        {
+          "code": "I24",
+          "name": "Nishidai",
+          "jp": ""
+        },
+        {
+          "code": "I25",
+          "name": "Takashimadaira",
+          "jp": ""
+        },
+        {
+          "code": "I26",
+          "name": "Shin-takashimadaira",
+          "jp": ""
+        },
+        {
+          "code": "I27",
+          "name": "Nishi-takashimadaira",
+          "jp": ""
+        }
+      ]
+    },
+    {
+      "id": "toei-shinjuku",
+      "name": "Shinjuku Line",
+      "jp": "新宿線",
+      "code": "S",
+      "accent": "#6cbb5a",
+      "operator": "Toei Subway",
+      "loop": false,
+      "directionForward": "toward Motoyawata",
+      "directionReverse": "toward Shinjuku",
+      "summary": "East-west Toei line connecting Shinjuku with Ichigaya, Kudanshita and eastern Tokyo.",
+      "stations": [
+        {
+          "code": "S01",
+          "name": "Shinjuku",
+          "jp": "",
+          "nearby": "Shinjuku Gyoen · Kabukicho · major rail hub",
+          "connections": [
+            "JR lines",
+            "Toei",
+            "Odakyu",
+            "Keio"
+          ]
+        },
+        {
+          "code": "S02",
+          "name": "Shinjuku-sanchome",
+          "jp": "",
+          "nearby": "Shinjuku shopping · Shinjuku Gyoen east side",
+          "connections": [
+            "Tokyo Metro Marunouchi/Fukutoshin",
+            "Toei Shinjuku"
+          ]
+        },
+        {
+          "code": "S03",
+          "name": "Akebonobashi",
+          "jp": ""
+        },
+        {
+          "code": "S04",
+          "name": "Ichigaya",
+          "jp": ""
+        },
+        {
+          "code": "S05",
+          "name": "Kudanshita",
+          "jp": "",
+          "connections": [
+            "Tokyo Metro Tozai/Hanzomon",
+            "Toei Shinjuku"
+          ]
+        },
+        {
+          "code": "S06",
+          "name": "Jimbocho",
+          "jp": ""
+        },
+        {
+          "code": "S07",
+          "name": "Ogawamachi",
+          "jp": ""
+        },
+        {
+          "code": "S08",
+          "name": "Iwamotocho",
+          "jp": ""
+        },
+        {
+          "code": "S09",
+          "name": "Bakuro-yokoyama",
+          "jp": ""
+        },
+        {
+          "code": "S10",
+          "name": "Hamacho",
+          "jp": ""
+        },
+        {
+          "code": "S11",
+          "name": "Morishita",
+          "jp": ""
+        },
+        {
+          "code": "S12",
+          "name": "Kikukawa",
+          "jp": ""
+        },
+        {
+          "code": "S13",
+          "name": "Sumiyoshi",
+          "jp": ""
+        },
+        {
+          "code": "S14",
+          "name": "Nishi-ojima",
+          "jp": ""
+        },
+        {
+          "code": "S15",
+          "name": "Ojima",
+          "jp": ""
+        },
+        {
+          "code": "S16",
+          "name": "Higashi-ojima",
+          "jp": ""
+        },
+        {
+          "code": "S17",
+          "name": "Funabori",
+          "jp": ""
+        },
+        {
+          "code": "S18",
+          "name": "Ichinoe",
+          "jp": ""
+        },
+        {
+          "code": "S19",
+          "name": "Mizue",
+          "jp": ""
+        },
+        {
+          "code": "S20",
+          "name": "Shinozaki",
+          "jp": ""
+        },
+        {
+          "code": "S21",
+          "name": "Motoyawata",
+          "jp": ""
+        }
+      ]
+    },
+    {
+      "id": "toei-oedo",
+      "name": "Oedo Line",
+      "jp": "大江戸線",
+      "code": "E",
+      "accent": "#b6007a",
+      "operator": "Toei Subway",
+      "loop": false,
+      "directionForward": "toward Hikarigaoka",
+      "directionReverse": "toward Shinjuku-nishiguchi",
+      "summary": "Large Toei route linking Shinjuku, Iidabashi, Ueno area, Ryogoku, Tsukiji, Roppongi and Nerima.",
+      "stations": [
+        {
+          "code": "E01",
+          "name": "Shinjuku-nishiguchi",
+          "jp": ""
+        },
+        {
+          "code": "E02",
+          "name": "Higashi-shinjuku",
+          "jp": ""
+        },
+        {
+          "code": "E03",
+          "name": "Wakamatsu-kawada",
+          "jp": ""
+        },
+        {
+          "code": "E04",
+          "name": "Ushigome-yanagicho",
+          "jp": ""
+        },
+        {
+          "code": "E05",
+          "name": "Ushigome-kagurazaka",
+          "jp": ""
+        },
+        {
+          "code": "E06",
+          "name": "Iidabashi",
+          "jp": "",
+          "connections": [
+            "Tokyo Metro Tozai/Yurakucho/Namboku",
+            "Toei Oedo",
+            "JR Chuo-Sobu"
+          ]
+        },
+        {
+          "code": "E07",
+          "name": "Kasuga",
+          "jp": ""
+        },
+        {
+          "code": "E08",
+          "name": "Hongo-sanchome",
+          "jp": ""
+        },
+        {
+          "code": "E09",
+          "name": "Ueno-okachimachi",
+          "jp": ""
+        },
+        {
+          "code": "E10",
+          "name": "Shin-okachimachi",
+          "jp": ""
+        },
+        {
+          "code": "E11",
+          "name": "Kuramae",
+          "jp": ""
+        },
+        {
+          "code": "E12",
+          "name": "Ryogoku",
+          "jp": ""
+        },
+        {
+          "code": "E13",
+          "name": "Morishita",
+          "jp": ""
+        },
+        {
+          "code": "E14",
+          "name": "Kiyosumi-shirakawa",
+          "jp": ""
+        },
+        {
+          "code": "E15",
+          "name": "Monzen-nakacho",
+          "jp": ""
+        },
+        {
+          "code": "E16",
+          "name": "Tsukishima",
+          "jp": ""
+        },
+        {
+          "code": "E17",
+          "name": "Kachidoki",
+          "jp": ""
+        },
+        {
+          "code": "E18",
+          "name": "Tsukijishijo",
+          "jp": ""
+        },
+        {
+          "code": "E19",
+          "name": "Shiodome",
+          "jp": ""
+        },
+        {
+          "code": "E20",
+          "name": "Daimon",
+          "jp": ""
+        },
+        {
+          "code": "E21",
+          "name": "Akabanebashi",
+          "jp": ""
+        },
+        {
+          "code": "E22",
+          "name": "Azabu-juban",
+          "jp": ""
+        },
+        {
+          "code": "E23",
+          "name": "Roppongi",
+          "jp": "",
+          "nearby": "Roppongi Hills · Tokyo Midtown",
+          "connections": [
+            "Tokyo Metro Hibiya",
+            "Toei Oedo"
+          ]
+        },
+        {
+          "code": "E24",
+          "name": "Aoyama-itchome",
+          "jp": ""
+        },
+        {
+          "code": "E25",
+          "name": "Kokuritsu-kyogijo",
+          "jp": ""
+        },
+        {
+          "code": "E26",
+          "name": "Yoyogi",
+          "jp": ""
+        },
+        {
+          "code": "E27",
+          "name": "Shinjuku",
+          "jp": "",
+          "nearby": "Shinjuku Gyoen · Kabukicho · major rail hub",
+          "connections": [
+            "JR lines",
+            "Toei",
+            "Odakyu",
+            "Keio"
+          ]
+        },
+        {
+          "code": "E28",
+          "name": "Tochomae",
+          "jp": ""
+        },
+        {
+          "code": "E29",
+          "name": "Nishi-shinjuku-gochome",
+          "jp": ""
+        },
+        {
+          "code": "E30",
+          "name": "Nakano-sakaue",
+          "jp": ""
+        },
+        {
+          "code": "E31",
+          "name": "Higashi-nakano",
+          "jp": ""
+        },
+        {
+          "code": "E32",
+          "name": "Nakai",
+          "jp": ""
+        },
+        {
+          "code": "E33",
+          "name": "Ochiai-minami-nagasaki",
+          "jp": ""
+        },
+        {
+          "code": "E34",
+          "name": "Shin-egota",
+          "jp": ""
+        },
+        {
+          "code": "E35",
+          "name": "Nerima",
+          "jp": ""
+        },
+        {
+          "code": "E36",
+          "name": "Toshimaen",
+          "jp": ""
+        },
+        {
+          "code": "E37",
+          "name": "Nerima-kasugacho",
+          "jp": ""
+        },
+        {
+          "code": "E38",
+          "name": "Hikarigaoka",
+          "jp": ""
+        }
+      ],
+      "serviceNote": "The Oedo Line has a lasso-shaped operating pattern. This station-number sequence is for offline orientation only; always follow the train destination shown at the station."
     }
+  ],
+  "operators": [
+    "JR East",
+    "Tokyo Metro",
+    "Toei Subway"
   ]
 }

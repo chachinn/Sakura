@@ -1,10 +1,10 @@
 {
   "city": "osaka",
   "cityName": "Osaka",
-  "operator": "JR West",
+  "operator": "Multiple operators",
   "verifiedOn": "2026-08-10",
-  "sourceNote": "Static reference built from JR West's official Kinki station-number route map and route information. Not live service data.",
-  "notice": "Use this as an offline orientation guide. Train types, stopping patterns, platforms and service changes can vary; follow current station signs and announcements.",
+  "sourceNote": "Static offline reference using official JR West and Osaka Metro station information. Not live service data.",
+  "notice": "Offline orientation guide only. Express stopping patterns, through-services, platforms, delays and temporary changes can vary; follow current station signs.",
   "lines": [
     {
       "id": "osaka-loop",
@@ -163,7 +163,8 @@
           ],
           "nearby": "Shinsekai access"
         }
-      ]
+      ],
+      "operator": "JR West"
     },
     {
       "id": "jr-kyoto",
@@ -280,7 +281,8 @@
             "Osaka Metro via Umeda"
           ]
         }
-      ]
+      ],
+      "operator": "JR West"
     },
     {
       "id": "yumesaki",
@@ -318,7 +320,954 @@
           "name": "Sakurajima",
           "jp": "桜島"
         }
+      ],
+      "operator": "JR West"
+    },
+    {
+      "id": "metro-midosuji",
+      "name": "Midosuji Line",
+      "jp": "御堂筋線",
+      "code": "M",
+      "accent": "#e5171f",
+      "operator": "Osaka Metro",
+      "loop": false,
+      "directionForward": "toward Nakamozu",
+      "directionReverse": "toward Esaka",
+      "summary": "Osaka's main north-south subway spine through Shin-Osaka, Umeda, Shinsaibashi, Namba and Tennoji.",
+      "stations": [
+        {
+          "code": "M11",
+          "name": "Esaka",
+          "jp": ""
+        },
+        {
+          "code": "M12",
+          "name": "Higashimikuni",
+          "jp": ""
+        },
+        {
+          "code": "M13",
+          "name": "Shin-Osaka",
+          "jp": "",
+          "nearby": "Shinkansen hub"
+        },
+        {
+          "code": "M14",
+          "name": "Nishinakajima-Minamigata",
+          "jp": ""
+        },
+        {
+          "code": "M15",
+          "name": "Nakatsu",
+          "jp": ""
+        },
+        {
+          "code": "M16",
+          "name": "Umeda",
+          "jp": "",
+          "nearby": "Osaka Station area · department stores",
+          "connections": [
+            "JR Osaka",
+            "Hankyu",
+            "Hanshin",
+            "Osaka Metro"
+          ]
+        },
+        {
+          "code": "M17",
+          "name": "Yodoyabashi",
+          "jp": ""
+        },
+        {
+          "code": "M18",
+          "name": "Hommachi",
+          "jp": "",
+          "nearby": "Central Osaka business district",
+          "connections": [
+            "Midosuji/Chuo/Yotsubashi"
+          ]
+        },
+        {
+          "code": "M19",
+          "name": "Shinsaibashi",
+          "jp": "",
+          "nearby": "Shinsaibashi-suji",
+          "connections": [
+            "Midosuji/Nagahori Tsurumi-ryokuchi"
+          ]
+        },
+        {
+          "code": "M20",
+          "name": "Namba",
+          "jp": "",
+          "nearby": "Dotonbori · Namba shopping",
+          "connections": [
+            "Osaka Metro",
+            "Nankai",
+            "Kintetsu/Hanshin at Osaka-Namba"
+          ]
+        },
+        {
+          "code": "M21",
+          "name": "Daikokucho",
+          "jp": ""
+        },
+        {
+          "code": "M22",
+          "name": "Dobutsuen-mae",
+          "jp": "",
+          "nearby": "Shinsekai · Tsutenkaku"
+        },
+        {
+          "code": "M23",
+          "name": "Tennoji",
+          "jp": "",
+          "nearby": "Abeno Harukas · Tennoji Park",
+          "connections": [
+            "JR lines",
+            "Midosuji/Tanimachi",
+            "Kintetsu at Osaka-Abenobashi"
+          ]
+        },
+        {
+          "code": "M24",
+          "name": "Showacho",
+          "jp": ""
+        },
+        {
+          "code": "M25",
+          "name": "Nishitanabe",
+          "jp": ""
+        },
+        {
+          "code": "M26",
+          "name": "Nagai",
+          "jp": ""
+        },
+        {
+          "code": "M27",
+          "name": "Abiko",
+          "jp": ""
+        },
+        {
+          "code": "M28",
+          "name": "Kitahanada",
+          "jp": ""
+        },
+        {
+          "code": "M29",
+          "name": "Shinkanaoka",
+          "jp": ""
+        },
+        {
+          "code": "M30",
+          "name": "Nakamozu",
+          "jp": ""
+        }
+      ]
+    },
+    {
+      "id": "metro-tanimachi",
+      "name": "Tanimachi Line",
+      "jp": "谷町線",
+      "code": "T",
+      "accent": "#522886",
+      "operator": "Osaka Metro",
+      "loop": false,
+      "directionForward": "toward Yao-minami",
+      "directionReverse": "toward Dainichi",
+      "summary": "Long north-south line through Higashi-Umeda, Osaka Castle area and Tennoji.",
+      "stations": [
+        {
+          "code": "T11",
+          "name": "Dainichi",
+          "jp": ""
+        },
+        {
+          "code": "T12",
+          "name": "Moriguchi",
+          "jp": ""
+        },
+        {
+          "code": "T13",
+          "name": "Taishibashi-Imaichi",
+          "jp": ""
+        },
+        {
+          "code": "T14",
+          "name": "Sembayashi-Omiya",
+          "jp": ""
+        },
+        {
+          "code": "T15",
+          "name": "Sekime-Takadono",
+          "jp": ""
+        },
+        {
+          "code": "T16",
+          "name": "Noe-Uchindai",
+          "jp": ""
+        },
+        {
+          "code": "T17",
+          "name": "Miyakojima",
+          "jp": ""
+        },
+        {
+          "code": "T18",
+          "name": "Tenjimbashisuji 6-chome",
+          "jp": ""
+        },
+        {
+          "code": "T19",
+          "name": "Nakazakicho",
+          "jp": ""
+        },
+        {
+          "code": "T20",
+          "name": "Higashi-Umeda",
+          "jp": "",
+          "connections": [
+            "Umeda / Osaka Station area"
+          ]
+        },
+        {
+          "code": "T21",
+          "name": "Minamimorimachi",
+          "jp": "",
+          "aliases": [
+            "Minami-morimachi"
+          ]
+        },
+        {
+          "code": "T22",
+          "name": "Temmabashi",
+          "jp": ""
+        },
+        {
+          "code": "T23",
+          "name": "Tanimachi 4-chome",
+          "jp": "",
+          "nearby": "Osaka Castle / Museum of History area",
+          "connections": [
+            "Tanimachi/Chuo"
+          ]
+        },
+        {
+          "code": "T24",
+          "name": "Tanimachi 6-chome",
+          "jp": "",
+          "connections": [
+            "Tanimachi/Nagahori Tsurumi-ryokuchi"
+          ]
+        },
+        {
+          "code": "T25",
+          "name": "Tanimachi 9-chome",
+          "jp": ""
+        },
+        {
+          "code": "T26",
+          "name": "Shitennoji-mae Yuhigaoka",
+          "jp": ""
+        },
+        {
+          "code": "T27",
+          "name": "Tennoji",
+          "jp": "",
+          "nearby": "Abeno Harukas · Tennoji Park",
+          "connections": [
+            "JR lines",
+            "Midosuji/Tanimachi",
+            "Kintetsu at Osaka-Abenobashi"
+          ]
+        },
+        {
+          "code": "T28",
+          "name": "Abeno",
+          "jp": ""
+        },
+        {
+          "code": "T29",
+          "name": "Fuminosato",
+          "jp": ""
+        },
+        {
+          "code": "T30",
+          "name": "Tanabe",
+          "jp": ""
+        },
+        {
+          "code": "T31",
+          "name": "Komagawa-Nakano",
+          "jp": ""
+        },
+        {
+          "code": "T32",
+          "name": "Hirano",
+          "jp": ""
+        },
+        {
+          "code": "T33",
+          "name": "Kire-Uriwari",
+          "jp": ""
+        },
+        {
+          "code": "T34",
+          "name": "Deto",
+          "jp": ""
+        },
+        {
+          "code": "T35",
+          "name": "Nagahara",
+          "jp": ""
+        },
+        {
+          "code": "T36",
+          "name": "Yao-minami",
+          "jp": ""
+        }
+      ]
+    },
+    {
+      "id": "metro-yotsubashi",
+      "name": "Yotsubashi Line",
+      "jp": "四つ橋線",
+      "code": "Y",
+      "accent": "#0078ba",
+      "operator": "Osaka Metro",
+      "loop": false,
+      "directionForward": "toward Suminoekoen",
+      "directionReverse": "toward Nishi-Umeda",
+      "summary": "Alternative north-south subway serving Nishi-Umeda, Hommachi and Namba.",
+      "stations": [
+        {
+          "code": "Y11",
+          "name": "Nishi-Umeda",
+          "jp": "",
+          "connections": [
+            "Umeda / Osaka Station area"
+          ]
+        },
+        {
+          "code": "Y12",
+          "name": "Higobashi",
+          "jp": ""
+        },
+        {
+          "code": "Y13",
+          "name": "Hommachi",
+          "jp": "",
+          "nearby": "Central Osaka business district",
+          "connections": [
+            "Midosuji/Chuo/Yotsubashi"
+          ]
+        },
+        {
+          "code": "Y14",
+          "name": "Yotsubashi",
+          "jp": ""
+        },
+        {
+          "code": "Y15",
+          "name": "Namba",
+          "jp": "",
+          "nearby": "Dotonbori · Namba shopping",
+          "connections": [
+            "Osaka Metro",
+            "Nankai",
+            "Kintetsu/Hanshin at Osaka-Namba"
+          ]
+        },
+        {
+          "code": "Y16",
+          "name": "Daikokucho",
+          "jp": ""
+        },
+        {
+          "code": "Y17",
+          "name": "Hanazonocho",
+          "jp": ""
+        },
+        {
+          "code": "Y18",
+          "name": "Kishinosato",
+          "jp": ""
+        },
+        {
+          "code": "Y19",
+          "name": "Tamade",
+          "jp": ""
+        },
+        {
+          "code": "Y20",
+          "name": "Kitakagaya",
+          "jp": ""
+        },
+        {
+          "code": "Y21",
+          "name": "Suminoekoen",
+          "jp": "",
+          "connections": [
+            "Yotsubashi",
+            "New Tram"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "metro-chuo",
+      "name": "Chuo Line",
+      "jp": "中央線",
+      "code": "C",
+      "accent": "#019a66",
+      "operator": "Osaka Metro",
+      "loop": false,
+      "directionForward": "toward Nagata",
+      "directionReverse": "toward Yumeshima",
+      "summary": "East-west line connecting Yumeshima/Osaka Bay with Hommachi and Osaka Castle area.",
+      "stations": [
+        {
+          "code": "C09",
+          "name": "Yumeshima",
+          "jp": "",
+          "nearby": "Yumeshima"
+        },
+        {
+          "code": "C10",
+          "name": "Cosmosquare",
+          "jp": "",
+          "connections": [
+            "Chuo Line",
+            "New Tram"
+          ]
+        },
+        {
+          "code": "C11",
+          "name": "Osakako",
+          "jp": "",
+          "nearby": "Osaka Aquarium Kaiyukan"
+        },
+        {
+          "code": "C12",
+          "name": "Asashiobashi",
+          "jp": ""
+        },
+        {
+          "code": "C13",
+          "name": "Bentencho",
+          "jp": ""
+        },
+        {
+          "code": "C14",
+          "name": "Kujo",
+          "jp": ""
+        },
+        {
+          "code": "C15",
+          "name": "Awaza",
+          "jp": ""
+        },
+        {
+          "code": "C16",
+          "name": "Hommachi",
+          "jp": "",
+          "nearby": "Central Osaka business district",
+          "connections": [
+            "Midosuji/Chuo/Yotsubashi"
+          ]
+        },
+        {
+          "code": "C17",
+          "name": "Sakaisuji-Hommachi",
+          "jp": ""
+        },
+        {
+          "code": "C18",
+          "name": "Tanimachi 4-chome",
+          "jp": "",
+          "nearby": "Osaka Castle / Museum of History area",
+          "connections": [
+            "Tanimachi/Chuo"
+          ]
+        },
+        {
+          "code": "C19",
+          "name": "Morinomiya",
+          "jp": "",
+          "nearby": "Osaka Castle Park",
+          "connections": [
+            "JR Osaka Loop",
+            "Chuo",
+            "Nagahori Tsurumi-ryokuchi"
+          ]
+        },
+        {
+          "code": "C20",
+          "name": "Midoribashi",
+          "jp": ""
+        },
+        {
+          "code": "C21",
+          "name": "Fukaebashi",
+          "jp": ""
+        },
+        {
+          "code": "C22",
+          "name": "Takaida",
+          "jp": ""
+        },
+        {
+          "code": "C23",
+          "name": "Nagata",
+          "jp": ""
+        }
+      ],
+      "serviceNote": "The Chuo Line can through-run onto the Kintetsu Keihanna Line beyond Nagata. This guide covers Osaka Metro station numbering C09–C23."
+    },
+    {
+      "id": "metro-sennichimae",
+      "name": "Sennichimae Line",
+      "jp": "千日前線",
+      "code": "S",
+      "accent": "#e44d93",
+      "operator": "Osaka Metro",
+      "loop": false,
+      "directionForward": "toward Minami-Tatsumi",
+      "directionReverse": "toward Nodahanshin",
+      "summary": "Cross-town route useful for Namba, Nippombashi/Kuromon and Tsuruhashi.",
+      "stations": [
+        {
+          "code": "S11",
+          "name": "Nodahanshin",
+          "jp": ""
+        },
+        {
+          "code": "S12",
+          "name": "Tamagawa",
+          "jp": ""
+        },
+        {
+          "code": "S13",
+          "name": "Awaza",
+          "jp": ""
+        },
+        {
+          "code": "S14",
+          "name": "Nishinagahori",
+          "jp": "",
+          "aliases": [
+            "Nishi-nagahori"
+          ]
+        },
+        {
+          "code": "S15",
+          "name": "Sakuragawa",
+          "jp": ""
+        },
+        {
+          "code": "S16",
+          "name": "Namba",
+          "jp": "",
+          "nearby": "Dotonbori · Namba shopping",
+          "connections": [
+            "Osaka Metro",
+            "Nankai",
+            "Kintetsu/Hanshin at Osaka-Namba"
+          ]
+        },
+        {
+          "code": "S17",
+          "name": "Nippombashi",
+          "jp": "",
+          "nearby": "Kuromon Market · Den Den Town",
+          "aliases": [
+            "Nihombashi",
+            "Nipponbashi"
+          ]
+        },
+        {
+          "code": "S18",
+          "name": "Tanimachi 9-chome",
+          "jp": ""
+        },
+        {
+          "code": "S19",
+          "name": "Tsuruhashi",
+          "jp": ""
+        },
+        {
+          "code": "S20",
+          "name": "Imazato",
+          "jp": ""
+        },
+        {
+          "code": "S21",
+          "name": "Shin-Fukae",
+          "jp": ""
+        },
+        {
+          "code": "S22",
+          "name": "Shoji",
+          "jp": ""
+        },
+        {
+          "code": "S23",
+          "name": "Kita-Tatsumi",
+          "jp": ""
+        },
+        {
+          "code": "S24",
+          "name": "Minami-Tatsumi",
+          "jp": ""
+        }
+      ]
+    },
+    {
+      "id": "metro-sakaisuji",
+      "name": "Sakaisuji Line",
+      "jp": "堺筋線",
+      "code": "K",
+      "accent": "#814721",
+      "operator": "Osaka Metro",
+      "loop": false,
+      "directionForward": "toward Tengachaya",
+      "directionReverse": "toward Tenjimbashisuji 6-chome",
+      "summary": "Serves Kitahama, Nippombashi and Shinsekai; through-services may continue onto Hankyu lines.",
+      "stations": [
+        {
+          "code": "K11",
+          "name": "Tenjimbashisuji 6-chome",
+          "jp": ""
+        },
+        {
+          "code": "K12",
+          "name": "Ogimachi",
+          "jp": ""
+        },
+        {
+          "code": "K13",
+          "name": "Minamimorimachi",
+          "jp": "",
+          "aliases": [
+            "Minami-morimachi"
+          ]
+        },
+        {
+          "code": "K14",
+          "name": "Kitahama",
+          "jp": ""
+        },
+        {
+          "code": "K15",
+          "name": "Sakaisuji-Hommachi",
+          "jp": ""
+        },
+        {
+          "code": "K16",
+          "name": "Nagahoribashi",
+          "jp": ""
+        },
+        {
+          "code": "K17",
+          "name": "Nippombashi",
+          "jp": "",
+          "nearby": "Kuromon Market · Den Den Town",
+          "aliases": [
+            "Nihombashi",
+            "Nipponbashi"
+          ]
+        },
+        {
+          "code": "K18",
+          "name": "Ebisucho",
+          "jp": ""
+        },
+        {
+          "code": "K19",
+          "name": "Dobutsuen-mae",
+          "jp": "",
+          "nearby": "Shinsekai · Tsutenkaku"
+        },
+        {
+          "code": "K20",
+          "name": "Tengachaya",
+          "jp": ""
+        }
+      ],
+      "serviceNote": "Some trains through-run onto Hankyu lines. Follow the train destination display before boarding."
+    },
+    {
+      "id": "metro-nagahori",
+      "name": "Nagahori Tsurumi-ryokuchi Line",
+      "jp": "長堀鶴見緑地線",
+      "code": "N",
+      "accent": "#a9cc51",
+      "operator": "Osaka Metro",
+      "loop": false,
+      "directionForward": "toward Kadoma-minami",
+      "directionReverse": "toward Taisho",
+      "summary": "East-west route via Shinsaibashi, Osaka Castle/Business Park and Kyobashi.",
+      "stations": [
+        {
+          "code": "N11",
+          "name": "Taisho",
+          "jp": ""
+        },
+        {
+          "code": "N12",
+          "name": "Dome-mae Chiyozaki",
+          "jp": ""
+        },
+        {
+          "code": "N13",
+          "name": "Nishinagahori",
+          "jp": "",
+          "aliases": [
+            "Nishi-nagahori"
+          ]
+        },
+        {
+          "code": "N14",
+          "name": "Nishiohashi",
+          "jp": "",
+          "aliases": [
+            "Nishi-ohashi"
+          ]
+        },
+        {
+          "code": "N15",
+          "name": "Shinsaibashi",
+          "jp": "",
+          "nearby": "Shinsaibashi-suji",
+          "connections": [
+            "Midosuji/Nagahori Tsurumi-ryokuchi"
+          ]
+        },
+        {
+          "code": "N16",
+          "name": "Nagahoribashi",
+          "jp": ""
+        },
+        {
+          "code": "N17",
+          "name": "Matsuyamachi",
+          "jp": ""
+        },
+        {
+          "code": "N18",
+          "name": "Tanimachi 6-chome",
+          "jp": "",
+          "connections": [
+            "Tanimachi/Nagahori Tsurumi-ryokuchi"
+          ]
+        },
+        {
+          "code": "N19",
+          "name": "Tamatsukuri",
+          "jp": ""
+        },
+        {
+          "code": "N20",
+          "name": "Morinomiya",
+          "jp": "",
+          "nearby": "Osaka Castle Park",
+          "connections": [
+            "JR Osaka Loop",
+            "Chuo",
+            "Nagahori Tsurumi-ryokuchi"
+          ]
+        },
+        {
+          "code": "N21",
+          "name": "Osaka Business Park",
+          "jp": ""
+        },
+        {
+          "code": "N22",
+          "name": "Kyobashi",
+          "jp": "",
+          "nearby": "Osaka Castle east-side rail hub",
+          "connections": [
+            "JR lines",
+            "Keihan",
+            "Nagahori Tsurumi-ryokuchi"
+          ]
+        },
+        {
+          "code": "N23",
+          "name": "Gamo 4-chome",
+          "jp": ""
+        },
+        {
+          "code": "N24",
+          "name": "Imafuku-Tsurumi",
+          "jp": ""
+        },
+        {
+          "code": "N25",
+          "name": "Yokozutsumi",
+          "jp": ""
+        },
+        {
+          "code": "N26",
+          "name": "Tsurumi-ryokuchi",
+          "jp": ""
+        },
+        {
+          "code": "N27",
+          "name": "Kadoma-minami",
+          "jp": ""
+        }
+      ]
+    },
+    {
+      "id": "metro-imazatosuji",
+      "name": "Imazatosuji Line",
+      "jp": "今里筋線",
+      "code": "I",
+      "accent": "#ee7b1a",
+      "operator": "Osaka Metro",
+      "loop": false,
+      "directionForward": "toward Imazato",
+      "directionReverse": "toward Itakano",
+      "summary": "Eastern Osaka subway route connecting residential districts with Shigino, Midoribashi and Imazato.",
+      "stations": [
+        {
+          "code": "I11",
+          "name": "Itakano",
+          "jp": ""
+        },
+        {
+          "code": "I12",
+          "name": "Zuiko 4-chome",
+          "jp": ""
+        },
+        {
+          "code": "I13",
+          "name": "Daido-Toyosato",
+          "jp": ""
+        },
+        {
+          "code": "I14",
+          "name": "Taishibashi-Imaichi",
+          "jp": ""
+        },
+        {
+          "code": "I15",
+          "name": "Shimizu",
+          "jp": ""
+        },
+        {
+          "code": "I16",
+          "name": "Shimmori-Furuichi",
+          "jp": "",
+          "aliases": [
+            "Shinmori-Furuichi"
+          ]
+        },
+        {
+          "code": "I17",
+          "name": "Sekime-Seiiku",
+          "jp": ""
+        },
+        {
+          "code": "I18",
+          "name": "Gamo 4-chome",
+          "jp": ""
+        },
+        {
+          "code": "I19",
+          "name": "Shigino",
+          "jp": ""
+        },
+        {
+          "code": "I20",
+          "name": "Midoribashi",
+          "jp": ""
+        },
+        {
+          "code": "I21",
+          "name": "Imazato",
+          "jp": ""
+        }
+      ]
+    },
+    {
+      "id": "metro-newtram",
+      "name": "New Tram (Nanko Port Town Line)",
+      "jp": "南港ポートタウン線",
+      "code": "P",
+      "accent": "#00a0de",
+      "operator": "Osaka Metro",
+      "loop": false,
+      "directionForward": "toward Suminoekoen",
+      "directionReverse": "toward Cosmosquare",
+      "summary": "Automated New Tram serving Osaka's Nanko bay area between Cosmosquare and Suminoekoen.",
+      "stations": [
+        {
+          "code": "P09",
+          "name": "Cosmosquare",
+          "jp": "",
+          "connections": [
+            "Chuo Line",
+            "New Tram"
+          ]
+        },
+        {
+          "code": "P10",
+          "name": "Trade Center-mae",
+          "jp": ""
+        },
+        {
+          "code": "P11",
+          "name": "Nakafuto",
+          "jp": ""
+        },
+        {
+          "code": "P12",
+          "name": "Port Town-nishi",
+          "jp": ""
+        },
+        {
+          "code": "P13",
+          "name": "Port Town-higashi",
+          "jp": ""
+        },
+        {
+          "code": "P14",
+          "name": "Ferry Terminal",
+          "jp": ""
+        },
+        {
+          "code": "P15",
+          "name": "Nanko-higashi",
+          "jp": ""
+        },
+        {
+          "code": "P16",
+          "name": "Nanko-guchi",
+          "jp": ""
+        },
+        {
+          "code": "P17",
+          "name": "Hirabayashi",
+          "jp": ""
+        },
+        {
+          "code": "P18",
+          "name": "Suminoekoen",
+          "jp": "",
+          "connections": [
+            "Yotsubashi",
+            "New Tram"
+          ]
+        }
       ]
     }
+  ],
+  "operators": [
+    "JR West",
+    "Osaka Metro"
   ]
 }

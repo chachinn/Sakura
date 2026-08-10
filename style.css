@@ -5020,17 +5020,74 @@ body.wallpaper-enabled .kaomoji-card {
     color:var(--color-primary-dark);
     border-color:var(--color-primary);
 }
-.rail-search-field { display:block; position:relative; margin-bottom:10px; }
+.rail-operator-tabs {
+    display:flex;
+    gap:7px;
+    overflow-x:auto;
+    padding:0 0 8px;
+    margin:-2px 0 5px;
+    scrollbar-width:none;
+}
+.rail-operator-tabs::-webkit-scrollbar { display:none; }
+.rail-operator-chip {
+    flex:0 0 auto;
+    min-height:34px;
+    padding:0 11px;
+    border:1px solid var(--color-border);
+    border-radius:999px;
+    background:var(--color-surface);
+    color:var(--color-text-muted);
+    font:inherit;
+    font-size:9px;
+    font-weight:850;
+    white-space:nowrap;
+}
+.rail-operator-chip.active {
+    border-color:var(--color-primary);
+    background:var(--color-primary-soft);
+    color:var(--color-primary-dark);
+}
+.rail-search-wrap {
+    position:relative;
+}
+.rail-search-field { display:block; position:relative; margin-bottom:4px; }
 .rail-search-field input {
     width:100%;
     min-height:48px;
-    padding:0 15px;
+    padding:0 46px 0 15px;
     border:1px solid var(--color-border);
     border-radius:16px;
     background:var(--color-surface);
     color:var(--color-text);
     font:inherit;
     font-size:12px;
+}
+.rail-search-field input:focus {
+    outline:2px solid color-mix(in srgb, var(--color-primary) 28%, transparent);
+    outline-offset:1px;
+    border-color:var(--color-primary);
+}
+.rail-search-clear {
+    position:absolute;
+    top:6px;
+    right:6px;
+    width:36px;
+    height:36px;
+    display:grid;
+    place-items:center;
+    border:0;
+    border-radius:50%;
+    background:var(--color-primary-soft);
+    color:var(--color-primary-dark);
+    font-size:20px;
+    line-height:1;
+}
+.rail-search-scope {
+    display:block;
+    margin:0 3px 10px;
+    color:var(--color-text-muted);
+    font-size:8px;
+    line-height:1.35;
 }
 .rail-search-results {
     margin:-2px 0 15px;
@@ -5039,6 +5096,11 @@ body.wallpaper-enabled .kaomoji-card {
     border-radius:17px;
     background:var(--color-surface);
     box-shadow:var(--shadow-card);
+}
+.rail-search-results {
+    max-height:310px;
+    overflow-y:auto;
+    overscroll-behavior:contain;
 }
 .rail-search-results[hidden] { display:none !important; }
 .rail-search-results button {
@@ -5074,6 +5136,7 @@ body.wallpaper-enabled .kaomoji-card {
 }
 .rail-section-heading { margin:10px 0 8px; }
 .rail-section-heading h2 { margin:3px 0 0; font-size:17px; }
+.rail-line-empty { margin:6px 2px 14px; color:var(--color-text-muted); font-size:10px; }
 .rail-line-list {
     display:grid;
     gap:7px;
