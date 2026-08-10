@@ -5449,3 +5449,240 @@ body.wallpaper-enabled .kaomoji-card {
 
 /* Sakura — Particles + Grammar */
 .particle-pattern-list,.particle-example-list,.particle-contrast-list{display:grid;gap:8px;margin-top:10px}.particle-pattern-row,.particle-example-card,.particle-contrast-row{min-width:0;padding:11px;border:1px solid color-mix(in srgb,var(--color-primary) 16%,var(--color-border));border-radius:14px;background:var(--color-surface-soft)}.particle-pattern-row,.particle-example-card{display:grid;gap:4px}.particle-pattern-row strong,.particle-contrast-row strong{color:var(--color-primary-dark)}.particle-pattern-row span,.particle-example-card>span:not(.counter-romaji){color:var(--color-text-muted);font-size:.78rem;line-height:1.4}.particle-example-card>strong{font-size:1rem;line-height:1.45}.particle-example-card>p,.particle-contrast-row p{margin:3px 0 0;font-size:.82rem;line-height:1.45}.grammar-view{padding-bottom:calc(108px + env(safe-area-inset-bottom))}.grammar-filter-grid{display:grid;grid-template-columns:minmax(0,.7fr) minmax(0,1.3fr);gap:8px}.grammar-filter-grid label{min-width:0;display:grid;gap:4px;color:var(--color-text-muted);font-size:.68rem;font-weight:800}.grammar-filter-grid select{width:100%;min-width:0;min-height:42px;padding:8px;border:1px solid var(--color-border);border-radius:12px;background:var(--color-surface-soft);color:var(--color-text);font:inherit;font-size:16px}.grammar-grid{display:grid;gap:10px}.grammar-card{min-width:0;width:100%;padding:14px;display:grid;gap:5px;border:1px solid var(--color-border);border-radius:18px;background:var(--color-surface);color:var(--color-text);text-align:left;box-shadow:var(--shadow-card)}.grammar-card-top{display:flex;align-items:center;justify-content:space-between;gap:10px;color:var(--color-text-muted);font-size:.68rem}.grammar-level-badge{display:inline-grid;place-items:center;min-width:38px;min-height:26px;padding:3px 8px;border-radius:999px;background:var(--color-primary-soft);color:var(--color-primary-dark);font-weight:900;font-size:.72rem}.grammar-card>strong{margin-top:3px;color:var(--color-primary-dark);font-size:1.12rem;line-height:1.35;overflow-wrap:anywhere}.grammar-card-reading{color:var(--color-text-muted);font-size:.78rem}.grammar-card>p{margin:2px 0 0;font-size:.82rem;line-height:1.45}.grammar-detail-hero{padding:18px;display:grid;gap:7px;border:1px solid var(--color-border);border-radius:22px;background:var(--color-surface);box-shadow:var(--shadow-card)}.grammar-detail-hero>div{display:flex;align-items:center;gap:8px}.grammar-detail-hero>strong{color:var(--color-primary-dark);font-size:clamp(1.55rem,7vw,2.35rem);line-height:1.25;overflow-wrap:anywhere}.grammar-detail-hero>p{margin:0;color:var(--color-text-muted);line-height:1.4}.grammar-formation-list{margin:0;padding-left:1.2rem;display:grid;gap:6px}.grammar-formation-list li{line-height:1.45}body.wallpaper-enabled .grammar-card,body.wallpaper-enabled .grammar-detail-hero,body.wallpaper-enabled .particle-pattern-row,body.wallpaper-enabled .particle-example-card,body.wallpaper-enabled .particle-contrast-row{background:color-mix(in srgb,var(--color-surface) 91%,transparent);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}@media(max-width:350px){.grammar-filter-grid{grid-template-columns:1fr}}
+
+
+/* =====================================================
+   Sakura — Offline cross-line Rail Journey Planner
+   Lightweight: no maps, canvas, polling, or animations.
+===================================================== */
+.rail-network-planner {
+    margin:14px 0 18px;
+    padding:14px;
+    border:1px solid var(--color-border);
+    border-radius:22px;
+    background:var(--color-surface);
+    box-shadow:var(--shadow-card);
+}
+.rail-network-planner-heading {
+    display:flex;
+    align-items:end;
+    justify-content:space-between;
+    gap:10px;
+}
+.rail-network-planner-heading h2 { margin:1px 0 0; font-size:18px; }
+.rail-network-city-label {
+    flex:0 0 auto;
+    padding:5px 9px;
+    border-radius:999px;
+    background:var(--color-primary-soft);
+    color:var(--color-primary-dark);
+    font-size:9px;
+    font-weight:850;
+}
+.rail-network-planner-copy {
+    margin:8px 0 12px;
+    color:var(--color-text-muted);
+    font-size:10px;
+    line-height:1.45;
+}
+.rail-network-fields {
+    display:grid;
+    grid-template-columns:minmax(0,1fr) 38px minmax(0,1fr);
+    gap:7px;
+    align-items:end;
+}
+.rail-network-field {
+    position:relative;
+    min-width:0;
+    display:grid;
+    gap:5px;
+}
+.rail-network-field label {
+    color:var(--color-text-muted);
+    font-size:9px;
+    font-weight:850;
+}
+.rail-network-field input {
+    width:100%;
+    min-width:0;
+    min-height:44px;
+    padding:0 10px;
+    border:1px solid var(--color-border);
+    border-radius:13px;
+    background:var(--color-background);
+    color:var(--color-text);
+    font:inherit;
+    font-size:16px;
+}
+.rail-network-field input:focus {
+    outline:2px solid color-mix(in srgb,var(--color-primary) 28%,transparent);
+    outline-offset:1px;
+    border-color:var(--color-primary);
+}
+.rail-network-swap {
+    width:38px;
+    height:38px;
+    margin-bottom:3px;
+    display:grid;
+    place-items:center;
+    border:1px solid var(--color-border);
+    border-radius:50%;
+    background:var(--color-background);
+    color:var(--color-primary-dark);
+    font-size:16px;
+    font-weight:900;
+}
+.rail-network-results {
+    position:absolute;
+    z-index:18;
+    top:calc(100% + 4px);
+    left:0;
+    right:0;
+    max-height:250px;
+    overflow:auto;
+    overscroll-behavior:contain;
+    padding:5px;
+    border:1px solid var(--color-border);
+    border-radius:14px;
+    background:var(--color-surface);
+    box-shadow:var(--shadow-card);
+}
+.rail-network-results[hidden] { display:none !important; }
+.rail-network-results button {
+    width:100%;
+    min-width:0;
+    display:grid;
+    grid-template-columns:30px minmax(0,1fr);
+    gap:8px;
+    align-items:center;
+    padding:9px 7px;
+    border:0;
+    border-bottom:1px solid var(--color-border);
+    background:transparent;
+    color:var(--color-text);
+    text-align:left;
+}
+.rail-network-results button:last-child { border-bottom:0; }
+.rail-network-results button strong,
+.rail-network-results button small { display:block; overflow-wrap:anywhere; }
+.rail-network-results button strong { font-size:11px; }
+.rail-network-results button small { margin-top:2px; color:var(--color-text-muted); font-size:8px; line-height:1.35; }
+.rail-network-results > p { margin:8px; color:var(--color-text-muted); font-size:10px; }
+.rail-network-result-icon { font-size:17px; text-align:center; }
+.rail-network-actions {
+    display:flex;
+    justify-content:flex-end;
+    gap:8px;
+    margin-top:10px;
+}
+.rail-network-actions button { min-height:38px; padding:0 13px; }
+.rail-network-actions button:disabled { opacity:.48; }
+.rail-network-route-result {
+    margin-top:12px;
+    display:grid;
+    gap:10px;
+}
+.rail-network-route-result[hidden] { display:none !important; }
+.rail-network-route-summary {
+    padding:12px;
+    border-radius:15px;
+    background:var(--color-primary-soft);
+}
+.rail-network-route-summary h3 { margin:2px 0 4px; font-size:15px; line-height:1.35; }
+.rail-network-route-summary p { margin:0; color:var(--color-text-muted); font-size:9px; line-height:1.4; }
+.rail-network-step-list { display:grid; gap:8px; }
+.rail-network-step {
+    display:grid;
+    grid-template-columns:28px minmax(0,1fr);
+    gap:9px;
+    padding:11px;
+    border:1px solid var(--color-border);
+    border-radius:15px;
+    background:var(--color-background);
+}
+.rail-network-step-number {
+    width:26px;
+    height:26px;
+    display:grid;
+    place-items:center;
+    border-radius:50%;
+    background:var(--color-primary-soft);
+    color:var(--color-primary-dark);
+    font-size:10px;
+    font-weight:950;
+}
+.rail-network-step-kicker {
+    display:block;
+    color:var(--color-primary-dark);
+    font-size:8px;
+    font-weight:900;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+}
+.rail-network-step h4 { margin:1px 0 3px; font-size:12px; line-height:1.35; }
+.rail-network-step p { margin:3px 0; font-size:9px; line-height:1.4; }
+.rail-network-step small { color:var(--color-text-muted); font-size:8px; line-height:1.4; }
+.rail-network-line-title {
+    display:flex;
+    align-items:center;
+    gap:8px;
+    margin-bottom:5px;
+}
+.rail-network-line-code {
+    flex:0 0 auto;
+    min-width:34px;
+    height:34px;
+    padding:0 5px;
+    display:grid;
+    place-items:center;
+    border:3px solid var(--rail-line);
+    border-radius:9px;
+    background:var(--color-surface);
+    color:var(--color-text);
+    font-size:9px;
+    font-weight:950;
+}
+.rail-network-step-copy { min-width:0; }
+.rail-network-station-trail {
+    display:block;
+    margin-top:5px;
+    padding-top:5px;
+    border-top:1px dashed var(--color-border);
+    overflow-wrap:anywhere;
+}
+.transfer-step {
+    border-style:dashed;
+    background:color-mix(in srgb,var(--color-primary-soft) 42%,var(--color-background));
+}
+.rail-network-live-note,
+.rail-network-route-empty {
+    padding:10px 11px;
+    border:1px dashed var(--color-border);
+    border-radius:13px;
+    color:var(--color-text-muted);
+    font-size:9px;
+    line-height:1.45;
+}
+.rail-network-live-note strong,
+.rail-network-route-empty strong { color:var(--color-text); }
+.rail-network-live-note p,
+.rail-network-route-empty p { margin:3px 0 0; }
+
+@media (max-width:420px) {
+    .rail-network-fields {
+        grid-template-columns:minmax(0,1fr) 34px minmax(0,1fr);
+        gap:5px;
+    }
+    .rail-network-swap { width:34px; height:34px; }
+}
+@media (max-width:350px) {
+    .rail-network-fields { grid-template-columns:1fr; }
+    .rail-network-swap {
+        justify-self:center;
+        margin:0;
+        transform:rotate(90deg);
+    }
+}
+@media (prefers-reduced-motion:reduce) {
+    .rail-network-swap { transition:none; }
+}

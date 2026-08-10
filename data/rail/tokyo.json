@@ -3,7 +3,7 @@
   "cityName": "Tokyo",
   "operator": "Multiple operators",
   "verifiedOn": "2026-08-10",
-  "sourceNote": "Static offline reference using official JR East, Tokyo Metro and Toei Transportation line/station information. Not live service data. The Marunouchi Honancho branch is represented separately so its branch geometry is not shown as a false linear continuation. Landmark names and areas were expanded using official city tourism resources; station links are a static orientation aid, not live journey planning.",
+  "sourceNote": "Static offline reference using official operator station/line information. Yamanote orientation labels were rechecked against JR East timetable direction labels on 2026-08-10. This is not live timetable or disruption data.",
   "notice": "Offline orientation guide only. Train types, through-services, platform assignments, delays and temporary service changes can vary. Always follow current station signs and operator announcements.",
   "lines": [
     {
@@ -13,8 +13,8 @@
       "code": "JY",
       "accent": "#8fc31f",
       "loop": true,
-      "directionForward": "Inner Loop (内回り) · toward Ueno / Tokyo from the west side",
-      "directionReverse": "Outer Loop (外回り) · toward Shibuya / Shinagawa from the east side",
+      "directionForward": "Counterclockwise",
+      "directionReverse": "Clockwise",
       "summary": "Tokyo's famous JR loop linking Shinjuku, Shibuya, Shinagawa, Tokyo, Ueno and Ikebukuro.",
       "stations": [
         {
@@ -280,7 +280,8 @@
           "nearby": "Ginza"
         }
       ],
-      "operator": "JR East"
+      "operator": "JR East",
+      "serviceNote": "For the Yamanote loop, Sakura uses JR East's clockwise/counterclockwise orientation terms. Always confirm the current platform sign and destination before boarding."
     },
     {
       "id": "chuo-rapid-core",
