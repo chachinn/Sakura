@@ -189,6 +189,13 @@ function writeJson(key, value) {
 }
 
 const DAILY_GOALS = Object.freeze([5, 10, 20, 30]);
+const DAILY_GOAL_MIN = 1;
+const DAILY_GOAL_MAX = 999;
+
+function validDailyGoal(value) {
+    const goal = Number(value);
+    return Number.isInteger(goal) && goal >= DAILY_GOAL_MIN && goal <= DAILY_GOAL_MAX;
+}
 
 function localDateKey(date = new Date()) {
     const year = date.getFullYear();
@@ -219,7 +226,7 @@ function normalizeDailyProgress(value, today = localDateKey()) {
     return {
         date: today,
         completedReviewsToday: storedDate === today ? count("completedReviewsToday") : 0,
-        dailyGoal: DAILY_GOALS.includes(Number(source.dailyGoal)) ? Number(source.dailyGoal) : 10,
+        dailyGoal: validDailyGoal(source.dailyGoal) ? Number(source.dailyGoal) : 10,
         currentStreak: count("currentStreak"),
         longestStreak: Math.max(count("longestStreak"), count("currentStreak")),
         lastCompletedDate: isValidLocalDateKey(source.lastCompletedDate) ? source.lastCompletedDate : ""
@@ -253,9 +260,29 @@ function completeDailyGoalIfNeeded() {
     return true;
 }
 
+let dailyBloomAnimationTimer = 0;
+
+function playDailyGoalBloom() {
+    const celebration = document.getElementById("daily-bloom-celebration");
+    const card = document.querySelector(".daily-study-card");
+    if (!celebration || !card) return;
+    window.clearTimeout(dailyBloomAnimationTimer);
+    celebration.classList.remove("active");
+    card.classList.remove("bloom-celebrating");
+    if (window.matchMedia?.("(prefers-reduced-motion: reduce)").matches) return;
+    requestAnimationFrame(() => {
+        celebration.classList.add("active");
+        card.classList.add("bloom-celebrating");
+    });
+    dailyBloomAnimationTimer = window.setTimeout(() => {
+        celebration.classList.remove("active");
+        card.classList.remove("bloom-celebrating");
+    }, 1800);
+}
+
 function renderDailyProgress() {
     refreshDailyProgressDate();
-    completeDailyGoalIfNeeded();
+    const newlyCompleted = completeDailyGoalIfNeeded();
     const count = dailyProgress.completedReviewsToday;
     const goal = dailyProgress.dailyGoal;
     const countElement = document.getElementById("daily-study-count");
@@ -263,32 +290,60 @@ function renderDailyProgress() {
     countElement.textContent = `${count} / ${goal}`;
     document.getElementById("daily-current-streak").textContent = dailyProgress.currentStreak;
     document.getElementById("daily-longest-streak").textContent = dailyProgress.longestStreak;
-    document.getElementById("daily-goal-select").value = goal;
+
+    const select = document.getElementById("daily-goal-select");
+    const customInput = document.getElementById("daily-custom-goal");
+    if (select) select.value = DAILY_GOALS.includes(goal) ? String(goal) : "custom";
+    if (customInput && document.activeElement !== customInput) {
+        customInput.value = DAILY_GOALS.includes(goal) ? "" : String(goal);
+    }
+
     const progress = document.querySelector(".daily-study-progress");
     progress.setAttribute("aria-valuemax", goal);
     progress.setAttribute("aria-valuenow", Math.min(count, goal));
     document.getElementById("daily-study-progress-bar").style.width = `${Math.min(100, (count / goal) * 100)}%`;
     const complete = count >= goal;
-    document.getElementById("daily-goal-status").textContent = complete ? "Goal complete 🌸" : `${Math.max(0, goal - count)} to bloom`;
+    document.getElementById("daily-goal-status").textContent = complete ? "Garden in bloom 🌸" : `${Math.max(0, goal - count)} to bloom`;
     document.querySelector(".daily-study-card").classList.toggle("complete", complete);
+    if (newlyCompleted) playDailyGoalBloom();
 }
 
 function recordDailyStudyAction() {
     refreshDailyProgressDate();
     dailyProgress.completedReviewsToday += 1;
     persistDailyProgress();
-    completeDailyGoalIfNeeded();
     renderDailyProgress();
 }
 
 function setDailyGoal(value) {
     const goal = Number(value);
-    if (!DAILY_GOALS.includes(goal)) return;
+    if (!validDailyGoal(goal)) return false;
     refreshDailyProgressDate();
     dailyProgress.dailyGoal = goal;
     persistDailyProgress();
-    completeDailyGoalIfNeeded();
     renderDailyProgress();
+    return true;
+}
+
+function setDailyGoalMessage(message = "", isError = false) {
+    const element = document.getElementById("daily-goal-message");
+    if (!element) return;
+    element.textContent = message;
+    element.classList.toggle("error", isError);
+}
+
+function applyCustomDailyGoal() {
+    const input = document.getElementById("daily-custom-goal");
+    const raw = input?.value?.trim() || "";
+    const goal = Number(raw);
+    if (!validDailyGoal(goal)) {
+        setDailyGoalMessage(`Choose a whole number from ${DAILY_GOAL_MIN} to ${DAILY_GOAL_MAX}.`, true);
+        input?.focus();
+        return;
+    }
+    setDailyGoal(goal);
+    setDailyGoalMessage(`Daily target set to ${goal}.`);
+    input?.blur();
 }
 
 const MASTERY_STATES = Object.freeze(["New", "Learning", "Familiar", "Mastered"]);
@@ -790,6 +845,9 @@ function syncSaveButtons() {
     setSaveButton(document.getElementById("save-native-item"), currentNativeItem);
     setSaveButton(document.getElementById("save-detail-kanji"), currentDetailKanji);
     setSaveButton(document.getElementById("save-detail-word"), currentDetailWord);
+    setSaveButton(document.getElementById("save-kana-quiz"), kanaQuizSavedItem());
+    setSaveButton(document.getElementById("save-kanji-quiz"), currentKanjiQuiz);
+    setSaveButton(document.getElementById("save-vocabulary-quiz"), currentVocabularyQuiz);
 }
 
 function updateSavedUi() {
@@ -1177,6 +1235,24 @@ function applyKanjiQuizRomajiVisibility() {
     }
 }
 
+function kanaQuizSavedItem(item = currentKana) {
+    if (!Array.isArray(item) || !item[0] || !item[1]) return null;
+    const character = String(item[0]);
+    const group = kanaGroup(item);
+    const script = String(item[2] || "Kana");
+    const codePoints = [...character].map(value => value.codePointAt(0).toString(16)).join("-");
+    return {
+        id: `kana-${codePoints}`,
+        type: "kana",
+        character,
+        reading: String(item[1]),
+        script,
+        kanaGroup: group,
+        category: `${script} · ${group === "Yoon" ? "Yōon" : group}`,
+        meaning: `${script} ${group === "Yoon" ? "Yōon" : group} kana`
+    };
+}
+
 function renderKanaQuizGroups() {
     const container = document.getElementById("kana-quiz-groups");
     if (!container) return;
@@ -1205,6 +1281,7 @@ function newKana() {
     document.getElementById("kana-type").textContent = `${currentKana[2]} · ${kanaGroup(currentKana) === "Yoon" ? "Yōon" : kanaGroup(currentKana)}`;
     document.getElementById("kana-answer").value = "";
     setFeedback("kana-feedback", "");
+    setSaveButton(document.getElementById("save-kana-quiz"), kanaQuizSavedItem());
     recordQuizQuestion("kana");
 }
 
@@ -1218,6 +1295,7 @@ function newKanjiQuiz() {
     document.getElementById("kanji-quiz-character").textContent = currentKanjiQuiz?.character || "—";
     document.getElementById("kanji-quiz-answer").value = "";
     setFeedback("kanji-quiz-feedback", currentKanjiQuiz ? "" : "No content is available for these levels.", "incorrect");
+    setSaveButton(document.getElementById("save-kanji-quiz"), currentKanjiQuiz);
     if (currentKanjiQuiz) recordQuizQuestion("kanji");
 }
 
@@ -1231,6 +1309,7 @@ function newVocabularyQuiz() {
     document.getElementById("vocabulary-quiz-reading").textContent = currentVocabularyQuiz?.kana || "No content is available for these levels.";
     document.getElementById("vocabulary-quiz-answer").value = "";
     setFeedback("vocabulary-quiz-feedback", "");
+    setSaveButton(document.getElementById("save-vocabulary-quiz"), currentVocabularyQuiz);
     if (currentVocabularyQuiz) recordQuizQuestion("vocabulary");
 }
 
@@ -1751,7 +1830,7 @@ function escapeSearchHtml(value) {
 }
 
 function searchTypeLabel(type) {
-    return ({ kanji: "Kanji", vocabulary: "Vocabulary", native: "Native", slang: "Slang", travel: "Travel", kaomoji:"Kaomoji", translation:"Translation" })[type] || type;
+    return ({ kana:"Kana", kanji: "Kanji", vocabulary: "Vocabulary", native: "Native", slang: "Slang", travel: "Travel", kaomoji:"Kaomoji", translation:"Translation" })[type] || type;
 }
 
 function searchResultMeta(item) {
@@ -2272,7 +2351,17 @@ function renderSavedItems() {
 
 function openSavedItem(item) {
     if (!item) return;
-    if (item.type === "kanji") openKanjiDetail(item, "saved");
+    if (item.type === "kana") {
+        showRoute("quiz");
+        showQuizTab("kana");
+        currentKana = [item.character, item.reading, item.script || "Kana", item.kanaGroup || "Basic"];
+        document.getElementById("kana-character").textContent = currentKana[0];
+        document.getElementById("kana-type").textContent = `${currentKana[2]} · ${kanaGroup(currentKana) === "Yoon" ? "Yōon" : kanaGroup(currentKana)}`;
+        document.getElementById("kana-answer").value = "";
+        setFeedback("kana-feedback", "");
+        setSaveButton(document.getElementById("save-kana-quiz"), kanaQuizSavedItem());
+    }
+    else if (item.type === "kanji") openKanjiDetail(item, "saved");
     else if (item.type === "vocabulary") openWordDetail(item, "saved");
     else if (["native", "slang"].includes(item.type)) {
         showRoute(`learn-${item.type}`);
@@ -5733,10 +5822,12 @@ function addListeners() {
         if (button) toggleKanaQuizGroup(button.dataset.kanaGroup);
     });
     document.getElementById("check-kana").addEventListener("click", checkKana);
+    document.getElementById("save-kana-quiz").addEventListener("click", () => toggleSaved(kanaQuizSavedItem()));
     document.getElementById("reveal-kana").addEventListener("click", () => setFeedback("kana-feedback", `${currentKana[0]} is ${currentKana[1]}.`));
     document.getElementById("next-kana").addEventListener("click", newKana);
     document.getElementById("kana-answer").addEventListener("keydown", event => { if (event.key === "Enter") checkKana(); });
     document.getElementById("check-kanji-quiz").addEventListener("click", checkKanjiQuiz);
+    document.getElementById("save-kanji-quiz").addEventListener("click", () => toggleSaved(currentKanjiQuiz));
     document.getElementById("reveal-kanji-quiz").addEventListener("click", () => {
         kanjiQuizFeedbackRevealed = true;
         setFeedback("kanji-quiz-feedback", kanjiQuizRevealText(currentKanjiQuiz));
@@ -5749,6 +5840,7 @@ function addListeners() {
     document.getElementById("next-kanji-quiz").addEventListener("click", newKanjiQuiz);
     document.getElementById("kanji-quiz-answer").addEventListener("keydown", event => { if (event.key === "Enter") checkKanjiQuiz(); });
     document.getElementById("check-vocabulary-quiz").addEventListener("click", checkVocabularyQuiz);
+    document.getElementById("save-vocabulary-quiz").addEventListener("click", () => toggleSaved(currentVocabularyQuiz));
     document.getElementById("reveal-vocabulary-quiz").addEventListener("click", () => setFeedback("vocabulary-quiz-feedback", currentVocabularyQuiz?.meaning || "No content available."));
     document.getElementById("next-vocabulary-quiz").addEventListener("click", newVocabularyQuiz);
     document.getElementById("vocabulary-quiz-answer").addEventListener("keydown", event => { if (event.key === "Enter") checkVocabularyQuiz(); });
@@ -5793,7 +5885,23 @@ function addListeners() {
     document.getElementById("close-settings").addEventListener("click", () => settings.close());
     document.getElementById("done-settings").addEventListener("click", () => settings.close());
     document.getElementById("theme-options").addEventListener("click", event => { const button=event.target.closest("[data-theme-choice]"); if(button) applyTheme(button.dataset.themeChoice); });
-    document.getElementById("daily-goal-select").addEventListener("change", event => setDailyGoal(event.target.value));
+    document.getElementById("daily-goal-select").addEventListener("change", event => {
+        if (event.target.value === "custom") {
+            setDailyGoalMessage("Type any target from 1 to 999.");
+            document.getElementById("daily-custom-goal").focus();
+            return;
+        }
+        setDailyGoal(event.target.value);
+        setDailyGoalMessage("");
+    });
+    document.getElementById("set-daily-custom-goal").addEventListener("click", applyCustomDailyGoal);
+    document.getElementById("daily-custom-goal").addEventListener("keydown", event => {
+        if (event.key === "Enter") {
+            event.preventDefault();
+            applyCustomDailyGoal();
+        }
+    });
+    document.getElementById("daily-custom-goal").addEventListener("input", () => setDailyGoalMessage(""));
     document.getElementById("apply-custom-accent").addEventListener("click", () => applyCustomAccent(document.getElementById("custom-accent-input").value));
     document.getElementById("custom-accent-input").addEventListener("keydown", event => { if(event.key === "Enter"){ event.preventDefault(); applyCustomAccent(event.currentTarget.value); } });
     document.getElementById("custom-accent-input").addEventListener("input", event => { const hex=normalizeCustomHex(event.currentTarget.value); document.getElementById("custom-accent-preview").style.setProperty("--preview-color",hex||"var(--color-primary)"); setCustomAccentMessage(""); });

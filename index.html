@@ -11,7 +11,7 @@
     <script>try { document.documentElement.dataset.theme = localStorage.getItem("sakuraAppearanceTheme") || "pink"; } catch (error) { document.documentElement.dataset.theme = "pink"; }</script>
     <link rel="manifest" href="manifest.webmanifest">
     <link rel="apple-touch-icon" href="icons/icon-180.png">
-    <link rel="stylesheet" href="style.css?v=64">
+    <link rel="stylesheet" href="style.css?v=65">
 </head>
 <body>
     <div class="app-shell">
@@ -39,12 +39,19 @@
                 </section>
 
                 <section class="daily-study-card" aria-labelledby="daily-study-heading">
+                    <div id="daily-bloom-celebration" class="daily-bloom-celebration" aria-hidden="true"><span>🌸</span><span>🌸</span><span>🌸</span><span>🌸</span><span>🌸</span><span>🌸</span></div>
                     <div class="daily-study-topline">
                         <div><span class="section-kicker">Daily Study</span><h2 id="daily-study-heading"><span id="daily-study-count">0 / 10</span> today</h2></div>
                         <label class="daily-goal-control" for="daily-goal-select">Goal
-                            <select id="daily-goal-select" aria-label="Daily study goal"><option value="5">5</option><option value="10" selected>10</option><option value="20">20</option><option value="30">30</option></select>
+                            <select id="daily-goal-select" aria-label="Daily study goal"><option value="5">5</option><option value="10" selected>10</option><option value="20">20</option><option value="30">30</option><option value="custom">Custom…</option></select>
                         </label>
                     </div>
+                    <div class="daily-custom-goal-row">
+                        <label for="daily-custom-goal">Custom target</label>
+                        <input id="daily-custom-goal" type="number" inputmode="numeric" min="1" max="999" step="1" placeholder="e.g. 15" aria-describedby="daily-goal-message">
+                        <button id="set-daily-custom-goal" class="daily-custom-goal-button" type="button">Set</button>
+                    </div>
+                    <small id="daily-goal-message" class="daily-goal-message" role="status" aria-live="polite"></small>
                     <div class="daily-study-progress" role="progressbar" aria-label="Today's study progress" aria-valuemin="0" aria-valuemax="10" aria-valuenow="0"><span id="daily-study-progress-bar"></span></div>
                     <div class="daily-study-stats"><span><small>Current streak</small><strong>🌸 <b id="daily-current-streak">0</b> days</strong></span><span><small>Longest</small><strong><b id="daily-longest-streak">0</b> days</strong></span><span id="daily-goal-status" class="daily-goal-status">Keep growing</span></div>
                 </section>
@@ -325,7 +332,7 @@
                 <div class="tab-bar" role="tablist" aria-label="Quiz type"><button class="tab-button active" type="button" data-quiz-tab="kana">Kana</button><button class="tab-button" type="button" data-quiz-tab="kanji">Kanji</button><button class="tab-button" type="button" data-quiz-tab="vocabulary">Vocabulary</button></div>
 
                 <article id="kana-quiz-panel" class="quiz-card" data-quiz-panel="kana">
-                    <div class="quiz-card-heading"><span class="quiz-icon lavender-feature">あ</span><div><h2>Kana Quiz</h2><p id="kana-type">Hiragana</p></div></div>
+                    <div class="quiz-card-heading"><span class="quiz-icon lavender-feature">あ</span><div><h2>Kana Quiz</h2><p id="kana-type">Hiragana</p></div><div class="quiz-heading-actions"><button id="save-kana-quiz" class="save-button quiz-save-button" type="button" aria-label="Save this Kana for flashcards" aria-pressed="false">♡</button></div></div>
                     <div class="kana-group-filter"><strong>Practice groups</strong><div id="kana-quiz-groups" class="kana-group-chips" role="group" aria-label="Kana practice groups"></div><small>Choose one or more groups. Extended contains modern Katakana sounds.</small></div>
                     <div class="quiz-status-bar"><span>🌸 Blooms <strong id="kana-quiz-blooms">0</strong></span><span>🍂 Misses <strong id="kana-quiz-misses">0</strong></span><button class="quiz-reset-button" type="button" data-reset-quiz="kana" aria-label="Reset Kana Quiz">↻ Reset</button></div>
                     <div id="kana-character" class="quiz-character">あ</div>
@@ -337,7 +344,7 @@
                 </article>
 
                 <article id="kanji-quiz-panel" class="quiz-card" data-quiz-panel="kanji" hidden>
-                    <div class="quiz-card-heading"><span class="quiz-icon pink-feature">漢</span><div><h2>Kanji Quiz</h2><p>Enter a reading or meaning.</p></div><button id="kanji-quiz-romaji-toggle" class="quiz-romaji-toggle" type="button" aria-pressed="false">Show Romaji</button></div>
+                    <div class="quiz-card-heading"><span class="quiz-icon pink-feature">漢</span><div><h2>Kanji Quiz</h2><p>Enter a reading or meaning.</p></div><div class="quiz-heading-actions"><button id="save-kanji-quiz" class="save-button quiz-save-button" type="button" aria-label="Save this Kanji for flashcards" aria-pressed="false">♡</button><button id="kanji-quiz-romaji-toggle" class="quiz-romaji-toggle" type="button" aria-pressed="false">Show Romaji</button></div></div>
                     <div id="kanjiQuiz-levels" class="section-level-control expanded-level-control"></div>
                     <div class="quiz-status-bar"><span>🌸 Blooms <strong id="kanji-quiz-blooms">0</strong></span><span>🍂 Misses <strong id="kanji-quiz-misses">0</strong></span><button class="quiz-reset-button" type="button" data-reset-quiz="kanji" aria-label="Reset Kanji Quiz">↻ Reset</button></div>
                     <div id="kanji-quiz-character" class="quiz-character">日</div>
@@ -347,7 +354,7 @@
                 </article>
 
                 <article id="vocabulary-quiz-panel" class="quiz-card" data-quiz-panel="vocabulary" hidden>
-                    <div class="quiz-card-heading"><span class="quiz-icon peach-feature">語</span><div><h2>Vocabulary Quiz</h2><p>Enter the English meaning.</p></div></div>
+                    <div class="quiz-card-heading"><span class="quiz-icon peach-feature">語</span><div><h2>Vocabulary Quiz</h2><p>Enter the English meaning.</p></div><div class="quiz-heading-actions"><button id="save-vocabulary-quiz" class="save-button quiz-save-button" type="button" aria-label="Save this vocabulary for flashcards" aria-pressed="false">♡</button></div></div>
                     <div id="vocabularyQuiz-levels" class="section-level-control expanded-level-control"></div>
                     <div class="quiz-status-bar"><span>🌸 Blooms <strong id="vocabulary-quiz-blooms">0</strong></span><span>🍂 Misses <strong id="vocabulary-quiz-misses">0</strong></span><button class="quiz-reset-button" type="button" data-reset-quiz="vocabulary" aria-label="Reset Vocabulary Quiz">↻ Reset</button></div>
                     <div id="vocabulary-quiz-word" class="quiz-character word-quiz-character">勉強</div>
@@ -595,7 +602,7 @@
                 <div id="saved-items-panel" data-saved-panel="items">
                     <div class="saved-search-row"><input id="saved-search-input" type="search" placeholder="Search your saved Japanese" autocomplete="off" aria-label="Search Saved items"><button id="clear-saved" class="text-danger-button" type="button">Clear all</button></div>
                     <div class="saved-filter-grid">
-                        <label>Type<select id="saved-type-filter"><option value="all">All</option><option value="kanji">Kanji</option><option value="vocabulary">Vocabulary</option><option value="slang">Slang</option><option value="native">Native Japanese</option><option value="travel">Travel</option><option value="translation">Translations</option></select></label>
+                        <label>Type<select id="saved-type-filter"><option value="all">All</option><option value="kana">Kana</option><option value="kanji">Kanji</option><option value="vocabulary">Vocabulary</option><option value="slang">Slang</option><option value="native">Native Japanese</option><option value="travel">Travel</option><option value="translation">Translations</option></select></label>
                         <label id="saved-level-filter-label">JLPT<select id="saved-level-filter"><option value="all">All</option><option>N5</option><option>N4</option><option>N3</option><option>N2</option><option>N1</option></select></label>
                         <label id="saved-slang-category-label" hidden>Slang category<select id="saved-slang-category-filter"><option value="all">All categories</option></select></label>
                         <label>Status<select id="saved-status-filter"><option value="all">All</option><option value="known">Known</option><option value="review">Needs Review</option></select></label>
@@ -609,7 +616,7 @@
                 </div>
 
                 <div id="flashcards-panel" data-saved-panel="flashcards" hidden>
-                    <div class="filter-row flashcard-filter-row"><label>Deck<select id="deck-type-filter"><option value="all">All saved</option><option value="kanji">Kanji only</option><option value="vocabulary">Vocabulary only</option><option value="native">Native Japanese only</option><option value="slang">Slang only</option><option value="travel">Travel only</option><option value="translation">Translations only</option></select></label><label class="checkbox-label"><input id="review-only-filter" type="checkbox"> Needs Review only</label></div>
+                    <div class="filter-row flashcard-filter-row"><label>Deck<select id="deck-type-filter"><option value="all">All saved</option><option value="kana">Kana only</option><option value="kanji">Kanji only</option><option value="vocabulary">Vocabulary only</option><option value="native">Native Japanese only</option><option value="slang">Slang only</option><option value="travel">Travel only</option><option value="translation">Translations only</option></select></label><label class="checkbox-label"><input id="review-only-filter" type="checkbox"> Needs Review only</label></div>
                     <div id="flashcard-levels" class="level-chips compact-level-chips"></div>
                     <p id="flashcard-progress" class="flashcard-progress">Card 0 of 0</p>
                     <button id="flashcard" class="flashcard" type="button" aria-label="Reveal flashcard answer"><span id="flashcard-side-label" class="section-kicker">Front</span><strong id="flashcard-front">Save some items to begin</strong><span id="flashcard-back" class="flashcard-back" hidden></span></button>
