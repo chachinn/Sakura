@@ -3536,7 +3536,7 @@ function loadWhatWouldYouSayBank() {
     if (whatWouldYouSayBankPromise) return whatWouldYouSayBankPromise;
     whatWouldYouSayBankPromise = new Promise((resolve, reject) => {
         const script = document.createElement("script");
-        script.src = "./data/practice-what-would-you-say.js?v=2";
+        script.src = "./data/practice-what-would-you-say.js?v=3";
         script.onload = () => Array.isArray(window.WHAT_WOULD_YOU_SAY_DATA) ? resolve(window.WHAT_WOULD_YOU_SAY_DATA) : reject(new Error("Practice questions are unavailable."));
         script.onerror = () => reject(new Error("Practice questions could not be loaded."));
         document.head.appendChild(script);
@@ -3676,7 +3676,7 @@ function loadSentenceBuilderBank() {
     if (sentenceBuilderBankPromise) return sentenceBuilderBankPromise;
     sentenceBuilderBankPromise = new Promise((resolve, reject) => {
         const script = document.createElement("script");
-        script.src = "./data/practice-sentence-builder.js?v=2";
+        script.src = "./data/practice-sentence-builder.js?v=3";
         script.onload = () => Array.isArray(window.SENTENCE_BUILDER_DATA) ? resolve(window.SENTENCE_BUILDER_DATA) : reject(new Error("Sentence Builder questions are unavailable."));
         script.onerror = () => reject(new Error("Sentence Builder questions could not be loaded."));
         document.head.appendChild(script);
@@ -3845,7 +3845,7 @@ function loadPersonalitiesBank() {
     if (personalitiesBankPromise) return personalitiesBankPromise;
     personalitiesBankPromise = new Promise((resolve, reject) => {
         const script = document.createElement("script");
-        script.src = "./data/practice-one-line-many-personalities.js?v=2";
+        script.src = "./data/practice-one-line-many-personalities.js?v=3";
         script.onload = () => Array.isArray(window.ONE_LINE_MANY_PERSONALITIES_DATA) ? resolve(window.ONE_LINE_MANY_PERSONALITIES_DATA) : reject(new Error("Personality practice content is unavailable."));
         script.onerror = () => reject(new Error("Personality practice content could not be loaded."));
         document.head.appendChild(script);
