@@ -2571,12 +2571,15 @@ function railNetworkResolveTypedHub(side, { allowStrongPartial = true } = {}) {
 function showRailNetworkPlannerMessage(title, message) {
     const panel = document.getElementById("rail-network-route-result");
     if (!panel) return;
-    panel.hidden = false;
     panel.innerHTML = `<div class="rail-network-route-empty"><strong>${escapeSearchHtml(title)}</strong><p>${escapeSearchHtml(message)}</p></div>`;
+    panel.hidden = false;
 }
 
 function planRailNetworkFromInputs() {
     if (!railGuideCityData) return;
+
+    window.clearTimeout(railNetworkSearchTimers.from);
+    window.clearTimeout(railNetworkSearchTimers.to);
 
     const fromValue = railNetworkInputValue("from");
     const toValue = railNetworkInputValue("to");
@@ -2609,7 +2612,7 @@ function planRailNetworkFromInputs() {
     });
 
     updateRailNetworkPlanButton();
-    renderRailNetworkRoute();
+    renderRailNetworkRoute(fromHub.key, toHub.key);
 }
 
 function updateRailNetworkPlanButton() {
@@ -2879,12 +2882,12 @@ function railNetworkRouteSteps(route) {
     return steps;
 }
 
-function renderRailNetworkRoute() {
+function renderRailNetworkRoute(fromHubKey = railNetworkPlannerState.from, toHubKey = railNetworkPlannerState.to) {
     const panel = document.getElementById("rail-network-route-result");
     if (!panel || !railGuideCityData) return;
     ensureRailNetworkPlannerCity();
-    const fromHub = railNetworkHubByKey(railNetworkPlannerState.from);
-    const toHub = railNetworkHubByKey(railNetworkPlannerState.to);
+    const fromHub = railNetworkHubByKey(fromHubKey);
+    const toHub = railNetworkHubByKey(toHubKey);
     if (!fromHub || !toHub) {
         panel.hidden = true;
         panel.innerHTML = "";
@@ -2893,14 +2896,15 @@ function renderRailNetworkRoute() {
     }
 
     const route = findRailNetworkRoute(fromHub.key, toHub.key);
-    panel.hidden = false;
     if (!route) {
         panel.innerHTML = `<div class="rail-network-route-empty"><strong>No connected route found in Sakura's current ${escapeSearchHtml(railGuideCityData.cityName)} database.</strong><p>Try another station pair. Sakura only connects interchange stations represented in the offline guide and does not invent outside-gate walking transfers.</p></div>`;
+        panel.hidden = false;
         return;
     }
 
     if (route.sameStation) {
         panel.innerHTML = `<div class="rail-network-route-summary"><span class="section-kicker">You're already there</span><h3>${escapeSearchHtml(fromHub.name)}</h3><p>The From and To selections resolve to the same station hub.</p></div>`;
+        panel.hidden = false;
         return;
     }
 
@@ -2941,6 +2945,7 @@ function renderRailNetworkRoute() {
     </div>
     <div class="rail-network-step-list">${stepHtml}</div>
     <div class="rail-network-live-note"><strong>Before boarding</strong><p>This is an offline route based on Sakura's stored station order, not a live timetable. Confirm the current train type, destination, platform, disruptions, and transfer signs at the station.</p></div>`;
+    panel.hidden = false;
 }
 
 function renderRailNetworkPlanner() {
