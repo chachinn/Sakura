@@ -2514,13 +2514,116 @@ function ensureRailNetworkPlannerCity() {
     }
 }
 
+function railNetworkInputValue(side) {
+    return String(document.getElementById(`rail-network-${side}-input`)?.value || "").trim();
+}
+
+function railNetworkMatchesForInput(value) {
+    if (!railGuideCityData) return [];
+    const normalized = normalizeSearchText(value);
+    if (!normalized) return [];
+    return [...railNetworkHubs().values()]
+        .map(hub => ({ hub, score:railNetworkHubSearchScore(normalized, hub) }))
+        .filter(item => item.score > 0)
+        .sort((a,b) => b.score - a.score || a.hub.name.localeCompare(b.hub.name));
+}
+
+function railNetworkResolveTypedHub(side, { allowStrongPartial = true } = {}) {
+    if (!["from","to"].includes(side) || !railGuideCityData) return null;
+    ensureRailNetworkPlannerCity();
+
+    const value = railNetworkInputValue(side);
+    if (!value) {
+        railNetworkPlannerState[side] = "";
+        return null;
+    }
+
+    const current = railNetworkHubByKey(railNetworkPlannerState[side]);
+    if (current && normalizeSearchText(current.name) === normalizeSearchText(value)) return current;
+
+    const matches = railNetworkMatchesForInput(value);
+    if (!matches.length) {
+        railNetworkPlannerState[side] = "";
+        return null;
+    }
+
+    const best = matches[0];
+    const second = matches[1];
+
+    // Exact station name/Japanese name/code = score 200.
+    // A unique strong prefix = score 170 and is also safe enough to accept.
+    const safeExact = best.score >= 200;
+    const safeStrongPartial = allowStrongPartial &&
+        best.score >= 170 &&
+        (!second || second.score < best.score);
+
+    if (!safeExact && !safeStrongPartial) {
+        railNetworkPlannerState[side] = "";
+        return null;
+    }
+
+    railNetworkPlannerState[side] = best.hub.key;
+    const input = document.getElementById(`rail-network-${side}-input`);
+    if (input) input.value = best.hub.name;
+    return best.hub;
+}
+
+function showRailNetworkPlannerMessage(title, message) {
+    const panel = document.getElementById("rail-network-route-result");
+    if (!panel) return;
+    panel.hidden = false;
+    panel.innerHTML = `<div class="rail-network-route-empty"><strong>${escapeSearchHtml(title)}</strong><p>${escapeSearchHtml(message)}</p></div>`;
+}
+
+function planRailNetworkFromInputs() {
+    if (!railGuideCityData) return;
+
+    const fromValue = railNetworkInputValue("from");
+    const toValue = railNetworkInputValue("to");
+    if (!fromValue || !toValue) {
+        showRailNetworkPlannerMessage("Choose both stations.", "Enter a From station and a To station first.");
+        updateRailNetworkPlanButton();
+        return;
+    }
+
+    const fromHub = railNetworkResolveTypedHub("from");
+    const toHub = railNetworkResolveTypedHub("to");
+
+    if (!fromHub || !toHub) {
+        if (!fromHub) renderRailNetworkSuggestions("from", fromValue);
+        if (!toHub) renderRailNetworkSuggestions("to", toValue);
+        showRailNetworkPlannerMessage(
+            "Select the station from the suggestions.",
+            "Sakura found more than one possible match, or the station name is not in the selected city's offline rail database."
+        );
+        updateRailNetworkPlanButton();
+        return;
+    }
+
+    ["from","to"].forEach(side => {
+        const results = document.getElementById(`rail-network-${side}-results`);
+        if (results) {
+            results.hidden = true;
+            results.innerHTML = "";
+        }
+    });
+
+    updateRailNetworkPlanButton();
+    renderRailNetworkRoute();
+}
+
 function updateRailNetworkPlanButton() {
     const button = document.getElementById("rail-network-plan-button");
     if (!button) return;
+
+    // The button is usable as soon as both fields contain text.
+    // Exact/unique station resolution happens when Find route is tapped,
+    // so users do not have to tap an autocomplete suggestion first.
     const ready = Boolean(
-        railNetworkPlannerState.city === railGuideCityData?.city &&
-        railNetworkPlannerState.from &&
-        railNetworkPlannerState.to
+        railGuideCityData &&
+        railNetworkPlannerState.city === railGuideCityData.city &&
+        railNetworkInputValue("from") &&
+        railNetworkInputValue("to")
     );
     button.disabled = !ready;
     button.setAttribute("aria-disabled", String(!ready));
@@ -2569,7 +2672,6 @@ function selectRailNetworkHub(side, key) {
         results.innerHTML = "";
     }
     updateRailNetworkPlanButton();
-    if (railNetworkPlannerState.from && railNetworkPlannerState.to) renderRailNetworkRoute();
 }
 
 function buildRailNetworkGraph() {
@@ -6705,12 +6807,18 @@ function addListeners() {
             return;
         }
         if (event.target.closest("#rail-network-swap")) {
+            const fromInput = document.getElementById("rail-network-from-input");
+            const toInput = document.getElementById("rail-network-to-input");
+            const fromValue = fromInput?.value || "";
+            const toValue = toInput?.value || "";
             [railNetworkPlannerState.from, railNetworkPlannerState.to] = [railNetworkPlannerState.to, railNetworkPlannerState.from];
-            const fromHub = railNetworkHubByKey(railNetworkPlannerState.from);
-            const toHub = railNetworkHubByKey(railNetworkPlannerState.to);
-            document.getElementById("rail-network-from-input").value = fromHub?.name || "";
-            document.getElementById("rail-network-to-input").value = toHub?.name || "";
-            renderRailNetworkRoute();
+            if (fromInput) fromInput.value = toValue;
+            if (toInput) toInput.value = fromValue;
+            const panel = document.getElementById("rail-network-route-result");
+            if (panel) {
+                panel.hidden = true;
+                panel.innerHTML = "";
+            }
             updateRailNetworkPlanButton();
             return;
         }
@@ -6720,7 +6828,7 @@ function addListeners() {
             return;
         }
         if (event.target.closest("#rail-network-plan-button")) {
-            renderRailNetworkRoute();
+            planRailNetworkFromInputs();
             return;
         }
         const lineButton = event.target.closest("[data-rail-line]");
@@ -6778,12 +6886,12 @@ function addListeners() {
         input.addEventListener("input", event => {
             ensureRailNetworkPlannerCity();
             railNetworkPlannerState[side] = "";
-            updateRailNetworkPlanButton();
             const panel = document.getElementById("rail-network-route-result");
             if (panel) {
                 panel.hidden = true;
                 panel.innerHTML = "";
             }
+            updateRailNetworkPlanButton();
             window.clearTimeout(railNetworkSearchTimers[side]);
             railNetworkSearchTimers[side] = window.setTimeout(() => renderRailNetworkSuggestions(side, event.target.value), 80);
         });
@@ -6791,6 +6899,28 @@ function addListeners() {
             if (event.key === "Escape") {
                 const results = document.getElementById(`rail-network-${side}-results`);
                 if (results) results.hidden = true;
+                return;
+            }
+            if (event.key === "Enter") {
+                event.preventDefault();
+                const resolved = railNetworkResolveTypedHub(side);
+                if (resolved) {
+                    const results = document.getElementById(`rail-network-${side}-results`);
+                    if (results) {
+                        results.hidden = true;
+                        results.innerHTML = "";
+                    }
+                    updateRailNetworkPlanButton();
+                    if (railNetworkInputValue("from") && railNetworkInputValue("to")) {
+                        planRailNetworkFromInputs();
+                    }
+                    else {
+                        document.getElementById(`rail-network-${side === "from" ? "to" : "from"}-input`)?.focus();
+                    }
+                }
+                else {
+                    renderRailNetworkSuggestions(side, input.value);
+                }
             }
         });
     });
