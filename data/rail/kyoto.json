@@ -1,0 +1,377 @@
+{
+  "city": "kyoto",
+  "cityName": "Kyoto",
+  "operator": "JR West",
+  "verifiedOn": "2026-08-10",
+  "sourceNote": "Static reference built from JR West's official Kinki station-number route map and Kyoto travel information. Not live service data.",
+  "notice": "Use this as an offline orientation guide. Train types, stopping patterns, platforms and service changes can vary; follow current station signs and announcements.",
+  "lines": [
+    {
+      "id": "nara",
+      "name": "Nara Line",
+      "jp": "奈良線",
+      "code": "D",
+      "accent": "#9a7b17",
+      "loop": false,
+      "directionForward": "toward Uji / Nara",
+      "directionReverse": "toward Kyoto",
+      "summary": "Useful from Kyoto Station for Tofukuji, Fushimi Inari, Uji and Nara.",
+      "serviceNote": "Local and Miyakoji Rapid services have different stopping patterns.",
+      "stations": [
+        {
+          "code": "D01",
+          "name": "Kyoto",
+          "jp": "京都",
+          "connections": [
+            "Shinkansen",
+            "JR Kyoto",
+            "JR Sagano",
+            "Kyoto Subway",
+            "Kintetsu"
+          ]
+        },
+        {
+          "code": "D02",
+          "name": "Tofukuji",
+          "jp": "東福寺",
+          "connections": [
+            "Keihan"
+          ],
+          "nearby": "Tofukuji · Keihan transfer"
+        },
+        {
+          "code": "D03",
+          "name": "Inari",
+          "jp": "稲荷",
+          "nearby": "Fushimi Inari Taisha"
+        },
+        {
+          "code": "D04",
+          "name": "JR-Fujinomori",
+          "jp": "JR藤森"
+        },
+        {
+          "code": "D05",
+          "name": "Momoyama",
+          "jp": "桃山"
+        },
+        {
+          "code": "D06",
+          "name": "Rokujizo",
+          "jp": "六地蔵",
+          "connections": [
+            "Kyoto Subway / Keihan area"
+          ]
+        },
+        {
+          "code": "D07",
+          "name": "Kohata",
+          "jp": "木幡"
+        },
+        {
+          "code": "D08",
+          "name": "Obaku",
+          "jp": "黄檗"
+        },
+        {
+          "code": "D09",
+          "name": "Uji",
+          "jp": "宇治",
+          "nearby": "Byodo-in · tea district"
+        },
+        {
+          "code": "D10",
+          "name": "JR-Ogura",
+          "jp": "JR小倉"
+        },
+        {
+          "code": "D11",
+          "name": "Shinden",
+          "jp": "新田"
+        },
+        {
+          "code": "D12",
+          "name": "Joyo",
+          "jp": "城陽"
+        },
+        {
+          "code": "D13",
+          "name": "Nagaike",
+          "jp": "長池"
+        },
+        {
+          "code": "D14",
+          "name": "Yamashiro-Aodani",
+          "jp": "山城青谷"
+        },
+        {
+          "code": "D15",
+          "name": "Yamashiro-Taga",
+          "jp": "山城多賀"
+        },
+        {
+          "code": "D16",
+          "name": "Tamamizu",
+          "jp": "玉水"
+        },
+        {
+          "code": "D17",
+          "name": "Tanakura",
+          "jp": "棚倉"
+        },
+        {
+          "code": "D18",
+          "name": "Kamikoma",
+          "jp": "上狛"
+        },
+        {
+          "code": "D19",
+          "name": "Kizu",
+          "jp": "木津",
+          "connections": [
+            "JR Yamatoji",
+            "JR Gakkentoshi"
+          ]
+        },
+        {
+          "code": "D20",
+          "name": "Narayama",
+          "jp": "平城山"
+        },
+        {
+          "code": "D21",
+          "name": "Nara",
+          "jp": "奈良",
+          "connections": [
+            "JR Yamatoji",
+            "JR Man-yo Mahoroba"
+          ],
+          "nearby": "Nara Park access"
+        }
+      ]
+    },
+    {
+      "id": "sagano",
+      "name": "Sagano Line",
+      "jp": "嵯峨野線",
+      "code": "E",
+      "accent": "#8578b9",
+      "loop": false,
+      "directionForward": "toward Saga-Arashiyama / Sonobe",
+      "directionReverse": "toward Kyoto",
+      "summary": "Kyoto's JR route for Nijo, Arashiyama and the western side of the city.",
+      "stations": [
+        {
+          "code": "E01",
+          "name": "Kyoto",
+          "jp": "京都",
+          "connections": [
+            "Shinkansen",
+            "JR Kyoto",
+            "JR Nara",
+            "Kyoto Subway",
+            "Kintetsu"
+          ]
+        },
+        {
+          "code": "E02",
+          "name": "Umekoji-Kyotonishi",
+          "jp": "梅小路京都西",
+          "nearby": "Kyoto Railway Museum · Kyoto Aquarium"
+        },
+        {
+          "code": "E03",
+          "name": "Tambaguchi",
+          "jp": "丹波口"
+        },
+        {
+          "code": "E04",
+          "name": "Nijo",
+          "jp": "二条",
+          "connections": [
+            "Kyoto Subway Tozai"
+          ],
+          "nearby": "Nijo Castle"
+        },
+        {
+          "code": "E05",
+          "name": "Emmachi",
+          "jp": "円町",
+          "nearby": "Bus access toward Kinkaku-ji"
+        },
+        {
+          "code": "E06",
+          "name": "Hanazono",
+          "jp": "花園"
+        },
+        {
+          "code": "E07",
+          "name": "Uzumasa",
+          "jp": "太秦"
+        },
+        {
+          "code": "E08",
+          "name": "Saga-Arashiyama",
+          "jp": "嵯峨嵐山",
+          "nearby": "Arashiyama · Torokko Saga nearby"
+        },
+        {
+          "code": "E09",
+          "name": "Hozukyo",
+          "jp": "保津峡"
+        },
+        {
+          "code": "E10",
+          "name": "Umahori",
+          "jp": "馬堀",
+          "nearby": "Torokko Kameoka nearby"
+        },
+        {
+          "code": "E11",
+          "name": "Kameoka",
+          "jp": "亀岡"
+        },
+        {
+          "code": "E12",
+          "name": "Namikawa",
+          "jp": "並河"
+        },
+        {
+          "code": "E13",
+          "name": "Chiyokawa",
+          "jp": "千代川"
+        },
+        {
+          "code": "E14",
+          "name": "Yagi",
+          "jp": "八木"
+        },
+        {
+          "code": "E15",
+          "name": "Yoshitomi",
+          "jp": "吉富"
+        },
+        {
+          "code": "E16",
+          "name": "Sonobe",
+          "jp": "園部"
+        }
+      ]
+    },
+    {
+      "id": "jr-kyoto",
+      "name": "JR Kyoto Line · to Osaka",
+      "jp": "JR京都線",
+      "code": "A",
+      "accent": "#0072bc",
+      "loop": false,
+      "directionForward": "toward Osaka",
+      "directionReverse": "toward Kyoto",
+      "summary": "The main JR route from Kyoto to Shin-Osaka and Osaka.",
+      "serviceNote": "Local, Rapid and Special Rapid trains have different stopping patterns.",
+      "stations": [
+        {
+          "code": "A31",
+          "name": "Kyoto",
+          "jp": "京都",
+          "connections": [
+            "Shinkansen",
+            "JR Nara",
+            "JR Sagano",
+            "Kyoto Subway",
+            "Kintetsu"
+          ]
+        },
+        {
+          "code": "A32",
+          "name": "Nishi-Oji",
+          "jp": "西大路"
+        },
+        {
+          "code": "A33",
+          "name": "Katsuragawa",
+          "jp": "桂川"
+        },
+        {
+          "code": "A34",
+          "name": "Mukomachi",
+          "jp": "向日町"
+        },
+        {
+          "code": "A35",
+          "name": "Nagaokakyo",
+          "jp": "長岡京"
+        },
+        {
+          "code": "A36",
+          "name": "Yamazaki",
+          "jp": "山崎"
+        },
+        {
+          "code": "A37",
+          "name": "Shimamoto",
+          "jp": "島本"
+        },
+        {
+          "code": "A38",
+          "name": "Takatsuki",
+          "jp": "高槻"
+        },
+        {
+          "code": "A39",
+          "name": "Settsu-Tonda",
+          "jp": "摂津富田"
+        },
+        {
+          "code": "A40",
+          "name": "JR-Sojiji",
+          "jp": "JR総持寺"
+        },
+        {
+          "code": "A41",
+          "name": "Ibaraki",
+          "jp": "茨木"
+        },
+        {
+          "code": "A42",
+          "name": "Senrioka",
+          "jp": "千里丘"
+        },
+        {
+          "code": "A43",
+          "name": "Kishibe",
+          "jp": "岸辺"
+        },
+        {
+          "code": "A44",
+          "name": "Suita",
+          "jp": "吹田"
+        },
+        {
+          "code": "A45",
+          "name": "Higashi-Yodogawa",
+          "jp": "東淀川"
+        },
+        {
+          "code": "A46",
+          "name": "Shin-Osaka",
+          "jp": "新大阪",
+          "connections": [
+            "Shinkansen",
+            "Osaka Metro"
+          ]
+        },
+        {
+          "code": "A47",
+          "name": "Osaka",
+          "jp": "大阪",
+          "connections": [
+            "Osaka Loop",
+            "JR Kobe/Takarazuka",
+            "Osaka Metro via Umeda"
+          ]
+        }
+      ]
+    }
+  ]
+}

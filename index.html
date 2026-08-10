@@ -11,7 +11,7 @@
     <script>try { document.documentElement.dataset.theme = localStorage.getItem("sakuraAppearanceTheme") || "pink"; } catch (error) { document.documentElement.dataset.theme = "pink"; }</script>
     <link rel="manifest" href="manifest.webmanifest">
     <link rel="apple-touch-icon" href="icons/icon-180.png">
-    <link rel="stylesheet" href="style.css?v=66">
+    <link rel="stylesheet" href="style.css?v=67">
 </head>
 <body>
     <div class="app-shell">
@@ -610,11 +610,64 @@
             <section id="travel-category-view" class="view" data-view="travel-category" aria-labelledby="travel-category-heading" hidden>
                 <header class="travel-category-header"><button class="back-button" type="button" data-route="travel" aria-label="Back to Travel">‹</button><span id="travel-category-icon" class="travel-category-icon" aria-hidden="true">電</span><div><span class="section-kicker">Travel Mode</span><h1 id="travel-category-heading">Trains &amp; Stations</h1></div></header>
                 <p id="travel-category-description" class="travel-category-description"></p>
+                <button id="travel-rail-guide-launch" class="travel-rail-guide-launch" type="button" data-route="travel-rail" hidden>
+                    <span class="travel-rail-launch-icon" aria-hidden="true">🚆</span>
+                    <span><strong>JR Rail Guide</strong><small>Tokyo · Osaka · Kyoto station maps, codes, directions and transfers.</small></span>
+                    <b aria-hidden="true">→</b>
+                </button>
                 <div id="travel-category-filters" class="travel-filter-chips" role="group" aria-label="Travel phrase filters"></div>
                 <div class="three-controls travel-controls"><button id="previous-travel-phrase" class="control-button" type="button">‹ Previous</button><button id="random-travel-phrase" class="control-button accent-control" type="button">⤨ Random</button><button id="next-travel-phrase" class="control-button" type="button">Next ›</button></div>
                 <p id="travel-category-status" class="travel-category-status" role="status" aria-live="polite">Loading travel phrases…</p>
                 <div id="travel-phrase-list" class="travel-phrase-list"></div>
                 <div id="travel-category-empty" class="search-empty-state" hidden><span aria-hidden="true">🌸</span><strong>No phrases in this section yet.</strong><p>Travel phrases for this category are coming soon.</p></div>
+            </section>
+
+            <section id="travel-rail-view" class="view" data-view="travel-rail" aria-labelledby="rail-guide-heading" hidden>
+                <header class="travel-category-header rail-page-header">
+                    <button class="back-button" type="button" data-route="travel-trains" aria-label="Back to Trains &amp; Stations">‹</button>
+                    <span class="travel-category-icon" aria-hidden="true">🚆</span>
+                    <div><span class="section-kicker">Offline station reference</span><h1 id="rail-guide-heading">JR Rail Guide</h1></div>
+                </header>
+                <p class="travel-category-description">Major JR lines and station numbers for Tokyo, Osaka, and Kyoto. Pick a city, choose a line, then tap a station or set a simple from/to direction.</p>
+
+                <div id="rail-city-tabs" class="rail-city-tabs" role="group" aria-label="Rail guide city"></div>
+
+                <label class="rail-search-field">
+                    <span class="sr-only">Search stations in selected city</span>
+                    <input id="rail-search-input" type="search" autocomplete="off" spellcheck="false" placeholder="Search station, code, landmark, or connection">
+                </label>
+                <div id="rail-search-results" class="rail-search-results" hidden></div>
+
+                <div class="rail-section-heading">
+                    <div><span class="section-kicker">Choose a line</span><h2 id="rail-city-title">Tokyo JR Guide</h2></div>
+                </div>
+                <div id="rail-line-list" class="rail-line-list"></div>
+
+                <article class="rail-line-panel">
+                    <div class="rail-selected-line-heading">
+                        <span id="rail-line-code" class="rail-selected-line-code">JY</span>
+                        <div><h2 id="rail-line-name">Yamanote Line</h2><p id="rail-line-jp">山手線</p></div>
+                    </div>
+                    <p id="rail-line-summary" class="rail-line-summary"></p>
+                    <p id="rail-line-service-note" class="rail-line-service-note" hidden></p>
+
+                    <section class="rail-direction-tool" aria-labelledby="rail-direction-heading">
+                        <div class="rail-mini-heading"><span class="section-kicker">Which direction?</span><h3 id="rail-direction-heading">From → To</h3></div>
+                        <div class="rail-direction-fields">
+                            <select id="rail-from-station" aria-label="From station"><option value="">From station</option></select>
+                            <button id="rail-swap-stations" type="button" aria-label="Swap from and to stations">⇄</button>
+                            <select id="rail-to-station" aria-label="To station"><option value="">To station</option></select>
+                        </div>
+                        <div id="rail-journey-result" class="rail-journey-result" hidden></div>
+                    </section>
+
+                    <div class="rail-map-heading"><span>Route diagram</span><small>Tap a station for details</small></div>
+                    <div id="rail-route-map" class="rail-route-map" aria-label="Selected JR line station sequence"></div>
+                    <div id="rail-station-detail" class="rail-station-detail" hidden></div>
+                </article>
+
+                <p id="rail-city-note" class="rail-disclaimer"></p>
+                <p id="rail-loading" class="travel-category-status" role="status" aria-live="polite" hidden></p>
             </section>
 
             <section id="travel-my-phrases-view" class="view" data-view="travel-my-phrases" aria-labelledby="travel-my-phrases-heading" hidden>

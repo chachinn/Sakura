@@ -1,0 +1,324 @@
+{
+  "city": "osaka",
+  "cityName": "Osaka",
+  "operator": "JR West",
+  "verifiedOn": "2026-08-10",
+  "sourceNote": "Static reference built from JR West's official Kinki station-number route map and route information. Not live service data.",
+  "notice": "Use this as an offline orientation guide. Train types, stopping patterns, platforms and service changes can vary; follow current station signs and announcements.",
+  "lines": [
+    {
+      "id": "osaka-loop",
+      "name": "Osaka Loop Line",
+      "jp": "大阪環状線",
+      "code": "O",
+      "accent": "#e60033",
+      "loop": true,
+      "directionForward": "via Teradacho → Tsuruhashi → Kyobashi",
+      "directionReverse": "via Shin-Imamiya → Nishikujo → Osaka",
+      "summary": "Osaka's JR loop linking Tennoji, Tsuruhashi, Kyobashi, Osaka/Umeda and Nishikujo.",
+      "stations": [
+        {
+          "code": "O01",
+          "name": "Tennoji",
+          "jp": "天王寺",
+          "connections": [
+            "JR Yamatoji",
+            "JR Hanwa",
+            "Osaka Metro"
+          ],
+          "nearby": "Abeno Harukas"
+        },
+        {
+          "code": "O02",
+          "name": "Teradacho",
+          "jp": "寺田町"
+        },
+        {
+          "code": "O03",
+          "name": "Momodani",
+          "jp": "桃谷"
+        },
+        {
+          "code": "O04",
+          "name": "Tsuruhashi",
+          "jp": "鶴橋",
+          "connections": [
+            "Kintetsu",
+            "Osaka Metro"
+          ],
+          "nearby": "Koreatown"
+        },
+        {
+          "code": "O05",
+          "name": "Tamatsukuri",
+          "jp": "玉造",
+          "connections": [
+            "Osaka Metro"
+          ]
+        },
+        {
+          "code": "O06",
+          "name": "Morinomiya",
+          "jp": "森ノ宮",
+          "connections": [
+            "Osaka Metro"
+          ],
+          "nearby": "Osaka Castle Park"
+        },
+        {
+          "code": "O07",
+          "name": "Osakajokoen",
+          "jp": "大阪城公園",
+          "nearby": "Osaka Castle Park"
+        },
+        {
+          "code": "O08",
+          "name": "Kyobashi",
+          "jp": "京橋",
+          "connections": [
+            "JR Tozai/Gakkentoshi",
+            "Keihan",
+            "Osaka Metro"
+          ]
+        },
+        {
+          "code": "O09",
+          "name": "Sakuranomiya",
+          "jp": "桜ノ宮"
+        },
+        {
+          "code": "O10",
+          "name": "Temma",
+          "jp": "天満",
+          "nearby": "Tenjinbashisuji"
+        },
+        {
+          "code": "O11",
+          "name": "Osaka",
+          "jp": "大阪",
+          "connections": [
+            "JR Kyoto/Kobe/Takarazuka",
+            "Osaka Metro via Umeda",
+            "Hankyu/Hanshin nearby"
+          ],
+          "nearby": "Umeda"
+        },
+        {
+          "code": "O12",
+          "name": "Fukushima",
+          "jp": "福島"
+        },
+        {
+          "code": "O13",
+          "name": "Noda",
+          "jp": "野田"
+        },
+        {
+          "code": "O14",
+          "name": "Nishikujo",
+          "jp": "西九条",
+          "connections": [
+            "JR Yumesaki",
+            "Hanshin"
+          ],
+          "nearby": "Transfer for Universal City"
+        },
+        {
+          "code": "O15",
+          "name": "Bentencho",
+          "jp": "弁天町",
+          "connections": [
+            "Osaka Metro"
+          ]
+        },
+        {
+          "code": "O16",
+          "name": "Taisho",
+          "jp": "大正",
+          "connections": [
+            "Osaka Metro"
+          ]
+        },
+        {
+          "code": "O17",
+          "name": "Ashiharabashi",
+          "jp": "芦原橋"
+        },
+        {
+          "code": "O18",
+          "name": "Imamiya",
+          "jp": "今宮",
+          "connections": [
+            "JR Yamatoji"
+          ]
+        },
+        {
+          "code": "O19",
+          "name": "Shin-Imamiya",
+          "jp": "新今宮",
+          "connections": [
+            "JR Yamatoji",
+            "Nankai",
+            "Osaka Metro nearby"
+          ],
+          "nearby": "Shinsekai access"
+        }
+      ]
+    },
+    {
+      "id": "jr-kyoto",
+      "name": "JR Kyoto Line",
+      "jp": "JR京都線",
+      "code": "A",
+      "accent": "#0072bc",
+      "loop": false,
+      "directionForward": "toward Osaka",
+      "directionReverse": "toward Kyoto",
+      "summary": "Main JR corridor between Kyoto, Takatsuki, Shin-Osaka and Osaka.",
+      "serviceNote": "Local, Rapid and Special Rapid trains have different stopping patterns.",
+      "stations": [
+        {
+          "code": "A31",
+          "name": "Kyoto",
+          "jp": "京都",
+          "connections": [
+            "Shinkansen",
+            "JR Nara",
+            "JR Sagano",
+            "Kyoto Subway",
+            "Kintetsu"
+          ]
+        },
+        {
+          "code": "A32",
+          "name": "Nishi-Oji",
+          "jp": "西大路"
+        },
+        {
+          "code": "A33",
+          "name": "Katsuragawa",
+          "jp": "桂川"
+        },
+        {
+          "code": "A34",
+          "name": "Mukomachi",
+          "jp": "向日町"
+        },
+        {
+          "code": "A35",
+          "name": "Nagaokakyo",
+          "jp": "長岡京"
+        },
+        {
+          "code": "A36",
+          "name": "Yamazaki",
+          "jp": "山崎"
+        },
+        {
+          "code": "A37",
+          "name": "Shimamoto",
+          "jp": "島本"
+        },
+        {
+          "code": "A38",
+          "name": "Takatsuki",
+          "jp": "高槻",
+          "nearby": "Major northern Osaka/Kyoto corridor hub"
+        },
+        {
+          "code": "A39",
+          "name": "Settsu-Tonda",
+          "jp": "摂津富田"
+        },
+        {
+          "code": "A40",
+          "name": "JR-Sojiji",
+          "jp": "JR総持寺"
+        },
+        {
+          "code": "A41",
+          "name": "Ibaraki",
+          "jp": "茨木"
+        },
+        {
+          "code": "A42",
+          "name": "Senrioka",
+          "jp": "千里丘"
+        },
+        {
+          "code": "A43",
+          "name": "Kishibe",
+          "jp": "岸辺"
+        },
+        {
+          "code": "A44",
+          "name": "Suita",
+          "jp": "吹田"
+        },
+        {
+          "code": "A45",
+          "name": "Higashi-Yodogawa",
+          "jp": "東淀川"
+        },
+        {
+          "code": "A46",
+          "name": "Shin-Osaka",
+          "jp": "新大阪",
+          "connections": [
+            "Shinkansen",
+            "Osaka Metro"
+          ],
+          "nearby": "Shinkansen hub"
+        },
+        {
+          "code": "A47",
+          "name": "Osaka",
+          "jp": "大阪",
+          "connections": [
+            "Osaka Loop",
+            "JR Kobe/Takarazuka",
+            "Osaka Metro via Umeda"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "yumesaki",
+      "name": "JR Yumesaki Line",
+      "jp": "JRゆめ咲線",
+      "code": "P",
+      "accent": "#0067b1",
+      "loop": false,
+      "directionForward": "toward Sakurajima / Universal City",
+      "directionReverse": "toward Nishikujo",
+      "summary": "Short JR branch used for Universal Studios Japan.",
+      "stations": [
+        {
+          "code": "P14",
+          "name": "Nishikujo",
+          "jp": "西九条",
+          "connections": [
+            "Osaka Loop",
+            "Hanshin"
+          ]
+        },
+        {
+          "code": "P15",
+          "name": "Ajikawaguchi",
+          "jp": "安治川口"
+        },
+        {
+          "code": "P16",
+          "name": "Universal City",
+          "jp": "ユニバーサルシティ",
+          "nearby": "Universal Studios Japan"
+        },
+        {
+          "code": "P17",
+          "name": "Sakurajima",
+          "jp": "桜島"
+        }
+      ]
+    }
+  ]
+}

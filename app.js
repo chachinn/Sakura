@@ -17,6 +17,7 @@ const STORAGE = {
     kaomojiUsage: "sakuraKaomojiUsage",
     quizRomaji: "sakuraKanjiQuizRomajiVisible",
     chibiPosition: "sakuraChibiCompanionPosition",
+    railGuidePrefs: "sakuraRailGuidePrefs",
     userNative: "sakura_user_native_entries",
     userSlang: "sakura_user_slang_entries",
     nativeHistory: "sakura_native_recent_history",
@@ -600,6 +601,11 @@ let currentVocabularyQuiz = null;
 let currentNativeItem = null;
 let currentNativeMode = "native";
 let currentTravelCategory = null;
+let railGuidePrefs = readJson(STORAGE.railGuidePrefs, { city:"tokyo", line:"yamanote", from:"", to:"" }) || { city:"tokyo", line:"yamanote", from:"", to:"" };
+const railCityCache = new Map();
+let railGuideCityData = null;
+let railGuideSearchTimer = 0;
+
 let currentTravelFilter = "All";
 let currentTravelPhrase = null;
 let currentTravelIndex = 0;
@@ -2167,6 +2173,277 @@ function browseNative(direction = 1, random = false) {
     renderNative(index < 0 ? null : pool[index]);
 }
 
+
+const RAIL_CITY_FILES = {
+    tokyo: "./data/rail/tokyo.json?v=1",
+    osaka: "./data/rail/osaka.json?v=1",
+    kyoto: "./data/rail/kyoto.json?v=1"
+};
+
+function normalizeRailPrefs() {
+    const validCities = Object.keys(RAIL_CITY_FILES);
+    if (!validCities.includes(railGuidePrefs.city)) railGuidePrefs.city = "tokyo";
+    railGuidePrefs.line = String(railGuidePrefs.line || "");
+    railGuidePrefs.from = String(railGuidePrefs.from || "");
+    railGuidePrefs.to = String(railGuidePrefs.to || "");
+}
+
+function saveRailPrefs() {
+    writeJson(STORAGE.railGuidePrefs, railGuidePrefs);
+}
+
+async function loadRailCity(city) {
+    normalizeRailPrefs();
+    const normalizedCity = RAIL_CITY_FILES[city] ? city : "tokyo";
+    if (railCityCache.has(normalizedCity)) return railCityCache.get(normalizedCity);
+    const response = await fetch(RAIL_CITY_FILES[normalizedCity]);
+    if (!response.ok) throw new Error(`Rail guide data unavailable: ${normalizedCity}`);
+    const data = await response.json();
+    railCityCache.set(normalizedCity, data);
+    return data;
+}
+
+function currentRailLine() {
+    return railGuideCityData?.lines?.find(line => line.id === railGuidePrefs.line) || railGuideCityData?.lines?.[0] || null;
+}
+
+function railStationSearchText(station) {
+    return normalizeSearchText([station.code, station.name, station.jp, ...(station.connections || []), station.nearby || ""].join(" "));
+}
+
+function railJourney(line, fromCode, toCode) {
+    if (!line || !fromCode || !toCode || fromCode === toCode) return null;
+    const stations = line.stations || [];
+    const fromIndex = stations.findIndex(station => station.code === fromCode);
+    const toIndex = stations.findIndex(station => station.code === toCode);
+    if (fromIndex < 0 || toIndex < 0) return null;
+
+    if (!line.loop) {
+        const forward = fromIndex < toIndex;
+        const path = forward
+            ? stations.slice(fromIndex, toIndex + 1)
+            : stations.slice(toIndex, fromIndex + 1).reverse();
+        return {
+            path,
+            direction: forward ? line.directionForward : line.directionReverse,
+            stops: Math.max(0, path.length - 1)
+        };
+    }
+
+    const forwardPath = [];
+    let cursor = fromIndex;
+    while (true) {
+        forwardPath.push(stations[cursor]);
+        if (cursor === toIndex) break;
+        cursor = (cursor + 1) % stations.length;
+    }
+    const reversePath = [];
+    cursor = fromIndex;
+    while (true) {
+        reversePath.push(stations[cursor]);
+        if (cursor === toIndex) break;
+        cursor = (cursor - 1 + stations.length) % stations.length;
+    }
+    const useForward = forwardPath.length <= reversePath.length;
+    const path = useForward ? forwardPath : reversePath;
+    return {
+        path,
+        direction: useForward ? line.directionForward : line.directionReverse,
+        stops: Math.max(0, path.length - 1)
+    };
+}
+
+function renderRailCityTabs() {
+    const container = document.getElementById("rail-city-tabs");
+    if (!container) return;
+    const cities = [["tokyo","Tokyo"],["osaka","Osaka"],["kyoto","Kyoto"]];
+    container.innerHTML = cities.map(([id,label]) => `<button class="rail-city-chip ${railGuidePrefs.city === id ? "active" : ""}" type="button" data-rail-city="${id}" aria-pressed="${railGuidePrefs.city === id}">${label}</button>`).join("");
+}
+
+function renderRailLineCards() {
+    const container = document.getElementById("rail-line-list");
+    if (!container || !railGuideCityData) return;
+    container.innerHTML = railGuideCityData.lines.map(line => `<button class="rail-line-card ${line.id === currentRailLine()?.id ? "active" : ""}" type="button" data-rail-line="${escapeSearchHtml(line.id)}" style="--rail-line:${escapeSearchHtml(line.accent || "#d75a82")}">
+        <span class="rail-line-code">${escapeSearchHtml(line.code)}</span>
+        <span><strong>${escapeSearchHtml(line.name)}</strong><small>${escapeSearchHtml(line.jp)} · ${line.loop ? "Loop" : `${line.stations.length} stations`}</small></span>
+        <b aria-hidden="true">›</b>
+    </button>`).join("");
+}
+
+function renderRailStationOptions(line) {
+    const from = document.getElementById("rail-from-station");
+    const to = document.getElementById("rail-to-station");
+    if (!from || !to || !line) return;
+    const options = line.stations.map(station => `<option value="${escapeSearchHtml(station.code)}">${escapeSearchHtml(station.code)} · ${escapeSearchHtml(station.name)}</option>`).join("");
+    from.innerHTML = `<option value="">From station</option>${options}`;
+    to.innerHTML = `<option value="">To station</option>${options}`;
+    const codes = new Set(line.stations.map(station => station.code));
+    if (!codes.has(railGuidePrefs.from)) railGuidePrefs.from = "";
+    if (!codes.has(railGuidePrefs.to)) railGuidePrefs.to = "";
+    from.value = railGuidePrefs.from;
+    to.value = railGuidePrefs.to;
+}
+
+function renderRailJourney() {
+    const panel = document.getElementById("rail-journey-result");
+    const line = currentRailLine();
+    if (!panel || !line) return;
+    const journey = railJourney(line, railGuidePrefs.from, railGuidePrefs.to);
+    if (!journey) {
+        panel.hidden = true;
+        panel.innerHTML = "";
+        return;
+    }
+    const destination = journey.path[journey.path.length - 1];
+    const nextStation = journey.path[1];
+    panel.hidden = false;
+    panel.innerHTML = `<span class="section-kicker">Your direction</span>
+        <h3>${escapeSearchHtml(railGuidePrefs.from)} → ${escapeSearchHtml(destination.code)}</h3>
+        <p><strong>${escapeSearchHtml(journey.direction)}</strong></p>
+        <p>${journey.stops} stop${journey.stops === 1 ? "" : "s"} · next on this guide: ${escapeSearchHtml(nextStation?.code || "")} ${escapeSearchHtml(nextStation?.name || "")}</p>
+        <small>Use the station's live signs to confirm the exact train type and platform.</small>`;
+}
+
+function renderRailStationDetail(stationCode) {
+    const line = currentRailLine();
+    const card = document.getElementById("rail-station-detail");
+    if (!line || !card) return;
+    const station = line.stations.find(item => item.code === stationCode);
+    if (!station) {
+        card.hidden = true;
+        card.innerHTML = "";
+        return;
+    }
+    card.hidden = false;
+    card.innerHTML = `<div class="rail-station-detail-heading">
+        <span class="rail-station-code" style="--rail-line:${escapeSearchHtml(line.accent || "#d75a82")}">${escapeSearchHtml(station.code)}</span>
+        <div><h3>${escapeSearchHtml(station.jp)} <small>${escapeSearchHtml(station.name)}</small></h3><p>${escapeSearchHtml(line.name)}</p></div>
+    </div>
+    ${station.nearby ? `<div class="rail-detail-row"><strong>Nearby</strong><p>${escapeSearchHtml(station.nearby)}</p></div>` : ""}
+    ${station.connections?.length ? `<div class="rail-detail-row"><strong>Connections</strong><p>${station.connections.map(escapeSearchHtml).join(" · ")}</p></div>` : ""}
+    ${station.note ? `<div class="rail-detail-row"><strong>Tip</strong><p>${escapeSearchHtml(station.note)}</p></div>` : ""}`;
+}
+
+function renderRailDiagram() {
+    const line = currentRailLine();
+    const map = document.getElementById("rail-route-map");
+    if (!line || !map) return;
+    const journey = railJourney(line, railGuidePrefs.from, railGuidePrefs.to);
+    const highlighted = new Set(journey?.path?.map(station => station.code) || []);
+    map.style.setProperty("--rail-line", line.accent || "#d75a82");
+    map.classList.toggle("loop-line", Boolean(line.loop));
+    map.innerHTML = line.stations.map((station, index) => {
+        const selected = highlighted.has(station.code);
+        return `<button class="rail-station-node ${selected ? "journey-active" : ""}" type="button" data-rail-station="${escapeSearchHtml(station.code)}" aria-label="Open ${escapeSearchHtml(station.name)} station details">
+            <span class="rail-node-dot"></span>
+            <span class="rail-node-copy"><b>${escapeSearchHtml(station.code)}</b><strong>${escapeSearchHtml(station.name)}</strong><small>${escapeSearchHtml(station.jp)}</small></span>
+        </button>`;
+    }).join("");
+}
+
+function renderRailSearch(query = "") {
+    const results = document.getElementById("rail-search-results");
+    if (!results || !railGuideCityData) return;
+    const normalized = normalizeSearchText(query);
+    if (!normalized) {
+        results.hidden = true;
+        results.innerHTML = "";
+        return;
+    }
+    const matches = [];
+    for (const line of railGuideCityData.lines) {
+        for (const station of line.stations) {
+            if (railStationSearchText(station).includes(normalized)) {
+                matches.push({ line, station });
+                if (matches.length >= 12) break;
+            }
+        }
+        if (matches.length >= 12) break;
+    }
+    results.hidden = false;
+    results.innerHTML = matches.length ? matches.map(({line,station}) => `<button type="button" data-rail-search-line="${escapeSearchHtml(line.id)}" data-rail-search-station="${escapeSearchHtml(station.code)}">
+        <span class="rail-search-code" style="--rail-line:${escapeSearchHtml(line.accent || "#d75a82")}">${escapeSearchHtml(station.code)}</span>
+        <span><strong>${escapeSearchHtml(station.name)}</strong><small>${escapeSearchHtml(station.jp)} · ${escapeSearchHtml(line.name)}</small></span>
+    </button>`).join("") : `<p>No matching station in ${escapeSearchHtml(railGuideCityData.cityName)}.</p>`;
+}
+
+function renderRailGuide() {
+    const line = currentRailLine();
+    if (!railGuideCityData || !line) return;
+    railGuidePrefs.line = line.id;
+    saveRailPrefs();
+    renderRailCityTabs();
+    renderRailLineCards();
+
+    document.getElementById("rail-city-title").textContent = `${railGuideCityData.cityName} JR Guide`;
+    document.getElementById("rail-city-note").textContent = railGuideCityData.notice || "";
+    document.getElementById("rail-line-code").textContent = line.code;
+    document.getElementById("rail-line-code").style.setProperty("--rail-line", line.accent || "#d75a82");
+    document.getElementById("rail-line-name").textContent = line.name;
+    document.getElementById("rail-line-jp").textContent = line.jp;
+    document.getElementById("rail-line-summary").textContent = line.summary || "";
+    const service = document.getElementById("rail-line-service-note");
+    service.hidden = !line.serviceNote;
+    service.textContent = line.serviceNote || "";
+    renderRailStationOptions(line);
+    renderRailJourney();
+    renderRailDiagram();
+    renderRailSearch(document.getElementById("rail-search-input")?.value || "");
+}
+
+async function openRailGuide() {
+    normalizeRailPrefs();
+    const loading = document.getElementById("rail-loading");
+    if (loading) {
+        loading.hidden = false;
+        loading.textContent = "Preparing JR Rail Guide…";
+    }
+    try {
+        railGuideCityData = await loadRailCity(railGuidePrefs.city);
+        if (!railGuideCityData?.lines?.some(line => line.id === railGuidePrefs.line)) {
+            railGuidePrefs.line = railGuideCityData?.lines?.[0]?.id || "";
+            railGuidePrefs.from = "";
+            railGuidePrefs.to = "";
+        }
+        renderRailGuide();
+        if (loading) loading.hidden = true;
+    }
+    catch (error) {
+        console.warn("Rail Guide could not load.", error);
+        if (loading) {
+            loading.hidden = false;
+            loading.textContent = "Rail Guide could not load. Open Sakura once online, then try again.";
+        }
+    }
+}
+
+async function selectRailCity(city) {
+    if (!RAIL_CITY_FILES[city] || city === railGuidePrefs.city && railGuideCityData) return;
+    railGuidePrefs.city = city;
+    railGuidePrefs.line = "";
+    railGuidePrefs.from = "";
+    railGuidePrefs.to = "";
+    saveRailPrefs();
+    railGuideCityData = await loadRailCity(city);
+    railGuidePrefs.line = railGuideCityData.lines?.[0]?.id || "";
+    saveRailPrefs();
+    renderRailGuide();
+}
+
+function selectRailLine(lineId, stationCode = "") {
+    const line = railGuideCityData?.lines?.find(item => item.id === lineId);
+    if (!line) return;
+    railGuidePrefs.line = line.id;
+    railGuidePrefs.from = "";
+    railGuidePrefs.to = "";
+    if (stationCode && line.stations.some(station => station.code === stationCode)) {
+        railGuidePrefs.from = stationCode;
+    }
+    saveRailPrefs();
+    renderRailGuide();
+    if (stationCode) renderRailStationDetail(stationCode);
+}
+
 function travelCategoryMetadata(category) {
     return window.TRAVEL_CATEGORIES?.[category] || null;
 }
@@ -2246,6 +2523,8 @@ async function renderTravelCategory(category) {
     document.getElementById("travel-category-icon").textContent = metadata.icon;
     document.getElementById("travel-category-heading").textContent = metadata.title;
     document.getElementById("travel-category-description").textContent = metadata.description;
+    const railLaunch = document.getElementById("travel-rail-guide-launch");
+    if (railLaunch) railLaunch.hidden = category !== "trains";
     document.getElementById("travel-category-status").textContent = "Loading travel phrases…";
     document.getElementById("travel-category-empty").hidden = true;
     document.getElementById("travel-phrase-list").innerHTML = "";
@@ -4996,7 +5275,7 @@ function showRoute(route, updateHash = true) {
     if (deckRouteMatch) currentTravelDeckId = deckRouteMatch[1];
     const requestedTravelCategory = normalizedRoute.startsWith("travel-") && !deckRouteMatch ? normalizedRoute.slice(7) : null;
     const travelCategory = travelCategoryMetadata(requestedTravelCategory) ? requestedTravelCategory : null;
-    const isTravelUtilityRoute = ["travel-my-phrases", "travel-decks", "travel-notes", "travel-countdown", "travel-offline", "travel-yen"].includes(normalizedRoute) || Boolean(deckRouteMatch);
+    const isTravelUtilityRoute = ["travel-my-phrases", "travel-decks", "travel-notes", "travel-countdown", "travel-offline", "travel-yen", "travel-rail"].includes(normalizedRoute) || Boolean(deckRouteMatch);
     const viewRoute = nativeMode ? "native" : travelCategory ? "travel-category" : deckRouteMatch ? "travel-deck" : normalizedRoute;
     currentRoute = normalizedRoute;
     updateChibiCompanion();
@@ -5036,6 +5315,7 @@ function showRoute(route, updateHash = true) {
     if (normalizedRoute === "travel-countdown") renderTravelCountdown();
     if (normalizedRoute === "travel-offline") verifyTravelOfflinePack();
     if (normalizedRoute === "travel-yen") renderYenConverter();
+    if (normalizedRoute === "travel-rail") openRailGuide();
     if (normalizedRoute === "travel") renderTravelHeaderCountdown();
     if (deckRouteMatch) renderCurrentTravelDeck();
     const mainRoute = travelCategory || isTravelUtilityRoute ? "travel" : ["practice-what-would-you-say", "practice-sentence-builder", "practice-one-line-many-personalities"].includes(normalizedRoute) ? "practice" : ["search", "translate", "learn-native", "learn-slang", "library", "counters", "etiquette", "chibi-guide"].includes(normalizedRoute) || (normalizedRoute.includes("detail") && detailReturnRoute === "library") ? "learn" : normalizedRoute.replace("-detail", "");
@@ -5580,6 +5860,54 @@ function addListeners() {
         const learnView = button.dataset.learnView;
         showRoute(learnView === "library" ? "learn" : `learn-${learnView}`);
     }));
+    document.getElementById("travel-rail-view").addEventListener("click", async event => {
+        const cityButton = event.target.closest("[data-rail-city]");
+        if (cityButton) {
+            await selectRailCity(cityButton.dataset.railCity);
+            return;
+        }
+        const lineButton = event.target.closest("[data-rail-line]");
+        if (lineButton) {
+            selectRailLine(lineButton.dataset.railLine);
+            return;
+        }
+        const stationButton = event.target.closest("[data-rail-station]");
+        if (stationButton) {
+            renderRailStationDetail(stationButton.dataset.railStation);
+            return;
+        }
+        const searchButton = event.target.closest("[data-rail-search-line]");
+        if (searchButton) {
+            document.getElementById("rail-search-input").value = "";
+            renderRailSearch("");
+            selectRailLine(searchButton.dataset.railSearchLine, searchButton.dataset.railSearchStation);
+            return;
+        }
+        if (event.target.closest("#rail-swap-stations")) {
+            [railGuidePrefs.from, railGuidePrefs.to] = [railGuidePrefs.to, railGuidePrefs.from];
+            saveRailPrefs();
+            renderRailStationOptions(currentRailLine());
+            renderRailJourney();
+            renderRailDiagram();
+        }
+    });
+    document.getElementById("rail-from-station").addEventListener("change", event => {
+        railGuidePrefs.from = event.target.value;
+        saveRailPrefs();
+        renderRailJourney();
+        renderRailDiagram();
+    });
+    document.getElementById("rail-to-station").addEventListener("change", event => {
+        railGuidePrefs.to = event.target.value;
+        saveRailPrefs();
+        renderRailJourney();
+        renderRailDiagram();
+    });
+    document.getElementById("rail-search-input").addEventListener("input", event => {
+        window.clearTimeout(railGuideSearchTimer);
+        railGuideSearchTimer = window.setTimeout(() => renderRailSearch(event.target.value), 120);
+    });
+
     document.getElementById("travel-category-filters").addEventListener("click", event => {
         const button = event.target.closest("[data-travel-filter]");
         if (!button) return;

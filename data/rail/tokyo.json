@@ -1,0 +1,580 @@
+{
+  "city": "tokyo",
+  "cityName": "Tokyo",
+  "operator": "JR East",
+  "verifiedOn": "2026-08-10",
+  "sourceNote": "Static reference built from JR East's official metropolitan station-numbering map and station information. Not live service data.",
+  "notice": "Use this as an offline orientation guide. Stopping patterns, platform assignments, delays and service changes can vary; always follow current station signs and announcements.",
+  "lines": [
+    {
+      "id": "yamanote",
+      "name": "Yamanote Line",
+      "jp": "山手線",
+      "code": "JY",
+      "accent": "#8fc31f",
+      "loop": true,
+      "directionForward": "Inner Loop (内回り) · toward Ueno / Tokyo from the west side",
+      "directionReverse": "Outer Loop (外回り) · toward Shibuya / Shinagawa from the east side",
+      "summary": "Tokyo's famous JR loop linking Shinjuku, Shibuya, Shinagawa, Tokyo, Ueno and Ikebukuro.",
+      "stations": [
+        {
+          "code": "JY01",
+          "name": "Tokyo",
+          "jp": "東京",
+          "connections": [
+            "JR Chuo",
+            "JR Keihin-Tohoku",
+            "Shinkansen",
+            "Tokyo Metro"
+          ],
+          "nearby": "Marunouchi · Ginza"
+        },
+        {
+          "code": "JY02",
+          "name": "Kanda",
+          "jp": "神田",
+          "connections": [
+            "Tokyo Metro Ginza Line"
+          ]
+        },
+        {
+          "code": "JY03",
+          "name": "Akihabara",
+          "jp": "秋葉原",
+          "connections": [
+            "JR Chuo-Sobu",
+            "Tokyo Metro Hibiya",
+            "Tsukuba Express"
+          ],
+          "nearby": "Electric Town"
+        },
+        {
+          "code": "JY04",
+          "name": "Okachimachi",
+          "jp": "御徒町",
+          "nearby": "Ameyoko"
+        },
+        {
+          "code": "JY05",
+          "name": "Ueno",
+          "jp": "上野",
+          "connections": [
+            "JR lines",
+            "Shinkansen",
+            "Tokyo Metro Ginza/Hibiya",
+            "Keisei Ueno nearby"
+          ],
+          "nearby": "Ueno Park · museums"
+        },
+        {
+          "code": "JY06",
+          "name": "Uguisudani",
+          "jp": "鶯谷"
+        },
+        {
+          "code": "JY07",
+          "name": "Nippori",
+          "jp": "日暮里",
+          "connections": [
+            "Keisei Skyliner"
+          ],
+          "nearby": "Yanaka access"
+        },
+        {
+          "code": "JY08",
+          "name": "Nishi-Nippori",
+          "jp": "西日暮里",
+          "connections": [
+            "Tokyo Metro Chiyoda"
+          ]
+        },
+        {
+          "code": "JY09",
+          "name": "Tabata",
+          "jp": "田端",
+          "connections": [
+            "JR Keihin-Tohoku"
+          ]
+        },
+        {
+          "code": "JY10",
+          "name": "Komagome",
+          "jp": "駒込",
+          "nearby": "Rikugien"
+        },
+        {
+          "code": "JY11",
+          "name": "Sugamo",
+          "jp": "巣鴨"
+        },
+        {
+          "code": "JY12",
+          "name": "Otsuka",
+          "jp": "大塚"
+        },
+        {
+          "code": "JY13",
+          "name": "Ikebukuro",
+          "jp": "池袋",
+          "connections": [
+            "JR Saikyo",
+            "JR Shonan-Shinjuku",
+            "Tokyo Metro",
+            "Seibu",
+            "Tobu"
+          ],
+          "nearby": "Sunshine City"
+        },
+        {
+          "code": "JY14",
+          "name": "Mejiro",
+          "jp": "目白"
+        },
+        {
+          "code": "JY15",
+          "name": "Takadanobaba",
+          "jp": "高田馬場",
+          "connections": [
+            "Seibu Shinjuku Line",
+            "Tokyo Metro Tozai"
+          ],
+          "nearby": "Waseda area"
+        },
+        {
+          "code": "JY16",
+          "name": "Shin-Okubo",
+          "jp": "新大久保",
+          "nearby": "Koreatown"
+        },
+        {
+          "code": "JY17",
+          "name": "Shinjuku",
+          "jp": "新宿",
+          "connections": [
+            "JR lines",
+            "Tokyo Metro",
+            "Toei",
+            "Odakyu",
+            "Keio"
+          ],
+          "nearby": "Major west Tokyo hub"
+        },
+        {
+          "code": "JY18",
+          "name": "Yoyogi",
+          "jp": "代々木",
+          "connections": [
+            "JR Chuo-Sobu",
+            "Toei Oedo"
+          ]
+        },
+        {
+          "code": "JY19",
+          "name": "Harajuku",
+          "jp": "原宿",
+          "nearby": "Meiji Jingu · Takeshita Street"
+        },
+        {
+          "code": "JY20",
+          "name": "Shibuya",
+          "jp": "渋谷",
+          "connections": [
+            "JR Saikyo/Shonan-Shinjuku",
+            "Tokyo Metro",
+            "Tokyu",
+            "Keio Inokashira"
+          ],
+          "nearby": "Shibuya Crossing"
+        },
+        {
+          "code": "JY21",
+          "name": "Ebisu",
+          "jp": "恵比寿",
+          "connections": [
+            "Tokyo Metro Hibiya"
+          ]
+        },
+        {
+          "code": "JY22",
+          "name": "Meguro",
+          "jp": "目黒",
+          "connections": [
+            "Tokyo Metro Namboku",
+            "Toei Mita",
+            "Tokyu Meguro"
+          ]
+        },
+        {
+          "code": "JY23",
+          "name": "Gotanda",
+          "jp": "五反田",
+          "connections": [
+            "Toei Asakusa",
+            "Tokyu Ikegami"
+          ]
+        },
+        {
+          "code": "JY24",
+          "name": "Osaki",
+          "jp": "大崎",
+          "connections": [
+            "JR Saikyo",
+            "JR Shonan-Shinjuku",
+            "Rinkai Line"
+          ]
+        },
+        {
+          "code": "JY25",
+          "name": "Shinagawa",
+          "jp": "品川",
+          "connections": [
+            "Shinkansen",
+            "Keikyu"
+          ],
+          "nearby": "Major south Tokyo hub"
+        },
+        {
+          "code": "JY26",
+          "name": "Takanawa Gateway",
+          "jp": "高輪ゲートウェイ",
+          "connections": [
+            "JR Keihin-Tohoku"
+          ]
+        },
+        {
+          "code": "JY27",
+          "name": "Tamachi",
+          "jp": "田町",
+          "connections": [
+            "JR Keihin-Tohoku"
+          ]
+        },
+        {
+          "code": "JY28",
+          "name": "Hamamatsucho",
+          "jp": "浜松町",
+          "connections": [
+            "Tokyo Monorail",
+            "Toei via Daimon"
+          ],
+          "nearby": "Haneda airport connection"
+        },
+        {
+          "code": "JY29",
+          "name": "Shimbashi",
+          "jp": "新橋",
+          "connections": [
+            "JR lines",
+            "Tokyo Metro Ginza",
+            "Toei Asakusa",
+            "Yurikamome"
+          ]
+        },
+        {
+          "code": "JY30",
+          "name": "Yurakucho",
+          "jp": "有楽町",
+          "connections": [
+            "Tokyo Metro Yurakucho"
+          ],
+          "nearby": "Ginza"
+        }
+      ]
+    },
+    {
+      "id": "chuo-rapid-core",
+      "name": "Chuo Line (Rapid) · Tokyo Core",
+      "jp": "中央線快速",
+      "code": "JC",
+      "accent": "#f15a24",
+      "loop": false,
+      "directionForward": "toward Mitaka / western Tokyo",
+      "directionReverse": "toward Tokyo",
+      "summary": "Fast east-west JR corridor from Tokyo through Shinjuku toward Kichijoji and Mitaka.",
+      "serviceNote": "This guide shows station order. Rapid stopping patterns can vary by train and day.",
+      "stations": [
+        {
+          "code": "JC01",
+          "name": "Tokyo",
+          "jp": "東京",
+          "connections": [
+            "Yamanote",
+            "Keihin-Tohoku",
+            "Shinkansen"
+          ]
+        },
+        {
+          "code": "JC02",
+          "name": "Kanda",
+          "jp": "神田",
+          "connections": [
+            "Yamanote",
+            "Keihin-Tohoku",
+            "Tokyo Metro Ginza"
+          ]
+        },
+        {
+          "code": "JC03",
+          "name": "Ochanomizu",
+          "jp": "御茶ノ水",
+          "connections": [
+            "JR Chuo-Sobu",
+            "Tokyo Metro Marunouchi nearby"
+          ]
+        },
+        {
+          "code": "JC04",
+          "name": "Yotsuya",
+          "jp": "四ツ谷",
+          "connections": [
+            "JR Chuo-Sobu",
+            "Tokyo Metro Marunouchi/Namboku"
+          ]
+        },
+        {
+          "code": "JC05",
+          "name": "Shinjuku",
+          "jp": "新宿",
+          "connections": [
+            "Yamanote",
+            "JR lines",
+            "Tokyo Metro",
+            "Toei",
+            "Odakyu",
+            "Keio"
+          ]
+        },
+        {
+          "code": "JC06",
+          "name": "Nakano",
+          "jp": "中野",
+          "connections": [
+            "JR Chuo-Sobu",
+            "Tokyo Metro Tozai"
+          ]
+        },
+        {
+          "code": "JC07",
+          "name": "Koenji",
+          "jp": "高円寺"
+        },
+        {
+          "code": "JC08",
+          "name": "Asagaya",
+          "jp": "阿佐ケ谷"
+        },
+        {
+          "code": "JC09",
+          "name": "Ogikubo",
+          "jp": "荻窪",
+          "connections": [
+            "Tokyo Metro Marunouchi"
+          ]
+        },
+        {
+          "code": "JC10",
+          "name": "Nishi-Ogikubo",
+          "jp": "西荻窪"
+        },
+        {
+          "code": "JC11",
+          "name": "Kichijoji",
+          "jp": "吉祥寺",
+          "connections": [
+            "Keio Inokashira"
+          ],
+          "nearby": "Inokashira Park"
+        },
+        {
+          "code": "JC12",
+          "name": "Mitaka",
+          "jp": "三鷹",
+          "nearby": "Ghibli Museum area"
+        }
+      ]
+    },
+    {
+      "id": "keihin-tohoku-core",
+      "name": "Keihin-Tohoku Line · Tokyo–Yokohama Core",
+      "jp": "京浜東北線",
+      "code": "JK",
+      "accent": "#00a7db",
+      "loop": false,
+      "directionForward": "toward Yokohama",
+      "directionReverse": "toward Ueno / Omiya",
+      "summary": "Useful north-south JR corridor sharing many central Tokyo stations before continuing to Kawasaki and Yokohama.",
+      "serviceNote": "Some daytime services operate as Rapid through central Tokyo. Always check the train display.",
+      "stations": [
+        {
+          "code": "JK30",
+          "name": "Ueno",
+          "jp": "上野",
+          "connections": [
+            "Yamanote",
+            "Shinkansen",
+            "Tokyo Metro"
+          ]
+        },
+        {
+          "code": "JK29",
+          "name": "Okachimachi",
+          "jp": "御徒町",
+          "connections": [
+            "Yamanote"
+          ]
+        },
+        {
+          "code": "JK28",
+          "name": "Akihabara",
+          "jp": "秋葉原",
+          "connections": [
+            "Yamanote",
+            "JR Chuo-Sobu",
+            "Tokyo Metro Hibiya"
+          ]
+        },
+        {
+          "code": "JK27",
+          "name": "Kanda",
+          "jp": "神田",
+          "connections": [
+            "Yamanote",
+            "JR Chuo",
+            "Tokyo Metro Ginza"
+          ]
+        },
+        {
+          "code": "JK26",
+          "name": "Tokyo",
+          "jp": "東京",
+          "connections": [
+            "Yamanote",
+            "JR Chuo",
+            "Shinkansen"
+          ]
+        },
+        {
+          "code": "JK25",
+          "name": "Yurakucho",
+          "jp": "有楽町",
+          "connections": [
+            "Yamanote",
+            "Tokyo Metro Yurakucho"
+          ]
+        },
+        {
+          "code": "JK24",
+          "name": "Shimbashi",
+          "jp": "新橋",
+          "connections": [
+            "Yamanote",
+            "Tokyo Metro Ginza",
+            "Toei Asakusa",
+            "Yurikamome"
+          ]
+        },
+        {
+          "code": "JK23",
+          "name": "Hamamatsucho",
+          "jp": "浜松町",
+          "connections": [
+            "Yamanote",
+            "Tokyo Monorail"
+          ]
+        },
+        {
+          "code": "JK22",
+          "name": "Tamachi",
+          "jp": "田町",
+          "connections": [
+            "Yamanote"
+          ]
+        },
+        {
+          "code": "JK21",
+          "name": "Takanawa Gateway",
+          "jp": "高輪ゲートウェイ",
+          "connections": [
+            "Yamanote"
+          ]
+        },
+        {
+          "code": "JK20",
+          "name": "Shinagawa",
+          "jp": "品川",
+          "connections": [
+            "Yamanote",
+            "Shinkansen",
+            "Keikyu"
+          ]
+        },
+        {
+          "code": "JK19",
+          "name": "Oimachi",
+          "jp": "大井町",
+          "connections": [
+            "Rinkai Line",
+            "Tokyu Oimachi"
+          ]
+        },
+        {
+          "code": "JK18",
+          "name": "Omori",
+          "jp": "大森"
+        },
+        {
+          "code": "JK17",
+          "name": "Kamata",
+          "jp": "蒲田",
+          "connections": [
+            "Tokyu"
+          ]
+        },
+        {
+          "code": "JK16",
+          "name": "Kawasaki",
+          "jp": "川崎",
+          "connections": [
+            "JR Tokaido",
+            "JR Nambu"
+          ],
+          "nearby": "Kawasaki city center"
+        },
+        {
+          "code": "JK15",
+          "name": "Tsurumi",
+          "jp": "鶴見",
+          "connections": [
+            "JR Tsurumi"
+          ]
+        },
+        {
+          "code": "JK14",
+          "name": "Shin-Koyasu",
+          "jp": "新子安"
+        },
+        {
+          "code": "JK13",
+          "name": "Higashi-Kanagawa",
+          "jp": "東神奈川",
+          "connections": [
+            "JR Yokohama"
+          ]
+        },
+        {
+          "code": "JK12",
+          "name": "Yokohama",
+          "jp": "横浜",
+          "connections": [
+            "JR lines",
+            "Tokyu",
+            "Keikyu",
+            "Sotetsu",
+            "Yokohama Municipal Subway"
+          ],
+          "nearby": "Major Yokohama hub"
+        }
+      ]
+    }
+  ]
+}
