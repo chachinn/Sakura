@@ -2,9 +2,9 @@
   "city": "tokyo",
   "cityName": "Tokyo",
   "operator": "Multiple operators",
-  "verifiedOn": "2026-08-10",
-  "sourceNote": "Static offline reference using official operator station/line information. Yamanote orientation labels were rechecked against JR East timetable direction labels on 2026-08-10. This is not live timetable or disruption data.",
-  "notice": "Offline orientation guide only. Train types, through-services, platform assignments, delays and temporary service changes can vary. Always follow current station signs and operator announcements.",
+  "verifiedOn": "2026-08-11",
+  "sourceNote": "Static offline reference using official JR East, Tokyo Metro, Toei Subway, and Enoshima Electric Railway station/service information. Kamakura day-trip corridors (JR Yokosuka, Shonan-Shinjuku to Zushi, and the full Enoden line) were rechecked against official operator information on 2026-08-11. Not live timetable data.",
+  "notice": "Offline orientation guide only. Train destinations, through-services, stopping patterns, platforms, delays and temporary changes can vary. For Kamakura, confirm the current JR destination before boarding and use current station signs; Enoden is represented as a separate local line.",
   "lines": [
     {
       "id": "yamanote",
@@ -579,6 +579,438 @@
         }
       ],
       "operator": "JR East"
+    },
+    {
+      "id": "jr-yokosuka-kamakura",
+      "name": "Yokosuka Line · Tokyo–Kamakura",
+      "jp": "横須賀線",
+      "code": "JO",
+      "accent": "#0b4ea2",
+      "loop": false,
+      "directionForward": "toward Kamakura / Zushi",
+      "directionReverse": "toward Yokohama / Tokyo",
+      "summary": "Direct JR corridor from Tokyo and Shinagawa through Yokohama to Kita-Kamakura and Kamakura.",
+      "serviceNote": "Static station-order guide. JR East services and through-running can vary; confirm the current destination and platform before boarding.",
+      "operator": "JR East",
+      "stations": [
+        {
+          "code": "JO19",
+          "name": "Tokyo",
+          "jp": "東京",
+          "connections": [
+            "Yamanote",
+            "Chuo Rapid",
+            "Keihin-Tohoku",
+            "Shinkansen"
+          ],
+          "nearby": "Marunouchi · Ginza"
+        },
+        {
+          "code": "JO18",
+          "name": "Shimbashi",
+          "jp": "新橋",
+          "connections": [
+            "Yamanote",
+            "Keihin-Tohoku",
+            "Tokyo Metro Ginza",
+            "Toei Asakusa",
+            "Yurikamome"
+          ]
+        },
+        {
+          "code": "JO17",
+          "name": "Shinagawa",
+          "jp": "品川",
+          "connections": [
+            "Yamanote",
+            "Keihin-Tohoku",
+            "Shinkansen",
+            "Keikyu"
+          ]
+        },
+        {
+          "code": "JO16",
+          "name": "Nishi-Oi",
+          "jp": "西大井",
+          "connections": [
+            "Shonan-Shinjuku Line"
+          ]
+        },
+        {
+          "code": "JO15",
+          "name": "Musashi-Kosugi",
+          "jp": "武蔵小杉",
+          "connections": [
+            "Shonan-Shinjuku Line",
+            "JR Nambu",
+            "Tokyu"
+          ]
+        },
+        {
+          "code": "JO14",
+          "name": "Shin-Kawasaki",
+          "jp": "新川崎",
+          "connections": [
+            "Shonan-Shinjuku Line"
+          ]
+        },
+        {
+          "code": "JO13",
+          "name": "Yokohama",
+          "jp": "横浜",
+          "connections": [
+            "Keihin-Tohoku",
+            "Shonan-Shinjuku Line",
+            "JR lines",
+            "Tokyu",
+            "Keikyu",
+            "Sotetsu",
+            "Yokohama Municipal Subway"
+          ]
+        },
+        {
+          "code": "JO12",
+          "name": "Hodogaya",
+          "jp": "保土ケ谷",
+          "connections": [
+            "Shonan-Shinjuku Line"
+          ]
+        },
+        {
+          "code": "JO11",
+          "name": "Higashi-Totsuka",
+          "jp": "東戸塚",
+          "connections": [
+            "Shonan-Shinjuku Line"
+          ]
+        },
+        {
+          "code": "JO10",
+          "name": "Totsuka",
+          "jp": "戸塚",
+          "connections": [
+            "Shonan-Shinjuku Line",
+            "JR Tokaido"
+          ]
+        },
+        {
+          "code": "JO09",
+          "name": "Ofuna",
+          "jp": "大船",
+          "connections": [
+            "Shonan-Shinjuku Line",
+            "JR Tokaido",
+            "JR Negishi"
+          ],
+          "nearby": "Transfer hub for Kamakura area"
+        },
+        {
+          "code": "JO08",
+          "name": "Kita-Kamakura",
+          "jp": "北鎌倉",
+          "connections": [
+            "Shonan-Shinjuku Line"
+          ],
+          "nearby": "Zen temples · Kenchoji access"
+        },
+        {
+          "code": "JO07",
+          "name": "Kamakura",
+          "jp": "鎌倉",
+          "connections": [
+            "Shonan-Shinjuku Line",
+            "Enoden"
+          ],
+          "nearby": "Komachi area · Tsurugaoka Hachimangu"
+        },
+        {
+          "code": "JO06",
+          "name": "Zushi",
+          "jp": "逗子",
+          "connections": [
+            "Shonan-Shinjuku Line"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "jr-shonan-shinjuku-kamakura",
+      "name": "Shonan-Shinjuku Line · Ikebukuro–Kamakura",
+      "jp": "湘南新宿ライン",
+      "code": "JS",
+      "accent": "#e21f26",
+      "loop": false,
+      "directionForward": "toward Yokohama / Ofuna / Zushi",
+      "directionReverse": "toward Shinjuku / Ikebukuro",
+      "summary": "Useful JR day-trip corridor from Ikebukuro, Shinjuku and Shibuya toward Yokohama, Kita-Kamakura and Kamakura.",
+      "serviceNote": "Not every southbound Shonan-Shinjuku train continues to Kamakura or Zushi. Sakura shows the verified corridor, not a live timetable—check the destination display before boarding.",
+      "operator": "JR East",
+      "stations": [
+        {
+          "code": "JS21",
+          "name": "Ikebukuro",
+          "jp": "池袋",
+          "connections": [
+            "Yamanote",
+            "Tokyo Metro",
+            "Seibu",
+            "Tobu"
+          ]
+        },
+        {
+          "code": "JS20",
+          "name": "Shinjuku",
+          "jp": "新宿",
+          "connections": [
+            "Yamanote",
+            "Chuo Rapid",
+            "Tokyo Metro",
+            "Toei",
+            "Odakyu",
+            "Keio"
+          ]
+        },
+        {
+          "code": "JS19",
+          "name": "Shibuya",
+          "jp": "渋谷",
+          "connections": [
+            "Yamanote",
+            "Tokyo Metro",
+            "Tokyu",
+            "Keio Inokashira"
+          ]
+        },
+        {
+          "code": "JS18",
+          "name": "Ebisu",
+          "jp": "恵比寿",
+          "connections": [
+            "Yamanote",
+            "Tokyo Metro Hibiya"
+          ]
+        },
+        {
+          "code": "JS17",
+          "name": "Osaki",
+          "jp": "大崎",
+          "connections": [
+            "Yamanote",
+            "Rinkai Line"
+          ]
+        },
+        {
+          "code": "JS16",
+          "name": "Nishi-Oi",
+          "jp": "西大井",
+          "connections": [
+            "Yokosuka Line"
+          ]
+        },
+        {
+          "code": "JS15",
+          "name": "Musashi-Kosugi",
+          "jp": "武蔵小杉",
+          "connections": [
+            "Yokosuka Line",
+            "JR Nambu",
+            "Tokyu"
+          ]
+        },
+        {
+          "code": "JS14",
+          "name": "Shin-Kawasaki",
+          "jp": "新川崎",
+          "connections": [
+            "Yokosuka Line"
+          ]
+        },
+        {
+          "code": "JS13",
+          "name": "Yokohama",
+          "jp": "横浜",
+          "connections": [
+            "Yokosuka Line",
+            "Keihin-Tohoku",
+            "JR lines",
+            "Tokyu",
+            "Keikyu",
+            "Sotetsu"
+          ]
+        },
+        {
+          "code": "JS12",
+          "name": "Hodogaya",
+          "jp": "保土ケ谷",
+          "connections": [
+            "Yokosuka Line"
+          ]
+        },
+        {
+          "code": "JS11",
+          "name": "Higashi-Totsuka",
+          "jp": "東戸塚",
+          "connections": [
+            "Yokosuka Line"
+          ]
+        },
+        {
+          "code": "JS10",
+          "name": "Totsuka",
+          "jp": "戸塚",
+          "connections": [
+            "Yokosuka Line",
+            "JR Tokaido"
+          ]
+        },
+        {
+          "code": "JS09",
+          "name": "Ofuna",
+          "jp": "大船",
+          "connections": [
+            "Yokosuka Line",
+            "JR Tokaido",
+            "JR Negishi"
+          ]
+        },
+        {
+          "code": "JS08",
+          "name": "Kita-Kamakura",
+          "jp": "北鎌倉",
+          "connections": [
+            "Yokosuka Line"
+          ],
+          "nearby": "Zen temples · Kenchoji access"
+        },
+        {
+          "code": "JS07",
+          "name": "Kamakura",
+          "jp": "鎌倉",
+          "connections": [
+            "Yokosuka Line",
+            "Enoden"
+          ],
+          "nearby": "Historic Kamakura center"
+        },
+        {
+          "code": "JS06",
+          "name": "Zushi",
+          "jp": "逗子",
+          "connections": [
+            "Yokosuka Line"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "enoden",
+      "name": "Enoden Line · Fujisawa–Kamakura",
+      "jp": "江ノ島電鉄線",
+      "code": "EN",
+      "accent": "#63a70a",
+      "loop": false,
+      "directionForward": "toward Kamakura",
+      "directionReverse": "toward Enoshima / Fujisawa",
+      "summary": "Scenic local line linking Fujisawa, Enoshima, Kamakura-Koko-Mae, Hase and Kamakura.",
+      "serviceNote": "Static Enoden station order. This is ideal for Hase, the Great Buddha, Hasedera, seaside stops and Enoshima; confirm current service information at the station.",
+      "operator": "Enoshima Electric Railway",
+      "stations": [
+        {
+          "code": "EN01",
+          "name": "Fujisawa",
+          "jp": "藤沢",
+          "connections": [
+            "JR Tokaido",
+            "Odakyu"
+          ],
+          "nearby": "Western end of Enoden"
+        },
+        {
+          "code": "EN02",
+          "name": "Ishigami",
+          "jp": "石上"
+        },
+        {
+          "code": "EN03",
+          "name": "Yanagikoji",
+          "jp": "柳小路"
+        },
+        {
+          "code": "EN04",
+          "name": "Kugenuma",
+          "jp": "鵠沼"
+        },
+        {
+          "code": "EN05",
+          "name": "Shonan-Kaigan-Koen",
+          "jp": "湘南海岸公園",
+          "nearby": "Shonan coast"
+        },
+        {
+          "code": "EN06",
+          "name": "Enoshima",
+          "jp": "江ノ島",
+          "connections": [
+            "Shonan Monorail nearby"
+          ],
+          "nearby": "Enoshima island access"
+        },
+        {
+          "code": "EN07",
+          "name": "Koshigoe",
+          "jp": "腰越"
+        },
+        {
+          "code": "EN08",
+          "name": "Kamakura-Koko-Mae",
+          "jp": "鎌倉高校前",
+          "nearby": "Seaside station"
+        },
+        {
+          "code": "EN09",
+          "name": "Shichirigahama",
+          "jp": "七里ヶ浜",
+          "nearby": "Beach and coast"
+        },
+        {
+          "code": "EN10",
+          "name": "Inamuragasaki",
+          "jp": "稲村ヶ崎",
+          "nearby": "Coastal viewpoint"
+        },
+        {
+          "code": "EN11",
+          "name": "Gokurakuji",
+          "jp": "極楽寺"
+        },
+        {
+          "code": "EN12",
+          "name": "Hase",
+          "jp": "長谷",
+          "nearby": "Hasedera · Great Buddha"
+        },
+        {
+          "code": "EN13",
+          "name": "Yuigahama",
+          "jp": "由比ヶ浜",
+          "nearby": "Yuigahama Beach"
+        },
+        {
+          "code": "EN14",
+          "name": "Wadazuka",
+          "jp": "和田塚"
+        },
+        {
+          "code": "EN15",
+          "name": "Kamakura",
+          "jp": "鎌倉",
+          "connections": [
+            "JR Yokosuka",
+            "JR Shonan-Shinjuku"
+          ],
+          "nearby": "Historic Kamakura center"
+        }
+      ]
     },
     {
       "id": "metro-ginza",
@@ -2489,7 +2921,8 @@
   "operators": [
     "JR East",
     "Tokyo Metro",
-    "Toei Subway"
+    "Toei Subway",
+    "Enoshima Electric Railway"
   ],
   "landmarks": [
     {
@@ -4274,6 +4707,158 @@
         "garden",
         "autumn leaves"
       ]
+    },
+    {
+      "id": "kamakura-tsurugaoka-hachimangu",
+      "name": "Tsurugaoka Hachimangu",
+      "jp": "鶴岡八幡宮",
+      "area": "Kamakura",
+      "category": "Shrine",
+      "railRefs": [
+        {
+          "lineId": "jr-yokosuka-kamakura",
+          "stationCode": "JO07"
+        },
+        {
+          "lineId": "jr-shonan-shinjuku-kamakura",
+          "stationCode": "JS07"
+        },
+        {
+          "lineId": "enoden",
+          "stationCode": "EN15"
+        }
+      ],
+      "aliases": [
+        "Kamakura Hachimangu",
+        "Tsurugaoka Hachiman-gu"
+      ],
+      "keywords": [
+        "shrine",
+        "Kamakura",
+        "historic"
+      ],
+      "accessNote": "About a 10-minute walk from JR/Enoden Kamakura Station."
+    },
+    {
+      "id": "kamakura-hasedera",
+      "name": "Hasedera Temple",
+      "jp": "長谷寺",
+      "area": "Hase · Kamakura",
+      "category": "Temple",
+      "railRefs": [
+        {
+          "lineId": "enoden",
+          "stationCode": "EN12"
+        }
+      ],
+      "aliases": [
+        "Hase-dera",
+        "Hase Temple"
+      ],
+      "keywords": [
+        "temple",
+        "Hase",
+        "Kamakura"
+      ],
+      "accessNote": "About a 5-minute walk from Enoden Hase Station."
+    },
+    {
+      "id": "kamakura-great-buddha",
+      "name": "Great Buddha of Kamakura · Kotoku-in",
+      "jp": "鎌倉大仏・高徳院",
+      "area": "Hase · Kamakura",
+      "category": "Temple",
+      "railRefs": [
+        {
+          "lineId": "enoden",
+          "stationCode": "EN12"
+        }
+      ],
+      "aliases": [
+        "Kamakura Daibutsu",
+        "Kotoku-in",
+        "Great Buddha",
+        "Daibutsu"
+      ],
+      "keywords": [
+        "Buddha",
+        "Hase",
+        "Kamakura",
+        "Kotokuin"
+      ],
+      "accessNote": "About a 10-minute walk from Enoden Hase Station."
+    },
+    {
+      "id": "kamakura-inamuragasaki",
+      "name": "Inamuragasaki",
+      "jp": "稲村ヶ崎",
+      "area": "Kamakura Coast",
+      "category": "Scenic view",
+      "railRefs": [
+        {
+          "lineId": "enoden",
+          "stationCode": "EN10"
+        }
+      ],
+      "aliases": [
+        "Inamura-gasaki"
+      ],
+      "keywords": [
+        "coast",
+        "Fuji",
+        "sunset",
+        "Enoshima"
+      ],
+      "accessNote": "About a 10-minute walk from Enoden Inamuragasaki Station."
+    },
+    {
+      "id": "kamakura-kenchoji",
+      "name": "Kenchoji Temple",
+      "jp": "建長寺",
+      "area": "Kita-Kamakura",
+      "category": "Temple",
+      "railRefs": [
+        {
+          "lineId": "jr-yokosuka-kamakura",
+          "stationCode": "JO08"
+        },
+        {
+          "lineId": "jr-shonan-shinjuku-kamakura",
+          "stationCode": "JS08"
+        }
+      ],
+      "aliases": [
+        "Kencho-ji"
+      ],
+      "keywords": [
+        "Zen",
+        "temple",
+        "Kita-Kamakura"
+      ],
+      "accessNote": "About a 15-minute walk from JR Kita-Kamakura Station."
+    },
+    {
+      "id": "enoshima-island-access",
+      "name": "Enoshima",
+      "jp": "江の島",
+      "area": "Shonan · Enoshima",
+      "category": "Island / sightseeing",
+      "railRefs": [
+        {
+          "lineId": "enoden",
+          "stationCode": "EN06"
+        }
+      ],
+      "aliases": [
+        "Enoshima Island"
+      ],
+      "keywords": [
+        "island",
+        "sea",
+        "shrine",
+        "Shonan"
+      ],
+      "accessNote": "Enoden Enoshima Station is a useful access point for the island; walking is required."
     }
   ]
 }

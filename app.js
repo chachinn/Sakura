@@ -2198,7 +2198,7 @@ function browseNative(direction = 1, random = false) {
 
 
 const RAIL_CITY_FILES = {
-    tokyo: "./data/rail/tokyo.json?v=5",
+    tokyo: "./data/rail/tokyo.json?v=6",
     osaka: "./data/rail/osaka.json?v=4",
     kyoto: "./data/rail/kyoto.json?v=4"
 };
