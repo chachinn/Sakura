@@ -32,6 +32,7 @@ const STORAGE = {
     travelNotes: "sakuraTravelNotes",
     travelCountdown: "sakuraTravelCountdown",
     travelModeEnabled: "sakuraTravelModeEnabled",
+    navigationModeOnboarding: "sakuraNavigationModeOnboardingV1",
     travelOfflinePack: "sakuraTravelOfflinePack",
     yenConverter: "sakuraYenConverter",
     migrationVersion: "sakuraDataMigrationVersion",
@@ -552,9 +553,18 @@ let travelNotes = readJson(STORAGE.travelNotes, []);
 if (!Array.isArray(travelNotes)) travelNotes = [];
 let travelCountdown = readJson(STORAGE.travelCountdown, null);
 if (!travelCountdown || typeof travelCountdown !== "object" || Array.isArray(travelCountdown)) travelCountdown = null;
+const NAVIGATION_MODE_ONBOARDING_VERSION = "1";
+let navigationModeOnboardingSeen = localStorage.getItem(STORAGE.navigationModeOnboarding) === NAVIGATION_MODE_ONBOARDING_VERSION;
 const storedTravelModeEnabled = localStorage.getItem(STORAGE.travelModeEnabled);
-let travelModeEnabled = storedTravelModeEnabled === null ? true : storedTravelModeEnabled === "true";
-if (storedTravelModeEnabled === null) localStorage.setItem(STORAGE.travelModeEnabled, "true");
+
+// Sakura starts in Practice Mode until the user makes a navigation-mode choice.
+// This also migrates existing installs that previously defaulted to Travel.
+let travelModeEnabled = navigationModeOnboardingSeen
+    ? storedTravelModeEnabled === "true"
+    : false;
+if (!navigationModeOnboardingSeen || storedTravelModeEnabled === null) {
+    localStorage.setItem(STORAGE.travelModeEnabled, "false");
+}
 let travelOfflinePackMetadata = readJson(STORAGE.travelOfflinePack, null);
 if (!travelOfflinePackMetadata || typeof travelOfflinePackMetadata !== "object" || Array.isArray(travelOfflinePackMetadata)) travelOfflinePackMetadata = null;
 const TRAVEL_OFFLINE_CACHE = "sakura-travel-content-v1";
@@ -3968,11 +3978,37 @@ function renderTravelModeNavigation() {
     nav.setAttribute("aria-label", travelModeEnabled ? "Travel" : "Practice");
 }
 
+function markNavigationModeOnboardingSeen() {
+    navigationModeOnboardingSeen = true;
+    localStorage.setItem(STORAGE.navigationModeOnboarding, NAVIGATION_MODE_ONBOARDING_VERSION);
+}
+
+function openNavigationModeChooser() {
+    const dialog = document.getElementById("navigation-mode-dialog");
+    if (!dialog || typeof dialog.showModal !== "function") {
+        // Safe fallback: remain in Sakura's default Practice Mode.
+        markNavigationModeOnboardingSeen();
+        setTravelModeEnabled(false);
+        showRoute("practice");
+        return;
+    }
+    if (!dialog.open) dialog.showModal();
+}
+
+function chooseNavigationMode(mode) {
+    const useTravel = mode === "travel";
+    markNavigationModeOnboardingSeen();
+    setTravelModeEnabled(useTravel);
+    const dialog = document.getElementById("navigation-mode-dialog");
+    if (dialog?.open) dialog.close();
+    showRoute(useTravel ? "travel" : "practice");
+}
+
 function setTravelModeEnabled(enabled) {
     travelModeEnabled = Boolean(enabled);
     localStorage.setItem(STORAGE.travelModeEnabled, String(travelModeEnabled));
     renderTravelModeNavigation();
-    if (!travelModeEnabled && (currentRoute === "travel" || currentRoute.startsWith("travel-"))) showRoute("home");
+    if (!travelModeEnabled && (currentRoute === "travel" || currentRoute.startsWith("travel-"))) showRoute("practice");
 }
 
 function openTravelCountdownEditor() {
@@ -6675,6 +6711,10 @@ function addListeners() {
     });
     document.querySelectorAll("[data-route]").forEach(control => control.addEventListener("click", event => {
         event.preventDefault();
+        if (control.id === "dynamic-fourth-nav" && !navigationModeOnboardingSeen) {
+            openNavigationModeChooser();
+            return;
+        }
         const quizTarget = control.dataset.quizTarget;
         showRoute(control.dataset.route);
         if (quizTarget) showQuizTab(quizTarget);
@@ -6820,7 +6860,19 @@ function addListeners() {
         if (chibiCompanionPosition && !chibiCompanion.hidden) requestAnimationFrame(applyChibiCompanionPosition);
     }, { passive:true });
     window.matchMedia?.("(prefers-reduced-motion: reduce)").addEventListener?.("change", updateChibiCompanion);
-    document.getElementById("travel-mode-toggle").addEventListener("change", event => setTravelModeEnabled(event.target.checked));
+    const navigationModeDialog = document.getElementById("navigation-mode-dialog");
+    navigationModeDialog?.addEventListener("cancel", event => {
+        // First-time users should make an explicit choice rather than dismissing
+        // the explanation accidentally with Escape/back.
+        if (!navigationModeOnboardingSeen) event.preventDefault();
+    });
+    document.getElementById("stay-practice-mode")?.addEventListener("click", () => chooseNavigationMode("practice"));
+    document.getElementById("switch-travel-mode")?.addEventListener("click", () => chooseNavigationMode("travel"));
+
+    document.getElementById("travel-mode-toggle").addEventListener("change", event => {
+        markNavigationModeOnboardingSeen();
+        setTravelModeEnabled(event.target.checked);
+    });
     document.getElementById("header-appearance").addEventListener("click", openAppearanceSettings);
     document.querySelectorAll("[data-hub-action]").forEach(button => button.addEventListener("click", () => {
         closeHubDrawer(false);

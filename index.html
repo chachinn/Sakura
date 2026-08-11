@@ -158,7 +158,7 @@
                     <button class="hub-link" type="button" data-route="translate"><span aria-hidden="true">文</span><span><strong>English to Japanese</strong><small>Natural, context-aware suggestions.</small></span><b aria-hidden="true">›</b></button>
                 </div></section>
                 <section class="hub-section" aria-labelledby="hub-travel-heading"><h2 id="hub-travel-heading">Travel</h2><div class="hub-link-list compact-hub-links">
-                    <label class="hub-travel-mode-toggle"><span aria-hidden="true">✈</span><span><strong>Travel Mode</strong><small>Japanese travel tools in your bottom navigation.</small></span><input id="travel-mode-toggle" type="checkbox" role="switch" aria-label="Show Travel Mode in bottom navigation"></label>
+                    <label class="hub-travel-mode-toggle"><span aria-hidden="true">⇄</span><span><strong>Navigation Mode</strong><small>Switch the fourth navigation button between Practice and Travel.</small></span><input id="travel-mode-toggle" type="checkbox" role="switch" aria-label="Use Travel instead of Practice in bottom navigation"></label>
                     <button class="hub-link" type="button" data-route="travel"><span aria-hidden="true">旅</span><span><strong>Travel Mode</strong><small>Browse all travel essentials.</small></span><b aria-hidden="true">›</b></button>
                     <button class="hub-link" type="button" data-route="travel-my-phrases"><span aria-hidden="true">♡</span><span><strong>My Travel Phrases</strong></span><b aria-hidden="true">›</b></button>
                     <button class="hub-link" type="button" data-route="travel-decks"><span aria-hidden="true">🎴</span><span><strong>Phrase Decks</strong></span><b aria-hidden="true">›</b></button>
@@ -782,7 +782,7 @@
             <button class="nav-button active" type="button" data-route="home"><span>⌂</span><small>Home</small></button>
             <button class="nav-button" type="button" data-route="learn"><span>▤</span><small>Learn</small></button>
             <button class="nav-button" type="button" data-route="quiz"><span>✎</span><small>Quiz</small></button>
-            <button id="dynamic-fourth-nav" class="nav-button" type="button" data-route="travel"><span>✈</span><small>Travel</small></button>
+            <button id="dynamic-fourth-nav" class="nav-button" type="button" data-route="practice" aria-label="Practice"><span>✿</span><small>Practice</small></button>
             <button class="nav-button" type="button" data-route="saved"><span>♡</span><small>Saved</small></button>
         </nav>
     </div>
@@ -790,6 +790,24 @@
     <button id="chibi-companion" class="chibi-companion" type="button" aria-label="Sakura Guide companion. Drag to move, or tap for a reaction." hidden><span id="chibi-companion-bubble" class="chibi-companion-bubble" hidden></span><span id="chibi-companion-character" class="chibi-companion-character" aria-hidden="true"></span></button>
 
     <div id="kaomoji-copy-toast" class="kaomoji-copy-toast" role="status" aria-live="polite" hidden>Copied!</div>
+
+    <dialog id="navigation-mode-dialog" class="settings-dialog" aria-labelledby="navigation-mode-heading">
+        <div class="settings-card">
+            <div class="card-topline">
+                <div><span class="section-kicker">Your fourth navigation button</span><h2 id="navigation-mode-heading">Practice or Travel?</h2></div>
+                <span aria-hidden="true">🌸</span>
+            </div>
+            <p>Sakura starts in <strong>Practice Mode</strong>. Keep it there for quick study activities, or switch the fourth navigation button to <strong>Travel Mode</strong> for your Japan tools.</p>
+            <section class="appearance-section">
+                <div class="appearance-section-heading"><h3>Switch anytime</h3><span>Bottom navigation</span></div>
+                <p class="appearance-feature-copy">Check the fourth button in the navigation bar to see your active mode. If you want to change it later, open the ☰ Sakura menu and use <strong>Navigation Mode</strong>.</p>
+            </section>
+            <div class="entry-form-actions">
+                <button id="stay-practice-mode" class="primary-button" type="button">Stay in Practice</button>
+                <button id="switch-travel-mode" class="secondary-button" type="button">Switch to Travel</button>
+            </div>
+        </div>
+    </dialog>
 
     <dialog id="settings-dialog" class="settings-dialog">
         <div class="settings-card appearance-settings-card">
@@ -949,6 +967,6 @@
     <script src="data/slang.js?v=2"></script>
     <script src="data/slang-expansions.js?v=6"></script>
     <script src="data/travel.js?v=4"></script>
-    <script src="data/kanji.js?v=10"></script>
+    <script src="data/kanji.js?v=11"></script>
 </body>
 </html>
