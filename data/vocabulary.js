@@ -9,7 +9,7 @@
     const files = Object.freeze({
         N5: "./data/vocabulary/n5.json?v=2",
         N4: "./data/vocabulary/n4.json?v=2",
-        N3: "./data/vocabulary/n3.json?v=1",
+        N3: "./data/vocabulary/n3.json?v=2",
         N2: "./data/vocabulary/n2.json",
         N1: "./data/vocabulary/n1.json"
     });
