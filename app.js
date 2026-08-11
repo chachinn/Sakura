@@ -2273,8 +2273,21 @@ function currentRailLine() {
     return railGuideCityData?.lines?.find(line => line.id === railGuidePrefs.line) || railGuideCityData?.lines?.[0] || null;
 }
 
+function normalizeRailSearchText(value) {
+    return String(value ?? "")
+        .normalize("NFKC")
+        .toLocaleLowerCase("en-US")
+        .replace(/<[^>]*>/g, " ")
+        .replace(/\([^)]*\)/g, " ")
+        .replace(/[・·]/g, " ")
+        .replace(/[-‐‑‒–—―]/g, " ")
+        .replace(/[^a-z0-9\u3040-\u30ff\u3400-\u9fff]+/g, " ")
+        .trim()
+        .replace(/\s+/g, " ");
+}
+
 function railStationSearchText(station, line) {
-    return normalizeSearchText([
+    return normalizeRailSearchText([
         station.code,
         station.name,
         station.jp,
@@ -2289,14 +2302,14 @@ function railStationSearchText(station, line) {
 }
 
 function railSearchScore(query, station, line) {
-    const normalized = normalizeSearchText(query);
+    const normalized = normalizeRailSearchText(query);
     if (!normalized) return 0;
-    const code = normalizeSearchText(station.code);
-    const name = normalizeSearchText(station.name);
-    const jp = normalizeSearchText(station.jp);
-    const aliases = (station.aliases || []).map(normalizeSearchText);
-    const lineName = normalizeSearchText(line?.name);
-    const operator = normalizeSearchText(line?.operator);
+    const code = normalizeRailSearchText(station.code);
+    const name = normalizeRailSearchText(station.name);
+    const jp = normalizeRailSearchText(station.jp);
+    const aliases = (station.aliases || []).map(normalizeRailSearchText);
+    const lineName = normalizeRailSearchText(line?.name);
+    const operator = normalizeRailSearchText(line?.operator);
     if (code === normalized) return 175;
     if (name === normalized || jp === normalized || aliases.includes(normalized)) return 170;
     if (code.startsWith(normalized)) return 150;
@@ -2308,7 +2321,7 @@ function railSearchScore(query, station, line) {
 }
 
 function railLandmarkSearchText(landmark) {
-    return normalizeSearchText([
+    return normalizeRailSearchText([
         landmark.name,
         landmark.jp,
         landmark.area,
@@ -2320,13 +2333,13 @@ function railLandmarkSearchText(landmark) {
 }
 
 function railLandmarkSearchScore(query, landmark) {
-    const normalized = normalizeSearchText(query);
+    const normalized = normalizeRailSearchText(query);
     if (!normalized) return 0;
-    const name = normalizeSearchText(landmark.name);
-    const jp = normalizeSearchText(landmark.jp);
-    const aliases = (landmark.aliases || []).map(normalizeSearchText);
-    const area = normalizeSearchText(landmark.area);
-    const category = normalizeSearchText(landmark.category);
+    const name = normalizeRailSearchText(landmark.name);
+    const jp = normalizeRailSearchText(landmark.jp);
+    const aliases = (landmark.aliases || []).map(normalizeRailSearchText);
+    const area = normalizeRailSearchText(landmark.area);
+    const category = normalizeRailSearchText(landmark.category);
     if (name === normalized || jp === normalized || aliases.includes(normalized)) return 165;
     if (name.startsWith(normalized) || aliases.some(value => value.startsWith(normalized))) return 130;
     if (name.includes(normalized) || jp.includes(normalized) || aliases.some(value => value.includes(normalized))) return 110;
@@ -2454,7 +2467,7 @@ function railNetworkHubs() {
     }
 
     for (const hub of hubs.values()) {
-        hub.searchText = normalizeSearchText([...hub.searchParts].join(" "));
+        hub.searchText = normalizeRailSearchText([...hub.searchParts].join(" "));
         hub.codes = [...new Set(hub.occurrences.map(item => item.station.code))];
         hub.lines = [...new Set(hub.occurrences.map(item => `${item.line.code} ${item.line.name}`))];
     }
@@ -2464,11 +2477,11 @@ function railNetworkHubs() {
 }
 
 function railNetworkHubSearchScore(query, hub) {
-    const normalized = normalizeSearchText(query);
+    const normalized = normalizeRailSearchText(query);
     if (!normalized) return 0;
-    const name = normalizeSearchText(hub.name);
-    const jp = normalizeSearchText(hub.jp);
-    const codes = hub.codes.map(normalizeSearchText);
+    const name = normalizeRailSearchText(hub.name);
+    const jp = normalizeRailSearchText(hub.jp);
+    const codes = hub.codes.map(normalizeRailSearchText);
     if (name === normalized || jp === normalized || codes.includes(normalized)) return 200;
     if (name.startsWith(normalized) || codes.some(code => code.startsWith(normalized))) return 170;
     if (name.includes(normalized) || jp.includes(normalized)) return 145;
@@ -2481,6 +2494,8 @@ function railNetworkHubByKey(key) {
 }
 
 function clearRailNetworkPlanner({ preserveInputs = false } = {}) {
+    window.clearTimeout(railNetworkSearchTimers.from);
+    window.clearTimeout(railNetworkSearchTimers.to);
     railNetworkPlannerState = { city:railGuideCityData?.city || "", from:"", to:"" };
     if (!preserveInputs) {
         const fromInput = document.getElementById("rail-network-from-input");
@@ -2520,7 +2535,7 @@ function railNetworkInputValue(side) {
 
 function railNetworkMatchesForInput(value) {
     if (!railGuideCityData) return [];
-    const normalized = normalizeSearchText(value);
+    const normalized = normalizeRailSearchText(value);
     if (!normalized) return [];
     return [...railNetworkHubs().values()]
         .map(hub => ({ hub, score:railNetworkHubSearchScore(normalized, hub) }))
@@ -2539,7 +2554,7 @@ function railNetworkResolveTypedHub(side, { allowStrongPartial = true } = {}) {
     }
 
     const current = railNetworkHubByKey(railNetworkPlannerState[side]);
-    if (current && normalizeSearchText(current.name) === normalizeSearchText(value)) return current;
+    if (current && normalizeRailSearchText(current.name) === normalizeRailSearchText(value)) return current;
 
     const matches = railNetworkMatchesForInput(value);
     if (!matches.length) {
@@ -2576,7 +2591,13 @@ function showRailNetworkPlannerMessage(title, message) {
 }
 
 function planRailNetworkFromInputs() {
-    if (!railGuideCityData) return;
+    if (!railGuideCityData) {
+        showRailNetworkPlannerMessage(
+            "Rail data is not ready yet.",
+            "Reopen Rail Guide or switch cities, then try again."
+        );
+        return;
+    }
 
     window.clearTimeout(railNetworkSearchTimers.from);
     window.clearTimeout(railNetworkSearchTimers.to);
@@ -2589,8 +2610,20 @@ function planRailNetworkFromInputs() {
         return;
     }
 
-    const fromHub = railNetworkResolveTypedHub("from");
-    const toHub = railNetworkResolveTypedHub("to");
+    let fromHub;
+    let toHub;
+    try {
+        fromHub = railNetworkResolveTypedHub("from");
+        toHub = railNetworkResolveTypedHub("to");
+    }
+    catch (error) {
+        console.error("Rail station resolution failed.", error);
+        showRailNetworkPlannerMessage(
+            "Sakura couldn't read those stations.",
+            "Clear the route, reselect the city, and try again."
+        );
+        return;
+    }
 
     if (!fromHub || !toHub) {
         if (!fromHub) renderRailNetworkSuggestions("from", fromValue);
@@ -2612,7 +2645,16 @@ function planRailNetworkFromInputs() {
     });
 
     updateRailNetworkPlanButton();
-    renderRailNetworkRoute(fromHub.key, toHub.key);
+    try {
+        renderRailNetworkRoute(fromHub.key, toHub.key);
+    }
+    catch (error) {
+        console.error("Rail route rendering failed.", error);
+        showRailNetworkPlannerMessage(
+            "Sakura couldn't draw this route.",
+            "The stations were found, but the route renderer hit an error. Clear the route and try again."
+        );
+    }
 }
 
 function updateRailNetworkPlanButton() {
@@ -2635,7 +2677,7 @@ function updateRailNetworkPlanButton() {
 function renderRailNetworkSuggestions(side, query = "") {
     const results = document.getElementById(`rail-network-${side}-results`);
     if (!results || !railGuideCityData) return;
-    const normalized = normalizeSearchText(query);
+    const normalized = normalizeRailSearchText(query);
     if (!normalized) {
         results.hidden = true;
         results.innerHTML = "";
@@ -2889,8 +2931,8 @@ function renderRailNetworkRoute(fromHubKey = railNetworkPlannerState.from, toHub
     const fromHub = railNetworkHubByKey(fromHubKey);
     const toHub = railNetworkHubByKey(toHubKey);
     if (!fromHub || !toHub) {
-        panel.hidden = true;
-        panel.innerHTML = "";
+        panel.innerHTML = `<div class="rail-network-route-empty"><strong>Could not resolve this station pair.</strong><p>Clear the route and choose the stations again.</p></div>`;
+        panel.hidden = false;
         updateRailNetworkPlanButton();
         return;
     }
@@ -2946,6 +2988,9 @@ function renderRailNetworkRoute(fromHubKey = railNetworkPlannerState.from, toHub
     <div class="rail-network-step-list">${stepHtml}</div>
     <div class="rail-network-live-note"><strong>Before boarding</strong><p>This is an offline route based on Sakura's stored station order, not a live timetable. Confirm the current train type, destination, platform, disruptions, and transfer signs at the station.</p></div>`;
     panel.hidden = false;
+    if (typeof panel.scrollIntoView === "function") {
+        panel.scrollIntoView({ block:"nearest" });
+    }
 }
 
 function renderRailNetworkPlanner() {
@@ -3094,7 +3139,7 @@ function renderRailDiagram() {
 function renderRailSearch(query = "") {
     const results = document.getElementById("rail-search-results");
     if (!results || !railGuideCityData) return;
-    const normalized = normalizeSearchText(query);
+    const normalized = normalizeRailSearchText(query);
     if (!normalized) {
         results.hidden = true;
         results.innerHTML = "";
@@ -3225,6 +3270,8 @@ async function openRailGuide() {
 
 async function selectRailCity(city) {
     if (!RAIL_CITY_FILES[city]) return;
+    window.clearTimeout(railNetworkSearchTimers.from);
+    window.clearTimeout(railNetworkSearchTimers.to);
     if (city === railGuidePrefs.city && railGuideCityData?.city === city) {
         setRailLoadingState();
         return;
