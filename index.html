@@ -12,6 +12,10 @@
     <link rel="manifest" href="manifest.webmanifest">
     <link rel="apple-touch-icon" href="icons/icon-180.png">
     <link rel="stylesheet" href="style.css?v=71">
+    <style id="sakura-ux-v85">
+        .home-daily-heading{align-items:center}.home-study-level-button{flex:0 0 auto;min-height:42px;padding:7px 10px;display:grid;grid-template-columns:auto auto;grid-template-areas:"small arrow" "strong arrow";column-gap:8px;align-items:center;border:1px solid color-mix(in srgb,var(--color-primary) 22%,var(--color-border));border-radius:13px;background:var(--color-primary-soft);color:var(--color-primary-dark);text-align:left}.home-study-level-button small{grid-area:small;color:var(--color-text-muted);font-size:8px;font-weight:750}.home-study-level-button strong{grid-area:strong;max-width:110px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:11px}.home-study-level-button>span{grid-area:arrow;font-size:14px}.home-study-level-card{max-width:430px}.home-study-level-card>p{margin:4px 0 12px;color:var(--color-text-muted);font-size:11px;line-height:1.5}.home-study-level-card .selection-summary{display:block;margin-bottom:8px}.home-study-level-chips{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px;margin-bottom:14px}.home-study-level-chips .level-chip span,.home-study-level-chips .all-level-button{width:100%;min-width:0;min-height:42px}
+        #travel-rail-view{padding-bottom:calc(150px + env(safe-area-inset-bottom))}.rail-route-options-wrap{display:grid;gap:7px;padding:10px;border:1px solid var(--color-border);border-radius:15px;background:color-mix(in srgb,var(--color-surface) 92%,var(--color-primary-soft))}.rail-route-options-heading{display:flex;align-items:center;justify-content:space-between;gap:8px}.rail-route-options-heading small{color:var(--color-text-muted);font-size:8px}.rail-route-options{display:grid;gap:7px}.rail-route-option{width:100%;min-width:0;padding:9px 10px;display:grid;grid-template-columns:auto minmax(0,1fr);grid-template-areas:"label code" "meta meta" "lines lines";gap:2px 8px;align-items:center;border:1px solid var(--color-border);border-radius:13px;background:var(--color-background);color:var(--color-text);text-align:left}.rail-route-option.active{border-color:var(--color-primary);background:var(--color-primary-soft);box-shadow:0 0 0 1px color-mix(in srgb,var(--color-primary) 22%,transparent)}.rail-route-option-label{grid-area:label;width:max-content;padding:3px 7px;border-radius:999px;background:var(--color-surface);color:var(--color-primary-dark);font-size:8px;font-weight:900}.rail-route-option strong{grid-area:code;min-width:0;font-size:11px;overflow-wrap:anywhere}.rail-route-option small{grid-area:meta;color:var(--color-text-muted);font-size:8px}.rail-route-option em{grid-area:lines;color:var(--color-text-muted);font-size:8px;font-style:normal;line-height:1.35;overflow-wrap:anywhere}.rail-network-stops{margin-top:6px}.rail-network-stops summary{width:max-content;max-width:100%;padding:5px 8px;border:1px solid var(--color-border);border-radius:999px;background:var(--color-surface);color:var(--color-primary-dark);cursor:pointer;font-size:8px;font-weight:850;list-style:none}.rail-network-stops summary::-webkit-details-marker{display:none}.rail-network-stops summary::after{content:"  ▾"}.rail-network-stops[open] summary::after{content:"  ▴"}.rail-network-stops .rail-network-station-trail{margin-top:6px}@media(max-width:350px){.home-study-level-button{padding:7px 8px}.home-study-level-button strong{max-width:82px}.home-study-level-chips{grid-template-columns:repeat(2,minmax(0,1fr))}}
+    </style>
 </head>
 <body>
     <div class="app-shell">
@@ -56,16 +60,8 @@
                     <div class="daily-study-stats"><span><small>Current streak</small><strong>🌸 <b id="daily-current-streak">0</b> days</strong></span><span><small>Longest</small><strong><b id="daily-longest-streak">0</b> days</strong></span><span id="daily-goal-status" class="daily-goal-status">Keep growing</span></div>
                 </section>
 
-                <section class="level-panel home-level-panel" aria-labelledby="global-level-heading">
-                    <div class="section-heading compact-heading">
-                        <div><span class="section-kicker">🌿 Your learning path</span><h2 id="global-level-heading">Choose Your Path</h2></div>
-                        <span id="global-level-summary" class="selection-summary">Selected: N5</span>
-                    </div>
-                    <div id="global-jlpt-selector" class="level-chips" role="group" aria-label="Global JLPT levels"></div>
-                </section>
-
                 <section class="home-daily-section" aria-labelledby="daily-heading">
-                    <div class="section-heading"><div><span class="section-kicker">🌸 Today’s garden</span><h2 id="daily-heading">Today’s Blooms</h2></div><span class="home-section-note">Tap a card for details</span></div>
+                    <div class="section-heading home-daily-heading"><div><span class="section-kicker">🌸 Today’s garden</span><h2 id="daily-heading">Today’s Blooms</h2></div><button id="home-study-level-button" class="home-study-level-button" type="button" aria-haspopup="dialog" aria-controls="home-study-level-dialog"><small>Study level</small><strong id="home-study-level-label">N5</strong><span aria-hidden="true">⌄</span></button></div>
                     <div class="daily-grid">
                         <article class="daily-card kanji-daily-card">
                             <div class="card-topline">
@@ -791,6 +787,16 @@
 
     <div id="kaomoji-copy-toast" class="kaomoji-copy-toast" role="status" aria-live="polite" hidden>Copied!</div>
 
+    <dialog id="home-study-level-dialog" class="settings-dialog" aria-labelledby="home-study-level-heading">
+        <div class="settings-card home-study-level-card">
+            <div class="card-topline"><div><span class="section-kicker">Today’s garden</span><h2 id="home-study-level-heading">Home Study Level</h2></div><button id="close-home-study-level" class="icon-button" type="button" aria-label="Close study level">×</button></div>
+            <p>Choose what Sakura uses for the Home blooms and any learning section set to <strong>Use Global</strong>. Learn and Quiz can still keep their own level filters.</p>
+            <span id="global-level-summary" class="selection-summary">Selected: N5</span>
+            <div id="global-jlpt-selector" class="level-chips home-study-level-chips" role="group" aria-label="Global JLPT levels"></div>
+            <button id="done-home-study-level" class="primary-button full-width-button" type="button">Done</button>
+        </div>
+    </dialog>
+
     <dialog id="navigation-mode-dialog" class="settings-dialog" aria-labelledby="navigation-mode-heading">
         <div class="settings-card">
             <div class="card-topline">
@@ -967,6 +973,6 @@
     <script src="data/slang.js?v=2"></script>
     <script src="data/slang-expansions.js?v=6"></script>
     <script src="data/travel.js?v=4"></script>
-    <script src="data/kanji.js?v=12"></script>
+    <script src="data/kanji.js?v=13"></script>
 </body>
 </html>
