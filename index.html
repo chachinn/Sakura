@@ -47,6 +47,42 @@
         .translation-suggestion-card small{font-size:8px;line-height:1.4;color:var(--color-text-muted)}
         .translation-result-actions{flex-wrap:wrap}
         @media(max-width:420px){.translation-mode-switch{grid-template-columns:1fr}.translation-mode-button{padding:10px}.translation-result-actions>*{flex:1 1 calc(50% - 6px)}}
+
+        .gesture-coach-visual{display:grid;gap:6px;justify-items:center;min-width:0}
+        .gesture-coach-avatar{position:relative;display:grid;place-items:center;width:min(180px,100%);aspect-ratio:1/1}
+        .gesture-coach-avatar img{display:block;max-width:100%;max-height:100%;object-fit:contain;transform-origin:50% 82%;will-change:auto}
+        .gesture-coach-visual.compact .gesture-coach-avatar{width:100%;max-width:94px}
+        .gesture-coach-prop{position:absolute;right:2%;bottom:8%;display:grid;place-items:center;width:30px;height:30px;border-radius:50%;background:color-mix(in srgb,var(--color-surface) 90%,transparent);box-shadow:0 4px 12px color-mix(in srgb,var(--color-text) 10%,transparent);font-size:17px}
+        .gesture-coach-caption{display:grid;gap:2px;text-align:center}
+        .gesture-coach-caption strong{font-size:10px;color:var(--color-primary-dark)}
+        .gesture-coach-caption small{font-size:8px;line-height:1.4;color:var(--color-text-muted)}
+        .gesture-coach-card-label{width:max-content;max-width:100%;padding:3px 7px;border-radius:999px;background:var(--color-primary-soft);color:var(--color-primary-dark);font-size:7px;font-weight:900}
+        .gesture-coach-detail-demo{display:grid;grid-template-columns:minmax(110px,.75fr) minmax(0,1fr);gap:12px;align-items:center;width:100%}
+        .gesture-coach-practice{display:grid;gap:5px;align-content:center}
+        .gesture-coach-practice>strong{font-size:11px;line-height:1.35}
+        .gesture-coach-practice>small{font-size:8px;line-height:1.5;color:var(--color-text-muted)}
+        .gesture-coach-practice button{margin-top:3px;width:max-content;max-width:100%}
+        .gesture-coach-disabled-note{display:grid;gap:4px;padding:12px;border:1px dashed var(--color-border);border-radius:12px;color:var(--color-text-muted)}
+        .gesture-coach-disabled-note strong{color:var(--color-text)}
+        .gesture-coach-detail-demo.is-performing [data-gesture-pose="small-bow"] img{animation:sakura-gesture-small-bow 1.15s ease-in-out}
+        .gesture-coach-detail-demo.is-performing [data-gesture-pose="formal-bow"] img{animation:sakura-gesture-formal-bow 1.35s ease-in-out}
+        .gesture-coach-detail-demo.is-performing [data-gesture-pose="waving"] img{animation:sakura-gesture-wave 1.05s ease-in-out}
+        .gesture-coach-detail-demo.is-performing [data-gesture-pose="hands-together"] img{animation:sakura-gesture-gentle-pulse .95s ease-in-out}
+        .gesture-coach-detail-demo.is-performing [data-gesture-pose="explaining"] img{animation:sakura-gesture-explain 1.05s ease-in-out}
+        .gesture-coach-detail-demo.is-performing [data-gesture-pose="holding"] img{animation:sakura-gesture-gentle-pulse .95s ease-in-out}
+        .gesture-coach-detail-demo.is-performing [data-gesture-pose="dining"] img{animation:sakura-gesture-gentle-pulse .95s ease-in-out}
+        .gesture-coach-detail-demo.is-performing [data-gesture-pose="walking"] img{animation:sakura-gesture-walk 1s ease-in-out}
+        .gesture-coach-detail-demo.is-performing [data-gesture-pose="sitting"] img{animation:sakura-gesture-sit .95s ease-in-out}
+        .gesture-coach-detail-demo.is-performing [data-gesture-pose="neutral"] img{animation:sakura-gesture-gentle-pulse .9s ease-in-out}
+        @keyframes sakura-gesture-small-bow{0%,100%{transform:rotate(0)}45%,65%{transform:rotate(10deg) translateY(3px)}}
+        @keyframes sakura-gesture-formal-bow{0%,100%{transform:rotate(0)}40%,70%{transform:rotate(18deg) translateY(6px)}}
+        @keyframes sakura-gesture-wave{0%,100%{transform:rotate(0)}25%{transform:rotate(-4deg)}50%{transform:rotate(4deg)}75%{transform:rotate(-3deg)}}
+        @keyframes sakura-gesture-gentle-pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.035)}}
+        @keyframes sakura-gesture-explain{0%,100%{transform:translateX(0)}35%{transform:translateX(-4px) rotate(-2deg)}70%{transform:translateX(4px) rotate(2deg)}}
+        @keyframes sakura-gesture-walk{0%,100%{transform:translateX(0)}35%{transform:translateX(-5px)}70%{transform:translateX(5px)}}
+        @keyframes sakura-gesture-sit{0%,100%{transform:translateY(0)}50%{transform:translateY(5px) scale(.985)}}
+        @media(prefers-reduced-motion:reduce){.gesture-coach-detail-demo.is-performing img{animation:none!important}}
+        @media(max-width:420px){.gesture-coach-detail-demo{grid-template-columns:1fr}.gesture-coach-avatar{width:min(145px,70vw)}.gesture-coach-practice{text-align:center;justify-items:center}}
     </style>
 </head>
 <body>
@@ -280,11 +316,11 @@
             </section>
 
             <section id="chibi-guide-view" class="view chibi-guide-view" data-view="chibi-guide" aria-labelledby="chibi-guide-heading" hidden>
-                <header class="chibi-guide-heading"><button class="back-button" type="button" data-route="home" aria-label="Back from Chibi Guide">‹</button><div><span class="section-kicker">Your little companion</span><h1 id="chibi-guide-heading">Sakura Guide</h1><p>Choose your little companion.</p></div></header>
-                <section class="chibi-preview-card" aria-label="Live Chibi Guide preview"><div id="chibi-guide-preview" class="chibi-preview-stage"></div><div><strong>Your Sakura Guide</strong><span>Adult chibi guide · live preview</span></div></section>
+                <header class="chibi-guide-heading"><button class="back-button" type="button" data-route="home" aria-label="Back from Chibi Guide">‹</button><div><span class="section-kicker">Your study companion</span><h1 id="chibi-guide-heading">Sakura Guide</h1><p>Choose the guide who studies with you and demonstrates gestures throughout Sakura.</p></div></header>
+                <section class="chibi-preview-card" aria-label="Live Chibi Guide preview"><div id="chibi-guide-preview" class="chibi-preview-stage"></div><div><strong>Your Sakura Guide</strong><span>Study companion · Gesture Coach · live preview</span></div></section>
                 <form id="chibi-guide-form" class="chibi-guide-form">
                     <fieldset><legend>Choose Your Guide</legend><div id="chibi-character-options" class="guide-preset-grid"></div></fieldset>
-                    <fieldset><legend>Companion</legend><div class="chibi-companion-settings"><label><span><strong>Show Sakura Guide</strong><small>Keep your companion above the bottom navigation.</small></span><input id="chibi-companion-enabled" type="checkbox" role="switch"></label><div><strong>Side</strong><div id="chibi-companion-side-options" class="chibi-choice-grid"></div></div><label><span><strong>Idle animations</strong><small>Occasional short, quiet actions.</small></span><input id="chibi-idle-animations" type="checkbox" role="switch"></label><label><span><strong>Speech bubbles</strong><small>Occasional short encouragement.</small></span><input id="chibi-speech-bubbles" type="checkbox" role="switch"></label><label><span><strong>Context reactions</strong><small>React to a few obvious Sakura moments.</small></span><input id="chibi-context-reactions" type="checkbox" role="switch"></label></div></fieldset>
+                    <fieldset><legend>Guide Roles</legend><div class="chibi-companion-settings"><label><span><strong>Gesture Coach</strong><small>Use your selected guide to demonstrate movements in Gestures &amp; Etiquette.</small></span><input id="chibi-gesture-coach" type="checkbox" role="switch" checked></label><label><span><strong>Show floating guide</strong><small>Keep your companion above the bottom navigation.</small></span><input id="chibi-companion-enabled" type="checkbox" role="switch"></label><div><strong>Side</strong><div id="chibi-companion-side-options" class="chibi-choice-grid"></div></div><label><span><strong>Idle animations</strong><small>Occasional short, quiet actions.</small></span><input id="chibi-idle-animations" type="checkbox" role="switch"></label><label><span><strong>Speech bubbles</strong><small>Occasional short encouragement and lesson cues.</small></span><input id="chibi-speech-bubbles" type="checkbox" role="switch"></label><label><span><strong>Context reactions</strong><small>React when you open travel, gestures, and other obvious Sakura moments.</small></span><input id="chibi-context-reactions" type="checkbox" role="switch"></label></div></fieldset>
                     <p id="chibi-guide-message" class="form-message" role="status"></p>
                     <div class="chibi-guide-actions"><button id="reset-chibi-guide" class="secondary-button" type="button">Reset to Default</button><button class="primary-button" type="submit">Save Guide</button></div>
                 </form>
@@ -306,7 +342,7 @@
 
             <section id="etiquette-view" class="view etiquette-view" data-view="etiquette" aria-labelledby="etiquette-heading" hidden>
                 <div id="etiquette-home">
-                    <header class="etiquette-heading"><button class="back-button" type="button" data-route="home" aria-label="Back from Japanese Gestures and Etiquette">‹</button><div><span class="section-kicker">Culture garden</span><h1 id="etiquette-heading">Japanese Gestures &amp; Etiquette</h1><p>Learn how people actually behave in Japan — gestures, manners, travel etiquette, dining, trains, onsen, shrines, and more.</p></div></header>
+                    <header class="etiquette-heading"><button class="back-button" type="button" data-route="home" aria-label="Back from Japanese Gestures and Etiquette">‹</button><div><span class="section-kicker">Culture garden</span><h1 id="etiquette-heading">Japanese Gestures &amp; Etiquette</h1><p>Learn how people actually behave in Japan — with your selected Sakura Guide demonstrating gesture cues as you study.</p></div></header>
                     <div class="etiquette-toolbar">
                         <input id="etiquette-search" type="search" placeholder="Search gestures, manners, or situations" autocomplete="off" aria-label="Search Japanese Gestures and Etiquette">
                         <div class="etiquette-filter-grid"><label>Category<select id="etiquette-category-filter"><option value="all">All</option></select></label><label>Importance<select id="etiquette-importance-filter"><option value="all">All</option><option>Essential</option><option>Common</option><option>Useful</option><option>Contextual</option><option>Specialized</option><option>Fun</option></select></label></div>
@@ -1069,6 +1105,6 @@
     <script src="data/slang.js?v=2"></script>
     <script src="data/slang-expansions.js?v=6"></script>
     <script src="data/travel.js?v=4"></script>
-    <script src="data/kanji.js?v=18"></script>
+    <script src="data/kanji.js?v=19"></script>
 </body>
 </html>

@@ -80,7 +80,7 @@ const APPEARANCE_STORE = "wallpapers";
 const WALLPAPER_RECORD = "activeWallpaper";
 const DEFAULT_WALLPAPER_FRAMING = Object.freeze({ positionX: 50, positionY: 50, zoom: 1 });
 const THEMES = { pink:{name:"Sakura Pink",swatch:"#ef5b87"},purple:{name:"Lavender Purple",swatch:"#9b70c8"},blue:{name:"Sky Blue",swatch:"#68a9dc"},green:{name:"Mint Green",swatch:"#68b99a"},yellow:{name:"Soft Yellow",swatch:"#d6a94d"} };
-const DEFAULT_CHIBI_GUIDE = Object.freeze({ character:"sakura", companionEnabled:false, companionSide:"right", idleAnimations:true, speechBubbles:true, contextReactions:true });
+const DEFAULT_CHIBI_GUIDE = Object.freeze({ character:"sakura", companionEnabled:false, companionSide:"right", idleAnimations:true, speechBubbles:true, contextReactions:true, gestureCoach:true });
 const SAKURA_GUIDES = Object.freeze([
     ["sakura","Sakura"], ["mochi","Mochi"], ["hikari","Hikari"], ["yui","Yui"], ["aoi","Aoi"],
     ["haru","Haru"], ["sora","Sora"], ["shiro","Shiro"], ["latte","Latte"], ["choco","Choco"],
@@ -6266,7 +6266,8 @@ function normalizeChibiGuide(value) {
         companionSide: ["left", "right"].includes(source.companionSide) ? source.companionSide : DEFAULT_CHIBI_GUIDE.companionSide,
         idleAnimations: source.idleAnimations !== false,
         speechBubbles: source.speechBubbles !== false,
-        contextReactions: source.contextReactions !== false
+        contextReactions: source.contextReactions !== false,
+        gestureCoach: source.gestureCoach !== false
     };
 }
 
@@ -6527,6 +6528,7 @@ function renderChibiCustomizer() {
     document.getElementById("chibi-idle-animations").checked = chibiGuideDraft.idleAnimations;
     document.getElementById("chibi-speech-bubbles").checked = chibiGuideDraft.speechBubbles;
     document.getElementById("chibi-context-reactions").checked = chibiGuideDraft.contextReactions;
+    document.getElementById("chibi-gesture-coach").checked = chibiGuideDraft.gestureCoach;
     document.getElementById("chibi-guide-preview").innerHTML = renderChibiGuide(chibiGuideDraft);
 }
 
@@ -6534,7 +6536,10 @@ function saveChibiGuide() {
     chibiGuide = normalizeChibiGuide(chibiGuideDraft);
     writeJson(STORAGE.chibiGuide, chibiGuide);
     document.getElementById("chibi-guide-message").textContent = "Your Sakura guide is saved on this device.";
-    if (etiquetteData) renderEtiquette();
+    if (etiquetteData) {
+        renderEtiquette();
+        if (currentEtiquetteEntry && currentRoute === "etiquette") renderEtiquetteDetail(currentEtiquetteEntry);
+    }
     updateChibiCompanion();
 }
 
@@ -6736,7 +6741,14 @@ function updateChibiCompanion() {
 
 function chibiContextReaction(route) {
     if (!chibiGuide.companionEnabled || !chibiGuide.contextReactions || currentRoute === "chibi-guide") return;
-    if (route === "etiquette") performChibiCompanionAction("wave");
+    if (route === "etiquette") {
+        performChibiCompanionAction("bow");
+        window.setTimeout(() => {
+            if (currentRoute === "etiquette" && chibiGuide.speechBubbles) {
+                showChibiBubble({ japanese:"いっしょに練習しよう！", romaji:"issho ni renshuu shiyou!", english:"Let's practice together!" });
+            }
+        }, 350);
+    }
     else if (route === "travel" || route.startsWith("travel-")) performChibiCompanionAction("happy");
 }
 
@@ -6787,9 +6799,74 @@ function filteredEtiquette() {
         && (importance === "all" || entry.importance === importance));
 }
 
+
+function selectedChibiGuideName() {
+    return SAKURA_GUIDES.find(option => option[0] === chibiGuide.character)?.[1] || "Sakura";
+}
+
+function etiquetteGestureCue(entry) {
+    return cleanEntryText(entry?.illustration?.pose) || "follow the etiquette guidance";
+}
+
+function etiquetteGestureProp(entry) {
+    return chibiProp(entry?.illustration || {});
+}
+
+function etiquetteGestureCoachVisual(entry, compact = false) {
+    if (!entry || !chibiGuide.gestureCoach) return "";
+    const name = selectedChibiGuideName();
+    const poseFamily = chibiPoseFamily(entry.illustration || {});
+    const prop = etiquetteGestureProp(entry);
+    const cue = etiquetteGestureCue(entry);
+    const loading = compact ? ' loading="lazy"' : "";
+
+    return `<span class="gesture-coach-visual ${compact ? "compact" : ""}" data-gesture-pose="${escapeSearchHtml(poseFamily)}">
+        <span class="gesture-coach-avatar">
+            <img src="${getGuideImage(chibiGuide.character)}" alt="${escapeSearchHtml(name)} demonstrating ${escapeSearchHtml(cue)}"${loading} decoding="async">
+            ${prop ? `<span class="gesture-coach-prop" aria-hidden="true">${escapeSearchHtml(prop)}</span>` : ""}
+        </span>
+        ${compact ? "" : `<span class="gesture-coach-caption"><strong>${escapeSearchHtml(name)} demonstrates</strong><small>${escapeSearchHtml(cue)}</small></span>`}
+    </span>`;
+}
+
+function replayEtiquetteGesture() {
+    if (!currentEtiquetteEntry || !chibiGuide.gestureCoach) return;
+
+    const demo = document.getElementById("etiquette-gesture-coach-demo");
+    if (demo) {
+        demo.classList.remove("is-performing");
+        void demo.offsetWidth;
+        demo.classList.add("is-performing");
+        window.setTimeout(() => demo.classList.remove("is-performing"), 1400);
+    }
+
+    if (chibiGuide.companionEnabled && !chibiCompanionBusy) {
+        const companion = document.getElementById("chibi-companion");
+        if (companion && !companion.hidden) {
+            chibiCompanionBusy = true;
+            companion.dataset.action = "gesture";
+            renderChibiCompanion(currentEtiquetteEntry.illustration || {});
+            const bubble = document.getElementById("chibi-companion-bubble");
+            if (bubble && chibiGuide.speechBubbles) {
+                bubble.innerHTML = `<strong>やってみよう！</strong><small>Try the gesture with me!</small>`;
+                bubble.hidden = false;
+            }
+            window.clearTimeout(chibiCompanionResetTimer);
+            chibiCompanionResetTimer = window.setTimeout(() => {
+                delete companion.dataset.action;
+                hideChibiBubble();
+                renderChibiCompanion();
+                chibiCompanionBusy = false;
+                scheduleChibiCompanionIdle();
+            }, chibiReducedMotion() ? 900 : 1500);
+        }
+    }
+}
+
 function etiquetteIllustration(entry) {
     const details = [entry.illustration.pose, entry.illustration.expression, entry.illustration.setting].filter(Boolean).join(" · ");
-    return `${renderChibiGuide({ ...chibiGuide, character:"sakura" }, entry.illustration, true)}<small>${escapeSearchHtml(details)}</small>`;
+    if (!chibiGuide.gestureCoach) return `<small>${escapeSearchHtml(details)}</small>`;
+    return `${etiquetteGestureCoachVisual(entry, true)}<small>${escapeSearchHtml(details)}</small>`;
 }
 
 function applyEtiquetteRomajiVisibility() {
@@ -6813,7 +6890,8 @@ function renderEtiquette() {
     if (!etiquetteData) return;
     const entries = filteredEtiquette();
     document.getElementById("etiquette-count").textContent = `${entries.length} of ${etiquetteData.length} entries`;
-    document.getElementById("etiquette-list").innerHTML = entries.map(entry => `<button class="etiquette-card" type="button" data-etiquette-id="${escapeSearchHtml(entry.id)}"><span class="etiquette-card-illustration etiquette-illustration" data-image-key="${escapeSearchHtml(entry.imageKey)}">${etiquetteIllustration(entry)}</span><span class="etiquette-card-copy"><strong>${escapeSearchHtml(entry.title)}</strong><span class="etiquette-japanese">${escapeSearchHtml(entry.japaneseTerm)}</span><span class="etiquette-kana">${escapeSearchHtml(entry.kana)}</span><span class="etiquette-romaji" data-etiquette-romaji hidden>${escapeSearchHtml(entry.romaji)}</span><span class="etiquette-summary">${escapeSearchHtml(entry.summary)}</span><span class="tag-row"><span class="tag">${escapeSearchHtml(entry.importance)}</span><span class="tag">${escapeSearchHtml(entry.category)}</span></span></span></button>`).join("");
+    const coachName = selectedChibiGuideName();
+    document.getElementById("etiquette-list").innerHTML = entries.map(entry => `<button class="etiquette-card" type="button" data-etiquette-id="${escapeSearchHtml(entry.id)}"><span class="etiquette-card-illustration etiquette-illustration" data-image-key="${escapeSearchHtml(entry.imageKey)}">${etiquetteIllustration(entry)}</span><span class="etiquette-card-copy">${chibiGuide.gestureCoach ? `<span class="gesture-coach-card-label">${escapeSearchHtml(coachName)} demo</span>` : ""}<strong>${escapeSearchHtml(entry.title)}</strong><span class="etiquette-japanese">${escapeSearchHtml(entry.japaneseTerm)}</span><span class="etiquette-kana">${escapeSearchHtml(entry.kana)}</span><span class="etiquette-romaji" data-etiquette-romaji hidden>${escapeSearchHtml(entry.romaji)}</span><span class="etiquette-summary">${escapeSearchHtml(entry.summary)}</span><span class="tag-row"><span class="tag">${escapeSearchHtml(entry.importance)}</span><span class="tag">${escapeSearchHtml(entry.category)}</span></span></span></button>`).join("");
     document.getElementById("etiquette-empty").hidden = entries.length > 0;
     applyEtiquetteRomajiVisibility();
 }
@@ -6826,8 +6904,18 @@ function renderEtiquetteDetail(entry) {
     document.getElementById("etiquette-detail-heading").textContent = entry.title;
     const illustration = document.getElementById("etiquette-detail-illustration");
     illustration.dataset.imageKey = entry.imageKey;
-    illustration.dataset.guideCharacter = entry.illustration.character;
-    illustration.innerHTML = etiquetteIllustration(entry);
+    illustration.dataset.guideCharacter = chibiGuide.character;
+    illustration.innerHTML = chibiGuide.gestureCoach
+        ? `<div id="etiquette-gesture-coach-demo" class="gesture-coach-detail-demo">
+            ${etiquetteGestureCoachVisual(entry, false)}
+            <div class="gesture-coach-practice">
+                <span class="section-kicker">Gesture Coach</span>
+                <strong>Watch → copy → check the Do / Avoid notes</strong>
+                <small>Sakura’s motion is an illustrative cue. Use the written guidance for the exact etiquette.</small>
+                <button id="replay-etiquette-gesture" class="secondary-button" type="button">Replay gesture</button>
+            </div>
+        </div>`
+        : `<div class="gesture-coach-disabled-note"><strong>Gesture Coach is off.</strong><small>You can turn it on in Chibi Guide to use your selected companion in these lessons.</small></div>`;
     const values = { japanese:entry.japaneseTerm, kana:entry.kana, romaji:entry.romaji, importance:entry.importance, category:entry.category, summary:entry.summary, do:entry.do, avoid:entry.avoid, why:entry.whyItMatters, see:entry.whatYoullSeeInJapan, tip:entry.travelerTip, context:entry.contextNote };
     Object.entries(values).forEach(([key, value]) => { document.getElementById(`etiquette-detail-${key}`).textContent = value; });
     applyEtiquetteRomajiVisibility();
@@ -7434,6 +7522,9 @@ function addListeners() {
         if (card) renderEtiquetteDetail(etiquetteData?.find(entry => entry.id === card.dataset.etiquetteId));
     });
     document.getElementById("close-etiquette-detail").addEventListener("click", closeEtiquetteDetail);
+    document.getElementById("etiquette-detail").addEventListener("click", event => {
+        if (event.target.closest("#replay-etiquette-gesture")) replayEtiquetteGesture();
+    });
     ["etiquette-romaji-toggle", "etiquette-detail-romaji-toggle"].forEach(id => document.getElementById(id).addEventListener("click", () => {
         etiquetteRomajiVisible = !etiquetteRomajiVisible;
         applyEtiquetteRomajiVisibility();
@@ -7456,7 +7547,7 @@ function addListeners() {
             renderChibiCustomizer();
         }
     });
-    [["chibi-companion-enabled","companionEnabled"],["chibi-idle-animations","idleAnimations"],["chibi-speech-bubbles","speechBubbles"],["chibi-context-reactions","contextReactions"]].forEach(([id, key]) => {
+    [["chibi-companion-enabled","companionEnabled"],["chibi-idle-animations","idleAnimations"],["chibi-speech-bubbles","speechBubbles"],["chibi-context-reactions","contextReactions"],["chibi-gesture-coach","gestureCoach"]].forEach(([id, key]) => {
         document.getElementById(id).addEventListener("change", event => {
             chibiGuideDraft[key] = event.target.checked;
             renderChibiCustomizer();
