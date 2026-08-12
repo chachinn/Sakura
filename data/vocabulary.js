@@ -10,7 +10,7 @@
         N5: "./data/vocabulary/n5.json?v=2",
         N4: "./data/vocabulary/n4.json?v=2",
         N3: "./data/vocabulary/n3.json?v=2",
-        N2: "./data/vocabulary/n2.json",
+        N2: "./data/vocabulary/n2.json?v=2",
         N1: "./data/vocabulary/n1.json"
     });
     const loadedByLevel = new Map();
@@ -35,6 +35,42 @@
         });
     }
 
+    async function decodePackedJson(manifest, manifestUrl) {
+        if (manifest?.format !== "sakura-gzip-base64-v1" || !Array.isArray(manifest.parts)) {
+            throw new Error(`${manifestUrl} is not a supported Sakura packed dataset.`);
+        }
+        if (typeof DecompressionStream !== "function") {
+            throw new Error("This browser cannot decompress Sakura's packed N2 dataset.");
+        }
+        const partPayloads = await Promise.all(manifest.parts.map(async partUrl => {
+            const response = await fetch(partUrl);
+            if (!response.ok) throw new Error(`Could not load ${partUrl} (HTTP ${response.status}).`);
+            const part = await response.json();
+            if (!part || typeof part.data !== "string" || !part.data) throw new Error(`${partUrl} is missing packed data.`);
+            return part.data;
+        }));
+        const base64 = partPayloads.join("");
+        const binary = atob(base64);
+        const bytes = new Uint8Array(binary.length);
+        for (let index = 0; index < binary.length; index += 1) bytes[index] = binary.charCodeAt(index);
+        const decompressed = new Blob([bytes]).stream().pipeThrough(new DecompressionStream("gzip"));
+        const text = await new Response(decompressed).text();
+        const records = JSON.parse(text);
+        if (!Array.isArray(records)) throw new Error(`${manifestUrl} did not unpack to a JSON array.`);
+        if (Number.isInteger(manifest.count) && records.length !== manifest.count) {
+            throw new Error(`${manifestUrl} expected ${manifest.count} records but unpacked ${records.length}.`);
+        }
+        return records;
+    }
+
+    async function readVocabularyFile(file) {
+        const response = await fetch(file);
+        if (!response.ok) throw new Error(`Could not load ${file} (HTTP ${response.status}).`);
+        const payload = await response.json();
+        if (Array.isArray(payload)) return payload;
+        return decodePackedJson(payload, file);
+    }
+
     function validateVocabularyRecords(records, level) {
         const errors = [];
         const ids = new Set();
@@ -52,16 +88,8 @@
                 .map(vocabularyIdentity)
         );
         const requiredStrings = [
-            "id",
-            "type",
-            "word",
-            "kana",
-            "romaji",
-            "meaning",
-            "jlpt",
-            "exampleSentence",
-            "exampleTranslation",
-            "notes"
+            "id", "type", "word", "kana", "romaji", "meaning", "jlpt",
+            "exampleSentence", "exampleTranslation", "notes"
         ];
 
         records.forEach((record, index) => {
@@ -70,43 +98,26 @@
                 errors.push(`${label} must be an object.`);
                 return;
             }
-
             requiredStrings.forEach(field => {
-                if (typeof record[field] !== "string" || !record[field].trim()) {
-                    errors.push(`${label} ${field} is required.`);
-                }
+                if (typeof record[field] !== "string" || !record[field].trim()) errors.push(`${label} ${field} is required.`);
             });
-
             if (record.type !== "vocabulary") errors.push(`${label} type must be vocabulary.`);
             if (record.jlpt !== level) errors.push(`${label} jlpt must be ${level}.`);
-
-            if (ids.has(record.id) || loadedIds.has(record.id)) {
-                errors.push(`${label} duplicate ID ${record.id}.`);
-            }
+            if (ids.has(record.id) || loadedIds.has(record.id)) errors.push(`${label} duplicate ID ${record.id}.`);
             ids.add(record.id);
-
             const identity = vocabularyIdentity(record);
-            if (identities.has(identity)) {
-                errors.push(`${label} duplicate word+kana ${record.word} / ${record.kana}.`);
-            }
+            if (identities.has(identity)) errors.push(`${label} duplicate word+kana ${record.word} / ${record.kana}.`);
             else if (loadedIdentities.has(identity)) {
-                console.warn(
-                    `Vocabulary validation: ${label} overlaps another loaded JLPT level: ` +
-                    `${record.word} / ${record.kana}. Lower-level precedence will be used in combined views.`
-                );
+                console.warn(`Vocabulary validation: ${label} overlaps another loaded JLPT level: ${record.word} / ${record.kana}. Lower-level precedence will be used in combined views.`);
             }
             identities.add(identity);
-
-            if (record.categories !== undefined && !Array.isArray(record.categories)) {
-                errors.push(`${label} categories must be an array when present.`);
-            }
+            if (record.categories !== undefined && !Array.isArray(record.categories)) errors.push(`${label} categories must be an array when present.`);
         });
 
         if (errors.length) {
             errors.forEach(error => console.error(`Vocabulary validation: ${error}`));
             throw new Error(`${level} Vocabulary validation failed with ${errors.length} problem(s).`);
         }
-
         console.info(`Vocabulary validation passed: ${records.length} ${level} record(s).`);
         return records;
     }
@@ -117,12 +128,7 @@
         if (inFlightByLevel.has(validLevel)) return inFlightByLevel.get(validLevel);
 
         const request = (async () => {
-            const response = await fetch(files[validLevel]);
-            if (!response.ok) throw new Error(`Could not load ${files[validLevel]} (HTTP ${response.status}).`);
-
-            const records = await response.json();
-            if (!Array.isArray(records)) throw new Error(`${files[validLevel]} must contain a JSON array.`);
-
+            const records = await readVocabularyFile(files[validLevel]);
             const validRecords = validateVocabularyRecords(records, validLevel);
             loadedByLevel.set(validLevel, validRecords);
             return validRecords;
@@ -138,23 +144,15 @@
     }
 
     async function loadVocabularyLevels(requestedLevels) {
-        if (!Array.isArray(requestedLevels)) {
-            throw new Error("Vocabulary levels must be provided as an array.");
-        }
-
+        if (!Array.isArray(requestedLevels)) throw new Error("Vocabulary levels must be provided as an array.");
         const requested = new Set(requestedLevels.map(requireLevel));
         const orderedLevels = levels.filter(level => requested.has(level));
         const groups = await Promise.all(orderedLevels.map(loadVocabularyLevel));
-
-        // Keep the lowest JLPT level's copy when the same word+kana appears
-        // in more than one study list. `levels` is ordered N5 -> N1.
         return dedupeVocabularyRecords(groups.flat());
     }
 
     function getLoadedVocabulary() {
-        return dedupeVocabularyRecords(
-            levels.flatMap(level => loadedByLevel.get(level) || [])
-        );
+        return dedupeVocabularyRecords(levels.flatMap(level => loadedByLevel.get(level) || []));
     }
 
     function getLoadedVocabularyLevels() {
@@ -163,42 +161,28 @@
 
     function getStartupVocabularyLevels() {
         const required = new Set();
-
         try {
             const storedGlobal = JSON.parse(localStorage.getItem("chaGlobalJlptLevels") || "null");
-            if (Array.isArray(storedGlobal)) {
-                storedGlobal.forEach(level => {
-                    if (levels.includes(level)) required.add(level);
-                });
-            }
-
+            if (Array.isArray(storedGlobal)) storedGlobal.forEach(level => { if (levels.includes(level)) required.add(level); });
             const storedSections = JSON.parse(localStorage.getItem("chaSectionJlptLevels") || "null");
             ["wordOfDay", "randomVocabulary", "vocabularyQuiz"].forEach(sectionName => {
                 const setting = storedSections?.[sectionName];
                 if (setting?.useGlobal === false && Array.isArray(setting.levels)) {
-                    setting.levels.forEach(level => {
-                        if (levels.includes(level)) required.add(level);
-                    });
+                    setting.levels.forEach(level => { if (levels.includes(level)) required.add(level); });
                 }
             });
         }
         catch (error) {
             console.warn("Vocabulary loader: stored JLPT preferences could not be read; using N5.", error);
         }
-
         if (!required.size) required.add("N5");
         return levels.filter(level => required.has(level));
     }
 
     window.SakuraVocabularyLoader = Object.freeze({
-        levels,
-        files,
-        loadVocabularyLevel,
-        loadVocabularyLevels,
+        levels, files, loadVocabularyLevel, loadVocabularyLevels,
         loadAllVocabulary: () => loadVocabularyLevels(levels),
-        getLoadedVocabulary,
-        getLoadedVocabularyLevels,
-        getStartupVocabularyLevels
+        getLoadedVocabulary, getLoadedVocabularyLevels, getStartupVocabularyLevels
     });
 
     window.VOCABULARY_DATA_READY = loadVocabularyLevels(getStartupVocabularyLevels())
