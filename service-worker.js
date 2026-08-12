@@ -1,45 +1,28 @@
-const SHELL_CACHE_VERSION = "sakura-shell-v123";
+const SHELL_CACHE_VERSION = "sakura-shell-v124";
 const KANJI_CONTENT_CACHE_VERSION = "sakura-kanji-content-v1";
 const TRAVEL_CONTENT_CACHE_VERSION = "sakura-travel-content-v1";
 const VOCABULARY_CONTENT_CACHE_VERSION = "sakura-vocabulary-content-v1";
 
 const APP_SHELL = [
     "./index.html",
-    "./style.css?v=71",
+    "./style.css?v=72",
     "./app.js?v=92",
+    "./data/vocabulary.js?v=6",
+    "./data/native-japanese.js?v=2",
+    "./data/slang.js?v=2",
+    "./data/travel.js?v=4",
+    "./data/kanji.js?v=20",
+    "./data/kanji/n5.json",
+    "./data/vocabulary/n5.json?v=2",
+    "./data/translation-phrases.json?v=1",
     "./data/practice-what-would-you-say.js?v=3",
     "./data/practice-sentence-builder.js?v=3",
     "./data/practice-one-line-many-personalities.js?v=3",
     "./data/counters.json?v=2",
     "./data/particles.json?v=1",
     "./data/grammar.json?v=2",
-    "./data/translation-phrases.json?v=1",
     "./data/etiquette.json?v=1",
-    "./data/kaomoji.json?v=1",
-    "./data/rail/tokyo.json?v=6",
-    "./data/rail/osaka.json?v=4",
-    "./data/rail/kyoto.json?v=4",
     "./avatar/sakura.png",
-    "./avatar/mochi.png",
-    "./avatar/hikari.png",
-    "./avatar/yui.png",
-    "./avatar/aoi.png",
-    "./avatar/haru.png",
-    "./avatar/sora.png",
-    "./avatar/shiro.png",
-    "./avatar/latte.png",
-    "./avatar/choco.png",
-    "./avatar/pudding.png",
-    "./avatar/ayame.png",
-    "./avatar/midori.png",
-    "./avatar/hina.png",
-    "./avatar/luna.png",
-    "./data/kanji.js?v=20",
-    "./data/vocabulary.js?v=6",
-    "./data/native-japanese.js?v=2",
-    "./data/slang.js?v=2",
-    "./data/slang-expansions.js?v=6",
-    "./data/travel.js?v=4",
     "./manifest.webmanifest",
     "./icons/icon-180.png",
     "./icons/icon-192.png",
@@ -52,10 +35,13 @@ self.addEventListener(
         event.waitUntil(
             caches
                 .open(SHELL_CACHE_VERSION)
-                .then(
-                    cache =>
-                        cache.addAll(APP_SHELL)
-                )
+                .then(cache => Promise.all(
+                    APP_SHELL.map(async url => {
+                        const response = await fetch(url, { cache:"reload" });
+                        if (!response.ok) throw new Error(`Could not precache ${url} (HTTP ${response.status}).`);
+                        await cache.put(url, response);
+                    })
+                ))
         );
     }
 );

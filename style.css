@@ -2949,6 +2949,8 @@ body.wallpaper-enabled .library-repository-card,body.wallpaper-enabled .library-
 .native-translate-link,.search-translate-link { width:100%; min-height:42px; border:0; background:transparent; color:var(--color-primary-dark); font-weight:750; text-align:center; }
 .translation-launch-card { width:100%; margin-bottom:18px; }
 .translation-form,.translation-result-card,.translation-history-section { margin-bottom:16px; padding:16px; border:1px solid var(--color-border); border-radius:20px; background:var(--color-surface); box-shadow:var(--shadow); }
+.translation-result-card { position:relative; scroll-margin-top:96px; border-color:color-mix(in srgb,var(--color-primary) 42%,var(--color-border)); background:linear-gradient(145deg,color-mix(in srgb,var(--color-primary-soft) 62%,var(--color-surface)),var(--color-surface)); box-shadow:0 12px 34px color-mix(in srgb,var(--color-primary) 13%,transparent); }
+.translation-result-card::before { content:"Answer"; position:absolute; top:-9px; right:14px; padding:4px 9px; border-radius:999px; background:var(--color-primary); color:white; font-size:.62rem; font-weight:900; letter-spacing:.04em; text-transform:uppercase; }
 .translation-form { display:grid; gap:15px; }
 .translation-form > label { display:grid; gap:7px; font-weight:750; font-size:.84rem; }
 .translation-form textarea { min-height:112px; padding:13px; border:1px solid var(--color-border); border-radius:14px; background:var(--color-surface-soft); color:var(--color-text); font:inherit; font-size:16px; resize:vertical; }
@@ -2959,7 +2961,9 @@ body.wallpaper-enabled .library-repository-card,body.wallpaper-enabled .library-
 .translation-chip { min-height:42px; padding:8px 12px; border:1px solid var(--color-border); border-radius:999px; background:var(--color-surface-soft); color:var(--color-text-muted); }
 .translation-chip.active { border-color:var(--color-primary); background:var(--color-primary-soft); color:var(--color-primary-dark); font-weight:800; }
 .translation-actions,.translation-result-actions { display:grid; grid-template-columns:1fr 1.4fr; gap:9px; }
-.translation-result-card h2 { margin:14px 0 7px; font-size:1.75rem; line-height:1.35; }
+.translation-result-card h2 { margin:14px 0 7px; color:var(--color-text); font-size:clamp(1.55rem,7vw,2rem); line-height:1.35; overflow-wrap:anywhere; }
+.translation-result-card #translation-romaji { margin:5px 0 0; color:var(--color-primary-dark); font-size:.98rem; font-weight:800; line-height:1.5; overflow-wrap:anywhere; }
+.translation-result-card #translation-kana { margin:3px 0 0; }
 .translation-result-details { display:grid; gap:10px; margin:16px 0; }
 .translation-result-details > div { padding:12px; border-radius:13px; background:var(--color-surface-soft); }
 .translation-result-details p { margin:5px 0 0; color:var(--color-text-muted); line-height:1.5; }

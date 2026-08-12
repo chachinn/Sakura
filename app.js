@@ -711,6 +711,8 @@ let chibiCompanionDragState = null;
 let chibiCompanionSuppressClick = false;
 let normalizedNativeDataCache = null;
 let normalizedSlangDataCache = null;
+let slangExpansionsLoadPromise = null;
+let slangExpansionsLoaded = false;
 let pendingTravelPhraseId = "";
 let userNativeEntries = readJson(STORAGE.userNative, []);
 let userSlangEntries = readJson(STORAGE.userSlang, []);
@@ -732,6 +734,13 @@ let translationPhraseData = null;
 let translationPhraseDataPromise = null;
 let translationPhraseIndex = null;
 const translationOnlineCache = new Map();
+let translationReadingSourcePromise = null;
+let translationReadingVocabulary = [];
+let translationReadingKanji = [];
+let translationReadingCandidatesCache = null;
+let translationReadingCandidateMapCache = null;
+let translationReadingCandidatePrefixCache = null;
+let translationKanjiReadingMapCache = null;
 const kanjiSelectionRevisions = new Map();
 const vocabularySelectionRevisions = new Map();
 const KANJI_FILTER_SECTIONS = new Set(["kanjiOfDay", "randomKanji", "kanjiQuiz"]);
@@ -1233,10 +1242,17 @@ function kanaQuizEligible(item) {
     return item[4] !== false;
 }
 
+let kanaRomajiReadingsCache = null;
+let kanaRomajiTokensCache = null;
+
 function kanaToRomaji(value) {
     const kana = String(value || "").normalize("NFKC");
-    const readings = new Map(KANA_DATA.filter(kanaQuizEligible).map(item => [item[0], item[1]]));
-    const tokens = [...readings.keys()].sort((left, right) => right.length - left.length);
+    if (!kanaRomajiReadingsCache) {
+        kanaRomajiReadingsCache = new Map(KANA_DATA.filter(kanaQuizEligible).map(item => [item[0], item[1]]));
+        kanaRomajiTokensCache = [...kanaRomajiReadingsCache.keys()].sort((left, right) => right.length - left.length);
+    }
+    const readings = kanaRomajiReadingsCache;
+    const tokens = kanaRomajiTokensCache;
     let result = "";
     for (let index = 0; index < kana.length;) {
         const character = kana[index];
@@ -1693,6 +1709,54 @@ function normalizeContentEntry(entry, forcedType = entry?.type) {
 function invalidateNormalizedContentCaches() {
     normalizedNativeDataCache = null;
     normalizedSlangDataCache = null;
+}
+
+function ensureSlangExpansionsLoaded() {
+    if (slangExpansionsLoaded) return Promise.resolve();
+    if (slangExpansionsLoadPromise) return slangExpansionsLoadPromise;
+
+    slangExpansionsLoadPromise = new Promise((resolve, reject) => {
+        const existing = document.querySelector('script[data-sakura-slang-expansions]');
+        const finish = () => {
+            slangExpansionsLoaded = true;
+            invalidateNormalizedContentCaches();
+            invalidateSearchIndex();
+            invalidateTranslationReadingCandidates();
+            const count = document.getElementById("library-slang-count");
+            if (count && libraryInitialized) count.textContent = slangData().length.toLocaleString();
+            if (currentNativeMode === "slang" && ["learn-slang", "native"].includes(currentRoute)) {
+                refreshNativeCategories();
+                browseNative(1, true);
+            }
+            resolve();
+        };
+        if (existing) {
+            if (existing.dataset.loaded === "true") { finish(); return; }
+            existing.addEventListener("load", finish, { once:true });
+            existing.addEventListener("error", () => reject(new Error("Sakura's extended slang library could not load.")), { once:true });
+            return;
+        }
+
+        const script = document.createElement("script");
+        script.src = "./data/slang-expansions.js?v=6";
+        script.async = true;
+        script.dataset.sakuraSlangExpansions = "true";
+        script.addEventListener("load", () => { script.dataset.loaded = "true"; finish(); }, { once:true });
+        script.addEventListener("error", () => reject(new Error("Sakura's extended slang library could not load.")), { once:true });
+        document.body.appendChild(script);
+    }).catch(error => {
+        slangExpansionsLoadPromise = null;
+        console.warn("Extended slang library remains unavailable; Sakura will keep the core slang set usable.", error);
+        throw error;
+    });
+
+    return slangExpansionsLoadPromise;
+}
+
+function scheduleSlangExpansionsLoad() {
+    const load = () => ensureSlangExpansionsLoaded().catch(() => {});
+    if ("requestIdleCallback" in window) window.requestIdleCallback(load, { timeout:4500 });
+    else window.setTimeout(load, 1200);
 }
 
 function nativeData() {
@@ -4872,8 +4936,14 @@ function relatedLibraryPhrases(english) {
     if (!queryWords.size) return [];
 
     const vocabulary = Array.isArray(window.VOCABULARY_DATA) ? window.VOCABULARY_DATA : [];
+    const seen = new Set();
     const pool = [...nativeData(), ...slangData(), ...vocabulary, ...savedItems]
-        .filter((item, index, array) => array.findIndex(other => itemKey(other) === itemKey(item)) === index);
+        .filter(item => {
+            const key = itemKey(item);
+            if (seen.has(key)) return false;
+            seen.add(key);
+            return true;
+        });
 
     const ranked = pool
         .map(item => {
@@ -4894,6 +4964,288 @@ function relatedLibraryPhrases(english) {
         .map(result => result.item);
 }
 
+
+
+function normalizeTranslationJapanese(value) {
+    return String(value || "")
+        .normalize("NFKC")
+        .replace(/[\u3000\t\r\n ]+/g, "")
+        .trim();
+}
+
+function translationReadingSourceRecord(item) {
+    if (!item || typeof item !== "object") return null;
+    const japanese = cleanEntryText(item.japanese || item.expression || item.word || "");
+    const kana = cleanEntryText(item.kana || item.reading || "");
+    const romaji = cleanEntryText(item.romaji || (kana ? kanaToRomaji(kana) : ""));
+    if (!japanese || (!kana && !romaji)) return null;
+    return { japanese, kana, romaji };
+}
+
+function invalidateTranslationReadingCandidates() {
+    translationReadingCandidatesCache = null;
+    translationReadingCandidateMapCache = null;
+    translationReadingCandidatePrefixCache = null;
+    translationKanjiReadingMapCache = null;
+}
+
+async function ensureTranslationReadingSources() {
+    if (translationReadingSourcePromise) return translationReadingSourcePromise;
+
+    translationReadingSourcePromise = (async () => {
+        const phrasePromise = loadTranslationPhraseData().catch(() => []);
+        const vocabularyPromise = window.SakuraVocabularyLoader?.loadVocabularyLevels
+            ? window.SakuraVocabularyLoader.loadVocabularyLevels(["N5", "N4"]).catch(() => [])
+            : Promise.resolve([]);
+        const kanjiPromise = window.SakuraKanjiLoader?.loadAllKanji
+            ? window.SakuraKanjiLoader.loadAllKanji().catch(() => [])
+            : Promise.resolve(Array.isArray(window.KANJI_DATA) ? window.KANJI_DATA : []);
+
+        const [, vocabulary, kanji] = await Promise.all([phrasePromise, vocabularyPromise, kanjiPromise]);
+        const loadedVocabulary = window.SakuraVocabularyLoader?.getLoadedVocabulary?.();
+        translationReadingVocabulary = Array.isArray(loadedVocabulary) && loadedVocabulary.length
+            ? loadedVocabulary
+            : Array.isArray(vocabulary) ? vocabulary : [];
+        translationReadingKanji = Array.isArray(kanji) ? kanji : [];
+        invalidateTranslationReadingCandidates();
+        return { vocabulary:translationReadingVocabulary, kanji:translationReadingKanji };
+    })().catch(error => {
+        translationReadingSourcePromise = null;
+        throw error;
+    });
+
+    return translationReadingSourcePromise;
+}
+
+function translationReadingCandidates() {
+    if (translationReadingCandidatesCache) return translationReadingCandidatesCache;
+
+    const seen = new Set();
+    const candidates = [];
+    const add = item => {
+        const record = translationReadingSourceRecord(item);
+        if (!record) return;
+        const key = normalizeTranslationJapanese(record.japanese);
+        if (!key || seen.has(key)) return;
+        seen.add(key);
+        candidates.push({ ...record, key });
+    };
+
+    (translationPhraseData || []).forEach(add);
+    translationReadingVocabulary.forEach(add);
+    translationReadingKanji.forEach(item => {
+        (Array.isArray(item?.examples) ? item.examples : []).forEach(example => add({
+            word:example.word, reading:example.reading
+        }));
+        (Array.isArray(item?.commonWords) ? item.commonWords : []).forEach(word => add({
+            word:word.word, reading:word.reading
+        }));
+    });
+    nativeData().forEach(add);
+    slangData().forEach(add);
+    savedItems.forEach(add);
+    translationHistory.forEach(item => add(item?.result));
+
+    candidates.sort((left, right) => right.key.length - left.key.length);
+    translationReadingCandidatesCache = candidates;
+    return candidates;
+}
+
+function translationReadingCandidateMap() {
+    if (translationReadingCandidateMapCache) return translationReadingCandidateMapCache;
+    translationReadingCandidateMapCache = new Map(
+        translationReadingCandidates().map(candidate => [candidate.key, candidate])
+    );
+    return translationReadingCandidateMapCache;
+}
+
+function translationReadingCandidatePrefixes() {
+    if (translationReadingCandidatePrefixCache) return translationReadingCandidatePrefixCache;
+    const grouped = new Map();
+    translationReadingCandidates().forEach(candidate => {
+        const first = candidate.key[0];
+        if (!first) return;
+        if (!grouped.has(first)) grouped.set(first, []);
+        grouped.get(first).push(candidate);
+    });
+    translationReadingCandidatePrefixCache = grouped;
+    return translationReadingCandidatePrefixCache;
+}
+
+function translationKanjiReadingMap() {
+    if (translationKanjiReadingMapCache) return translationKanjiReadingMapCache;
+    const map = new Map();
+    translationReadingKanji.forEach(item => {
+        const character = cleanEntryText(item?.character);
+        const kana = cleanEntryText(item?.reading || item?.kunyomi?.[0] || item?.onyomi?.[0]);
+        const romaji = cleanEntryText(item?.romaji || (kana ? kanaToRomaji(kana) : ""));
+        if (character && (kana || romaji) && !map.has(character)) map.set(character, { kana, romaji });
+    });
+    translationKanjiReadingMapCache = map;
+    return map;
+}
+
+function translationJapaneseSegments(value) {
+    const text = String(value || "").normalize("NFKC");
+    if (!text) return [];
+    try {
+        if (typeof Intl?.Segmenter === "function") {
+            return [...new Intl.Segmenter("ja", { granularity:"word" }).segment(text)].map(item => item.segment);
+        }
+    }
+    catch {}
+    return [...text];
+}
+
+function isJapaneseKanaText(value) {
+    return /^[\u3040-\u30ffー]+$/u.test(String(value || ""));
+}
+
+function isJapanesePunctuation(value) {
+    return /^[\s。、！？「」『』（）［］【】・…〜ー,.!?()\[\]{}:;'"\-]+$/u.test(String(value || ""));
+}
+
+function formatGeneratedRomaji(parts) {
+    return parts
+        .filter(part => part !== "")
+        .join(" ")
+        .replace(/\s+([。、！？,.!?;:])/g, "$1")
+        .replace(/([「『（［【(\[])\s+/g, "$1")
+        .replace(/\s+([」』）］】)\]])/g, "$1")
+        .replace(/\s{2,}/g, " ")
+        .trim();
+}
+
+function generateTranslationReading(japanese) {
+    const text = cleanEntryText(japanese);
+    if (!text) return null;
+
+    const exactKey = normalizeTranslationJapanese(text);
+    const candidateMap = translationReadingCandidateMap();
+    const candidatePrefixes = translationReadingCandidatePrefixes();
+    const exact = candidateMap.get(exactKey);
+    if (exact?.romaji) {
+        return { kana:exact.kana, romaji:exact.romaji, confidence:"library" };
+    }
+
+    const kanjiMap = translationKanjiReadingMap();
+    const kanaParts = [];
+    const romajiParts = [];
+    let usedKanjiFallback = false;
+    let unresolvedKanji = false;
+
+    const resolveChunk = chunk => {
+        const chunkKey = normalizeTranslationJapanese(chunk);
+        if (!chunkKey) return;
+
+        const direct = candidateMap.get(chunkKey);
+        if (direct) {
+            kanaParts.push(direct.kana || chunk);
+            romajiParts.push(direct.romaji || kanaToRomaji(direct.kana || chunk));
+            return;
+        }
+
+        if (isJapaneseKanaText(chunk)) {
+            kanaParts.push(chunk);
+            romajiParts.push(kanaToRomaji(chunk));
+            return;
+        }
+
+        if (isJapanesePunctuation(chunk) || /^[\p{L}\p{N}]+$/u.test(chunk) && !/[\u3400-\u9fff]/u.test(chunk)) {
+            kanaParts.push(chunk);
+            romajiParts.push(chunk);
+            return;
+        }
+
+        let index = 0;
+        while (index < chunk.length) {
+            const remaining = chunk.slice(index);
+            const remainingKey = normalizeTranslationJapanese(remaining);
+            const match = (candidatePrefixes.get(remainingKey[0]) || [])
+                .find(candidate => candidate.key.length > 1 && remainingKey.startsWith(candidate.key));
+            if (match && remaining.startsWith(match.japanese)) {
+                kanaParts.push(match.kana || match.japanese);
+                romajiParts.push(match.romaji || kanaToRomaji(match.kana || match.japanese));
+                index += match.japanese.length;
+                continue;
+            }
+
+            const character = chunk[index];
+            if (isJapaneseKanaText(character)) {
+                let end = index + 1;
+                while (end < chunk.length && isJapaneseKanaText(chunk[end])) end += 1;
+                const kanaRun = chunk.slice(index, end);
+                kanaParts.push(kanaRun);
+                romajiParts.push(kanaToRomaji(kanaRun));
+                index = end;
+                continue;
+            }
+
+            if (/[\u3400-\u9fff]/u.test(character)) {
+                const reading = kanjiMap.get(character);
+                if (reading) {
+                    kanaParts.push(reading.kana || character);
+                    romajiParts.push(reading.romaji || kanaToRomaji(reading.kana));
+                    usedKanjiFallback = true;
+                }
+                else {
+                    kanaParts.push(character);
+                    unresolvedKanji = true;
+                }
+                index += 1;
+                continue;
+            }
+
+            kanaParts.push(character);
+            romajiParts.push(character);
+            index += 1;
+        }
+    };
+
+    translationJapaneseSegments(text).forEach(resolveChunk);
+    const romaji = unresolvedKanji ? "" : formatGeneratedRomaji(romajiParts);
+    if (!romaji) return null;
+
+    return {
+        kana:kanaParts.join(" ").replace(/\s+([。、！？,.!?])/g, "$1").replace(/\s{2,}/g, " ").trim(),
+        romaji,
+        confidence:usedKanjiFallback ? "approximate" : "generated"
+    };
+}
+
+async function enrichOnlineTranslationReading(result) {
+    if (!result || !String(result.source || "").startsWith("online") || result.romaji) return result;
+    await ensureTranslationReadingSources();
+    let reading = generateTranslationReading(result.japanese);
+
+    // N3 is the only large extra vocabulary pack. Load it only when the fast
+    // beginner/common pass cannot produce a reliable contextual reading.
+    if ((!reading?.romaji || reading.confidence === "approximate") && window.SakuraVocabularyLoader?.loadVocabularyLevel) {
+        const loadedLevels = new Set(window.SakuraVocabularyLoader.getLoadedVocabularyLevels?.() || []);
+        if (!loadedLevels.has("N3")) {
+            try {
+                await window.SakuraVocabularyLoader.loadVocabularyLevel("N3");
+                translationReadingVocabulary = window.SakuraVocabularyLoader.getLoadedVocabulary?.() || translationReadingVocabulary;
+                invalidateTranslationReadingCandidates();
+                const upgraded = generateTranslationReading(result.japanese);
+                if (upgraded?.romaji && upgraded.confidence !== "approximate") reading = upgraded;
+                else if (!reading?.romaji && upgraded?.romaji) reading = upgraded;
+            }
+            catch (error) {
+                console.info("Romaji enrichment: N3 vocabulary remained unavailable; keeping the lighter reading pass.", error);
+            }
+        }
+    }
+
+    if (!reading?.romaji) return result;
+    Object.assign(result, {
+        kana:reading.kana || result.kana || "",
+        romaji:reading.romaji,
+        readingConfidence:reading.confidence
+    });
+    translationOnlineCache.set(onlineTranslationCacheKey(result.naturalMeaning), result);
+    return result;
+}
 
 function onlineTranslationByteLength(value) {
     try {
@@ -5077,6 +5429,7 @@ function validateTranslationResponse(data) {
         throw new Error("The translation service returned an incomplete response.");
     }
     return {
+        id:`online-secure-${Date.now().toString(36)}`,
         japanese:cleanEntryText(data.japanese),
         kana:cleanEntryText(data.kana),
         romaji:cleanEntryText(data.romaji),
@@ -5203,7 +5556,7 @@ function renderTranslationSuggestions(results, libraryMatches = []) {
     `).join("");
 }
 
-function renderTranslationResult(result) {
+function renderTranslationResult(result, options = {}) {
     if (result && !result.id) result.id = `translation-${searchText(result.japanese).slice(0,30)}-${Date.now().toString(36)}`;
     currentTranslationResult = result;
     const card = document.getElementById("translation-result");
@@ -5229,7 +5582,24 @@ function renderTranslationResult(result) {
     romaji.textContent = result.romaji || "";
     kana.hidden = !result.kana;
     romaji.hidden = !result.romaji;
-    if (readingNote) readingNote.hidden = Boolean(result.kana || result.romaji) || !String(result.source || "").startsWith("online");
+    if (readingNote) {
+        const isOnline = String(result.source || "").startsWith("online");
+        if (!isOnline || result.readingConfidence === "library") {
+            readingNote.hidden = true;
+        }
+        else if (result.romaji && result.readingConfidence === "approximate") {
+            readingNote.hidden = false;
+            readingNote.textContent = "Romaji is auto-generated from Sakura's local reading data. Kanji readings can change with context, so verify important wording.";
+        }
+        else if (result.romaji) {
+            readingNote.hidden = false;
+            readingNote.textContent = "Romaji was generated locally from Sakura's reading data.";
+        }
+        else {
+            readingNote.hidden = false;
+            readingNote.textContent = "Generating romaji… Japanese is ready now.";
+        }
+    }
 
     document.getElementById("translation-natural-meaning").textContent = result.naturalMeaning;
     document.getElementById("translation-literal-meaning").textContent = result.literalMeaning;
@@ -5247,6 +5617,13 @@ function renderTranslationResult(result) {
     const savedItem = translationResultItem(result);
     setSaveButton(document.getElementById("save-translation"), savedItem);
     document.getElementById("save-translation").textContent = isSaved(savedItem) ? "Saved" : "Save";
+
+    if (options.focus) {
+        requestAnimationFrame(() => {
+            const reducedMotion = window.matchMedia?.("(prefers-reduced-motion: reduce)")?.matches;
+            card.scrollIntoView({ behavior:reducedMotion ? "auto" : "smooth", block:"start" });
+        });
+    }
 }
 
 function translationResultItem(result = currentTranslationResult) {
@@ -5283,6 +5660,7 @@ function addTranslationHistory(request, result) {
         ...translationHistory.filter(item => searchText(item.english) !== searchText(request.english))
     ].slice(0, 20);
     writeJson(STORAGE.translationHistory, translationHistory);
+    invalidateTranslationReadingCandidates();
     renderTranslationHistory();
 }
 
@@ -5339,15 +5717,34 @@ async function requestTranslation(event) {
             try {
                 const result = await requestOnlineTranslation(request);
                 renderTranslationSuggestions([]);
-                renderTranslationResult(result);
-                addTranslationHistory(request, result);
-                message.textContent = result.cached ? "Loaded from your recent online translations." : "Online translation complete.";
+                renderTranslationResult(result, { focus:true });
+                message.textContent = result.romaji
+                    ? (result.cached ? "Loaded from your recent online translations." : "Online translation complete.")
+                    : "Online translation complete. Generating romaji…";
+
+                const resultId = result.id;
+                void enrichOnlineTranslationReading(result)
+                    .then(enriched => {
+                        if (currentTranslationResult?.id === resultId) {
+                            renderTranslationResult(enriched);
+                            message.textContent = enriched.romaji
+                                ? "Online translation complete · romaji ready."
+                                : "Online translation complete. Romaji could not be generated reliably for this sentence.";
+                        }
+                        addTranslationHistory(request, enriched);
+                    })
+                    .catch(() => {
+                        if (currentTranslationResult?.id === resultId) {
+                            message.textContent = "Online translation complete. Romaji could not be generated reliably for this sentence.";
+                        }
+                        addTranslationHistory(request, result);
+                    });
             }
             catch (onlineError) {
                 const fallback = await offlineFallbackForOnlineTranslation(request);
                 if (fallback) {
                     renderTranslationSuggestions([]);
-                    renderTranslationResult(fallback);
+                    renderTranslationResult(fallback, { focus:true });
                     message.textContent = `${onlineError.message || "The online translator is unavailable."} Showing Sakura's closest offline phrase instead.`;
                 }
                 else {
@@ -5371,7 +5768,7 @@ async function requestTranslation(event) {
         }
 
         const result = offlinePhraseResult(ranked[0].record, ranked.slice(1).map(item => item.record));
-        renderTranslationResult(result);
+        renderTranslationResult(result, { focus:true });
         addTranslationHistory(request, result);
         message.textContent = ranked.length > 1
             ? "Best offline match shown. You can choose another suggestion below."
@@ -7189,8 +7586,16 @@ function showRoute(route, updateHash = true) {
     chibiContextReaction(normalizedRoute);
     if (normalizedRoute === "home") renderDailyProgress();
     if (normalizedRoute === "saved") renderSavedItems();
-    if (normalizedRoute === "library") initializeLibrary();
-    if (normalizedRoute === "search") buildSearchIndex();
+    if (normalizedRoute === "library") {
+        initializeLibrary();
+        ensureSlangExpansionsLoaded().catch(() => {});
+    }
+    if (normalizedRoute === "search") {
+        buildSearchIndex();
+        ensureSlangExpansionsLoaded()
+            .then(() => { if (currentRoute === "search") renderSearchResults(); })
+            .catch(() => {});
+    }
     if (normalizedRoute === "practice-what-would-you-say") openWhatWouldYouSay();
     if (normalizedRoute === "practice-sentence-builder") openSentenceBuilder();
     if (normalizedRoute === "practice-one-line-many-personalities") openPersonalitiesPractice();
@@ -7203,6 +7608,7 @@ function showRoute(route, updateHash = true) {
     if (normalizedRoute === "translate") openTranslationTool();
     if (nativeMode) {
         currentNativeMode = nativeMode;
+        if (nativeMode === "slang") ensureSlangExpansionsLoaded().catch(() => {});
         document.getElementById("native-heading").textContent = nativeMode === "slang" ? "Slang" : "Native Japanese";
         document.querySelector(".native-page-heading p").textContent = nativeMode === "slang" ? "Current expressions, online language, and casual slang." : "Everyday expressions and natural Japanese.";
         refreshNativeCategories();
@@ -8502,6 +8908,7 @@ function initializeApp() {
     showQuizTab(localStorage.getItem(STORAGE.activeQuiz) || "kana");
     browseNative(1, true);
     updateSavedUi();
+    scheduleSlangExpansionsLoad();
     const requestedRoute = location.hash.replace("#", "");
     const travelRoutes = Object.keys(window.TRAVEL_CATEGORIES || {}).map(category => `travel-${category}`);
     const validDeckRoute = /^travel-deck-deck-.+/.test(requestedRoute);

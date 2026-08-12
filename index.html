@@ -11,7 +11,7 @@
     <script>try { document.documentElement.dataset.theme = localStorage.getItem("sakuraAppearanceTheme") || "pink"; } catch (error) { document.documentElement.dataset.theme = "pink"; }</script>
     <link rel="manifest" href="manifest.webmanifest">
     <link rel="apple-touch-icon" href="icons/icon-180.png">
-    <link rel="stylesheet" href="style.css?v=71">
+    <link rel="stylesheet" href="style.css?v=72">
     <style id="sakura-ux-v85">
         .home-daily-heading{align-items:center}.home-study-level-button{flex:0 0 auto;min-height:42px;padding:7px 10px;display:grid;grid-template-columns:auto auto;grid-template-areas:"small arrow" "strong arrow";column-gap:8px;align-items:center;border:1px solid color-mix(in srgb,var(--color-primary) 22%,var(--color-border));border-radius:13px;background:var(--color-primary-soft);color:var(--color-primary-dark);text-align:left}.home-study-level-button small{grid-area:small;color:var(--color-text-muted);font-size:8px;font-weight:750}.home-study-level-button strong{grid-area:strong;max-width:110px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:11px}.home-study-level-button>span{grid-area:arrow;font-size:14px}.home-study-level-card{max-width:430px}.home-study-level-card>p{margin:4px 0 12px;color:var(--color-text-muted);font-size:11px;line-height:1.5}.home-study-level-card .selection-summary{display:block;margin-bottom:8px}.home-study-level-chips{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px;margin-bottom:14px}.home-study-level-chips .level-chip span,.home-study-level-chips .all-level-button{width:100%;min-width:0;min-height:42px}
         #travel-rail-view{padding-bottom:calc(150px + env(safe-area-inset-bottom))}.rail-route-options-wrap{display:grid;gap:7px;padding:10px;border:1px solid var(--color-border);border-radius:15px;background:color-mix(in srgb,var(--color-surface) 92%,var(--color-primary-soft))}.rail-route-options-heading{display:flex;align-items:center;justify-content:space-between;gap:8px}.rail-route-options-heading small{color:var(--color-text-muted);font-size:8px}.rail-route-options{display:grid;gap:7px}.rail-route-option{width:100%;min-width:0;padding:9px 10px;display:grid;grid-template-columns:auto minmax(0,1fr);grid-template-areas:"label code" "meta meta" "lines lines";gap:2px 8px;align-items:center;border:1px solid var(--color-border);border-radius:13px;background:var(--color-background);color:var(--color-text);text-align:left}.rail-route-option.active{border-color:var(--color-primary);background:var(--color-primary-soft);box-shadow:0 0 0 1px color-mix(in srgb,var(--color-primary) 22%,transparent)}.rail-route-option-label{grid-area:label;width:max-content;padding:3px 7px;border-radius:999px;background:var(--color-surface);color:var(--color-primary-dark);font-size:8px;font-weight:900}.rail-route-option strong{grid-area:code;min-width:0;font-size:11px;overflow-wrap:anywhere}.rail-route-option small{grid-area:meta;color:var(--color-text-muted);font-size:8px}.rail-route-option em{grid-area:lines;color:var(--color-text-muted);font-size:8px;font-style:normal;line-height:1.35;overflow-wrap:anywhere}.rail-network-stops{margin-top:6px}.rail-network-stops summary{width:max-content;max-width:100%;padding:5px 8px;border:1px solid var(--color-border);border-radius:999px;background:var(--color-surface);color:var(--color-primary-dark);cursor:pointer;font-size:8px;font-weight:850;list-style:none}.rail-network-stops summary::-webkit-details-marker{display:none}.rail-network-stops summary::after{content:"  ▾"}.rail-network-stops[open] summary::after{content:"  ▴"}.rail-network-stops .rail-network-station-trail{margin-top:6px}.rail-network-service-note{display:block;margin-top:6px;padding:7px 8px;border-radius:10px;background:var(--color-primary-soft);color:var(--color-text-muted);font-size:8px;line-height:1.45}@media(max-width:350px){.home-study-level-button{padding:7px 8px}.home-study-level-button strong{max-width:82px}.home-study-level-chips{grid-template-columns:repeat(2,minmax(0,1fr))}}
@@ -575,6 +575,25 @@
                     <span>Searches Sakura's curated phrase library. It does not pretend to translate arbitrary English.</span>
                 </div>
 
+                <article id="translation-result" class="translation-result-card" hidden>
+                    <span id="translation-result-label" class="status-label">Offline Sakura phrase</span>
+                    <h2 id="translation-japanese"></h2>
+                    <p id="translation-kana" class="native-reading"></p>
+                    <p id="translation-romaji"></p>
+                    <p id="translation-reading-note" class="translation-reading-note" hidden>Generating romaji… Japanese is ready now.</p>
+                    <div class="translation-result-details">
+                        <div><strong>Natural meaning</strong><p id="translation-natural-meaning"></p></div>
+                        <div id="translation-literal-group"><strong>Literal meaning</strong><p id="translation-literal-meaning"></p></div>
+                        <div><strong>Tone &amp; usage</strong><p id="translation-usage"></p></div>
+                        <div id="translation-alternative-group"><strong>Alternative</strong><p id="translation-alternative"></p></div>
+                    </div>
+                    <div class="translation-result-actions">
+                        <button id="copy-translation" class="secondary-button" type="button">Copy Japanese</button>
+                        <button id="copy-translation-reading" class="secondary-button" type="button">Copy + Reading</button>
+                        <button id="save-translation" class="primary-button" type="button">Save</button>
+                    </div>
+                </article>
+
                 <form id="translation-form" class="translation-form">
                     <label>English sentence
                         <textarea id="translation-english" maxlength="500" placeholder="Can you keep my luggage until check-in?"></textarea>
@@ -588,25 +607,6 @@
                     </div>
                     <p id="translation-message" class="form-message" role="status"></p>
                 </form>
-
-                <article id="translation-result" class="translation-result-card" hidden>
-                    <span id="translation-result-label" class="status-label">Offline Sakura phrase</span>
-                    <h2 id="translation-japanese"></h2>
-                    <p id="translation-kana" class="native-reading"></p>
-                    <p id="translation-romaji"></p>
-                    <p id="translation-reading-note" class="translation-reading-note" hidden>Reading is not generated for arbitrary online machine translations yet. Copy Japanese still works.</p>
-                    <div class="translation-result-details">
-                        <div><strong>Natural meaning</strong><p id="translation-natural-meaning"></p></div>
-                        <div id="translation-literal-group"><strong>Literal meaning</strong><p id="translation-literal-meaning"></p></div>
-                        <div><strong>Tone &amp; usage</strong><p id="translation-usage"></p></div>
-                        <div id="translation-alternative-group"><strong>Alternative</strong><p id="translation-alternative"></p></div>
-                    </div>
-                    <div class="translation-result-actions">
-                        <button id="copy-translation" class="secondary-button" type="button">Copy Japanese</button>
-                        <button id="copy-translation-reading" class="secondary-button" type="button">Copy + Reading</button>
-                        <button id="save-translation" class="primary-button" type="button">Save</button>
-                    </div>
-                </article>
 
                 <section id="translation-suggestions-section" class="translation-suggestions-section" hidden>
                     <div class="search-filter-heading"><h2>Other offline matches</h2><span>Tap to use</span></div>
@@ -1107,7 +1107,6 @@
     <script src="data/vocabulary.js?v=6"></script>
     <script src="data/native-japanese.js?v=2"></script>
     <script src="data/slang.js?v=2"></script>
-    <script src="data/slang-expansions.js?v=6"></script>
     <script src="data/travel.js?v=4"></script>
     <script src="data/kanji.js?v=20"></script>
 </body>
