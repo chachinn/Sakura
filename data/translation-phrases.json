@@ -1,0 +1,1233 @@
+[
+  {
+    "id": "everyday-dont-understand",
+    "contexts": [
+      "Everyday",
+      "Friends",
+      "Other"
+    ],
+    "tones": [
+      "Polite and natural",
+      "Casual"
+    ],
+    "english": "I don't understand.",
+    "patterns": [
+      "i don't understand",
+      "i do not understand",
+      "i'm not sure i understand"
+    ],
+    "keywords": [
+      "understand",
+      "understood",
+      "confused"
+    ],
+    "japanese": "よく分かりません。",
+    "kana": "よく わかりません。",
+    "romaji": "yoku wakarimasen.",
+    "naturalMeaning": "I don't really understand.",
+    "literalMeaning": "I don't understand well.",
+    "tone": "Polite and natural",
+    "usageNote": "A safe, natural way to say you do not understand."
+  },
+  {
+    "id": "everyday-say-again",
+    "contexts": [
+      "Everyday",
+      "Travel",
+      "Train",
+      "Workplace"
+    ],
+    "tones": [
+      "Polite and natural",
+      "Very polite"
+    ],
+    "english": "Could you say that again?",
+    "patterns": [
+      "could you say that again",
+      "please say that again",
+      "can you repeat that",
+      "could you repeat that"
+    ],
+    "keywords": [
+      "repeat",
+      "again",
+      "say"
+    ],
+    "japanese": "もう一度言っていただけますか？",
+    "kana": "もう いちど いって いただけますか？",
+    "romaji": "mou ichido itte itadakemasu ka?",
+    "naturalMeaning": "Could you say that one more time?",
+    "literalMeaning": "Could I have you say it once more?",
+    "tone": "Very polite",
+    "usageNote": "Polite and useful with staff, strangers, or in formal situations."
+  },
+  {
+    "id": "everyday-slower",
+    "contexts": [
+      "Everyday",
+      "Travel",
+      "Workplace"
+    ],
+    "tones": [
+      "Polite and natural",
+      "Very polite"
+    ],
+    "english": "Could you speak more slowly?",
+    "patterns": [
+      "could you speak more slowly",
+      "please speak slowly",
+      "can you speak slower",
+      "speak slowly please"
+    ],
+    "keywords": [
+      "slow",
+      "slowly",
+      "speak"
+    ],
+    "japanese": "もう少しゆっくり話していただけますか？",
+    "kana": "もう すこし ゆっくり はなして いただけますか？",
+    "romaji": "mou sukoshi yukkuri hanashite itadakemasu ka?",
+    "naturalMeaning": "Could you speak a little more slowly?",
+    "literalMeaning": "Could I have you speak a little more slowly?",
+    "tone": "Very polite",
+    "usageNote": "Natural when asking someone to slow down their Japanese."
+  },
+  {
+    "id": "everyday-japanese-little",
+    "contexts": [
+      "Everyday",
+      "Friends",
+      "Travel"
+    ],
+    "tones": [
+      "Polite and natural",
+      "Casual"
+    ],
+    "english": "I only speak a little Japanese.",
+    "patterns": [
+      "i only speak a little japanese",
+      "i speak a little japanese",
+      "my japanese is limited"
+    ],
+    "keywords": [
+      "japanese",
+      "speak",
+      "little"
+    ],
+    "japanese": "日本語は少しだけ話せます。",
+    "kana": "にほんごは すこしだけ はなせます。",
+    "romaji": "nihongo wa sukoshi dake hanasemasu.",
+    "naturalMeaning": "I can only speak a little Japanese.",
+    "literalMeaning": "As for Japanese, I can speak only a little.",
+    "tone": "Polite and natural",
+    "usageNote": "A friendly way to set expectations without sounding overly negative."
+  },
+  {
+    "id": "everyday-thank-help",
+    "contexts": [
+      "Everyday",
+      "Travel",
+      "Workplace"
+    ],
+    "tones": [
+      "Polite and natural",
+      "Very polite"
+    ],
+    "english": "Thank you for your help.",
+    "patterns": [
+      "thank you for your help",
+      "thanks for helping me",
+      "thank you for helping"
+    ],
+    "keywords": [
+      "thank",
+      "help",
+      "helping"
+    ],
+    "japanese": "助けていただいて、ありがとうございます。",
+    "kana": "たすけて いただいて、ありがとうございます。",
+    "romaji": "tasukete itadaite, arigatou gozaimasu.",
+    "naturalMeaning": "Thank you very much for helping me.",
+    "literalMeaning": "Thank you for having helped me.",
+    "tone": "Very polite",
+    "usageNote": "Warm and polite when someone has helped you."
+  },
+  {
+    "id": "travel-nearest-station",
+    "contexts": [
+      "Travel",
+      "Train"
+    ],
+    "tones": [
+      "Polite and natural"
+    ],
+    "english": "Where is the nearest station?",
+    "patterns": [
+      "where is the nearest station",
+      "nearest train station",
+      "closest station"
+    ],
+    "keywords": [
+      "nearest",
+      "closest",
+      "station"
+    ],
+    "japanese": "一番近い駅はどこですか？",
+    "kana": "いちばん ちかい えきは どこですか？",
+    "romaji": "ichiban chikai eki wa doko desu ka?",
+    "naturalMeaning": "Where is the nearest station?",
+    "literalMeaning": "Where is the station that is closest?",
+    "tone": "Polite and natural",
+    "usageNote": "Useful when asking for the closest railway or subway station."
+  },
+  {
+    "id": "travel-how-get-there",
+    "contexts": [
+      "Travel",
+      "Train"
+    ],
+    "tones": [
+      "Polite and natural"
+    ],
+    "english": "How do I get there?",
+    "patterns": [
+      "how do i get there",
+      "how can i get there",
+      "what is the best way to get there"
+    ],
+    "keywords": [
+      "get",
+      "there",
+      "way",
+      "directions"
+    ],
+    "japanese": "そこへはどうやって行けばいいですか？",
+    "kana": "そこへは どうやって いけば いいですか？",
+    "romaji": "soko e wa dou yatte ikeba ii desu ka?",
+    "naturalMeaning": "How should I get there?",
+    "literalMeaning": "How would it be good to go there?",
+    "tone": "Polite and natural",
+    "usageNote": "General-purpose question for asking how to reach a place."
+  },
+  {
+    "id": "travel-is-this-right-way",
+    "contexts": [
+      "Travel",
+      "Train"
+    ],
+    "tones": [
+      "Polite and natural"
+    ],
+    "english": "Is this the right way?",
+    "patterns": [
+      "is this the right way",
+      "am i going the right way",
+      "is this direction correct"
+    ],
+    "keywords": [
+      "right",
+      "way",
+      "direction"
+    ],
+    "japanese": "この道で合っていますか？",
+    "kana": "この みちで あっていますか？",
+    "romaji": "kono michi de atte imasu ka?",
+    "naturalMeaning": "Is this the right way?",
+    "literalMeaning": "Is it correct with this road/route?",
+    "tone": "Polite and natural",
+    "usageNote": "Natural when confirming that you are heading in the correct direction."
+  },
+  {
+    "id": "travel-taxi-destination",
+    "contexts": [
+      "Travel",
+      "Other"
+    ],
+    "tones": [
+      "Polite and natural"
+    ],
+    "english": "Please take me here.",
+    "patterns": [
+      "please take me here",
+      "take me to this place",
+      "please go here"
+    ],
+    "keywords": [
+      "take",
+      "here",
+      "taxi"
+    ],
+    "japanese": "ここまでお願いします。",
+    "kana": "ここまで おねがいします。",
+    "romaji": "koko made onegai shimasu.",
+    "naturalMeaning": "Please take me here.",
+    "literalMeaning": "Up to here, please.",
+    "tone": "Polite and natural",
+    "usageNote": "Very useful in a taxi while showing the destination on your phone."
+  },
+  {
+    "id": "train-does-this-go",
+    "contexts": [
+      "Train",
+      "Travel"
+    ],
+    "tones": [
+      "Polite and natural"
+    ],
+    "english": "Does this train go to this station?",
+    "patterns": [
+      "does this train go to this station",
+      "does this train go there",
+      "will this train take me to this station"
+    ],
+    "keywords": [
+      "train",
+      "go",
+      "station"
+    ],
+    "japanese": "この電車はこの駅に行きますか？",
+    "kana": "この でんしゃは この えきに いきますか？",
+    "romaji": "kono densha wa kono eki ni ikimasu ka?",
+    "naturalMeaning": "Does this train go to this station?",
+    "literalMeaning": "Does this train go to this station?",
+    "tone": "Polite and natural",
+    "usageNote": "Show the station name on your phone while asking."
+  },
+  {
+    "id": "train-which-platform",
+    "contexts": [
+      "Train",
+      "Travel"
+    ],
+    "tones": [
+      "Polite and natural"
+    ],
+    "english": "Which platform should I use?",
+    "patterns": [
+      "which platform should i use",
+      "what platform",
+      "which platform is it"
+    ],
+    "keywords": [
+      "platform",
+      "track"
+    ],
+    "japanese": "何番ホームですか？",
+    "kana": "なんばん ホームですか？",
+    "romaji": "nanban hoomu desu ka?",
+    "naturalMeaning": "Which platform is it?",
+    "literalMeaning": "What-number platform is it?",
+    "tone": "Polite and natural",
+    "usageNote": "A concise, natural station question."
+  },
+  {
+    "id": "train-need-transfer",
+    "contexts": [
+      "Train",
+      "Travel"
+    ],
+    "tones": [
+      "Polite and natural"
+    ],
+    "english": "Do I need to transfer?",
+    "patterns": [
+      "do i need to transfer",
+      "is a transfer required",
+      "do i have to change trains"
+    ],
+    "keywords": [
+      "transfer",
+      "change",
+      "trains"
+    ],
+    "japanese": "乗り換えは必要ですか？",
+    "kana": "のりかえは ひつようですか？",
+    "romaji": "norikae wa hitsuyou desu ka?",
+    "naturalMeaning": "Do I need to transfer?",
+    "literalMeaning": "Is a transfer necessary?",
+    "tone": "Polite and natural",
+    "usageNote": "Use this to confirm whether you can stay on the same train."
+  },
+  {
+    "id": "train-last-train",
+    "contexts": [
+      "Train",
+      "Travel"
+    ],
+    "tones": [
+      "Polite and natural"
+    ],
+    "english": "What time is the last train?",
+    "patterns": [
+      "what time is the last train",
+      "when is the last train",
+      "last train time"
+    ],
+    "keywords": [
+      "last",
+      "train",
+      "time"
+    ],
+    "japanese": "終電は何時ですか？",
+    "kana": "しゅうでんは なんじですか？",
+    "romaji": "shuuden wa nanji desu ka?",
+    "naturalMeaning": "What time is the last train?",
+    "literalMeaning": "What time is the last train?",
+    "tone": "Polite and natural",
+    "usageNote": "終電 (shuuden) is the standard word for the last train of the day."
+  },
+  {
+    "id": "hotel-luggage-until-checkin-polite",
+    "contexts": [
+      "Hotel",
+      "Travel"
+    ],
+    "tones": [
+      "Polite and natural"
+    ],
+    "english": "Could you keep my luggage until check-in?",
+    "patterns": [
+      "could you keep my luggage until check in",
+      "can you keep my luggage until check in",
+      "leave my luggage until check in",
+      "store my luggage before check in",
+      "hold my bags until check in"
+    ],
+    "keywords": [
+      "luggage",
+      "bags",
+      "check-in",
+      "checkin",
+      "store",
+      "keep",
+      "leave"
+    ],
+    "japanese": "チェックインまで荷物を預かってもらえますか？",
+    "kana": "チェックインまで にもつを あずかって もらえますか？",
+    "romaji": "chekku-in made nimotsu o azukatte moraemasu ka?",
+    "naturalMeaning": "Could you keep my luggage until check-in?",
+    "literalMeaning": "Could I have you look after my luggage until check-in?",
+    "tone": "Polite and natural",
+    "usageNote": "Natural at a hotel front desk. 預かる is commonly used for temporarily holding belongings."
+  },
+  {
+    "id": "hotel-luggage-until-checkin-very-polite",
+    "contexts": [
+      "Hotel",
+      "Travel"
+    ],
+    "tones": [
+      "Very polite"
+    ],
+    "english": "Could you keep my luggage until check-in?",
+    "patterns": [
+      "could you keep my luggage until check in",
+      "can you store my luggage before check in",
+      "would you keep my bags until check in"
+    ],
+    "keywords": [
+      "luggage",
+      "bags",
+      "check-in",
+      "checkin",
+      "store",
+      "keep"
+    ],
+    "japanese": "チェックインまで荷物を預かっていただけますか？",
+    "kana": "チェックインまで にもつを あずかって いただけますか？",
+    "romaji": "chekku-in made nimotsu o azukatte itadakemasu ka?",
+    "naturalMeaning": "Could you keep my luggage until check-in?",
+    "literalMeaning": "Could I have you look after my luggage until check-in?",
+    "tone": "Very polite",
+    "usageNote": "A slightly more formal version, suitable for hotel staff."
+  },
+  {
+    "id": "hotel-luggage-after-checkout",
+    "contexts": [
+      "Hotel",
+      "Travel"
+    ],
+    "tones": [
+      "Polite and natural",
+      "Very polite"
+    ],
+    "english": "Could you keep my luggage after check-out?",
+    "patterns": [
+      "could you keep my luggage after check out",
+      "leave luggage after checkout",
+      "store bags after check out"
+    ],
+    "keywords": [
+      "luggage",
+      "bags",
+      "check-out",
+      "checkout",
+      "after",
+      "store"
+    ],
+    "japanese": "チェックアウト後も荷物を預かってもらえますか？",
+    "kana": "チェックアウトごも にもつを あずかって もらえますか？",
+    "romaji": "chekku-auto go mo nimotsu o azukatte moraemasu ka?",
+    "naturalMeaning": "Could you keep my luggage after check-out too?",
+    "literalMeaning": "Could I have you look after my luggage even after check-out?",
+    "tone": "Polite and natural",
+    "usageNote": "Natural when asking the hotel to hold luggage after you check out."
+  },
+  {
+    "id": "hotel-checkin-early",
+    "contexts": [
+      "Hotel",
+      "Travel"
+    ],
+    "tones": [
+      "Polite and natural"
+    ],
+    "english": "Can I check in early?",
+    "patterns": [
+      "can i check in early",
+      "is early check in possible",
+      "early check in"
+    ],
+    "keywords": [
+      "early",
+      "check-in",
+      "checkin"
+    ],
+    "japanese": "早めにチェックインできますか？",
+    "kana": "はやめに チェックイン できますか？",
+    "romaji": "hayame ni chekku-in dekimasu ka?",
+    "naturalMeaning": "Can I check in early?",
+    "literalMeaning": "Is it possible to check in early?",
+    "tone": "Polite and natural",
+    "usageNote": "A straightforward way to ask about early check-in."
+  },
+  {
+    "id": "hotel-wifi-password",
+    "contexts": [
+      "Hotel",
+      "Café",
+      "Travel"
+    ],
+    "tones": [
+      "Polite and natural"
+    ],
+    "english": "What is the Wi-Fi password?",
+    "patterns": [
+      "what is the wifi password",
+      "wifi password please",
+      "what's the wi fi password"
+    ],
+    "keywords": [
+      "wifi",
+      "wi-fi",
+      "password"
+    ],
+    "japanese": "Wi-Fiのパスワードは何ですか？",
+    "kana": "ワイファイの パスワードは なんですか？",
+    "romaji": "waifai no pasuwaado wa nan desu ka?",
+    "naturalMeaning": "What is the Wi-Fi password?",
+    "literalMeaning": "What is the Wi-Fi password?",
+    "tone": "Polite and natural",
+    "usageNote": "Suitable at hotels, cafés, or other venues."
+  },
+  {
+    "id": "restaurant-table-two",
+    "contexts": [
+      "Restaurant"
+    ],
+    "tones": [
+      "Polite and natural"
+    ],
+    "english": "A table for two, please.",
+    "patterns": [
+      "a table for two please",
+      "table for two",
+      "two people please"
+    ],
+    "keywords": [
+      "table",
+      "two",
+      "people"
+    ],
+    "japanese": "二人です。",
+    "kana": "ふたりです。",
+    "romaji": "futari desu.",
+    "naturalMeaning": "There are two of us.",
+    "literalMeaning": "We are two people.",
+    "tone": "Polite and natural",
+    "usageNote": "At a restaurant entrance, simply saying the number of people is natural."
+  },
+  {
+    "id": "restaurant-recommend",
+    "contexts": [
+      "Restaurant",
+      "Café"
+    ],
+    "tones": [
+      "Polite and natural"
+    ],
+    "english": "What do you recommend?",
+    "patterns": [
+      "what do you recommend",
+      "what is your recommendation",
+      "what's good here"
+    ],
+    "keywords": [
+      "recommend",
+      "recommendation",
+      "good"
+    ],
+    "japanese": "おすすめは何ですか？",
+    "kana": "おすすめは なんですか？",
+    "romaji": "osusume wa nan desu ka?",
+    "naturalMeaning": "What do you recommend?",
+    "literalMeaning": "What is the recommendation?",
+    "tone": "Polite and natural",
+    "usageNote": "Very common and natural at restaurants and cafés."
+  },
+  {
+    "id": "restaurant-no-onions",
+    "contexts": [
+      "Restaurant"
+    ],
+    "tones": [
+      "Polite and natural"
+    ],
+    "english": "No onions, please.",
+    "patterns": [
+      "no onions please",
+      "without onions",
+      "please don't add onions"
+    ],
+    "keywords": [
+      "onions",
+      "onion",
+      "without",
+      "no"
+    ],
+    "japanese": "玉ねぎ抜きでお願いします。",
+    "kana": "たまねぎ ぬきで おねがいします。",
+    "romaji": "tamanegi nuki de onegai shimasu.",
+    "naturalMeaning": "No onions, please.",
+    "literalMeaning": "Please make it without onions.",
+    "tone": "Polite and natural",
+    "usageNote": "〜抜き means leaving an ingredient out."
+  },
+  {
+    "id": "restaurant-allergy",
+    "contexts": [
+      "Restaurant",
+      "Café"
+    ],
+    "tones": [
+      "Polite and natural",
+      "Very polite"
+    ],
+    "english": "I have a food allergy.",
+    "patterns": [
+      "i have a food allergy",
+      "i have allergies",
+      "food allergy"
+    ],
+    "keywords": [
+      "allergy",
+      "allergies",
+      "food"
+    ],
+    "japanese": "食べ物のアレルギーがあります。",
+    "kana": "たべものの アレルギーが あります。",
+    "romaji": "tabemono no arerugii ga arimasu.",
+    "naturalMeaning": "I have a food allergy.",
+    "literalMeaning": "There is a food allergy (for me).",
+    "tone": "Polite and natural",
+    "usageNote": "Follow this with the specific allergen whenever possible."
+  },
+  {
+    "id": "restaurant-bill",
+    "contexts": [
+      "Restaurant",
+      "Café"
+    ],
+    "tones": [
+      "Polite and natural"
+    ],
+    "english": "The bill, please.",
+    "patterns": [
+      "the bill please",
+      "check please",
+      "can i have the bill"
+    ],
+    "keywords": [
+      "bill",
+      "check",
+      "pay"
+    ],
+    "japanese": "お会計をお願いします。",
+    "kana": "おかいけいを おねがいします。",
+    "romaji": "okaikei o onegai shimasu.",
+    "naturalMeaning": "The bill, please.",
+    "literalMeaning": "The payment/check, please.",
+    "tone": "Polite and natural",
+    "usageNote": "Standard polite phrase when you are ready to pay."
+  },
+  {
+    "id": "cafe-takeout",
+    "contexts": [
+      "Café",
+      "Restaurant"
+    ],
+    "tones": [
+      "Polite and natural"
+    ],
+    "english": "To go, please.",
+    "patterns": [
+      "to go please",
+      "takeout please",
+      "take away please"
+    ],
+    "keywords": [
+      "takeout",
+      "take-away",
+      "go"
+    ],
+    "japanese": "持ち帰りでお願いします。",
+    "kana": "もちかえりで おねがいします。",
+    "romaji": "mochikaeri de onegai shimasu.",
+    "naturalMeaning": "To go, please.",
+    "literalMeaning": "Please make it for taking home.",
+    "tone": "Polite and natural",
+    "usageNote": "持ち帰り is a standard way to say takeout."
+  },
+  {
+    "id": "cafe-no-sugar",
+    "contexts": [
+      "Café"
+    ],
+    "tones": [
+      "Polite and natural"
+    ],
+    "english": "No sugar, please.",
+    "patterns": [
+      "no sugar please",
+      "without sugar",
+      "please don't add sugar"
+    ],
+    "keywords": [
+      "sugar",
+      "without",
+      "no"
+    ],
+    "japanese": "砂糖なしでお願いします。",
+    "kana": "さとう なしで おねがいします。",
+    "romaji": "satou nashi de onegai shimasu.",
+    "naturalMeaning": "No sugar, please.",
+    "literalMeaning": "Please make it without sugar.",
+    "tone": "Polite and natural",
+    "usageNote": "Simple and clear when ordering a drink."
+  },
+  {
+    "id": "shopping-card",
+    "contexts": [
+      "Shopping",
+      "Restaurant",
+      "Café",
+      "Hotel"
+    ],
+    "tones": [
+      "Polite and natural"
+    ],
+    "english": "Can I pay by card?",
+    "patterns": [
+      "can i pay by card",
+      "do you take cards",
+      "credit card okay",
+      "is card accepted"
+    ],
+    "keywords": [
+      "card",
+      "credit",
+      "pay",
+      "accepted"
+    ],
+    "japanese": "カードで払えますか？",
+    "kana": "カードで はらえますか？",
+    "romaji": "kaado de haraemasu ka?",
+    "naturalMeaning": "Can I pay by card?",
+    "literalMeaning": "Can I pay with a card?",
+    "tone": "Polite and natural",
+    "usageNote": "Natural when checking whether card payment is accepted."
+  },
+  {
+    "id": "shopping-taxfree",
+    "contexts": [
+      "Shopping",
+      "Travel"
+    ],
+    "tones": [
+      "Polite and natural"
+    ],
+    "english": "Is this tax-free?",
+    "patterns": [
+      "is this tax free",
+      "can i get tax free",
+      "tax free available"
+    ],
+    "keywords": [
+      "tax",
+      "tax-free",
+      "taxfree"
+    ],
+    "japanese": "これは免税になりますか？",
+    "kana": "これは めんぜいに なりますか？",
+    "romaji": "kore wa menzei ni narimasu ka?",
+    "naturalMeaning": "Is this eligible for tax-free shopping?",
+    "literalMeaning": "Does this become tax-exempt?",
+    "tone": "Polite and natural",
+    "usageNote": "Useful when asking whether an item or purchase qualifies for tax-free shopping."
+  },
+  {
+    "id": "shopping-try-on",
+    "contexts": [
+      "Shopping"
+    ],
+    "tones": [
+      "Polite and natural"
+    ],
+    "english": "Can I try this on?",
+    "patterns": [
+      "can i try this on",
+      "may i try this on",
+      "can i try it on"
+    ],
+    "keywords": [
+      "try",
+      "wear",
+      "fitting"
+    ],
+    "japanese": "これを試着してもいいですか？",
+    "kana": "これを しちゃくしても いいですか？",
+    "romaji": "kore o shichaku shite mo ii desu ka?",
+    "naturalMeaning": "Can I try this on?",
+    "literalMeaning": "Is it okay if I try this on?",
+    "tone": "Polite and natural",
+    "usageNote": "試着 is used for trying on clothes."
+  },
+  {
+    "id": "shopping-other-size",
+    "contexts": [
+      "Shopping"
+    ],
+    "tones": [
+      "Polite and natural"
+    ],
+    "english": "Do you have another size?",
+    "patterns": [
+      "do you have another size",
+      "is there another size",
+      "different size"
+    ],
+    "keywords": [
+      "size",
+      "another",
+      "different"
+    ],
+    "japanese": "別のサイズはありますか？",
+    "kana": "べつの サイズは ありますか？",
+    "romaji": "betsu no saizu wa arimasu ka?",
+    "naturalMeaning": "Do you have another size?",
+    "literalMeaning": "Is there a different size?",
+    "tone": "Polite and natural",
+    "usageNote": "Useful for clothing, shoes, and similar items."
+  },
+  {
+    "id": "airport-checkin-counter",
+    "contexts": [
+      "Airport",
+      "Travel"
+    ],
+    "tones": [
+      "Polite and natural"
+    ],
+    "english": "Where is the check-in counter?",
+    "patterns": [
+      "where is the check in counter",
+      "where is checkin",
+      "airline check in counter"
+    ],
+    "keywords": [
+      "check-in",
+      "checkin",
+      "counter",
+      "airline"
+    ],
+    "japanese": "チェックインカウンターはどこですか？",
+    "kana": "チェックイン カウンターは どこですか？",
+    "romaji": "chekku-in kauntaa wa doko desu ka?",
+    "naturalMeaning": "Where is the check-in counter?",
+    "literalMeaning": "Where is the check-in counter?",
+    "tone": "Polite and natural",
+    "usageNote": "Use this when looking for your airline's counter."
+  },
+  {
+    "id": "airport-gate",
+    "contexts": [
+      "Airport",
+      "Travel"
+    ],
+    "tones": [
+      "Polite and natural"
+    ],
+    "english": "Where is this gate?",
+    "patterns": [
+      "where is this gate",
+      "how do i get to this gate",
+      "where is gate"
+    ],
+    "keywords": [
+      "gate",
+      "boarding"
+    ],
+    "japanese": "この搭乗口はどこですか？",
+    "kana": "この とうじょうぐちは どこですか？",
+    "romaji": "kono toujouguchi wa doko desu ka?",
+    "naturalMeaning": "Where is this boarding gate?",
+    "literalMeaning": "Where is this boarding entrance?",
+    "tone": "Polite and natural",
+    "usageNote": "Show the gate number on your boarding pass while asking."
+  },
+  {
+    "id": "airport-baggage",
+    "contexts": [
+      "Airport",
+      "Travel"
+    ],
+    "tones": [
+      "Polite and natural"
+    ],
+    "english": "Where is baggage claim?",
+    "patterns": [
+      "where is baggage claim",
+      "where do i pick up my luggage",
+      "baggage collection"
+    ],
+    "keywords": [
+      "baggage",
+      "luggage",
+      "claim",
+      "pickup"
+    ],
+    "japanese": "手荷物受取所はどこですか？",
+    "kana": "てにもつ うけとりじょは どこですか？",
+    "romaji": "tenimotsu uketorijo wa doko desu ka?",
+    "naturalMeaning": "Where is baggage claim?",
+    "literalMeaning": "Where is the baggage receiving area?",
+    "tone": "Polite and natural",
+    "usageNote": "Useful after arrival when looking for the baggage carousel area."
+  },
+  {
+    "id": "work-confirm-deadline",
+    "contexts": [
+      "Workplace"
+    ],
+    "tones": [
+      "Polite and natural",
+      "Very polite"
+    ],
+    "english": "Could you confirm the deadline?",
+    "patterns": [
+      "could you confirm the deadline",
+      "what is the deadline",
+      "please confirm the deadline"
+    ],
+    "keywords": [
+      "deadline",
+      "confirm",
+      "due"
+    ],
+    "japanese": "締め切りを確認していただけますか？",
+    "kana": "しめきりを かくにんして いただけますか？",
+    "romaji": "shimekiri o kakunin shite itadakemasu ka?",
+    "naturalMeaning": "Could you confirm the deadline?",
+    "literalMeaning": "Could I have you confirm the deadline?",
+    "tone": "Very polite",
+    "usageNote": "Appropriate for a polite workplace request."
+  },
+  {
+    "id": "work-send-email",
+    "contexts": [
+      "Workplace"
+    ],
+    "tones": [
+      "Polite and natural"
+    ],
+    "english": "I'll send it by email.",
+    "patterns": [
+      "i'll send it by email",
+      "i will email it",
+      "i'll send this in an email"
+    ],
+    "keywords": [
+      "email",
+      "send"
+    ],
+    "japanese": "メールで送ります。",
+    "kana": "メールで おくります。",
+    "romaji": "meeru de okurimasu.",
+    "naturalMeaning": "I'll send it by email.",
+    "literalMeaning": "I will send it by email.",
+    "tone": "Polite and natural",
+    "usageNote": "Simple, standard workplace Japanese."
+  },
+  {
+    "id": "work-late",
+    "contexts": [
+      "Workplace"
+    ],
+    "tones": [
+      "Polite and natural",
+      "Very polite"
+    ],
+    "english": "I'm sorry, I'll be a little late.",
+    "patterns": [
+      "i'm sorry i'll be late",
+      "i will be a little late",
+      "running late"
+    ],
+    "keywords": [
+      "late",
+      "sorry",
+      "running"
+    ],
+    "japanese": "すみません、少し遅れます。",
+    "kana": "すみません、すこし おくれます。",
+    "romaji": "sumimasen, sukoshi okuremasu.",
+    "naturalMeaning": "I'm sorry, I'll be a little late.",
+    "literalMeaning": "Excuse me, I will be a little late.",
+    "tone": "Polite and natural",
+    "usageNote": "Natural for notifying someone that you will arrive late."
+  },
+  {
+    "id": "friends-where-are-you",
+    "contexts": [
+      "Friends"
+    ],
+    "tones": [
+      "Casual",
+      "Friendly",
+      "Social media / texting"
+    ],
+    "english": "Where are you?",
+    "patterns": [
+      "where are you",
+      "where are you now"
+    ],
+    "keywords": [
+      "where",
+      "now"
+    ],
+    "japanese": "今どこ？",
+    "kana": "いま どこ？",
+    "romaji": "ima doko?",
+    "naturalMeaning": "Where are you now?",
+    "literalMeaning": "Now, where?",
+    "tone": "Casual",
+    "usageNote": "Very casual. Best with friends or people you are close to."
+  },
+  {
+    "id": "friends-on-my-way",
+    "contexts": [
+      "Friends"
+    ],
+    "tones": [
+      "Casual",
+      "Friendly",
+      "Social media / texting"
+    ],
+    "english": "I'm on my way.",
+    "patterns": [
+      "i'm on my way",
+      "on my way now",
+      "i'm heading there"
+    ],
+    "keywords": [
+      "way",
+      "heading",
+      "coming"
+    ],
+    "japanese": "今向かってる！",
+    "kana": "いま むかってる！",
+    "romaji": "ima mukatteru!",
+    "naturalMeaning": "I'm on my way now!",
+    "literalMeaning": "I'm heading there now!",
+    "tone": "Casual",
+    "usageNote": "Natural casual texting with friends."
+  },
+  {
+    "id": "friends-see-you-later",
+    "contexts": [
+      "Friends",
+      "Everyday"
+    ],
+    "tones": [
+      "Casual",
+      "Friendly"
+    ],
+    "english": "See you later!",
+    "patterns": [
+      "see you later",
+      "see you soon",
+      "later"
+    ],
+    "keywords": [
+      "see",
+      "later",
+      "soon"
+    ],
+    "japanese": "またあとで！",
+    "kana": "また あとで！",
+    "romaji": "mata ato de!",
+    "naturalMeaning": "See you later!",
+    "literalMeaning": "Again, later!",
+    "tone": "Casual",
+    "usageNote": "Friendly and casual."
+  },
+  {
+    "id": "social-thanks-message",
+    "contexts": [
+      "Social media",
+      "Friends"
+    ],
+    "tones": [
+      "Social media / texting",
+      "Friendly"
+    ],
+    "english": "Thanks for the message!",
+    "patterns": [
+      "thanks for the message",
+      "thank you for messaging me",
+      "thanks for your message"
+    ],
+    "keywords": [
+      "message",
+      "thanks",
+      "thank"
+    ],
+    "japanese": "メッセージありがとう！",
+    "kana": "メッセージ ありがとう！",
+    "romaji": "messeeji arigatou!",
+    "naturalMeaning": "Thanks for the message!",
+    "literalMeaning": "Message, thanks!",
+    "tone": "Social media / texting",
+    "usageNote": "Casual and friendly for messages or social media."
+  },
+  {
+    "id": "social-reply-late",
+    "contexts": [
+      "Social media",
+      "Friends"
+    ],
+    "tones": [
+      "Social media / texting",
+      "Casual"
+    ],
+    "english": "Sorry for the late reply.",
+    "patterns": [
+      "sorry for the late reply",
+      "sorry i replied late",
+      "sorry for replying late"
+    ],
+    "keywords": [
+      "reply",
+      "late",
+      "sorry"
+    ],
+    "japanese": "返信遅くなってごめん！",
+    "kana": "へんしん おそくなって ごめん！",
+    "romaji": "henshin osoku natte gomen!",
+    "naturalMeaning": "Sorry for the late reply!",
+    "literalMeaning": "Sorry that the reply became late!",
+    "tone": "Casual",
+    "usageNote": "Natural casual message to a friend."
+  },
+  {
+    "id": "other-help",
+    "contexts": [
+      "Other",
+      "Travel"
+    ],
+    "tones": [
+      "Polite and natural"
+    ],
+    "english": "Please help me.",
+    "patterns": [
+      "please help me",
+      "i need help",
+      "help me please"
+    ],
+    "keywords": [
+      "help",
+      "emergency"
+    ],
+    "japanese": "助けてください。",
+    "kana": "たすけて ください。",
+    "romaji": "tasukete kudasai.",
+    "naturalMeaning": "Please help me.",
+    "literalMeaning": "Please help.",
+    "tone": "Polite and natural",
+    "usageNote": "Direct and appropriate when you genuinely need help."
+  },
+  {
+    "id": "other-call-police",
+    "contexts": [
+      "Other",
+      "Travel"
+    ],
+    "tones": [
+      "Polite and natural"
+    ],
+    "english": "Please call the police.",
+    "patterns": [
+      "please call the police",
+      "call the police"
+    ],
+    "keywords": [
+      "police",
+      "call"
+    ],
+    "japanese": "警察を呼んでください。",
+    "kana": "けいさつを よんで ください。",
+    "romaji": "keisatsu o yonde kudasai.",
+    "naturalMeaning": "Please call the police.",
+    "literalMeaning": "Please call the police.",
+    "tone": "Polite and natural",
+    "usageNote": "Emergency phrase."
+  },
+  {
+    "id": "other-doctor",
+    "contexts": [
+      "Other",
+      "Travel"
+    ],
+    "tones": [
+      "Polite and natural"
+    ],
+    "english": "I need a doctor.",
+    "patterns": [
+      "i need a doctor",
+      "please get a doctor",
+      "doctor please"
+    ],
+    "keywords": [
+      "doctor",
+      "medical",
+      "help"
+    ],
+    "japanese": "医者が必要です。",
+    "kana": "いしゃが ひつようです。",
+    "romaji": "isha ga hitsuyou desu.",
+    "naturalMeaning": "I need a doctor.",
+    "literalMeaning": "A doctor is necessary.",
+    "tone": "Polite and natural",
+    "usageNote": "Clear emergency/medical phrase."
+  }
+]

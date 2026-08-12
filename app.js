@@ -723,7 +723,11 @@ let translationHistory = readJson(STORAGE.translationHistory, []);
 let currentTranslationResult = null;
 let translationContext = "Everyday";
 let translationTone = "Polite and natural";
+let translationMode = "offline";
 let translationLoading = false;
+let translationPhraseData = null;
+let translationPhraseDataPromise = null;
+let translationPhraseIndex = null;
 const kanjiSelectionRevisions = new Map();
 const vocabularySelectionRevisions = new Map();
 const KANJI_FILTER_SECTIONS = new Set(["kanjiOfDay", "randomKanji", "kanjiQuiz"]);
@@ -4735,70 +4739,455 @@ function setFlashcardStatus(status) {
 }
 
 function renderTranslationChips() {
-    const render = (id, values, selected, attribute) => { document.getElementById(id).innerHTML = values.map(value => `<button class="translation-chip ${value === selected ? "active" : ""}" type="button" data-${attribute}="${escapeSearchHtml(value)}">${escapeSearchHtml(value)}</button>`).join(""); };
+    const render = (id, values, selected, attribute) => {
+        const container = document.getElementById(id);
+        if (!container) return;
+        container.innerHTML = values.map(value => `<button class="translation-chip ${value === selected ? "active" : ""}" type="button" data-${attribute}="${escapeSearchHtml(value)}">${escapeSearchHtml(value)}</button>`).join("");
+    };
     render("translation-contexts", TRANSLATION_CONTEXTS, translationContext, "translation-context");
     render("translation-tones", TRANSLATION_TONES, translationTone, "translation-tone");
 }
 
-function relatedOfflinePhrases(english) {
+function translationSearchText(value) {
+    return searchText(value)
+        .replace(/[’‘]/g, "'")
+        .replace(/[^a-z0-9'\-\s]/g, " ")
+        .replace(/\s+/g, " ")
+        .trim();
+}
+
+function translationSearchTokens(value) {
+    const stopWords = new Set([
+        "a","an","and","are","at","be","can","could","do","does","for","from","i","in","is","it","me","my",
+        "of","on","please","the","this","to","we","with","would","you","your","am","was","were","have","has"
+    ]);
+    return translationSearchText(value)
+        .split(" ")
+        .map(word => word.trim())
+        .filter(word => word.length > 1 && !stopWords.has(word));
+}
+
+function prepareTranslationPhraseIndex(records) {
+    return records.map(record => ({
+        record,
+        english:translationSearchText(record.english),
+        patterns:(record.patterns || []).map(translationSearchText),
+        keywords:(record.keywords || []).map(translationSearchText).filter(Boolean),
+        tokens:new Set(translationSearchTokens([
+            record.english,
+            ...(record.patterns || []),
+            ...(record.keywords || [])
+        ].join(" ")))
+    }));
+}
+
+async function loadTranslationPhraseData() {
+    if (translationPhraseData) return translationPhraseData;
+    if (translationPhraseDataPromise) return translationPhraseDataPromise;
+
+    translationPhraseDataPromise = fetch("./data/translation-phrases.json?v=1")
+        .then(response => {
+            if (!response.ok) throw new Error(`Could not load Sakura's offline phrase library (HTTP ${response.status}).`);
+            return response.json();
+        })
+        .then(records => {
+            if (!Array.isArray(records)) throw new Error("The offline phrase library has an invalid format.");
+
+            const ids = new Set();
+            records.forEach((record, index) => {
+                if (!record || typeof record !== "object") throw new Error(`Offline phrase ${index + 1} is invalid.`);
+                ["id","english","japanese","kana","romaji","naturalMeaning","tone","usageNote"].forEach(field => {
+                    if (typeof record[field] !== "string" || !record[field].trim()) {
+                        throw new Error(`Offline phrase ${index + 1} is missing ${field}.`);
+                    }
+                });
+                if (ids.has(record.id)) throw new Error(`Duplicate offline phrase ID: ${record.id}`);
+                ids.add(record.id);
+            });
+
+            translationPhraseData = records;
+            translationPhraseIndex = prepareTranslationPhraseIndex(records);
+            return records;
+        })
+        .catch(error => {
+            translationPhraseDataPromise = null;
+            throw error;
+        });
+
+    return translationPhraseDataPromise;
+}
+
+function scoreOfflineTranslationPhrase(indexed, english, context, tone) {
+    const query = translationSearchText(english);
+    const queryTokens = new Set(translationSearchTokens(english));
+    if (!query || !queryTokens.size) return 0;
+
+    let score = 0;
+
+    if (indexed.english === query) score += 180;
+
+    indexed.patterns.forEach(pattern => {
+        if (!pattern) return;
+        if (pattern === query) score += 160;
+        else if (query.includes(pattern) || pattern.includes(query)) score += Math.min(90, 35 + pattern.length);
+    });
+
+    queryTokens.forEach(token => {
+        if (indexed.tokens.has(token)) score += Math.min(18, 4 + token.length * 2);
+        indexed.keywords.forEach(keyword => {
+            if (!keyword) return;
+            if (keyword === token) score += 10;
+            else if (keyword.includes(token) || token.includes(keyword)) score += 4;
+        });
+    });
+
+    if (indexed.record.contexts?.includes(context)) score += 24;
+    if (indexed.record.tones?.includes(tone)) score += 14;
+    if (indexed.record.tone === tone) score += 6;
+
+    return score;
+}
+
+async function findOfflineTranslationPhrases(english) {
+    await loadTranslationPhraseData();
+    const ranked = translationPhraseIndex
+        .map(indexed => ({
+            record:indexed.record,
+            score:scoreOfflineTranslationPhrase(indexed, english, translationContext, translationTone)
+        }))
+        .filter(result => result.score >= 18)
+        .sort((a, b) => b.score - a.score || a.record.english.localeCompare(b.record.english))
+        .slice(0, 5);
+
+    return ranked;
+}
+
+function relatedLibraryPhrases(english) {
     const stopWords = new Set(["a","an","and","are","at","be","can","could","do","for","from","i","in","is","it","me","my","of","on","please","the","this","to","until","we","with","you","your"]);
     const queryWords = new Set(searchText(english).split(" ").map(word => word.replace(/[^\p{L}\p{N}'-]/gu, "")).filter(word => word.length > 2 && !stopWords.has(word)));
-    const pool = [...nativeData(), ...slangData(), ...window.VOCABULARY_DATA, ...savedItems].filter((item,index,array) => array.findIndex(other => itemKey(other) === itemKey(item)) === index);
-    const ranked = pool.map(item => { const haystack=searchableFields(item).join(" "); let score=0; queryWords.forEach(word => { if(haystack.includes(word)) score+=word.length; }); return {item,score}; }).filter(result=>result.score>0).sort((a,b)=>b.score-a.score);
+    if (!queryWords.size) return [];
+
+    const vocabulary = Array.isArray(window.VOCABULARY_DATA) ? window.VOCABULARY_DATA : [];
+    const pool = [...nativeData(), ...slangData(), ...vocabulary, ...savedItems]
+        .filter((item, index, array) => array.findIndex(other => itemKey(other) === itemKey(item)) === index);
+
+    const ranked = pool
+        .map(item => {
+            const haystack = searchableFields(item).join(" ");
+            let score = 0;
+            queryWords.forEach(word => {
+                if (haystack.includes(word)) score += word.length;
+            });
+            return { item, score };
+        })
+        .filter(result => result.score > 0)
+        .sort((a,b) => b.score - a.score);
+
     const bestScore = ranked[0]?.score || 0;
-    return ranked.filter(result => result.score >= bestScore * .75).slice(0,5).map(result=>result.item);
+    return ranked
+        .filter(result => result.score >= bestScore * .75)
+        .slice(0, 4)
+        .map(result => result.item);
 }
 
 function validateTranslationResponse(data) {
-    if (!data || typeof data !== "object" || !cleanEntryText(data.japanese) || !cleanEntryText(data.naturalMeaning)) throw new Error("The translation service returned an incomplete response.");
-    return { japanese:cleanEntryText(data.japanese), kana:cleanEntryText(data.kana), romaji:cleanEntryText(data.romaji), naturalMeaning:cleanEntryText(data.naturalMeaning), literalMeaning:cleanEntryText(data.literalMeaning), tone:cleanEntryText(data.tone), usageNote:cleanEntryText(data.usageNote), alternative:cleanEntryText(data.alternative), offline:false };
+    if (!data || typeof data !== "object" || !cleanEntryText(data.japanese) || !cleanEntryText(data.naturalMeaning)) {
+        throw new Error("The translation service returned an incomplete response.");
+    }
+    return {
+        japanese:cleanEntryText(data.japanese),
+        kana:cleanEntryText(data.kana),
+        romaji:cleanEntryText(data.romaji),
+        naturalMeaning:cleanEntryText(data.naturalMeaning),
+        literalMeaning:cleanEntryText(data.literalMeaning),
+        tone:cleanEntryText(data.tone),
+        usageNote:cleanEntryText(data.usageNote),
+        alternative:cleanEntryText(data.alternative),
+        context:cleanEntryText(data.context) || translationContext,
+        source:"online",
+        offline:false
+    };
+}
+
+function offlinePhraseResult(record, alternatives = []) {
+    return {
+        id:`offline-${record.id}`,
+        japanese:record.japanese,
+        kana:record.kana || "",
+        romaji:record.romaji || "",
+        naturalMeaning:record.naturalMeaning || record.english,
+        literalMeaning:record.literalMeaning || "",
+        tone:record.tone || translationTone,
+        usageNote:record.usageNote || "",
+        alternative:alternatives.slice(0, 2).map(item => item.japanese).join(" / "),
+        context:(record.contexts || [translationContext])[0],
+        source:"offline-phrase",
+        offline:true
+    };
+}
+
+function libraryPhraseResult(item) {
+    return {
+        id:`library-${itemKey(item)}`,
+        japanese:item.expression || item.word || item.character || "",
+        kana:item.kana || item.reading || "",
+        romaji:item.romaji || "",
+        naturalMeaning:item.naturalMeaning || item.meaning || item.english || "",
+        literalMeaning:item.literalMeaning || item.literal || "",
+        tone:item.tone || item.formality || "",
+        usageNote:`Related item already in Sakura's learning library${item.categories?.length ? ` · ${item.categories.join(", ")}` : ""}.`,
+        alternative:"",
+        context:translationContext,
+        source:"library",
+        offline:true
+    };
+}
+
+function renderTranslationMode() {
+    document.querySelectorAll("[data-translation-mode]").forEach(button => {
+        const active = button.dataset.translationMode === translationMode;
+        button.classList.toggle("active", active);
+        button.setAttribute("aria-selected", String(active));
+    });
+
+    const note = document.getElementById("translation-mode-note");
+    const submit = document.getElementById("submit-translation");
+    const onlineReady = Boolean(TRANSLATION_API_ENDPOINT) && navigator.onLine;
+
+    if (translationMode === "offline") {
+        if (note) note.innerHTML = "<strong>Offline Phrase Finder</strong><span>Searches Sakura's curated phrase library. It does not pretend to translate arbitrary English.</span>";
+        if (submit) {
+            submit.disabled = false;
+            submit.textContent = "Find Japanese";
+        }
+        loadTranslationPhraseData().catch(error => {
+            if (note) note.innerHTML = `<strong>Offline Phrase Finder</strong><span>${escapeSearchHtml(error.message || "The phrase library could not load.")}</span>`;
+        });
+    }
+    else {
+        if (note) {
+            note.innerHTML = onlineReady
+                ? "<strong>Online Translation</strong><span>Uses the configured secure translation service for arbitrary sentences.</span>"
+                : "<strong>Online Translation</strong><span>Not connected yet. Sakura will never place a secret API key inside the app.</span>";
+        }
+        if (submit) {
+            submit.disabled = !onlineReady;
+            submit.textContent = onlineReady ? "Translate Online" : "Online unavailable";
+        }
+    }
+}
+
+function setTranslationMode(mode) {
+    if (!["offline","online"].includes(mode)) return;
+    translationMode = mode;
+    renderTranslationResult(null);
+    renderTranslationSuggestions([]);
+    document.getElementById("translation-message").textContent = "";
+    renderTranslationMode();
+}
+
+function openTranslationTool() {
+    renderTranslationChips();
+    renderTranslationMode();
+    if (translationMode === "offline") loadTranslationPhraseData().catch(() => {});
+}
+
+function renderTranslationSuggestions(results, libraryMatches = []) {
+    const section = document.getElementById("translation-suggestions-section");
+    const container = document.getElementById("translation-suggestions");
+    const librarySection = document.getElementById("translation-library-matches-section");
+    const libraryContainer = document.getElementById("translation-library-matches");
+
+    if (!section || !container || !librarySection || !libraryContainer) return;
+
+    section.hidden = !results.length;
+    container.innerHTML = results.map(({record, score}, index) => `
+        <button class="translation-suggestion-card" type="button" data-translation-suggestion="${escapeSearchHtml(record.id)}">
+            <span class="translation-suggestion-rank">${index === 0 ? "Best match" : "Suggestion"}</span>
+            <strong>${escapeSearchHtml(record.japanese)}</strong>
+            <span>${escapeSearchHtml(record.kana || "")}</span>
+            <small>${escapeSearchHtml(record.naturalMeaning || record.english)} · ${escapeSearchHtml(record.tone || "")}</small>
+        </button>
+    `).join("");
+
+    librarySection.hidden = !libraryMatches.length;
+    libraryContainer.innerHTML = libraryMatches.map(item => `
+        <button class="translation-suggestion-card library-match" type="button" data-translation-library-key="${escapeSearchHtml(itemKey(item))}">
+            <span class="translation-suggestion-rank">Sakura Library</span>
+            <strong>${escapeSearchHtml(item.expression || item.word || item.character || "")}</strong>
+            <span>${escapeSearchHtml(item.kana || item.reading || item.romaji || "")}</span>
+            <small>${escapeSearchHtml(item.naturalMeaning || item.meaning || item.english || "")}</small>
+        </button>
+    `).join("");
 }
 
 function renderTranslationResult(result) {
     if (result && !result.id) result.id = `translation-${searchText(result.japanese).slice(0,30)}-${Date.now().toString(36)}`;
     currentTranslationResult = result;
-    const card=document.getElementById("translation-result"); card.hidden=!result;
-    if(!result)return;
-    document.getElementById("translation-result-label").textContent=result.offline?"Related Sakura phrase":"Recommended";
-    document.getElementById("translation-japanese").textContent=result.japanese;
-    document.getElementById("translation-kana").textContent=result.kana;
-    document.getElementById("translation-romaji").textContent=result.romaji;
-    document.getElementById("translation-natural-meaning").textContent=result.naturalMeaning;
-    document.getElementById("translation-literal-meaning").textContent=result.literalMeaning;
-    document.getElementById("translation-literal-group").hidden=!result.literalMeaning;
-    document.getElementById("translation-usage").textContent=[result.tone,result.usageNote].filter(Boolean).join(" · ");
-    document.getElementById("translation-alternative").textContent=result.alternative;
-    document.getElementById("translation-alternative-group").hidden=!result.alternative;
-    const savedItem=translationResultItem(result); setSaveButton(document.getElementById("save-translation"),savedItem); document.getElementById("save-translation").textContent=isSaved(savedItem)?"Saved":"Save";
+    const card = document.getElementById("translation-result");
+    if (!card) return;
+    card.hidden = !result;
+    if (!result) return;
+
+    const label = result.source === "offline-phrase"
+        ? "Offline Sakura phrase"
+        : result.source === "library"
+            ? "Related Sakura library item"
+            : "Recommended translation";
+
+    document.getElementById("translation-result-label").textContent = label;
+    document.getElementById("translation-japanese").textContent = result.japanese;
+    document.getElementById("translation-kana").textContent = result.kana;
+    document.getElementById("translation-romaji").textContent = result.romaji;
+    document.getElementById("translation-natural-meaning").textContent = result.naturalMeaning;
+    document.getElementById("translation-literal-meaning").textContent = result.literalMeaning;
+    document.getElementById("translation-literal-group").hidden = !result.literalMeaning;
+    document.getElementById("translation-usage").textContent = [result.tone, result.usageNote].filter(Boolean).join(" · ");
+    document.getElementById("translation-alternative").textContent = result.alternative;
+    document.getElementById("translation-alternative-group").hidden = !result.alternative;
+
+    const savedItem = translationResultItem(result);
+    setSaveButton(document.getElementById("save-translation"), savedItem);
+    document.getElementById("save-translation").textContent = isSaved(savedItem) ? "Saved" : "Save";
 }
 
-function translationResultItem(result=currentTranslationResult) {
-    if(!result)return null;
-    return { id:result.id, type:"translation", expression:result.japanese, kana:result.kana, romaji:result.romaji, meaning:result.naturalMeaning, naturalMeaning:result.naturalMeaning, literalMeaning:result.literalMeaning, tone:result.tone, notes:result.usageNote, alternative:result.alternative, context:translationContext };
+function translationResultItem(result = currentTranslationResult) {
+    if (!result) return null;
+    return {
+        id:result.id,
+        type:"translation",
+        expression:result.japanese,
+        kana:result.kana,
+        romaji:result.romaji,
+        meaning:result.naturalMeaning,
+        naturalMeaning:result.naturalMeaning,
+        literalMeaning:result.literalMeaning,
+        tone:result.tone,
+        notes:result.usageNote,
+        alternative:result.alternative,
+        context:result.context || translationContext,
+        source:result.source || "saved"
+    };
 }
 
-function addTranslationHistory(request,result) {
-    const record={id:`history-${Date.now().toString(36)}`,english:request.english,context:request.context,tone:request.tone,result,createdAt:new Date().toISOString()};
-    translationHistory=[record,...translationHistory.filter(item=>searchText(item.english)!==searchText(request.english))].slice(0,20); writeJson(STORAGE.translationHistory,translationHistory); renderTranslationHistory();
+function addTranslationHistory(request, result) {
+    const record = {
+        id:`history-${Date.now().toString(36)}`,
+        english:request.english,
+        context:request.context,
+        tone:request.tone,
+        mode:request.mode,
+        result,
+        createdAt:new Date().toISOString()
+    };
+    translationHistory = [
+        record,
+        ...translationHistory.filter(item => searchText(item.english) !== searchText(request.english))
+    ].slice(0, 20);
+    writeJson(STORAGE.translationHistory, translationHistory);
+    renderTranslationHistory();
 }
 
 function renderTranslationHistory() {
-    const container=document.getElementById("translation-history"); if(!container)return;
-    container.innerHTML=translationHistory.map(item=>`<article class="translation-history-item"><button type="button" data-translation-history="${item.id}"><strong>${escapeSearchHtml(item.english)}</strong><small>${escapeSearchHtml(item.context)} · ${escapeSearchHtml(item.tone)}</small></button><button class="history-delete" type="button" data-delete-translation-history="${item.id}" aria-label="Delete ${escapeSearchHtml(item.english)}">×</button></article>`).join("");
-    document.getElementById("translation-history-empty").hidden=translationHistory.length>0; document.getElementById("clear-translation-history").hidden=!translationHistory.length;
+    const container = document.getElementById("translation-history");
+    if (!container) return;
+
+    container.innerHTML = translationHistory.map(item => {
+        const source = item.mode === "online" ? "Online" : "Offline";
+        return `<article class="translation-history-item"><button type="button" data-translation-history="${item.id}"><strong>${escapeSearchHtml(item.english)}</strong><small>${escapeSearchHtml(source)} · ${escapeSearchHtml(item.context || "Everyday")} · ${escapeSearchHtml(item.tone || "")}</small></button><button class="history-delete" type="button" data-delete-translation-history="${item.id}" aria-label="Delete ${escapeSearchHtml(item.english)}">×</button></article>`;
+    }).join("");
+
+    document.getElementById("translation-history-empty").hidden = translationHistory.length > 0;
+    document.getElementById("clear-translation-history").hidden = !translationHistory.length;
 }
 
 async function requestTranslation(event) {
-    event.preventDefault(); if(translationLoading)return;
-    const english=cleanEntryText(document.getElementById("translation-english").value); const message=document.getElementById("translation-message");
-    if(!english){message.textContent="Enter an English sentence first.";return;} if(english.length>500){message.textContent="Keep the sentence under 500 characters.";return;}
-    const request={english,context:translationContext,tone:translationTone}; translationLoading=true; document.getElementById("submit-translation").disabled=true; message.textContent="Finding natural Japanese…";
+    event.preventDefault();
+    if (translationLoading) return;
+
+    const english = cleanEntryText(document.getElementById("translation-english").value);
+    const message = document.getElementById("translation-message");
+
+    if (!english) {
+        message.textContent = "Enter an English sentence first.";
+        return;
+    }
+    if (english.length > 500) {
+        message.textContent = "Keep the sentence under 500 characters.";
+        return;
+    }
+
+    const request = {
+        english,
+        context:translationContext,
+        tone:translationTone,
+        mode:translationMode
+    };
+
+    translationLoading = true;
+    const submit = document.getElementById("submit-translation");
+    submit.disabled = true;
+
     try {
-        let result;
-        if(TRANSLATION_API_ENDPOINT && navigator.onLine){ const response=await fetch(TRANSLATION_API_ENDPOINT,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(request)}); if(!response.ok)throw new Error("The translation service is unavailable right now."); result=validateTranslationResponse(await response.json()); message.textContent=""; }
-        else { const related=relatedOfflinePhrases(english); if(!related.length){renderTranslationResult(null); message.textContent=TRANSLATION_API_ENDPOINT?"AI translation requires internet. No related built-in phrases were found.":"AI translation is not configured yet. No related built-in phrases were found.";return;} const item=related[0]; result={id:`offline-${itemKey(item)}`,japanese:item.expression||item.word||item.character,kana:item.kana||item.reading||"",romaji:item.romaji||"",naturalMeaning:item.naturalMeaning||item.meaning,literalMeaning:item.literalMeaning||item.literal||"",tone:item.tone||item.formality||"",usageNote:`Related phrase already in Sakura for ${item.categories?.join(", ")||item.jlpt||"general use"}.`,alternative:related.slice(1,3).map(other=>other.expression||other.word).join(" / "),offline:true}; message.textContent=TRANSLATION_API_ENDPOINT?"AI translation requires internet. Here are related phrases already in Sakura.":"AI translation is not configured. Here are related phrases already in Sakura."; }
-        renderTranslationResult(result); addTranslationHistory(request,result);
-    } catch(error){renderTranslationResult(null);message.textContent=error.message||"Sakura could not complete that translation.";} finally{translationLoading=false;document.getElementById("submit-translation").disabled=false;}
+        if (translationMode === "online") {
+            if (!TRANSLATION_API_ENDPOINT) {
+                renderTranslationResult(null);
+                renderTranslationSuggestions([]);
+                message.textContent = "Online Translation is not connected yet. Switch to Offline Phrase Finder.";
+                return;
+            }
+            if (!navigator.onLine) {
+                renderTranslationResult(null);
+                renderTranslationSuggestions([]);
+                message.textContent = "Online Translation needs an internet connection. Offline Phrase Finder still works.";
+                return;
+            }
+
+            message.textContent = "Translating…";
+            const response = await fetch(TRANSLATION_API_ENDPOINT, {
+                method:"POST",
+                headers:{"Content-Type":"application/json"},
+                body:JSON.stringify(request)
+            });
+            if (!response.ok) throw new Error("The translation service is unavailable right now.");
+
+            const result = validateTranslationResponse(await response.json());
+            renderTranslationSuggestions([]);
+            renderTranslationResult(result);
+            addTranslationHistory(request, result);
+            message.textContent = "";
+            return;
+        }
+
+        message.textContent = "Searching Sakura's offline phrase library…";
+        const ranked = await findOfflineTranslationPhrases(english);
+        const libraryMatches = relatedLibraryPhrases(english);
+        renderTranslationSuggestions(ranked, libraryMatches);
+
+        if (!ranked.length) {
+            renderTranslationResult(null);
+            message.textContent = libraryMatches.length
+                ? "No close curated phrase was found. Similar learning items from Sakura are shown below."
+                : "No close offline phrase was found. Try simpler wording or choose a more specific context.";
+            return;
+        }
+
+        const result = offlinePhraseResult(ranked[0].record, ranked.slice(1).map(item => item.record));
+        renderTranslationResult(result);
+        addTranslationHistory(request, result);
+        message.textContent = ranked.length > 1
+            ? "Best offline match shown. You can choose another suggestion below."
+            : "Offline phrase match found.";
+    }
+    catch (error) {
+        renderTranslationResult(null);
+        renderTranslationSuggestions([]);
+        message.textContent = error.message || "Sakura could not complete that request.";
+    }
+    finally {
+        translationLoading = false;
+        renderTranslationMode();
+    }
 }
 
 function initializeLibrary() {
@@ -6525,6 +6914,7 @@ function showRoute(route, updateHash = true) {
     if (normalizedRoute === "etiquette") openEtiquette();
     if (normalizedRoute === "kaomoji") openKaomoji();
     if (normalizedRoute === "chibi-guide") openChibiGuide();
+    if (normalizedRoute === "translate") openTranslationTool();
     if (nativeMode) {
         currentNativeMode = nativeMode;
         document.getElementById("native-heading").textContent = nativeMode === "slang" ? "Slang" : "Native Japanese";
@@ -7370,15 +7760,117 @@ function addListeners() {
     document.getElementById("yen-rate-form").addEventListener("submit", saveYenRate);
     document.getElementById("close-yen-rate-editor").addEventListener("click", () => document.getElementById("yen-rate-editor").close());
     document.getElementById("cancel-yen-rate").addEventListener("click", () => document.getElementById("yen-rate-editor").close());
-    document.getElementById("translation-contexts").addEventListener("click", event => { const button=event.target.closest("[data-translation-context]"); if(button){translationContext=button.dataset.translationContext;renderTranslationChips();} });
-    document.getElementById("translation-tones").addEventListener("click", event => { const button=event.target.closest("[data-translation-tone]"); if(button){translationTone=button.dataset.translationTone;renderTranslationChips();} });
-    document.getElementById("translation-form").addEventListener("submit",requestTranslation);
-    document.getElementById("translation-english").addEventListener("input",event=>{document.getElementById("translation-character-count").textContent=event.target.value.length;});
-    document.getElementById("clear-translation").addEventListener("click",()=>{document.getElementById("translation-form").reset();document.getElementById("translation-character-count").textContent="0";document.getElementById("translation-message").textContent="";renderTranslationResult(null);});
-    document.getElementById("copy-translation").addEventListener("click",async()=>{if(!currentTranslationResult)return;try{await navigator.clipboard.writeText(currentTranslationResult.japanese);document.getElementById("translation-message").textContent="Copied Japanese to the clipboard.";}catch{document.getElementById("translation-message").textContent="Copy is unavailable. Press and hold the Japanese text to copy it.";}});
-    document.getElementById("save-translation").addEventListener("click",()=>{const item=translationResultItem();if(!item)return;toggleSaved(item);invalidateSearchIndex();renderTranslationResult(currentTranslationResult);});
-    document.getElementById("translation-history").addEventListener("click",event=>{const remove=event.target.closest("[data-delete-translation-history]");if(remove){translationHistory=translationHistory.filter(item=>item.id!==remove.dataset.deleteTranslationHistory);writeJson(STORAGE.translationHistory,translationHistory);renderTranslationHistory();return;}const reuse=event.target.closest("[data-translation-history]");if(reuse){const item=translationHistory.find(record=>record.id===reuse.dataset.translationHistory);if(item){document.getElementById("translation-english").value=item.english;translationContext=item.context;translationTone=item.tone;renderTranslationChips();renderTranslationResult(item.result);}}});
-    document.getElementById("clear-translation-history").addEventListener("click",()=>{if(window.confirm("Clear all translation history?")){translationHistory=[];writeJson(STORAGE.translationHistory,translationHistory);renderTranslationHistory();}});
+    document.getElementById("translation-mode-switch")?.addEventListener("click", event => {
+        const button = event.target.closest("[data-translation-mode]");
+        if (button) setTranslationMode(button.dataset.translationMode);
+    });
+    document.getElementById("translation-contexts").addEventListener("click", event => {
+        const button = event.target.closest("[data-translation-context]");
+        if (button) {
+            translationContext = button.dataset.translationContext;
+            renderTranslationChips();
+        }
+    });
+    document.getElementById("translation-tones").addEventListener("click", event => {
+        const button = event.target.closest("[data-translation-tone]");
+        if (button) {
+            translationTone = button.dataset.translationTone;
+            renderTranslationChips();
+        }
+    });
+    document.getElementById("translation-form").addEventListener("submit", requestTranslation);
+    document.getElementById("translation-english").addEventListener("input", event => {
+        document.getElementById("translation-character-count").textContent = event.target.value.length;
+    });
+    document.getElementById("clear-translation").addEventListener("click", () => {
+        document.getElementById("translation-form").reset();
+        document.getElementById("translation-character-count").textContent = "0";
+        document.getElementById("translation-message").textContent = "";
+        renderTranslationResult(null);
+        renderTranslationSuggestions([]);
+    });
+    document.getElementById("translation-suggestions")?.addEventListener("click", event => {
+        const button = event.target.closest("[data-translation-suggestion]");
+        if (!button || !translationPhraseData) return;
+        const record = translationPhraseData.find(item => item.id === button.dataset.translationSuggestion);
+        if (!record) return;
+        const result = offlinePhraseResult(record);
+        renderTranslationResult(result);
+        document.getElementById("translation-message").textContent = "Offline phrase selected.";
+    });
+    document.getElementById("translation-library-matches")?.addEventListener("click", event => {
+        const button = event.target.closest("[data-translation-library-key]");
+        if (!button) return;
+        const vocabulary = Array.isArray(window.VOCABULARY_DATA) ? window.VOCABULARY_DATA : [];
+        const pool = [...nativeData(), ...slangData(), ...vocabulary, ...savedItems];
+        const item = pool.find(candidate => itemKey(candidate) === button.dataset.translationLibraryKey);
+        if (!item) return;
+        renderTranslationResult(libraryPhraseResult(item));
+        document.getElementById("translation-message").textContent = "Related Sakura library item selected.";
+    });
+    document.getElementById("copy-translation").addEventListener("click", async () => {
+        if (!currentTranslationResult) return;
+        try {
+            await navigator.clipboard.writeText(currentTranslationResult.japanese);
+            document.getElementById("translation-message").textContent = "Copied Japanese to the clipboard.";
+        }
+        catch {
+            document.getElementById("translation-message").textContent = "Copy is unavailable. Press and hold the Japanese text to copy it.";
+        }
+    });
+    document.getElementById("copy-translation-reading")?.addEventListener("click", async () => {
+        if (!currentTranslationResult) return;
+        const text = [
+            currentTranslationResult.japanese,
+            currentTranslationResult.kana,
+            currentTranslationResult.romaji
+        ].filter(Boolean).join("\n");
+        try {
+            await navigator.clipboard.writeText(text);
+            document.getElementById("translation-message").textContent = "Copied Japanese with reading.";
+        }
+        catch {
+            document.getElementById("translation-message").textContent = "Copy is unavailable. Press and hold the text to copy it.";
+        }
+    });
+    document.getElementById("save-translation").addEventListener("click", () => {
+        const item = translationResultItem();
+        if (!item) return;
+        toggleSaved(item);
+        invalidateSearchIndex();
+        renderTranslationResult(currentTranslationResult);
+    });
+    document.getElementById("translation-history").addEventListener("click", event => {
+        const remove = event.target.closest("[data-delete-translation-history]");
+        if (remove) {
+            translationHistory = translationHistory.filter(item => item.id !== remove.dataset.deleteTranslationHistory);
+            writeJson(STORAGE.translationHistory, translationHistory);
+            renderTranslationHistory();
+            return;
+        }
+
+        const reuse = event.target.closest("[data-translation-history]");
+        if (reuse) {
+            const item = translationHistory.find(record => record.id === reuse.dataset.translationHistory);
+            if (!item) return;
+            document.getElementById("translation-english").value = item.english;
+            document.getElementById("translation-character-count").textContent = String(item.english.length);
+            translationContext = item.context || "Everyday";
+            translationTone = item.tone || "Polite and natural";
+            translationMode = item.mode === "online" ? "online" : "offline";
+            renderTranslationChips();
+            renderTranslationMode();
+            renderTranslationSuggestions([]);
+            renderTranslationResult(item.result);
+        }
+    });
+    document.getElementById("clear-translation-history").addEventListener("click", () => {
+        if (window.confirm("Clear all translation history?")) {
+            translationHistory = [];
+            writeJson(STORAGE.translationHistory, translationHistory);
+            renderTranslationHistory();
+        }
+    });
     const entryDialog = document.getElementById("entry-manager-dialog");
     document.getElementById("open-entry-manager").addEventListener("click", () => { resetEntryForm(); showEntryTab("form"); entryDialog.showModal(); });
     document.getElementById("close-entry-manager").addEventListener("click", () => entryDialog.close());
