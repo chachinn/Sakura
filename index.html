@@ -83,6 +83,9 @@
         @keyframes sakura-gesture-sit{0%,100%{transform:translateY(0)}50%{transform:translateY(5px) scale(.985)}}
         @media(prefers-reduced-motion:reduce){.gesture-coach-detail-demo.is-performing img{animation:none!important}}
         @media(max-width:420px){.gesture-coach-detail-demo{grid-template-columns:1fr}.gesture-coach-avatar{width:min(145px,70vw)}.gesture-coach-practice{text-align:center;justify-items:center}}
+
+        .translation-reading-note{margin:5px 0 0;padding:7px 9px;border-radius:10px;background:color-mix(in srgb,var(--color-primary-soft) 55%,var(--color-surface));color:var(--color-text-muted);font-size:8px;line-height:1.45}
+        .translation-result-actions button:disabled{opacity:.48;cursor:not-allowed}
     </style>
 </head>
 <body>
@@ -551,7 +554,7 @@
                 <div class="page-heading">
                     <span class="section-kicker">Natural communication</span>
                     <h1 id="translate-heading">English to Japanese</h1>
-                    <p>Find a reliable built-in phrase offline, or use Online Translation once a secure service is connected.</p>
+                    <p>Use curated Sakura phrases offline, or translate arbitrary English sentences online.</p>
                 </div>
 
                 <div id="translation-mode-switch" class="translation-mode-switch" role="tablist" aria-label="English to Japanese mode">
@@ -563,7 +566,7 @@
                     <button class="translation-mode-button" type="button" role="tab" aria-selected="false" data-translation-mode="online">
                         <span aria-hidden="true">文</span>
                         <strong>Online Translation</strong>
-                        <small>Arbitrary sentences · not connected yet</small>
+                        <small>Arbitrary sentences · internet required</small>
                     </button>
                 </div>
 
@@ -591,6 +594,7 @@
                     <h2 id="translation-japanese"></h2>
                     <p id="translation-kana" class="native-reading"></p>
                     <p id="translation-romaji"></p>
+                    <p id="translation-reading-note" class="translation-reading-note" hidden>Reading is not generated for arbitrary online machine translations yet. Copy Japanese still works.</p>
                     <div class="translation-result-details">
                         <div><strong>Natural meaning</strong><p id="translation-natural-meaning"></p></div>
                         <div id="translation-literal-group"><strong>Literal meaning</strong><p id="translation-literal-meaning"></p></div>
@@ -1105,6 +1109,6 @@
     <script src="data/slang.js?v=2"></script>
     <script src="data/slang-expansions.js?v=6"></script>
     <script src="data/travel.js?v=4"></script>
-    <script src="data/kanji.js?v=19"></script>
+    <script src="data/kanji.js?v=20"></script>
 </body>
 </html>

@@ -74,7 +74,10 @@ const LEGACY_SLANG_CATEGORY_MAP = { "Youth slang":"Youth", "Social media":"SNS /
 function authoritativeSlangCategories(values) {
     return [...new Set((Array.isArray(values) ? values : []).map(value => LEGACY_SLANG_CATEGORY_MAP[cleanEntryText(value)] || cleanEntryText(value)).filter(value => SLANG_CATEGORIES.includes(value)))];
 }
-const TRANSLATION_API_ENDPOINT = ""; // Set to a secure serverless endpoint such as /api/translate. Never put an API key in this app.
+const TRANSLATION_API_ENDPOINT = ""; // Optional future secure endpoint. Leave blank to use Sakura's built-in public web translator.
+const MYMEMORY_TRANSLATION_ENDPOINT = "https://api.mymemory.translated.net/get";
+const ONLINE_TRANSLATION_TIMEOUT_MS = 10000;
+const ONLINE_TRANSLATION_MAX_BYTES = 500;
 const APPEARANCE_DB = "sakuraAppearanceDB";
 const APPEARANCE_STORE = "wallpapers";
 const WALLPAPER_RECORD = "activeWallpaper";
@@ -728,6 +731,7 @@ let translationLoading = false;
 let translationPhraseData = null;
 let translationPhraseDataPromise = null;
 let translationPhraseIndex = null;
+const translationOnlineCache = new Map();
 const kanjiSelectionRevisions = new Map();
 const vocabularySelectionRevisions = new Map();
 const KANJI_FILTER_SECTIONS = new Set(["kanjiOfDay", "randomKanji", "kanjiQuiz"]);
@@ -4890,6 +4894,184 @@ function relatedLibraryPhrases(english) {
         .map(result => result.item);
 }
 
+
+function onlineTranslationByteLength(value) {
+    try {
+        return new TextEncoder().encode(String(value || "")).length;
+    }
+    catch {
+        return unescape(encodeURIComponent(String(value || ""))).length;
+    }
+}
+
+function onlineTranslationCacheKey(english) {
+    return translationSearchText(english);
+}
+
+function cachedOnlineTranslation(english) {
+    const key = onlineTranslationCacheKey(english);
+    if (!key) return null;
+
+    const memory = translationOnlineCache.get(key);
+    if (memory) return { ...memory, cached:true };
+
+    const history = translationHistory.find(item =>
+        item?.mode === "online" &&
+        onlineTranslationCacheKey(item.english) === key &&
+        item?.result?.japanese &&
+        String(item.result.source || "").startsWith("online")
+    );
+
+    if (history?.result) {
+        translationOnlineCache.set(key, history.result);
+        return { ...history.result, cached:true };
+    }
+
+    return null;
+}
+
+function distinctMyMemoryAlternatives(data, primary) {
+    const seen = new Set([searchText(primary)]);
+    const alternatives = [];
+
+    (Array.isArray(data?.matches) ? data.matches : []).forEach(match => {
+        const candidate = cleanEntryText(match?.translation);
+        if (!candidate) return;
+        const key = searchText(candidate);
+        if (!key || seen.has(key)) return;
+        seen.add(key);
+        alternatives.push(candidate);
+    });
+
+    return alternatives.slice(0, 2);
+}
+
+function validateMyMemoryTranslationResponse(data, request) {
+    const status = Number(data?.responseStatus || 0);
+    const details = cleanEntryText(data?.responseDetails);
+    const translatedText = cleanEntryText(data?.responseData?.translatedText);
+
+    if (data?.quotaFinished === true || status === 429) {
+        throw new Error("The online translator's free daily quota has been reached. Offline Phrase Finder still works.");
+    }
+    if (status && status !== 200) {
+        throw new Error(details || "The online translator returned an error.");
+    }
+    if (!translatedText) {
+        throw new Error(details || "The online translator returned an empty result.");
+    }
+
+    const alternatives = distinctMyMemoryAlternatives(data, translatedText);
+
+    return {
+        id:`online-mymemory-${Date.now().toString(36)}`,
+        japanese:translatedText,
+        kana:"",
+        romaji:"",
+        naturalMeaning:request.english,
+        literalMeaning:"",
+        tone:`Online machine translation · requested ${request.tone}`,
+        usageNote:`MyMemory web translation. Context: ${request.context}. Machine translation may not fully preserve the requested tone or nuance, so verify important wording.`,
+        alternative:alternatives.join(" / "),
+        context:request.context,
+        source:"online-mymemory",
+        provider:"MyMemory",
+        offline:false
+    };
+}
+
+async function requestMyMemoryTranslation(request) {
+    const cached = cachedOnlineTranslation(request.english);
+    if (cached) return cached;
+
+    const byteLength = onlineTranslationByteLength(request.english);
+    if (byteLength > ONLINE_TRANSLATION_MAX_BYTES) {
+        throw new Error(`Online Translation supports up to ${ONLINE_TRANSLATION_MAX_BYTES} UTF-8 bytes per request. Please shorten this sentence.`);
+    }
+
+    const controller = new AbortController();
+    const timeout = window.setTimeout(() => controller.abort(), ONLINE_TRANSLATION_TIMEOUT_MS);
+
+    try {
+        const params = new URLSearchParams({
+            q:request.english,
+            langpair:"en|ja",
+            mt:"1"
+        });
+
+        const response = await fetch(`${MYMEMORY_TRANSLATION_ENDPOINT}?${params.toString()}`, {
+            method:"GET",
+            mode:"cors",
+            credentials:"omit",
+            cache:"no-store",
+            referrerPolicy:"no-referrer",
+            signal:controller.signal,
+            headers:{ "Accept":"application/json" }
+        });
+
+        if (!response.ok) {
+            if (response.status === 429) throw new Error("The online translator's free daily quota has been reached. Offline Phrase Finder still works.");
+            throw new Error(`The online translator is unavailable right now (HTTP ${response.status}).`);
+        }
+
+        const result = validateMyMemoryTranslationResponse(await response.json(), request);
+        translationOnlineCache.set(onlineTranslationCacheKey(request.english), result);
+        return result;
+    }
+    catch (error) {
+        if (error?.name === "AbortError") {
+            throw new Error("Online Translation took too long to respond. Try again or use Offline Phrase Finder.");
+        }
+        if (/Failed to fetch|NetworkError|Load failed/i.test(String(error?.message || ""))) {
+            throw new Error("Sakura could not reach the online translator. Check your connection, then try again.");
+        }
+        throw error;
+    }
+    finally {
+        window.clearTimeout(timeout);
+    }
+}
+
+async function requestOnlineTranslation(request) {
+    // Future-compatible: if a private secure endpoint is configured later, use it.
+    if (TRANSLATION_API_ENDPOINT) {
+        const controller = new AbortController();
+        const timeout = window.setTimeout(() => controller.abort(), ONLINE_TRANSLATION_TIMEOUT_MS);
+        try {
+            const response = await fetch(TRANSLATION_API_ENDPOINT, {
+                method:"POST",
+                headers:{"Content-Type":"application/json"},
+                body:JSON.stringify(request),
+                signal:controller.signal,
+                cache:"no-store",
+                credentials:"omit"
+            });
+            if (!response.ok) throw new Error("The secure translation service is unavailable right now.");
+            return validateTranslationResponse(await response.json());
+        }
+        catch (error) {
+            if (error?.name === "AbortError") throw new Error("Online Translation took too long to respond.");
+            throw error;
+        }
+        finally {
+            window.clearTimeout(timeout);
+        }
+    }
+
+    return requestMyMemoryTranslation(request);
+}
+
+async function offlineFallbackForOnlineTranslation(request) {
+    try {
+        const ranked = await findOfflineTranslationPhrases(request.english);
+        if (!ranked.length || ranked[0].score < 55) return null;
+        return offlinePhraseResult(ranked[0].record, ranked.slice(1).map(item => item.record));
+    }
+    catch {
+        return null;
+    }
+}
+
 function validateTranslationResponse(data) {
     if (!data || typeof data !== "object" || !cleanEntryText(data.japanese) || !cleanEntryText(data.naturalMeaning)) {
         throw new Error("The translation service returned an incomplete response.");
@@ -4952,7 +5134,7 @@ function renderTranslationMode() {
 
     const note = document.getElementById("translation-mode-note");
     const submit = document.getElementById("submit-translation");
-    const onlineReady = Boolean(TRANSLATION_API_ENDPOINT) && navigator.onLine;
+    const onlineReady = navigator.onLine;
 
     if (translationMode === "offline") {
         if (note) note.innerHTML = "<strong>Offline Phrase Finder</strong><span>Searches Sakura's curated phrase library. It does not pretend to translate arbitrary English.</span>";
@@ -4967,12 +5149,12 @@ function renderTranslationMode() {
     else {
         if (note) {
             note.innerHTML = onlineReady
-                ? "<strong>Online Translation</strong><span>Uses the configured secure translation service for arbitrary sentences.</span>"
-                : "<strong>Online Translation</strong><span>Not connected yet. Sakura will never place a secret API key inside the app.</span>";
+                ? "<strong>Online Translation</strong><span>Working web translation for arbitrary English → Japanese. Internet required. Machine translation may not perfectly preserve tone or nuance.</span>"
+                : "<strong>Online Translation</strong><span>You appear to be offline. Switch to Offline Phrase Finder or reconnect to the internet.</span>";
         }
         if (submit) {
             submit.disabled = !onlineReady;
-            submit.textContent = onlineReady ? "Translate Online" : "Online unavailable";
+            submit.textContent = onlineReady ? "Translate Online" : "You're offline";
         }
     }
 }
@@ -5033,18 +5215,34 @@ function renderTranslationResult(result) {
         ? "Offline Sakura phrase"
         : result.source === "library"
             ? "Related Sakura library item"
-            : "Recommended translation";
+            : result.source === "online-mymemory"
+                ? "Online translation · MyMemory"
+                : "Recommended translation";
 
     document.getElementById("translation-result-label").textContent = label;
     document.getElementById("translation-japanese").textContent = result.japanese;
-    document.getElementById("translation-kana").textContent = result.kana;
-    document.getElementById("translation-romaji").textContent = result.romaji;
+
+    const kana = document.getElementById("translation-kana");
+    const romaji = document.getElementById("translation-romaji");
+    const readingNote = document.getElementById("translation-reading-note");
+    kana.textContent = result.kana || "";
+    romaji.textContent = result.romaji || "";
+    kana.hidden = !result.kana;
+    romaji.hidden = !result.romaji;
+    if (readingNote) readingNote.hidden = Boolean(result.kana || result.romaji) || !String(result.source || "").startsWith("online");
+
     document.getElementById("translation-natural-meaning").textContent = result.naturalMeaning;
     document.getElementById("translation-literal-meaning").textContent = result.literalMeaning;
     document.getElementById("translation-literal-group").hidden = !result.literalMeaning;
     document.getElementById("translation-usage").textContent = [result.tone, result.usageNote].filter(Boolean).join(" · ");
     document.getElementById("translation-alternative").textContent = result.alternative;
     document.getElementById("translation-alternative-group").hidden = !result.alternative;
+
+    const copyReading = document.getElementById("copy-translation-reading");
+    if (copyReading) {
+        copyReading.disabled = !result.kana && !result.romaji;
+        copyReading.title = copyReading.disabled ? "Reading is unavailable for this online machine translation." : "";
+    }
 
     const savedItem = translationResultItem(result);
     setSaveButton(document.getElementById("save-translation"), savedItem);
@@ -5130,12 +5328,6 @@ async function requestTranslation(event) {
 
     try {
         if (translationMode === "online") {
-            if (!TRANSLATION_API_ENDPOINT) {
-                renderTranslationResult(null);
-                renderTranslationSuggestions([]);
-                message.textContent = "Online Translation is not connected yet. Switch to Offline Phrase Finder.";
-                return;
-            }
             if (!navigator.onLine) {
                 renderTranslationResult(null);
                 renderTranslationSuggestions([]);
@@ -5143,19 +5335,25 @@ async function requestTranslation(event) {
                 return;
             }
 
-            message.textContent = "Translating…";
-            const response = await fetch(TRANSLATION_API_ENDPOINT, {
-                method:"POST",
-                headers:{"Content-Type":"application/json"},
-                body:JSON.stringify(request)
-            });
-            if (!response.ok) throw new Error("The translation service is unavailable right now.");
-
-            const result = validateTranslationResponse(await response.json());
-            renderTranslationSuggestions([]);
-            renderTranslationResult(result);
-            addTranslationHistory(request, result);
-            message.textContent = "";
+            message.textContent = "Translating online…";
+            try {
+                const result = await requestOnlineTranslation(request);
+                renderTranslationSuggestions([]);
+                renderTranslationResult(result);
+                addTranslationHistory(request, result);
+                message.textContent = result.cached ? "Loaded from your recent online translations." : "Online translation complete.";
+            }
+            catch (onlineError) {
+                const fallback = await offlineFallbackForOnlineTranslation(request);
+                if (fallback) {
+                    renderTranslationSuggestions([]);
+                    renderTranslationResult(fallback);
+                    message.textContent = `${onlineError.message || "The online translator is unavailable."} Showing Sakura's closest offline phrase instead.`;
+                }
+                else {
+                    throw onlineError;
+                }
+            }
             return;
         }
 
@@ -7851,6 +8049,9 @@ function addListeners() {
     document.getElementById("yen-rate-form").addEventListener("submit", saveYenRate);
     document.getElementById("close-yen-rate-editor").addEventListener("click", () => document.getElementById("yen-rate-editor").close());
     document.getElementById("cancel-yen-rate").addEventListener("click", () => document.getElementById("yen-rate-editor").close());
+    window.addEventListener("online", () => { if (currentRoute === "translate") renderTranslationMode(); });
+    window.addEventListener("offline", () => { if (currentRoute === "translate") renderTranslationMode(); });
+
     document.getElementById("translation-mode-switch")?.addEventListener("click", event => {
         const button = event.target.closest("[data-translation-mode]");
         if (button) setTranslationMode(button.dataset.translationMode);
