@@ -3005,6 +3005,108 @@ function findRailNetworkRouteOptions(fromHubKey, toHubKey, limit = 3) {
     });
     return [primary, ...candidates.slice(0, Math.max(0, limit - 1))];
 }
+
+const RAIL_NETWORK_MINUTES_PER_STOP = Object.freeze({
+    "yamanote":2.3,
+    "chuo-rapid-core":3.0,
+    "keihin-tohoku-core":2.5,
+    "jr-yokosuka-kamakura":3.6,
+    "jr-shonan-shinjuku-kamakura":4.2,
+    "enoden":2.8,
+
+    "metro-ginza":2.1,
+    "metro-marunouchi":2.0,
+    "metro-marunouchi-branch":2.0,
+    "metro-hibiya":2.1,
+    "metro-tozai":2.2,
+    "metro-chiyoda":2.2,
+    "metro-yurakucho":2.1,
+    "metro-hanzomon":2.1,
+    "metro-namboku":2.2,
+    "metro-fukutoshin":2.2,
+    "toei-asakusa":2.3,
+    "toei-mita":2.2,
+    "toei-shinjuku":2.3,
+    "toei-oedo":2.2,
+
+    "osaka-loop":2.4,
+    "jr-kyoto":3.4,
+    "yumesaki":2.7,
+    "metro-midosuji":2.0,
+    "metro-tanimachi":2.1,
+    "metro-yotsubashi":2.0,
+    "metro-chuo":2.1,
+    "metro-sennichimae":2.0,
+    "metro-sakaisuji":2.1,
+    "metro-nagahori":2.1,
+    "metro-imazatosuji":2.1,
+    "metro-newtram":2.0,
+
+    "nara":3.1,
+    "sagano":3.1,
+    "subway-karasuma":2.0,
+    "subway-tozai":2.1
+});
+
+function railNetworkMinutesPerStop(line) {
+    if (!line) return 2.3;
+    const explicit = RAIL_NETWORK_MINUTES_PER_STOP[line.id];
+    if (Number.isFinite(explicit)) return explicit;
+
+    const operator = String(line.operator || "");
+    if (/Metro|Subway/i.test(operator)) return 2.1;
+    if (/\bJR\b/i.test(operator)) return 2.8;
+    return 2.4;
+}
+
+function railNetworkTransferMinutes(step) {
+    if (!step || step.type !== "transfer") return 0;
+
+    const fromOperator = String(step.fromLine?.operator || "");
+    const toOperator = String(step.toLine?.operator || "");
+    const stationKey = railNetworkHubKey(step.hub?.name || step.fromStation?.name || "");
+
+    if (railGuideCityData?.city === "tokyo" && stationKey === "nihombashi" &&
+        [fromOperator,toOperator].includes("Tokyo Metro") &&
+        [fromOperator,toOperator].includes("Toei Subway")) return 7;
+
+    if (step.transferKind === "walk" || step.transferKind === "outside-gate") return 8;
+    if (fromOperator && toOperator && fromOperator !== toOperator) return 7;
+    return 5;
+}
+
+function railNetworkRideMinutes(step) {
+    if (!step || step.type !== "ride") return 0;
+    const stopCount = Math.max(0, (step.stations?.length || 1) - 1);
+    if (!stopCount) return 0;
+    return Math.max(2, Math.round(stopCount * railNetworkMinutesPerStop(step.line)));
+}
+
+function railNetworkRouteTime(route) {
+    const steps = railNetworkRouteSteps(route);
+    let rideMinutes = 0;
+    let transferMinutes = 0;
+
+    steps.forEach(step => {
+        if (step.type === "ride") rideMinutes += railNetworkRideMinutes(step);
+        else if (step.type === "transfer") transferMinutes += railNetworkTransferMinutes(step);
+    });
+
+    return {
+        rideMinutes,
+        transferMinutes,
+        totalMinutes:rideMinutes + transferMinutes
+    };
+}
+
+function railNetworkFormatMinutes(minutes) {
+    const safe = Math.max(0, Math.round(Number(minutes) || 0));
+    if (safe < 60) return `~${safe} min`;
+    const hours = Math.floor(safe / 60);
+    const mins = safe % 60;
+    return mins ? `~${hours} hr ${mins} min` : `~${hours} hr`;
+}
+
 function railNetworkRouteOptionLabel(route, index, primary) {
     if (index === 0) return "Recommended";
     const traits = railNetworkRouteTraits(route), primaryTraits = railNetworkRouteTraits(primary);
@@ -3013,9 +3115,41 @@ function railNetworkRouteOptionLabel(route, index, primary) {
     if (route.transfers < primary.transfers) return "Fewer transfers";
     return "Alternative";
 }
+function railNetworkDisplayLineName(line) {
+    if (!line) return "";
+    if (line.id === "jr-shonan-shinjuku-kamakura") return "Shonan-Shinjuku Line";
+    return line.name || "";
+}
+function railNetworkRideHasVariableStops(step) {
+    return Boolean(step?.type === "ride" && step.line?.id === "jr-shonan-shinjuku-kamakura");
+}
+function railNetworkRouteHasVariableStops(route) {
+    return railNetworkRouteSteps(route).some(railNetworkRideHasVariableStops);
+}
+function railNetworkShonanDirectYokosukaDestination(step) {
+    if (!railNetworkRideHasVariableStops(step)) return "";
+    const destination = step.stations?.[step.stations.length - 1]?.name || "";
+    return ["Kita-Kamakura", "Kamakura", "Zushi"].includes(destination) ? destination : "";
+}
+function railNetworkRideServiceMessage(step) {
+    if (!railNetworkRideHasVariableStops(step)) return "";
+    const directDestination = railNetworkShonanDirectYokosukaDestination(step);
+    if (directDestination) {
+        return `Board a Zushi-bound train for a direct ride to ${directDestination}. Other Shonan-Shinjuku services may require a transfer at Ofuna.`;
+    }
+    return "Stops vary by train service. Confirm that your train stops at your destination.";
+}
 function railNetworkDisplayDirection(step, direction) {
     if (!direction) return "";
     const destination = step.stations?.[step.stations.length - 1]?.name || "";
+    if (step.line?.id === "jr-shonan-shinjuku-kamakura") {
+        if (railNetworkShonanDirectYokosukaDestination(step)) {
+            return "For Zushi · continues onto Yokosuka Line";
+        }
+        return /Yokohama|Ofuna|Zushi/i.test(direction)
+            ? "Southbound · toward Yokohama / Ofuna"
+            : "Northbound · toward Shinjuku / Ikebukuro";
+    }
     if (railGuideCityData?.city === "tokyo" && step.line?.code === "A" && destination === "Asakusa" && /Oshiage/i.test(direction)) {
         return "toward Asakusa / Oshiage";
     }
@@ -3068,27 +3202,41 @@ function renderRailNetworkRoute(fromHubKey = railNetworkPlannerState.from, toHub
     }
     const primary = railNetworkRouteOptions[0];
     const optionHtml = railNetworkRouteOptions.length > 1 ? `<section class="rail-route-options-wrap" aria-label="Offline route options">
-        <div class="rail-route-options-heading"><span class="section-kicker">Route options</span><small>Offline alternatives · not live timing</small></div>
+        <div class="rail-route-options-heading"><span class="section-kicker">Route options</span><small>Offline routes · estimated time</small></div>
         <div class="rail-route-options" role="tablist" aria-label="Choose route option">${railNetworkRouteOptions.map((option,optionIndex)=>{
             const traits=railNetworkRouteTraits(option), active=optionIndex===railNetworkSelectedRouteIndex;
-            const label=railNetworkRouteOptionLabel(option,optionIndex,primary);
-            return `<button class="rail-route-option ${active?"active":""}" type="button" role="tab" aria-selected="${active}" data-rail-route-option="${optionIndex}"><span class="rail-route-option-label">${escapeSearchHtml(label)}</span><strong>${escapeSearchHtml(traits.rides.map(step=>step.line.code).join(" → "))}</strong><small>${option.rideStops} stop${option.rideStops===1?"":"s"} · ${option.transfers} transfer${option.transfers===1?"":"s"}</small><em>${escapeSearchHtml(traits.lineNames.join(" → "))}</em></button>`;
+            const label=railNetworkRouteOptionLabel(option,optionIndex,primary), variableStops=railNetworkRouteHasVariableStops(option);
+            const time=railNetworkRouteTime(option);
+            const routeTime=railNetworkFormatMinutes(time.totalMinutes);
+            const meta=variableStops
+                ? `${routeTime} · stops vary · ${option.transfers} transfer${option.transfers===1?"":"s"}`
+                : `${routeTime} · ${option.rideStops} stop${option.rideStops===1?"":"s"} · ${option.transfers} transfer${option.transfers===1?"":"s"}`;
+            return `<button class="rail-route-option ${active?"active":""}" type="button" role="tab" aria-selected="${active}" data-rail-route-option="${optionIndex}"><span class="rail-route-option-label">${escapeSearchHtml(label)}</span><strong>${escapeSearchHtml(traits.rides.map(step=>step.line.code).join(" → "))}</strong><small>${escapeSearchHtml(meta)}</small><em>${escapeSearchHtml(traits.rides.map(step=>railNetworkDisplayLineName(step.line)).join(" → "))}</em></button>`;
         }).join("")}</div></section>` : "";
     const steps=railNetworkRouteSteps(route);
     const stepHtml=steps.map((step,index)=>{
         if(step.type==="transfer"){
             const title=step.transferName||step.hub?.name||step.fromStation.name;
-            return `<article class="rail-network-step transfer-step"><span class="rail-network-step-number">${index+1}</span><div><span class="rail-network-step-kicker">Transfer</span><h4>${escapeSearchHtml(title)}</h4><p>${escapeSearchHtml(step.fromLine.code)} ${escapeSearchHtml(step.fromLine.name)} → ${escapeSearchHtml(step.toLine.code)} ${escapeSearchHtml(step.toLine.name)}</p><small>${escapeSearchHtml(railNetworkTransferGuidance(step))}</small></div></article>`;
+            const transferMinutes=railNetworkTransferMinutes(step);
+            return `<article class="rail-network-step transfer-step"><span class="rail-network-step-number">${index+1}</span><div><span class="rail-network-step-kicker">Transfer</span><h4>${escapeSearchHtml(title)}</h4><p>${escapeSearchHtml(step.fromLine.code)} ${escapeSearchHtml(railNetworkDisplayLineName(step.fromLine))} → ${escapeSearchHtml(step.toLine.code)} ${escapeSearchHtml(railNetworkDisplayLineName(step.toLine))}</p><span class="rail-network-time-pill">Allow ~${transferMinutes} min to transfer</span><small>${escapeSearchHtml(railNetworkTransferGuidance(step))}</small></div></article>`;
         }
         const stations=step.stations, first=stations[0], last=stations[stations.length-1], next=stations[1];
         const rawDirection=next?railDirectionForPair(step.line,first.code,next.code):"";
-        const direction=railNetworkDisplayDirection(step,rawDirection), stopCount=Math.max(0,stations.length-1);
+        const direction=railNetworkDisplayDirection(step,rawDirection), stopCount=Math.max(0,stations.length-1), variableStops=railNetworkRideHasVariableStops(step);
         const trail=stations.map(station=>station.name).join(" → ");
-        const trailHtml=stopCount>1?`<details class="rail-network-stops"><summary>View all ${stopCount} stops</summary><small class="rail-network-station-trail">${escapeSearchHtml(trail)}</small></details>`:"";
-        return `<article class="rail-network-step ride-step" style="--rail-line:${escapeSearchHtml(step.line.accent||"#d75a82")}"><span class="rail-network-step-number">${index+1}</span><div class="rail-network-step-copy"><div class="rail-network-line-title"><span class="rail-network-line-code">${escapeSearchHtml(step.line.code)}</span><div><span class="rail-network-step-kicker">Take</span><h4>${escapeSearchHtml(step.line.name)}</h4><small>${escapeSearchHtml(step.line.operator||"")}</small></div></div><p><strong>${escapeSearchHtml(first.code)} ${escapeSearchHtml(first.name)}</strong> → <strong>${escapeSearchHtml(last.code)} ${escapeSearchHtml(last.name)}</strong></p><p>${stopCount} stop${stopCount===1?"":"s"}${direction?` · ${escapeSearchHtml(direction)}`:""}</p>${trailHtml}</div></article>`;
+        const trailHtml=stopCount>1 ? (variableStops ? `<details class="rail-network-stops"><summary>Typical local stopping pattern</summary><small class="rail-network-station-trail">Stored local pattern: ${escapeSearchHtml(trail)}</small></details>` : `<details class="rail-network-stops"><summary>View all ${stopCount} stops</summary><small class="rail-network-station-trail">${escapeSearchHtml(trail)}</small></details>`) : "";
+        const rideMeta=variableStops ? (direction?escapeSearchHtml(direction):"Service direction varies") : `${stopCount} stop${stopCount===1?"":"s"}${direction?` · ${escapeSearchHtml(direction)}`:""}`;
+        const serviceMessage=railNetworkRideServiceMessage(step);
+        const throughService=railNetworkShonanDirectYokosukaDestination(step) ? " · Through service to Yokosuka Line" : "";
+        const rideMinutes=railNetworkRideMinutes(step);
+        return `<article class="rail-network-step ride-step" style="--rail-line:${escapeSearchHtml(step.line.accent||"#d75a82")}"><span class="rail-network-step-number">${index+1}</span><div class="rail-network-step-copy"><div class="rail-network-line-title"><span class="rail-network-line-code">${escapeSearchHtml(step.line.code)}</span><div><span class="rail-network-step-kicker">Take</span><h4>${escapeSearchHtml(railNetworkDisplayLineName(step.line))}</h4><small>${escapeSearchHtml((step.line.operator||"")+throughService)}</small></div></div><p><strong>${escapeSearchHtml(first.code)} ${escapeSearchHtml(first.name)}</strong> → <strong>${escapeSearchHtml(last.code)} ${escapeSearchHtml(last.name)}</strong></p><p>${rideMeta}</p><span class="rail-network-time-pill">${escapeSearchHtml(railNetworkFormatMinutes(rideMinutes))} on train</span>${serviceMessage?`<small class="rail-network-service-note">${escapeSearchHtml(serviceMessage)}</small>`:""}${trailHtml}</div></article>`;
     }).join("");
-    const routeLabel=railNetworkRouteOptionLabel(route,railNetworkSelectedRouteIndex,primary);
-    panel.innerHTML=`${optionHtml}<div class="rail-network-route-summary"><span class="section-kicker">${escapeSearchHtml(routeLabel)} · Offline route</span><h3>${escapeSearchHtml(fromHub.name)} → ${escapeSearchHtml(toHub.name)}</h3><p>${route.rideStops} ride stop${route.rideStops===1?"":"s"} · ${route.transfers} transfer${route.transfers===1?"":"s"} · ${steps.filter(step=>step.type==="ride").length} train line${steps.filter(step=>step.type==="ride").length===1?"":"s"}</p></div><div class="rail-network-step-list">${stepHtml}</div><div class="rail-network-live-note"><strong>Before boarding</strong><p>This is an offline route based on Sakura's stored station order, not a live timetable. Route options are not ranked by live travel time or fare. Confirm the current train type, destination, platform, disruptions, fare-gate instructions, and transfer signs at the station.</p></div>`;
+    const routeLabel=railNetworkRouteOptionLabel(route,railNetworkSelectedRouteIndex,primary), variableRoute=railNetworkRouteHasVariableStops(route);
+    const routeTime=railNetworkRouteTime(route);
+    const totalTime=railNetworkFormatMinutes(routeTime.totalMinutes);
+    const summaryMeta=variableRoute ? `${route.transfers} transfer${route.transfers===1?"":"s"} · ${steps.filter(step=>step.type==="ride").length} train line${steps.filter(step=>step.type==="ride").length===1?"":"s"} · stopping pattern varies` : `${route.rideStops} ride stop${route.rideStops===1?"":"s"} · ${route.transfers} transfer${route.transfers===1?"":"s"} · ${steps.filter(step=>step.type==="ride").length} train line${steps.filter(step=>step.type==="ride").length===1?"":"s"}`;
+    const variableNote=variableRoute ? " Some JR services use local, rapid, or special-rapid stopping patterns, so intermediate stops can differ by train." : "";
+    panel.innerHTML=`${optionHtml}<div class="rail-network-route-summary"><span class="section-kicker">${escapeSearchHtml(routeLabel)} · Offline route</span><h3>${escapeSearchHtml(fromHub.name)} → ${escapeSearchHtml(toHub.name)}</h3><div class="rail-network-total-time"><span>Estimated travel time</span><strong>${escapeSearchHtml(totalTime)}</strong><small>${routeTime.rideMinutes} min riding + ~${routeTime.transferMinutes} min transfer allowance</small></div><p>${escapeSearchHtml(summaryMeta)}</p></div><div class="rail-network-step-list">${stepHtml}</div><div class="rail-network-live-note"><strong>Before boarding</strong><p>This is an offline route based on Sakura's stored station order, not a departure-specific timetable. The travel time is an estimate of ride time plus transfer walking allowance; it does not include waiting for the next train, delays, or timetable-specific service differences. Route options are not ranked by live travel time or fare.${escapeSearchHtml(variableNote)} Confirm the current train type, destination, platform, disruptions, fare-gate instructions, and transfer signs at the station.</p></div>`;
     panel.hidden=false;
     if(recompute && typeof panel.scrollIntoView==="function") panel.scrollIntoView({block:"nearest"});
 }
