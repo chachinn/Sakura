@@ -600,6 +600,45 @@ let kanjiQuizRomajiVisible = readJson(STORAGE.quizRomaji, false) === true;
 let kanjiQuizFeedbackRevealed = false;
 
 let currentRoute = "home";
+const STUDY_SUITE_ROUTES = new Set(["study-lab", "practice-shadowing", "study-writing", "study-review", "study-lessons", "practice-conversation", "practice-quick"]);
+let studySuiteLoadPromise = null;
+function ensureStudySuite() {
+    if (window.SakuraStudySuite) {
+        window.SakuraStudySuite.init?.();
+        return Promise.resolve(window.SakuraStudySuite);
+    }
+    if (studySuiteLoadPromise) return studySuiteLoadPromise;
+    studySuiteLoadPromise = new Promise((resolve, reject) => {
+        const existing = document.querySelector('script[data-sakura-study-suite]');
+        if (existing) {
+            existing.addEventListener("load", () => { window.SakuraStudySuite?.init?.(); resolve(window.SakuraStudySuite); }, { once:true });
+            existing.addEventListener("error", () => reject(new Error("Sakura Study Suite could not load.")), { once:true });
+            return;
+        }
+        const script = document.createElement("script");
+        script.src = "./study-suite.js?v=1";
+        script.dataset.sakuraStudySuite = "true";
+        script.async = true;
+        script.onload = () => {
+            if (!window.SakuraStudySuite) { reject(new Error("Sakura Study Suite did not initialize.")); return; }
+            window.SakuraStudySuite.init?.();
+            requestAnimationFrame(() => window.SakuraStudySuite?.augmentAudioButtons?.(currentRoute));
+            resolve(window.SakuraStudySuite);
+        };
+        script.onerror = () => reject(new Error("Sakura Study Suite could not load."));
+        document.body.appendChild(script);
+    }).catch(error => {
+        studySuiteLoadPromise = null;
+        console.warn("Sakura Study Suite unavailable.", error);
+        throw error;
+    });
+    return studySuiteLoadPromise;
+}
+function scheduleStudySuiteLoad() {
+    const load = () => ensureStudySuite().catch(() => {});
+    if ("requestIdleCallback" in window) requestIdleCallback(load, { timeout:3200 });
+    else window.setTimeout(load, 1800);
+}
 let hubDrawerReturnFocus = null;
 let detailReturnRoute = "home";
 let currentDailyKanji = null;
@@ -3674,7 +3713,7 @@ function renderTravelPhraseCard(phrase) {
     document.getElementById("travel-category-status").textContent = isSmartVariant ? `Suggested phrase · ${travelCategoryMetadata(phrase.category)?.title || "Travel"}` : pool.length ? `${position + 1} of ${pool.length} · ${currentTravelFilter}` : "Saved travel phrase";
     const saved = !isSmartVariant && isSaved(phrase);
     list.innerHTML = `<article class="travel-phrase-card">
-        <div class="card-topline"><span class="status-label">${escapeSearchHtml(isSmartVariant ? "Suggested phrase" : phrase.subcategory)}</span>${isSmartVariant ? "" : `<button class="save-button ${saved ? "saved" : ""}" type="button" data-save-travel-phrase aria-label="${saved ? "Unsave" : "Save"} travel phrase" aria-pressed="${saved}">${saved ? "♥" : "♡"}</button>`}</div>
+        <div class="card-topline"><span class="status-label">${escapeSearchHtml(isSmartVariant ? "Suggested phrase" : phrase.subcategory)}</span><div class="card-topline-actions"><button class="suite-audio-mini" type="button" data-sakura-speak data-speak-text="${escapeSearchHtml(phrase.japanese)}">🔊 Hear</button>${isSmartVariant ? "" : `<button class="save-button ${saved ? "saved" : ""}" type="button" data-save-travel-phrase aria-label="${saved ? "Unsave" : "Save"} travel phrase" aria-pressed="${saved}">${saved ? "♥" : "♡"}</button>`}</div></div>
         <h2>${escapeSearchHtml(phrase.japanese)}</h2>
         <p class="travel-reading">${escapeSearchHtml(phrase.reading)}</p>
         <p class="travel-romaji">${escapeSearchHtml(phrase.romaji)}</p>
@@ -6819,7 +6858,7 @@ function renderParticleDetail(x) {
     document.getElementById("particle-detail-heading").textContent=`${x.particle} Particle`; document.getElementById("particle-detail-character").textContent=x.particle; document.getElementById("particle-detail-reading").textContent=x.reading; document.getElementById("particle-detail-romaji").textContent=x.romaji; document.getElementById("particle-detail-frequency").textContent=x.frequencyTier;
     document.getElementById("particle-detail-categories").innerHTML=x.categories.map(v=>`<span class="tag">${escapeSearchHtml(v)}</span>`).join(""); document.getElementById("particle-detail-core").textContent=x.coreMeaning; document.getElementById("particle-detail-used-for").textContent=x.usedFor; document.getElementById("particle-detail-explanation").textContent=x.explanation;
     document.getElementById("particle-pattern-list").innerHTML=x.patterns.map(v=>`<article class="particle-pattern-row"><strong>${escapeSearchHtml(v.form)}</strong><span>${escapeSearchHtml(v.meaning)}</span></article>`).join("");
-    document.getElementById("particle-example-list").innerHTML=x.examples.map(v=>`<article class="particle-example-card"><strong>${escapeSearchHtml(v.japanese)}</strong><span>${escapeSearchHtml(v.kana)}</span><span class="counter-romaji" data-particle-romaji hidden>${escapeSearchHtml(v.romaji)}</span><p>${escapeSearchHtml(v.english)}</p></article>`).join("");
+    document.getElementById("particle-example-list").innerHTML=x.examples.map(v=>`<article class="particle-example-card"><strong>${escapeSearchHtml(v.japanese)}</strong><span>${escapeSearchHtml(v.kana)}</span><span class="counter-romaji" data-particle-romaji hidden>${escapeSearchHtml(v.romaji)}</span><p>${escapeSearchHtml(v.english)}</p><button class="suite-audio-mini" type="button" data-sakura-speak data-speak-text="${escapeSearchHtml(v.japanese)}" aria-label="Hear example">🔊 Hear</button></article>`).join("");
     const cs=document.getElementById("particle-contrast-section"), c=x.contrasts||[]; cs.hidden=!c.length; document.getElementById("particle-contrast-list").innerHTML=c.map(v=>`<article class="particle-contrast-row"><strong>${escapeSearchHtml(v.particle)}</strong><p>${escapeSearchHtml(v.explanation)}</p></article>`).join("");
     const notes=[x.notes,x.learnerCaution].filter(Boolean).join("\n"); document.getElementById("particle-detail-notes").textContent=notes; document.getElementById("particle-detail-notes-section").hidden=!notes; applyParticlesRomajiVisibility(); window.scrollTo({top:0,behavior:"smooth"});
 }
@@ -6844,7 +6883,7 @@ function filteredGrammar(){
 function applyGrammarRomajiVisibility(){document.querySelectorAll("[data-grammar-romaji]").forEach(el=>{el.hidden=!grammarRomajiVisible;});["grammar-romaji-toggle","grammar-detail-romaji-toggle"].forEach(id=>{const b=document.getElementById(id);if(b){b.textContent=grammarRomajiVisible?"Hide Romaji":"Show Romaji";b.setAttribute("aria-pressed",String(grammarRomajiVisible));}});}
 function renderGrammarFilters(){const s=document.getElementById("grammar-category-filter"),selected=s.value,cats=[...new Set((grammarData||[]).flatMap(x=>x.categories))].sort();s.innerHTML='<option value="all">All Categories</option>'+cats.map(x=>`<option value="${escapeSearchHtml(x)}">${escapeSearchHtml(x)}</option>`).join("");s.value=cats.includes(selected)?selected:"all";}
 function renderGrammar(){if(!grammarData)return;const items=filteredGrammar();document.getElementById("grammar-count").textContent=`${items.length} of ${grammarData.length} grammar points`;document.getElementById("grammar-list").innerHTML=items.map(x=>`<button class="grammar-card" type="button" data-grammar-id="${escapeSearchHtml(x.id)}"><div class="grammar-card-top"><span class="grammar-level-badge">${escapeSearchHtml(x.jlpt)}</span><span>${escapeSearchHtml(x.register||"Neutral")}</span></div><strong>${escapeSearchHtml(x.pattern)}</strong><span class="grammar-card-reading">${escapeSearchHtml(x.reading)}</span><span class="counter-romaji" data-grammar-romaji hidden>${escapeSearchHtml(x.romaji)}</span><p>${escapeSearchHtml(x.meaning)}</p></button>`).join("");document.getElementById("grammar-empty").hidden=items.length>0;applyGrammarRomajiVisibility();}
-function renderGrammarDetail(x){if(!x)return;currentGrammar=x;document.getElementById("grammar-home").hidden=true;document.getElementById("grammar-detail").hidden=false;document.getElementById("grammar-detail-heading").textContent=x.pattern;document.getElementById("grammar-detail-pattern").textContent=x.pattern;document.getElementById("grammar-detail-reading").textContent=x.reading;document.getElementById("grammar-detail-romaji").textContent=x.romaji;document.getElementById("grammar-detail-level").textContent=x.jlpt;document.getElementById("grammar-detail-register").textContent=x.register||"Neutral";document.getElementById("grammar-detail-categories").innerHTML=x.categories.map(v=>`<span class="tag">${escapeSearchHtml(v)}</span>`).join("");document.getElementById("grammar-detail-meaning").textContent=x.meaning;document.getElementById("grammar-detail-explanation").textContent=x.explanation;document.getElementById("grammar-formation-list").innerHTML=x.formation.map(v=>`<li>${escapeSearchHtml(v)}</li>`).join("");document.getElementById("grammar-example-list").innerHTML=x.examples.map(v=>`<article class="particle-example-card grammar-example-card"><strong>${escapeSearchHtml(v.japanese)}</strong><span>${escapeSearchHtml(v.kana)}</span><span class="counter-romaji" data-grammar-romaji hidden>${escapeSearchHtml(v.romaji)}</span><p>${escapeSearchHtml(v.english)}</p></article>`).join("");const n=[x.nuance,x.commonMistakes?`Common mistake: ${x.commonMistakes}`:""].filter(Boolean).join("\n");document.getElementById("grammar-detail-nuance").textContent=n;document.getElementById("grammar-detail-nuance-section").hidden=!n;const rel=x.related||[];document.getElementById("grammar-related-section").hidden=!rel.length;document.getElementById("grammar-related-list").innerHTML=rel.map(v=>`<span class="tag">${escapeSearchHtml(v)}</span>`).join("");applyGrammarRomajiVisibility();window.scrollTo({top:0,behavior:"smooth"});}
+function renderGrammarDetail(x){if(!x)return;currentGrammar=x;document.getElementById("grammar-home").hidden=true;document.getElementById("grammar-detail").hidden=false;document.getElementById("grammar-detail-heading").textContent=x.pattern;document.getElementById("grammar-detail-pattern").textContent=x.pattern;document.getElementById("grammar-detail-reading").textContent=x.reading;document.getElementById("grammar-detail-romaji").textContent=x.romaji;document.getElementById("grammar-detail-level").textContent=x.jlpt;document.getElementById("grammar-detail-register").textContent=x.register||"Neutral";document.getElementById("grammar-detail-categories").innerHTML=x.categories.map(v=>`<span class="tag">${escapeSearchHtml(v)}</span>`).join("");document.getElementById("grammar-detail-meaning").textContent=x.meaning;document.getElementById("grammar-detail-explanation").textContent=x.explanation;document.getElementById("grammar-formation-list").innerHTML=x.formation.map(v=>`<li>${escapeSearchHtml(v)}</li>`).join("");document.getElementById("grammar-example-list").innerHTML=x.examples.map(v=>`<article class="particle-example-card grammar-example-card"><strong>${escapeSearchHtml(v.japanese)}</strong><span>${escapeSearchHtml(v.kana)}</span><span class="counter-romaji" data-grammar-romaji hidden>${escapeSearchHtml(v.romaji)}</span><p>${escapeSearchHtml(v.english)}</p><button class="suite-audio-mini" type="button" data-sakura-speak data-speak-text="${escapeSearchHtml(v.japanese)}" aria-label="Hear example">🔊 Hear</button></article>`).join("");const n=[x.nuance,x.commonMistakes?`Common mistake: ${x.commonMistakes}`:""].filter(Boolean).join("\n");document.getElementById("grammar-detail-nuance").textContent=n;document.getElementById("grammar-detail-nuance-section").hidden=!n;const rel=x.related||[];document.getElementById("grammar-related-section").hidden=!rel.length;document.getElementById("grammar-related-list").innerHTML=rel.map(v=>`<span class="tag">${escapeSearchHtml(v)}</span>`).join("");applyGrammarRomajiVisibility();window.scrollTo({top:0,behavior:"smooth"});}
 function closeGrammarDetail(){currentGrammar=null;document.getElementById("grammar-detail").hidden=true;document.getElementById("grammar-home").hidden=false;window.scrollTo({top:0,behavior:"smooth"});}
 async function openGrammar(){currentGrammar=null;document.getElementById("grammar-home").hidden=false;document.getElementById("grammar-detail").hidden=true;const l=document.getElementById("grammar-loading");l.hidden=false;l.textContent="Preparing Grammar Garden…";try{await loadGrammarData();if(currentRoute!=="grammar")return;renderGrammarFilters();renderGrammar();l.hidden=true;}catch(e){console.warn("Grammar Garden could not load.",e);if(currentRoute==="grammar"){l.hidden=false;l.textContent="Grammar Garden could not be prepared. Please try again after Sakura updates.";}}}
 
@@ -7582,6 +7621,9 @@ function showRoute(route, updateHash = true) {
     const isTravelUtilityRoute = ["travel-my-phrases", "travel-decks", "travel-notes", "travel-countdown", "travel-offline", "travel-yen", "travel-rail"].includes(normalizedRoute) || Boolean(deckRouteMatch);
     const viewRoute = nativeMode ? "native" : travelCategory ? "travel-category" : deckRouteMatch ? "travel-deck" : normalizedRoute;
     currentRoute = normalizedRoute;
+    if (STUDY_SUITE_ROUTES.has(normalizedRoute) && !window.SakuraStudySuite) {
+        ensureStudySuite().then(suite => { if (currentRoute === normalizedRoute) suite?.open?.(normalizedRoute); }).catch(() => {});
+    }
     updateChibiCompanion();
     chibiContextReaction(normalizedRoute);
     if (normalizedRoute === "home") renderDailyProgress();
@@ -7619,6 +7661,10 @@ function showRoute(route, updateHash = true) {
         view.hidden = !active;
         view.classList.toggle("active-view", active);
     });
+    if (window.SakuraStudySuite) {
+        if (STUDY_SUITE_ROUTES.has(normalizedRoute)) window.SakuraStudySuite.open?.(normalizedRoute);
+        else requestAnimationFrame(() => window.SakuraStudySuite?.augmentAudioButtons?.(normalizedRoute));
+    }
     if (travelCategory) {
         const travelBack = document.querySelector("#travel-category-view .back-button");
         travelBack.dataset.route = previousRoute === "library" ? "library" : "travel";
@@ -7634,7 +7680,7 @@ function showRoute(route, updateHash = true) {
     if (normalizedRoute === "travel-rail") openRailGuide();
     if (normalizedRoute === "travel") renderTravelHeaderCountdown();
     if (deckRouteMatch) renderCurrentTravelDeck();
-    const mainRoute = travelCategory || isTravelUtilityRoute ? "travel" : ["practice-what-would-you-say", "practice-sentence-builder", "practice-one-line-many-personalities"].includes(normalizedRoute) ? "practice" : ["search", "translate", "learn-native", "learn-slang", "library", "counters", "particles", "grammar", "etiquette", "chibi-guide"].includes(normalizedRoute) || (normalizedRoute.includes("detail") && detailReturnRoute === "library") ? "learn" : normalizedRoute.replace("-detail", "");
+    const mainRoute = travelCategory || isTravelUtilityRoute ? "travel" : ["practice-what-would-you-say", "practice-sentence-builder", "practice-one-line-many-personalities", ...STUDY_SUITE_ROUTES].includes(normalizedRoute) ? "practice" : ["search", "translate", "learn-native", "learn-slang", "library", "counters", "particles", "grammar", "etiquette", "chibi-guide"].includes(normalizedRoute) || (normalizedRoute.includes("detail") && detailReturnRoute === "library") ? "learn" : normalizedRoute.replace("-detail", "");
     document.querySelectorAll(".nav-button").forEach(button => button.classList.toggle("active", button.dataset.route === mainRoute || (normalizedRoute.includes("detail") && button.dataset.route === detailReturnRoute)));
     const learnView = normalizedRoute === "learn" ? "library" : nativeMode;
     document.querySelectorAll("[data-learn-view]").forEach(button => {
@@ -8017,6 +8063,12 @@ function openAppearanceSettings() {
 }
 
 function addListeners() {
+    document.addEventListener("click", event => {
+        const button = event.target.closest("[data-sakura-speak]");
+        if (!button || window.SakuraStudySuite) return;
+        event.preventDefault();
+        ensureStudySuite().then(suite => suite?.handleSpeakButton?.(button)).catch(() => {});
+    });
     document.addEventListener("click", event => {
         if (!event.target.closest("[data-practice-romaji-toggle]")) return;
         practiceRomajiVisible = !practiceRomajiVisible;
@@ -8912,8 +8964,9 @@ function initializeApp() {
     const requestedRoute = location.hash.replace("#", "");
     const travelRoutes = Object.keys(window.TRAVEL_CATEGORIES || {}).map(category => `travel-${category}`);
     const validDeckRoute = /^travel-deck-deck-.+/.test(requestedRoute);
-    showRoute(["home", "hub", "library", "learn", "learn-native", "learn-slang", "counters", "particles", "grammar", "etiquette", "kaomoji", "chibi-guide", "search", "translate", "quiz", "practice", "practice-what-would-you-say", "practice-sentence-builder", "practice-one-line-many-personalities", "native", "travel", "travel-my-phrases", "travel-decks", "travel-notes", "travel-countdown", "travel-offline", "travel-yen", "saved", ...travelRoutes].includes(requestedRoute) || validDeckRoute ? requestedRoute : "home", false);
+    showRoute(["home", "hub", "library", "learn", "learn-native", "learn-slang", "counters", "particles", "grammar", "etiquette", "kaomoji", "chibi-guide", "search", "translate", "quiz", "practice", "practice-what-would-you-say", "practice-sentence-builder", "practice-one-line-many-personalities", ...STUDY_SUITE_ROUTES, "native", "travel", "travel-my-phrases", "travel-decks", "travel-notes", "travel-countdown", "travel-offline", "travel-yen", "saved", ...travelRoutes].includes(requestedRoute) || validDeckRoute ? requestedRoute : "home", false);
     initializePwaUpdates();
+    scheduleStudySuiteLoad();
 }
 
 initializeApp();

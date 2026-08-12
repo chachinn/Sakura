@@ -1,7 +1,7 @@
 {
     "name": "Sakura",
     "short_name": "Sakura",
-    "description": "A mobile-first Japanese learning app with vocabulary, kana, kanji, native expressions, saved items, and flashcards.",
+    "description": "A mobile-first Japanese learning app with JLPT study, translation, pronunciation, shadowing, writing practice, smart review, grammar lessons, conversation practice, and travel tools.",
     "id": "./",
     "start_url": "./",
     "scope": "./",
