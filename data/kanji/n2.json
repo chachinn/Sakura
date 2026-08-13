@@ -1,0 +1,100 @@
+[
+  {
+    "id": "kanji-652f",
+    "type": "kanji",
+    "character": "支",
+    "reading": "ささえる / シ",
+    "romaji": "sasaeru / shi",
+    "meaning": "support; branch",
+    "onyomi": [
+      "シ"
+    ],
+    "kunyomi": [
+      "ささえる"
+    ],
+    "jlpt": "N2",
+    "examples": [
+      {
+        "word": "支援",
+        "reading": "しえん",
+        "meaning": "support; assistance"
+      }
+    ],
+    "exampleSentence": "家族が私を支えてくれた。",
+    "exampleTranslation": "My family supported me.",
+    "literalMeaning": "support; branch",
+    "coreConcept": "support, payment, and branching",
+    "commonWords": [
+      {
+        "word": "支える",
+        "reading": "ささえる",
+        "meaning": "to support"
+      },
+      {
+        "word": "支援",
+        "reading": "しえん",
+        "meaning": "support; assistance"
+      },
+      {
+        "word": "支払う",
+        "reading": "しはらう",
+        "meaning": "to pay"
+      },
+      {
+        "word": "支店",
+        "reading": "してん",
+        "meaning": "branch office"
+      }
+    ],
+    "naturalUsageNotes": "The kanji is encountered through verbs and compounds. 支える and 支払う are especially practical in daily life."
+  },
+  {
+    "id": "kanji-8a8d",
+    "type": "kanji",
+    "character": "認",
+    "reading": "みとめる / ニン",
+    "romaji": "mitomeru / nin",
+    "meaning": "recognize; acknowledge",
+    "onyomi": [
+      "ニン"
+    ],
+    "kunyomi": [
+      "みとめる"
+    ],
+    "jlpt": "N2",
+    "examples": [
+      {
+        "word": "確認",
+        "reading": "かくにん",
+        "meaning": "confirmation"
+      }
+    ],
+    "exampleSentence": "内容を確認してください。",
+    "exampleTranslation": "Please confirm the contents.",
+    "literalMeaning": "recognize; acknowledge",
+    "coreConcept": "recognition, confirmation, and acceptance",
+    "commonWords": [
+      {
+        "word": "確認",
+        "reading": "かくにん",
+        "meaning": "confirmation; checking"
+      },
+      {
+        "word": "認める",
+        "reading": "みとめる",
+        "meaning": "to recognize; admit"
+      },
+      {
+        "word": "認識",
+        "reading": "にんしき",
+        "meaning": "recognition; awareness"
+      },
+      {
+        "word": "承認",
+        "reading": "しょうにん",
+        "meaning": "approval"
+      }
+    ],
+    "naturalUsageNotes": "認 is not used by itself. 確認 is extremely common in work, travel, bookings, and everyday checking."
+  }
+]
