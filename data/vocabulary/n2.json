@@ -1,0 +1,32 @@
+[
+  {
+    "id": "vocab-n2-tendency",
+    "type": "vocabulary",
+    "word": "傾向",
+    "kana": "けいこう",
+    "romaji": "keikou",
+    "meaning": "tendency; trend",
+    "jlpt": "N2",
+    "exampleSentence": "最近、その傾向が強いです。",
+    "exampleTranslation": "Recently, that tendency is strong.",
+    "notes": "Used in analytical speech and writing.",
+    "dictionaryMeaning": "tendency; trend",
+    "naturalMeaning": "tendency; general pattern",
+    "naturalUsageNotes": "Common in explanations and reports as ～傾向がある."
+  },
+  {
+    "id": "vocab-n2-respect",
+    "type": "vocabulary",
+    "word": "尊重",
+    "kana": "そんちょう",
+    "romaji": "sonchou",
+    "meaning": "respect; regard",
+    "jlpt": "N2",
+    "exampleSentence": "お互いの意見を尊重しましょう。",
+    "exampleTranslation": "Let us respect each other's opinions.",
+    "notes": "尊重する means to respect.",
+    "dictionaryMeaning": "respect; regard",
+    "naturalMeaning": "respect; to respect (尊重する)",
+    "naturalUsageNotes": "Often used for respecting an opinion, choice, rights, or individuality."
+  }
+]
