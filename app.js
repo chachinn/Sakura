@@ -5282,7 +5282,7 @@ async function enrichOnlineTranslationReading(result) {
         romaji:reading.romaji,
         readingConfidence:reading.confidence
     });
-    translationOnlineCache.set(onlineTranslationCacheKey(result.naturalMeaning), result);
+    translationOnlineCache.set(result.cacheKey || onlineTranslationCacheKey({ english:result.naturalMeaning, context:result.context, tone:result.tone }), result);
     return result;
 }
 
@@ -5295,12 +5295,18 @@ function onlineTranslationByteLength(value) {
     }
 }
 
-function onlineTranslationCacheKey(english) {
-    return translationSearchText(english);
+function onlineTranslationCacheKey(requestOrEnglish) {
+    const request = typeof requestOrEnglish === "object" && requestOrEnglish
+        ? requestOrEnglish
+        : { english:requestOrEnglish, context:translationContext, tone:translationTone };
+    const english = translationSearchText(request.english);
+    const context = searchText(request.context || translationContext);
+    const tone = searchText(request.tone || translationTone);
+    return [english, context, tone].join("|");
 }
 
-function cachedOnlineTranslation(english) {
-    const key = onlineTranslationCacheKey(english);
+function cachedOnlineTranslation(requestOrEnglish) {
+    const key = onlineTranslationCacheKey(requestOrEnglish);
     if (!key) return null;
 
     const memory = translationOnlineCache.get(key);
@@ -5308,18 +5314,326 @@ function cachedOnlineTranslation(english) {
 
     const history = translationHistory.find(item =>
         item?.mode === "online" &&
-        onlineTranslationCacheKey(item.english) === key &&
+        onlineTranslationCacheKey(item) === key &&
         item?.result?.japanese &&
-        String(item.result.source || "").startsWith("online")
+        String(item.result.source || "").startsWith("online") &&
+        item.result.naturalizerVersion === 2
     );
 
     if (history?.result) {
         translationOnlineCache.set(key, history.result);
-        return { ...history.result, cached:true };
+        return { ...history.result, cacheKey:key, cached:true };
     }
 
     return null;
 }
+
+/* =====================================================
+   Natural online translation layer
+   Sakura prefers neutral, spoken Japanese for common English phrases before
+   falling back to raw machine translation. Tone/context remain user-selected.
+===================================================== */
+const SAKURA_NATURAL_TRANSLATIONS = Object.freeze({
+    "what are you doing here": {
+        polite:["ここで何してるんですか？","ここで なに してるんですか？","koko de nani shiterun desu ka?","ここで何してるの？ / ここで何してる？"],
+        casual:["ここで何してるの？","ここで なに してるの？","koko de nani shiteru no?","ここで何してる？ / ここで何してるんですか？"],
+        veryPolite:["こちらで何をされているんですか？","こちらで なにを されているんですか？","kochira de nani o sarete irun desu ka?","ここで何してるんですか？"],
+        friendly:["ここで何してるの？","ここで なに してるの？","koko de nani shiteru no?","ここで何してる？"],
+        social:["ここで何してる？","ここで なに してる？","koko de nani shiteru?","ここで何してるの？"]
+    },
+    "what are you doing": {
+        polite:["何してるんですか？","なに してるんですか？","nani shiterun desu ka?","何してるの？ / 何してますか？"],
+        casual:["何してるの？","なに してるの？","nani shiteru no?","何してる？"],
+        veryPolite:["何をされているんですか？","なにを されているんですか？","nani o sarete irun desu ka?","何してるんですか？"],
+        friendly:["何してるの？","なに してるの？","nani shiteru no?","何してる？"],
+        social:["何してる？","なに してる？","nani shiteru?","何してるの？"]
+    },
+    "where are you": {
+        polite:["今どこにいるんですか？","いま どこに いるんですか？","ima doko ni irun desu ka?","今どこですか？ / 今どこ？"],
+        casual:["今どこ？","いま どこ？","ima doko?","今どこにいるの？"],
+        veryPolite:["今どちらにいらっしゃいますか？","いま どちらに いらっしゃいますか？","ima dochira ni irasshaimasu ka?","今どこにいるんですか？"],
+        friendly:["今どこにいるの？","いま どこに いるの？","ima doko ni iru no?","今どこ？"],
+        social:["今どこ？","いま どこ？","ima doko?","どこいる？"]
+    },
+    "where are you going": {
+        polite:["どこに行くんですか？","どこに いくんですか？","doko ni ikun desu ka?","どこ行くんですか？ / どこ行くの？"],
+        casual:["どこ行くの？","どこ いくの？","doko iku no?","どこ行く？"],
+        veryPolite:["どちらへ行かれるんですか？","どちらへ いかれるんですか？","dochira e ikarerun desu ka?","どこに行くんですか？"],
+        friendly:["どこ行くの？","どこ いくの？","doko iku no?","どこ行く？"],
+        social:["どこ行く？","どこ いく？","doko iku?","どこ行くの？"]
+    },
+    "what happened": {
+        polite:["どうしたんですか？","どうしたんですか？","doushitan desu ka?","何かあったんですか？ / どうしたの？"],
+        casual:["どうしたの？","どうしたの？","doushita no?","何かあった？ / どうした？"],
+        veryPolite:["どうされましたか？","どう されましたか？","dou saremashita ka?","何かありましたか？"],
+        friendly:["どうしたの？","どうしたの？","doushita no?","何かあった？"],
+        social:["どうした？","どうした？","doushita?","何かあった？"]
+    },
+    "are you okay": {
+        polite:["大丈夫ですか？","だいじょうぶですか？","daijoubu desu ka?","大丈夫？"],
+        casual:["大丈夫？","だいじょうぶ？","daijoubu?","平気？"],
+        veryPolite:["大丈夫ですか？","だいじょうぶですか？","daijoubu desu ka?","お加減はいかがですか？"],
+        friendly:["大丈夫？","だいじょうぶ？","daijoubu?","平気？"],
+        social:["大丈夫？","だいじょうぶ？","daijoubu?","平気？"]
+    },
+    "what do you mean": {
+        polite:["どういう意味ですか？","どういう いみですか？","dou iu imi desu ka?","どういうことですか？"],
+        casual:["どういう意味？","どういう いみ？","dou iu imi?","どういうこと？"],
+        veryPolite:["どういう意味でしょうか？","どういう いみでしょうか？","dou iu imi deshou ka?","どういうことでしょうか？"],
+        friendly:["どういう意味？","どういう いみ？","dou iu imi?","どういうこと？"],
+        social:["どういう意味？","どういう いみ？","dou iu imi?","どういうこと？"]
+    },
+    "can you help me": {
+        polite:["手伝ってもらえますか？","てつだって もらえますか？","tetsudatte moraemasu ka?","手伝ってくれますか？"],
+        casual:["手伝ってくれる？","てつだって くれる？","tetsudatte kureru?","ちょっと手伝って。"],
+        veryPolite:["手伝っていただけますか？","てつだって いただけますか？","tetsudatte itadakemasu ka?","お手伝いいただけますか？"],
+        friendly:["手伝ってくれる？","てつだって くれる？","tetsudatte kureru?","ちょっと手伝って。"],
+        social:["手伝ってくれる？","てつだって くれる？","tetsudatte kureru?","ちょっと手伝って！"]
+    },
+    "can you say that again": {
+        polite:["もう一回言ってもらえますか？","もう いっかい いって もらえますか？","mou ikkai itte moraemasu ka?","もう一度言ってもらえますか？"],
+        casual:["もう一回言って。","もう いっかい いって。","mou ikkai itte.","もう一回言ってくれる？"],
+        veryPolite:["もう一度言っていただけますか？","もう いちど いって いただけますか？","mou ichido itte itadakemasu ka?","もう一度お願いできますか？"],
+        friendly:["もう一回言ってくれる？","もう いっかい いって くれる？","mou ikkai itte kureru?","もう一回言って。"],
+        social:["もう一回言って！","もう いっかい いって！","mou ikkai itte!","もう一回！"]
+    },
+    "can you speak more slowly": {
+        polite:["もう少しゆっくり話してもらえますか？","もう すこし ゆっくり はなして もらえますか？","mou sukoshi yukkuri hanashite moraemasu ka?","もう少しゆっくりお願いします。"],
+        casual:["もうちょっとゆっくり話して。","もう ちょっと ゆっくり はなして。","mou chotto yukkuri hanashite.","もうちょっとゆっくり。"],
+        veryPolite:["もう少しゆっくり話していただけますか？","もう すこし ゆっくり はなして いただけますか？","mou sukoshi yukkuri hanashite itadakemasu ka?","もう少しゆっくりお願いできますか？"],
+        friendly:["もうちょっとゆっくり話して。","もう ちょっと ゆっくり はなして。","mou chotto yukkuri hanashite.","もうちょっとゆっくりお願い。"],
+        social:["もうちょいゆっくり話して！","もう ちょい ゆっくり はなして！","mou choi yukkuri hanashite!","もうちょいゆっくり！"]
+    },
+    "do you speak english": {
+        polite:["英語話せますか？","えいご はなせますか？","eigo hanasemasu ka?","英語は話せますか？"],
+        casual:["英語話せる？","えいご はなせる？","eigo hanaseru?","英語できる？"],
+        veryPolite:["英語は話せますか？","えいごは はなせますか？","eigo wa hanasemasu ka?","英語でお願いできますか？"],
+        friendly:["英語話せる？","えいご はなせる？","eigo hanaseru?","英語できる？"],
+        social:["英語話せる？","えいご はなせる？","eigo hanaseru?","英語いける？"]
+    },
+    "where is the bathroom": {
+        polite:["トイレはどこですか？","トイレは どこですか？","toire wa doko desu ka?","お手洗いはどこですか？"],
+        casual:["トイレどこ？","トイレ どこ？","toire doko?","トイレってどこ？"],
+        veryPolite:["お手洗いはどちらですか？","おてあらいは どちらですか？","otearai wa dochira desu ka?","お手洗いはどこでしょうか？"],
+        friendly:["トイレどこ？","トイレ どこ？","toire doko?","トイレってどこ？"],
+        social:["トイレどこ？","トイレ どこ？","toire doko?","お手洗いどこ？"]
+    },
+    "how much is this": {
+        polite:["これ、いくらですか？","これ、いくらですか？","kore, ikura desu ka?","これはいくらですか？"],
+        casual:["これいくら？","これ いくら？","kore ikura?","いくら？"],
+        veryPolite:["こちらはいくらですか？","こちらは いくらですか？","kochira wa ikura desu ka?","こちら、おいくらですか？"],
+        friendly:["これいくら？","これ いくら？","kore ikura?","これっていくら？"],
+        social:["これいくら？","これ いくら？","kore ikura?","いくら？"]
+    },
+    "can i have some water": {
+        polite:["お水もらえますか？","おみず もらえますか？","omizu moraemasu ka?","お水をもらえますか？"],
+        casual:["水もらえる？","みず もらえる？","mizu moraeru?","水ちょうだい。"],
+        veryPolite:["お水をいただけますか？","おみずを いただけますか？","omizu o itadakemasu ka?","お水をお願いできますか？"],
+        friendly:["お水もらえる？","おみず もらえる？","omizu moraeru?","水ちょうだい。"],
+        social:["水もらえる？","みず もらえる？","mizu moraeru?","水ほしい！"]
+    },
+    "i don't understand": {
+        polite:["よく分かりません。","よく わかりません。","yoku wakarimasen.","ちょっと分かりません。"],
+        casual:["よくわかんない。","よく わかんない。","yoku wakannai.","ちょっとわかんない。"],
+        veryPolite:["よく分かりません。","よく わかりません。","yoku wakarimasen.","すみません、よく分かりません。"],
+        friendly:["よくわかんない。","よく わかんない。","yoku wakannai.","ちょっとわかんない。"],
+        social:["よくわかんない。","よく わかんない。","yoku wakannai.","わかんない。"]
+    },
+    "i miss you": {
+        polite:["会いたいです。","あいたいです。","aitai desu.","また会いたいです。"],
+        casual:["会いたい。","あいたい。","aitai.","会いたいな。"],
+        veryPolite:["またお会いしたいです。","また おあい したいです。","mata oai shitai desu.","また会いたいです。"],
+        friendly:["会いたいな。","あいたいな。","aitai na.","会いたい。"],
+        social:["会いたい〜","あいたい〜","aitai~","会いたい！"]
+    },
+    "i'm tired": {
+        polite:["疲れました。","つかれました。","tsukaremashita.","ちょっと疲れました。"],
+        casual:["疲れた。","つかれた。","tsukareta.","もう疲れた。"],
+        veryPolite:["少し疲れました。","すこし つかれました。","sukoshi tsukaremashita.","ちょっと疲れました。"],
+        friendly:["もう疲れた〜","もう つかれた〜","mou tsukareta~","疲れた。"],
+        social:["疲れた〜","つかれた〜","tsukareta~","もう無理〜"]
+    },
+    "wait a second": {
+        polite:["ちょっと待ってください。","ちょっと まって ください。","chotto matte kudasai.","少し待ってください。"],
+        casual:["ちょっと待って。","ちょっと まって。","chotto matte.","待って。"],
+        veryPolite:["少し待っていただけますか？","すこし まって いただけますか？","sukoshi matte itadakemasu ka?","少々お待ちいただけますか？"],
+        friendly:["ちょっと待って。","ちょっと まって。","chotto matte.","待って待って。"],
+        social:["ちょっと待って！","ちょっと まって！","chotto matte!","待って！"]
+    },
+    "thank you": {
+        polite:["ありがとうございます。","ありがとうございます。","arigatou gozaimasu.","どうもありがとうございます。"],
+        casual:["ありがとう！","ありがとう！","arigatou!","ありがと！"],
+        veryPolite:["どうもありがとうございます。","どうも ありがとうございます。","doumo arigatou gozaimasu.","ありがとうございます。"],
+        friendly:["ありがとう！","ありがとう！","arigatou!","ありがと！"],
+        social:["ありがと〜！","ありがと〜！","arigato~!","ありがとう！"]
+    }
+});
+
+function canonicalNaturalTranslationEnglish(value) {
+    return translationSearchText(value)
+        .replace(/\bwhat's\b/g, "what is")
+        .replace(/\bwhat're\b/g, "what are")
+        .replace(/\bwhere're\b/g, "where are")
+        .replace(/\byou're\b/g, "you are")
+        .replace(/\bi'm\b/g, "i'm")
+        .replace(/\bdon't\b/g, "don't")
+        .replace(/\bcan't\b/g, "cannot")
+        .replace(/\bcould you\b/g, "can you")
+        .replace(/\bwould you\b/g, "can you")
+        .replace(/\bplease\b/g, "")
+        .replace(/\s+/g, " ")
+        .trim();
+}
+
+function naturalTranslationToneKey(tone) {
+    if (tone === "Casual") return "casual";
+    if (tone === "Very polite") return "veryPolite";
+    if (tone === "Friendly") return "friendly";
+    if (tone === "Social media / texting") return "social";
+    return "polite";
+}
+
+function naturalTranslationOverride(request) {
+    const key = canonicalNaturalTranslationEnglish(request?.english);
+    const entry = SAKURA_NATURAL_TRANSLATIONS[key];
+    if (!entry) return null;
+    const toneKey = naturalTranslationToneKey(request.tone);
+    const variant = entry[toneKey] || entry.polite;
+    if (!variant) return null;
+    const [japanese, kana, romaji, alternative] = variant;
+    const cacheKey = onlineTranslationCacheKey(request);
+    return {
+        id:`online-sakura-natural-${Date.now().toString(36)}`,
+        japanese,
+        kana,
+        romaji,
+        naturalMeaning:request.english,
+        literalMeaning:"",
+        tone:`${request.tone} · natural spoken Japanese`,
+        usageNote:`Sakura natural phrasing for ${request.context}. Neutral, contemporary wording is prioritized over literal textbook translation.`,
+        alternative:alternative || "",
+        context:request.context,
+        source:"online-sakura-natural",
+        provider:"Sakura",
+        naturalizerVersion:2,
+        cacheKey,
+        offline:false
+    };
+}
+
+async function naturalTranslationFromPhraseLibrary(request) {
+    try {
+        await loadTranslationPhraseData();
+        const query = translationSearchText(request?.english);
+        if (!query || !Array.isArray(translationPhraseIndex)) return null;
+
+        const ranked = translationPhraseIndex
+            .map(indexed => ({
+                record:indexed.record,
+                score:scoreOfflineTranslationPhrase(indexed, request.english, request.context, request.tone),
+                exact:[indexed.english, ...indexed.patterns].includes(query)
+            }))
+            .filter(item => item.exact && item.record?.tone === request.tone)
+            .sort((a, b) => b.score - a.score || a.record.english.localeCompare(b.record.english));
+
+        const best = ranked[0];
+        if (!best) return null;
+        const alternatives = ranked.slice(1, 3).map(item => item.record);
+        const base = offlinePhraseResult(best.record, alternatives);
+        const cacheKey = onlineTranslationCacheKey(request);
+        return {
+            ...base,
+            id:`online-sakura-library-${best.record.id}-${Date.now().toString(36)}`,
+            naturalMeaning:request.english,
+            tone:`${request.tone} · curated Sakura phrasing`,
+            usageNote:`Sakura matched this English to a curated phrase with the same requested tone. Context: ${request.context}.`,
+            context:request.context,
+            source:"online-sakura-natural",
+            provider:"Sakura phrase library",
+            naturalizerVersion:2,
+            cacheKey,
+            offline:false
+        };
+    }
+    catch (error) {
+        console.info("Online translation: curated phrase pass was unavailable; using the web fallback.", error);
+        return null;
+    }
+}
+
+function neutralizeMachineJapanese(value, request) {
+    let text = cleanEntryText(value);
+    if (!text) return "";
+    const tone = request?.tone || "Polite and natural";
+    const conversational = ["Everyday","Friends","Social media","Travel","Restaurant","Café","Shopping","Hotel","Train","Airport"].includes(request?.context);
+
+    // Japanese normally drops explicit second-person pronouns when the listener is obvious.
+    if (conversational && tone !== "Very polite") {
+        text = text.replace(/^(?:あなたは|あなたが|あなた、)\s*/u, "");
+    }
+
+    // Avoid unexpectedly gendered / theatrical sentence endings from generic MT.
+    if (tone === "Polite and natural") {
+        text = text
+            .replace(/何をしているのですか/gu, "何してるんですか")
+            .replace(/何をしていますか/gu, "何してるんですか")
+            .replace(/何をしてるのよ/gu, "何してるんですか")
+            .replace(/何してるのよ/gu, "何してるんですか")
+            .replace(/のですか([？?]?)/gu, "んですか$1");
+    }
+    else if (["Casual","Friendly","Social media / texting"].includes(tone)) {
+        text = text
+            .replace(/何をしているのですか/gu, "何してるの")
+            .replace(/何をしていますか/gu, "何してるの")
+            .replace(/何をしてるのよ/gu, "何してるの")
+            .replace(/何してるのよ/gu, "何してるの")
+            .replace(/のよ([？?])/gu, "の$1")
+            .replace(/かしら([？?]?)/gu, "$1")
+            .replace(/わよ([。！!？?]?)/gu, "よ$1");
+    }
+
+    return text.replace(/\s{2,}/g, " ").trim();
+}
+
+function machineTranslationNaturalnessScore(value, request, index = 0) {
+    const text = String(value || "");
+    if (!text) return -999;
+    let score = 100 - index;
+    if (/あなた(?:は|が|を|に)/u.test(text)) score -= 5;
+    if (/(?:のよ|わよ|かしら|だぜ|だぞ)(?:[。！!？?]|$)/u.test(text)) score -= 18;
+    if (/することができます/u.test(text)) score -= 5;
+    if (/何をしていますか|何をしているのですか/u.test(text)) score -= 8;
+    if (/Polite/.test(request?.tone || "") && /(?:です|ます|んです)/u.test(text)) score += 3;
+    if (["Casual","Friendly","Social media / texting"].includes(request?.tone) && /(?:てる|ちゃう|じゃない|だよ|だね|？)$/u.test(text)) score += 2;
+    if (request?.tone === "Very polite" && /(?:いただけ|でしょうか|ございます|いらっしゃ)/u.test(text)) score += 3;
+    if (text.length > 80) score -= Math.min(8, Math.floor((text.length - 80) / 20));
+    return score;
+}
+
+function naturalMyMemoryCandidates(data, request) {
+    const raw = [
+        cleanEntryText(data?.responseData?.translatedText),
+        ...(Array.isArray(data?.matches) ? data.matches.map(match => cleanEntryText(match?.translation)) : [])
+    ].filter(Boolean);
+    const seen = new Set();
+    return raw
+        .map((value, index) => ({
+            value:neutralizeMachineJapanese(value, request),
+            index
+        }))
+        .filter(candidate => {
+            const key = searchText(candidate.value);
+            if (!key || seen.has(key)) return false;
+            seen.add(key);
+            return true;
+        })
+        .map(candidate => ({
+            ...candidate,
+            score:machineTranslationNaturalnessScore(candidate.value, request, candidate.index)
+        }))
+        .sort((a, b) => b.score - a.score || a.index - b.index);
+}
+
 
 function distinctMyMemoryAlternatives(data, primary) {
     const seen = new Set([searchText(primary)]);
@@ -5340,7 +5654,6 @@ function distinctMyMemoryAlternatives(data, primary) {
 function validateMyMemoryTranslationResponse(data, request) {
     const status = Number(data?.responseStatus || 0);
     const details = cleanEntryText(data?.responseDetails);
-    const translatedText = cleanEntryText(data?.responseData?.translatedText);
 
     if (data?.quotaFinished === true || status === 429) {
         throw new Error("The online translator's free daily quota has been reached. Offline Phrase Finder still works.");
@@ -5348,11 +5661,14 @@ function validateMyMemoryTranslationResponse(data, request) {
     if (status && status !== 200) {
         throw new Error(details || "The online translator returned an error.");
     }
+
+    const candidates = naturalMyMemoryCandidates(data, request);
+    const translatedText = candidates[0]?.value || "";
     if (!translatedText) {
         throw new Error(details || "The online translator returned an empty result.");
     }
-
-    const alternatives = distinctMyMemoryAlternatives(data, translatedText);
+    const alternatives = candidates.slice(1, 3).map(candidate => candidate.value);
+    const cacheKey = onlineTranslationCacheKey(request);
 
     return {
         id:`online-mymemory-${Date.now().toString(36)}`,
@@ -5361,18 +5677,20 @@ function validateMyMemoryTranslationResponse(data, request) {
         romaji:"",
         naturalMeaning:request.english,
         literalMeaning:"",
-        tone:`Online machine translation · requested ${request.tone}`,
-        usageNote:`MyMemory web translation. Context: ${request.context}. Machine translation may not fully preserve the requested tone or nuance, so verify important wording.`,
+        tone:`${request.tone} · naturalized web translation`,
+        usageNote:`Sakura cleaned the web translation for more neutral, conversational Japanese. Context: ${request.context}. For subtle or high-stakes wording, compare the alternatives too.`,
         alternative:alternatives.join(" / "),
         context:request.context,
         source:"online-mymemory",
-        provider:"MyMemory",
+        provider:"MyMemory + Sakura naturalizer",
+        naturalizerVersion:2,
+        cacheKey,
         offline:false
     };
 }
 
 async function requestMyMemoryTranslation(request) {
-    const cached = cachedOnlineTranslation(request.english);
+    const cached = cachedOnlineTranslation(request);
     if (cached) return cached;
 
     const byteLength = onlineTranslationByteLength(request.english);
@@ -5406,7 +5724,7 @@ async function requestMyMemoryTranslation(request) {
         }
 
         const result = validateMyMemoryTranslationResponse(await response.json(), request);
-        translationOnlineCache.set(onlineTranslationCacheKey(request.english), result);
+        translationOnlineCache.set(result.cacheKey || onlineTranslationCacheKey(request), result);
         return result;
     }
     catch (error) {
@@ -5447,6 +5765,18 @@ async function requestOnlineTranslation(request) {
         finally {
             window.clearTimeout(timeout);
         }
+    }
+
+    const natural = naturalTranslationOverride(request);
+    if (natural) {
+        translationOnlineCache.set(natural.cacheKey || onlineTranslationCacheKey(request), natural);
+        return natural;
+    }
+
+    const curated = await naturalTranslationFromPhraseLibrary(request);
+    if (curated) {
+        translationOnlineCache.set(curated.cacheKey || onlineTranslationCacheKey(request), curated);
+        return curated;
     }
 
     return requestMyMemoryTranslation(request);
@@ -5541,7 +5871,7 @@ function renderTranslationMode() {
     else {
         if (note) {
             note.innerHTML = onlineReady
-                ? "<strong>Online Translation</strong><span>Working web translation for arbitrary English → Japanese. Internet required. Machine translation may not perfectly preserve tone or nuance.</span>"
+                ? "<strong>Online Translation</strong><span>Natural Japanese first: Sakura prioritizes neutral spoken phrasing for common expressions, then cleans web translation for arbitrary English. Internet required.</span>"
                 : "<strong>Online Translation</strong><span>You appear to be offline. Switch to Offline Phrase Finder or reconnect to the internet.</span>";
         }
         if (submit) {
@@ -5607,9 +5937,11 @@ function renderTranslationResult(result, options = {}) {
         ? "Offline Sakura phrase"
         : result.source === "library"
             ? "Related Sakura library item"
-            : result.source === "online-mymemory"
-                ? "Online translation · MyMemory"
-                : "Recommended translation";
+            : result.source === "online-sakura-natural"
+                ? "Natural Japanese · Sakura"
+                : result.source === "online-mymemory"
+                    ? "Online translation · naturalized"
+                    : "Recommended translation";
 
     document.getElementById("translation-result-label").textContent = label;
     document.getElementById("translation-japanese").textContent = result.japanese;
@@ -5696,7 +6028,7 @@ function addTranslationHistory(request, result) {
     };
     translationHistory = [
         record,
-        ...translationHistory.filter(item => searchText(item.english) !== searchText(request.english))
+        ...translationHistory.filter(item => onlineTranslationCacheKey(item) !== onlineTranslationCacheKey(request))
     ].slice(0, 20);
     writeJson(STORAGE.translationHistory, translationHistory);
     invalidateTranslationReadingCandidates();
