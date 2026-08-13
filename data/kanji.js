@@ -92,6 +92,30 @@
         return levels.filter(level => required.has(level));
     }
 
+    function loadReadingGardenUi() {
+        if (window.SakuraReadingGarden) return Promise.resolve(window.SakuraReadingGarden);
+        const existing = document.querySelector("script[data-sakura-reading-garden]");
+        if (existing) {
+            return new Promise(resolve => {
+                if (window.SakuraReadingGarden) { resolve(window.SakuraReadingGarden); return; }
+                existing.addEventListener("load", () => resolve(window.SakuraReadingGarden || null), { once:true });
+                existing.addEventListener("error", () => resolve(null), { once:true });
+            });
+        }
+        return new Promise(resolve => {
+            const script = document.createElement("script");
+            script.src = "./reading-garden.js?v=1";
+            script.dataset.sakuraReadingGarden = "true";
+            script.async = false;
+            script.onload = () => resolve(window.SakuraReadingGarden || null);
+            script.onerror = () => {
+                console.warn("Sakura Reading Garden UI could not load. Sakura will continue without it.");
+                resolve(null);
+            };
+            document.body.appendChild(script);
+        });
+    }
+
     window.SakuraKanjiLoader = Object.freeze({
         levels,
         files,
@@ -108,6 +132,11 @@
             window.KANJI_DATA = records;
             validateKanjiDataset(records);
             await window.VOCABULARY_DATA_READY;
+
+            // Reading Garden is a small optional UI layer. It loads before app.js
+            // so the Practice card exists when Sakura initializes, but a failure
+            // never blocks the main learning app.
+            await loadReadingGardenUi();
 
             if (!document.querySelector("script[data-sakura-app]")) {
                 const appScript = document.createElement("script");
