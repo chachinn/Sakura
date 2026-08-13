@@ -1,14 +1,15 @@
-const SHELL_CACHE_VERSION = "sakura-shell-v133";
+const SHELL_CACHE_VERSION = "sakura-shell-v134";
 const KANJI_CONTENT_CACHE_VERSION = "sakura-kanji-content-v7";
 const TRAVEL_CONTENT_CACHE_VERSION = "sakura-travel-content-v1";
 const VOCABULARY_CONTENT_CACHE_VERSION = "sakura-vocabulary-content-v7";
+const READING_CONTENT_CACHE_VERSION = "sakura-reading-content-v1";
 
 const APP_SHELL = [
     "./index.html",
     "./style.css?v=73",
     "./app.js?v=92",
     "./study-suite.js?v=1",
-    "./reading-garden.js?v=1",
+    "./reading-garden.js?v=2",
     "./data/vocabulary.js?v=6",
     "./data/native-japanese.js?v=2",
     "./data/slang.js?v=2",
@@ -67,7 +68,8 @@ self.addEventListener(
                                         cacheName !== SHELL_CACHE_VERSION &&
                                         cacheName !== KANJI_CONTENT_CACHE_VERSION &&
                                         cacheName !== TRAVEL_CONTENT_CACHE_VERSION &&
-                                        cacheName !== VOCABULARY_CONTENT_CACHE_VERSION
+                                        cacheName !== VOCABULARY_CONTENT_CACHE_VERSION &&
+                                        cacheName !== READING_CONTENT_CACHE_VERSION
                                 )
                                 .map(
                                     cacheName =>
@@ -134,13 +136,18 @@ self.addEventListener(
             const isVocabularyContent =
                 requestUrl.pathname.includes("/data/vocabulary/") &&
                 requestUrl.pathname.endsWith(".json");
+            const isReadingContent =
+                requestUrl.pathname.includes("/data/reading/") &&
+                requestUrl.pathname.endsWith(".json");
 
-            if (isKanjiContent || isTravelContent || isVocabularyContent) {
+            if (isKanjiContent || isTravelContent || isVocabularyContent || isReadingContent) {
                 const contentCacheName = isKanjiContent
                     ? KANJI_CONTENT_CACHE_VERSION
                     : isTravelContent
                         ? TRAVEL_CONTENT_CACHE_VERSION
-                        : VOCABULARY_CONTENT_CACHE_VERSION;
+                        : isVocabularyContent
+                            ? VOCABULARY_CONTENT_CACHE_VERSION
+                            : READING_CONTENT_CACHE_VERSION;
                 event.respondWith(
                     fetch(request)
                         .then(async response => {

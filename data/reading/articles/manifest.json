@@ -1,0 +1,110 @@
+{
+  "version": 1,
+  "type": "articles",
+  "total": 300,
+  "levels": {
+    "N5": 60,
+    "N4": 60,
+    "N3": 60,
+    "N2": 60,
+    "N1": 60
+  },
+  "topics": [
+    {
+      "id": "beauty",
+      "label": "Beauty",
+      "icon": "💄",
+      "count": 20
+    },
+    {
+      "id": "culture",
+      "label": "Japan & Culture",
+      "icon": "🎌",
+      "count": 20
+    },
+    {
+      "id": "travel",
+      "label": "Travel",
+      "icon": "✈️",
+      "count": 20
+    },
+    {
+      "id": "food",
+      "label": "Food",
+      "icon": "🍜",
+      "count": 20
+    },
+    {
+      "id": "daily-life",
+      "label": "Daily Life",
+      "icon": "🏠",
+      "count": 20
+    },
+    {
+      "id": "entertainment",
+      "label": "Anime, Manga & Games",
+      "icon": "🎮",
+      "count": 20
+    },
+    {
+      "id": "music",
+      "label": "Music & Entertainment",
+      "icon": "🎵",
+      "count": 20
+    },
+    {
+      "id": "technology",
+      "label": "Technology",
+      "icon": "📱",
+      "count": 20
+    },
+    {
+      "id": "nature",
+      "label": "Nature & Seasons",
+      "icon": "🍁",
+      "count": 20
+    },
+    {
+      "id": "history",
+      "label": "History & Traditions",
+      "icon": "🏯",
+      "count": 20
+    },
+    {
+      "id": "health",
+      "label": "Health & Lifestyle",
+      "icon": "🌿",
+      "count": 20
+    },
+    {
+      "id": "school",
+      "label": "School & Study",
+      "icon": "🏫",
+      "count": 20
+    },
+    {
+      "id": "work",
+      "label": "Work & Career",
+      "icon": "💼",
+      "count": 20
+    },
+    {
+      "id": "relationships",
+      "label": "Relationships & Society",
+      "icon": "💕",
+      "count": 20
+    },
+    {
+      "id": "hobbies",
+      "label": "Hobbies & Creativity",
+      "icon": "🎨",
+      "count": 20
+    }
+  ],
+  "notes": [
+    "All 300 readings are original Sakura graded-learning content.",
+    "Manga is not included in this content pack.",
+    "Beauty is a full topic with 20 articles, four at each JLPT level.",
+    "English translations are intended as optional learner support and should remain hidden by default in the UI."
+  ]
+}

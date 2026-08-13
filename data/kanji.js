@@ -104,7 +104,7 @@
         }
         return new Promise(resolve => {
             const script = document.createElement("script");
-            script.src = "./reading-garden.js?v=1";
+            script.src = "./reading-garden.js?v=2";
             script.dataset.sakuraReadingGarden = "true";
             script.async = false;
             script.onload = () => resolve(window.SakuraReadingGarden || null);
