@@ -1,4 +1,4 @@
-/* Sakura Experience Layer — compact production enhancement v1.2
+/* Sakura Experience Layer — compact production enhancement v1.3
    Native-first online slang suggestions, Travel quick tools, compact Practice UI.
    Loaded after app.js and intentionally isolated so failure never blocks core Sakura. */
 (function initSakuraExperience(){
@@ -218,6 +218,25 @@
 
   function compactPractice(){ $('practice-view')?.classList.add('sakura-practice-compact'); }
 
+  function ensureHomePracticeCard(){
+    const grid = document.querySelector('.home-actions-section[aria-labelledby="practice-heading"] .practice-grid');
+    if (!grid || grid.querySelector('[data-sakura-home-practice-card]')) return;
+    const card = document.createElement('button');
+    card.className = 'feature-card pink-feature';
+    card.type = 'button';
+    card.dataset.route = 'practice';
+    card.dataset.sakuraHomePracticeCard = 'true';
+    card.setAttribute('aria-label', 'Open Practice');
+    card.innerHTML = '<span class="feature-icon">練</span><span><strong>Practice</strong><small>Reading, speaking, and drills</small></span><b aria-hidden="true">→</b>';
+    card.addEventListener('click', event => {
+      event.preventDefault();
+      if (typeof window.showRoute === 'function') window.showRoute('practice');
+    });
+    const travelCard = grid.querySelector('.travel-home-card');
+    if (travelCard) grid.insertBefore(card, travelCard);
+    else grid.appendChild(card);
+  }
+
   function observeTravel(){
     const heading=$('travel-category-heading'), view=$('travel-category-view');
     if (!heading || !view) return;
@@ -229,12 +248,13 @@
   function init(){
     injectStyles();
     compactPractice();
+    ensureHomePracticeCard();
     bindTranslation();
     bindClicks();
     observeTravel();
     renderTravelTools();
   }
 
-  window.SakuraExperience=Object.freeze({version:'1.2.0',nativeMatch,renderTravelTools,init});
+  window.SakuraExperience=Object.freeze({version:'1.3.0',nativeMatch,renderTravelTools,init});
   if (document.readyState==='loading') document.addEventListener('DOMContentLoaded',init,{once:true}); else init();
 }());
