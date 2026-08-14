@@ -130,7 +130,7 @@
 
         return new Promise(resolve => {
             const script = document.createElement("script");
-            script.src = "./features/sakura-experience.js?v=1";
+            script.src = "./features/sakura-experience.js?v=2";
             script.dataset.sakuraExperience = "true";
             script.async = false;
             script.onload = () => resolve(window.SakuraExperience || null);

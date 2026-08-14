@@ -1,4 +1,4 @@
-/* Sakura Experience Layer — compact production enhancement v1.1
+/* Sakura Experience Layer — compact production enhancement v1.2
    Native-first online slang suggestions, Travel quick tools, compact Practice UI.
    Loaded after app.js and intentionally isolated so failure never blocks core Sakura. */
 (function initSakuraExperience(){
@@ -49,6 +49,8 @@
     };
     if (typeof window.renderTranslationResult === 'function') window.renderTranslationResult(result);
     else return false;
+    const resultLabel = $('translation-result-label');
+    if (resultLabel) resultLabel.textContent = 'Native Sakura · casual/slang';
     try {
       if (typeof window.addTranslationHistory === 'function') window.addTranslationHistory({english,context:'Everyday',tone:'Native casual',mode:'online'}, result);
     } catch (error) { console.warn('Sakura native translation history was not saved.', error); }
@@ -174,9 +176,17 @@
       if (tool) { openTravelTool(tool.dataset.sakuraToolKey, Number(tool.dataset.sakuraToolIndex)); return; }
       if (event.target.closest('[data-sakura-quick-close]')) { $('sakura-quick-tool-dialog')?.close(); return; }
       if (event.target.closest('[data-sakura-quick-speak]')) { speak($('sakura-quick-tool-dialog')?.dataset.phrase); return; }
-      if (event.target.closest('[data-sakura-quick-copy]')) {
+      const copyButton = event.target.closest('[data-sakura-quick-copy]');
+      if (copyButton) {
         const value = $('sakura-quick-tool-dialog')?.dataset.copy || '';
-        try { await navigator.clipboard.writeText(value); } catch {}
+        let copied = false;
+        try { await navigator.clipboard.writeText(value); copied = true; } catch {}
+        if (copied) {
+          const original = copyButton.textContent;
+          copyButton.textContent = 'Copied ✓';
+          copyButton.disabled = true;
+          window.setTimeout(() => { copyButton.textContent = original || 'Copy'; copyButton.disabled = false; }, 900);
+        }
         return;
       }
       if (event.target.closest('[data-route^="travel-"]')) requestAnimationFrame(renderTravelTools);
@@ -192,15 +202,15 @@
       #practice-view.sakura-practice-compact .page-heading h1{margin:.18rem 0;font-size:2rem}
       #practice-view.sakura-practice-compact .page-heading p{margin:.2rem 0 .5rem}
       #practice-view.sakura-practice-compact .practice-coming-grid{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px!important}
-      #practice-view.sakura-practice-compact .practice-coming-card{min-height:78px!important;padding:10px!important;gap:8px!important;border-radius:18px!important;grid-template-columns:36px minmax(0,1fr) 18px!important}
+      #practice-view.sakura-practice-compact .practice-coming-card{touch-action:manipulation;min-height:78px!important;padding:10px!important;gap:8px!important;border-radius:18px!important;grid-template-columns:36px minmax(0,1fr) 18px!important}
       #practice-view.sakura-practice-compact .practice-coming-card>span:first-child{width:36px!important;height:36px!important;min-width:36px!important;font-size:20px!important;border-radius:12px!important}
       #practice-view.sakura-practice-compact .practice-coming-card h2{margin:0!important;font-size:12.5px!important;line-height:1.16!important}
       #practice-view.sakura-practice-compact .practice-coming-card p{display:none!important}
       #practice-view.sakura-practice-compact .practice-coming-card b{font-size:18px!important}
       .sakura-travel-quick-tools{margin:8px 0 12px;padding:11px;border:1px solid var(--color-border);border-radius:18px;background:color-mix(in srgb,var(--color-primary-soft) 52%,var(--color-surface))}
       .sakura-toolkit-heading{display:flex;align-items:center;gap:9px;margin-bottom:8px}.sakura-toolkit-heading>span{display:grid;place-items:center;width:34px;height:34px;border-radius:11px;background:var(--color-surface);color:var(--color-primary-dark);font-weight:900}.sakura-toolkit-heading div{min-width:0}.sakura-toolkit-heading strong,.sakura-toolkit-heading small{display:block}.sakura-toolkit-heading strong{font-size:12px}.sakura-toolkit-heading small{margin-top:2px;color:var(--color-text-muted);font-size:8px}
-      .sakura-tool-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}.sakura-tool-grid button{min-width:0;min-height:58px;padding:7px 5px;border:1px solid var(--color-border);border-radius:13px;background:var(--color-surface);color:var(--color-text);font:inherit}.sakura-tool-grid button span,.sakura-tool-grid button strong{display:block}.sakura-tool-grid button span{color:var(--color-primary);font-size:15px}.sakura-tool-grid button strong{margin-top:3px;font-size:9px;line-height:1.15}
-      .sakura-quick-dialog{width:min(520px,calc(100% - 18px));max-width:none;margin:auto auto 0;padding:0;border:0;border-radius:24px 24px 0 0;background:var(--color-background);color:var(--color-text);box-shadow:0 -18px 50px rgba(35,28,33,.2)}.sakura-quick-dialog::backdrop{background:rgba(35,28,33,.32);backdrop-filter:blur(2px)}.sakura-quick-sheet{padding:16px 16px calc(18px + env(safe-area-inset-bottom))}.sakura-quick-sheet header{display:flex;align-items:center;justify-content:space-between;gap:12px}.sakura-quick-sheet header small{display:block;color:var(--color-primary-dark);font-size:8px;font-weight:900;text-transform:uppercase}.sakura-quick-sheet h2{margin:3px 0 0;font-size:19px}.sakura-quick-sheet header button{width:36px;height:36px;border:1px solid var(--color-border);border-radius:12px;background:var(--color-surface);color:var(--color-text);font-size:22px}.sakura-phrase-display{margin-top:14px;padding:16px;border:1px solid var(--color-border);border-radius:18px;background:var(--color-surface)}.sakura-phrase-display>*{display:block}.sakura-phrase-display strong{font-size:24px;line-height:1.4}.sakura-phrase-display span{margin-top:7px;color:var(--color-primary-dark);font-size:14px}.sakura-phrase-display b{margin-top:5px;font-size:12px}.sakura-phrase-display p{margin:9px 0 0;color:var(--color-text-muted);font-size:11px}.sakura-quick-actions{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px}.sakura-quick-actions button{min-height:44px;border:1px solid var(--color-border);border-radius:14px;background:var(--color-surface);color:var(--color-text);font-weight:800}
+      .sakura-tool-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}.sakura-tool-grid button{touch-action:manipulation;min-width:0;min-height:58px;padding:7px 5px;border:1px solid var(--color-border);border-radius:13px;background:var(--color-surface);color:var(--color-text);font:inherit}.sakura-tool-grid button span,.sakura-tool-grid button strong{display:block}.sakura-tool-grid button span{color:var(--color-primary);font-size:15px}.sakura-tool-grid button strong{margin-top:3px;font-size:9px;line-height:1.15}
+      .sakura-quick-dialog{width:min(520px,calc(100% - 18px));max-width:none;margin:auto auto 0;padding:0;border:0;border-radius:24px 24px 0 0;background:var(--color-background);color:var(--color-text);box-shadow:0 -18px 50px rgba(35,28,33,.2)}.sakura-quick-dialog::backdrop{background:rgba(35,28,33,.32);backdrop-filter:blur(2px)}.sakura-quick-sheet{padding:16px 16px calc(18px + env(safe-area-inset-bottom))}.sakura-quick-sheet header{display:flex;align-items:center;justify-content:space-between;gap:12px}.sakura-quick-sheet header small{display:block;color:var(--color-primary-dark);font-size:8px;font-weight:900;text-transform:uppercase}.sakura-quick-sheet h2{margin:3px 0 0;font-size:19px}.sakura-quick-sheet header button{width:36px;height:36px;border:1px solid var(--color-border);border-radius:12px;background:var(--color-surface);color:var(--color-text);font-size:22px}.sakura-phrase-display{margin-top:14px;padding:16px;border:1px solid var(--color-border);border-radius:18px;background:var(--color-surface)}.sakura-phrase-display>*{display:block}.sakura-phrase-display strong{font-size:24px;line-height:1.4}.sakura-phrase-display span{margin-top:7px;color:var(--color-primary-dark);font-size:14px}.sakura-phrase-display b{margin-top:5px;font-size:12px}.sakura-phrase-display p{margin:9px 0 0;color:var(--color-text-muted);font-size:11px}.sakura-quick-actions{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px}.sakura-quick-actions button{touch-action:manipulation;min-height:44px;border:1px solid var(--color-border);border-radius:14px;background:var(--color-surface);color:var(--color-text);font-weight:800}
       @media(max-width:380px){#practice-view.sakura-practice-compact .practice-coming-card{min-height:72px!important;padding:8px!important}#practice-view.sakura-practice-compact .practice-coming-card h2{font-size:11.5px!important}.sakura-tool-grid button strong{font-size:8px}}
     `;
     document.head.appendChild(style);
@@ -225,6 +235,6 @@
     renderTravelTools();
   }
 
-  window.SakuraExperience=Object.freeze({version:'1.1.0',nativeMatch,renderTravelTools,init});
+  window.SakuraExperience=Object.freeze({version:'1.2.0',nativeMatch,renderTravelTools,init});
   if (document.readyState==='loading') document.addEventListener('DOMContentLoaded',init,{once:true}); else init();
 }());
