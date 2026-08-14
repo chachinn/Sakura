@@ -1,110 +1,124 @@
 {
-  "version": 1,
-  "type": "articles",
-  "total": 300,
-  "levels": {
-    "N5": 60,
-    "N4": 60,
-    "N3": 60,
-    "N2": 60,
-    "N1": 60
+  "version": 7,
+  "material": "articles",
+  "mode": "source-grounded-adaptation",
+  "targetCount": 300,
+  "readyCount": 200,
+  "sourceYearPriority": 2026,
+  "retrievedDate": "2026-08-14",
+  "levelCounts": {
+    "N5": 40,
+    "N4": 40,
+    "N3": 40,
+    "N2": 40,
+    "N1": 40
+  },
+  "topicCounts": {
+    "beauty": 20,
+    "food": 20,
+    "travel": 20,
+    "digital": 20,
+    "consumer": 20,
+    "health": 20,
+    "environment": 20,
+    "culture": 20,
+    "work": 20,
+    "society": 20
   },
   "topics": [
     {
       "id": "beauty",
-      "label": "Beauty",
       "icon": "💄",
-      "count": 20
-    },
-    {
-      "id": "culture",
-      "label": "Japan & Culture",
-      "icon": "🎌",
-      "count": 20
-    },
-    {
-      "id": "travel",
-      "label": "Travel",
-      "icon": "✈️",
-      "count": 20
+      "label": "Beauty & Cosmetics"
     },
     {
       "id": "food",
-      "label": "Food",
-      "icon": "🍜",
-      "count": 20
+      "icon": "🍚",
+      "label": "Food & Eating"
     },
     {
-      "id": "daily-life",
-      "label": "Daily Life",
-      "icon": "🏠",
-      "count": 20
+      "id": "travel",
+      "icon": "✈️",
+      "label": "Travel & Transportation"
     },
     {
-      "id": "entertainment",
-      "label": "Anime, Manga & Games",
-      "icon": "🎮",
-      "count": 20
-    },
-    {
-      "id": "music",
-      "label": "Music & Entertainment",
-      "icon": "🎵",
-      "count": 20
-    },
-    {
-      "id": "technology",
-      "label": "Technology",
+      "id": "digital",
       "icon": "📱",
-      "count": 20
+      "label": "Digital Life & Technology"
     },
     {
-      "id": "nature",
-      "label": "Nature & Seasons",
-      "icon": "🍁",
-      "count": 20
-    },
-    {
-      "id": "history",
-      "label": "History & Traditions",
-      "icon": "🏯",
-      "count": 20
+      "id": "consumer",
+      "icon": "🛒",
+      "label": "Consumer & Money"
     },
     {
       "id": "health",
-      "label": "Health & Lifestyle",
       "icon": "🌿",
-      "count": 20
+      "label": "Health & Wellness"
     },
     {
-      "id": "school",
-      "label": "School & Study",
-      "icon": "🏫",
-      "count": 20
+      "id": "environment",
+      "icon": "🌏",
+      "label": "Environment & Nature"
+    },
+    {
+      "id": "culture",
+      "icon": "🎨",
+      "label": "Culture & Arts"
     },
     {
       "id": "work",
-      "label": "Work & Career",
       "icon": "💼",
-      "count": 20
+      "label": "Work & Careers"
     },
     {
-      "id": "relationships",
-      "label": "Relationships & Society",
-      "icon": "💕",
-      "count": 20
-    },
-    {
-      "id": "hobbies",
-      "label": "Hobbies & Creativity",
-      "icon": "🎨",
-      "count": 20
+      "id": "society",
+      "icon": "👨‍👩‍👧",
+      "label": "Society & Family"
     }
   ],
-  "notes": [
-    "All 300 readings are original Sakura graded-learning content.",
-    "Manga is not included in this content pack.",
-    "Beauty is a full topic with 20 articles, four at each JLPT level.",
-    "English translations are intended as optional learner support and should remain hidden by default in the UI."
-  ]
+  "provenancePolicy": {
+    "facts": "200 readings grounded in linked official/open Japanese sources, all using 2026 source material in this release. The v7 expansion adds 100 graded readings from 20 verified source families (five support levels per family).",
+    "learnerText": "Learner adaptations are clearly identified. v7 source-family readings add level-specific framing and reuse only Sakura source-grounded paragraphs; no adapted text is presented as verbatim government prose.",
+    "attribution": "Every record stores source title, publisher, URL, date, terms/license, and edit notice.",
+    "assets": "No source logos, photos, charts, videos, or separately credited third-party assets are included.",
+    "studyLevel": "N5–N1 is Sakura study-support grading, not an official JLPT grade of the source."
+  },
+  "sourceYearPolicy": "2026 first; if a category lacks suitable legally reusable 2026 material, use 2025, then 2024, then the newest verified legally reusable source available. Always display the actual source year.",
+  "yearCounts": {
+    "2026": 200
+  },
+  "levelFiles": {
+    "N5": [
+      "n5.json",
+      "n5-b.json",
+      "n5-c.json",
+      "n5-d.json"
+    ],
+    "N4": [
+      "n4.json",
+      "n4-b.json",
+      "n4-c.json",
+      "n4-d.json"
+    ],
+    "N3": [
+      "n3.json",
+      "n3-b.json",
+      "n3-c.json",
+      "n3-d.json"
+    ],
+    "N2": [
+      "n2.json",
+      "n2-b.json",
+      "n2-c.json",
+      "n2-d.json"
+    ],
+    "N1": [
+      "n1.json",
+      "n1-b.json",
+      "n1-c.json",
+      "n1-d.json"
+    ]
+  },
+  "packPolicy": "Each JLPT level is split into four small lazy-loaded packs (10 readings each) so individual JSON payloads remain comfortably below ~100 KB."
 }

@@ -1,0 +1,82 @@
+{
+  "version": 7,
+  "material": "short-stories",
+  "mode": "public-domain-original-excerpts",
+  "targetCount": 250,
+  "readyCount": 100,
+  "sourceYearPolicy": "Use 2026/current fiction first when it is legally reusable for redistribution. If unavailable, use 2025, then 2024, then the newest verified legally reusable source available. Public-domain Aozora works display their actual first-publication year when known, otherwise a source-edition year.",
+  "categories": [
+    {
+      "id": "classics",
+      "icon": "📜",
+      "label": "Classics",
+      "readyCount": 20,
+      "file": "classics.json"
+    },
+    {
+      "id": "modern-literature",
+      "icon": "🏙️",
+      "label": "Modern Literature",
+      "readyCount": 20,
+      "file": "modern-literature.json"
+    },
+    {
+      "id": "mystery-suspense",
+      "icon": "🔎",
+      "label": "Mystery & Suspense",
+      "readyCount": 20,
+      "file": "mystery-suspense.json"
+    },
+    {
+      "id": "children-stories",
+      "icon": "🦊",
+      "label": "Children’s Stories",
+      "readyCount": 9,
+      "file": "children-stories.json"
+    },
+    {
+      "id": "human-bonds",
+      "icon": "💕",
+      "label": "Human & Relationships",
+      "readyCount": 10,
+      "file": "human-bonds.json"
+    },
+    {
+      "id": "strange-horror",
+      "icon": "🕯️",
+      "label": "Strange / Horror",
+      "readyCount": 21,
+      "file": "strange-horror.json"
+    }
+  ],
+  "authors": [
+    "坂口 安吾",
+    "太宰 治",
+    "宮沢 賢治",
+    "小川 未明",
+    "新美 南吉",
+    "林 芙美子",
+    "梶井 基次郎",
+    "江戸川 乱歩",
+    "芥川 龍之介",
+    "夏目 漱石",
+    "大阪 圭吉",
+    "夢野 久作"
+  ],
+  "retrievedDate": "2026-08-14",
+  "rights": {
+    "source": "青空文庫 (Aozora Bunko)",
+    "policy": "Only works identified as copyright-expired/public-domain are used in this shelf.",
+    "fileHandlingStandard": "https://www.aozora.gr.jp/guide/kijyunn.html",
+    "faq": "https://www.aozora.gr.jp/guide/aozora_bunko_faq.html",
+    "fullTextPolicy": "Sakura bundles only short original excerpts and links to the full Aozora work/card.",
+    "thirdPartyAssetsIncluded": false
+  },
+  "qualityPolicy": {
+    "storyText": "100 real Japanese works use short verbatim public-domain source excerpts; no AI-written fiction is bundled.",
+    "difficulty": "Sakura approximate study difficulty only; native works are not JLPT-graded.",
+    "orthography": "Original Aozora transcription is preserved in excerpts.",
+    "currentness": "Publication/edition year is shown honestly; old literature is never labeled as 2026 content.",
+    "selection": "v7 expands Classics, Modern Literature, Mystery & Suspense, Human & Relationships, and Strange / Horror. Works with especially unsuitable discriminatory titles were excluded during source review rather than used to pad counts."
+  }
+}

@@ -1,20 +1,20 @@
-const SHELL_CACHE_VERSION = "sakura-shell-v134";
+const SHELL_CACHE_VERSION = "sakura-shell-v139";
 const KANJI_CONTENT_CACHE_VERSION = "sakura-kanji-content-v7";
 const TRAVEL_CONTENT_CACHE_VERSION = "sakura-travel-content-v1";
 const VOCABULARY_CONTENT_CACHE_VERSION = "sakura-vocabulary-content-v7";
-const READING_CONTENT_CACHE_VERSION = "sakura-reading-content-v1";
+const READING_CONTENT_CACHE_VERSION = "sakura-reading-content-v6";
 
 const APP_SHELL = [
     "./index.html",
     "./style.css?v=73",
     "./app.js?v=92",
     "./study-suite.js?v=1",
-    "./reading-garden.js?v=2",
+    "./reading-garden.js?v=7",
     "./data/vocabulary.js?v=6",
     "./data/native-japanese.js?v=2",
     "./data/slang.js?v=2",
     "./data/travel.js?v=4",
-    "./data/kanji.js?v=20",
+    "./data/kanji.js?v=21",
     "./data/kanji/n5.json",
     "./data/vocabulary/n5.json?v=2",
     "./data/translation-phrases.json?v=1",

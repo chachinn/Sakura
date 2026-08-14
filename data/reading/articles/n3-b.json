@@ -1,0 +1,1052 @@
+[
+  {
+    "id": "source-article-n3-travel-v6-06",
+    "type": "article",
+    "contentVersion": 6,
+    "provenance": "sourced-2026",
+    "title": "新しい訪日マーケティング戦略",
+    "titleKana": "あたらしいほうにちマーケティングせんりゃく",
+    "titleFurigana": "<ruby>新<rt>あたら</rt></ruby>しい<ruby>訪日<rt>ほうにち</rt></ruby>マーケティング<ruby>戦略<rt>せんりゃく</rt></ruby>",
+    "titleEnglish": "The JTA adopted a new inbound marketing strategy in April 2026 looking ahead through 2030",
+    "jlpt": "N3",
+    "difficultyLabel": "N3 study support",
+    "levelNote": "Study-support level for Sakura’s adaptation; the original source is not officially JLPT-graded.",
+    "topic": "travel",
+    "topicLabel": "Travel & Transportation",
+    "topicIcon": "✈️",
+    "subject": "新しい訪日マーケティング戦略",
+    "subjectKana": "あたらしいほうにちマーケティングせんりゃく",
+    "estimatedMinutes": 3,
+    "characterCount": 87,
+    "summary": "The JTA adopted a new inbound marketing strategy in April 2026 looking ahead through 2030.",
+    "paragraphs": [
+      {
+        "japanese": "2026年、観光庁は「新しい訪日マーケティング戦略」に関する情報を公表しました。",
+        "kana": "にせんにじゅうろくねん、かんこうちょうは「あたらしいほうにちマーケティングせんりゃく」にかんするじょうほうをこうひょうしました。",
+        "furigana": "<ruby>2026年<rt>にせんにじゅうろくねん</rt></ruby>、<ruby>観光庁<rt>かんこうちょう</rt></ruby>は「<ruby>新<rt>あたら</rt></ruby>しい<ruby>訪日<rt>ほうにち</rt></ruby>マーケティング<ruby>戦略<rt>せんりゃく</rt></ruby>」に<ruby>関<rt>かん</rt></ruby>する<ruby>情報<rt>じょうほう</rt></ruby>を<ruby>公表<rt>こうひょう</rt></ruby>しました。",
+        "english": "In 2026, 観光庁 published official information related to this topic."
+      },
+      {
+        "japanese": "観光庁は二〇二六年四月に、二〇三〇年までを見据えた新しい訪日マーケティング戦略を策定しました。",
+        "kana": "かんこうちょうはにせんにじゅうろくねんしがつに、にせんさんじゅうねんまでをみすえたあたらしいほうにちマーケティングせんりゃくをさくていしました。",
+        "furigana": "<ruby>観光庁<rt>かんこうちょう</rt></ruby>は<ruby>二〇二六年四月<rt>にせんにじゅうろくねんしがつ</rt></ruby>に、<ruby>二〇三〇年<rt>にせんさんじゅうねん</rt></ruby>までを<ruby>見据<rt>みす</rt></ruby>えた<ruby>新<rt>あたら</rt></ruby>しい<ruby>訪日<rt>ほうにち</rt></ruby>マーケティング<ruby>戦略<rt>せんりゃく</rt></ruby>を<ruby>策定<rt>さくてい</rt></ruby>しました。",
+        "english": "The JTA adopted a new inbound marketing strategy in April 2026 looking ahead through 2030."
+      }
+    ],
+    "vocabularyFocus": [
+      {
+        "word": "観光",
+        "kana": "かんこう",
+        "meaning": "tourism"
+      },
+      {
+        "word": "旅行者",
+        "kana": "りょこうしゃ",
+        "meaning": "traveler"
+      },
+      {
+        "word": "環境",
+        "kana": "かんきょう",
+        "meaning": "environment / conditions"
+      }
+    ],
+    "grammarFocus": [
+      "〜に関する",
+      "〜に基づく"
+    ],
+    "comprehension": [
+      {
+        "questionJapanese": "この資料で扱われているテーマは何ですか。",
+        "questionKana": "このしりょうであつかわれているテーマはなんですか。",
+        "questionFurigana": "この<ruby>資料<rt>しりょう</rt></ruby>で<ruby>扱<rt>あつか</rt></ruby>われているテーマは<ruby>何<rt>なん</rt></ruby>ですか。",
+        "choices": [
+          {
+            "japanese": "新しい訪日マーケティング戦略",
+            "kana": "あたらしいほうにちマーケティングせんりゃく",
+            "furigana": "<ruby>新<rt>あたら</rt></ruby>しい<ruby>訪日<rt>ほうにち</rt></ruby>マーケティング<ruby>戦略<rt>せんりゃく</rt></ruby>"
+          },
+          {
+            "japanese": "食品表示",
+            "kana": "しょくひんひょうじ",
+            "furigana": "<ruby>食品表示<rt>しょくひんひょうじ</rt></ruby>"
+          },
+          {
+            "japanese": "医薬品審査",
+            "kana": "いやくひんしんさ",
+            "furigana": "<ruby>医薬品審査<rt>いやくひんしんさ</rt></ruby>"
+          }
+        ],
+        "answerIndex": 0,
+        "explanation": "資料の中心テーマは「新しい訪日マーケティング戦略」です。"
+      }
+    ],
+    "tags": [
+      "travel",
+      "2026",
+      "official source",
+      "source-grounded adaptation"
+    ],
+    "sourceTitle": "新たな「訪日マーケティング戦略」を策定",
+    "sourcePublisher": "観光庁",
+    "sourceUrl": "https://www.mlit.go.jp/kankocho/news03_00028.html",
+    "sourcePublishedDate": "2026-04-28",
+    "sourceRetrievedDate": "2026-08-14",
+    "sourceYear": 2026,
+    "sourceKind": "official-government",
+    "sourceMode": "source-grounded-adaptation",
+    "sourceLicense": "PDL1.0",
+    "sourceLicenseUrl": "https://www.digital.go.jp/resources/open_data/public_data_license_v1.0",
+    "sourceTermsUrl": "https://www.digital.go.jp/resources/open_data/public_data_license_v1.0",
+    "sourceAttribution": "出典：観光庁「新たな「訪日マーケティング戦略」を策定」（2026-04-28）。Sakuraが学習用に要約・平易化。原文そのものではありません。",
+    "sourceProcessing": "Sakura learner adaptation based on the cited official source. Sentence structure and wording are simplified for Japanese study; this is not verbatim government text.",
+    "rightsNote": "Text-only adaptation under Japan Public Data License 1.0 where applicable unless the source page states otherwise. No government logos, photographs, charts, videos, or separately credited third-party assets are bundled.",
+    "copyright": "Source rights remain with the source publisher/other rightsholders as applicable; Sakura adaptation includes attribution and edit disclosure.",
+    "sourceVerifiedDate": "2026-08-14",
+    "sourceDateLabel": "2026-04-28"
+  },
+  {
+    "id": "source-article-n3-digital-v6-05",
+    "type": "article",
+    "contentVersion": 6,
+    "provenance": "sourced-2026",
+    "title": "AI政策をどう進める？",
+    "titleKana": "エーアイせいさくをどうすすめる？",
+    "titleFurigana": "AI<ruby>政策<rt>せいさく</rt></ruby>をどう<ruby>進<rt>すす</rt></ruby>める？",
+    "titleEnglish": "How Should Japan Advance AI Policy?",
+    "jlpt": "N3",
+    "difficultyLabel": "N3 study support",
+    "levelNote": "Study-support level for Sakura’s adaptation; the original source is not officially JLPT-graded.",
+    "topic": "digital",
+    "topicLabel": "Digital Life & Technology",
+    "topicIcon": "📱",
+    "subject": "AIを使うデジタル社会の重点計画",
+    "subjectKana": "AIをつかうデジタルしゃかいのじゅうてんけいかく",
+    "estimatedMinutes": 3,
+    "characterCount": 92,
+    "summary": "Japan’s 2026 digital priority plan sets a government-wide direction for stronger AI use and digital foundations.",
+    "paragraphs": [
+      {
+        "japanese": "2026年、デジタル庁は「AIを使うデジタル社会の重点計画」に関する情報を公表しました。",
+        "kana": "にせんにじゅうろくねん、デジタルちょうは「AIをつかうデジタルしゃかいのじゅうてんけいかく」にかんするじょうほうをこうひょうしました。",
+        "furigana": "<ruby>2026年<rt>にせんにじゅうろくねん</rt></ruby>、デジタル<ruby>庁<rt>ちょう</rt></ruby>は「AIを<ruby>使<rt>つか</rt></ruby>うデジタル<ruby>社会<rt>しゃかい</rt></ruby>の<ruby>重点計画<rt>じゅうてんけいかく</rt></ruby>」に<ruby>関<rt>かん</rt></ruby>する<ruby>情報<rt>じょうほう</rt></ruby>を<ruby>公表<rt>こうひょう</rt></ruby>しました。",
+        "english": "In 2026, デジタル庁 published official information related to this topic."
+      },
+      {
+        "japanese": "二〇二六年の重点計画では、AIの活用とデジタル基盤の整備を政府全体で進める方向が示されています。",
+        "kana": "にせんにじゅうろくねんのじゅうてんけいかくでは、AIのかつようとデジタルきばんのせいびをせいふぜんたいですすめるほうこうがしめされています。",
+        "furigana": "<ruby>二〇二六年<rt>にせんにじゅうろくねん</rt></ruby>の<ruby>重点計画<rt>じゅうてんけいかく</rt></ruby>では、AIの<ruby>活用<rt>かつよう</rt></ruby>とデジタル<ruby>基盤<rt>きばん</rt></ruby>の<ruby>整備<rt>せいび</rt></ruby>を<ruby>政府全体<rt>せいふぜんたい</rt></ruby>で<ruby>進<rt>すす</rt></ruby>める<ruby>方向<rt>ほうこう</rt></ruby>が<ruby>示<rt>しめ</rt></ruby>されています。",
+        "english": "Japan’s 2026 digital priority plan sets a government-wide direction for stronger AI use and digital foundations."
+      }
+    ],
+    "vocabularyFocus": [
+      {
+        "word": "生成AI",
+        "kana": "せいせいAI",
+        "meaning": "generative AI"
+      },
+      {
+        "word": "実証",
+        "kana": "じっしょう",
+        "meaning": "demonstration / trial"
+      },
+      {
+        "word": "活用",
+        "kana": "かつよう",
+        "meaning": "utilization"
+      }
+    ],
+    "grammarFocus": [
+      "〜に関する",
+      "〜に基づく"
+    ],
+    "comprehension": [
+      {
+        "questionJapanese": "この資料で扱われているテーマは何ですか。",
+        "questionKana": "このしりょうであつかわれているテーマはなんですか。",
+        "questionFurigana": "この<ruby>資料<rt>しりょう</rt></ruby>で<ruby>扱<rt>あつか</rt></ruby>われているテーマは<ruby>何<rt>なん</rt></ruby>ですか。",
+        "choices": [
+          {
+            "japanese": "AIを使うデジタル社会の重点計画",
+            "kana": "AIをつかうデジタルしゃかいのじゅうてんけいかく",
+            "furigana": "AIを<ruby>使<rt>つか</rt></ruby>うデジタル<ruby>社会<rt>しゃかい</rt></ruby>の<ruby>重点計画<rt>じゅうてんけいかく</rt></ruby>"
+          },
+          {
+            "japanese": "食品ロス",
+            "kana": "しょくひんロス",
+            "furigana": "<ruby>食品<rt>しょくひん</rt></ruby>ロス"
+          },
+          {
+            "japanese": "保育制度",
+            "kana": "ほいくせいど",
+            "furigana": "<ruby>保育制度<rt>ほいくせいど</rt></ruby>"
+          }
+        ],
+        "answerIndex": 0,
+        "explanation": "資料の中心テーマは「AIを使うデジタル社会の重点計画」です。"
+      }
+    ],
+    "tags": [
+      "digital",
+      "2026",
+      "official source",
+      "source-grounded adaptation"
+    ],
+    "sourceTitle": "デジタル社会の実現に向けた重点計画",
+    "sourcePublisher": "デジタル庁",
+    "sourceUrl": "https://www.digital.go.jp/policies/priority-policy-program",
+    "sourcePublishedDate": "2026-07-21",
+    "sourceRetrievedDate": "2026-08-14",
+    "sourceYear": 2026,
+    "sourceKind": "official-government",
+    "sourceMode": "source-grounded-adaptation",
+    "sourceLicense": "PDL1.0",
+    "sourceLicenseUrl": "https://www.digital.go.jp/resources/open_data/public_data_license_v1.0",
+    "sourceTermsUrl": "https://www.digital.go.jp/resources/open_data/public_data_license_v1.0",
+    "sourceAttribution": "出典：デジタル庁「デジタル社会の実現に向けた重点計画」（2026-07-21）。Sakuraが学習用に要約・平易化。原文そのものではありません。",
+    "sourceProcessing": "Sakura learner adaptation based on the cited official source. Sentence structure and wording are simplified for Japanese study; this is not verbatim government text.",
+    "rightsNote": "Text-only adaptation under Japan Public Data License 1.0 where applicable unless the source page states otherwise. No government logos, photographs, charts, videos, or separately credited third-party assets are bundled.",
+    "copyright": "Source rights remain with the source publisher/other rightsholders as applicable; Sakura adaptation includes attribution and edit disclosure.",
+    "sourceVerifiedDate": "2026-08-14",
+    "sourceDateLabel": "2026-07-21"
+  },
+  {
+    "id": "source-article-n3-consumer-v6-04",
+    "type": "article",
+    "contentVersion": 6,
+    "provenance": "sourced-2026",
+    "title": "電気・ガス契約のトラブルに注意",
+    "titleKana": "でんき・ガスけいやくのトラブルにちゅうい",
+    "titleFurigana": "<ruby>電気<rt>でんき</rt></ruby>・ガス<ruby>契約<rt>けいやく</rt></ruby>のトラブルに<ruby>注意<rt>ちゅうい</rt></ruby>",
+    "titleEnglish": "The CAA’s June 2026 guidance warns consumers to be careful about electricity and gas contract troubles",
+    "jlpt": "N3",
+    "difficultyLabel": "N3 study support",
+    "levelNote": "Study-support level for Sakura’s adaptation; the original source is not officially JLPT-graded.",
+    "topic": "consumer",
+    "topicLabel": "Consumer & Money",
+    "topicIcon": "🛒",
+    "subject": "電気・ガス契約のトラブルに注意",
+    "subjectKana": "でんき・ガスけいやくのトラブルにちゅうい",
+    "estimatedMinutes": 3,
+    "characterCount": 88,
+    "summary": "The CAA’s June 2026 guidance warns consumers to be careful about electricity and gas contract troubles.",
+    "paragraphs": [
+      {
+        "japanese": "2026年、消費者庁は「電気・ガス契約のトラブルに注意」に関する情報を公表しました。",
+        "kana": "にせんにじゅうろくねん、しょうひしゃちょうは「でんき・ガスけいやくのトラブルにちゅうい」にかんするじょうほうをこうひょうしました。",
+        "furigana": "<ruby>2026年<rt>にせんにじゅうろくねん</rt></ruby>、<ruby>消費者庁<rt>しょうひしゃちょう</rt></ruby>は「<ruby>電気<rt>でんき</rt></ruby>・ガス<ruby>契約<rt>けいやく</rt></ruby>のトラブルに<ruby>注意<rt>ちゅうい</rt></ruby>」に<ruby>関<rt>かん</rt></ruby>する<ruby>情報<rt>じょうほう</rt></ruby>を<ruby>公表<rt>こうひょう</rt></ruby>しました。",
+        "english": "In 2026, 消費者庁 published official information related to this topic."
+      },
+      {
+        "japanese": "消費者庁は二〇二六年六月版の情報で、電気やガスの契約トラブルに注意するよう呼びかけています。",
+        "kana": "しょうひしゃちょうはにせんにじゅうろくねんろくがつばんのじょうほうで、でんきやガスのけいやくトラブルにちゅういするようよびかけています。",
+        "furigana": "<ruby>消費者庁<rt>しょうひしゃちょう</rt></ruby>は<ruby>二〇二六年六月版<rt>にせんにじゅうろくねんろくがつばん</rt></ruby>の<ruby>情報<rt>じょうほう</rt></ruby>で、<ruby>電気<rt>でんき</rt></ruby>やガスの<ruby>契約<rt>けいやく</rt></ruby>トラブルに<ruby>注意<rt>ちゅうい</rt></ruby>するよう<ruby>呼<rt>よ</rt></ruby>びかけています。",
+        "english": "The CAA’s June 2026 guidance warns consumers to be careful about electricity and gas contract troubles."
+      }
+    ],
+    "vocabularyFocus": [
+      {
+        "word": "消費者",
+        "kana": "しょうひしゃ",
+        "meaning": "consumer"
+      },
+      {
+        "word": "契約",
+        "kana": "けいやく",
+        "meaning": "contract"
+      },
+      {
+        "word": "注意",
+        "kana": "ちゅうい",
+        "meaning": "caution"
+      }
+    ],
+    "grammarFocus": [
+      "〜に関する",
+      "〜に基づく"
+    ],
+    "comprehension": [
+      {
+        "questionJapanese": "この資料で扱われているテーマは何ですか。",
+        "questionKana": "このしりょうであつかわれているテーマはなんですか。",
+        "questionFurigana": "この<ruby>資料<rt>しりょう</rt></ruby>で<ruby>扱<rt>あつか</rt></ruby>われているテーマは<ruby>何<rt>なん</rt></ruby>ですか。",
+        "choices": [
+          {
+            "japanese": "電気・ガス契約のトラブルに注意",
+            "kana": "でんき・ガスけいやくのトラブルにちゅうい",
+            "furigana": "<ruby>電気<rt>でんき</rt></ruby>・ガス<ruby>契約<rt>けいやく</rt></ruby>のトラブルに<ruby>注意<rt>ちゅうい</rt></ruby>"
+          },
+          {
+            "japanese": "文化財修復",
+            "kana": "ぶんかざいしゅうふく",
+            "furigana": "<ruby>文化財修復<rt>ぶんかざいしゅうふく</rt></ruby>"
+          },
+          {
+            "japanese": "再エネ設備",
+            "kana": "さいエネせつび",
+            "furigana": "<ruby>再<rt>さい</rt></ruby>エネ<ruby>設備<rt>せつび</rt></ruby>"
+          }
+        ],
+        "answerIndex": 0,
+        "explanation": "資料の中心テーマは「電気・ガス契約のトラブルに注意」です。"
+      }
+    ],
+    "tags": [
+      "consumer",
+      "2026",
+      "official source",
+      "source-grounded adaptation"
+    ],
+    "sourceTitle": "電気・ガスの契約トラブルなどに気をつけましょう（令和8年6月版）",
+    "sourcePublisher": "消費者庁",
+    "sourceUrl": "https://www.caa.go.jp/policies/policy/consumer_transaction/release/2026/",
+    "sourcePublishedDate": "2026-06-16",
+    "sourceRetrievedDate": "2026-08-14",
+    "sourceYear": 2026,
+    "sourceKind": "official-government",
+    "sourceMode": "source-grounded-adaptation",
+    "sourceLicense": "PDL1.0",
+    "sourceLicenseUrl": "https://www.digital.go.jp/resources/open_data/public_data_license_v1.0",
+    "sourceTermsUrl": "https://www.digital.go.jp/resources/open_data/public_data_license_v1.0",
+    "sourceAttribution": "出典：消費者庁「電気・ガスの契約トラブルなどに気をつけましょう（令和8年6月版）」（2026-06-16）。Sakuraが学習用に要約・平易化。原文そのものではありません。",
+    "sourceProcessing": "Sakura learner adaptation based on the cited official source. Sentence structure and wording are simplified for Japanese study; this is not verbatim government text.",
+    "rightsNote": "Text-only adaptation under Japan Public Data License 1.0 where applicable unless the source page states otherwise. No government logos, photographs, charts, videos, or separately credited third-party assets are bundled.",
+    "copyright": "Source rights remain with the source publisher/other rightsholders as applicable; Sakura adaptation includes attribution and edit disclosure.",
+    "sourceVerifiedDate": "2026-08-14",
+    "sourceDateLabel": "2026-06-16"
+  },
+  {
+    "id": "source-article-n3-health-v6-03",
+    "type": "article",
+    "contentVersion": 6,
+    "provenance": "sourced-2026",
+    "title": "GLP-1薬の適正使用",
+    "titleKana": "GLP-1やくのてきせいしよう",
+    "titleFurigana": "GLP-<ruby>1薬<rt>1やく</rt></ruby>の<ruby>適正使用<rt>てきせいしよう</rt></ruby>",
+    "titleEnglish": "In June 2026, MHLW posted notices on the appropriate use of GLP-1 receptor agonists and GIP/GLP-1 receptor agonists",
+    "jlpt": "N3",
+    "difficultyLabel": "N3 study support",
+    "levelNote": "Study-support level for Sakura’s adaptation; the original source is not officially JLPT-graded.",
+    "topic": "health",
+    "topicLabel": "Health & Wellness",
+    "topicIcon": "🌿",
+    "subject": "GLP-1薬の適正使用",
+    "subjectKana": "GLP-1やくのてきせいしよう",
+    "estimatedMinutes": 3,
+    "characterCount": 85,
+    "summary": "In June 2026, MHLW posted notices on the appropriate use of GLP-1 receptor agonists and GIP/GLP-1 receptor agonists.",
+    "paragraphs": [
+      {
+        "japanese": "2026年、厚生労働省は「GLP-1薬の適正使用」に関する情報を公表しました。",
+        "kana": "にせんにじゅうろくねん、こうせいろうどうしょうは「GLP-1やくのてきせいしよう」にかんするじょうほうをこうひょうしました。",
+        "furigana": "<ruby>2026年<rt>にせんにじゅうろくねん</rt></ruby>、<ruby>厚生労働省<rt>こうせいろうどうしょう</rt></ruby>は「GLP-<ruby>1薬<rt>1やく</rt></ruby>の<ruby>適正使用<rt>てきせいしよう</rt></ruby>」に<ruby>関<rt>かん</rt></ruby>する<ruby>情報<rt>じょうほう</rt></ruby>を<ruby>公表<rt>こうひょう</rt></ruby>しました。",
+        "english": "In 2026, 厚生労働省 published official information related to this topic."
+      },
+      {
+        "japanese": "厚生労働省は二〇二六年六月、GLP-1受容体作動薬などの適正使用について通知を掲載しました。",
+        "kana": "こうせいろうどうしょうはにせんにじゅうろくねんろくがつ、GLP-1じゅようたいさどうやくなどのてきせいしようについてつうちをけいさいしました。",
+        "furigana": "<ruby>厚生労働省<rt>こうせいろうどうしょう</rt></ruby>は<ruby>二〇二六年六月<rt>にせんにじゅうろくねんろくがつ</rt></ruby>、GLP-<ruby>1受容体作動薬<rt>1じゅようたいさどうやく</rt></ruby>などの<ruby>適正使用<rt>てきせいしよう</rt></ruby>について<ruby>通知<rt>つうち</rt></ruby>を<ruby>掲載<rt>けいさい</rt></ruby>しました。",
+        "english": "In June 2026, MHLW posted notices on the appropriate use of GLP-1 receptor agonists and GIP/GLP-1 receptor agonists."
+      }
+    ],
+    "vocabularyFocus": [
+      {
+        "word": "予防",
+        "kana": "よぼう",
+        "meaning": "prevention"
+      },
+      {
+        "word": "安全",
+        "kana": "あんぜん",
+        "meaning": "safety"
+      },
+      {
+        "word": "適正",
+        "kana": "てきせい",
+        "meaning": "appropriate / proper"
+      }
+    ],
+    "grammarFocus": [
+      "〜に関する",
+      "〜に基づく"
+    ],
+    "comprehension": [
+      {
+        "questionJapanese": "この資料で扱われているテーマは何ですか。",
+        "questionKana": "このしりょうであつかわれているテーマはなんですか。",
+        "questionFurigana": "この<ruby>資料<rt>しりょう</rt></ruby>で<ruby>扱<rt>あつか</rt></ruby>われているテーマは<ruby>何<rt>なん</rt></ruby>ですか。",
+        "choices": [
+          {
+            "japanese": "GLP-1薬の適正使用",
+            "kana": "GLP-1やくのてきせいしよう",
+            "furigana": "GLP-<ruby>1薬<rt>1やく</rt></ruby>の<ruby>適正使用<rt>てきせいしよう</rt></ruby>"
+          },
+          {
+            "japanese": "訪日観光",
+            "kana": "ほうにちかんこう",
+            "furigana": "<ruby>訪日観光<rt>ほうにちかんこう</rt></ruby>"
+          },
+          {
+            "japanese": "著作権制度",
+            "kana": "ちょさくけんせいど",
+            "furigana": "<ruby>著作権制度<rt>ちょさくけんせいど</rt></ruby>"
+          }
+        ],
+        "answerIndex": 0,
+        "explanation": "資料の中心テーマは「GLP-1薬の適正使用」です。"
+      }
+    ],
+    "tags": [
+      "health",
+      "2026",
+      "official source",
+      "source-grounded adaptation"
+    ],
+    "sourceTitle": "通知・事務連絡について（令和8年度）",
+    "sourcePublisher": "厚生労働省",
+    "sourceUrl": "https://www.mhlw.go.jp/stf/newpage_72950.html",
+    "sourcePublishedDate": "2026-06-16",
+    "sourceRetrievedDate": "2026-08-14",
+    "sourceYear": 2026,
+    "sourceKind": "official-government",
+    "sourceMode": "source-grounded-adaptation",
+    "sourceLicense": "PDL1.0",
+    "sourceLicenseUrl": "https://www.digital.go.jp/resources/open_data/public_data_license_v1.0",
+    "sourceTermsUrl": "https://www.digital.go.jp/resources/open_data/public_data_license_v1.0",
+    "sourceAttribution": "出典：厚生労働省「通知・事務連絡について（令和8年度）」（2026-06-16）。Sakuraが学習用に要約・平易化。原文そのものではありません。",
+    "sourceProcessing": "Sakura learner adaptation based on the cited official source. Sentence structure and wording are simplified for Japanese study; this is not verbatim government text.",
+    "rightsNote": "Text-only adaptation under Japan Public Data License 1.0 where applicable unless the source page states otherwise. No government logos, photographs, charts, videos, or separately credited third-party assets are bundled.",
+    "copyright": "Source rights remain with the source publisher/other rightsholders as applicable; Sakura adaptation includes attribution and edit disclosure.",
+    "sourceVerifiedDate": "2026-08-14",
+    "sourceDateLabel": "2026-06-16"
+  },
+  {
+    "id": "source-article-n3-environment-v6-02",
+    "type": "article",
+    "contentVersion": 6,
+    "provenance": "sourced-2026",
+    "title": "再エネ製品をリユース・リサイクル",
+    "titleKana": "さいエネせいひんをリユース・リサイクル",
+    "titleFurigana": "<ruby>再<rt>さい</rt></ruby>エネ<ruby>製品<rt>せいひん</rt></ruby>をリユース・リサイクル",
+    "titleEnglish": "The Environment Ministry is supporting demonstrations for reuse and recycling of products such as solar panels, lithium-ion batteries, and wind-power equipment",
+    "jlpt": "N3",
+    "difficultyLabel": "N3 study support",
+    "levelNote": "Study-support level for Sakura’s adaptation; the original source is not officially JLPT-graded.",
+    "topic": "environment",
+    "topicLabel": "Environment & Nature",
+    "topicIcon": "🌏",
+    "subject": "再エネ製品をリユース・リサイクル",
+    "subjectKana": "さいエネせいひんをリユース・リサイクル",
+    "estimatedMinutes": 3,
+    "characterCount": 93,
+    "summary": "The Environment Ministry is supporting demonstrations for reuse and recycling of products such as solar panels, lithium-ion batteries, and wind-power equipment.",
+    "paragraphs": [
+      {
+        "japanese": "2026年、環境省は「再エネ製品をリユース・リサイクル」に関する情報を公表しました。",
+        "kana": "にせんにじゅうろくねん、かんきょうしょうは「さいエネせいひんをリユース・リサイクル」にかんするじょうほうをこうひょうしました。",
+        "furigana": "<ruby>2026年<rt>にせんにじゅうろくねん</rt></ruby>、<ruby>環境省<rt>かんきょうしょう</rt></ruby>は「<ruby>再<rt>さい</rt></ruby>エネ<ruby>製品<rt>せいひん</rt></ruby>をリユース・リサイクル」に<ruby>関<rt>かん</rt></ruby>する<ruby>情報<rt>じょうほう</rt></ruby>を<ruby>公表<rt>こうひょう</rt></ruby>しました。",
+        "english": "In 2026, 環境省 published official information related to this topic."
+      },
+      {
+        "japanese": "環境省は太陽光パネル、リチウムイオン電池、風力発電設備などの再利用や再資源化を試す事業を進めています。",
+        "kana": "かんきょうしょうはたいようこうパネル、リチウムイオンでんち、ふうりょくはつでんせつびなどのさいりようやさいしげんかをためすじぎょうをすすめています。",
+        "furigana": "<ruby>環境省<rt>かんきょうしょう</rt></ruby>は<ruby>太陽光<rt>たいようこう</rt></ruby>パネル、リチウムイオン<ruby>電池<rt>でんち</rt></ruby>、<ruby>風力発電設備<rt>ふうりょくはつでんせつび</rt></ruby>などの<ruby>再利用<rt>さいりよう</rt></ruby>や<ruby>再資源化<rt>さいしげんか</rt></ruby>を<ruby>試<rt>ため</rt></ruby>す<ruby>事業<rt>じぎょう</rt></ruby>を<ruby>進<rt>すす</rt></ruby>めています。",
+        "english": "The Environment Ministry is supporting demonstrations for reuse and recycling of products such as solar panels, lithium-ion batteries, and wind-power equipment."
+      }
+    ],
+    "vocabularyFocus": [
+      {
+        "word": "資源",
+        "kana": "しげん",
+        "meaning": "resource"
+      },
+      {
+        "word": "循環",
+        "kana": "じゅんかん",
+        "meaning": "circulation"
+      },
+      {
+        "word": "再利用",
+        "kana": "さいりよう",
+        "meaning": "reuse"
+      }
+    ],
+    "grammarFocus": [
+      "〜に関する",
+      "〜に基づく"
+    ],
+    "comprehension": [
+      {
+        "questionJapanese": "この資料で扱われているテーマは何ですか。",
+        "questionKana": "このしりょうであつかわれているテーマはなんですか。",
+        "questionFurigana": "この<ruby>資料<rt>しりょう</rt></ruby>で<ruby>扱<rt>あつか</rt></ruby>われているテーマは<ruby>何<rt>なん</rt></ruby>ですか。",
+        "choices": [
+          {
+            "japanese": "再エネ製品をリユース・リサイクル",
+            "kana": "さいエネせいひんをリユース・リサイクル",
+            "furigana": "<ruby>再<rt>さい</rt></ruby>エネ<ruby>製品<rt>せいひん</rt></ruby>をリユース・リサイクル"
+          },
+          {
+            "japanese": "エステ契約",
+            "kana": "エステけいやく",
+            "furigana": "エステ<ruby>契約<rt>けいやく</rt></ruby>"
+          },
+          {
+            "japanese": "子育て支援",
+            "kana": "こそだてしえん",
+            "furigana": "<ruby>子育<rt>こそだ</rt></ruby>て<ruby>支援<rt>しえん</rt></ruby>"
+          }
+        ],
+        "answerIndex": 0,
+        "explanation": "資料の中心テーマは「再エネ製品をリユース・リサイクル」です。"
+      }
+    ],
+    "tags": [
+      "environment",
+      "2026",
+      "official source",
+      "source-grounded adaptation"
+    ],
+    "sourceTitle": "令和8年度国内資源循環体制構築に向けた再エネ関連製品及びベース素材の全体最適化実証事業（間接補助）の公募について",
+    "sourcePublisher": "環境省",
+    "sourceUrl": "https://www.env.go.jp/press/press_04945.html",
+    "sourcePublishedDate": "2026-06-02",
+    "sourceRetrievedDate": "2026-08-14",
+    "sourceYear": 2026,
+    "sourceKind": "official-government",
+    "sourceMode": "source-grounded-adaptation",
+    "sourceLicense": "PDL1.0",
+    "sourceLicenseUrl": "https://www.digital.go.jp/resources/open_data/public_data_license_v1.0",
+    "sourceTermsUrl": "https://www.digital.go.jp/resources/open_data/public_data_license_v1.0",
+    "sourceAttribution": "出典：環境省「令和8年度国内資源循環体制構築に向けた再エネ関連製品及びベース素材の全体最適化実証事業（間接補助）の公募について」（2026-06-02）。Sakuraが学習用に要約・平易化。原文そのものではありません。",
+    "sourceProcessing": "Sakura learner adaptation based on the cited official source. Sentence structure and wording are simplified for Japanese study; this is not verbatim government text.",
+    "rightsNote": "Text-only adaptation under Japan Public Data License 1.0 where applicable unless the source page states otherwise. No government logos, photographs, charts, videos, or separately credited third-party assets are bundled.",
+    "copyright": "Source rights remain with the source publisher/other rightsholders as applicable; Sakura adaptation includes attribution and edit disclosure.",
+    "sourceVerifiedDate": "2026-08-14",
+    "sourceDateLabel": "2026-06-02"
+  },
+  {
+    "id": "source-article-n3-environment-v6-07",
+    "type": "article",
+    "contentVersion": 6,
+    "provenance": "sourced-2026",
+    "title": "太陽光発電の環境影響を考える",
+    "titleKana": "たいようこうはつでんのかんきょうえいきょうをかんがえる",
+    "titleFurigana": "<ruby>太陽光発電<rt>たいようこうはつでん</rt></ruby>の<ruby>環境影響<rt>かんきょうえいきょう</rt></ruby>を<ruby>考<rt>かんが</rt></ruby>える",
+    "titleEnglish": "The Environment Ministry and METI are reviewing the scale thresholds and other rules for environmental assessment of large solar projects",
+    "jlpt": "N3",
+    "difficultyLabel": "N3 study support",
+    "levelNote": "Study-support level for Sakura’s adaptation; the original source is not officially JLPT-graded.",
+    "topic": "environment",
+    "topicLabel": "Environment & Nature",
+    "topicIcon": "🌏",
+    "subject": "太陽光発電の環境影響を考える",
+    "subjectKana": "たいようこうはつでんのかんきょうえいきょうをかんがえる",
+    "estimatedMinutes": 3,
+    "characterCount": 87,
+    "summary": "The Environment Ministry and METI are reviewing the scale thresholds and other rules for environmental assessment of large solar projects.",
+    "paragraphs": [
+      {
+        "japanese": "2026年、環境省は「太陽光発電の環境影響を考える」に関する情報を公表しました。",
+        "kana": "にせんにじゅうろくねん、かんきょうしょうは「たいようこうはつでんのかんきょうえいきょうをかんがえる」にかんするじょうほうをこうひょうしました。",
+        "furigana": "<ruby>2026年<rt>にせんにじゅうろくねん</rt></ruby>、<ruby>環境省<rt>かんきょうしょう</rt></ruby>は「<ruby>太陽光発電<rt>たいようこうはつでん</rt></ruby>の<ruby>環境影響<rt>かんきょうえいきょう</rt></ruby>を<ruby>考<rt>かんが</rt></ruby>える」に<ruby>関<rt>かん</rt></ruby>する<ruby>情報<rt>じょうほう</rt></ruby>を<ruby>公表<rt>こうひょう</rt></ruby>しました。",
+        "english": "In 2026, 環境省 published official information related to this topic."
+      },
+      {
+        "japanese": "環境省と経済産業省は、大規模太陽光発電の環境影響評価の対象規模などについて検討を進めています。",
+        "kana": "かんきょうしょうとけいざいさんぎょうしょうは、だいきぼたいようこうはつでんのかんきょうえいきょうひょうかのたいしょうきぼなどについてけんとうをすすめています。",
+        "furigana": "<ruby>環境省<rt>かんきょうしょう</rt></ruby>と<ruby>経済産業省<rt>けいざいさんぎょうしょう</rt></ruby>は、<ruby>大規模太陽光発電<rt>だいきぼたいようこうはつでん</rt></ruby>の<ruby>環境影響評価<rt>かんきょうえいきょうひょうか</rt></ruby>の<ruby>対象規模<rt>たいしょうきぼ</rt></ruby>などについて<ruby>検討<rt>けんとう</rt></ruby>を<ruby>進<rt>すす</rt></ruby>めています。",
+        "english": "The Environment Ministry and METI are reviewing the scale thresholds and other rules for environmental assessment of large solar projects."
+      }
+    ],
+    "vocabularyFocus": [
+      {
+        "word": "資源",
+        "kana": "しげん",
+        "meaning": "resource"
+      },
+      {
+        "word": "循環",
+        "kana": "じゅんかん",
+        "meaning": "circulation"
+      },
+      {
+        "word": "再利用",
+        "kana": "さいりよう",
+        "meaning": "reuse"
+      }
+    ],
+    "grammarFocus": [
+      "〜に関する",
+      "〜に基づく"
+    ],
+    "comprehension": [
+      {
+        "questionJapanese": "この資料で扱われているテーマは何ですか。",
+        "questionKana": "このしりょうであつかわれているテーマはなんですか。",
+        "questionFurigana": "この<ruby>資料<rt>しりょう</rt></ruby>で<ruby>扱<rt>あつか</rt></ruby>われているテーマは<ruby>何<rt>なん</rt></ruby>ですか。",
+        "choices": [
+          {
+            "japanese": "太陽光発電の環境影響を考える",
+            "kana": "たいようこうはつでんのかんきょうえいきょうをかんがえる",
+            "furigana": "<ruby>太陽光発電<rt>たいようこうはつでん</rt></ruby>の<ruby>環境影響<rt>かんきょうえいきょう</rt></ruby>を<ruby>考<rt>かんが</rt></ruby>える"
+          },
+          {
+            "japanese": "エステ契約",
+            "kana": "エステけいやく",
+            "furigana": "エステ<ruby>契約<rt>けいやく</rt></ruby>"
+          },
+          {
+            "japanese": "子育て支援",
+            "kana": "こそだてしえん",
+            "furigana": "<ruby>子育<rt>こそだ</rt></ruby>て<ruby>支援<rt>しえん</rt></ruby>"
+          }
+        ],
+        "answerIndex": 0,
+        "explanation": "資料の中心テーマは「太陽光発電の環境影響を考える」です。"
+      }
+    ],
+    "tags": [
+      "environment",
+      "2026",
+      "official source",
+      "source-grounded adaptation"
+    ],
+    "sourceTitle": "太陽光発電事業等の環境影響評価に関する検討会（第5回）の開催について",
+    "sourcePublisher": "環境省",
+    "sourceUrl": "https://www.env.go.jp/press/press_04645.html",
+    "sourcePublishedDate": "2026-05-25",
+    "sourceRetrievedDate": "2026-08-14",
+    "sourceYear": 2026,
+    "sourceKind": "official-government",
+    "sourceMode": "source-grounded-adaptation",
+    "sourceLicense": "PDL1.0",
+    "sourceLicenseUrl": "https://www.digital.go.jp/resources/open_data/public_data_license_v1.0",
+    "sourceTermsUrl": "https://www.digital.go.jp/resources/open_data/public_data_license_v1.0",
+    "sourceAttribution": "出典：環境省「太陽光発電事業等の環境影響評価に関する検討会（第5回）の開催について」（2026-05-25）。Sakuraが学習用に要約・平易化。原文そのものではありません。",
+    "sourceProcessing": "Sakura learner adaptation based on the cited official source. Sentence structure and wording are simplified for Japanese study; this is not verbatim government text.",
+    "rightsNote": "Text-only adaptation under Japan Public Data License 1.0 where applicable unless the source page states otherwise. No government logos, photographs, charts, videos, or separately credited third-party assets are bundled.",
+    "copyright": "Source rights remain with the source publisher/other rightsholders as applicable; Sakura adaptation includes attribution and edit disclosure.",
+    "sourceVerifiedDate": "2026-08-14",
+    "sourceDateLabel": "2026-05-25"
+  },
+  {
+    "id": "source-article-n3-culture-v6-01",
+    "type": "article",
+    "contentVersion": 6,
+    "provenance": "sourced-2026",
+    "title": "著作権法改正を国会で説明",
+    "titleKana": "ちょさくけんほうかいせいをこっかいでせつめい",
+    "titleFurigana": "<ruby>著作権法改正<rt>ちょさくけんほうかいせい</rt></ruby>を<ruby>国会<rt>こっかい</rt></ruby>で<ruby>説明<rt>せつめい</rt></ruby>",
+    "titleEnglish": "MEXT’s May 2026 activity archive reports Diet explanations concerning a Copyright Act amendment bill",
+    "jlpt": "N3",
+    "difficultyLabel": "N3 study support",
+    "levelNote": "Study-support level for Sakura’s adaptation; the original source is not officially JLPT-graded.",
+    "topic": "culture",
+    "topicLabel": "Culture & Arts",
+    "topicIcon": "🎨",
+    "subject": "著作権法改正を国会で説明",
+    "subjectKana": "ちょさくけんほうかいせいをこっかいでせつめい",
+    "estimatedMinutes": 3,
+    "characterCount": 82,
+    "summary": "MEXT’s May 2026 activity archive reports Diet explanations concerning a Copyright Act amendment bill.",
+    "paragraphs": [
+      {
+        "japanese": "2026年、文部科学省は「著作権法改正を国会で説明」に関する情報を公表しました。",
+        "kana": "にせんにじゅうろくねん、もんぶかがくしょうは「ちょさくけんほうかいせいをこっかいでせつめい」にかんするじょうほうをこうひょうしました。",
+        "furigana": "<ruby>2026年<rt>にせんにじゅうろくねん</rt></ruby>、<ruby>文部科学省<rt>もんぶかがくしょう</rt></ruby>は「<ruby>著作権法改正<rt>ちょさくけんほうかいせい</rt></ruby>を<ruby>国会<rt>こっかい</rt></ruby>で<ruby>説明<rt>せつめい</rt></ruby>」に<ruby>関<rt>かん</rt></ruby>する<ruby>情報<rt>じょうほう</rt></ruby>を<ruby>公表<rt>こうひょう</rt></ruby>しました。",
+        "english": "In 2026, 文部科学省 published official information related to this topic."
+      },
+      {
+        "japanese": "文部科学省は二〇二六年五月、著作権法改正案について国会で説明する活動を紹介しました。",
+        "kana": "もんぶかがくしょうはにせんにじゅうろくねんごがつ、ちょさくけんほうかいせいあんについてこっかいでせつめいするかつどうをしょうかいしました。",
+        "furigana": "<ruby>文部科学省<rt>もんぶかがくしょう</rt></ruby>は<ruby>二〇二六年五月<rt>にせんにじゅうろくねんごがつ</rt></ruby>、<ruby>著作権法改正案<rt>ちょさくけんほうかいせいあん</rt></ruby>について<ruby>国会<rt>こっかい</rt></ruby>で<ruby>説明<rt>せつめい</rt></ruby>する<ruby>活動<rt>かつどう</rt></ruby>を<ruby>紹介<rt>しょうかい</rt></ruby>しました。",
+        "english": "MEXT’s May 2026 activity archive reports Diet explanations concerning a Copyright Act amendment bill."
+      }
+    ],
+    "vocabularyFocus": [
+      {
+        "word": "文化",
+        "kana": "ぶんか",
+        "meaning": "culture"
+      },
+      {
+        "word": "著作権",
+        "kana": "ちょさくけん",
+        "meaning": "copyright"
+      },
+      {
+        "word": "継承",
+        "kana": "けいしょう",
+        "meaning": "passing on / succession"
+      }
+    ],
+    "grammarFocus": [
+      "〜に関する",
+      "〜に基づく"
+    ],
+    "comprehension": [
+      {
+        "questionJapanese": "この資料で扱われているテーマは何ですか。",
+        "questionKana": "このしりょうであつかわれているテーマはなんですか。",
+        "questionFurigana": "この<ruby>資料<rt>しりょう</rt></ruby>で<ruby>扱<rt>あつか</rt></ruby>われているテーマは<ruby>何<rt>なん</rt></ruby>ですか。",
+        "choices": [
+          {
+            "japanese": "著作権法改正を国会で説明",
+            "kana": "ちょさくけんほうかいせいをこっかいでせつめい",
+            "furigana": "<ruby>著作権法改正<rt>ちょさくけんほうかいせい</rt></ruby>を<ruby>国会<rt>こっかい</rt></ruby>で<ruby>説明<rt>せつめい</rt></ruby>"
+          },
+          {
+            "japanese": "熱中症対策",
+            "kana": "ねっちゅうしょうたいさく",
+            "furigana": "<ruby>熱中症対策<rt>ねっちゅうしょうたいさく</rt></ruby>"
+          },
+          {
+            "japanese": "食品ロス",
+            "kana": "しょくひんロス",
+            "furigana": "<ruby>食品<rt>しょくひん</rt></ruby>ロス"
+          }
+        ],
+        "answerIndex": 0,
+        "explanation": "資料の中心テーマは「著作権法改正を国会で説明」です。"
+      }
+    ],
+    "tags": [
+      "culture",
+      "2026",
+      "official source",
+      "source-grounded adaptation"
+    ],
+    "sourceTitle": "2026年5月｜文部科学省 活動報告",
+    "sourcePublisher": "文部科学省",
+    "sourceUrl": "https://www.mext.go.jp/b_menu/activity/archive/2026/05.html",
+    "sourcePublishedDate": "2026-05-29",
+    "sourceRetrievedDate": "2026-08-14",
+    "sourceYear": 2026,
+    "sourceKind": "official-government",
+    "sourceMode": "source-grounded-adaptation",
+    "sourceLicense": "PDL1.0",
+    "sourceLicenseUrl": "https://www.digital.go.jp/resources/open_data/public_data_license_v1.0",
+    "sourceTermsUrl": "https://www.digital.go.jp/resources/open_data/public_data_license_v1.0",
+    "sourceAttribution": "出典：文部科学省「2026年5月｜文部科学省 活動報告」（2026-05-29）。Sakuraが学習用に要約・平易化。原文そのものではありません。",
+    "sourceProcessing": "Sakura learner adaptation based on the cited official source. Sentence structure and wording are simplified for Japanese study; this is not verbatim government text.",
+    "rightsNote": "Text-only adaptation under Japan Public Data License 1.0 where applicable unless the source page states otherwise. No government logos, photographs, charts, videos, or separately credited third-party assets are bundled.",
+    "copyright": "Source rights remain with the source publisher/other rightsholders as applicable; Sakura adaptation includes attribution and edit disclosure.",
+    "sourceVerifiedDate": "2026-08-14",
+    "sourceDateLabel": "2026-05-29"
+  },
+  {
+    "id": "source-article-n3-culture-v6-06",
+    "type": "article",
+    "contentVersion": 6,
+    "provenance": "sourced-2026",
+    "title": "地域の日本語教育を見に行く",
+    "titleKana": "ちいきのにほんごきょういくをみにいく",
+    "titleFurigana": "<ruby>地域<rt>ちいき</rt></ruby>の<ruby>日本語教育<rt>にほんごきょういく</rt></ruby>を<ruby>見<rt>み</rt></ruby>に<ruby>行<rt>い</rt></ruby>く",
+    "titleEnglish": "MEXT visited community Japanese-language education initiatives in Yokohama and highlighted support for learners",
+    "jlpt": "N3",
+    "difficultyLabel": "N3 study support",
+    "levelNote": "Study-support level for Sakura’s adaptation; the original source is not officially JLPT-graded.",
+    "topic": "culture",
+    "topicLabel": "Culture & Arts",
+    "topicIcon": "🎨",
+    "subject": "地域の日本語教育を見に行く",
+    "subjectKana": "ちいきのにほんごきょういくをみにいく",
+    "estimatedMinutes": 3,
+    "characterCount": 83,
+    "summary": "MEXT visited community Japanese-language education initiatives in Yokohama and highlighted support for learners.",
+    "paragraphs": [
+      {
+        "japanese": "2026年、文部科学省は「地域の日本語教育を見に行く」に関する情報を公表しました。",
+        "kana": "にせんにじゅうろくねん、もんぶかがくしょうは「ちいきのにほんごきょういくをみにいく」にかんするじょうほうをこうひょうしました。",
+        "furigana": "<ruby>2026年<rt>にせんにじゅうろくねん</rt></ruby>、<ruby>文部科学省<rt>もんぶかがくしょう</rt></ruby>は「<ruby>地域<rt>ちいき</rt></ruby>の<ruby>日本語教育<rt>にほんごきょういく</rt></ruby>を<ruby>見<rt>み</rt></ruby>に<ruby>行<rt>い</rt></ruby>く」に<ruby>関<rt>かん</rt></ruby>する<ruby>情報<rt>じょうほう</rt></ruby>を<ruby>公表<rt>こうひょう</rt></ruby>しました。",
+        "english": "In 2026, 文部科学省 published official information related to this topic."
+      },
+      {
+        "japanese": "文部科学省は横浜で地域の日本語教育の現場を視察し、学習者を支える取組を紹介しました。",
+        "kana": "もんぶかがくしょうはよこはまでちいきのにほんごきょういくのげんばをしさつし、がくしゅうしゃをささえるとりくみをしょうかいしました。",
+        "furigana": "<ruby>文部科学省<rt>もんぶかがくしょう</rt></ruby>は<ruby>横浜<rt>よこはま</rt></ruby>で<ruby>地域<rt>ちいき</rt></ruby>の<ruby>日本語教育<rt>にほんごきょういく</rt></ruby>の<ruby>現場<rt>げんば</rt></ruby>を<ruby>視察<rt>しさつ</rt></ruby>し、<ruby>学習者<rt>がくしゅうしゃ</rt></ruby>を<ruby>支<rt>ささ</rt></ruby>える<ruby>取組<rt>とりくみ</rt></ruby>を<ruby>紹介<rt>しょうかい</rt></ruby>しました。",
+        "english": "MEXT visited community Japanese-language education initiatives in Yokohama and highlighted support for learners."
+      }
+    ],
+    "vocabularyFocus": [
+      {
+        "word": "文化",
+        "kana": "ぶんか",
+        "meaning": "culture"
+      },
+      {
+        "word": "著作権",
+        "kana": "ちょさくけん",
+        "meaning": "copyright"
+      },
+      {
+        "word": "継承",
+        "kana": "けいしょう",
+        "meaning": "passing on / succession"
+      }
+    ],
+    "grammarFocus": [
+      "〜に関する",
+      "〜に基づく"
+    ],
+    "comprehension": [
+      {
+        "questionJapanese": "この資料で扱われているテーマは何ですか。",
+        "questionKana": "このしりょうであつかわれているテーマはなんですか。",
+        "questionFurigana": "この<ruby>資料<rt>しりょう</rt></ruby>で<ruby>扱<rt>あつか</rt></ruby>われているテーマは<ruby>何<rt>なん</rt></ruby>ですか。",
+        "choices": [
+          {
+            "japanese": "地域の日本語教育を見に行く",
+            "kana": "ちいきのにほんごきょういくをみにいく",
+            "furigana": "<ruby>地域<rt>ちいき</rt></ruby>の<ruby>日本語教育<rt>にほんごきょういく</rt></ruby>を<ruby>見<rt>み</rt></ruby>に<ruby>行<rt>い</rt></ruby>く"
+          },
+          {
+            "japanese": "熱中症対策",
+            "kana": "ねっちゅうしょうたいさく",
+            "furigana": "<ruby>熱中症対策<rt>ねっちゅうしょうたいさく</rt></ruby>"
+          },
+          {
+            "japanese": "食品ロス",
+            "kana": "しょくひんロス",
+            "furigana": "<ruby>食品<rt>しょくひん</rt></ruby>ロス"
+          }
+        ],
+        "answerIndex": 0,
+        "explanation": "資料の中心テーマは「地域の日本語教育を見に行く」です。"
+      }
+    ],
+    "tags": [
+      "culture",
+      "2026",
+      "official source",
+      "source-grounded adaptation"
+    ],
+    "sourceTitle": "2026年5月｜文部科学省 活動報告",
+    "sourcePublisher": "文部科学省",
+    "sourceUrl": "https://www.mext.go.jp/b_menu/activity/archive/2026/05.html",
+    "sourcePublishedDate": "2026-05-13",
+    "sourceRetrievedDate": "2026-08-14",
+    "sourceYear": 2026,
+    "sourceKind": "official-government",
+    "sourceMode": "source-grounded-adaptation",
+    "sourceLicense": "PDL1.0",
+    "sourceLicenseUrl": "https://www.digital.go.jp/resources/open_data/public_data_license_v1.0",
+    "sourceTermsUrl": "https://www.digital.go.jp/resources/open_data/public_data_license_v1.0",
+    "sourceAttribution": "出典：文部科学省「2026年5月｜文部科学省 活動報告」（2026-05-13）。Sakuraが学習用に要約・平易化。原文そのものではありません。",
+    "sourceProcessing": "Sakura learner adaptation based on the cited official source. Sentence structure and wording are simplified for Japanese study; this is not verbatim government text.",
+    "rightsNote": "Text-only adaptation under Japan Public Data License 1.0 where applicable unless the source page states otherwise. No government logos, photographs, charts, videos, or separately credited third-party assets are bundled.",
+    "copyright": "Source rights remain with the source publisher/other rightsholders as applicable; Sakura adaptation includes attribution and edit disclosure.",
+    "sourceVerifiedDate": "2026-08-14",
+    "sourceDateLabel": "2026-05-13"
+  },
+  {
+    "id": "source-article-n3-work-v6-05",
+    "type": "article",
+    "contentVersion": 6,
+    "provenance": "sourced-2026",
+    "title": "小規模事業者を支える",
+    "titleKana": "しょうきぼじぎょうしゃをささえる",
+    "titleFurigana": "<ruby>小規模事業者<rt>しょうきぼじぎょうしゃ</rt></ruby>を<ruby>支<rt>ささ</rt></ruby>える",
+    "titleEnglish": "The SMEA is considering stronger support systems and AI-enabled knowledge sharing for small businesses nationwide",
+    "jlpt": "N3",
+    "difficultyLabel": "N3 study support",
+    "levelNote": "Study-support level for Sakura’s adaptation; the original source is not officially JLPT-graded.",
+    "topic": "work",
+    "topicLabel": "Work & Careers",
+    "topicIcon": "💼",
+    "subject": "小規模事業者を支える",
+    "subjectKana": "しょうきぼじぎょうしゃをささえる",
+    "estimatedMinutes": 3,
+    "characterCount": 86,
+    "summary": "The SMEA is considering stronger support systems and AI-enabled knowledge sharing for small businesses nationwide.",
+    "paragraphs": [
+      {
+        "japanese": "2026年、経済産業省は「小規模事業者を支える」に関する情報を公表しました。",
+        "kana": "にせんにじゅうろくねん、けいざいさんぎょうしょうは「しょうきぼじぎょうしゃをささえる」にかんするじょうほうをこうひょうしました。",
+        "furigana": "<ruby>2026年<rt>にせんにじゅうろくねん</rt></ruby>、<ruby>経済産業省<rt>けいざいさんぎょうしょう</rt></ruby>は「<ruby>小規模事業者<rt>しょうきぼじぎょうしゃ</rt></ruby>を<ruby>支<rt>ささ</rt></ruby>える」に<ruby>関<rt>かん</rt></ruby>する<ruby>情報<rt>じょうほう</rt></ruby>を<ruby>公表<rt>こうひょう</rt></ruby>しました。",
+        "english": "In 2026, 経済産業省 published official information related to this topic."
+      },
+      {
+        "japanese": "中小企業庁は全国の小規模事業者を支えるため、支援体制やAIを使った知識共有などを検討しています。",
+        "kana": "ちゅうしょうきぎょうちょうはぜんこくのしょうきぼじぎょうしゃをささえるため、しえんたいせいやAIをつかったちしききょうゆうなどをけんとうしています。",
+        "furigana": "<ruby>中小企業庁<rt>ちゅうしょうきぎょうちょう</rt></ruby>は<ruby>全国<rt>ぜんこく</rt></ruby>の<ruby>小規模事業者<rt>しょうきぼじぎょうしゃ</rt></ruby>を<ruby>支<rt>ささ</rt></ruby>えるため、<ruby>支援体制<rt>しえんたいせい</rt></ruby>やAIを<ruby>使<rt>つか</rt></ruby>った<ruby>知識共有<rt>ちしききょうゆう</rt></ruby>などを<ruby>検討<rt>けんとう</rt></ruby>しています。",
+        "english": "The SMEA is considering stronger support systems and AI-enabled knowledge sharing for small businesses nationwide."
+      }
+    ],
+    "vocabularyFocus": [
+      {
+        "word": "生産性",
+        "kana": "せいさんせい",
+        "meaning": "productivity"
+      },
+      {
+        "word": "支援",
+        "kana": "しえん",
+        "meaning": "support"
+      },
+      {
+        "word": "人手不足",
+        "kana": "ひとでぶそく",
+        "meaning": "labor shortage"
+      }
+    ],
+    "grammarFocus": [
+      "〜に関する",
+      "〜に基づく"
+    ],
+    "comprehension": [
+      {
+        "questionJapanese": "この資料で扱われているテーマは何ですか。",
+        "questionKana": "このしりょうであつかわれているテーマはなんですか。",
+        "questionFurigana": "この<ruby>資料<rt>しりょう</rt></ruby>で<ruby>扱<rt>あつか</rt></ruby>われているテーマは<ruby>何<rt>なん</rt></ruby>ですか。",
+        "choices": [
+          {
+            "japanese": "小規模事業者を支える",
+            "kana": "しょうきぼじぎょうしゃをささえる",
+            "furigana": "<ruby>小規模事業者<rt>しょうきぼじぎょうしゃ</rt></ruby>を<ruby>支<rt>ささ</rt></ruby>える"
+          },
+          {
+            "japanese": "化粧品審議",
+            "kana": "けしょうひんしんぎ",
+            "furigana": "<ruby>化粧品審議<rt>けしょうひんしんぎ</rt></ruby>"
+          },
+          {
+            "japanese": "旅行者調査",
+            "kana": "りょこうしゃちょうさ",
+            "furigana": "<ruby>旅行者調査<rt>りょこうしゃちょうさ</rt></ruby>"
+          }
+        ],
+        "answerIndex": 0,
+        "explanation": "資料の中心テーマは「小規模事業者を支える」です。"
+      }
+    ],
+    "tags": [
+      "work",
+      "2026",
+      "official source",
+      "source-grounded adaptation"
+    ],
+    "sourceTitle": "小規模事業者の「稼ぐ力」に関する研究会 中間取りまとめ",
+    "sourcePublisher": "経済産業省",
+    "sourceUrl": "https://www.meti.go.jp/press/2026/05/20260522003/20260522003.html",
+    "sourcePublishedDate": "2026-05-22",
+    "sourceRetrievedDate": "2026-08-14",
+    "sourceYear": 2026,
+    "sourceKind": "official-government",
+    "sourceMode": "source-grounded-adaptation",
+    "sourceLicense": "PDL1.0",
+    "sourceLicenseUrl": "https://www.digital.go.jp/resources/open_data/public_data_license_v1.0",
+    "sourceTermsUrl": "https://www.digital.go.jp/resources/open_data/public_data_license_v1.0",
+    "sourceAttribution": "出典：経済産業省「小規模事業者の「稼ぐ力」に関する研究会 中間取りまとめ」（2026-05-22）。Sakuraが学習用に要約・平易化。原文そのものではありません。",
+    "sourceProcessing": "Sakura learner adaptation based on the cited official source. Sentence structure and wording are simplified for Japanese study; this is not verbatim government text.",
+    "rightsNote": "Text-only adaptation under Japan Public Data License 1.0 where applicable unless the source page states otherwise. No government logos, photographs, charts, videos, or separately credited third-party assets are bundled.",
+    "copyright": "Source rights remain with the source publisher/other rightsholders as applicable; Sakura adaptation includes attribution and edit disclosure.",
+    "sourceVerifiedDate": "2026-08-14",
+    "sourceDateLabel": "2026-05-22"
+  },
+  {
+    "id": "source-article-n3-society-v6-04",
+    "type": "article",
+    "contentVersion": 6,
+    "provenance": "sourced-2026",
+    "title": "子ども・子育て支援金の仕組み",
+    "titleKana": "こども・こそだてしえんきんのしくみ",
+    "titleFurigana": "<ruby>子<rt>こ</rt></ruby>ども・<ruby>子育<rt>こそだ</rt></ruby>て<ruby>支援金<rt>しえんきん</rt></ruby>の<ruby>仕組<rt>しく</rt></ruby>み",
+    "titleEnglish": "The Children and Families Agency explains the new support-fund system that helps finance child and parenting policies",
+    "jlpt": "N3",
+    "difficultyLabel": "N3 study support",
+    "levelNote": "Study-support level for Sakura’s adaptation; the original source is not officially JLPT-graded.",
+    "topic": "society",
+    "topicLabel": "Society & Family",
+    "topicIcon": "👨‍👩‍👧",
+    "subject": "子ども・子育て支援金の仕組み",
+    "subjectKana": "こども・こそだてしえんきんのしくみ",
+    "estimatedMinutes": 3,
+    "characterCount": 96,
+    "summary": "The Children and Families Agency explains the new support-fund system that helps finance child and parenting policies.",
+    "paragraphs": [
+      {
+        "japanese": "2026年、こども家庭庁は「子ども・子育て支援金の仕組み」に関する情報を公表しました。",
+        "kana": "にせんにじゅうろくねん、こどもかていちょうは「こども・こそだてしえんきんのしくみ」にかんするじょうほうをこうひょうしました。",
+        "furigana": "<ruby>2026年<rt>にせんにじゅうろくねん</rt></ruby>、こども<ruby>家庭庁<rt>かていちょう</rt></ruby>は「<ruby>子<rt>こ</rt></ruby>ども・<ruby>子育<rt>こそだ</rt></ruby>て<ruby>支援金<rt>しえんきん</rt></ruby>の<ruby>仕組<rt>しく</rt></ruby>み」に<ruby>関<rt>かん</rt></ruby>する<ruby>情報<rt>じょうほう</rt></ruby>を<ruby>公表<rt>こうひょう</rt></ruby>しました。",
+        "english": "In 2026, こども家庭庁 published official information related to this topic."
+      },
+      {
+        "japanese": "こども家庭庁は、子ども・子育て政策を支える新しい支援金制度について、仕組みや負担の考え方を案内しています。",
+        "kana": "こどもかていちょうは、こども・こそだてせいさくをささえるあたらしいしえんきんせいどについて、しくみやふたんのかんがえかたをあんないしています。",
+        "furigana": "こども<ruby>家庭庁<rt>かていちょう</rt></ruby>は、<ruby>子<rt>こ</rt></ruby>ども・<ruby>子育<rt>こそだ</rt></ruby>て<ruby>政策<rt>せいさく</rt></ruby>を<ruby>支<rt>ささ</rt></ruby>える<ruby>新<rt>あたら</rt></ruby>しい<ruby>支援金制度<rt>しえんきんせいど</rt></ruby>について、<ruby>仕組<rt>しく</rt></ruby>みや<ruby>負担<rt>ふたん</rt></ruby>の<ruby>考<rt>かんが</rt></ruby>え<ruby>方<rt>かた</rt></ruby>を<ruby>案内<rt>あんない</rt></ruby>しています。",
+        "english": "The Children and Families Agency explains the new support-fund system that helps finance child and parenting policies."
+      }
+    ],
+    "vocabularyFocus": [
+      {
+        "word": "子育て",
+        "kana": "こそだて",
+        "meaning": "parenting"
+      },
+      {
+        "word": "支援",
+        "kana": "しえん",
+        "meaning": "support"
+      },
+      {
+        "word": "制度",
+        "kana": "せいど",
+        "meaning": "system"
+      }
+    ],
+    "grammarFocus": [
+      "〜に関する",
+      "〜に基づく"
+    ],
+    "comprehension": [
+      {
+        "questionJapanese": "この資料で扱われているテーマは何ですか。",
+        "questionKana": "このしりょうであつかわれているテーマはなんですか。",
+        "questionFurigana": "この<ruby>資料<rt>しりょう</rt></ruby>で<ruby>扱<rt>あつか</rt></ruby>われているテーマは<ruby>何<rt>なん</rt></ruby>ですか。",
+        "choices": [
+          {
+            "japanese": "子ども・子育て支援金の仕組み",
+            "kana": "こども・こそだてしえんきんのしくみ",
+            "furigana": "<ruby>子<rt>こ</rt></ruby>ども・<ruby>子育<rt>こそだ</rt></ruby>て<ruby>支援金<rt>しえんきん</rt></ruby>の<ruby>仕組<rt>しく</rt></ruby>み"
+          },
+          {
+            "japanese": "太陽光リサイクル",
+            "kana": "たいようこうリサイクル",
+            "furigana": "<ruby>太陽光<rt>たいようこう</rt></ruby>リサイクル"
+          },
+          {
+            "japanese": "中小企業DX",
+            "kana": "ちゅうしょうきぎょうDX",
+            "furigana": "<ruby>中小企業<rt>ちゅうしょうきぎょう</rt></ruby>DX"
+          }
+        ],
+        "answerIndex": 0,
+        "explanation": "資料の中心テーマは「子ども・子育て支援金の仕組み」です。"
+      }
+    ],
+    "tags": [
+      "society",
+      "2026",
+      "official source",
+      "source-grounded adaptation"
+    ],
+    "sourceTitle": "子ども・子育て支援金制度",
+    "sourcePublisher": "こども家庭庁",
+    "sourceUrl": "https://www.cfa.go.jp/policies/kodomokosodateshienkinseido",
+    "sourcePublishedDate": "2026-04-01",
+    "sourceRetrievedDate": "2026-08-14",
+    "sourceYear": 2026,
+    "sourceKind": "official-government",
+    "sourceMode": "source-grounded-adaptation",
+    "sourceLicense": "PDL1.0",
+    "sourceLicenseUrl": "https://www.digital.go.jp/resources/open_data/public_data_license_v1.0",
+    "sourceTermsUrl": "https://www.digital.go.jp/resources/open_data/public_data_license_v1.0",
+    "sourceAttribution": "出典：こども家庭庁「子ども・子育て支援金制度」（2026-04-01）。Sakuraが学習用に要約・平易化。原文そのものではありません。",
+    "sourceProcessing": "Sakura learner adaptation based on the cited official source. Sentence structure and wording are simplified for Japanese study; this is not verbatim government text.",
+    "rightsNote": "Text-only adaptation under Japan Public Data License 1.0 where applicable unless the source page states otherwise. No government logos, photographs, charts, videos, or separately credited third-party assets are bundled.",
+    "copyright": "Source rights remain with the source publisher/other rightsholders as applicable; Sakura adaptation includes attribution and edit disclosure.",
+    "sourceVerifiedDate": "2026-08-14",
+    "sourceDateLabel": "2026-04-01"
+  }
+]
