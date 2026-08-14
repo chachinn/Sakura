@@ -1,7 +1,8 @@
 /* =====================================================
-   Sakura Reading Garden — v7
+   Sakura Reading Garden — v8
    Source-first Articles + real public-domain Japanese Short Stories.
-   200 sourced Articles + 100 Aozora Bunko stories across six shelves ready.
+   300 sourced Articles + 100 Aozora Bunko stories across six shelves ready.
+   Article browsing uses compact indexes; body shards load only when opened.
    Manga remains roadmap-only pending legitimate licensing.
 ===================================================== */
 (function initializeSakuraReadingGarden() {
@@ -11,13 +12,17 @@
     const LIBRARY_KEY = "sakuraReadingGardenLibraryV2";
     const LEVELS = Object.freeze(["N5", "N4", "N3", "N2", "N1"]);
     const ARTICLE_FILES = Object.freeze({
-        N5:Object.freeze(["./data/reading/articles/n5.json?v=5","./data/reading/articles/n5-b.json?v=5","./data/reading/articles/n5-c.json?v=5","./data/reading/articles/n5-d.json?v=5"]),
-        N4:Object.freeze(["./data/reading/articles/n4.json?v=5","./data/reading/articles/n4-b.json?v=5","./data/reading/articles/n4-c.json?v=5","./data/reading/articles/n4-d.json?v=5"]),
-        N3:Object.freeze(["./data/reading/articles/n3.json?v=5","./data/reading/articles/n3-b.json?v=5","./data/reading/articles/n3-c.json?v=5","./data/reading/articles/n3-d.json?v=5"]),
-        N2:Object.freeze(["./data/reading/articles/n2.json?v=5","./data/reading/articles/n2-b.json?v=5","./data/reading/articles/n2-c.json?v=5","./data/reading/articles/n2-d.json?v=5"]),
-        N1:Object.freeze(["./data/reading/articles/n1.json?v=5","./data/reading/articles/n1-b.json?v=5","./data/reading/articles/n1-c.json?v=5","./data/reading/articles/n1-d.json?v=5"])
+        N5:Object.freeze(["./data/reading/articles/n5.json?v=6","./data/reading/articles/n5-b.json?v=6","./data/reading/articles/n5-c.json?v=6","./data/reading/articles/n5-d.json?v=6","./data/reading/articles/n5-e.json?v=6","./data/reading/articles/n5-f.json?v=6"]),
+        N4:Object.freeze(["./data/reading/articles/n4.json?v=6","./data/reading/articles/n4-b.json?v=6","./data/reading/articles/n4-c.json?v=6","./data/reading/articles/n4-d.json?v=6","./data/reading/articles/n4-e.json?v=6","./data/reading/articles/n4-f.json?v=6"]),
+        N3:Object.freeze(["./data/reading/articles/n3.json?v=6","./data/reading/articles/n3-b.json?v=6","./data/reading/articles/n3-c.json?v=6","./data/reading/articles/n3-d.json?v=6","./data/reading/articles/n3-e.json?v=6","./data/reading/articles/n3-f.json?v=6"]),
+        N2:Object.freeze(["./data/reading/articles/n2.json?v=6","./data/reading/articles/n2-b.json?v=6","./data/reading/articles/n2-c.json?v=6","./data/reading/articles/n2-d.json?v=6","./data/reading/articles/n2-e.json?v=6","./data/reading/articles/n2-f.json?v=6"]),
+        N1:Object.freeze(["./data/reading/articles/n1.json?v=6","./data/reading/articles/n1-b.json?v=6","./data/reading/articles/n1-c.json?v=6","./data/reading/articles/n1-d.json?v=6","./data/reading/articles/n1-e.json?v=6","./data/reading/articles/n1-f.json?v=6"])
     });
-    const ARTICLE_MANIFEST = "./data/reading/articles/manifest.json?v=5";
+    const ARTICLE_INDEX_FILES = Object.freeze({
+        N5:"./data/reading/articles/n5-index.json?v=6", N4:"./data/reading/articles/n4-index.json?v=6",
+        N3:"./data/reading/articles/n3-index.json?v=6", N2:"./data/reading/articles/n2-index.json?v=6", N1:"./data/reading/articles/n1-index.json?v=6"
+    });
+    const ARTICLE_MANIFEST = "./data/reading/articles/manifest.json?v=6";
     const ARTICLE_TOPICS = Object.freeze([
         ["all","🌸","All topics"], ["beauty","💄","Beauty & Cosmetics"], ["food","🍚","Food & Eating"],
         ["travel","✈️","Travel & Transportation"], ["digital","📱","Digital Life & Technology"], ["consumer","🛒","Consumer & Money"],
@@ -39,7 +44,7 @@
     ]);
     const MATERIALS = Object.freeze([
         { id:"manga", icon:"🎀", title:"Manga", count:120, unit:"chapters", description:"Legitimate published manga only after redistribution and educational-use rights are verified.", status:"Licensing first" },
-        { id:"articles", icon:"📰", title:"Articles", count:300, unit:"articles", description:"Real current official-source topics with visible provenance, learner support, and links to the originals.", status:"200 sourced · 300 target" },
+        { id:"articles", icon:"📰", title:"Articles", count:300, unit:"articles", description:"Real current official-source topics with visible provenance, learner support, and links to the originals.", status:"300 sourced · target complete" },
         { id:"short-stories", icon:"📚", title:"Short Stories", count:250, unit:"stories", description:"Real Japanese fiction with source and rights metadata across Classics, Modern Literature, Mystery, Strange / Horror, Children’s Stories, and Human Relationships.", status:"100 real stories · 250 target" },
         { id:"news", icon:"🌏", title:"News", count:300, unit:"pieces", description:"News-style Japanese from easy to advanced, including topics rewritten across JLPT levels.", status:"Planned" },
         { id:"conversations", icon:"💬", title:"Conversations", count:250, unit:"dialogues", description:"Realistic conversations with friends, staff, coworkers, couples, strangers, and service workers.", status:"Planned" },
@@ -60,8 +65,13 @@
     const TOTAL_TARGET = MATERIALS.reduce((sum,item) => sum + item.count, 0);
     const DEFAULT_PREFS = Object.freeze({ level:"all", mode:"furigana", material:"articles", articleTopic:"all", storyCategory:"all" });
     const DEFAULT_LIBRARY = Object.freeze({ saved:[], completed:[], lastArticleId:"", lastStoryId:"", lastReadingType:"", lastReadingId:"", offlineArticlesReadyAt:"", offlineStoriesReadyAt:"" });
-    const articleCache = new Map();
-    const articleInFlight = new Map();
+    const ARTICLE_BODY_CACHE_LIMIT = 8;
+    const articleIndexCache = new Map();
+    const articleIndexInFlight = new Map();
+    const articleShardCache = new Map();
+    const articleShardInFlight = new Map();
+    let articleManifest = null;
+    let articleManifestInFlight = null;
     let currentScreen = "home";
     let currentArticle = null;
     let translationVisible = false;
@@ -100,13 +110,28 @@
     }
     function materialById(id) { return MATERIALS.find(item => item.id === id) || MATERIALS[1]; }
     function articleById(id) {
-        for (const records of articleCache.values()) {
+        for (const records of articleShardCache.values()) {
+            const found = records.find(article => article.id === id);
+            if (found) return found;
+        }
+        return null;
+    }
+    function articleMetaById(id) {
+        for (const records of articleIndexCache.values()) {
             const found = records.find(article => article.id === id);
             if (found) return found;
         }
         return null;
     }
     function topicLabel(id) { return ARTICLE_TOPICS.find(row => row[0] === id)?.[2] || "All topics"; }
+    function sourceDateText(article) {
+        const label = String(article?.sourceDateLabel || "").trim();
+        const date = String(article?.sourcePublishedDate || "").trim();
+        if (/^\d{4}-\d{2}-\d{2}$/.test(label)) return label;
+        if (label && date) return `${label} ${date}`;
+        if (date) return `Published ${date}`;
+        return label || "Source date unavailable";
+    }
     function storyCategoryLabel(id) { return STORY_CATEGORIES.find(row => row[0] === id)?.[2] || "All stories"; }
     function storyById(id) { return storyRecords?.find(item => item.id === id) || null; }
     function isSaved(id) { return library.saved.includes(id); }
@@ -190,7 +215,7 @@
         button.className = "practice-coming-card practice-active-card reading-garden-entry-card";
         button.type = "button";
         button.dataset.openReadingGarden = "true";
-        button.innerHTML = '<span aria-hidden="true">📖</span><span><h2>Reading Garden</h2><p>200 sourced Articles + 100 real Japanese Short Stories ready.</p></span><b aria-hidden="true">→</b>';
+        button.innerHTML = '<span aria-hidden="true">📖</span><span><h2>Reading Garden</h2><p>300 sourced Articles + 100 real Japanese Short Stories ready.</p></span><b aria-hidden="true">→</b>';
         grid.prepend(button);
     }
 
@@ -238,7 +263,7 @@
         let extra = "This content pack is still on the Reading Garden roadmap.";
         let actions = "";
         if (item.id === "articles") {
-            extra = "30 verified source-grounded readings are ready now—3 in each category. Sakura prioritizes 2026, then 2025, 2024, then the newest legally reusable source available. Every reading shows its actual source year, date, and reuse terms.";
+            extra = "300 verified source-grounded readings are ready now—30 in each category. This release is 2026-first, with one 2025 Beauty source used rather than forcing a weaker duplicate. Every reading shows its actual source year, date, and reuse terms.";
             actions = `<div class="reading-garden-selection-actions"><button class="reading-garden-primary" type="button" data-reading-browse-articles>Browse Sourced Articles</button><button class="reading-garden-secondary" type="button" data-reading-surprise-article>Surprise Me</button></div>`;
         } else if (item.id === "short-stories") {
             extra = "100 real Japanese stories are ready across six shelves, including Classics but not limited to them. Their excerpts are original copyright-expired text from Aozora Bunko—not rewritten fiction. Publication or source-edition years are shown honestly, and the full originals open on Aozora Bunko.";
@@ -252,7 +277,7 @@
         if (!strip) return;
         const lastId = library.lastReadingId || library.lastArticleId || library.lastStoryId;
         const lastType = library.lastReadingType || (library.lastStoryId === lastId ? "story" : "article");
-        const last = lastType === "story" ? storyById(lastId) : articleById(lastId);
+        const last = lastType === "story" ? storyById(lastId) : (articleById(lastId) || articleMetaById(lastId));
         const offlineParts = [library.offlineArticlesReadyAt ? "Articles" : "", library.offlineStoriesReadyAt ? "Stories" : ""].filter(Boolean);
         strip.innerHTML = `
             <button class="reading-garden-library-item" type="button" data-reading-continue ${lastId ? "" : "disabled"}><span>▶</span><strong>Continue</strong><small>${lastId ? (last ? escapeHtml(lastType === "story" ? last.title : last.jlpt) : lastType) : "nothing yet"}</small></button>
@@ -280,24 +305,86 @@
         document.getElementById("reading-garden-body")?.scrollTo({ top:0, behavior:"auto" });
     }
 
+    async function loadArticleManifest() {
+        if (articleManifest) return articleManifest;
+        if (articleManifestInFlight) return articleManifestInFlight;
+        articleManifestInFlight = fetch(ARTICLE_MANIFEST)
+            .then(async response => {
+                if (!response.ok) throw new Error(`Could not load Article manifest (HTTP ${response.status}).`);
+                const manifest = await response.json();
+                if (manifest?.material !== "articles" || manifest?.readyCount !== 300) throw new Error("Article manifest must describe exactly 300 sourced readings in v8.");
+                articleManifest = manifest;
+                return manifest;
+            })
+            .finally(() => { articleManifestInFlight = null; });
+        return articleManifestInFlight;
+    }
+
+    async function loadArticleIndexLevel(level) {
+        if (!LEVELS.includes(level)) throw new Error(`Invalid reading level ${level}`);
+        if (articleIndexCache.has(level)) return articleIndexCache.get(level);
+        if (articleIndexInFlight.has(level)) return articleIndexInFlight.get(level);
+        const request = fetch(ARTICLE_INDEX_FILES[level])
+            .then(async response => {
+                if (!response.ok) throw new Error(`Could not load ${level} Article index (HTTP ${response.status}).`);
+                const records = await response.json();
+                if (!Array.isArray(records) || records.length !== 60) throw new Error(`${level} Article index must contain exactly 60 readings.`);
+                if (records.some(record => record?.type !== "article" || record?.jlpt !== level || !record?.id || !record?.pack || !record?.sourcePublisher || !record?.sourceYear)) throw new Error(`${level} Article index contains an invalid record.`);
+                articleIndexCache.set(level, records);
+                return records;
+            })
+            .finally(() => articleIndexInFlight.delete(level));
+        articleIndexInFlight.set(level, request);
+        return request;
+    }
+
+    async function loadArticleIndexes(levelSetting = prefs.level) {
+        const requested = levelSetting === "all" ? LEVELS : [levelSetting];
+        const groups = await Promise.all(requested.map(loadArticleIndexLevel));
+        return groups.flat();
+    }
+
+    function touchArticleShard(url, records) {
+        if (articleShardCache.has(url)) articleShardCache.delete(url);
+        articleShardCache.set(url, records);
+        while (articleShardCache.size > ARTICLE_BODY_CACHE_LIMIT) {
+            const oldest = articleShardCache.keys().next().value;
+            articleShardCache.delete(oldest);
+        }
+    }
+
+    async function loadArticleShard(url, expectedLevel = "") {
+        if (articleShardCache.has(url)) {
+            const records = articleShardCache.get(url);
+            touchArticleShard(url, records);
+            return records;
+        }
+        if (articleShardInFlight.has(url)) return articleShardInFlight.get(url);
+        const request = fetch(url)
+            .then(async response => {
+                if (!response.ok) throw new Error(`Could not load Article body shard (HTTP ${response.status}).`);
+                const records = await response.json();
+                if (!Array.isArray(records) || !records.length) throw new Error("Article body shard must contain sourced readings.");
+                if (records.some(record => {
+                    const year = Number(record?.sourceYear);
+                    return record?.type !== "article" || (expectedLevel && record?.jlpt !== expectedLevel) || typeof record?.provenance !== "string" || !record.provenance.startsWith("sourced-") || !Number.isInteger(year) || year < 1900 || year > 2026 || !record?.sourceUrl || !record?.sourcePublisher || !record?.sourceLicense;
+                })) throw new Error("Article body shard contains an invalid or unsourced record.");
+                touchArticleShard(url, records);
+                return records;
+            })
+            .finally(() => articleShardInFlight.delete(url));
+        articleShardInFlight.set(url, request);
+        return request;
+    }
+
+    function articlePackUrl(level, packName) {
+        return ARTICLE_FILES[level]?.find(url => url.split("/").pop().split("?")[0] === packName) || "";
+    }
+
     async function loadArticleLevel(level) {
         if (!LEVELS.includes(level)) throw new Error(`Invalid reading level ${level}`);
-        if (articleCache.has(level)) return articleCache.get(level);
-        if (articleInFlight.has(level)) return articleInFlight.get(level);
-        const request = Promise.all(ARTICLE_FILES[level].map(async url => {
-            const response = await fetch(url);
-            if (!response.ok) throw new Error(`Could not load ${level} Articles (HTTP ${response.status}).`);
-            const records = await response.json();
-            if (!Array.isArray(records) || !records.length) throw new Error(`${level} Article shard must contain at least one sourced reading.`);
-            return records;
-        })).then(groups => {
-            const records = groups.flat();
-            if (records.some(record => { const year = Number(record?.sourceYear); return record?.type !== "article" || record?.jlpt !== level || typeof record?.provenance !== "string" || !record.provenance.startsWith("sourced-") || !Number.isInteger(year) || year < 1900 || year > 2026 || !record?.sourceUrl || !record?.sourcePublisher || !record?.sourceLicense; })) throw new Error(`${level} Article data contains an invalid or unsourced record.`);
-            articleCache.set(level, records);
-            return records;
-        }).finally(() => articleInFlight.delete(level));
-        articleInFlight.set(level, request);
-        return request;
+        const groups = await Promise.all(ARTICLE_FILES[level].map(url => loadArticleShard(url, level)));
+        return groups.flat();
     }
 
     async function loadArticleLevels(levelSetting = prefs.level) {
@@ -320,9 +407,9 @@
         savePrefs();
         setScreen("articles");
         const browser = document.getElementById("reading-articles-browser");
-        browser.innerHTML = `<div class="reading-status"><strong>Opening the Article Garden…</strong>Loading the reading pack you chose.</div>`;
+        browser.innerHTML = `<div class="reading-status"><strong>Opening the Article Garden…</strong>Loading the lightweight reading index.</div>`;
         try {
-            await loadArticleLevels(prefs.level);
+            await Promise.all([loadArticleManifest(), loadArticleIndexes(prefs.level)]);
             renderArticleBrowser(Boolean(options.savedOnly));
         } catch (error) {
             console.warn("Reading Garden: Articles could not load.", error);
@@ -333,13 +420,13 @@
     function renderArticleBrowser(savedOnly = false) {
         const browser = document.getElementById("reading-articles-browser");
         if (!browser) return;
-        const loaded = LEVELS.flatMap(level => articleCache.get(level) || []);
-        const levelPool = prefs.level === "all" ? loaded : loaded.filter(article => article.jlpt === prefs.level);
+        const indexed = LEVELS.flatMap(level => articleIndexCache.get(level) || []);
+        const levelPool = prefs.level === "all" ? indexed : indexed.filter(article => article.jlpt === prefs.level);
         browser.innerHTML = `
-            <section class="reading-browser-hero"><span class="reading-garden-kicker">📰 2026-first · verified sources</span><h2>Article Garden</h2><p>30 source-grounded readings are ready now across 10 categories, with a 300-reading target. Sakura prioritizes 2026, then falls back by newest legally reusable year only when needed. N5–N1 labels describe Sakura’s study support—not the source’s official JLPT level.</p></section>
+            <section class="reading-browser-hero"><span class="reading-garden-kicker">📰 2026-first · verified sources</span><h2>Article Garden</h2><p>300 source-grounded readings are ready across 10 categories. Browsing and search use lightweight metadata indexes; full reading bodies load only when you open one. Sakura prioritizes 2026 and falls back only when a distinct suitable current source is unavailable. N5–N1 labels describe Sakura’s study support—not the source’s official JLPT level.</p></section>
             <div class="reading-browser-toolbar"><input id="reading-article-search" type="search" autocomplete="off" placeholder="Search titles, topics, Japanese…" aria-label="Search Articles"><select id="reading-article-topic" aria-label="Article topic">${ARTICLE_TOPICS.map(([id,icon,label]) => `<option value="${id}"${prefs.articleTopic === id ? " selected" : ""}>${icon} ${escapeHtml(label)}</option>`).join("")}</select></div>
             <div class="reading-browser-levels" role="group">${["all",...LEVELS].map(level => `<button class="reading-garden-chip${prefs.level === level ? " active" : ""}" type="button" data-reading-level="${level}">${level === "all" ? "All Levels" : level}</button>`).join("")}</div>
-            <div class="reading-browser-offline"><span id="reading-offline-status">${library.offlineArticlesReadyAt ? "✓ The current sourced Article packs are prepared for offline reading." : "Prepare the current 200 sourced readings once while online so their JSON packs are available offline."}</span><button class="reading-garden-secondary" type="button" data-reading-download-articles>${library.offlineArticlesReadyAt ? "Refresh Offline Pack" : "Download Article Pack"}</button></div>
+            <div class="reading-browser-offline"><span id="reading-offline-status">${library.offlineArticlesReadyAt ? "✓ The current sourced Article packs are prepared for offline reading." : "Prepare the current 300 sourced readings once while online so their indexes and JSON body packs are available offline."}</span><button class="reading-garden-secondary" type="button" data-reading-download-articles>${library.offlineArticlesReadyAt ? "Refresh Offline Pack" : "Download Article Pack"}</button></div>
             <div class="reading-browser-meta"><span id="reading-article-count"></span><span>${savedOnly ? "Saved only" : topicLabel(prefs.articleTopic)}</span></div><div id="reading-article-list" class="reading-article-list"></div><button id="reading-load-more" class="reading-garden-secondary reading-load-more" type="button" data-reading-load-more hidden>Show More</button>`;
         browser.dataset.savedOnly = savedOnly ? "true" : "false";
         articleVisibleCount = 30;
@@ -355,15 +442,15 @@
         const query = document.getElementById("reading-article-search")?.value.trim() || "";
         const topic = document.getElementById("reading-article-topic")?.value || prefs.articleTopic || "all";
         const savedOnly = document.getElementById("reading-articles-browser")?.dataset.savedOnly === "true";
-        const loaded = LEVELS.flatMap(level => articleCache.get(level) || []);
-        currentFilteredArticles = loaded.filter(article => (prefs.level === "all" || article.jlpt === prefs.level) && articleMatches(article, query, topic, savedOnly));
+        const indexed = LEVELS.flatMap(level => articleIndexCache.get(level) || []);
+        currentFilteredArticles = indexed.filter(article => (prefs.level === "all" || article.jlpt === prefs.level) && articleMatches(article, query, topic, savedOnly));
         count.textContent = `${currentFilteredArticles.length.toLocaleString()} article${currentFilteredArticles.length === 1 ? "" : "s"}`;
         if (!currentFilteredArticles.length) {
             list.innerHTML = `<div class="reading-browser-empty">🌸 No Articles match these filters.</div>`;
         } else {
             list.innerHTML = currentFilteredArticles.slice(0, articleVisibleCount).map(article => `
                 <div class="reading-article-card" data-reading-open-article="${escapeHtml(article.id)}" role="button" tabindex="0" aria-label="Open ${escapeHtml(article.titleEnglish)}">
-                    <div><div class="reading-article-tags"><span class="reading-article-tag">Study ${escapeHtml(article.jlpt)}</span><span class="reading-article-tag">${article.topicIcon} ${escapeHtml(article.topicLabel)}</span><span class="reading-article-tag">${escapeHtml(String(article.sourceYear))} source</span><span class="reading-article-tag">${article.estimatedMinutes} min</span>${isCompleted(article.id) ? '<span class="reading-article-tag">✓ Read</span>' : ''}</div><h3>${prefs.mode === "furigana" ? article.titleFurigana : escapeHtml(prefs.mode === "kana" ? article.titleKana : article.title)}</h3><span class="reading-en-title">${escapeHtml(article.titleEnglish)}</span><p>${escapeHtml(article.summary)}</p><small class="reading-source-inline">Source: ${escapeHtml(article.sourcePublisher)} · ${escapeHtml(article.sourceDateLabel || "Published")} ${escapeHtml(article.sourcePublishedDate)}</small></div>
+                    <div><div class="reading-article-tags"><span class="reading-article-tag">Study ${escapeHtml(article.jlpt)}</span><span class="reading-article-tag">${article.topicIcon} ${escapeHtml(article.topicLabel)}</span><span class="reading-article-tag">${escapeHtml(String(article.sourceYear))} source</span><span class="reading-article-tag">${article.estimatedMinutes} min</span>${isCompleted(article.id) ? '<span class="reading-article-tag">✓ Read</span>' : ''}</div><h3>${prefs.mode === "furigana" ? article.titleFurigana : escapeHtml(prefs.mode === "kana" ? article.titleKana : article.title)}</h3><span class="reading-en-title">${escapeHtml(article.titleEnglish)}</span><p>${escapeHtml(article.summary)}</p><small class="reading-source-inline">Source: ${escapeHtml(article.sourcePublisher)} · ${escapeHtml(sourceDateText(article))}</small></div>
                     <button class="reading-article-save${isSaved(article.id) ? " saved" : ""}" type="button" data-reading-save-article="${escapeHtml(article.id)}" aria-label="${isSaved(article.id) ? "Remove from Saved" : "Save Article"}">${isSaved(article.id) ? "♥" : "♡"}</button>
                 </div>`).join("");
         }
@@ -373,9 +460,14 @@
 
     async function openArticleById(id) {
         let article = articleById(id);
+        let meta = articleMetaById(id);
         if (!article) {
-            const levelMatch = id.match(/-(n[1-5])-/i)?.[1]?.toUpperCase();
-            if (levelMatch) await loadArticleLevel(levelMatch);
+            const levelMatch = meta?.jlpt || id.match(/-(n[1-5])$/i)?.[1]?.toUpperCase() || id.match(/-(n[1-5])-/i)?.[1]?.toUpperCase();
+            if (levelMatch && !meta) { await loadArticleIndexLevel(levelMatch); meta = articleMetaById(id); }
+            if (meta?.pack) {
+                const url = articlePackUrl(meta.jlpt, meta.pack);
+                if (url) await loadArticleShard(url, meta.jlpt);
+            }
             article = articleById(id);
         }
         if (!article) return;
@@ -402,7 +494,7 @@
         const displayPara = readingText(article);
         reader.innerHTML = `
             <header class="reading-reader-header"><div class="reading-reader-header-top"><div class="reading-reader-tags"><span class="reading-article-tag">Study ${escapeHtml(article.jlpt)}</span><span class="reading-article-tag">${article.topicIcon} ${escapeHtml(article.topicLabel)}</span><span class="reading-article-tag">${escapeHtml(String(article.sourceYear))} source-based</span><span class="reading-article-tag">${article.estimatedMinutes} min</span></div><button class="reading-article-save${isSaved(article.id) ? " saved" : ""}" type="button" data-reading-save-article="${escapeHtml(article.id)}">${isSaved(article.id) ? "♥" : "♡"}</button></div><h2 class="reading-reader-title">${readingText(article,"title")}</h2><p class="reading-reader-english-title">${escapeHtml(article.titleEnglish)}</p><p class="reading-level-note">${escapeHtml(article.levelNote || "")}</p><div class="reading-reader-actions"><button class="reading-garden-secondary" type="button" data-reading-hear-article>🔊 Hear Japanese</button><button class="reading-garden-secondary" type="button" data-reading-toggle-translation>${translationVisible ? "Hide Translation" : "Show Translation"}</button></div><div class="reading-reader-mode-row">${modeButtonsMarkup()}</div></header>
-            <section class="reading-source-card"><div><span class="reading-source-badge">Verified source · ${escapeHtml(article.sourceDateLabel || "Published")} ${escapeHtml(article.sourcePublishedDate)}</span><h3>${escapeHtml(article.sourceTitle)}</h3><p>${escapeHtml(article.sourcePublisher)} · ${escapeHtml(article.sourceLicense)}</p></div><a href="${escapeHtml(article.sourceUrl)}" target="_blank" rel="noopener noreferrer">Read Original ↗</a><small>${escapeHtml(article.sourceProcessing)}</small><small>${escapeHtml(article.sourceAttribution)}</small><small>${escapeHtml(article.rightsNote)}</small></section>
+            <section class="reading-source-card"><div><span class="reading-source-badge">Verified source · ${escapeHtml(sourceDateText(article))}</span><h3>${escapeHtml(article.sourceTitle)}</h3><p>${escapeHtml(article.sourcePublisher)} · ${escapeHtml(article.sourceLicense)}</p></div><a href="${escapeHtml(article.sourceUrl)}" target="_blank" rel="noopener noreferrer">Read Original ↗</a><small>${escapeHtml(article.sourceProcessing)}</small><small>${escapeHtml(article.sourceAttribution)}</small><small>${escapeHtml(article.rightsNote)}</small></section>
             <section class="reading-reader-content">${article.paragraphs.map(paragraph => `<p class="reading-reader-paragraph">${displayPara(paragraph)}</p>${translationVisible ? `<p class="reading-reader-translation">${escapeHtml(paragraph.english)}</p>` : ""}`).join("")}</section>
             <section class="reading-reader-section"><h3>🌸 Vocabulary Focus</h3><div class="reading-reader-vocab">${article.vocabularyFocus.map(word => `<div><strong>${escapeHtml(word.word)}</strong><span>${escapeHtml(word.kana)}</span><span>${escapeHtml(word.meaning)}</span></div>`).join("")}</div></section>
             <section class="reading-reader-section"><h3>文 Grammar in this reading</h3><div class="reading-reader-grammar">${article.grammarFocus.map(grammar => `<span class="reading-article-tag">${escapeHtml(grammar)}</span>`).join("")}</div></section>
@@ -446,7 +538,7 @@
     function moveArticle(direction) {
         if (!currentArticle) return;
         const index = currentFilteredArticles.findIndex(article => article.id === currentArticle.id);
-        const pool = currentFilteredArticles.length ? currentFilteredArticles : LEVELS.flatMap(level => articleCache.get(level) || []);
+        const pool = currentFilteredArticles.length ? currentFilteredArticles : LEVELS.flatMap(level => articleIndexCache.get(level) || []);
         const resolved = index >= 0 ? index : pool.findIndex(article => article.id === currentArticle.id);
         if (!pool.length || resolved < 0) return;
         const nextIndex = Math.max(0, Math.min(pool.length - 1, resolved + direction));
@@ -467,21 +559,37 @@
         window.speechSynthesis.speak(utterance);
     }
 
+    async function fetchOfflineFiles(urls, concurrency = 4) {
+        const queue = [...new Set(urls)];
+        let cursor = 0;
+        async function worker() {
+            while (cursor < queue.length) {
+                const url = queue[cursor++];
+                const response = await fetch(url);
+                if (!response.ok) throw new Error(`${url} returned HTTP ${response.status}`);
+                await response.clone().arrayBuffer();
+            }
+        }
+        const workerCount = Math.max(1, Math.min(Number(concurrency) || 1, queue.length));
+        await Promise.all(Array.from({ length:workerCount }, worker));
+    }
+
     async function downloadArticlePack(button) {
         const status = document.getElementById("reading-offline-status");
         if (button) { button.disabled = true; button.textContent = "Preparing…"; }
         if (status) status.textContent = "Preparing the current sourced Article packs for offline reading…";
         try {
             if ("serviceWorker" in navigator) await navigator.serviceWorker.ready;
-            const articleRequests = LEVELS.flatMap(level => ARTICLE_FILES[level].map(url => fetch(url)));
-            await Promise.all([fetch(ARTICLE_MANIFEST), ...articleRequests].map(async promise => {
-                const response = await promise;
-                if (!response.ok) throw new Error(`HTTP ${response.status}`);
-                await response.clone().arrayBuffer();
-            }));
+            const urls = [
+                ARTICLE_MANIFEST,
+                ...LEVELS.map(level => ARTICLE_INDEX_FILES[level]),
+                ...LEVELS.flatMap(level => ARTICLE_FILES[level])
+            ];
+            // Keep offline preparation intentionally bounded so iPhone Safari is not hit with dozens of simultaneous JSON fetches.
+            await fetchOfflineFiles(urls, 4);
             library.offlineArticlesReadyAt = new Date().toISOString();
             saveLibrary();
-            if (status) status.textContent = "✓ The current 200 sourced Articles are prepared for offline reading on this device.";
+            if (status) status.textContent = "✓ The current 300 sourced Articles are prepared for offline reading on this device.";
             if (button) button.textContent = "Refresh Offline Pack";
             renderLibraryStrip();
         } catch (error) {
@@ -493,9 +601,9 @@
 
     async function surpriseArticle() {
         try {
-            const records = await loadArticleLevels(prefs.level);
+            const records = await loadArticleIndexes(prefs.level);
             const article = records[Math.floor(Math.random() * records.length)];
-            if (article) { currentFilteredArticles = records; openArticleById(article.id); }
+            if (article) { currentFilteredArticles = records; await openArticleById(article.id); }
         } catch (error) { console.warn("Reading Garden: Surprise Article failed.", error); }
     }
 
@@ -643,11 +751,7 @@
         if (button) { button.disabled = true; button.textContent = "Preparing…"; }
         try {
             if ("serviceWorker" in navigator) await navigator.serviceWorker.ready;
-            const responses = await Promise.all([fetch(STORY_MANIFEST), ...Object.values(STORY_FILES).map(file => fetch(file))]);
-            for (const response of responses) {
-                if (!response.ok) throw new Error(`HTTP ${response.status}`);
-                await response.clone().arrayBuffer();
-            }
+            await fetchOfflineFiles([STORY_MANIFEST, ...Object.values(STORY_FILES)], 4);
             library.offlineStoriesReadyAt = new Date().toISOString();
             saveLibrary();
             if (status) status.textContent = "✓ The current 100 Short Stories excerpts are prepared for offline reading. Full original links still need internet access.";
@@ -701,7 +805,10 @@
             const levelButton = event.target.closest("[data-reading-level]");
             if (levelButton) {
                 prefs.level = levelButton.dataset.readingLevel || "all"; savePrefs(); updateLevelUi();
-                if (currentScreen === "articles") openArticles({ savedOnly:document.getElementById("reading-articles-browser")?.dataset.savedOnly === "true" });
+                if (currentScreen === "articles") {
+                    const savedOnly = document.getElementById("reading-articles-browser")?.dataset.savedOnly === "true";
+                    loadArticleIndexes(prefs.level).then(() => renderArticleBrowser(savedOnly)).catch(error => console.warn("Reading Garden: Article index could not load.", error));
+                }
                 if (currentScreen === "stories") renderStoryResults();
                 return;
             }
@@ -774,5 +881,5 @@
     }
     bindEvents(); init();
 
-    window.SakuraReadingGarden = Object.freeze({ open, close, materials:MATERIALS, totalTarget:TOTAL_TARGET, articleFiles:ARTICLE_FILES, storyFiles:STORY_FILES, loadArticleLevel, loadArticleLevels, loadStories, refresh:init });
+    window.SakuraReadingGarden = Object.freeze({ open, close, materials:MATERIALS, totalTarget:TOTAL_TARGET, articleFiles:ARTICLE_FILES, articleIndexFiles:ARTICLE_INDEX_FILES, storyFiles:STORY_FILES, loadArticleIndexLevel, loadArticleIndexes, loadArticleLevel, loadArticleLevels, loadStories, refresh:init });
 }());

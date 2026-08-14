@@ -1,29 +1,29 @@
 {
-  "version": 7,
+  "version": 8,
   "material": "articles",
   "mode": "source-grounded-adaptation",
   "targetCount": 300,
-  "readyCount": 200,
+  "readyCount": 300,
   "sourceYearPriority": 2026,
   "retrievedDate": "2026-08-14",
   "levelCounts": {
-    "N5": 40,
-    "N4": 40,
-    "N3": 40,
-    "N2": 40,
-    "N1": 40
+    "N5": 60,
+    "N4": 60,
+    "N3": 60,
+    "N2": 60,
+    "N1": 60
   },
   "topicCounts": {
-    "beauty": 20,
-    "food": 20,
-    "travel": 20,
-    "digital": 20,
-    "consumer": 20,
-    "health": 20,
-    "environment": 20,
-    "culture": 20,
-    "work": 20,
-    "society": 20
+    "beauty": 30,
+    "food": 30,
+    "travel": 30,
+    "society": 30,
+    "health": 30,
+    "digital": 30,
+    "consumer": 30,
+    "environment": 30,
+    "culture": 30,
+    "work": 30
   },
   "topics": [
     {
@@ -78,47 +78,65 @@
     }
   ],
   "provenancePolicy": {
-    "facts": "200 readings grounded in linked official/open Japanese sources, all using 2026 source material in this release. The v7 expansion adds 100 graded readings from 20 verified source families (five support levels per family).",
-    "learnerText": "Learner adaptations are clearly identified. v7 source-family readings add level-specific framing and reuse only Sakura source-grounded paragraphs; no adapted text is presented as verbatim government prose.",
-    "attribution": "Every record stores source title, publisher, URL, date, terms/license, and edit notice.",
+    "facts": "300 readings grounded in linked official/open Japanese sources. This release adds 100 readings from 20 verified source families with 2026-first sourcing; one Beauty family uses a 2025 source because a distinct suitable 2026 source was not forced.",
+    "learnerText": "Learner adaptations are clearly identified and are not presented as verbatim government prose.",
+    "attribution": "Every record stores source title, publisher, URL, date, terms/license, attribution and edit notice.",
     "assets": "No source logos, photos, charts, videos, or separately credited third-party assets are included.",
     "studyLevel": "N5–N1 is Sakura study-support grading, not an official JLPT grade of the source."
   },
   "sourceYearPolicy": "2026 first; if a category lacks suitable legally reusable 2026 material, use 2025, then 2024, then the newest verified legally reusable source available. Always display the actual source year.",
   "yearCounts": {
-    "2026": 200
+    "2026": 295,
+    "2025": 5
   },
   "levelFiles": {
     "N5": [
       "n5.json",
       "n5-b.json",
       "n5-c.json",
-      "n5-d.json"
+      "n5-d.json",
+      "n5-e.json",
+      "n5-f.json"
     ],
     "N4": [
       "n4.json",
       "n4-b.json",
       "n4-c.json",
-      "n4-d.json"
+      "n4-d.json",
+      "n4-e.json",
+      "n4-f.json"
     ],
     "N3": [
       "n3.json",
       "n3-b.json",
       "n3-c.json",
-      "n3-d.json"
+      "n3-d.json",
+      "n3-e.json",
+      "n3-f.json"
     ],
     "N2": [
       "n2.json",
       "n2-b.json",
       "n2-c.json",
-      "n2-d.json"
+      "n2-d.json",
+      "n2-e.json",
+      "n2-f.json"
     ],
     "N1": [
       "n1.json",
       "n1-b.json",
       "n1-c.json",
-      "n1-d.json"
+      "n1-d.json",
+      "n1-e.json",
+      "n1-f.json"
     ]
   },
-  "packPolicy": "Each JLPT level is split into four small lazy-loaded packs (10 readings each) so individual JSON payloads remain comfortably below ~100 KB."
+  "indexFiles": {
+    "N5": "n5-index.json",
+    "N4": "n4-index.json",
+    "N3": "n3-index.json",
+    "N2": "n2-index.json",
+    "N1": "n1-index.json"
+  },
+  "packPolicy": "Each level uses six 10-reading body shards plus a compact metadata index. Browsing/search reads indexes only; a full body shard is fetched only when a reading is opened. Body cache is bounded in memory."
 }
