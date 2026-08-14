@@ -130,7 +130,7 @@
 
         return new Promise(resolve => {
             const script = document.createElement("script");
-            script.src = "./features/sakura-experience.js?v=2";
+            script.src = "./features/sakura-experience.js?v=3";
             script.dataset.sakuraExperience = "true";
             script.async = false;
             script.onload = () => resolve(window.SakuraExperience || null);
@@ -231,7 +231,7 @@ function validateKanjiDataset(dataset = window.KANJI_DATA) {
         });
 
         ["onyomi", "kunyomi"].forEach(field => {
-            if (!Array.isArray(item[field])) addError(item, `Missing or invalid ${field} array.`);
+            if (!Array.isArray(item[field])) addError(item, "Missing or invalid " + field + " array.");
             else item[field].forEach((reading, readingIndex) => {
                 if (typeof reading !== "string" || !reading.trim()) addError(item, `Invalid ${field}[${readingIndex}] reading.`);
             });
