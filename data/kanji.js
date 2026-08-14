@@ -116,6 +116,32 @@
         });
     }
 
+    function loadSakuraExperience() {
+        if (window.SakuraExperience) return Promise.resolve(window.SakuraExperience);
+
+        const existing = document.querySelector("script[data-sakura-experience]");
+        if (existing) {
+            return new Promise(resolve => {
+                if (window.SakuraExperience) { resolve(window.SakuraExperience); return; }
+                existing.addEventListener("load", () => resolve(window.SakuraExperience || null), { once:true });
+                existing.addEventListener("error", () => resolve(null), { once:true });
+            });
+        }
+
+        return new Promise(resolve => {
+            const script = document.createElement("script");
+            script.src = "./features/sakura-experience.js?v=1";
+            script.dataset.sakuraExperience = "true";
+            script.async = false;
+            script.onload = () => resolve(window.SakuraExperience || null);
+            script.onerror = () => {
+                console.warn("Sakura Experience enhancements could not load. Core Sakura will continue normally.");
+                resolve(null);
+            };
+            document.body.appendChild(script);
+        });
+    }
+
     window.SakuraKanjiLoader = Object.freeze({
         levels,
         files,
@@ -138,12 +164,20 @@
             // never blocks the main learning app.
             await loadReadingGardenUi();
 
-            if (!document.querySelector("script[data-sakura-app]")) {
+            const existingApp = document.querySelector("script[data-sakura-app]");
+            if (!existingApp) {
                 const appScript = document.createElement("script");
                 appScript.src = "./app.js?v=92";
                 appScript.dataset.sakuraApp = "true";
+                appScript.onload = () => loadSakuraExperience().catch(() => {});
                 appScript.onerror = () => console.error("Sakura could not load app.js.");
                 document.body.appendChild(appScript);
+            }
+            else if (typeof window.showRoute === "function") {
+                loadSakuraExperience().catch(() => {});
+            }
+            else {
+                existingApp.addEventListener("load", () => loadSakuraExperience().catch(() => {}), { once:true });
             }
             return records;
         })
