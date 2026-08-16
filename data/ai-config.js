@@ -13,7 +13,7 @@
   });
 
   window.SAKURA_AUTH_CONFIG = Object.freeze({
-    version: 2,
+    version: 3,
     enabled: true,
     projectUrl: "https://hrycfsekrvflrbwahgyh.supabase.co",
     publishableKey,
@@ -69,14 +69,26 @@
     throw lastError || new Error("Supabase SDK could not load.");
   }
 
-  function bootSakuraAccount() {
-    if (window.SakuraAuth || document.querySelector("script[data-sakura-auth]")) return;
+  function bootGoogleOAuthLauncher() {
+    if (window.SakuraGoogleOAuthLauncher || document.querySelector("script[data-sakura-google-oauth]")) return;
     const script = document.createElement("script");
-    script.src = "./features/sakura-auth.js?v=1";
-    script.dataset.sakuraAuth = "true";
+    script.src = "./features/sakura-google-oauth.js?v=1";
+    script.dataset.sakuraGoogleOauth = "true";
     script.async = true;
-    script.onerror = () => console.warn("Sakura Account could not load. Core Sakura will continue normally.");
+    script.onerror = () => console.warn("Sakura Google sign-in launcher could not load. Existing account methods will remain available.");
     document.body.appendChild(script);
+  }
+
+  function bootSakuraAccount() {
+    if (!window.SakuraAuth && !document.querySelector("script[data-sakura-auth]")) {
+      const script = document.createElement("script");
+      script.src = "./features/sakura-auth.js?v=2";
+      script.dataset.sakuraAuth = "true";
+      script.async = true;
+      script.onerror = () => console.warn("Sakura Account could not load. Core Sakura will continue normally.");
+      document.body.appendChild(script);
+    }
+    bootGoogleOAuthLauncher();
   }
 
   async function prepareSakuraAccount() {
