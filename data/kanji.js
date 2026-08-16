@@ -116,30 +116,66 @@
         });
     }
 
-    function loadSakuraExperience() {
-        if (window.SakuraExperience) return Promise.resolve(window.SakuraExperience);
-
-        const existing = document.querySelector("script[data-sakura-experience]");
+    function loadScriptOnce({ marker, src, ready, warning }) {
+        if (ready()) return Promise.resolve(ready());
+        const existing = document.querySelector(`script[${marker}]`);
         if (existing) {
             return new Promise(resolve => {
-                if (window.SakuraExperience) { resolve(window.SakuraExperience); return; }
-                existing.addEventListener("load", () => resolve(window.SakuraExperience || null), { once:true });
+                const current = ready();
+                if (current) { resolve(current); return; }
+                existing.addEventListener("load", () => resolve(ready() || null), { once:true });
                 existing.addEventListener("error", () => resolve(null), { once:true });
             });
         }
-
         return new Promise(resolve => {
             const script = document.createElement("script");
-            script.src = "./features/sakura-experience.js?v=3";
-            script.dataset.sakuraExperience = "true";
+            script.src = src;
+            script.setAttribute(marker, "true");
             script.async = false;
-            script.onload = () => resolve(window.SakuraExperience || null);
+            script.onload = () => resolve(ready() || null);
             script.onerror = () => {
-                console.warn("Sakura Experience enhancements could not load. Core Sakura will continue normally.");
+                console.warn(warning);
                 resolve(null);
             };
             document.body.appendChild(script);
         });
+    }
+
+    function loadSakuraAiConfig() {
+        if (window.SAKURA_AI_CONFIG) return Promise.resolve(window.SAKURA_AI_CONFIG);
+        return loadScriptOnce({
+            marker: "data-sakura-ai-config",
+            src: "./data/ai-config.js?v=1",
+            ready: () => window.SAKURA_AI_CONFIG,
+            warning: "Sakura AI configuration could not load. Core Sakura will continue normally."
+        });
+    }
+
+    async function loadSakuraAiTranslator() {
+        await loadSakuraAiConfig();
+        return loadScriptOnce({
+            marker: "data-sakura-ai-translator",
+            src: "./features/sakura-ai-translator.js?v=1",
+            ready: () => window.SakuraAITranslator,
+            warning: "Sakura AI Translator could not load. Core Sakura will continue normally."
+        });
+    }
+
+    function loadSakuraExperience() {
+        return loadScriptOnce({
+            marker: "data-sakura-experience",
+            src: "./features/sakura-experience.js?v=3",
+            ready: () => window.SakuraExperience,
+            warning: "Sakura Experience enhancements could not load. Core Sakura will continue normally."
+        });
+    }
+
+    async function loadPostAppEnhancements() {
+        // AI binds before Experience so an enabled AI translator gets first chance
+        // at Online Translation. If AI is disabled/unavailable, Experience and the
+        // existing translator continue to work exactly as before.
+        await loadSakuraAiTranslator().catch(() => null);
+        await loadSakuraExperience().catch(() => null);
     }
 
     window.SakuraKanjiLoader = Object.freeze({
@@ -169,15 +205,15 @@
                 const appScript = document.createElement("script");
                 appScript.src = "./app.js?v=92";
                 appScript.dataset.sakuraApp = "true";
-                appScript.onload = () => loadSakuraExperience().catch(() => {});
+                appScript.onload = () => loadPostAppEnhancements().catch(() => {});
                 appScript.onerror = () => console.error("Sakura could not load app.js.");
                 document.body.appendChild(appScript);
             }
             else if (typeof window.showRoute === "function") {
-                loadSakuraExperience().catch(() => {});
+                loadPostAppEnhancements().catch(() => {});
             }
             else {
-                existingApp.addEventListener("load", () => loadSakuraExperience().catch(() => {}), { once:true });
+                existingApp.addEventListener("load", () => loadPostAppEnhancements().catch(() => {}), { once:true });
             }
             return records;
         })
