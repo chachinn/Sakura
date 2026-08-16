@@ -1,4 +1,4 @@
-/* Sakura AI Translator — native-first Japanese tutor layer v1.0.1
+/* Sakura AI Translator — native-first Japanese tutor layer v1.0.2
    Provider-neutral client. Gemini/OpenAI secrets never live in this file.
    If AI is unavailable, Sakura's existing translator remains usable. */
 (function initSakuraAiTranslator(){
@@ -8,7 +8,7 @@
   const $ = id => document.getElementById(id);
   const esc = value => String(value ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   const MAX_INPUT = 500;
-  const TIMEOUT_MS = 30000;
+  const TIMEOUT_MS = 45000;
   let bypassOnce = false;
   let currentResult = null;
 
@@ -97,7 +97,7 @@
     const host = ensureHost();
     $('translation-result')?.setAttribute('hidden','');
     host.hidden = false;
-    host.innerHTML = '<article class="sakura-ai-card sakura-ai-loading"><span class="sakura-ai-badge">Sakura AI</span><h3>Finding the most natural Japanese…</h3><p>Checking situation, register, wording, grammar, and spoken usage.</p><span aria-hidden="true"><i></i><i></i><i></i></span></article>';
+    host.innerHTML = '<article class="sakura-ai-card sakura-ai-loading"><span class="sakura-ai-badge">Sakura AI</span><h3>Finding the most natural Japanese…</h3><p>Checking situation, register, wording, grammar, and spoken usage. Free AI may take a few seconds.</p><span aria-hidden="true"><i></i><i></i><i></i></span></article>';
   }
 
   function table(headers, rows){
@@ -245,7 +245,7 @@
 
   function init(){
     injectStyles(); ensureHost(); decorateMode(); bind();
-    window.SakuraAITranslator = Object.freeze({version:'1.0.1', enabled:config.enabled, config, run:config.enabled ? run : ()=>Promise.resolve(false)});
+    window.SakuraAITranslator = Object.freeze({version:'1.0.2', enabled:config.enabled, config, run:config.enabled ? run : ()=>Promise.resolve(false)});
   }
 
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init, {once:true});
