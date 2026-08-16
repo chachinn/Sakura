@@ -1,4 +1,4 @@
-/* Sakura AI Translator — native-first Japanese tutor layer v1.1
+/* Sakura AI Translator — native-first Japanese tutor layer v1.1.1
    Provider-neutral client. Provider secrets never live in this file.
    AI is optional: Sakura's existing translator remains the fallback. */
 (function initSakuraAiTranslator(){
@@ -143,7 +143,19 @@
     const controller = new AbortController();
     const timeout = window.setTimeout(()=>controller.abort(), TIMEOUT_MS);
     try {
-      const response = await fetch(config.endpoint, {method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json','apikey':config.gatewayKey},body:JSON.stringify(payload),signal:controller.signal,cache:'no-store',credentials:'omit'});
+      const response = await fetch(config.endpoint, {
+        method:'POST',
+        headers:{
+          'Content-Type':'application/json',
+          'Accept':'application/json',
+          'apikey':config.gatewayKey,
+          'Authorization':`Bearer ${config.gatewayKey}`
+        },
+        body:JSON.stringify(payload),
+        signal:controller.signal,
+        cache:'no-store',
+        credentials:'omit'
+      });
       const body = await response.json().catch(()=>({}));
       if (!response.ok) throw new Error(body?.error || `AI request failed (HTTP ${response.status}).`);
       if (!body?.recommended?.japanese) throw new Error('AI returned an incomplete translation.');
@@ -194,7 +206,7 @@
   }
   function init(){
     injectStyles(); ensureHost(); decorateMode(); bind();
-    window.SakuraAITranslator = Object.freeze({version:'1.1.0',enabled:config.enabled,config,run:config.enabled?run:()=>Promise.resolve(false)});
+    window.SakuraAITranslator = Object.freeze({version:'1.1.1',enabled:config.enabled,config,run:config.enabled?run:()=>Promise.resolve(false)});
   }
   if (document.readyState==='loading') document.addEventListener('DOMContentLoaded',init,{once:true}); else init();
 }());
