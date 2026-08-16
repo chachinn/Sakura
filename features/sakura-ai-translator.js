@@ -1,6 +1,6 @@
-/* Sakura AI Translator — native-first Japanese tutor layer v1.0.2
-   Provider-neutral client. Gemini/OpenAI secrets never live in this file.
-   If AI is unavailable, Sakura's existing translator remains usable. */
+/* Sakura AI Translator — native-first Japanese tutor layer v1.1
+   Provider-neutral client. Provider secrets never live in this file.
+   AI is optional: Sakura's existing translator remains the fallback. */
 (function initSakuraAiTranslator(){
   'use strict';
   if (window.SakuraAITranslator) return;
@@ -11,9 +11,10 @@
   const TIMEOUT_MS = 45000;
   let bypassOnce = false;
   let currentResult = null;
+  let activeRequest = null;
 
   const config = Object.freeze({
-    enabled: Boolean(window.SAKURA_AI_CONFIG?.enabled && window.SAKURA_AI_CONFIG?.endpoint),
+    enabled: Boolean(window.SAKURA_AI_CONFIG?.enabled && window.SAKURA_AI_CONFIG?.endpoint && window.SAKURA_AI_CONFIG?.gatewayKey),
     endpoint: String(window.SAKURA_AI_CONFIG?.endpoint || ''),
     gatewayKey: String(window.SAKURA_AI_CONFIG?.gatewayKey || ''),
     provider: String(window.SAKURA_AI_CONFIG?.provider || 'gemini'),
@@ -24,23 +25,18 @@
   function onlineModeActive(){
     return Boolean(document.querySelector('[data-translation-mode="online"][aria-selected="true"], [data-translation-mode="online"].active'));
   }
-
   function selectedChip(containerId){
     const container = $(containerId);
     if (!container) return '';
     const selected = container.querySelector('[aria-pressed="true"], .active, .selected');
     return String(selected?.dataset?.value || selected?.textContent || '').trim();
   }
-
   function currentJlpt(){
     try {
       const values = JSON.parse(localStorage.getItem('chaGlobalJlptLevels') || '["N5"]');
-      return Array.isArray(values) && values.length
-        ? values.filter(value => /^N[1-5]$/.test(value)).join(', ')
-        : 'N5';
+      return Array.isArray(values) && values.length ? values.filter(value => /^N[1-5]$/.test(value)).join(', ') : 'N5';
     } catch { return 'N5'; }
   }
-
   function setMessage(text, state=''){
     const message = $('translation-message');
     if (!message) return;
@@ -58,7 +54,7 @@
       .sakura-ai-result{display:grid;gap:12px;margin-top:12px;padding-bottom:20px}.sakura-ai-card{display:grid;gap:8px;padding:13px;border:1px solid color-mix(in srgb,var(--color-primary) 17%,var(--color-border));border-radius:16px;background:color-mix(in srgb,var(--color-surface) 96%,var(--color-primary-soft));box-shadow:0 8px 24px color-mix(in srgb,var(--color-text) 5%,transparent)}
       .sakura-ai-card h3{margin:0;color:var(--color-text);font-size:13px}.sakura-ai-card p{margin:0;color:var(--color-text-muted);font-size:9px;line-height:1.6}.sakura-ai-native{font-size:20px!important;font-weight:900!important;line-height:1.45!important;color:var(--color-text)!important}
       .sakura-ai-reading{display:grid;gap:2px}.sakura-ai-reading strong{font-size:12px}.sakura-ai-reading em{font-size:10px;color:var(--color-text-muted)}.sakura-ai-actions{display:flex;gap:7px;flex-wrap:wrap}.sakura-ai-actions button{min-height:38px;padding:8px 11px;border:1px solid var(--color-border);border-radius:11px;background:var(--color-surface);color:var(--color-text);font-size:9px;font-weight:850;touch-action:manipulation}
-      .sakura-ai-grid{display:grid;gap:7px}.sakura-ai-variant{display:grid;gap:3px;padding:10px;border:1px solid var(--color-border);border-radius:12px;background:var(--color-background)}.sakura-ai-variant strong{font-size:12px}.sakura-ai-variant small{color:var(--color-text-muted);font-size:8px;line-height:1.45}
+      .sakura-ai-grid{display:grid;gap:7px}.sakura-ai-variant{display:grid;gap:3px;padding:10px;border:1px solid var(--color-border);border-radius:12px;background:var(--color-background)}.sakura-ai-variant strong{font-size:12px}.sakura-ai-variant span,.sakura-ai-variant small{color:var(--color-text-muted);font-size:8px;line-height:1.45}
       .sakura-ai-table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch}.sakura-ai-table{width:100%;border-collapse:collapse;min-width:520px;font-size:8px}.sakura-ai-table th,.sakura-ai-table td{padding:8px 7px;border-bottom:1px solid var(--color-border);text-align:left;vertical-align:top}.sakura-ai-table th{color:var(--color-text)}.sakura-ai-table td{color:var(--color-text-muted);line-height:1.45}.sakura-ai-table td:first-child{color:var(--color-text);font-weight:800}
       .sakura-ai-list{display:grid;gap:7px;margin:0;padding:0;list-style:none}.sakura-ai-list li{padding:9px 10px;border-radius:11px;background:var(--color-background);font-size:9px;line-height:1.55;color:var(--color-text-muted)}.sakura-ai-list li strong{color:var(--color-text)}
       .sakura-ai-quiz{display:grid;gap:7px}.sakura-ai-quiz details{padding:9px 10px;border:1px solid var(--color-border);border-radius:11px;background:var(--color-background)}.sakura-ai-quiz summary{cursor:pointer;font-size:9px;font-weight:850;color:var(--color-primary-dark)}.sakura-ai-quiz details p{margin-top:6px}.sakura-ai-error{border-color:color-mix(in srgb,#c95d5d 28%,var(--color-border))}.sakura-ai-setup-note{display:grid;gap:4px;margin-top:8px;padding:9px 10px;border:1px dashed var(--color-border);border-radius:12px;color:var(--color-text-muted);font-size:8px;line-height:1.5}
@@ -81,7 +77,6 @@
     else $('translation-form')?.insertAdjacentElement('afterend', host);
     return host;
   }
-
   function decorateMode(){
     const online = document.querySelector('[data-translation-mode="online"]');
     if (!online) return;
@@ -92,14 +87,12 @@
     if (title) title.textContent = 'AI Native Translator';
     if (note) note.textContent = 'Native-first · detailed tutor response';
   }
-
   function renderLoading(){
     const host = ensureHost();
     $('translation-result')?.setAttribute('hidden','');
     host.hidden = false;
-    host.innerHTML = '<article class="sakura-ai-card sakura-ai-loading"><span class="sakura-ai-badge">Sakura AI</span><h3>Finding the most natural Japanese…</h3><p>Checking situation, register, wording, grammar, and spoken usage. Free AI may take a few seconds.</p><span aria-hidden="true"><i></i><i></i><i></i></span></article>';
+    host.innerHTML = '<article class="sakura-ai-card sakura-ai-loading"><span class="sakura-ai-badge">Sakura AI</span><h3>Finding the most natural Japanese…</h3><p>Checking situation, register, wording, grammar, and spoken usage.</p><span aria-hidden="true"><i></i><i></i><i></i></span></article>';
   }
-
   function table(headers, rows){
     if (!rows?.length) return '';
     return `<div class="sakura-ai-table-wrap"><table class="sakura-ai-table"><thead><tr>${headers.map(header=>`<th>${esc(header)}</th>`).join('')}</tr></thead><tbody>${rows.map(row=>`<tr>${row.map(cell=>`<td>${esc(cell)}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`;
@@ -110,45 +103,33 @@
     const host = ensureHost();
     $('translation-result')?.setAttribute('hidden','');
     host.hidden = false;
-
-    const recommended = data.recommended || {};
+    const r = data.recommended || {};
     const variants = Array.isArray(data.variants) ? data.variants : [];
     const words = Array.isArray(data.words) ? data.words : [];
     const kanji = Array.isArray(data.kanji) ? data.kanji : [];
     const grammar = Array.isArray(data.grammar) ? data.grammar : [];
-    const nativeNotes = Array.isArray(data.native_notes) ? data.native_notes : [];
+    const notes = Array.isArray(data.native_notes) ? data.native_notes : [];
     const similar = Array.isArray(data.similar_expressions) ? data.similar_expressions : [];
     const chunks = Array.isArray(data.spoken?.chunks) ? data.spoken.chunks : [];
     const quiz = data.quiz || {};
-
     host.innerHTML = `
       <article class="sakura-ai-card"><span class="sakura-ai-badge">${esc(data.provider_label || 'Sakura AI · Native-first')}</span><h3>Situation</h3><p>${esc(data.situation || '')}</p></article>
-      <article class="sakura-ai-card">
-        <h3>⭐ Recommended Native Version</h3><p class="sakura-ai-native" lang="ja">${esc(recommended.japanese || '')}</p>
-        <div class="sakura-ai-reading"><strong lang="ja">${esc(recommended.kana || '')}</strong><em>${esc(recommended.romaji || '')}</em></div>
-        <p>${esc(recommended.english || '')}</p>${recommended.register ? `<span class="sakura-ai-badge">${esc(recommended.register)}</span>` : ''}<p>${esc(data.why_natural || '')}</p>
-        <div class="sakura-ai-actions"><button type="button" data-sakura-ai-speak>🔊 Hear</button><button type="button" data-sakura-ai-copy>Copy</button></div>
-      </article>
-      ${variants.length ? `<article class="sakura-ai-card"><h3>Context Variants</h3><div class="sakura-ai-grid">${variants.map(item=>`<div class="sakura-ai-variant"><small>${esc(item.when || '')}</small><strong lang="ja">${esc(item.japanese || '')}</strong><span>${esc(item.kana || '')}</span><small><em>${esc(item.romaji || '')}</em></small><small>${esc(item.english || '')}</small></div>`).join('')}</div></article>` : ''}
-      ${words.length ? `<article class="sakura-ai-card"><h3>Word Breakdown</h3>${table(['Japanese','Kana','Romaji','Meaning','Notes'], words.map(item=>[item.japanese||'',item.kana||'',item.romaji||'',item.meaning||'',item.notes||'']))}</article>` : ''}
-      ${kanji.length ? `<article class="sakura-ai-card"><h3>Kanji Breakdown</h3>${table(['Kanji','Reading Here','Romaji','Meaning','Word','Notes'], kanji.map(item=>[item.kanji||'',item.reading_here||'',item.romaji||'',item.meaning||'',item.word||'',item.notes||'']))}</article>` : ''}
-      ${grammar.length ? `<article class="sakura-ai-card"><h3>Grammar</h3><ul class="sakura-ai-list">${grammar.map(item=>`<li><strong>${esc(item.pattern || '')}</strong><br>${esc(item.explanation || '')}${item.example ? `<br><span lang="ja">${esc(item.example)}</span>` : ''}</li>`).join('')}</ul></article>` : ''}
-      ${nativeNotes.length ? `<article class="sakura-ai-card"><h3>Native Notes</h3><ul class="sakura-ai-list">${nativeNotes.map(note=>`<li>${esc(note)}</li>`).join('')}</ul></article>` : ''}
+      <article class="sakura-ai-card"><h3>⭐ Recommended Native Version</h3><p class="sakura-ai-native" lang="ja">${esc(r.japanese || '')}</p><div class="sakura-ai-reading"><strong lang="ja">${esc(r.kana || '')}</strong><em>${esc(r.romaji || '')}</em></div><p>${esc(r.english || '')}</p>${r.register ? `<span class="sakura-ai-badge">${esc(r.register)}</span>` : ''}<p>${esc(data.why_natural || '')}</p><div class="sakura-ai-actions"><button type="button" data-sakura-ai-speak>🔊 Hear</button><button type="button" data-sakura-ai-copy>Copy</button></div></article>
+      ${variants.length ? `<article class="sakura-ai-card"><h3>Context Variants</h3><div class="sakura-ai-grid">${variants.map(v=>`<div class="sakura-ai-variant"><small>${esc(v.when || '')}</small><strong lang="ja">${esc(v.japanese || '')}</strong><span>${esc(v.kana || '')}</span><small><em>${esc(v.romaji || '')}</em></small><small>${esc(v.english || '')}</small></div>`).join('')}</div></article>` : ''}
+      ${words.length ? `<article class="sakura-ai-card"><h3>Word Breakdown</h3>${table(['Japanese','Kana','Romaji','Meaning','Notes'], words.map(v=>[v.japanese||'',v.kana||'',v.romaji||'',v.meaning||'',v.notes||'']))}</article>` : ''}
+      ${kanji.length ? `<article class="sakura-ai-card"><h3>Kanji Breakdown</h3>${table(['Kanji','Reading Here','Romaji','Meaning','Word','Notes'], kanji.map(v=>[v.kanji||'',v.reading_here||'',v.romaji||'',v.meaning||'',v.word||'',v.notes||'']))}</article>` : ''}
+      ${grammar.length ? `<article class="sakura-ai-card"><h3>Grammar</h3><ul class="sakura-ai-list">${grammar.map(v=>`<li><strong>${esc(v.pattern || '')}</strong><br>${esc(v.explanation || '')}${v.example ? `<br><span lang="ja">${esc(v.example)}</span>` : ''}</li>`).join('')}</ul></article>` : ''}
+      ${notes.length ? `<article class="sakura-ai-card"><h3>Native Notes</h3><ul class="sakura-ai-list">${notes.map(v=>`<li>${esc(v)}</li>`).join('')}</ul></article>` : ''}
       ${(chunks.length || data.spoken?.tip) ? `<article class="sakura-ai-card"><h3>Spoken Japanese</h3>${chunks.length ? `<p class="sakura-ai-native" lang="ja">${chunks.map(esc).join(' ｜ ')}</p>` : ''}${data.spoken?.romaji_chunks?.length ? `<p><em>${data.spoken.romaji_chunks.map(esc).join(' / ')}</em></p>` : ''}${data.spoken?.tip ? `<p>${esc(data.spoken.tip)}</p>` : ''}</article>` : ''}
-      ${similar.length ? `<article class="sakura-ai-card"><h3>Similar Expressions</h3><div class="sakura-ai-grid">${similar.map(item=>`<div class="sakura-ai-variant"><strong lang="ja">${esc(item.japanese || '')}</strong><span>${esc(item.kana || '')}</span><small><em>${esc(item.romaji || '')}</em></small><small>${esc(item.english || '')}</small><small>${esc(item.when || '')}</small></div>`).join('')}</div></article>` : ''}
+      ${similar.length ? `<article class="sakura-ai-card"><h3>Similar Expressions</h3><div class="sakura-ai-grid">${similar.map(v=>`<div class="sakura-ai-variant"><strong lang="ja">${esc(v.japanese || '')}</strong><span>${esc(v.kana || '')}</span><small><em>${esc(v.romaji || '')}</em></small><small>${esc(v.english || '')}</small><small>${esc(v.when || '')}</small></div>`).join('')}</div></article>` : ''}
       ${quiz.question ? `<article class="sakura-ai-card sakura-ai-quiz"><h3>Mini Quiz</h3><p>${esc(quiz.question)}</p>${quiz.hint ? `<p>Hint: ${esc(quiz.hint)}</p>` : ''}<details><summary>Show answer</summary><p lang="ja">${esc(quiz.answer || '')}</p></details></article>` : ''}
-      ${config.privacyNote ? `<div class="sakura-ai-setup-note">${esc(config.privacyNote)}</div>` : ''}
-    `;
-
+      ${config.privacyNote ? `<div class="sakura-ai-setup-note">${esc(config.privacyNote)}</div>` : ''}`;
     try {
-      if (typeof window.addTranslationHistory === 'function' && recommended.japanese) {
-        window.addTranslationHistory(
-          {english:String($('translation-english')?.value || '').trim(), context:selectedChip('translation-contexts') || 'Auto', tone:selectedChip('translation-tones') || 'Natural', mode:'ai'},
-          {id:`ai-${Date.now().toString(36)}`, japanese:recommended.japanese, kana:recommended.kana||'', romaji:recommended.romaji||'', naturalMeaning:recommended.english||'', literalMeaning:data.why_natural||'', tone:recommended.register||'Native', usageNote:nativeNotes[0]||'', alternative:similar[0]?.japanese||'', context:selectedChip('translation-contexts')||'Auto', source:'online-ai', offline:false}
-        );
-      }
+      if (typeof window.addTranslationHistory === 'function' && r.japanese) window.addTranslationHistory(
+        {english:String($('translation-english')?.value || '').trim(),context:selectedChip('translation-contexts')||'Auto',tone:selectedChip('translation-tones')||'Natural',mode:'ai'},
+        {id:`ai-${Date.now().toString(36)}`,japanese:r.japanese,kana:r.kana||'',romaji:r.romaji||'',naturalMeaning:r.english||'',literalMeaning:data.why_natural||'',tone:r.register||'Native',usageNote:notes[0]||'',alternative:similar[0]?.japanese||'',context:selectedChip('translation-contexts')||'Auto',source:'online-ai',offline:false}
+      );
     } catch (error) { console.warn('Sakura AI translation history could not be saved.', error); }
-
     setMessage(`Sakura AI · ${data.model || config.model} · native-first analysis`, 'ready');
   }
 
@@ -158,96 +139,62 @@
     host.innerHTML = `<article class="sakura-ai-card sakura-ai-error"><span class="sakura-ai-badge">Sakura AI</span><h3>AI translation is unavailable right now.</h3><p>${esc(error?.message || 'Please try again.')}</p><div class="sakura-ai-actions"><button type="button" data-sakura-ai-retry>Try again</button><button type="button" data-sakura-ai-basic>Use basic online translator</button></div></article>`;
     setMessage('AI request failed. Sakura itself is still working normally.', 'error');
   }
-
   async function requestAi(payload){
     const controller = new AbortController();
     const timeout = window.setTimeout(()=>controller.abort(), TIMEOUT_MS);
-    const headers = {'Content-Type':'application/json','Accept':'application/json'};
-    if (config.gatewayKey) {
-      headers.apikey = config.gatewayKey;
-      headers.Authorization = `Bearer ${config.gatewayKey}`;
-    }
     try {
-      const response = await fetch(config.endpoint, {
-        method:'POST', headers, body:JSON.stringify(payload), signal:controller.signal, cache:'no-store', credentials:'omit'
-      });
+      const response = await fetch(config.endpoint, {method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json','apikey':config.gatewayKey},body:JSON.stringify(payload),signal:controller.signal,cache:'no-store',credentials:'omit'});
       const body = await response.json().catch(()=>({}));
       if (!response.ok) throw new Error(body?.error || `AI request failed (HTTP ${response.status}).`);
       if (!body?.recommended?.japanese) throw new Error('AI returned an incomplete translation.');
       return body;
     } finally { window.clearTimeout(timeout); }
   }
-
   function buildPayload(){
-    return {
-      text:String($('translation-english')?.value || '').trim().slice(0, MAX_INPUT),
-      direction:'english-to-japanese',
-      context:selectedChip('translation-contexts') || 'Auto',
-      tone:selectedChip('translation-tones') || 'Polite and natural',
-      medium:'Auto', jlpt_level:currentJlpt(), response_style:'native-tutor'
-    };
+    return {text:String($('translation-english')?.value || '').trim().slice(0,MAX_INPUT),direction:'english-to-japanese',context:selectedChip('translation-contexts')||'Auto',tone:selectedChip('translation-tones')||'Polite and natural',medium:'Auto',jlpt_level:currentJlpt(),response_style:'native-tutor'};
   }
-
   async function run(){
     if (!config.enabled) return false;
+    if (activeRequest) return activeRequest;
     const payload = buildPayload();
     if (!payload.text) { setMessage('Enter an English sentence first.', 'error'); return true; }
-    renderLoading();
-    setMessage('Sakura AI is checking native wording…', 'loading');
-    try { renderResult(await requestAi(payload)); }
-    catch (error) {
-      if (error?.name === 'AbortError') renderError(new Error('The AI request timed out. Please try again.'));
-      else renderError(error);
-    }
-    return true;
+    activeRequest = (async()=>{
+      renderLoading();
+      setMessage('Sakura AI is checking native wording…', 'loading');
+      try { renderResult(await requestAi(payload)); }
+      catch (error) { renderError(error?.name === 'AbortError' ? new Error('The AI request timed out. Please try again or use the basic translator.') : error); }
+      return true;
+    })().finally(()=>{ activeRequest = null; });
+    return activeRequest;
   }
-
   function speak(text){
     if (!text) return;
-    try {
-      speechSynthesis.cancel();
-      const utterance = new SpeechSynthesisUtterance(text);
-      utterance.lang = 'ja-JP'; utterance.rate = 0.9;
-      speechSynthesis.speak(utterance);
-    } catch {}
+    try { speechSynthesis.cancel(); const utterance = new SpeechSynthesisUtterance(text); utterance.lang='ja-JP'; utterance.rate=0.9; speechSynthesis.speak(utterance); } catch {}
   }
-
   function bind(){
     const form = $('translation-form');
     if (!form || form.dataset.sakuraAiBound === '1') return;
     form.dataset.sakuraAiBound = '1';
-
-    form.addEventListener('submit', event => {
+    form.addEventListener('submit', event=>{
       if (!config.enabled || !onlineModeActive()) return;
-      if (bypassOnce) { bypassOnce = false; return; }
+      if (bypassOnce) { bypassOnce=false; return; }
       event.preventDefault(); event.stopImmediatePropagation(); run();
     }, true);
-
-    document.addEventListener('click', async event => {
+    document.addEventListener('click', async event=>{
       if (event.target.closest('[data-sakura-ai-speak]')) { speak(currentResult?.recommended?.japanese || ''); return; }
       if (event.target.closest('[data-sakura-ai-copy]')) {
-        const result = currentResult?.recommended || {};
-        const text = [result.japanese,result.kana,result.romaji,result.english].filter(Boolean).join('\n');
-        try { await navigator.clipboard.writeText(text); setMessage('Copied Sakura AI translation.', 'ready'); }
-        catch { setMessage('Copy was blocked by the browser.', 'error'); }
+        const r=currentResult?.recommended||{}; const text=[r.japanese,r.kana,r.romaji,r.english].filter(Boolean).join('\n');
+        try { await navigator.clipboard.writeText(text); setMessage('Copied Sakura AI translation.','ready'); } catch { setMessage('Copy was blocked by the browser.','error'); }
         return;
       }
       if (event.target.closest('[data-sakura-ai-retry]')) { run(); return; }
-      if (event.target.closest('[data-sakura-ai-basic]')) {
-        bypassOnce = true; ensureHost().hidden = true; form.requestSubmit();
-      }
+      if (event.target.closest('[data-sakura-ai-basic]')) { bypassOnce=true; ensureHost().hidden=true; form.requestSubmit(); }
     });
-
-    document.querySelectorAll('[data-translation-mode]').forEach(button => button.addEventListener('click', () => {
-      if (button.dataset.translationMode !== 'online') ensureHost().hidden = true;
-    }));
+    document.querySelectorAll('[data-translation-mode]').forEach(button=>button.addEventListener('click',()=>{ if(button.dataset.translationMode!=='online') ensureHost().hidden=true; }));
   }
-
   function init(){
     injectStyles(); ensureHost(); decorateMode(); bind();
-    window.SakuraAITranslator = Object.freeze({version:'1.0.2', enabled:config.enabled, config, run:config.enabled ? run : ()=>Promise.resolve(false)});
+    window.SakuraAITranslator = Object.freeze({version:'1.1.0',enabled:config.enabled,config,run:config.enabled?run:()=>Promise.resolve(false)});
   }
-
-  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init, {once:true});
-  else init();
+  if (document.readyState==='loading') document.addEventListener('DOMContentLoaded',init,{once:true}); else init();
 }());
