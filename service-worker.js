@@ -1,4 +1,4 @@
-const SHELL_CACHE_VERSION = "sakura-shell-v144";
+const SHELL_CACHE_VERSION = "sakura-shell-v145";
 const KANJI_CONTENT_CACHE_VERSION = "sakura-kanji-content-v7";
 const TRAVEL_CONTENT_CACHE_VERSION = "sakura-travel-content-v1";
 const VOCABULARY_CONTENT_CACHE_VERSION = "sakura-vocabulary-content-v7";
@@ -11,11 +11,13 @@ const APP_SHELL = [
     "./study-suite.js?v=1",
     "./reading-garden.js?v=8",
     "./features/sakura-experience.js?v=3",
+    "./features/sakura-ai-translator.js?v=1",
+    "./data/ai-config.js?v=1",
     "./data/vocabulary.js?v=6",
     "./data/native-japanese.js?v=2",
     "./data/slang.js?v=2",
     "./data/travel.js?v=4",
-    "./data/kanji.js?v=21",
+    "./data/kanji.js?v=22",
     "./data/kanji/n5.json",
     "./data/vocabulary/n5.json?v=2",
     "./data/translation-phrases.json?v=1",
@@ -172,7 +174,9 @@ self.addEventListener(
             const shouldBypassHttpCache =
                 requestUrl.pathname.endsWith("/app.js") ||
                 requestUrl.pathname.endsWith("/data/kanji.js") ||
-                requestUrl.pathname.includes("/features/sakura-experience.");
+                requestUrl.pathname.includes("/features/sakura-experience.") ||
+                requestUrl.pathname.includes("/features/sakura-ai-translator.") ||
+                requestUrl.pathname.endsWith("/data/ai-config.js");
             const networkRequest = shouldBypassHttpCache
                 ? new Request(request, { cache:"no-cache" })
                 : request;
