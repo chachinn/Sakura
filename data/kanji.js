@@ -145,7 +145,7 @@
         if (window.SAKURA_AI_CONFIG) return Promise.resolve(window.SAKURA_AI_CONFIG);
         return loadScriptOnce({
             marker: "data-sakura-ai-config",
-            src: "./data/ai-config.js?v=1",
+            src: "./data/ai-config.js?v=2",
             ready: () => window.SAKURA_AI_CONFIG,
             warning: "Sakura AI configuration could not load. Core Sakura will continue normally."
         });
@@ -155,7 +155,7 @@
         await loadSakuraAiConfig();
         return loadScriptOnce({
             marker: "data-sakura-ai-translator",
-            src: "./features/sakura-ai-translator.js?v=1",
+            src: "./features/sakura-ai-translator.js?v=2",
             ready: () => window.SakuraAITranslator,
             warning: "Sakura AI Translator could not load. Core Sakura will continue normally."
         });
