@@ -13,7 +13,7 @@
   });
 
   window.SAKURA_AUTH_CONFIG = Object.freeze({
-    version: 1,
+    version: 2,
     enabled: true,
     projectUrl: "https://hrycfsekrvflrbwahgyh.supabase.co",
     publishableKey,
@@ -21,6 +21,53 @@
     paywallEnabled: false,
     trialDays: 3
   });
+
+  function loadExternalScript(url, marker, timeoutMs = 8000) {
+    return new Promise((resolve, reject) => {
+      const script = document.createElement("script");
+      let settled = false;
+      const finish = (callback, value) => {
+        if (settled) return;
+        settled = true;
+        clearTimeout(timeoutId);
+        callback(value);
+      };
+      const timeoutId = setTimeout(() => {
+        script.remove();
+        finish(reject, new Error(`Timed out loading ${url}`));
+      }, timeoutMs);
+      script.src = url;
+      script.dataset[marker] = "true";
+      script.async = true;
+      script.onload = () => finish(resolve, script);
+      script.onerror = () => {
+        script.remove();
+        finish(reject, new Error(`Could not load ${url}`));
+      };
+      document.head.appendChild(script);
+    });
+  }
+
+  async function ensureSupabaseSdk() {
+    if (window.supabase?.createClient) return window.supabase;
+    const sources = [
+      "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2",
+      "https://unpkg.com/@supabase/supabase-js@2"
+    ];
+    let lastError = null;
+    for (let index = 0; index < sources.length; index += 1) {
+      try {
+        await loadExternalScript(sources[index], "sakuraSupabaseSdkBootstrap");
+        if (window.supabase?.createClient) return window.supabase;
+        throw new Error("Supabase SDK loaded without createClient.");
+      }
+      catch (error) {
+        lastError = error;
+        console.warn(`Sakura Account SDK source ${index + 1} failed; ${index + 1 < sources.length ? "trying backup source." : "no backup source remains."}`, error);
+      }
+    }
+    throw lastError || new Error("Supabase SDK could not load.");
+  }
 
   function bootSakuraAccount() {
     if (window.SakuraAuth || document.querySelector("script[data-sakura-auth]")) return;
@@ -32,6 +79,17 @@
     document.body.appendChild(script);
   }
 
-  if (document.body) bootSakuraAccount();
-  else document.addEventListener("DOMContentLoaded", bootSakuraAccount, { once:true });
+  async function prepareSakuraAccount() {
+    try {
+      await ensureSupabaseSdk();
+      bootSakuraAccount();
+    }
+    catch (error) {
+      console.warn("Sakura Account connection library could not load. Core Sakura will continue normally.", error);
+      window.dispatchEvent(new CustomEvent("sakura:auth-sdk-error", { detail:{ retryable:true } }));
+    }
+  }
+
+  if (document.body) prepareSakuraAccount();
+  else document.addEventListener("DOMContentLoaded", prepareSakuraAccount, { once:true });
 }());
