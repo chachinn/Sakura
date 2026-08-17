@@ -1,9 +1,9 @@
-/* Sakura JLPT Quiz Engine v1 */
+/* Sakura JLPT Quiz Engine v2 */
 (function(){
 if(window.SakuraQuizEngine)return;
 const L=["N5","N4","N3","N2","N1"],cache=new Map(),pending=new Map();
 const level=v=>L.includes(v)?v:"N5";
-const tpl=(s,c)=>String(s||"").replace(/\{([a-z])\.([jec])\}/g,(_,a,f)=>String(c?.[a]?.[f]||""));
+const tpl=(s,c)=>String(s||"").replace(/\{([a-z])\.([jecr])\}/g,(_,a,f)=>String(c?.[a]?.[f]||""));
 function* combos(b,t){
  const entries=Object.entries(t[3]||{});
  if(!entries.length){yield{};return}
@@ -18,8 +18,8 @@ function* combos(b,t){
 function iter(b,t,kind){
  const g=combos(b,t);let n=0;
  return{next(){const r=g.next();if(r.done)return r;n++;const c=r.value;
-  if(kind==="t")return{done:false,value:{id:`${b.l}:translation:${t[0]}:${n}`,level:b.l,jp:tpl(t[1],c),en:tpl(t[2],c),jpAlternatives:(t[4]||[]).map(x=>tpl(x,c)),enAlternatives:(t[5]||[]).map(x=>tpl(x,c))}};
-  return{done:false,value:{id:`${b.l}:particle:${t[0]}:${n}`,level:b.l,sentence:tpl(t[1],c),answers:(t[2]||[]).map(x=>tpl(x,c)),choices:(t[5]||[]).map(x=>tpl(x,c)),explanation:tpl(t[4],c)}};
+  if(kind==="t")return{done:false,value:{id:`${b.l}:translation:${t[0]}:${n}`,level:b.l,jp:tpl(t[1],c),en:tpl(t[2],c),jpAlternatives:(t[4]||[]).map(x=>tpl(x,c)),enAlternatives:(t[5]||[]).map(x=>tpl(x,c)),romaji:tpl(t[6],c)}};
+  return{done:false,value:{id:`${b.l}:particle:${t[0]}:${n}`,level:b.l,sentence:tpl(t[1],c),answers:(t[2]||[]).map(x=>tpl(x,c)),choices:(t[5]||[]).map(x=>tpl(x,c)),explanation:tpl(t[4],c),romaji:tpl(t[6],c)}};
  }};
 }
 function materialize(b,kind,target){
@@ -36,7 +36,7 @@ function materialize(b,kind,target){
 }
 async function load(v){
  const l=level(v);if(cache.has(l))return cache.get(l);if(pending.has(l))return pending.get(l);
- const p=fetch(`./data/quizzes/${l.toLowerCase()}.json?v=1`,{cache:"no-cache"})
+ const p=fetch(`./data/quizzes/${l.toLowerCase()}.json?v=2`,{cache:"no-cache"})
   .then(r=>{if(!r.ok)throw new Error(`Quiz content HTTP ${r.status}`);return r.json()})
   .then(b=>{if(!b||b.l!==l||!b.x||!Array.isArray(b.t)||!Array.isArray(b.p))throw new Error(`Invalid ${l} quiz bank`);cache.set(l,b);return b})
   .finally(()=>pending.delete(l));
@@ -56,7 +56,7 @@ function gradeTranslation(value,item,direction){
  if(v===norm(canonical))return{accepted:true,kind:"exact"};
  if((alts||[]).some(x=>v===norm(x)))return{accepted:true,kind:"alternative"};
  if(!jp){
-  const close=[canonical,...(alts||[])].map(norm).find(x=>x.length>=5&&Math.abs(v.length-x.length)<= (x.length>=18?2:1)&&distance(v,x)<= (x.length>=18?2:1));
+  const close=[canonical,...(alts||[])].map(norm).find(x=>x.length>=5&&Math.abs(v.length-x.length)<=(x.length>=18?2:1)&&distance(v,x)<=(x.length>=18?2:1));
   if(close)return{accepted:true,kind:"close"};
  }
  return{accepted:false,kind:"wrong"};
@@ -70,9 +70,9 @@ function balanced(items,count){
  return out;
 }
 window.SakuraQuizEngine=Object.freeze({
- version:1,levels:L,load,
- translationPool:async v=>{const b=await load(v),x=materialize(b,"t",Math.max(1000,+b.translationTarget||1200));if(x.length<1000)throw new Error(`${b.l} needs at least 1000 translation prompts`);return x},
- particlePool:async v=>{const b=await load(v);return materialize(b,"p",Math.max(100,+b.particleTarget||320))},
+ version:2,levels:L,load,
+ translationPool:async v=>{const b=await load(v),x=materialize(b,"t",Math.max(1200,+b.translationTarget||1200));if(x.length<1000)throw new Error(`${b.l} needs at least 1000 translation prompts`);return x},
+ particlePool:async v=>{const b=await load(v),x=materialize(b,"p",Math.max(1200,+b.particleTarget||1200));if(x.length<1000)throw new Error(`${b.l} needs at least 1000 particle prompts`);return x},
  gradeTranslation,gradeParticle,balanced,shuffle,normEn,normJp
 });
 }());
