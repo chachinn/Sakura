@@ -25,7 +25,7 @@ const APP_SHELL = [
     "./data/native-japanese.js?v=2",
     "./data/slang.js?v=2",
     "./data/travel.js?v=4",
-    "./data/kanji.js?v=22",
+    "./data/kanji.js?v=23",
     "./data/kanji/n5.json",
     "./data/vocabulary/n5.json?v=2",
     "./data/translation-phrases.json?v=1",
