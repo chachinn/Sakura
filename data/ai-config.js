@@ -69,7 +69,21 @@
     throw lastError || new Error("Supabase SDK could not load.");
   }
 
+  function bootQuizLabStyle() {
+    const existing = document.querySelector("link[data-sakura-quiz-lab-style]");
+    if (existing) {
+      if (!existing.href.includes("v=2")) existing.href = "./features/sakura-quiz-lab.css?v=2";
+      return;
+    }
+    const link = document.createElement("link");
+    link.rel = "stylesheet";
+    link.href = "./features/sakura-quiz-lab.css?v=2";
+    link.dataset.sakuraQuizLabStyle = "true";
+    document.head.appendChild(link);
+  }
+
   function bootQuizLab() {
+    bootQuizLabStyle();
     if (window.SakuraQuizLab || document.querySelector("script[data-sakura-quiz-lab]")) return;
     const script = document.createElement("script");
     script.src = "./features/sakura-quiz-lab.js?v=1";
