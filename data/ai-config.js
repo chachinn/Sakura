@@ -82,8 +82,19 @@
     document.head.appendChild(link);
   }
 
+  function bootQuizMobilePolishStyle() {
+    const existing = document.querySelector("link[data-sakura-quiz-mobile-polish]");
+    if (existing) return;
+    const link = document.createElement("link");
+    link.rel = "stylesheet";
+    link.href = "./features/sakura-quiz-mobile-polish.css?v=1";
+    link.dataset.sakuraQuizMobilePolish = "true";
+    document.head.appendChild(link);
+  }
+
   function bootQuizLab() {
     bootQuizLabStyle();
+    bootQuizMobilePolishStyle();
     if (window.SakuraQuizLab?.version >= 2 || document.querySelector("script[data-sakura-quiz-lab]")) return;
     const script = document.createElement("script");
     script.src = "./features/sakura-quiz-lab.js?v=2";
