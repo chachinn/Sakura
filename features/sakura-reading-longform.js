@@ -1,4 +1,4 @@
-/* Sakura Reading Garden Long-form Features v1.2
+/* Sakura Reading Garden Long-form Features v1.3
    Turns the 50 curated Article shelf entries into substantial, multi-section
    source-grounded feature readings by combining related verified readings
    from the same JLPT level + topic. No filler and no extra archive records. */
@@ -13,6 +13,7 @@ const MAX_SOURCE_SECTIONS=5;
 const MIN_SOURCE_SECTIONS=3;
 const LIBRARY_KEY='sakuraReadingGardenLibraryV2';
 let ready=false,qualityIds=new Set(),metaById=new Map(),composed=new Set(),inFlight=new Map(),bypassOnce=new Set(),observer=null,patchTimer=0;
+const setText=(node,value)=>{const text=String(value??'');if(node&&node.textContent!==text)node.textContent=text;};
 
 function rankArticle(a,b){
  return (+b.estimatedMinutes||0)-(+a.estimatedMinutes||0)||
@@ -180,12 +181,12 @@ function patchUi(){
    const tags=card.querySelector('.reading-article-tags');
    if(tags){
     [...tags.querySelectorAll('.reading-article-tag')].forEach(tag=>{
-     if(/^\d+\s*min$/i.test(tag.textContent.trim())&&!composed.has(id))tag.textContent='Feature length';
+     if(/^\d+\s*min$/i.test(tag.textContent.trim())&&!composed.has(id))setText(tag,'Feature length');
     });
    }
    let badge=card.querySelector('.sakura-longform-badge');
    if(!badge&&tags){badge=document.createElement('span');badge.className='reading-article-tag sakura-longform-badge';tags.appendChild(badge);}
-   if(badge)badge.textContent=composed.has(id)?'Long-form ready':'Long-form feature';
+   if(badge)setText(badge,composed.has(id)?'Long-form ready':'Long-form feature');
   });
  }
  const reader=document.getElementById('reading-article-reader');
@@ -221,6 +222,6 @@ async function init(){
   schedulePatch();
  }catch(error){console.warn('Sakura Reading Long-form could not initialize; the existing Quality Shelf remains available.',error);}
 }
-window.SakuraReadingLongForm=Object.freeze({version:1.2,init,compose,get qualityArticleCount(){return qualityIds.size},get composedCount(){return composed.size}});
+window.SakuraReadingLongForm=Object.freeze({version:1.3,init,compose,get qualityArticleCount(){return qualityIds.size},get composedCount(){return composed.size}});
 init();
 }());
