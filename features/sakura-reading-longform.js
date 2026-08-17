@@ -1,4 +1,4 @@
-/* Sakura Reading Garden Long-form Features v1.1
+/* Sakura Reading Garden Long-form Features v1.2
    Turns the 50 curated Article shelf entries into substantial, multi-section
    source-grounded feature readings by combining related verified readings
    from the same JLPT level + topic. No filler and no extra archive records. */
@@ -175,8 +175,6 @@ function interceptKey(event){
 function patchUi(){
  const browser=document.getElementById('reading-articles-browser');
  if(browser&&!browser.hidden){
-  const hero=browser.querySelector('.reading-browser-hero p');
-  if(hero)hero.textContent='50 substantial Quality Feature Articles are curated across all 5 JLPT study levels and 10 topics. Each visible article opens as a multi-section reading built from several verified same-topic source adaptations—quality and completeness matter more than a fixed word count.';
   browser.querySelectorAll('[data-reading-open-article]').forEach(card=>{
    const id=card.dataset.readingOpenArticle;if(!qualityIds.has(id))return;
    const tags=card.querySelector('.reading-article-tags');
@@ -223,6 +221,6 @@ async function init(){
   schedulePatch();
  }catch(error){console.warn('Sakura Reading Long-form could not initialize; the existing Quality Shelf remains available.',error);}
 }
-window.SakuraReadingLongForm=Object.freeze({version:1.1,init,compose,get qualityArticleCount(){return qualityIds.size},get composedCount(){return composed.size}});
+window.SakuraReadingLongForm=Object.freeze({version:1.2,init,compose,get qualityArticleCount(){return qualityIds.size},get composedCount(){return composed.size}});
 init();
 }());
