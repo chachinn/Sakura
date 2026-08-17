@@ -145,7 +145,7 @@
         if (window.SAKURA_AI_CONFIG) return Promise.resolve(window.SAKURA_AI_CONFIG);
         return loadScriptOnce({
             marker: "data-sakura-ai-config",
-            src: "./data/ai-config.js?v=6",
+            src: "./data/ai-config.js?v=9",
             ready: () => window.SAKURA_AI_CONFIG,
             warning: "Sakura AI configuration could not load. Core Sakura will continue normally."
         });
