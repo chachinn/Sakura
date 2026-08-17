@@ -1,8 +1,9 @@
-const SHELL_CACHE_VERSION = "sakura-shell-v148";
+const SHELL_CACHE_VERSION = "sakura-shell-v149";
 const KANJI_CONTENT_CACHE_VERSION = "sakura-kanji-content-v7";
 const TRAVEL_CONTENT_CACHE_VERSION = "sakura-travel-content-v1";
 const VOCABULARY_CONTENT_CACHE_VERSION = "sakura-vocabulary-content-v7";
 const READING_CONTENT_CACHE_VERSION = "sakura-reading-content-v7";
+const QUIZ_CONTENT_CACHE_VERSION = "sakura-quiz-content-v1";
 
 const APP_SHELL = [
     "./index.html",
@@ -14,6 +15,9 @@ const APP_SHELL = [
     "./features/sakura-ai-translator.js?v=2",
     "./features/sakura-auth.js?v=2",
     "./features/sakura-google-oauth.js?v=1",
+    "./features/sakura-quiz-lab.js?v=1",
+    "./features/sakura-quiz-engine.js?v=1",
+    "./features/sakura-quiz-lab.css?v=1",
     "./data/ai-config.js?v=2",
     "./data/vocabulary.js?v=6",
     "./data/native-japanese.js?v=2",
@@ -74,7 +78,8 @@ self.addEventListener(
                                         cacheName !== KANJI_CONTENT_CACHE_VERSION &&
                                         cacheName !== TRAVEL_CONTENT_CACHE_VERSION &&
                                         cacheName !== VOCABULARY_CONTENT_CACHE_VERSION &&
-                                        cacheName !== READING_CONTENT_CACHE_VERSION
+                                        cacheName !== READING_CONTENT_CACHE_VERSION &&
+                                        cacheName !== QUIZ_CONTENT_CACHE_VERSION
                                 )
                                 .map(
                                     cacheName =>
@@ -144,15 +149,20 @@ self.addEventListener(
             const isReadingContent =
                 requestUrl.pathname.includes("/data/reading/") &&
                 requestUrl.pathname.endsWith(".json");
+            const isQuizContent =
+                requestUrl.pathname.includes("/data/quizzes/") &&
+                requestUrl.pathname.endsWith(".json");
 
-            if (isKanjiContent || isTravelContent || isVocabularyContent || isReadingContent) {
+            if (isKanjiContent || isTravelContent || isVocabularyContent || isReadingContent || isQuizContent) {
                 const contentCacheName = isKanjiContent
                     ? KANJI_CONTENT_CACHE_VERSION
                     : isTravelContent
                         ? TRAVEL_CONTENT_CACHE_VERSION
                         : isVocabularyContent
                             ? VOCABULARY_CONTENT_CACHE_VERSION
-                            : READING_CONTENT_CACHE_VERSION;
+                            : isReadingContent
+                                ? READING_CONTENT_CACHE_VERSION
+                                : QUIZ_CONTENT_CACHE_VERSION;
                 event.respondWith(
                     fetch(request)
                         .then(async response => {
@@ -180,6 +190,8 @@ self.addEventListener(
                 requestUrl.pathname.includes("/features/sakura-ai-translator.") ||
                 requestUrl.pathname.includes("/features/sakura-auth.") ||
                 requestUrl.pathname.includes("/features/sakura-google-oauth.") ||
+                requestUrl.pathname.includes("/features/sakura-quiz-lab.") ||
+                requestUrl.pathname.includes("/features/sakura-quiz-engine.") ||
                 requestUrl.pathname.endsWith("/data/ai-config.js");
             const networkRequest = shouldBypassHttpCache
                 ? new Request(request, { cache:"no-cache" })
