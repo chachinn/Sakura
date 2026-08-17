@@ -1,4 +1,4 @@
-/* Sakura JLPT Quiz Engine v2.2 */
+/* Sakura JLPT Quiz Engine v2.3 */
 (function(){
 if(window.SakuraQuizEngine)return;
 const L=["N5","N4","N3","N2","N1"],cache=new Map(),pending=new Map();
@@ -6,22 +6,29 @@ const level=v=>L.includes(v)?v:"N5";
 const PARTICLE_ROMAJI=Object.freeze({"で":"de","に":"ni","へ":"e","を":"o","と":"to","は":"wa","が":"ga","から":"kara","ので":"node","ながら":"nagara","しか":"shika","より":"yori","について":"ni tsuite","に対して":"ni taishite","によって":"ni yotte","として":"to shite","たびに":"tabi ni","うちに":"uchi ni","に関して":"ni kanshite","に応じて":"ni oujite","に伴って":"ni tomonatte","に基づいて":"ni motozuite","に限らず":"ni kagirazu","上で":"ue de","末に":"sue ni","と相まって":"to aimatte","に鑑みて":"ni kangamite","にかかわらず":"ni kakawarazu","をよそに":"o yoso ni","どころか":"dokoro ka","や否や":"ya inaya","をめぐって":"o megutte"});
 const PARTICLE_ROMAJI_ALIASES=Object.freeze({"は":["wa","ha"],"へ":["e","he"],"を":["o","wo"]});
 const q=(j,e,c,r)=>({j,e,c,r});
+
 const N5_PEOPLE=Object.freeze([
- q("友だち","my friend","My friend","tomodachi"),q("家族","my family","My family","kazoku"),q("姉","my older sister","My older sister","ane"),
- q("兄","my older brother","My older brother","ani"),q("母","my mother","My mother","haha"),q("父","my father","My father","chichi")
+ q("友だち","my friend","My friend","tomodachi"),q("家族","my family","My family","kazoku"),
+ q("姉","my older sister","My older sister","ane"),q("兄","my older brother","My older brother","ani"),
+ q("クラスメート","my classmate","My classmate","kurasumeeto"),q("同僚","my coworker","My coworker","douryou")
 ]);
 const ACTIVITY_PLACES=Object.freeze([
- q("カフェ","a café","A café","kafe"),q("図書館","the library","The library","toshokan"),q("学校","school","School","gakkou"),
- q("家","home","Home","ie"),q("公園","the park","The park","kouen"),q("駅","the station","The station","eki")
+ q("カフェ","a café","A café","kafe"),q("図書館","the library","The library","toshokan"),
+ q("学校","school","School","gakkou"),q("家","home","Home","ie"),
+ q("公園","the park","The park","kouen"),q("教室","the classroom","The classroom","kyoushitsu")
 ]);
 const N5_ACTIVITIES=Object.freeze([
- q("日本語を勉強します","study Japanese","Study Japanese","nihongo o benkyou shimasu"),q("本を読みます","read a book","Read a book","hon o yomimasu"),
- q("音楽を聞きます","listen to music","Listen to music","ongaku o kikimasu"),q("写真を見ます","look at photos","Look at photos","shashin o mimasu"),
- q("ノートを書きます","write in a notebook","Write in a notebook","nooto o kakimasu"),q("メールを書きます","write an email","Write an email","meeru o kakimasu")
+ q("日本語を勉強します","study Japanese","Study Japanese","nihongo o benkyou shimasu"),
+ q("本を読みます","read a book","Read a book","hon o yomimasu"),
+ q("音楽を聞きます","listen to music","Listen to music","ongaku o kikimasu"),
+ q("写真を見ます","look at photos","Look at photos","shashin o mimasu"),
+ q("ノートを書きます","write in a notebook","Write in a notebook","nooto o kakimasu"),
+ q("日本語を練習します","practice Japanese","Practice Japanese","nihongo o renshuu shimasu")
 ]);
 const MEAL_PLACES=Object.freeze([
- q("レストラン","a restaurant","A restaurant","resutoran"),q("食堂","a dining hall","A dining hall","shokudou"),q("フードコート","a food court","A food court","fuudo kooto"),
- q("ホテルのレストラン","the hotel restaurant","The hotel restaurant","hoteru no resutoran"),q("駅のレストラン","a restaurant at the station","A restaurant at the station","eki no resutoran"),
+ q("レストラン","a restaurant","A restaurant","resutoran"),q("食堂","a dining hall","A dining hall","shokudou"),
+ q("フードコート","a food court","A food court","fuudo kooto"),q("ホテルのレストラン","the hotel restaurant","The hotel restaurant","hoteru no resutoran"),
+ q("駅のレストラン","a restaurant at the station","A restaurant at the station","eki no resutoran"),
  q("デパートのレストラン","a department-store restaurant","A department-store restaurant","depaato no resutoran")
 ]);
 const MEAL_FOODS=Object.freeze([
@@ -29,67 +36,105 @@ const MEAL_FOODS=Object.freeze([
  q("うどん","udon","Udon","udon"),q("そば","soba","Soba","soba"),q("定食","a set meal","A set meal","teishoku")
 ]);
 const N5_DESTINATIONS=Object.freeze([
- q("カフェ","a café","A café","kafe"),q("図書館","the library","The library","toshokan"),q("学校","school","School","gakkou"),
- q("公園","the park","The park","kouen"),q("駅","the station","The station","eki"),q("レストラン","a restaurant","A restaurant","resutoran")
+ q("カフェ","a café","A café","kafe"),q("図書館","the library","The library","toshokan"),
+ q("公園","the park","The park","kouen"),q("駅","the station","The station","eki"),
+ q("レストラン","a restaurant","A restaurant","resutoran"),q("デパート","the department store","The department store","depaato")
 ]);
 const N4_PLANS=Object.freeze([
- q("京都へ旅行する","travel to Kyoto","Travel to Kyoto","Kyouto e ryokou suru"),q("部屋を掃除する","clean my room","Clean my room","heya o souji suru"),
- q("友だちに電話する","call my friend","Call my friend","tomodachi ni denwa suru"),q("新しい本を読む","read a new book","Read a new book","atarashii hon o yomu"),
- q("日本語を復習する","review Japanese","Review Japanese","nihongo o fukushuu suru"),q("買い物に行く","go shopping","Go shopping","kaimono ni iku")
+ q("部屋を掃除する","clean my room","Clean my room","heya o souji suru"),
+ q("友だちに電話する","call my friend","Call my friend","tomodachi ni denwa suru"),
+ q("新しい本を読む","read a new book","Read a new book","atarashii hon o yomu"),
+ q("早く寝る","go to bed early","Go to bed early","hayaku neru"),
+ q("日本語を復習する","review Japanese","Review Japanese","nihongo o fukushuu suru"),
+ q("買い物をする","go shopping","Go shopping","kaimono o suru")
 ]);
 const DISCUSSION_PLACES=Object.freeze([
- q("カフェ","a café","A café","kafe"),q("ファミレス","a family restaurant","A family restaurant","famiresu"),q("公園","the park","The park","kouen"),
- q("オンライン会議","an online call","An online call","onrain kaigi"),q("駅の近くのカフェ","a café near the station","A café near the station","eki no chikaku no kafe"),q("レストラン","a restaurant","A restaurant","resutoran")
+ q("カフェ","a café","A café","kafe"),q("学校","school","School","gakkou"),
+ q("職場","work","Work","shokuba"),q("会議室","the meeting room","The meeting room","kaigishitsu"),
+ q("オンライン会議","an online meeting","An online meeting","onrain kaigi"),q("レストラン","a restaurant","A restaurant","resutoran")
 ]);
 const DISCUSSION_PEOPLE=Object.freeze([
- q("友だち","my friend","My friend","tomodachi"),q("同僚","my coworker","My coworker","douryou"),q("先生","my teacher","My teacher","sensei"),
- q("先輩","my senior","My senior","senpai"),q("知り合い","an acquaintance","An acquaintance","shiriai"),q("クラスメート","my classmate","My classmate","kurasumeeto")
+ q("友だち","my friend","My friend","tomodachi"),q("同僚","my coworker","My coworker","douryou"),
+ q("クラスメート","my classmate","My classmate","kurasumeeto"),q("先生","my teacher","My teacher","sensei"),
+ q("先輩","my senior","My senior","senpai"),q("知り合い","an acquaintance","An acquaintance","shiriai")
 ]);
 const DISCUSSION_TOPICS=Object.freeze([
- q("旅行の予定","travel plans","Travel plans","ryokou no yotei"),q("日本語の勉強方法","ways to study Japanese","Ways to study Japanese","nihongo no benkyou houhou"),
- q("週末の予定","weekend plans","Weekend plans","shuumatsu no yotei"),q("最近のニュース","recent news","Recent news","saikin no nyuusu"),
- q("次のイベント","the next event","The next event","tsugi no ibento"),q("今後の目標","future goals","Future goals","kongo no mokuhyou"),
- q("おすすめの店","recommended places","Recommended places","osusume no mise"),q("日本で行きたい場所","places I want to visit in Japan","Places I want to visit in Japan","Nihon de ikitai basho")
+ q("旅行の予定","travel plans","Travel plans","ryokou no yotei"),
+ q("日本語の勉強方法","ways to study Japanese","Ways to study Japanese","nihongo no benkyou houhou"),
+ q("週末の予定","weekend plans","Weekend plans","shuumatsu no yotei"),
+ q("最近のニュース","recent news","Recent news","saikin no nyuusu"),
+ q("次のイベント","the next event","The next event","tsugi no ibento"),
+ q("今後の目標","future goals","Future goals","kongo no mokuhyou"),
+ q("好きな場所","favorite places","Favorite places","suki na basho"),
+ q("日本でやりたいこと","things I want to do in Japan","Things I want to do in Japan","Nihon de yaritai koto")
+]);
+const WORK_TIMES=Object.freeze([
+ q("今週","this week","This week","konshuu"),q("先週","last week","Last week","senshuu"),
+ q("昨日","yesterday","Yesterday","kinou"),q("今朝","this morning","This morning","kesa"),
+ q("午後","this afternoon","This afternoon","gogo"),q("先日","the other day","The other day","senjitsu")
 ]);
 const WORK_TOPICS=Object.freeze([
- q("新しいサービス","the new service","The new service","atarashii saabisu"),q("次のイベント","the next event","The next event","tsugi no ibento"),
- q("今後の目標","future goals","Future goals","kongo no mokuhyou"),q("仕事の進め方","how to proceed with work","How to proceed with work","shigoto no susumekata"),
- q("運用方法","the operating method","The operating method","unyou houhou"),q("計画の見直し","the plan review","The plan review","keikaku no minaoshi")
+ q("新しいサービス","the new service","The new service","atarashii saabisu"),
+ q("次のイベント","the next event","The next event","tsugi no ibento"),
+ q("今後の目標","future goals","Future goals","kongo no mokuhyou"),
+ q("仕事の進め方","how to proceed with work","How to proceed with work","shigoto no susumekata"),
+ q("運用方法","the operating method","The operating method","unyou houhou"),
+ q("計画の見直し","the plan review","The plan review","keikaku no minaoshi")
 ]);
+
 const tpl=(s,c)=>String(s||"").replace(/\{([a-z])\.([jecr])\}/g,(_,a,f)=>String(c?.[a]?.[f]||""));
 const template=(list,id)=>list.find(row=>row?.[0]===id);
 function retarget(list,id,slot,pool){const row=template(list,id);if(row?.[3])row[3][slot]=pool;}
-function replaceTonight(values){return(Array.isArray(values)?values:[]).map(value=>value?.j==="今夜"?{...value,j:"今晩",r:"konban"}:value);}
+function replaceTonight(values){return(Array.isArray(values)?values:[]).map(value=>value?.j==="今夜"?{...value,j:"今晩",e:"tonight",c:"Tonight",r:"konban"}:value);}
+
 function polishBank(bank){
  const b=bank;b.x={...b.x};
  if(b.l==="N5"){
-  b.x.time=replaceTonight(b.x.time);b.x.person=[...N5_PEOPLE];b.x.activity=[...N5_ACTIVITIES];b.x.activityPlace=[...ACTIVITY_PLACES];b.x.mealPlace=[...MEAL_PLACES];b.x.mealFood=[...MEAL_FOODS];b.x.destinationPlace=[...N5_DESTINATIONS];
+  b.x.time=replaceTonight(b.x.time);
+  b.x.person=[...N5_PEOPLE];b.x.activity=[...N5_ACTIVITIES];b.x.activityPlace=[...ACTIVITY_PLACES];
+  b.x.mealPlace=[...MEAL_PLACES];b.x.mealFood=[...MEAL_FOODS];b.x.destinationPlace=[...N5_DESTINATIONS];
   retarget(b.t,"eat","c","mealPlace");retarget(b.t,"eat","d","mealFood");retarget(b.t,"go","c","destinationPlace");
   retarget(b.p,"de","b","activityPlace");retarget(b.p,"de-big-matrix","c","mealPlace");retarget(b.p,"de-big-matrix","d","mealFood");
-  const daily=template(b.t,"daily-matrix");if(daily){daily[1]="{a.j}、{c.j}で{d.j}。";daily[2]="{a.c}, I will {d.e} at {c.e}.";daily[3]={a:"time",c:"activityPlace",d:"activity"};daily[5]=["I will {d.e} at {c.e} {a.e}."];daily[6]="{a.r}, {c.r} de {d.r}.";}
-  const buy=template(b.t,"buy");if(buy){buy[1]="{a.j}、{c.j}を買います。";buy[2]="{a.c}, I will buy {c.e}.";buy[3]={a:"time",c:"item"};buy[5]=["I will buy {c.e} {a.e}."];buy[6]="{a.r}, {c.r} o kaimasu.";}
+  const daily=template(b.t,"daily-matrix");
+  if(daily){daily[1]="{a.j}、{c.j}で{d.j}。";daily[2]="{a.c}, I will {d.e} at {c.e}.";daily[3]={a:"time",c:"activityPlace",d:"activity"};daily[5]=["I will {d.e} at {c.e} {a.e}."];daily[6]="{a.r}, {c.r} de {d.r}.";}
+  const buy=template(b.t,"buy");
+  if(buy){buy[1]="{a.j}、{c.j}を買います。";buy[2]="{a.c}, I will buy {c.e}.";buy[3]={a:"time",c:"item"};buy[5]=["I will buy {c.e} {a.e}."];buy[6]="{a.r}, {c.r} o kaimasu.";}
  }
  if(b.l==="N4"){
   b.x.time=replaceTonight(b.x.time);b.x.plan=[...N4_PLANS];b.x.mealPlace=[...MEAL_PLACES];b.x.mealFood=[...MEAL_FOODS];
-  retarget(b.t,"after-matrix","c","mealPlace");retarget(b.t,"after-matrix","d","mealFood");retarget(b.p,"de-matrix","c","mealPlace");retarget(b.p,"de-matrix","d","mealFood");
+  retarget(b.t,"after-matrix","c","mealPlace");retarget(b.t,"after-matrix","d","mealFood");
+  retarget(b.p,"de-matrix","c","mealPlace");retarget(b.p,"de-matrix","d","mealFood");
  }
  if(b.l==="N3"){
   b.x.discussionPlace=[...DISCUSSION_PLACES];b.x.discussionPerson=[...DISCUSSION_PEOPLE];b.x.discussionTopic=[...DISCUSSION_TOPICS];
   retarget(b.t,"discussion-matrix","b","discussionPlace");retarget(b.t,"discussion-matrix","c","discussionPerson");retarget(b.t,"discussion-matrix","d","discussionTopic");
   retarget(b.p,"nitsuite","a","discussionPlace");retarget(b.p,"nitsuite","b","discussionPerson");retarget(b.p,"nitsuite","c","discussionTopic");
+  retarget(b.p,"nitaishite","a","discussionPerson");
   retarget(b.p,"about-matrix","a","discussionPlace");retarget(b.p,"about-matrix","b","discussionTopic");
   retarget(b.p,"about-big-matrix","b","discussionPlace");retarget(b.p,"about-big-matrix","c","discussionPerson");retarget(b.p,"about-big-matrix","d","discussionTopic");
  }
  if(b.l==="N2"){
-  b.x.workTopic=[...WORK_TOPICS];
-  retarget(b.t,"formal-matrix","d","workTopic");retarget(b.p,"nikanshite","c","workTopic");retarget(b.p,"regarding-matrix","b","workTopic");retarget(b.p,"regarding-big-matrix","d","workTopic");
+  b.x.time=[...WORK_TIMES];b.x.workTopic=[...WORK_TOPICS];
+  retarget(b.t,"formal-matrix","d","workTopic");
+  retarget(b.p,"nikanshite","c","workTopic");retarget(b.p,"regarding-matrix","b","workTopic");retarget(b.p,"regarding-big-matrix","d","workTopic");
  }
  if(b.l==="N1"){
-  b.x.workTopic=[...WORK_TOPICS];
+  b.x.time=[...WORK_TIMES];b.x.workTopic=[...WORK_TOPICS];
   retarget(b.t,"deliberation-matrix","d","workTopic");retarget(b.p,"sueni","c","workTopic");
+  const combined=template(b.t,"combined");
+  if(combined){
+   combined[1]="十分な準備が現場の協力と相まって、計画は予想以上に早く進みました。";
+   combined[2]="Careful preparation, combined with cooperation on the ground, helped the plan move faster than expected.";
+   combined[3]={};combined[4]=[];combined[5]=[];combined[6]="juubun na junbi ga genba no kyouryoku to aimatte, keikaku wa yosou ijou ni hayaku susumimashita.";
+  }
+  const aima=template(b.p,"aima");
+  if(aima){aima[1]="十分な準備が現場の協力＿、計画は予想以上に早く進みました。";aima[3]={};aima[6]="juubun na junbi ga genba no kyouryoku ___, keikaku wa yosou ijou ni hayaku susumimashita.";}
+  const combinedMatrix=template(b.p,"combined-matrix");
+  if(combinedMatrix){combinedMatrix[1]="技術の進歩が利用者の増加＿、新しいサービスへの関心も高まりました。";combinedMatrix[3]={};combinedMatrix[6]="gijutsu no shinpo ga riyousha no zouka ___, atarashii saabisu e no kanshin mo takamarimashita.";}
  }
  return b;
 }
+
 function* combos(b,t){
  const entries=Object.entries(t[3]||{});
  if(!entries.length){yield{};return}
@@ -108,7 +153,10 @@ function iter(b,t,kind){
   return{done:false,value:{id:`${b.l}:particle:${t[0]}:${n}`,level:b.l,sentence:tpl(t[1],c),answers:(t[2]||[]).map(x=>tpl(x,c)),choices:(t[5]||[]).map(x=>tpl(x,c)),explanation:tpl(t[4],c),romaji:tpl(t[6],c)}};
  }};
 }
-const UNNATURAL_PATTERNS=[/(図書館|学校|公園|職場|駅)で(ラーメン|カレー|寿司|うどん|そば|定食|ケーキ)を食/,/カフェで(ラーメン|カレー|寿司|うどん|そば|定食)を食/];
+const UNNATURAL_PATTERNS=[
+ /(図書館|学校|公園|職場|駅|教室)で(ラーメン|カレー|寿司|うどん|そば|定食|ケーキ)を食/,
+ /カフェで(ラーメン|カレー|寿司|うどん|そば|定食)を食/
+];
 const naturalCandidate=item=>!UNNATURAL_PATTERNS.some(pattern=>pattern.test(item.jp||item.sentence||""));
 function materialize(b,kind,target){
  const source=kind==="t"?b.t:b.p,its=source.map(t=>iter(b,t,kind)),out=[],seen=new Set();
@@ -116,7 +164,8 @@ function materialize(b,kind,target){
  while(its.length&&out.length<target&&guard<target*Math.max(30,source.length)){guard++;
   for(let i=its.length-1;i>=0&&out.length<target;i--){
    const r=its[i].next();if(r.done){its.splice(i,1);continue}
-   const x=r.value;if(!naturalCandidate(x))continue;const key=kind==="t"?`${x.jp}\0${x.en}`:`${x.sentence}\0${x.answers.join("|")}`;
+   const x=r.value;if(!naturalCandidate(x))continue;
+   const key=kind==="t"?`${x.jp}\0${x.en}`:`${x.sentence}\0${x.answers.join("|")}`;
    if(seen.has(key))continue;seen.add(key);out.push(x);
   }
  }
@@ -124,7 +173,7 @@ function materialize(b,kind,target){
 }
 async function load(v){
  const l=level(v);if(cache.has(l))return cache.get(l);if(pending.has(l))return pending.get(l);
- const p=fetch(`./data/quizzes/${l.toLowerCase()}.json?v=2`,{cache:"no-cache"})
+ const p=fetch(`./data/quizzes/${l.toLowerCase()}.json?v=3`,{cache:"no-cache"})
   .then(r=>{if(!r.ok)throw new Error(`Quiz content HTTP ${r.status}`);return r.json()})
   .then(b=>{if(!b||b.l!==l||!b.x||!Array.isArray(b.t)||!Array.isArray(b.p))throw new Error(`Invalid ${l} quiz bank`);const polished=polishBank(b);cache.set(l,polished);return polished})
   .finally(()=>pending.delete(l));
@@ -157,10 +206,15 @@ function balanced(items,count){
  while(buckets.length&&out.length<count){const i=cursor%buckets.length,b=buckets[i],x=b.pop();if(x)out.push(x);if(!b.length){buckets.splice(i,1);if(!buckets.length)break;cursor%=buckets.length}else cursor++}
  return out;
 }
+function requireTarget(bank,items,kind){
+ const target=Math.max(1200,+(kind==="t"?bank.translationTarget:bank.particleTarget)||1200);
+ if(items.length<target)throw new Error(`${bank.l} ${kind==="t"?"translation":"particle"} quality pool produced ${items.length}; ${target} required.`);
+ return items;
+}
 window.SakuraQuizEngine=Object.freeze({
- version:2.2,qualityVersion:1,levels:L,load,
- translationPool:async v=>{const b=await load(v),x=materialize(b,"t",Math.max(1200,+b.translationTarget||1200));if(x.length<1000)throw new Error(`${b.l} needs at least 1000 translation prompts`);return x},
- particlePool:async v=>{const b=await load(v),x=materialize(b,"p",Math.max(1200,+b.particleTarget||1200));if(x.length<1000)throw new Error(`${b.l} needs at least 1000 particle prompts`);return x},
+ version:2.3,qualityVersion:2,levels:L,load,
+ translationPool:async v=>{const b=await load(v);return requireTarget(b,materialize(b,"t",Math.max(1200,+b.translationTarget||1200)),"t")},
+ particlePool:async v=>{const b=await load(v);return requireTarget(b,materialize(b,"p",Math.max(1200,+b.particleTarget||1200)),"p")},
  gradeTranslation,gradeParticle,balanced,shuffle,normEn,normJp,normRomaji
 });
 }());
