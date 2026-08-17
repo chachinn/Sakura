@@ -1,4 +1,4 @@
-const SHELL_CACHE_VERSION = "sakura-shell-v155";
+const SHELL_CACHE_VERSION = "sakura-shell-v156";
 const KANJI_CONTENT_CACHE_VERSION = "sakura-kanji-content-v7";
 const TRAVEL_CONTENT_CACHE_VERSION = "sakura-travel-content-v1";
 const VOCABULARY_CONTENT_CACHE_VERSION = "sakura-vocabulary-content-v7";
@@ -22,7 +22,8 @@ const APP_SHELL = [
     "./features/sakura-quiz-lab.js?v=2",
     "./features/sakura-quiz-engine.js?v=2",
     "./features/sakura-quiz-lab.css?v=4",
-    "./data/ai-config.js?v=7",
+    "./features/sakura-quiz-mobile-polish.css?v=1",
+    "./data/ai-config.js?v=8",
     "./data/vocabulary.js?v=6",
     "./data/native-japanese.js?v=2",
     "./data/slang.js?v=2",
@@ -196,6 +197,7 @@ self.addEventListener(
                 requestUrl.pathname.includes("/features/sakura-google-oauth.") ||
                 requestUrl.pathname.includes("/features/sakura-quiz-lab.") ||
                 requestUrl.pathname.includes("/features/sakura-quiz-engine.") ||
+                requestUrl.pathname.includes("/features/sakura-quiz-mobile-polish.") ||
                 requestUrl.pathname.includes("/features/sakura-reading-quality.") ||
                 requestUrl.pathname.includes("/features/sakura-reading-longform.") ||
                 requestUrl.pathname.includes("/features/sakura-reading-complete.") ||
