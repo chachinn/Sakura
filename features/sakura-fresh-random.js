@@ -222,6 +222,7 @@
 
   function chooseNavigationMode(mode) {
     const travel = mode === 'travel';
+    const targetRoute = travel ? 'travel' : 'practice';
     const toggle = document.getElementById('travel-mode-toggle');
     if (typeof window.setTravelModeEnabled === 'function') {
       window.setTravelModeEnabled(travel);
@@ -231,7 +232,10 @@
     }
     syncModeSwitch();
     document.getElementById('close-hub')?.click();
-    setTimeout(() => window.showRoute?.(travel ? 'travel' : 'practice'), 0);
+    setTimeout(() => {
+      const targetView = document.querySelector(`[data-view="${targetRoute}"]`);
+      if (!targetView || targetView.hidden) window.showRoute?.(targetRoute);
+    }, 0);
   }
 
   function ensureModeSwitch() {
