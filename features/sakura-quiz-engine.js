@@ -49,8 +49,9 @@ function polishBank(bank){
  const b=bank;b.x={...b.x};
  if(b.l==="N5"){
   b.x.time=replaceTonight(b.x.time);b.x.person=[...N5_PEOPLE];b.x.activity=[...N5_ACTIVITIES];b.x.activityPlace=[...ACTIVITY_PLACES];b.x.mealPlace=[...MEAL_PLACES];b.x.mealFood=[...MEAL_FOODS];b.x.destinationPlace=[...N5_DESTINATIONS];
-  retarget(b.t,"daily-matrix","c","activityPlace");retarget(b.t,"eat","c","mealPlace");retarget(b.t,"eat","d","mealFood");retarget(b.t,"go","c","destinationPlace");
+  retarget(b.t,"eat","c","mealPlace");retarget(b.t,"eat","d","mealFood");retarget(b.t,"go","c","destinationPlace");
   retarget(b.p,"de","b","activityPlace");retarget(b.p,"de-big-matrix","c","mealPlace");retarget(b.p,"de-big-matrix","d","mealFood");
+  const daily=template(b.t,"daily-matrix");if(daily){daily[1]="{a.j}、{c.j}で{d.j}。";daily[2]="{a.c}, I will {d.e} at {c.e}.";daily[3]={a:"time",c:"activityPlace",d:"activity"};daily[5]=["I will {d.e} at {c.e} {a.e}."];daily[6]="{a.r}, {c.r} de {d.r}.";}
   const buy=template(b.t,"buy");if(buy){buy[1]="{a.j}、{c.j}を買います。";buy[2]="{a.c}, I will buy {c.e}.";buy[3]={a:"time",c:"item"};buy[5]=["I will buy {c.e} {a.e}."];buy[6]="{a.r}, {c.r} o kaimasu.";}
  }
  if(b.l==="N4"){
