@@ -93,6 +93,16 @@
     document.body.appendChild(script);
   }
 
+  function bootReadingQuality() {
+    if (window.SakuraReadingQuality || document.querySelector("script[data-sakura-reading-quality]")) return;
+    const script = document.createElement("script");
+    script.src = "./features/sakura-reading-quality.js?v=1";
+    script.dataset.sakuraReadingQuality = "true";
+    script.async = true;
+    script.onerror = () => console.warn("Sakura Reading quality layer could not load. Core Reading Garden will remain available.");
+    document.body.appendChild(script);
+  }
+
   function bootGoogleOAuthLauncher() {
     if (window.SakuraGoogleOAuthLauncher || document.querySelector("script[data-sakura-google-oauth]")) return;
     const script = document.createElement("script");
@@ -127,6 +137,7 @@
   }
 
   function bootSakuraServices() {
+    bootReadingQuality();
     bootQuizLab();
     prepareSakuraAccount();
   }
