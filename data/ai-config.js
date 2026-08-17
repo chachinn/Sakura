@@ -72,21 +72,21 @@
   function bootQuizLabStyle() {
     const existing = document.querySelector("link[data-sakura-quiz-lab-style]");
     if (existing) {
-      if (!existing.href.includes("v=3")) existing.href = "./features/sakura-quiz-lab.css?v=3";
+      if (!existing.href.includes("v=4")) existing.href = "./features/sakura-quiz-lab.css?v=4";
       return;
     }
     const link = document.createElement("link");
     link.rel = "stylesheet";
-    link.href = "./features/sakura-quiz-lab.css?v=3";
+    link.href = "./features/sakura-quiz-lab.css?v=4";
     link.dataset.sakuraQuizLabStyle = "true";
     document.head.appendChild(link);
   }
 
   function bootQuizLab() {
     bootQuizLabStyle();
-    if (window.SakuraQuizLab || document.querySelector("script[data-sakura-quiz-lab]")) return;
+    if (window.SakuraQuizLab?.version >= 2 || document.querySelector("script[data-sakura-quiz-lab]")) return;
     const script = document.createElement("script");
-    script.src = "./features/sakura-quiz-lab.js?v=1";
+    script.src = "./features/sakura-quiz-lab.js?v=2";
     script.dataset.sakuraQuizLab = "true";
     script.async = true;
     script.onerror = () => console.warn("Sakura JLPT Quiz Lab could not load. Existing quizzes will remain available.");

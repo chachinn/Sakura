@@ -1,9 +1,9 @@
-const SHELL_CACHE_VERSION = "sakura-shell-v150";
+const SHELL_CACHE_VERSION = "sakura-shell-v151";
 const KANJI_CONTENT_CACHE_VERSION = "sakura-kanji-content-v7";
 const TRAVEL_CONTENT_CACHE_VERSION = "sakura-travel-content-v1";
 const VOCABULARY_CONTENT_CACHE_VERSION = "sakura-vocabulary-content-v7";
 const READING_CONTENT_CACHE_VERSION = "sakura-reading-content-v7";
-const QUIZ_CONTENT_CACHE_VERSION = "sakura-quiz-content-v1";
+const QUIZ_CONTENT_CACHE_VERSION = "sakura-quiz-content-v2";
 
 const APP_SHELL = [
     "./index.html",
@@ -15,10 +15,10 @@ const APP_SHELL = [
     "./features/sakura-ai-translator.js?v=2",
     "./features/sakura-auth.js?v=2",
     "./features/sakura-google-oauth.js?v=1",
-    "./features/sakura-quiz-lab.js?v=1",
-    "./features/sakura-quiz-engine.js?v=1",
-    "./features/sakura-quiz-lab.css?v=3",
-    "./data/ai-config.js?v=3",
+    "./features/sakura-quiz-lab.js?v=2",
+    "./features/sakura-quiz-engine.js?v=2",
+    "./features/sakura-quiz-lab.css?v=4",
+    "./data/ai-config.js?v=4",
     "./data/vocabulary.js?v=6",
     "./data/native-japanese.js?v=2",
     "./data/slang.js?v=2",

@@ -1,22 +1,23 @@
 {
-  "version": 1,
+  "version": 2,
   "feature": "Sakura JLPT Quiz Lab",
   "targets": {
     "translationPerLevel": 1200,
-    "particlePerLevel": 320
+    "particlePerLevel": 1200
   },
   "levels": {
-    "N5": {"file": "n5.json", "translationReady": 1200, "particleReady": 320},
-    "N4": {"file": "n4.json", "translationReady": 1200, "particleReady": 320},
-    "N3": {"file": "n3.json", "translationReady": 1200, "particleReady": 320},
-    "N2": {"file": "n2.json", "translationReady": 1200, "particleReady": 320},
-    "N1": {"file": "n1.json", "translationReady": 1200, "particleReady": 320}
+    "N5": {"file": "n5.json", "translationReady": 1200, "particleReady": 1200},
+    "N4": {"file": "n4.json", "translationReady": 1200, "particleReady": 1200},
+    "N3": {"file": "n3.json", "translationReady": 1200, "particleReady": 1200},
+    "N2": {"file": "n2.json", "translationReady": 1200, "particleReady": 1200},
+    "N1": {"file": "n1.json", "translationReady": 1200, "particleReady": 1200}
   },
   "grading": {
     "japanese": "NFKC + punctuation/spacing normalization + stored natural alternatives; no semantic fuzzy guessing.",
     "english": "NFKC + stored natural alternatives + very small typo-distance tolerance.",
     "particles": "Exact normalized match against one or more context-valid answers."
   },
+  "romaji": "Curated per sentence frame and lexicon; hidden by default and revealed only on request. EN to JP translation does not reveal romaji before answering because it would expose the Japanese answer.",
   "content": "Curated level-specific grammar frames with compatible lexicons; Sakura study-support levels, not official JLPT sentence classifications.",
   "loading": "Each level bank is fetched only when the new quiz is opened."
 }
