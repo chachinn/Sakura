@@ -32,9 +32,24 @@ const N5_DESTINATIONS=Object.freeze([
  q("カフェ","a café","A café","kafe"),q("図書館","the library","The library","toshokan"),q("学校","school","School","gakkou"),
  q("公園","the park","The park","kouen"),q("駅","the station","The station","eki"),q("レストラン","a restaurant","A restaurant","resutoran")
 ]);
+const N4_PLANS=Object.freeze([
+ q("京都へ旅行する","travel to Kyoto","Travel to Kyoto","Kyouto e ryokou suru"),q("部屋を掃除する","clean my room","Clean my room","heya o souji suru"),
+ q("友だちに電話する","call my friend","Call my friend","tomodachi ni denwa suru"),q("新しい本を読む","read a new book","Read a new book","atarashii hon o yomu"),
+ q("日本語を復習する","review Japanese","Review Japanese","nihongo o fukushuu suru"),q("買い物に行く","go shopping","Go shopping","kaimono ni iku")
+]);
 const DISCUSSION_PLACES=Object.freeze([
- q("カフェ","a café","A café","kafe"),q("職場","work","Work","shokuba"),q("学校","school","School","gakkou"),
- q("会議室","the meeting room","The meeting room","kaigishitsu"),q("オンライン会議","an online meeting","An online meeting","onrain kaigi"),q("休憩室","the break room","The break room","kyuukeishitsu")
+ q("カフェ","a café","A café","kafe"),q("ファミレス","a family restaurant","A family restaurant","famiresu"),q("公園","the park","The park","kouen"),
+ q("オンライン会議","an online call","An online call","onrain kaigi"),q("駅の近くのカフェ","a café near the station","A café near the station","eki no chikaku no kafe"),q("レストラン","a restaurant","A restaurant","resutoran")
+]);
+const DISCUSSION_PEOPLE=Object.freeze([
+ q("友だち","my friend","My friend","tomodachi"),q("同僚","my coworker","My coworker","douryou"),q("先生","my teacher","My teacher","sensei"),
+ q("先輩","my senior","My senior","senpai"),q("知り合い","an acquaintance","An acquaintance","shiriai"),q("クラスメート","my classmate","My classmate","kurasumeeto")
+]);
+const DISCUSSION_TOPICS=Object.freeze([
+ q("旅行の予定","travel plans","Travel plans","ryokou no yotei"),q("日本語の勉強方法","ways to study Japanese","Ways to study Japanese","nihongo no benkyou houhou"),
+ q("週末の予定","weekend plans","Weekend plans","shuumatsu no yotei"),q("最近のニュース","recent news","Recent news","saikin no nyuusu"),
+ q("次のイベント","the next event","The next event","tsugi no ibento"),q("今後の目標","future goals","Future goals","kongo no mokuhyou"),
+ q("おすすめの店","recommended places","Recommended places","osusume no mise"),q("日本で行きたい場所","places I want to visit in Japan","Places I want to visit in Japan","Nihon de ikitai basho")
 ]);
 const WORK_TOPICS=Object.freeze([
  q("新しいサービス","the new service","The new service","atarashii saabisu"),q("次のイベント","the next event","The next event","tsugi no ibento"),
@@ -55,12 +70,15 @@ function polishBank(bank){
   const buy=template(b.t,"buy");if(buy){buy[1]="{a.j}、{c.j}を買います。";buy[2]="{a.c}, I will buy {c.e}.";buy[3]={a:"time",c:"item"};buy[5]=["I will buy {c.e} {a.e}."];buy[6]="{a.r}, {c.r} o kaimasu.";}
  }
  if(b.l==="N4"){
-  b.x.time=replaceTonight(b.x.time);b.x.mealPlace=[...MEAL_PLACES];b.x.mealFood=[...MEAL_FOODS];
+  b.x.time=replaceTonight(b.x.time);b.x.plan=[...N4_PLANS];b.x.mealPlace=[...MEAL_PLACES];b.x.mealFood=[...MEAL_FOODS];
   retarget(b.t,"after-matrix","c","mealPlace");retarget(b.t,"after-matrix","d","mealFood");retarget(b.p,"de-matrix","c","mealPlace");retarget(b.p,"de-matrix","d","mealFood");
  }
  if(b.l==="N3"){
-  b.x.discussionPlace=[...DISCUSSION_PLACES];
-  retarget(b.t,"discussion-matrix","b","discussionPlace");retarget(b.p,"nitsuite","a","discussionPlace");retarget(b.p,"about-matrix","a","discussionPlace");retarget(b.p,"about-big-matrix","b","discussionPlace");
+  b.x.discussionPlace=[...DISCUSSION_PLACES];b.x.discussionPerson=[...DISCUSSION_PEOPLE];b.x.discussionTopic=[...DISCUSSION_TOPICS];
+  retarget(b.t,"discussion-matrix","b","discussionPlace");retarget(b.t,"discussion-matrix","c","discussionPerson");retarget(b.t,"discussion-matrix","d","discussionTopic");
+  retarget(b.p,"nitsuite","a","discussionPlace");retarget(b.p,"nitsuite","b","discussionPerson");retarget(b.p,"nitsuite","c","discussionTopic");
+  retarget(b.p,"about-matrix","a","discussionPlace");retarget(b.p,"about-matrix","b","discussionTopic");
+  retarget(b.p,"about-big-matrix","b","discussionPlace");retarget(b.p,"about-big-matrix","c","discussionPerson");retarget(b.p,"about-big-matrix","d","discussionTopic");
  }
  if(b.l==="N2"){
   b.x.workTopic=[...WORK_TOPICS];
