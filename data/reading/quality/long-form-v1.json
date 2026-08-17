@@ -1,0 +1,73 @@
+{
+  "version": 1,
+  "policy": {
+    "maxCuratedPerMaterial": 50,
+    "principle": "Quality over quantity. Existing sourced archives are preserved; new Reading Garden targets are capped at 50 curated pieces per material type.",
+    "articleArchiveCount": 300,
+    "storyArchiveCount": 100
+  },
+  "articles": {
+    "source-article-n5-beauty-iccr20": {
+      "qualityTier": "long-form",
+      "extraMinutes": 3,
+      "verifiedDate": "2026-08-17",
+      "deepDive": [
+        {"japanese":"会議には、日本、ブラジル、カナダ、台湾、EU、イスラエル、韓国、米国がメンバーとして参加しました。今回、英国も新しいメンバーになることが決まりました。","english":"Japan, Brazil, Canada, Taiwan, the EU, Israel, South Korea, and the United States participated as members. The United Kingdom was also approved as a new member at this meeting."},
+        {"japanese":"4つの作業グループでは、安全性評価、電子ラベル、消費者への情報、20周年宣言について進み方を確認しました。電子ラベルでは、化粧品の情報をデジタルで伝えるための一般原則が承認されました。","english":"Four working groups reported progress on safety assessment, electronic labeling, consumer communication, and the 20th-anniversary declaration. The electronic-labeling group approved general principles for providing cosmetics information digitally."},
+        {"japanese":"東京宣言では、科学に基づく消費者保護、国や地域の規制協力、消費者・企業・研究者などとの対話を大切にするとしています。次の会議は2027年7月にテルアビブで開かれる予定です。","english":"The Tokyo Declaration emphasizes science-based consumer protection, regulatory cooperation across countries and regions, and dialogue with consumers, industry, researchers, and other stakeholders. The next meeting is planned for Tel Aviv in July 2027."}
+      ]
+    },
+    "source-article-n5-food-plan": {
+      "qualityTier": "long-form",
+      "extraMinutes": 3,
+      "verifiedDate": "2026-08-17",
+      "deepDive": [
+        {"japanese":"この計画は、改正された食育基本法の考え方を具体的な行動につなげるために作られました。国は、およそ5年間、食育の取り組みを計画的に進めます。","english":"The plan was created to turn the ideas in the revised Basic Act on Shokuiku into concrete action. Japan will promote food-education measures systematically for roughly five years."},
+        {"japanese":"特に大切なことは三つあります。学校などで食と農業について学ぶこと、大人も食について学び続けること、そして食卓と食べ物を作る現場の距離を近くすることです。","english":"Three priorities are highlighted: learning about food and agriculture in schools and similar settings, continuing food education for adults, and bringing consumers closer to the places where food is produced."},
+        {"japanese":"目標は、個人の目標と地域の目標に分けて整理されます。計画では、結果を確認して改善するPDCAの考え方も使い、食育を国全体の取り組みとして広げていく方針です。","english":"The goals are organized into individual and regional targets. The plan also uses a PDCA approach to check results and improve measures, with the aim of expanding food education as a nationwide movement."}
+      ]
+    },
+    "source-article-n5-travel-plan": {
+      "qualityTier": "long-form",
+      "extraMinutes": 4,
+      "verifiedDate": "2026-08-17",
+      "deepDive": [
+        {"japanese":"新しい計画では、観光を日本と地域の経済を支える大切な産業と考えています。観光を長く続けられる形にすること、旅行で使われるお金を増やすこと、地方への旅行を増やすことなどが方向として示されました。","english":"The new plan treats tourism as an important industry supporting Japan's national and regional economies. Its directions include making tourism sustainable, increasing visitor spending, and encouraging more travel to regional areas."},
+        {"japanese":"外国からの旅行者を増やすだけではなく、地域に住む人の生活も大切にします。地方への旅行を広げてオーバーツーリズムを防ぐこと、国内旅行や海外旅行を増やすこと、観光DXや人材確保を進めることも計画に入っています。","english":"The plan is not only about increasing international visitors; it also emphasizes residents' quality of life. It includes spreading visitors to regional areas to address overtourism, expanding domestic and outbound travel, and promoting tourism digital transformation and workforce development."},
+        {"japanese":"2030年の目標として、訪日外国人旅行者6,000万人、旅行消費額15兆円などは続けます。さらに、地方を訪れたいリピーターや地方での宿泊数など、新しい目標も設定します。","english":"Japan keeps its 2030 goals of 60 million international visitors and 15 trillion yen in inbound travel spending, while adding new targets related to repeat visitors interested in regional destinations and overnight stays outside major urban areas."}
+      ]
+    },
+    "source-article-n5-health-heat-2026-notice": {
+      "qualityTier": "long-form",
+      "extraMinutes": 3,
+      "verifiedDate": "2026-08-17",
+      "deepDive": [
+        {"japanese":"熱中症の対策は、一つの省だけで行うものではありません。関係する省庁が会議を作り、予防の知識や地域の対策を一緒に進めています。","english":"Heatstroke prevention is not handled by a single ministry. Relevant government agencies coordinate through a joint council to promote prevention knowledge and local measures."},
+        {"japanese":"環境省は暑さ指数（WBGT）の予報、気象庁は気温や天気の情報、消防庁は熱中症による救急搬送の情報を出しています。いろいろな情報を合わせて見ることが大切です。","english":"The Ministry of the Environment provides WBGT forecasts, the Japan Meteorological Agency provides temperature and weather information, and the Fire and Disaster Management Agency publishes heatstroke emergency-transport data. Looking at several sources together can help people respond to heat risk."},
+        {"japanese":"厚生労働省のページには、一般向けの予防資料だけでなく、職場、高齢者、障害のある人などに向けた情報もあります。予防リーフレットには、英語やタガログ語を含む多くの言語版も用意されています。","english":"The MHLW page provides not only general prevention materials but also information for workplaces, older people, people with disabilities, and others. Prevention leaflets are available in many languages, including English and Tagalog."}
+      ]
+    }
+  },
+  "stories": {
+    "classic-rashomon": {
+      "qualityTier": "guided-long-read",
+      "verifiedDate": "2026-08-17",
+      "guideTitle": "物語を深く読む（内容の要約・ネタバレあり）",
+      "guideParagraphs": [
+        {"japanese":"物語の初め、主人から仕事を失った下人は、雨の夕方に羅生門の下で立ち止まっています。京都は災害などで荒れ、人々の生活も苦しくなっています。下人は、このままでは生きていけないと考えながらも、盗人になる決心まではできません。","english":"At the beginning, a servant who has lost his position waits under Rashomon in the evening rain. Kyoto has been devastated by disasters and life is difficult. He knows he must somehow survive, but he cannot yet bring himself to become a thief."},
+        {"japanese":"門の上に上がると、下人は死体の髪を抜いている老婆を見つけます。最初はその行為を強く悪いことだと思います。しかし老婆は、生きるために髪を売ろうとしているのだと説明し、死んだ女も生きるために人をだましていたと話します。","english":"Upstairs, the servant discovers an old woman pulling hair from corpses. At first he sees her act as clearly evil. The woman explains that she plans to sell the hair in order to survive, and says the dead woman had also deceived others to stay alive."},
+        {"japanese":"老婆の『生きるためには仕方がない』という考えを聞いた下人は、その論理を自分にも使います。最後には老婆の着物を奪って暗い夜へ逃げます。物語は、追いこまれた人間が善悪をどう考えるのかを強く問いかけます。","english":"After hearing the woman's argument that survival leaves her no choice, the servant applies the same logic to himself. He steals her clothes and disappears into the night. The story sharply questions how people judge right and wrong when they are desperate to survive."}
+      ]
+    },
+    "classic-hana": {
+      "qualityTier": "guided-long-read",
+      "verifiedDate": "2026-08-17",
+      "guideTitle": "物語を深く読む（内容の要約・ネタバレあり）",
+      "guideParagraphs": [
+        {"japanese":"禅智内供は、とても長い鼻を長年気にしています。食事の時にも不便で、人に笑われることも心配です。ただし、自分が鼻を気にしていると周りに知られることも嫌なので、表面では平気なふりをします。","english":"Zenchi Naigu has worried about his unusually long nose for years. It causes practical problems when he eats, and he fears being laughed at. At the same time, he does not want others to know how much it bothers him, so he pretends not to care."},
+        {"japanese":"ある日、弟子が鼻を短くする方法を教わってきます。熱い湯で鼻を温め、踏むという方法を試すと、本当に鼻が短くなります。内供は安心しますが、周りの人は前よりもおかしそうに笑うようになります。","english":"One day, a disciple learns a method for shortening the nose. After the nose is heated and pressed, it really does become shorter. Naigu feels relieved, but the people around him begin laughing at him even more openly than before."},
+        {"japanese":"作品は、他人が不幸な時には同情しても、その人が不幸から抜け出すと複雑な気持ちになることがある、という人間の心を描きます。やがて鼻は元の長さに戻り、内供は意外にも晴れやかな気持ちになります。","english":"The story explores a contradictory part of human nature: people may sympathize with someone's misfortune, yet feel strangely dissatisfied when that person escapes it. Eventually Naigu's nose returns to its old length, and to his surprise he feels relieved."}
+      ]
+    }
+  }
+}
