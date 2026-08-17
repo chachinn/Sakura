@@ -1,8 +1,10 @@
-/* Sakura JLPT Quiz Engine v2 */
+/* Sakura JLPT Quiz Engine v2.1 */
 (function(){
 if(window.SakuraQuizEngine)return;
 const L=["N5","N4","N3","N2","N1"],cache=new Map(),pending=new Map();
 const level=v=>L.includes(v)?v:"N5";
+const PARTICLE_ROMAJI=Object.freeze({"で":"de","に":"ni","へ":"e","を":"o","と":"to","は":"wa","が":"ga","から":"kara","ので":"node","ながら":"nagara","しか":"shika","より":"yori","について":"ni tsuite","に対して":"ni taishite","によって":"ni yotte","として":"to shite","たびに":"tabi ni","うちに":"uchi ni","に関して":"ni kanshite","に応じて":"ni oujite","に伴って":"ni tomonatte","に基づいて":"ni motozuite","に限らず":"ni kagirazu","上で":"ue de","末に":"sue ni","と相まって":"to aimatte","に鑑みて":"ni kangamite","にかかわらず":"ni kakawarazu","をよそに":"o yoso ni","どころか":"dokoro ka","や否や":"ya inaya","をめぐって":"o megutte"});
+const PARTICLE_ROMAJI_ALIASES=Object.freeze({"は":["wa","ha"],"へ":["e","he"],"を":["o","wo"]});
 const tpl=(s,c)=>String(s||"").replace(/\{([a-z])\.([jecr])\}/g,(_,a,f)=>String(c?.[a]?.[f]||""));
 function* combos(b,t){
  const entries=Object.entries(t[3]||{});
@@ -44,6 +46,7 @@ async function load(v){
 }
 const normEn=v=>String(v||"").normalize("NFKC").toLowerCase().replace(/[’‘]/g,"'").replace(/&/g," and ").replace(/[^a-z0-9'\s-]/g," ").replace(/\s+/g," ").trim();
 const normJp=v=>String(v||"").normalize("NFKC").replace(/[。、，．！？!?「」『』（）()\[\]【】・…‥〜~"'“”‘’\s]/g,"").trim();
+const normRomaji=v=>String(v||"").normalize("NFKC").toLowerCase().replace(/[’‘]/g,"'").replace(/[āáàâä]/g,"a").replace(/[īíìîï]/g,"i").replace(/[ūúùûü]/g,"u").replace(/[ēéèêë]/g,"e").replace(/[ōóòôö]/g,"o").replace(/[^a-z0-9'\s-]/g," ").replace(/[-_]+/g," ").replace(/\s+/g," ").trim();
 function distance(a,b){
  if(a===b)return 0;if(!a)return b.length;if(!b)return a.length;
  const p=Array.from({length:b.length+1},(_,i)=>i);
@@ -55,13 +58,27 @@ function gradeTranslation(value,item,direction){
  if(!v)return{accepted:false,kind:"empty"};
  if(v===norm(canonical))return{accepted:true,kind:"exact"};
  if((alts||[]).some(x=>v===norm(x)))return{accepted:true,kind:"alternative"};
+ if(jp){
+  const romaji=normRomaji(value),modelRomaji=normRomaji(item.romaji);
+  if(romaji&&modelRomaji&&romaji===modelRomaji)return{accepted:true,kind:"alternative",inputMode:"romaji"};
+ }
  if(!jp){
   const close=[canonical,...(alts||[])].map(norm).find(x=>x.length>=5&&Math.abs(v.length-x.length)<=(x.length>=18?2:1)&&distance(v,x)<=(x.length>=18?2:1));
   if(close)return{accepted:true,kind:"close"};
  }
  return{accepted:false,kind:"wrong"};
 }
-const gradeParticle=(value,item)=>{const v=normJp(value);return !!v&&item.answers.some(x=>normJp(x)===v)};
+function particleRomajiForms(answer){
+ const canonical=PARTICLE_ROMAJI[answer];
+ const aliases=PARTICLE_ROMAJI_ALIASES[answer]||[];
+ return [...new Set([canonical,...aliases].filter(Boolean).map(normRomaji).filter(Boolean))];
+}
+const gradeParticle=(value,item)=>{
+ const jp=normJp(value);
+ if(jp&&item.answers.some(x=>normJp(x)===jp))return true;
+ const romaji=normRomaji(value);
+ return !!romaji&&item.answers.some(answer=>particleRomajiForms(answer).includes(romaji));
+};
 const shuffle=a=>{const x=[...a];for(let i=x.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[x[i],x[j]]=[x[j],x[i]]}return x};
 function balanced(items,count){
  const g=new Map();items.forEach(x=>{const k=String(x.id).split(":")[2];if(!g.has(k))g.set(k,[]);g.get(k).push(x)});
@@ -70,9 +87,9 @@ function balanced(items,count){
  return out;
 }
 window.SakuraQuizEngine=Object.freeze({
- version:2,levels:L,load,
+ version:2.1,levels:L,load,
  translationPool:async v=>{const b=await load(v),x=materialize(b,"t",Math.max(1200,+b.translationTarget||1200));if(x.length<1000)throw new Error(`${b.l} needs at least 1000 translation prompts`);return x},
  particlePool:async v=>{const b=await load(v),x=materialize(b,"p",Math.max(1200,+b.particleTarget||1200));if(x.length<1000)throw new Error(`${b.l} needs at least 1000 particle prompts`);return x},
- gradeTranslation,gradeParticle,balanced,shuffle,normEn,normJp
+ gradeTranslation,gradeParticle,balanced,shuffle,normEn,normJp,normRomaji
 });
 }());
