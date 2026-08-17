@@ -69,6 +69,16 @@
     throw lastError || new Error("Supabase SDK could not load.");
   }
 
+  function bootQuizLab() {
+    if (window.SakuraQuizLab || document.querySelector("script[data-sakura-quiz-lab]")) return;
+    const script = document.createElement("script");
+    script.src = "./features/sakura-quiz-lab.js?v=1";
+    script.dataset.sakuraQuizLab = "true";
+    script.async = true;
+    script.onerror = () => console.warn("Sakura JLPT Quiz Lab could not load. Existing quizzes will remain available.");
+    document.body.appendChild(script);
+  }
+
   function bootGoogleOAuthLauncher() {
     if (window.SakuraGoogleOAuthLauncher || document.querySelector("script[data-sakura-google-oauth]")) return;
     const script = document.createElement("script");
@@ -102,6 +112,11 @@
     }
   }
 
-  if (document.body) prepareSakuraAccount();
-  else document.addEventListener("DOMContentLoaded", prepareSakuraAccount, { once:true });
+  function bootSakuraServices() {
+    bootQuizLab();
+    prepareSakuraAccount();
+  }
+
+  if (document.body) bootSakuraServices();
+  else document.addEventListener("DOMContentLoaded", bootSakuraServices, { once:true });
 }());

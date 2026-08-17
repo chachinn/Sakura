@@ -1,0 +1,40 @@
+/* Sakura JLPT Quiz Lab v1 */
+.sakura-quiz-lab-tabbar{display:flex;overflow-x:auto;scrollbar-width:none;overscroll-behavior-x:contain;-webkit-overflow-scrolling:touch}
+.sakura-quiz-lab-tabbar::-webkit-scrollbar{display:none}
+.sakura-quiz-lab-tabbar .tab-button{flex:0 0 auto;min-width:max-content}
+.sakura-quiz-lab-panel{display:grid;gap:13px}
+.sakura-quiz-lab-config{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.sakura-quiz-lab-config.particle-config{grid-template-columns:repeat(2,minmax(0,1fr))}
+.sakura-quiz-lab-config label{display:grid;gap:5px;color:var(--color-text-muted);font-size:8px;font-weight:800}
+.sakura-quiz-lab-config select{width:100%;min-height:42px;padding:9px 10px;border:1px solid var(--color-border);border-radius:11px;background:var(--color-surface);color:var(--color-text);font:inherit;font-size:10px}
+.sakura-quiz-lab-setup{display:grid;gap:10px}
+.sakura-quiz-lab-setup>p{margin:0;color:var(--color-text-muted);font-size:9px;line-height:1.55}
+.sakura-quiz-lab-setup>p strong{color:var(--color-primary-dark)}
+.sakura-quiz-lab-status{min-height:16px;margin:0;color:var(--color-text-muted);font-size:8px;text-align:center}
+.sakura-quiz-lab-progress{margin-bottom:11px}
+.sakura-quiz-lab-progress>strong{margin-left:auto}
+.sakura-translation-prompt,.sakura-particle-prompt{display:grid;gap:6px;padding:14px;border:1px solid color-mix(in srgb,var(--color-primary) 20%,var(--color-border));border-radius:15px;background:color-mix(in srgb,var(--color-primary-soft) 48%,var(--color-surface))}
+.sakura-translation-prompt>span,.sakura-particle-prompt>span{color:var(--color-text-muted);font-size:8px;font-weight:800;text-transform:uppercase;letter-spacing:.05em}
+.sakura-translation-prompt>p,.sakura-particle-prompt>p{margin:0;color:var(--color-text);font-size:18px;font-weight:850;line-height:1.55;overflow-wrap:anywhere}
+.sakura-quiz-answer-area{min-height:86px;resize:vertical;line-height:1.5}
+.sakura-particle-answer{text-align:center;font-size:18px;font-weight:850}
+.sakura-quiz-feedback{margin-top:10px}
+.sakura-quiz-feedback .practice-answer-reading{display:grid;gap:4px}
+.sakura-quiz-feedback .practice-answer-reading strong{font-size:16px;line-height:1.5}
+.sakura-accepted-answers{margin-top:8px;padding:8px 10px;border:1px solid var(--color-border);border-radius:11px;background:var(--color-surface)}
+.sakura-accepted-answers summary{cursor:pointer;color:var(--color-primary-dark);font-size:9px;font-weight:850}
+.sakura-accepted-answers ul{margin:8px 0 0;padding-left:18px;color:var(--color-text-muted);font-size:9px;line-height:1.5}
+.sakura-particle-hint{margin-top:8px;padding:9px 10px;border-radius:11px;background:var(--color-primary-soft);color:var(--color-primary-dark);font-size:11px;font-weight:850;text-align:center;word-spacing:9px}
+.sakura-quiz-complete{padding:18px 8px}
+.sakura-quiz-lab-complete-actions{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px}
+@media(max-width:520px){
+  .sakura-quiz-lab-config{grid-template-columns:1fr 1fr}
+  .sakura-quiz-lab-config label:last-child{grid-column:1/-1}
+  .sakura-quiz-lab-config.particle-config label:last-child{grid-column:auto}
+}
+@media(max-width:360px){
+  .sakura-quiz-lab-config,.sakura-quiz-lab-config.particle-config{grid-template-columns:1fr}
+  .sakura-quiz-lab-config label:last-child,.sakura-quiz-lab-config.particle-config label:last-child{grid-column:auto}
+  .sakura-quiz-lab-complete-actions{grid-template-columns:1fr}
+  .sakura-translation-prompt>p,.sakura-particle-prompt>p{font-size:16px}
+}
