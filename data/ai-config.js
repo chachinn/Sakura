@@ -72,12 +72,12 @@
   function bootQuizLabStyle() {
     const existing = document.querySelector("link[data-sakura-quiz-lab-style]");
     if (existing) {
-      if (!existing.href.includes("v=2")) existing.href = "./features/sakura-quiz-lab.css?v=2";
+      if (!existing.href.includes("v=3")) existing.href = "./features/sakura-quiz-lab.css?v=3";
       return;
     }
     const link = document.createElement("link");
     link.rel = "stylesheet";
-    link.href = "./features/sakura-quiz-lab.css?v=2";
+    link.href = "./features/sakura-quiz-lab.css?v=3";
     link.dataset.sakuraQuizLabStyle = "true";
     document.head.appendChild(link);
   }
