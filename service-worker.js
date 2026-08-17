@@ -1,9 +1,9 @@
-const SHELL_CACHE_VERSION = "sakura-shell-v157";
+const SHELL_CACHE_VERSION = "sakura-shell-v158";
 const KANJI_CONTENT_CACHE_VERSION = "sakura-kanji-content-v7";
 const TRAVEL_CONTENT_CACHE_VERSION = "sakura-travel-content-v1";
 const VOCABULARY_CONTENT_CACHE_VERSION = "sakura-vocabulary-content-v7";
 const READING_CONTENT_CACHE_VERSION = "sakura-reading-content-v8";
-const QUIZ_CONTENT_CACHE_VERSION = "sakura-quiz-content-v2";
+const QUIZ_CONTENT_CACHE_VERSION = "sakura-quiz-content-v3";
 
 const APP_SHELL = [
     "./index.html",
@@ -108,16 +108,14 @@ self.addEventListener(
             return;
         }
 
-        const requestUrl =
-            new URL(request.url);
+        const requestUrl = new URL(request.url);
 
         if (request.mode === "navigate") {
             event.respondWith(
                 fetch(request)
                     .then(
                         response => {
-                            const responseCopy =
-                                response.clone();
+                            const responseCopy = response.clone();
 
                             caches
                                 .open(SHELL_CACHE_VERSION)
