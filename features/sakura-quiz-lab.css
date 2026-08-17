@@ -1,15 +1,21 @@
-/* Sakura JLPT Quiz Lab v2 */
-.sakura-quiz-lab-tabbar{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;overflow:visible;margin:0 0 14px;padding:0;border:0;background:transparent}
-.sakura-quiz-lab-tabbar .tab-button{position:relative;min-width:0;min-height:78px;padding:12px 10px 11px 48px;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;gap:3px;border:1px solid var(--color-border);border-radius:15px;background:var(--color-surface);color:var(--color-text);text-align:left;white-space:normal;font-size:10px;font-weight:900;line-height:1.25;box-shadow:0 4px 14px color-mix(in srgb,var(--color-text) 4%,transparent)}
-.sakura-quiz-lab-tabbar .tab-button::before{position:absolute;left:11px;top:50%;width:29px;height:29px;transform:translateY(-50%);display:grid;place-items:center;border-radius:10px;background:var(--color-primary-soft);color:var(--color-primary-dark);font-size:15px;font-weight:950}
-.sakura-quiz-lab-tabbar .tab-button::after{display:block;color:var(--color-text-muted);font-size:7.5px;font-weight:700;line-height:1.3}
-.sakura-quiz-lab-tabbar .tab-button[data-quiz-tab="kana"]::before{content:"あ"}.sakura-quiz-lab-tabbar .tab-button[data-quiz-tab="kana"]::after{content:"Hiragana & katakana"}
-.sakura-quiz-lab-tabbar .tab-button[data-quiz-tab="kanji"]::before{content:"漢"}.sakura-quiz-lab-tabbar .tab-button[data-quiz-tab="kanji"]::after{content:"Readings & meanings"}
-.sakura-quiz-lab-tabbar .tab-button[data-quiz-tab="vocabulary"]::before{content:"語"}.sakura-quiz-lab-tabbar .tab-button[data-quiz-tab="vocabulary"]::after{content:"Word meanings"}
-.sakura-quiz-lab-tabbar .tab-button[data-sakura-quiz-lab-tab="translation"]::before{content:"訳"}.sakura-quiz-lab-tabbar .tab-button[data-sakura-quiz-lab-tab="translation"]::after{content:"JP ⇄ EN sentences"}
-.sakura-quiz-lab-tabbar .tab-button[data-sakura-quiz-lab-tab="particles"]::before{content:"は"}.sakura-quiz-lab-tabbar .tab-button[data-sakura-quiz-lab-tab="particles"]::after{content:"Fill in the blank"}.sakura-quiz-lab-tabbar .tab-button[data-sakura-quiz-lab-tab="particles"]{grid-column:1/-1}
-.sakura-quiz-lab-tabbar .tab-button.active{border-color:var(--color-primary);background:color-mix(in srgb,var(--color-primary-soft) 68%,var(--color-surface));color:var(--color-primary-dark);box-shadow:0 0 0 1px color-mix(in srgb,var(--color-primary) 18%,transparent),0 6px 18px color-mix(in srgb,var(--color-primary) 8%,transparent)}
-.sakura-quiz-lab-tabbar .tab-button.active::before{background:var(--color-surface)}.sakura-quiz-lab-tabbar .tab-button:focus-visible{outline:2px solid var(--color-primary);outline-offset:2px}
+/* Sakura JLPT Quiz Lab v3 */
+#quiz-view>.page-heading{padding:10px 1px 9px}
+#quiz-view>.page-heading .section-kicker{font-size:8px}
+#quiz-view>.page-heading h1{margin-top:1px;font-size:clamp(22px,6vw,27px);line-height:1.05}
+#quiz-view>.page-heading p{margin-top:3px;font-size:10px;line-height:1.3}
+.sakura-quiz-lab-tabbar{display:flex;gap:7px;overflow-x:auto;overflow-y:hidden;margin:0 0 10px;padding:1px 1px 5px;scrollbar-width:none;overscroll-behavior-x:contain;-webkit-overflow-scrolling:touch;scroll-snap-type:x proximity;background:transparent}
+.sakura-quiz-lab-tabbar::-webkit-scrollbar{display:none}
+.sakura-quiz-lab-tabbar .tab-button{flex:0 0 auto;min-width:max-content;min-height:42px;padding:8px 11px;display:inline-flex;align-items:center;justify-content:center;gap:6px;border:1px solid var(--color-border);border-radius:999px;background:var(--color-surface);color:var(--color-text);font-size:9px;font-weight:900;line-height:1;white-space:nowrap;scroll-snap-align:start;box-shadow:0 2px 8px color-mix(in srgb,var(--color-text) 4%,transparent)}
+.sakura-quiz-lab-tabbar .tab-button::before{display:inline-grid;place-items:center;width:22px;height:22px;flex:0 0 22px;border-radius:7px;background:var(--color-primary-soft);color:var(--color-primary-dark);font-size:12px;font-weight:950}
+.sakura-quiz-lab-tabbar .tab-button::after{display:none}
+.sakura-quiz-lab-tabbar .tab-button[data-quiz-tab="kana"]::before{content:"あ"}
+.sakura-quiz-lab-tabbar .tab-button[data-quiz-tab="kanji"]::before{content:"漢"}
+.sakura-quiz-lab-tabbar .tab-button[data-quiz-tab="vocabulary"]::before{content:"語"}
+.sakura-quiz-lab-tabbar .tab-button[data-sakura-quiz-lab-tab="translation"]::before{content:"訳"}
+.sakura-quiz-lab-tabbar .tab-button[data-sakura-quiz-lab-tab="particles"]::before{content:"は"}
+.sakura-quiz-lab-tabbar .tab-button.active{border-color:var(--color-primary);background:color-mix(in srgb,var(--color-primary-soft) 68%,var(--color-surface));color:var(--color-primary-dark);box-shadow:0 0 0 1px color-mix(in srgb,var(--color-primary) 16%,transparent)}
+.sakura-quiz-lab-tabbar .tab-button.active::before{background:var(--color-surface)}
+.sakura-quiz-lab-tabbar .tab-button:focus-visible{outline:2px solid var(--color-primary);outline-offset:2px}
 .sakura-quiz-lab-panel{display:grid;gap:13px}
 .sakura-quiz-lab-config{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
 .sakura-quiz-lab-config.particle-config{grid-template-columns:repeat(2,minmax(0,1fr))}
@@ -35,6 +41,6 @@
 .sakura-particle-hint{margin-top:8px;padding:9px 10px;border-radius:11px;background:var(--color-primary-soft);color:var(--color-primary-dark);font-size:11px;font-weight:850;text-align:center;word-spacing:9px}
 .sakura-quiz-complete{padding:18px 8px}
 .sakura-quiz-lab-complete-actions{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px}
-@media(min-width:560px){.sakura-quiz-lab-tabbar{grid-template-columns:repeat(3,minmax(0,1fr))}.sakura-quiz-lab-tabbar .tab-button[data-sakura-quiz-lab-tab="particles"]{grid-column:auto}}
+@media(min-width:430px){.sakura-quiz-lab-tabbar{justify-content:flex-start}.sakura-quiz-lab-tabbar .tab-button{padding-inline:12px}}
 @media(max-width:520px){.sakura-quiz-lab-config{grid-template-columns:1fr 1fr}.sakura-quiz-lab-config label:last-child{grid-column:1/-1}.sakura-quiz-lab-config.particle-config label:last-child{grid-column:auto}}
-@media(max-width:360px){.sakura-quiz-lab-tabbar{gap:7px}.sakura-quiz-lab-tabbar .tab-button{min-height:72px;padding-left:43px;font-size:9px}.sakura-quiz-lab-tabbar .tab-button::before{left:9px;width:27px;height:27px;font-size:14px}.sakura-quiz-lab-tabbar .tab-button::after{font-size:7px}.sakura-quiz-lab-config,.sakura-quiz-lab-config.particle-config{grid-template-columns:1fr}.sakura-quiz-lab-config label:last-child,.sakura-quiz-lab-config.particle-config label:last-child{grid-column:auto}.sakura-quiz-lab-complete-actions{grid-template-columns:1fr}.sakura-translation-prompt>p,.sakura-particle-prompt>p{font-size:16px}}
+@media(max-width:360px){#quiz-view>.page-heading{padding-top:7px;padding-bottom:7px}.sakura-quiz-lab-tabbar{gap:6px;margin-bottom:8px}.sakura-quiz-lab-tabbar .tab-button{min-height:40px;padding:7px 9px;font-size:8.5px}.sakura-quiz-lab-tabbar .tab-button::before{width:20px;height:20px;flex-basis:20px;font-size:11px}.sakura-quiz-lab-config,.sakura-quiz-lab-config.particle-config{grid-template-columns:1fr}.sakura-quiz-lab-config label:last-child,.sakura-quiz-lab-config.particle-config label:last-child{grid-column:auto}.sakura-quiz-lab-complete-actions{grid-template-columns:1fr}.sakura-translation-prompt>p,.sakura-particle-prompt>p{font-size:16px}}
