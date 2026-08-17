@@ -1,4 +1,4 @@
-/* Sakura Reading Garden Quality Shelf v1
+/* Sakura Reading Garden Quality Shelf v1.1
    Quality-first curation layer: max 50 visible readings per material type.
    Keeps the larger source archive intact and preserves Saved/Continue access. */
 (function(){
@@ -11,6 +11,7 @@ const STORY_QUOTAS=Object.freeze({classics:9,'modern-literature':9,'mystery-susp
 const PREFS_KEY='sakuraReadingGardenPrefsV3',LIBRARY_KEY='sakuraReadingGardenLibraryV2';
 let allArticles=[],articleShelf=[],allStories=[],storyShelf=[],currentArticleView=[],currentStoryView=[],renderTimer=0,observer=null,ready=false;
 const esc=v=>String(v??'').replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;').replaceAll("'",'&#39;');
+const setText=(node,value)=>{const text=String(value??'');if(node&&node.textContent!==text)node.textContent=text};
 function read(key,fallback){try{return JSON.parse(localStorage.getItem(key)||'null')||fallback}catch{return fallback}}
 function prefs(){return read(PREFS_KEY,{level:'all',mode:'furigana',articleTopic:'all',storyCategory:'all'})}
 function library(){return read(LIBRARY_KEY,{saved:[],completed:[],lastReadingId:'',lastArticleId:'',lastStoryId:'',lastReadingType:''})}
@@ -45,29 +46,29 @@ function patchMaterials(){
 function patchHome(){
  const dialog=document.getElementById('reading-garden-dialog');if(!dialog)return;
  const stats=dialog.querySelectorAll('.reading-garden-stat strong');
- if(stats[1])stats[1].textContent=(window.SakuraReadingGarden?.materials?.length*TARGET||900).toLocaleString();
- if(stats[2])stats[2].textContent='100';
+ setText(stats[1],(window.SakuraReadingGarden?.materials?.length*TARGET||900).toLocaleString());
+ setText(stats[2],'100');
  const statLabels=dialog.querySelectorAll('.reading-garden-stat small');
- if(statLabels[1])statLabels[1].textContent='quality-first max library';
- if(statLabels[2])statLabels[2].textContent='curated Articles + Stories';
- const target=dialog.querySelector('.reading-garden-section-heading span');
+ setText(statLabels[1],'quality-first max library');
+ setText(statLabels[2],'curated Articles + Stories');
  const libraryHeading=[...dialog.querySelectorAll('.reading-garden-section-heading')].find(x=>x.textContent.includes('Browse by material'));
- if(libraryHeading?.lastElementChild)libraryHeading.lastElementChild.textContent=`${(window.SakuraReadingGarden?.materials?.length*TARGET||900).toLocaleString()} quality target`;
+ setText(libraryHeading?.lastElementChild,`${(window.SakuraReadingGarden?.materials?.length*TARGET||900).toLocaleString()} quality target`);
  dialog.querySelectorAll('[data-reading-material]').forEach(button=>{
   const id=button.dataset.readingMaterial,item=window.SakuraReadingGarden?.materials?.find(x=>x.id===id);
-  const count=button.querySelector('.reading-material-main small');if(count&&item)count.textContent=`${TARGET} ${item.unit}`;
-  const status=button.querySelector('.reading-material-status');if(status&&item)status.textContent=item.status;
+  if(!item)return;
+  setText(button.querySelector('.reading-material-main small'),`${TARGET} ${item.unit}`);
+  setText(button.querySelector('.reading-material-status'),item.status);
  });
- const practice=document.querySelector('[data-open-reading-garden] p');if(practice)practice.textContent='50 curated Articles + 50 curated real Japanese Short Stories ready.';
+ setText(document.querySelector('[data-open-reading-garden] p'),'50 curated Articles + 50 curated real Japanese Short Stories ready.');
  const selection=document.getElementById('reading-garden-selection');
  if(selection){
   const selected=dialog.querySelector('[data-reading-material].active')?.dataset.readingMaterial;
   const item=window.SakuraReadingGarden?.materials?.find(x=>x.id===selected);
-  const strong=selection.querySelector('strong');if(strong&&item)strong.textContent=`${item.title} · ${TARGET} ${item.unit}`;
+  if(item)setText(selection.querySelector('strong'),`${item.title} · ${TARGET} ${item.unit}`);
   const small=selection.querySelector('small');
-  if(small&&selected==='articles')small.textContent='Quality Shelf: 50 visible sourced Articles, balanced across all 5 JLPT study levels and 10 topics. The larger verified source archive is retained, not deleted.';
-  if(small&&selected==='short-stories')small.textContent='Quality Shelf: 50 visible public-domain Japanese stories, balanced across six shelves and biased toward the longer available excerpts. The larger Aozora source archive is retained.';
-  if(small&&item&&!['articles','short-stories','manga'].includes(selected))small.textContent='Quality-first target: up to 50 substantial readings for this material type rather than hundreds of short filler items.';
+  if(selected==='articles')setText(small,'Quality Shelf: 50 visible sourced Articles, balanced across all 5 JLPT study levels and 10 topics. The larger verified source archive is retained, not deleted.');
+  else if(selected==='short-stories')setText(small,'Quality Shelf: 50 visible public-domain Japanese stories, balanced across six shelves and biased toward the longer available excerpts. The larger Aozora source archive is retained.');
+  else if(item&&!['manga'].includes(selected))setText(small,'Quality-first target: up to 50 substantial readings for this material type rather than hundreds of short filler items.');
  }
 }
 function dateText(x){return x.sourcePublishedDate?`${x.sourceDateLabel||'Published'} ${x.sourcePublishedDate}`:(x.sourceDateLabel||'Source date available')}
@@ -81,10 +82,10 @@ function renderArticles(){
  currentArticleView=base.filter(x=>articleMatches(x,p,q,topic,savedOnly,saved));
  const sig=`a:${currentArticleView.map(x=>x.id).join('|')}:${[...saved].join('|')}:${[...completed].join('|')}:${p.mode}`;
  if(list.dataset.qualitySignature!==sig){list.dataset.qualitySignature=sig;list.innerHTML=currentArticleView.length?currentArticleView.map(x=>articleCard(x,saved,completed,p)).join(''):'<div class="reading-browser-empty">🌸 No quality-shelf Articles match these filters.</div>'}
- count.textContent=`${currentArticleView.length.toLocaleString()} curated article${currentArticleView.length===1?'':'s'}`;
- const more=document.getElementById('reading-load-more');if(more)more.hidden=true;
- const hero=browser.querySelector('.reading-browser-hero p');if(hero)hero.textContent='50 quality-first sourced Articles are curated from Sakura’s verified source archive: one strongest available reading for every JLPT level × topic combination. The archive remains intact.';
- const offline=document.getElementById('reading-offline-status');if(offline&&!offline.textContent.includes('archive'))offline.textContent='The visible shelf is capped at 50; offline preparation may retain supporting source-archive packs so Saved and Continue readings are never stranded.';
+ setText(count,`${currentArticleView.length.toLocaleString()} curated article${currentArticleView.length===1?'':'s'}`);
+ const more=document.getElementById('reading-load-more');if(more&&!more.hidden)more.hidden=true;
+ setText(browser.querySelector('.reading-browser-hero p'),'50 quality-first sourced Articles are curated from Sakura’s verified source archive: one strongest available reading for every JLPT level × topic combination. The archive remains intact.');
+ const offline=document.getElementById('reading-offline-status');if(offline&&!offline.textContent.includes('archive'))setText(offline,'The visible shelf is capped at 50; offline preparation may retain supporting source-archive packs so Saved and Continue readings are never stranded.');
 }
 function renderStories(){
  const browser=document.getElementById('reading-stories-browser'),list=document.getElementById('reading-story-list'),count=document.getElementById('reading-story-count');if(!browser||browser.hidden||!list||!count||!storyShelf.length)return;
@@ -92,9 +93,9 @@ function renderStories(){
  currentStoryView=base.filter(x=>storyMatches(x,p,q,category,savedOnly,saved));
  const sig=`s:${currentStoryView.map(x=>x.id).join('|')}:${[...saved].join('|')}:${[...completed].join('|')}`;
  if(list.dataset.qualitySignature!==sig){list.dataset.qualitySignature=sig;list.innerHTML=currentStoryView.length?currentStoryView.map(x=>storyCard(x,saved,completed)).join(''):'<div class="reading-browser-empty">🌸 No quality-shelf Short Stories match these filters.</div>'}
- count.textContent=`${currentStoryView.length.toLocaleString()} curated stor${currentStoryView.length===1?'y':'ies'}`;
- const more=document.getElementById('reading-story-load-more');if(more)more.hidden=true;
- const hero=browser.querySelector('.reading-browser-hero p');if(hero)hero.textContent='50 quality-first public-domain Japanese works are curated from the larger Aozora shelf, balanced across six categories and favoring the longer available original excerpts. Full originals still open on Aozora Bunko.';
+ setText(count,`${currentStoryView.length.toLocaleString()} curated stor${currentStoryView.length===1?'y':'ies'}`);
+ const more=document.getElementById('reading-story-load-more');if(more&&!more.hidden)more.hidden=true;
+ setText(browser.querySelector('.reading-browser-hero p'),'50 quality-first public-domain Japanese works are curated from the larger Aozora shelf, balanced across six categories and favoring the longer available original excerpts. Full originals still open on Aozora Bunko.');
 }
 function reconcile(){patchHome();renderArticles();renderStories()}
 function schedule(){clearTimeout(renderTimer);renderTimer=setTimeout(reconcile,0)}
@@ -122,6 +123,6 @@ async function init(){
  ready=true;style();patchMaterials();bind();patchHome();
  try{const [articles,stories]=await Promise.all([rg.loadArticleIndexes('all'),rg.loadStories()]);allArticles=articles;allStories=stories;articleShelf=buildArticles(articles);storyShelf=buildStories(stories);if(articleShelf.length!==TARGET)console.warn(`Reading Quality Shelf expected ${TARGET} Articles, got ${articleShelf.length}.`);if(storyShelf.length!==TARGET)console.warn(`Reading Quality Shelf expected ${TARGET} Stories, got ${storyShelf.length}.`);reconcile()}catch(error){console.warn('Reading Quality Shelf could not finish curation; Reading Garden core remains available.',error)}
 }
-window.SakuraReadingQuality=Object.freeze({version:1,target:TARGET,init,get articleCount(){return articleShelf.length},get storyCount(){return storyShelf.length}});
+window.SakuraReadingQuality=Object.freeze({version:1.1,target:TARGET,init,get articleCount(){return articleShelf.length},get storyCount(){return storyShelf.length}});
 init();
 }());
