@@ -1,0 +1,84 @@
+/* Sakura Quiz mobile polish v1
+   Keeps every Quiz Garden mode visible on phones and surfaces existing romaji
+   without revealing EN -> JP answers before grading. */
+
+/* Romaji already exists in the Particle and Translation quiz data. Show it
+   whenever the quiz has actually rendered a romaji line. EN -> JP prompts do
+   not render one before grading, so this does not leak the Japanese answer. */
+#sakura-particle-quiz-panel .sakura-quiz-romaji-line[hidden],
+#sakura-translation-quiz-panel .sakura-quiz-romaji-line[hidden] {
+  display: block !important;
+}
+
+/* Once romaji is always visible, the old reveal buttons are redundant. */
+#sakura-particle-quiz-panel [data-p-romaji],
+#sakura-particle-quiz-panel [data-p-answer-romaji],
+#sakura-translation-quiz-panel [data-t-romaji],
+#sakura-translation-quiz-panel [data-t-answer-romaji] {
+  display: none !important;
+}
+
+/* Give visible romaji a quiet learner-aid treatment. */
+#sakura-particle-quiz-panel .sakura-quiz-romaji-line,
+#sakura-translation-quiz-panel .sakura-quiz-romaji-line {
+  padding-top: 2px;
+  opacity: .9;
+}
+
+/* Phone layout: all five Quiz Garden modes stay on screen. The first three
+   form row one; Particles and Translate share row two. */
+@media (max-width: 700px) {
+  #quiz-view .sakura-quiz-lab-tabbar {
+    display: grid;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: 7px;
+    overflow: visible;
+    padding: 1px;
+    scroll-snap-type: none;
+  }
+
+  #quiz-view .sakura-quiz-lab-tabbar .tab-button {
+    width: 100%;
+    min-width: 0;
+    min-height: 42px;
+    padding: 7px 6px;
+    gap: 5px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  #quiz-view .sakura-quiz-lab-tabbar .tab-button:nth-child(-n+3) {
+    grid-column: span 2;
+  }
+
+  #quiz-view .sakura-quiz-lab-tabbar .tab-button:nth-child(n+4) {
+    grid-column: span 3;
+  }
+
+  #quiz-view .sakura-quiz-lab-tabbar .tab-button::before {
+    width: 21px;
+    height: 21px;
+    flex-basis: 21px;
+    font-size: 11px;
+  }
+}
+
+@media (max-width: 390px) {
+  #quiz-view .sakura-quiz-lab-tabbar {
+    gap: 6px;
+  }
+
+  #quiz-view .sakura-quiz-lab-tabbar .tab-button {
+    min-height: 40px;
+    padding-inline: 5px;
+    font-size: 8px;
+  }
+
+  #quiz-view .sakura-quiz-lab-tabbar .tab-button::before {
+    width: 19px;
+    height: 19px;
+    flex-basis: 19px;
+    font-size: 10px;
+  }
+}
