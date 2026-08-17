@@ -1,15 +1,16 @@
-/* Sakura Fresh Random Starts v1
+/* Sakura Fresh Random Starts v1.1
    Refreshes randomizable learning content when users reopen a section.
-   Keeps intentional sequences (for example Conversation Lab dialogue turns) intact. */
+   Avoids immediate repeated starters across PWA sessions while keeping
+   intentional sequences (for example Conversation Lab dialogue turns) intact. */
 (function initializeSakuraFreshRandom() {
   'use strict';
   if (window.SakuraFreshRandom) return;
 
   const STORE_KEY = 'sakuraFreshRandomStartsV1';
-  const BUILTIN_QUIZ_NEXT = Object.freeze({
-    kana: '#next-kana',
-    kanji: '#next-kanji-quiz',
-    vocabulary: '#next-vocabulary-quiz'
+  const BUILTIN_QUIZZES = Object.freeze({
+    kana: { next:'#next-kana', prompt:'#kana-character', stateKey:'quizKana' },
+    kanji: { next:'#next-kanji-quiz', prompt:'#kanji-quiz-character', stateKey:'quizKanji' },
+    vocabulary: { next:'#next-vocabulary-quiz', prompt:'#vocabulary-quiz-word', stateKey:'quizVocabulary' }
   });
   const PRACTICE_ROUTES = Object.freeze({
     'practice-what-would-you-say': {
@@ -59,6 +60,10 @@
     catch { /* Randomization must never block Sakura if storage is unavailable. */ }
   }
 
+  function text(selector) {
+    return String(document.querySelector(selector)?.textContent || '').trim();
+  }
+
   function click(selector) {
     const button = document.querySelector(selector);
     if (!(button instanceof HTMLElement) || button.hidden || button.disabled) return false;
@@ -66,18 +71,41 @@
     return true;
   }
 
+  function rerollButtonUntilFresh({ buttonSelector, promptSelector, stateKey, attempts = 5 }) {
+    const state = readState();
+    const previous = String(state[stateKey] || '');
+    let current = '';
+
+    for (let attempt = 0; attempt < attempts; attempt += 1) {
+      if (!click(buttonSelector)) break;
+      current = text(promptSelector);
+      if (!previous || !current || current !== previous) break;
+    }
+
+    if (current) {
+      state[stateKey] = current;
+      writeState(state);
+    }
+  }
+
   function freshLearn(route, previousRoute) {
     if (route === 'learn') {
       // Returning from a detail screen should preserve the item the learner opened.
       if (previousRoute === 'kanji-detail' || previousRoute === 'word-detail') return;
       requestAnimationFrame(() => {
-        click('#random-kanji');
-        click('#random-word');
+        rerollButtonUntilFresh({ buttonSelector:'#random-kanji', promptSelector:'#browse-kanji-character', stateKey:'learnKanji' });
+        rerollButtonUntilFresh({ buttonSelector:'#random-word', promptSelector:'#browse-word-text', stateKey:'learnWord' });
       });
       return;
     }
     if (route === 'learn-native' || route === 'learn-slang') {
-      requestAnimationFrame(() => click('#random-native'));
+      requestAnimationFrame(() => {
+        rerollButtonUntilFresh({
+          buttonSelector:'#random-native',
+          promptSelector:'#native-expression',
+          stateKey:route === 'learn-slang' ? 'learnSlang' : 'learnNative'
+        });
+      });
     }
   }
 
@@ -85,13 +113,18 @@
     const panel = [...document.querySelectorAll('#quiz-view [data-quiz-panel]')]
       .find(node => !node.hidden);
     const type = panel?.dataset?.quizPanel || '';
-    return Object.hasOwn(BUILTIN_QUIZ_NEXT, type) ? type : '';
+    return Object.prototype.hasOwnProperty.call(BUILTIN_QUIZZES, type) ? type : '';
   }
 
   function freshActiveQuiz() {
     const type = activeBuiltInQuizType();
     if (!type) return;
-    click(BUILTIN_QUIZ_NEXT[type]);
+    const config = BUILTIN_QUIZZES[type];
+    rerollButtonUntilFresh({
+      buttonSelector:config.next,
+      promptSelector:config.prompt,
+      stateKey:config.stateKey
+    });
   }
 
   async function freshPractice(route, revision) {
@@ -117,7 +150,7 @@
       // begin on the exact same prompt as the learner saw last time.
       for (let attempt = 0; attempt < 5; attempt += 1) {
         start(bank);
-        currentFirst = String(document.querySelector(config.promptSelector)?.textContent || '').trim();
+        currentFirst = text(config.promptSelector);
         if (!previousFirst || !currentFirst || currentFirst !== previousFirst) break;
       }
 
@@ -134,7 +167,7 @@
     const revision = ++routeRevision;
     freshLearn(route, previousRoute);
     if (route === 'quiz') requestAnimationFrame(freshActiveQuiz);
-    if (Object.hasOwn(PRACTICE_ROUTES, route)) freshPractice(route, revision);
+    if (Object.prototype.hasOwnProperty.call(PRACTICE_ROUTES, route)) freshPractice(route, revision);
   }
 
   function wrapRouteNavigation() {
@@ -173,7 +206,7 @@
   }
 
   window.SakuraFreshRandom = Object.freeze({
-    version: 1,
+    version: 1.1,
     init,
     refreshQuiz: freshActiveQuiz
   });
