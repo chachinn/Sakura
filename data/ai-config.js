@@ -113,6 +113,16 @@
     document.body.appendChild(script);
   }
 
+  function bootFreshRandom() {
+    if (window.SakuraFreshRandom || document.querySelector("script[data-sakura-fresh-random]")) return;
+    const script = document.createElement("script");
+    script.src = "./features/sakura-fresh-random.js?v=1";
+    script.dataset.sakuraFreshRandom = "true";
+    script.async = true;
+    script.onerror = () => console.warn("Sakura Fresh Random could not load. Existing Learn, Quiz, and Practice behavior will remain available.");
+    document.body.appendChild(script);
+  }
+
   function bootGoogleOAuthLauncher() {
     if (window.SakuraGoogleOAuthLauncher || document.querySelector("script[data-sakura-google-oauth]")) return;
     const script = document.createElement("script");
@@ -150,6 +160,7 @@
     bootQuizLab();
     bootReadingQuality();
     bootReadingLongForm();
+    bootFreshRandom();
     prepareSakuraAccount();
   }
 
