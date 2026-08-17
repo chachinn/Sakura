@@ -94,9 +94,9 @@
   }
 
   function bootReadingQuality() {
-    if (window.SakuraReadingQuality || document.querySelector("script[data-sakura-reading-quality]")) return;
+    if (window.SakuraReadingQuality?.version >= 1.2 || document.querySelector("script[data-sakura-reading-quality]")) return;
     const script = document.createElement("script");
-    script.src = "./features/sakura-reading-quality.js?v=1";
+    script.src = "./features/sakura-reading-quality.js?v=2";
     script.dataset.sakuraReadingQuality = "true";
     script.async = true;
     script.onerror = () => console.warn("Sakura Reading Quality Shelf could not load. Reading Garden core will remain available.");
@@ -110,6 +110,16 @@
     script.dataset.sakuraReadingLongform = "true";
     script.async = true;
     script.onerror = () => console.warn("Sakura Reading long-form features could not load. The existing Quality Shelf will remain available.");
+    document.body.appendChild(script);
+  }
+
+  function bootReadingComplete() {
+    if (window.SakuraReadingComplete || document.querySelector("script[data-sakura-reading-complete]")) return;
+    const script = document.createElement("script");
+    script.src = "./features/sakura-reading-complete.js?v=1";
+    script.dataset.sakuraReadingComplete = "true";
+    script.async = true;
+    script.onerror = () => console.warn("Sakura Reading completion features could not load. Core Reading Garden will remain available.");
     document.body.appendChild(script);
   }
 
@@ -160,6 +170,7 @@
     bootQuizLab();
     bootReadingQuality();
     bootReadingLongForm();
+    bootReadingComplete();
     bootFreshRandom();
     prepareSakuraAccount();
   }
