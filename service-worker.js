@@ -1,4 +1,4 @@
-const SHELL_CACHE_VERSION = "sakura-shell-v153";
+const SHELL_CACHE_VERSION = "sakura-shell-v154";
 const KANJI_CONTENT_CACHE_VERSION = "sakura-kanji-content-v7";
 const TRAVEL_CONTENT_CACHE_VERSION = "sakura-travel-content-v1";
 const VOCABULARY_CONTENT_CACHE_VERSION = "sakura-vocabulary-content-v7";
@@ -13,6 +13,7 @@ const APP_SHELL = [
     "./reading-garden.js?v=8",
     "./features/sakura-reading-quality.js?v=1",
     "./features/sakura-reading-longform.js?v=1",
+    "./features/sakura-fresh-random.js?v=1",
     "./features/sakura-experience.js?v=3",
     "./features/sakura-ai-translator.js?v=2",
     "./features/sakura-auth.js?v=2",
@@ -196,6 +197,7 @@ self.addEventListener(
                 requestUrl.pathname.includes("/features/sakura-quiz-engine.") ||
                 requestUrl.pathname.includes("/features/sakura-reading-quality.") ||
                 requestUrl.pathname.includes("/features/sakura-reading-longform.") ||
+                requestUrl.pathname.includes("/features/sakura-fresh-random.") ||
                 requestUrl.pathname.endsWith("/data/ai-config.js");
             const networkRequest = shouldBypassHttpCache
                 ? new Request(request, { cache:"no-cache" })
