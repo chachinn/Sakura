@@ -1,0 +1,22 @@
+{
+  "version": 1,
+  "feature": "Sakura JLPT Quiz Lab",
+  "targets": {
+    "translationPerLevel": 1200,
+    "particlePerLevel": 320
+  },
+  "levels": {
+    "N5": {"file": "n5.json", "translationReady": 1200, "particleReady": 320},
+    "N4": {"file": "n4.json", "translationReady": 1200, "particleReady": 320},
+    "N3": {"file": "n3.json", "translationReady": 1200, "particleReady": 320},
+    "N2": {"file": "n2.json", "translationReady": 1200, "particleReady": 320},
+    "N1": {"file": "n1.json", "translationReady": 1200, "particleReady": 320}
+  },
+  "grading": {
+    "japanese": "NFKC + punctuation/spacing normalization + stored natural alternatives; no semantic fuzzy guessing.",
+    "english": "NFKC + stored natural alternatives + very small typo-distance tolerance.",
+    "particles": "Exact normalized match against one or more context-valid answers."
+  },
+  "content": "Curated level-specific grammar frames with compatible lexicons; Sakura study-support levels, not official JLPT sentence classifications.",
+  "loading": "Each level bank is fetched only when the new quiz is opened."
+}
