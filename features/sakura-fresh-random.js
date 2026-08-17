@@ -223,12 +223,19 @@
   function chooseNavigationMode(mode) {
     const travel = mode === 'travel';
     const targetRoute = travel ? 'travel' : 'practice';
+    const canonicalChooser = window.chooseNavigationMode;
+    if (typeof canonicalChooser === 'function') {
+      canonicalChooser(mode);
+      syncModeSwitch();
+      document.getElementById('close-hub')?.click();
+      return;
+    }
     const toggle = document.getElementById('travel-mode-toggle');
-    if (typeof window.setTravelModeEnabled === 'function') {
-      window.setTravelModeEnabled(travel);
-    } else if (toggle) {
+    if (toggle) {
       toggle.checked = travel;
       toggle.dispatchEvent(new Event('change', { bubbles:true }));
+    } else if (typeof window.setTravelModeEnabled === 'function') {
+      window.setTravelModeEnabled(travel);
     }
     syncModeSwitch();
     document.getElementById('close-hub')?.click();
