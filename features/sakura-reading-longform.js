@@ -1,4 +1,4 @@
-/* Sakura Reading Garden Long-form Features v1.0
+/* Sakura Reading Garden Long-form Features v1.1
    Turns the 50 curated Article shelf entries into substantial, multi-section
    source-grounded feature readings by combining related verified readings
    from the same JLPT level + topic. No filler and no extra archive records. */
@@ -11,7 +11,8 @@ const TOPICS=['beauty','food','travel','digital','consumer','health','environmen
 const TARGET_CHARS=Object.freeze({N5:360,N4:420,N3:480,N2:540,N1:600});
 const MAX_SOURCE_SECTIONS=5;
 const MIN_SOURCE_SECTIONS=3;
-let ready=false,qualityIds=new Set(),metaById=new Map(),composed=new Set(),inFlight=new Map(),observer=null,patchTimer=0;
+const LIBRARY_KEY='sakuraReadingGardenLibraryV2';
+let ready=false,qualityIds=new Set(),metaById=new Map(),composed=new Set(),inFlight=new Map(),bypassOnce=new Set(),observer=null,patchTimer=0;
 
 function rankArticle(a,b){
  return (+b.estimatedMinutes||0)-(+a.estimatedMinutes||0)||
@@ -99,7 +100,6 @@ function composeRecord(lead,sections,meta){
  return lead;
 }
 async function compose(id){
- if(composed.has(id))return true;
  if(inFlight.has(id))return inFlight.get(id);
  const rg=window.SakuraReadingGarden,meta=metaById.get(id);
  if(!rg?.loadArticleLevel||!meta)return false;
@@ -107,6 +107,7 @@ async function compose(id){
   const records=await rg.loadArticleLevel(meta.jlpt);
   const lead=records.find(x=>x.id===id);
   if(!lead)return false;
+  if(lead._sakuraLongForm){composed.add(id);return true;}
   const group=records.filter(x=>x.topic===meta.topic&&x.jlpt===meta.jlpt);
   const sections=selectSections(lead,group);
   composeRecord(lead,sections,meta);
@@ -128,7 +129,7 @@ function syntheticOpen(id){
  dialog.appendChild(button);button.click();setTimeout(()=>button.remove(),0);
 }
 async function prepareAndOpen(id,trigger){
- if(!qualityIds.has(id)){syntheticOpen(id);return;}
+ if(!qualityIds.has(id)){bypassOnce.add(id);syntheticOpen(id);return;}
  if(trigger){
   trigger.setAttribute('aria-busy','true');
   trigger.classList.add('sakura-longform-loading');
@@ -136,13 +137,29 @@ async function prepareAndOpen(id,trigger){
  try{await compose(id);}finally{
   if(trigger){trigger.removeAttribute('aria-busy');trigger.classList.remove('sakura-longform-loading');}
  }
+ bypassOnce.add(id);
  syntheticOpen(id);
 }
 function articleTrigger(target){return target?.closest?.('[data-reading-open-article]')||null;}
+function lastContinueArticleId(){
+ try{
+  const lib=JSON.parse(localStorage.getItem(LIBRARY_KEY)||'{}');
+  if(lib?.lastReadingType==='story')return '';
+  return String(lib?.lastReadingId||lib?.lastArticleId||'');
+ }catch{return '';}
+}
 function interceptClick(event){
+ const continueButton=event.target?.closest?.('[data-reading-continue]');
+ if(continueButton){
+  const id=lastContinueArticleId();
+  if(id&&qualityIds.has(id)){
+   event.preventDefault();event.stopImmediatePropagation();prepareAndOpen(id,continueButton);return;
+  }
+ }
  const trigger=articleTrigger(event.target);if(!trigger)return;
  const id=trigger.dataset.readingOpenArticle;
- if(!qualityIds.has(id)||composed.has(id))return;
+ if(bypassOnce.has(id)){bypassOnce.delete(id);return;}
+ if(!qualityIds.has(id))return;
  event.preventDefault();event.stopImmediatePropagation();
  prepareAndOpen(id,trigger);
 }
@@ -150,7 +167,8 @@ function interceptKey(event){
  if(event.key!=='Enter'&&event.key!==' ')return;
  const trigger=articleTrigger(event.target);if(!trigger)return;
  const id=trigger.dataset.readingOpenArticle;
- if(!qualityIds.has(id)||composed.has(id))return;
+ if(bypassOnce.has(id)){bypassOnce.delete(id);return;}
+ if(!qualityIds.has(id))return;
  event.preventDefault();event.stopImmediatePropagation();
  prepareAndOpen(id,trigger);
 }
@@ -161,11 +179,14 @@ function patchUi(){
   if(hero)hero.textContent='50 substantial Quality Feature Articles are curated across all 5 JLPT study levels and 10 topics. Each visible article opens as a multi-section reading built from several verified same-topic source adaptations—quality and completeness matter more than a fixed word count.';
   browser.querySelectorAll('[data-reading-open-article]').forEach(card=>{
    const id=card.dataset.readingOpenArticle;if(!qualityIds.has(id))return;
-   let badge=card.querySelector('.sakura-longform-badge');
-   if(!badge){
-    const tags=card.querySelector('.reading-article-tags');
-    if(tags){badge=document.createElement('span');badge.className='reading-article-tag sakura-longform-badge';tags.appendChild(badge);}
+   const tags=card.querySelector('.reading-article-tags');
+   if(tags){
+    [...tags.querySelectorAll('.reading-article-tag')].forEach(tag=>{
+     if(/^\d+\s*min$/i.test(tag.textContent.trim())&&!composed.has(id))tag.textContent='Feature length';
+    });
    }
+   let badge=card.querySelector('.sakura-longform-badge');
+   if(!badge&&tags){badge=document.createElement('span');badge.className='reading-article-tag sakura-longform-badge';tags.appendChild(badge);}
    if(badge)badge.textContent=composed.has(id)?'Long-form ready':'Long-form feature';
   });
  }
@@ -202,6 +223,6 @@ async function init(){
   schedulePatch();
  }catch(error){console.warn('Sakura Reading Long-form could not initialize; the existing Quality Shelf remains available.',error);}
 }
-window.SakuraReadingLongForm=Object.freeze({version:1,init,compose,get qualityArticleCount(){return qualityIds.size},get composedCount(){return composed.size}});
+window.SakuraReadingLongForm=Object.freeze({version:1.1,init,compose,get qualityArticleCount(){return qualityIds.size},get composedCount(){return composed.size}});
 init();
 }());
