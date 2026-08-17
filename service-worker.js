@@ -1,8 +1,8 @@
-const SHELL_CACHE_VERSION = "sakura-shell-v154";
+const SHELL_CACHE_VERSION = "sakura-shell-v155";
 const KANJI_CONTENT_CACHE_VERSION = "sakura-kanji-content-v7";
 const TRAVEL_CONTENT_CACHE_VERSION = "sakura-travel-content-v1";
 const VOCABULARY_CONTENT_CACHE_VERSION = "sakura-vocabulary-content-v7";
-const READING_CONTENT_CACHE_VERSION = "sakura-reading-content-v7";
+const READING_CONTENT_CACHE_VERSION = "sakura-reading-content-v8";
 const QUIZ_CONTENT_CACHE_VERSION = "sakura-quiz-content-v2";
 
 const APP_SHELL = [
@@ -11,8 +11,9 @@ const APP_SHELL = [
     "./app.js?v=92",
     "./study-suite.js?v=1",
     "./reading-garden.js?v=8",
-    "./features/sakura-reading-quality.js?v=1",
+    "./features/sakura-reading-quality.js?v=2",
     "./features/sakura-reading-longform.js?v=1",
+    "./features/sakura-reading-complete.js?v=1",
     "./features/sakura-fresh-random.js?v=1",
     "./features/sakura-experience.js?v=3",
     "./features/sakura-ai-translator.js?v=2",
@@ -21,7 +22,7 @@ const APP_SHELL = [
     "./features/sakura-quiz-lab.js?v=2",
     "./features/sakura-quiz-engine.js?v=2",
     "./features/sakura-quiz-lab.css?v=4",
-    "./data/ai-config.js?v=6",
+    "./data/ai-config.js?v=7",
     "./data/vocabulary.js?v=6",
     "./data/native-japanese.js?v=2",
     "./data/slang.js?v=2",
@@ -197,6 +198,7 @@ self.addEventListener(
                 requestUrl.pathname.includes("/features/sakura-quiz-engine.") ||
                 requestUrl.pathname.includes("/features/sakura-reading-quality.") ||
                 requestUrl.pathname.includes("/features/sakura-reading-longform.") ||
+                requestUrl.pathname.includes("/features/sakura-reading-complete.") ||
                 requestUrl.pathname.includes("/features/sakura-fresh-random.") ||
                 requestUrl.pathname.endsWith("/data/ai-config.js");
             const networkRequest = shouldBypassHttpCache

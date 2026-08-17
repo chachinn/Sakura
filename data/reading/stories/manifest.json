@@ -1,15 +1,17 @@
 {
-  "version": 8,
+  "version": 9,
   "material": "short-stories",
   "mode": "public-domain-original-excerpts",
-  "targetCount": 250,
+  "targetCount": 50,
   "readyCount": 100,
   "visibleQualityShelfTarget": 50,
   "visibleQualityShelfReady": 50,
   "sourceArchiveRetained": true,
-  "qualityShelfPolicy": "The learner-facing Short Stories shelf is capped at 50 curated works. Selection stays balanced across the six story categories and favors the longer available public-domain excerpts. The 100-record Aozora source archive remains intact for Saved/Continue compatibility and future longer-excerpt replacements.",
-  "longFormDirection": "Future story work should deepen the 50 visible selections with longer legally reusable excerpts and richer learning support rather than increasing the learner-facing count above 50.",
-  "sourceYearPolicy": "Use 2026/current fiction first when it is legally reusable for redistribution. If unavailable, use 2025, then 2024, then the newest verified legally reusable source available. Public-domain Aozora works display their actual first-publication year when known, otherwise a source-edition year.",
+  "qualityShelfPolicy": "The learner-facing Short Stories shelf is capped at 50 curated works, balanced across six categories. The 100-record Aozora source archive remains intact for Saved/Continue compatibility.",
+  "extendedPassagePolicy": "When a curated Story is opened online, Sakura requests a longer verbatim passage from that record's allowlisted Aozora Bunko source. Successful passages are cached on the learner's device for rereading. If the source request is unavailable or fails validation, the bundled original excerpt remains the fallback.",
+  "extendedPassageTarget": 50,
+  "extendedPassageMaxCharacters": 2000,
+  "sourceYearPolicy": "Public-domain works display their actual first-publication year when known, otherwise a source-edition year. Historical literature is never presented as current fiction.",
   "categories": [
     {"id":"classics","icon":"📜","label":"Classics","readyCount":20,"qualityShelfQuota":9,"file":"classics.json"},
     {"id":"modern-literature","icon":"🏙️","label":"Modern Literature","readyCount":20,"qualityShelfQuota":9,"file":"modern-literature.json"},
@@ -22,17 +24,17 @@
   "retrievedDate": "2026-08-14",
   "rights": {
     "source": "青空文庫 (Aozora Bunko)",
-    "policy": "Only works identified as copyright-expired/public-domain are used in this shelf.",
+    "policy": "Only works identified in Sakura's source archive as copyright-expired/public-domain are used in this shelf.",
     "fileHandlingStandard": "https://www.aozora.gr.jp/guide/kijyunn.html",
     "faq": "https://www.aozora.gr.jp/guide/aozora_bunko_faq.html",
-    "fullTextPolicy": "Sakura bundles only public-domain excerpts selected for study and links to the full Aozora work/card.",
+    "fullTextPolicy": "The repository bundles a short original fallback excerpt. Longer displayed passages are fetched from the linked Aozora source on demand and cached locally; Sakura does not bundle a separate full-text corpus.",
     "thirdPartyAssetsIncluded": false
   },
   "qualityPolicy": {
-    "storyText": "100 real Japanese works use verbatim public-domain source excerpts; no AI-written fiction is bundled.",
+    "storyText": "Story text is verbatim public-domain Japanese from the linked Aozora work; Sakura does not generate or rewrite the fiction.",
     "difficulty": "Sakura approximate study difficulty only; native works are not JLPT-graded.",
-    "orthography": "Original Aozora transcription is preserved in excerpts.",
-    "currentness": "Publication/edition year is shown honestly; old literature is never labeled as 2026 content.",
-    "selection": "The visible v8 Quality Shelf uses 50 balanced selections and favors longer existing excerpts. Source records outside the shelf are retained rather than deleted."
+    "orthography": "Original-source orthography is preserved as far as the Aozora HTML text representation allows.",
+    "selection": "The visible v9 Quality Shelf contains 50 balanced selections. Source records outside the shelf remain available for Saved/Continue compatibility.",
+    "fallback": "Every Story keeps its bundled source excerpt so a source-reader outage never prevents the Story from opening."
   }
 }
