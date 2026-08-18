@@ -54,6 +54,16 @@ function decodedBytes(base64: string) {
   const padding = clean64.endsWith("==") ? 2 : clean64.endsWith("=") ? 1 : 0;
   return Math.max(0, Math.floor((clean64.length * 3) / 4) - padding);
 }
+function resendUserMessage(status: number, result: any) {
+  const providerMessage = clean(result?.message, 600);
+  if (status === 403 && /testing emails|own email address|verify a domain/i.test(providerMessage)) {
+    return "Resend can only send test emails to the email address on your Resend account. Make sure your Resend account email is Chabelanio@gmail.com, or verify a sending domain.";
+  }
+  if (status === 401) return "The bug-report email key was rejected. Please reconnect the Resend API key in Supabase.";
+  if (status === 403) return "Resend rejected this send. Check that the Resend account can send to Chabelanio@gmail.com or verify a sending domain.";
+  if (status === 422 && providerMessage) return `Resend rejected the email details: ${providerMessage}`;
+  return "The report reached the email service, but the email could not be sent. Please try again later.";
+}
 
 Deno.serve(async (req: Request) => {
   const origin = req.headers.get("origin");
@@ -67,7 +77,6 @@ Deno.serve(async (req: Request) => {
   try { body = await req.json(); }
   catch { return json({ error: "Invalid report payload." }, 400, origin); }
 
-  // Honeypot: silently accept bot submissions without sending email.
   if (clean(body?.website, 200)) return json({ ok: true }, 200, origin);
 
   const type = clean(body?.type, 40) || "bug";
@@ -79,7 +88,7 @@ Deno.serve(async (req: Request) => {
   if (!title || !details) return json({ error: "A title and description are required." }, 400, origin);
   if (!validEmail(contact)) return json({ error: "The contact email is invalid." }, 400, origin);
 
-  let attachment: { filename: string; content: string } | null = null;
+  let attachment: { filename: string; content: string; content_type: string } | null = null;
   if (body?.attachment) {
     const filename = clean(body.attachment.filename, 180) || "sakura-bug-screenshot";
     const mimeType = clean(body.attachment.mimeType, 80).toLowerCase();
@@ -89,7 +98,7 @@ Deno.serve(async (req: Request) => {
     if (!ALLOWED_MIME.has(mimeType)) return json({ error: "Unsupported screenshot format." }, 400, origin);
     if (!content || actualSize > MAX_ATTACHMENT_BYTES || declaredSize > MAX_ATTACHMENT_BYTES) return json({ error: "Screenshot must be 3 MB or smaller." }, 400, origin);
     if (!/^[A-Za-z0-9+/]*={0,2}$/.test(content)) return json({ error: "Screenshot data is invalid." }, 400, origin);
-    attachment = { filename, content };
+    attachment = { filename, content, content_type: mimeType };
   }
 
   const resendKey = Deno.env.get("RESEND_API_KEY");
@@ -105,10 +114,10 @@ Deno.serve(async (req: Request) => {
   const subject = `[Sakura ${type.toUpperCase()}] ${title}`.slice(0, 200);
 
   const text = [
-    `Sakura bug report`, ``, `Type: ${type}`, `Title: ${title}`, `Contact: ${contact || "Not provided"}`,
+    "Sakura bug report", "", `Type: ${type}`, `Title: ${title}`, `Contact: ${contact || "Not provided"}`,
     `Route: ${route}`, `Version: ${appVersion}`, `Sent: ${sentAt || "Unknown"}`, `URL: ${pageUrl || "Unknown"}`,
-    `Language: ${language || "Unknown"}`, `Device: ${userAgent || "Unknown"}`, ``, `WHAT HAPPENED`, details,
-    ``, `EXPECTED`, expected || "Not provided", ``, `Screenshot: ${attachment ? attachment.filename : "None"}`,
+    `Language: ${language || "Unknown"}`, `Device: ${userAgent || "Unknown"}`, "", "WHAT HAPPENED", details,
+    "", "EXPECTED", expected || "Not provided", "", `Screenshot: ${attachment ? attachment.filename : "None"}`,
   ].join("\n");
 
   const emailPayload: Record<string, unknown> = {
@@ -128,8 +137,8 @@ Deno.serve(async (req: Request) => {
   });
   const result = await response.json().catch(() => ({}));
   if (!response.ok) {
-    console.error("Sakura bug-report email provider error", { status: response.status, name: result?.name, message: result?.message });
-    return json({ error: "The report could not be emailed right now. Please try again later." }, 502, origin);
+    console.error("Sakura bug-report email provider error", { status: response.status, name: clean(result?.name, 120), message: clean(result?.message, 600) });
+    return json({ error: resendUserMessage(response.status, result), code: `resend_${response.status}` }, 502, origin);
   }
   return json({ ok: true, id: result?.id || null }, 200, origin);
 });
