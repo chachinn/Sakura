@@ -144,6 +144,16 @@
     document.body.appendChild(script);
   }
 
+  function bootBugReport() {
+    if (window.SakuraBugReport || document.querySelector("script[data-sakura-bug-report]")) return;
+    const script = document.createElement("script");
+    script.src = "./features/sakura-bug-report.js?v=1";
+    script.dataset.sakuraBugReport = "true";
+    script.async = true;
+    script.onerror = () => console.warn("Sakura Bug Report could not load. Core Sakura will continue normally.");
+    document.body.appendChild(script);
+  }
+
   function bootGoogleOAuthLauncher() {
     if (window.SakuraGoogleOAuthLauncher || document.querySelector("script[data-sakura-google-oauth]")) return;
     const script = document.createElement("script");
@@ -183,6 +193,7 @@
     bootReadingLongForm();
     bootReadingComplete();
     bootFreshRandom();
+    bootBugReport();
     prepareSakuraAccount();
   }
 
