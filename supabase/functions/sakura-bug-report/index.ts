@@ -7,7 +7,7 @@ const ALLOWED_ORIGINS = new Set([
   "http://127.0.0.1:5500",
 ]);
 const EXPECTED_PUBLISHABLE_KEY = "sb_publishable_X10kPG4ED--0Y5oyDVR1kA_H-NF_7LV";
-const REPORT_TO = "Chabelanio@gmail.com";
+const REPORT_TO = "chabelanio@gmail.com";
 const MAX_ATTACHMENT_BYTES = 3 * 1024 * 1024;
 const ALLOWED_MIME = new Set(["image/jpeg", "image/png", "image/webp", "image/heic", "image/heif"]);
 const RATE_WINDOW_MS = 15 * 60 * 1000;
@@ -54,13 +54,20 @@ function decodedBytes(base64: string) {
   const padding = clean64.endsWith("==") ? 2 : clean64.endsWith("=") ? 1 : 0;
   return Math.max(0, Math.floor((clean64.length * 3) / 4) - padding);
 }
+function resendProviderMessage(result: any) {
+  return clean(result?.message || result?.error, 600);
+}
 function resendUserMessage(status: number, result: any) {
-  const providerMessage = clean(result?.message, 600);
+  const providerMessage = resendProviderMessage(result);
   if (status === 403 && /testing emails|own email address|verify a domain/i.test(providerMessage)) {
-    return "Resend can only send test emails to the email address on your Resend account. Make sure your Resend account email is Chabelanio@gmail.com, or verify a sending domain.";
+    const allowed = providerMessage.match(/own email address\s*\(([^)]+)\)/i)?.[1]?.trim();
+    if (allowed) {
+      return `Resend says this API key can only send test emails to ${allowed}. Sakura is sending to ${REPORT_TO}. If those differ, create the Resend API key from the account/team that owns ${REPORT_TO}.`;
+    }
+    return `Resend can only send test emails to the email address associated with this API key's account/team. Sakura is sending to ${REPORT_TO}.`;
   }
   if (status === 401) return "The bug-report email key was rejected. Please reconnect the Resend API key in Supabase.";
-  if (status === 403) return "Resend rejected this send. Check that the Resend account can send to Chabelanio@gmail.com or verify a sending domain.";
+  if (status === 403) return `Resend rejected this send to ${REPORT_TO}. Check that this API key belongs to the correct Resend account/team or verify a sending domain.`;
   if (status === 422 && providerMessage) return `Resend rejected the email details: ${providerMessage}`;
   return "The report reached the email service, but the email could not be sent. Please try again later.";
 }
@@ -137,7 +144,7 @@ Deno.serve(async (req: Request) => {
   });
   const result = await response.json().catch(() => ({}));
   if (!response.ok) {
-    console.error("Sakura bug-report email provider error", { status: response.status, name: clean(result?.name, 120), message: clean(result?.message, 600) });
+    console.error("Sakura bug-report email provider error", { status: response.status, name: clean(result?.name, 120), message: resendProviderMessage(result) });
     return json({ error: resendUserMessage(response.status, result), code: `resend_${response.status}` }, 502, origin);
   }
   return json({ ok: true, id: result?.id || null }, 200, origin);
