@@ -154,6 +154,16 @@
     document.body.appendChild(script);
   }
 
+  function bootPracticeGridPolish() {
+    if (window.SakuraPracticeGridPolish || document.querySelector("script[data-sakura-practice-grid-polish]")) return;
+    const script = document.createElement("script");
+    script.src = "./features/sakura-practice-grid-polish.js?v=1";
+    script.dataset.sakuraPracticeGridPolish = "true";
+    script.async = true;
+    script.onerror = () => console.warn("Sakura Practice grid polish could not load. Existing Practice activities will remain available.");
+    document.body.appendChild(script);
+  }
+
   function bootBugReport() {
     if (window.SakuraBugReport || document.querySelector("script[data-sakura-bug-report]")) return;
     const script = document.createElement("script");
@@ -204,6 +214,7 @@
     bootReadingComplete();
     bootFreshRandom();
     bootSourcePractice();
+    bootPracticeGridPolish();
     bootBugReport();
     prepareSakuraAccount();
   }
