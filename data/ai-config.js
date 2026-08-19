@@ -144,6 +144,16 @@
     document.body.appendChild(script);
   }
 
+  function bootSourcePractice() {
+    if (window.SakuraSourcePractice || document.querySelector("script[data-sakura-source-practice]")) return;
+    const script = document.createElement("script");
+    script.src = "./features/sakura-source-practice.js?v=1";
+    script.dataset.sakuraSourcePractice = "true";
+    script.async = true;
+    script.onerror = () => console.warn("Sakura Source-Checked Practice could not load. Existing Practice activities will remain available.");
+    document.body.appendChild(script);
+  }
+
   function bootBugReport() {
     if (window.SakuraBugReport || document.querySelector("script[data-sakura-bug-report]")) return;
     const script = document.createElement("script");
@@ -193,6 +203,7 @@
     bootReadingLongForm();
     bootReadingComplete();
     bootFreshRandom();
+    bootSourcePractice();
     bootBugReport();
     prepareSakuraAccount();
   }
