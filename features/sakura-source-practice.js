@@ -144,7 +144,7 @@
     if(!feedback)return false;
     ensureSourceProof();
     const observer=new MutationObserver(renderSourceProof);
-    observer.observe(feedback,{attributes:true,attributeFilter:['hidden'],childList:true,subtree:true});
+    observer.observe(feedback,{attributes:true,attributeFilter:['hidden']});
     document.getElementById('wwys-choices')?.addEventListener('click',()=>setTimeout(renderSourceProof,0));
     document.getElementById('wwys-next')?.addEventListener('click',()=>setTimeout(renderSourceProof,0));
     return true;
@@ -175,9 +175,8 @@
     removeLegacyCard();
     integrate();
     if(!watchFeedback()){
-      const root=document.body;
       const observer=new MutationObserver(()=>{if(watchFeedback())observer.disconnect();});
-      observer.observe(root,{childList:true,subtree:true});
+      observer.observe(document.body,{childList:true,subtree:true});
       setTimeout(()=>observer.disconnect(),5000);
     }
   }
