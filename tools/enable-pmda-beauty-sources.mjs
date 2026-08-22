@@ -26,7 +26,10 @@ const pmda = {
   approvedPathPatterns: [
     "^/review-services/drug-reviews/about-reviews/q-drugs/",
     "^/safety/info-services/qdrugs-cosmetics/",
-    "^/safety/reports/mah/0005\\.html$"
+    "^/safety/reports/mah/0005\\.html$",
+    "^/safety/consultation-for-mah/",
+    "^/review-services/f2f-pre/consultations/",
+    "^/review-services/symposia/0174\\.html$"
   ],
   excludedContent: [
     "logos",
@@ -38,7 +41,7 @@ const pmda = {
     "databases or services governed by separate terms",
     "content with a separate rights notice"
   ],
-  notes: "PMDA site policy applies PDL 1.0 unless otherwise indicated. Reading Garden approval is restricted to PMDA-authored HTML guidance/index pages in the listed cosmetics/quasi-drug paths. PDF review reports, manufacturer-authored application materials, separately governed databases/services, and any item with contrary rights text are excluded.",
+  notes: "PMDA site policy applies PDL 1.0 unless otherwise indicated. Reading Garden approval is restricted to PMDA-authored HTML cosmetics/quasi-drug guidance, consultation, safety and explanatory pages in the listed paths. PDF review reports, manufacturer-authored application materials, separately governed databases/services, and any item with contrary rights text are excluded.",
   verifiedDate: "2026-08-22"
 };
 if (!registry.sourceFamilies.some((family) => family.sourceFamilyId === pmda.sourceFamilyId)) {
@@ -62,7 +65,7 @@ const replacements = [
   ],
   [
     '      "https://www.caa.go.jp/business/labeling/",',
-    '      "https://www.pmda.go.jp/review-services/drug-reviews/about-reviews/q-drugs/0002.html",\n      "https://www.pmda.go.jp/review-services/drug-reviews/about-reviews/q-drugs/0003.html",\n      "https://www.pmda.go.jp/review-services/drug-reviews/about-reviews/q-drugs/0004.html",\n      "https://www.pmda.go.jp/review-services/drug-reviews/about-reviews/q-drugs/0005.html",\n      "https://www.pmda.go.jp/review-services/drug-reviews/about-reviews/q-drugs/0006.html",\n      "https://www.pmda.go.jp/safety/info-services/qdrugs-cosmetics/0001.html",\n      "https://www.pmda.go.jp/safety/info-services/qdrugs-cosmetics/0002.html",\n      "https://www.pmda.go.jp/safety/info-services/qdrugs-cosmetics/0003.html",\n      "https://www.pmda.go.jp/safety/info-services/qdrugs-cosmetics/0004.html",\n      "https://www.pmda.go.jp/safety/reports/mah/0005.html",\n      "https://www.caa.go.jp/business/labeling/",'
+    '      "https://www.pmda.go.jp/review-services/drug-reviews/about-reviews/q-drugs/0002.html",\n      "https://www.pmda.go.jp/review-services/drug-reviews/about-reviews/q-drugs/0003.html",\n      "https://www.pmda.go.jp/review-services/drug-reviews/about-reviews/q-drugs/0004.html",\n      "https://www.pmda.go.jp/review-services/drug-reviews/about-reviews/q-drugs/0005.html",\n      "https://www.pmda.go.jp/review-services/drug-reviews/about-reviews/q-drugs/0006.html",\n      "https://www.pmda.go.jp/safety/info-services/qdrugs-cosmetics/0001.html",\n      "https://www.pmda.go.jp/safety/info-services/qdrugs-cosmetics/0002.html",\n      "https://www.pmda.go.jp/safety/info-services/qdrugs-cosmetics/0003.html",\n      "https://www.pmda.go.jp/safety/info-services/qdrugs-cosmetics/0004.html",\n      "https://www.pmda.go.jp/safety/reports/mah/0005.html",\n      "https://www.pmda.go.jp/safety/consultation-for-mah/0004.html",\n      "https://www.pmda.go.jp/review-services/f2f-pre/consultations/0017.html",\n      "https://www.pmda.go.jp/review-services/f2f-pre/consultations/0067.html",\n      "https://www.pmda.go.jp/review-services/symposia/0174.html",\n      "https://www.caa.go.jp/business/labeling/",'
   ],
   [
     '  const fingerprint = sha256(normalizeBody(body));',
@@ -75,4 +78,4 @@ for (const [before, after] of replacements) {
   source = source.replace(before, after);
 }
 fs.writeFileSync(discoveryPath, source);
-console.log(JSON.stringify({pass:true,pmdaRegistered:true,crossShelfReservation:true}, null, 2));
+console.log(JSON.stringify({pass:true,pmdaRegistered:true,crossShelfReservation:true,finalBeautyRoots:true}, null, 2));
