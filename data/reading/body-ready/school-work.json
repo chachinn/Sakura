@@ -613,6 +613,38 @@
       "inventoryPosition": 19
     },
     {
+      "candidateId": "verified-school-work-48068f654809",
+      "targetShelf": "school-work",
+      "sourceFamilyId": "gov-caa",
+      "sourceTitle": "コラムVol.6 ノートパソコン等の身近な製品に内蔵されるバッテリーの火災に注意! ―こどもの学習用端末も―",
+      "sourcePublisher": "消費者庁",
+      "sourceUrl": "https://www.caa.go.jp/policies/policy/consumer_safety/child/project_001/mail/20240315",
+      "sourcePublishedDate": null,
+      "sourceRetrievedDate": "2026-08-22",
+      "rightsStatus": "adaptation-permitted",
+      "rightsBasis": {
+        "termsUrl": "https://www.caa.go.jp/terms_of_use/",
+        "licenseName": "Public Data License 1.0",
+        "licenseUrl": "https://www.digital.go.jp/resources/open_data/public_data_license_v1.0",
+        "itemLevelCheck": "No contrary text-rights notice detected in the fetched page; excluded media remains excluded.",
+        "verifiedDate": "2026-08-22"
+      },
+      "thirdPartyContentReview": {
+        "status": "checked-no-item-level-signal",
+        "signals": [],
+        "excludedMedia": [],
+        "assetsBundled": false
+      },
+      "sourceBodyExtractionStatus": "body-ready",
+      "sourceJapaneseSubstance": "コラムVol.6 ノートパソコン等の身近な製品に内蔵されるバッテリーの火災に注意! ―こどもの学習用端末も―\nイラスト:歩いているこどもの腕が机の上のタブレット端末に当たり、端末が落ちそうになっている様子\nノートパソコンやタブレット端末等(以下「端末等」といいます。)の持ち運びが可能な情報通信機器には、リチウムイオンバッテリーがよく使われています。リチウムイオンバッテリーは、小型で大容量かつ繰り返し使える電池であり、端末等の長時間使用に役立っています。一方で、落下による衝撃や、水分の付着などがきっかけで、内蔵されているバッテリーやその周辺に不具合が生じ、発火する等の事故もみられます。\nなお、2023年3月の内閣府「消費動向調査」によると、2022年度末のタブレット端末の普及率(二人以上の世帯)は44.9%となっており(※1)、近年では、これらの機器をこどもの学習に活用するなど、利用の幅が広がっています。2021年10月の文部科学省の資料によると、小中学校に整備された約946万台の学習用端末のうち、2021年4月から7月までの4か月間において破損・紛失した端末は、約2万台でした(※2)。また、こどもがタブレット端末を自宅へ持ち帰ることもあり、保護者からは壊したりしてしまうのではないかとの不安の声も聞かれます(※3)。\nこれらの端末等は、持ち運ぶ機会が多いだけに、商業施設や学校など大勢の人が集まる場所や、公共交通機関の中でも発煙・発火等の事故が発生しており(※4)、状況によっては周囲に及ぼす影響も大きくなるため、その取扱いには注意が必要です。\n新学期をまもなく迎えるこの時期、新たにこれらの製品を持つ方もいることから、火災等の事故を防ぐために、どのように端末等を取り扱えばよいかをお伝えします。\n【身近にある様々な製品に内蔵されるリチウムイオンバッテリー】\nリチウムイオンバッテリーは、リチウムイオンが正負極間を移動することにより充放電できる二次電池です。エネルギー密度が高いため小型で大容量であり、繰り返し使用が可能、保管時の容量低下が少ないなどの特徴があります。リチウムイオンバッテリーは、端末等だけでなく、モバイルバッテリーやポータブル電源、電動アシスト自転車、コードレス掃除機、電動工具、ワイヤレスイヤホン、携帯用扇風機など、身近にある様々な電気製品に使用され、現代の便利な生活を支えています。\n通常、バッテリー及び製品本体には保護回路が組み込まれており、電圧や温度等を監視・制御し、安全に動作するように設計されていますが、正しく取り扱わない場合や、バッテリーや製品本体に欠陥や不具合がある場合等には異常発熱・発火することがあります。バッテリー内部に使用されている電解液には引火性があるため、発火の際は電解液や可燃性ガスに着火し噴き出します。\nバッテリーの発火は、外部からの圧力や衝撃、内部の劣化等により、正極と負極がショート(短絡)すること等で発生します。また、消耗品であるバッテリーにとって、過充電・過放電のほか、高温環境での使用等は、劣化が進み、発火のリスクが高まります。なお、バッテリーパックの膨張は、内部で発生したガスによるもので、電解液等の材料の劣化が進行したバッテリーにみられる症状の一つです。\n消費者庁には、端末等の内蔵バッテリーに関する火災等の事故情報が寄せられています(※6)。\n「ノートパソコンを充電中、異臭がしたため確認すると、当該製品及び周辺を焼損する火災が発生していた。焼損部付近に、加糖系飲料の成分に近い特徴の液体が付着した跡がみられ、それによりバッテリーコネクター接続部での短絡が生じ、出火したものと考えられた。」\n「電車内で9歳のこどもが落ちたタブレットを拾い上げ、抱えて下車しようとしたところ、当該製品を溶融する火災が発生し、胸部に火傷を負った。調査の結果、落下させた際に、内蔵の電池に外力が加わり、異常発熱して出火に至ったものと推定された。」\n「娘の入学時に高校で購入したタブレットが2か月後に発火した。調査で、混入したネジがバッテリーパックに刺さったことに起因すると推測された。」\n「充電保管庫内で保管していたタブレット端末に煤や側面溶解が生じた。」\n取扱いのポイント\n【衝撃や圧力を与えない】\n投げたり叩いたりしないのはもちろんのこと、机の端に置いて落下させてしまったり、床や椅子に置いたままで踏み付けてしまうなど、衝撃や圧力を加えないよう、注意しましょう。\nイラスト:左:歩いているこどもの腕が机の上のタブレット端末に当たり、端末が落ちそうになっている様子:右:ソファの上に置いているタブレット端末をソファに座ろうとしたこどもがお尻で踏みつけそうになっている様子\n【高温の場所に放置しない】\n窓際の机の上に置いているタブレット端末が窓から入る日光で温められて、端末から煙が出ている様子\n機器の使用・充電・保管には適切な温度の範囲があります。特に暖房器具のそばや直射日光の当たる場所などの高温環境、布団の中など熱のこもりやすい場所では使用・充電・保管しないようにしましょう。寒い時期にカイロや暖房器具で温めることも避けてください。また、充電・保管時には、燃えやすいものを近くに置かないようにしましょう。\n【液体を付着させない】\n机の上に置いてあるコップにジュースを注ごうとした際に、コップの横に置いてあるタブレット端末に誤ってジュースをこぼしそうになっている様子\n飲み物をこぼしたり、水がかかる場所では使用・充電・保管しないように注意しましょう。なお、防水性能は製品により異なるため、取扱説明書を確認しましょう。\n【異物を差し込んだり、分解・改造したりしない】\nタブレット端末の側面に工具を差し込み、端末を分解しようとしている様子\n機器の端子差込口などの隙間に物を差し込んだり、機器を分解・改造することは危険です。\n【異常を感じたら使用を中止する】\n使用していて端末が熱い場合は、使用を中止し、電源を切り、涼しい場所で温度が下がるのを待ちましょう。その際、保冷剤や冷蔵庫などを使って急冷すると、端末内部に結露が生じるおそれがあるため避けましょう。\nその後もすぐに熱くなる、充電できない、バッテリーパック部分が膨張している、異音や異臭がするなどの異常が見られたら、使用を中止し(※7)、購入店又は製造・輸入事業者の修理窓口に相談してください。不要になった製品・バッテリーの処分に困った場合は、事業者や地方公共団体に問い合せ、正しい回収・リサイクル方法にしたがってください。\n【万が一、発煙・発火した場合】\n発煙・発火した場合、充電中であればコンセントから充電プラグを抜きましょう。端末近くの可燃物は遠ざけてください。火花が飛び散っている時には近寄らず、火花が収まってから消火器や大量の水で消火するとともに119番通報してください(※7)。\nリチウムイオンバッテリーは、スマートフォンやモバイルバッテリーのような小型の製品にも内蔵されています。これらの製品を取扱う際も、同様に注意しましょう。また、充電器やケーブルの取扱いに起因する火災も発生しているので、あわせて注意が必要です(※8)。\n※1: 内閣府「消費動向調査」(令和5年3月実施調査結果)\n※2: 文部科学省「端末利活用状況等の実態調査 (令和3年7月末時点) (確定値)」\n※3: デジタル庁「GIGAスクール構想に関する アンケート分析結果」(Findability Sciences株式会社)\n※4: 製品評価技術基盤機構「5年で2倍以上に!リチウムイオンバッテリー搭載製品の事故～モバイルバッテリーは購入時にPSEマークを確認しましょう～」(平成31年1月24日)\n※5: 東京消防庁「リチウムイオン電池搭載製品の出火危険」\n※6: 事故情報データバンク:消費者庁が(独)国民生活センターと連携し、関係機関から「事故情報」「危険情報」を広く収集し、事故防止に役立てるためのデータ収集・提供システム(平成22年4月運用開始)。\n※7: 東京消防庁「リチウムイオン電池からの火災にご注意を!～誤った使用方法や廃棄による火災が増加しています～」(令和3年11月4日)\n※8: こども安全メールVol.643「スマホ等の充電器の取扱いに注意-感電や火災等の事故も」\n消費者庁「モバイルバッテリーの事故に注意しましょう! -帰省や旅行の時期、公共交通機関の中での事故は特に危険です- 」(令和元年7月31日) [PDF:723KB]\n製品評価技術基盤機構「電池・バッテリー「2.衝撃を受けたバッテリーパックの破裂」」\nモバイルコンピューティング推進コンソーシアム「気を付けて!スマートフォン・モバイルバッテリーの使い方」\n担当:消費者安全課\nおすすめコンテンツ\n(Banner)リコール情報サイト\nリコール情報サイト\n(Banner)事故情報データバンクシステム\n事故情報データバンクシステム\n(Banner)消費者安全調査委員会\n消費者安全調査委員会\n(Banner)食品と放射能Q&A\n食品と放射能Q&A\n(Banner)食品安全総合情報サイト\n食品安全総合情報サイト",
+      "sourceTextCharacterCount": 3191,
+      "reuseMode": "verbatim-or-adaptation-permitted",
+      "sourceBodyFingerprint": "7d4f6ac64be4671a0519e2e4f9f1949f0e550f0b4c6807014643a225abbd2b9a",
+      "sourceAttribution": "出典：消費者庁ウェブサイト（https://www.caa.go.jp/policies/policy/consumer_safety/child/project_001/mail/20240315）",
+      "sourceProcessing": "Item-level source body extracted for later editorial adaptation. No learner-facing text has been generated.",
+      "inventoryPosition": 20
+    },
+    {
       "candidateId": "verified-school-work-8ef7171ccf0c",
       "targetShelf": "school-work",
       "sourceFamilyId": "gov-mhlw",
@@ -642,7 +674,7 @@
       "sourceBodyFingerprint": "2c082c33a5e913353a6ca3fed74a25fd06610a85fe21fb045625d764bd0647dc",
       "sourceAttribution": "出典：厚生労働省ウェブサイト（https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/koyou_roudou/koyou/kensetsu-kouwan）",
       "sourceProcessing": "Item-level source body extracted for later editorial adaptation. No learner-facing text has been generated.",
-      "inventoryPosition": 20
+      "inventoryPosition": 21
     },
     {
       "candidateId": "verified-school-work-0405ad3a56ae",
@@ -674,7 +706,7 @@
       "sourceBodyFingerprint": "96a0fcb02c9e246d29304da52556a6e2b4113f2336202d7e06d8944f471ea2a4",
       "sourceAttribution": "出典：厚生労働省ウェブサイト（https://www.mhlw.go.jp/stf/shingi/shingi-rousei_126978_tyuutaibukaiold.html）",
       "sourceProcessing": "Item-level source body extracted for later editorial adaptation. No learner-facing text has been generated.",
-      "inventoryPosition": 21
+      "inventoryPosition": 22
     },
     {
       "candidateId": "verified-school-work-b6e5a72dccf5",
@@ -706,7 +738,7 @@
       "sourceBodyFingerprint": "21ec407fef9e87149b186df9154cb7436eaf74b4f6926c4b98b12899e28f5ebe",
       "sourceAttribution": "出典：厚生労働省ウェブサイト（https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/koyou_roudou/part_haken/jigyounushi/career.html）",
       "sourceProcessing": "Item-level source body extracted for later editorial adaptation. No learner-facing text has been generated.",
-      "inventoryPosition": 22
+      "inventoryPosition": 23
     },
     {
       "candidateId": "verified-school-work-0b85f333ee56",
@@ -738,7 +770,7 @@
       "sourceBodyFingerprint": "b5e6fb1c1ab610d9eae7d9de379da928482976066cdfdfcc72f051ed30a20196",
       "sourceAttribution": "出典：厚生労働省ウェブサイト（https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/0000133085.html）",
       "sourceProcessing": "Item-level source body extracted for later editorial adaptation. No learner-facing text has been generated.",
-      "inventoryPosition": 23
+      "inventoryPosition": 24
     },
     {
       "candidateId": "verified-school-work-351e811b997e",
@@ -770,7 +802,7 @@
       "sourceBodyFingerprint": "096e0b552aca2703e841af5febc7fe09ebdea6f0d745bad5799031ec74c0ee33",
       "sourceAttribution": "出典：厚生労働省ウェブサイト（https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/0000148322.html）",
       "sourceProcessing": "Item-level source body extracted for later editorial adaptation. No learner-facing text has been generated.",
-      "inventoryPosition": 24
+      "inventoryPosition": 25
     },
     {
       "candidateId": "verified-school-work-3558e7c868cc",
@@ -802,7 +834,7 @@
       "sourceBodyFingerprint": "1519b32378eaf134cb0fa382ec251626d6cae4d6da565202b9268001f34e557a",
       "sourceAttribution": "出典：厚生労働省ウェブサイト（https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/koyou_roudou/roudoukijun/zigyonushi/shienjigyou/03_00028.html）",
       "sourceProcessing": "Item-level source body extracted for later editorial adaptation. No learner-facing text has been generated.",
-      "inventoryPosition": 25
+      "inventoryPosition": 26
     },
     {
       "candidateId": "government-school-work-0009",
@@ -834,7 +866,7 @@
       "sourceBodyFingerprint": "0ae2f746cde323cad0bfd1f46c8fe4761ec34f63518928ca57ef4bc8f5d88bfc",
       "sourceAttribution": "出典：厚生労働省ウェブサイト（https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/0000077386.html）",
       "sourceProcessing": "Item-level source body extracted for later editorial adaptation. No learner-facing text has been generated.",
-      "inventoryPosition": 26
+      "inventoryPosition": 27
     },
     {
       "candidateId": "verified-school-work-3cb8028af0c7",
@@ -866,7 +898,7 @@
       "sourceBodyFingerprint": "5ecee6f14a57e1c78ff886f741d801add8c062af80fc2600f5f18472e10f3e8d",
       "sourceAttribution": "出典：厚生労働省ウェブサイト（https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/0000144972.html）",
       "sourceProcessing": "Item-level source body extracted for later editorial adaptation. No learner-facing text has been generated.",
-      "inventoryPosition": 27
+      "inventoryPosition": 28
     },
     {
       "candidateId": "verified-school-work-c9c704bb8cd0",
@@ -898,7 +930,7 @@
       "sourceBodyFingerprint": "0abd0350a5f75d449437df01ae9d8702829a83b6854f95c24cd54d0a62009d24",
       "sourceAttribution": "出典：厚生労働省ウェブサイト（https://www.mhlw.go.jp/stf/newpage_14982.html）",
       "sourceProcessing": "Item-level source body extracted for later editorial adaptation. No learner-facing text has been generated.",
-      "inventoryPosition": 28
+      "inventoryPosition": 29
     },
     {
       "candidateId": "verified-school-work-0702ea6ad220",
@@ -930,7 +962,7 @@
       "sourceBodyFingerprint": "e4652ac030cdda6f6b30487da69d352e24b80c61a08f87566b70808109ac0145",
       "sourceAttribution": "出典：厚生労働省ウェブサイト（https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/koyou_roudou/koyou/kyufukin/shougai_trial_00002.html）",
       "sourceProcessing": "Item-level source body extracted for later editorial adaptation. No learner-facing text has been generated.",
-      "inventoryPosition": 29
+      "inventoryPosition": 30
     },
     {
       "candidateId": "verified-school-work-4152357fec91",
@@ -962,7 +994,7 @@
       "sourceBodyFingerprint": "e88cee7406d11d89e0ae3ce0fd7dadccdab8706c0f7be12dd9bf3dbadec353ef",
       "sourceAttribution": "出典：厚生労働省ウェブサイト（https://www.mhlw.go.jp/stf/covid-19/kurashiyashigoto.html）",
       "sourceProcessing": "Item-level source body extracted for later editorial adaptation. No learner-facing text has been generated.",
-      "inventoryPosition": 30
+      "inventoryPosition": 31
     },
     {
       "candidateId": "verified-school-work-b4f74b5d464e",
@@ -994,7 +1026,7 @@
       "sourceBodyFingerprint": "0e6b6a32110ad38d5fb5d983d70a401fc3a26ab42df514719359a989789cf104",
       "sourceAttribution": "出典：厚生労働省ウェブサイト（https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/bunya/freelance_00006.html）",
       "sourceProcessing": "Item-level source body extracted for later editorial adaptation. No learner-facing text has been generated.",
-      "inventoryPosition": 31
+      "inventoryPosition": 32
     },
     {
       "candidateId": "verified-school-work-be2d43d311fb",
@@ -1026,7 +1058,7 @@
       "sourceBodyFingerprint": "e1ed1b12de7595bfdfbf4d96290380fc57715b1032ff565fac4b6ba0c8574261",
       "sourceAttribution": "出典：厚生労働省ウェブサイト（https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/kenkou_iryou/dengue_fever_qa_00018.html）",
       "sourceProcessing": "Item-level source body extracted for later editorial adaptation. No learner-facing text has been generated.",
-      "inventoryPosition": 32
+      "inventoryPosition": 33
     },
     {
       "candidateId": "verified-school-work-c0f54cec9410",
@@ -1058,7 +1090,7 @@
       "sourceBodyFingerprint": "530c806e068346a43982c858d133cf53cb9b10c6e48cb57255abfefd00852ede",
       "sourceAttribution": "出典：厚生労働省ウェブサイト（https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/koyou_roudou/jinzaikaihatsu/kyouiku_00001.html）",
       "sourceProcessing": "Item-level source body extracted for later editorial adaptation. No learner-facing text has been generated.",
-      "inventoryPosition": 33
+      "inventoryPosition": 34
     },
     {
       "candidateId": "verified-school-work-476d60426201",
@@ -1090,7 +1122,7 @@
       "sourceBodyFingerprint": "e4e54b0b1ca091f4162fabf183dcfe04edfb10ac1cff0b9015a8f8d185ec8407",
       "sourceAttribution": "出典：厚生労働省ウェブサイト（https://www.mhlw.go.jp/web_magazine/series/20260701.html）",
       "sourceProcessing": "Item-level source body extracted for later editorial adaptation. No learner-facing text has been generated.",
-      "inventoryPosition": 34
+      "inventoryPosition": 35
     },
     {
       "candidateId": "verified-school-work-d8aea2ebdeb3",
@@ -1122,7 +1154,7 @@
       "sourceBodyFingerprint": "e2ac00bae6e85efe07bec29631f1e15efa55192ce16e6d35780652919f6ef2af",
       "sourceAttribution": "出典：厚生労働省ウェブサイト（https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/koyou_roudou/roudoukijun）",
       "sourceProcessing": "Item-level source body extracted for later editorial adaptation. No learner-facing text has been generated.",
-      "inventoryPosition": 35
+      "inventoryPosition": 36
     },
     {
       "candidateId": "verified-school-work-d89b6d1a7b90",
@@ -1154,7 +1186,7 @@
       "sourceBodyFingerprint": "9e63a785d9af9aa513ee500acce35f6731e7727324b2b7f106f90ee21d4d4879",
       "sourceAttribution": "出典：消費者庁ウェブサイト（https://www.caa.go.jp/policies/policy/consumer_education/consumer_education/coordinator_conference）",
       "sourceProcessing": "Item-level source body extracted for later editorial adaptation. No learner-facing text has been generated.",
-      "inventoryPosition": 36
+      "inventoryPosition": 37
     },
     {
       "candidateId": "verified-school-work-7af7285be7a9",
@@ -1186,7 +1218,7 @@
       "sourceBodyFingerprint": "b48ed1364bf1a7d253dcb2bc28cad3dcd6093fc7c766d315906be6eceeaaf84a",
       "sourceAttribution": "出典：厚生労働省ウェブサイト（https://www.mhlw.go.jp/wp/yosan/zeisei）",
       "sourceProcessing": "Item-level source body extracted for later editorial adaptation. No learner-facing text has been generated.",
-      "inventoryPosition": 37
+      "inventoryPosition": 38
     },
     {
       "candidateId": "verified-school-work-dbf948084ca4",
@@ -1218,7 +1250,7 @@
       "sourceBodyFingerprint": "6b95904245fe026957fc432a9b08dd895021b3dc305622de079ae7558bfd2460",
       "sourceAttribution": "出典：厚生労働省ウェブサイト（https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/0000056430.html）",
       "sourceProcessing": "Item-level source body extracted for later editorial adaptation. No learner-facing text has been generated.",
-      "inventoryPosition": 38
+      "inventoryPosition": 39
     },
     {
       "candidateId": "verified-school-work-ee36fb813889",
@@ -1250,7 +1282,7 @@
       "sourceBodyFingerprint": "ba3fe187abed4288f139eddba196af28c0f8fed1ecabf9931f60dfbe19ef7ef2",
       "sourceAttribution": "出典：消費者庁ウェブサイト（https://www.caa.go.jp/policies/policy/consumer_education/public_awareness/teaching_material/business_education/program_01）",
       "sourceProcessing": "Item-level source body extracted for later editorial adaptation. No learner-facing text has been generated.",
-      "inventoryPosition": 39
+      "inventoryPosition": 40
     },
     {
       "candidateId": "verified-school-work-e1b0a90ce4eb",
@@ -1282,7 +1314,7 @@
       "sourceBodyFingerprint": "0079d2986a887c35b6c8aafb91667e822951a12d79eb83068e791b8dd10ddbdd",
       "sourceAttribution": "出典：厚生労働省ウェブサイト（https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/0000121431_00177.html）",
       "sourceProcessing": "Item-level source body extracted for later editorial adaptation. No learner-facing text has been generated.",
-      "inventoryPosition": 40
+      "inventoryPosition": 41
     },
     {
       "candidateId": "verified-school-work-8ca875631b93",
@@ -1313,38 +1345,6 @@
       "reuseMode": "verbatim-or-adaptation-permitted",
       "sourceBodyFingerprint": "c71e3f23332eb1e0f6c05e4f78dd474a07c5f76d4d08620f07a529ac78d5f92d",
       "sourceAttribution": "出典：厚生労働省ウェブサイト（https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/0000111089_00001.html）",
-      "sourceProcessing": "Item-level source body extracted for later editorial adaptation. No learner-facing text has been generated.",
-      "inventoryPosition": 41
-    },
-    {
-      "candidateId": "verified-school-work-a0dd834ebe27",
-      "targetShelf": "school-work",
-      "sourceFamilyId": "gov-mhlw",
-      "sourceTitle": "専門実践教育訓練講座の申請手続について",
-      "sourcePublisher": "厚生労働省",
-      "sourceUrl": "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/koyou_roudou/shokugyounouryoku/career_formation/kyouiku/03_00004.html",
-      "sourcePublishedDate": null,
-      "sourceRetrievedDate": "2026-08-22",
-      "rightsStatus": "adaptation-permitted",
-      "rightsBasis": {
-        "termsUrl": "https://www.mhlw.go.jp/chosakuken/",
-        "licenseName": "Public Data License 1.0",
-        "licenseUrl": "https://www.digital.go.jp/resources/open_data/public_data_license_v1.0",
-        "itemLevelCheck": "No contrary text-rights notice detected in the fetched page; excluded media remains excluded.",
-        "verifiedDate": "2026-08-22"
-      },
-      "thirdPartyContentReview": {
-        "status": "checked-no-item-level-signal",
-        "signals": [],
-        "excludedMedia": [],
-        "assetsBundled": false
-      },
-      "sourceBodyExtractionStatus": "body-ready",
-      "sourceJapaneseSubstance": "政策について\n>\n分野別の政策一覧\n>\n教育訓練給付制度\n>\n専門実践教育訓練講座の申請手続について\n専門実践教育訓練講座に関し、教育訓練施設の方が行う申請手続について御案内しています。\n申請手続について\n申請書類の提出先\n新たに専門実践教育訓練の講座指定を申請する手続です。\n\n申請受付・講座指定は、 年に２回 行っています。\n\n指定期間は、４月１日又は10月１日から原則として ３年間 です。\n４月１日 からの指定： 前年の10月上旬～11月上旬 に申請受付\n10月１日 からの指定： 同年の４月上旬～５月上旬 に申請受付\n現在、一般教育訓練で指定されている講座について、専門実践教育訓練への移行を申請する手続です。\n\n申請受付・講座指定は、 年に２回 行っています。\n４月１日 からの移行： 前年の10月上旬～11月上旬 に申請受付\n10月１日 からの移行： 同年の４月上旬～５月上旬 に申請受付\n現在、専門実践教育訓練の指定を受けている講座について、指定期間満了後も引き続き指定を申請する手続です。\n\n講座の指定期間は原則として３年間であり、自動的に指定が更新されるものではありませんので、引き続き指定を希望する際には再指定申請手続が必要です。\n\n再指定を希望する場合は、指定期間満了前の受付期間内に申請を行ってください。\n指定期間が ３月31日 までの場合（４月１日からの再指定）： 前年の10月上旬～11月上旬 に申請受付\n指定期間が ９月30日 までの場合（10月１日からの再指定）： 同年の４月上旬～５月上旬 に申請受付\n現在、専門実践教育訓練の講座指定を受けている場合に、教育訓練施設や講座に関する登録事項を変更する手続です。\n\nなお、変更事項により、 事前手続が必要なもの と、 随時手続を行うもの があります。\n次の（１）～（７）の事項を変更する場合は、変更前かつ決められた受付期間内に申請を行ってください。\n\n申請受付は、 年に２回 行っています。\n\nなお、これらの変更の可否は「講座指定等通知書」により通知します。変更は、この通知による変更日以降について認められることとなりますので、余裕を持って手続を行ってください。\n４月１日 からの変更： 前年の10月上旬～11月上旬 に申請受付\n10月１日 からの変更： 同年の４月上旬～５月上旬 に申請受付\n（１）専門実践教育訓練施設の名称\n（２）訓練期間及び総訓練時間\n（３）教育訓練経費（支給単位期間ごとの内訳、支払方法を含む。）\n（４）教育訓練目標（大幅な変更を除く。）\n（５）入講時に設定する受講者要件\n（６）受講認定基準及び修了認定基準\n（７）専門実践教育訓練講座の名称\n次の（１）～（13）の事項を変更する場合は、速やかに必要書類を指定窓口機関に提出してください。\n\nなお、これらは提出をもって変更を受け付けたこととします（文書による通知は行いません）。\n（１）教室の追加（不動産契約書等の手続が完了し、教育訓練を行うための設備等が整った後提出することが必要。）\n（２）教室で行う既指定講座の追加\n（３）カリキュラム（軽微なものに限る。）\n（４）主任指導者\n（５）実施方法「通信」の内訳（１通信・２一部e-ラーニング・３e-ラーニングのみ）\n（７）専門実践教育訓練施設の所在地、電話番号\n（８）専門実践教育訓練実施者の名称、所在地（法人の合併等は除く。）、代表者名\n（９）教室の名称、所在地、電話番号\n（10）専門実践教育訓練施設と教室で行う施設事務の分担\n（11）販売活動等管理責任者\n（12）教育訓練経費の割引等の実施\n（13）施設責任者、苦情受付者、事務担当者\n［ご留意ください］教育訓練実施者の要件を満たさなくなった場合\n専門実践教育訓練の対象となる講座の指定基準等については、以下のチェックリスト、パンフレット（申請手続の要領）等を御確認ください。\n講座指定申請前のチェックリスト［86KB］\n教育訓練給付制度（専門実践教育訓練）の講座指定を希望される方へ（教育訓練施設向けパンフレット）［868KB］\n分野・資格コード表［187KB］\n令和８年10月１日からの新規指定・移行・再指定・変更（一部）\n・受付期間：令和８年４月１日（水）～令和８年５月１日（金）（消印有効）\nまずは、提出書類チェック表をダウンロードしてください。\n提出書類チェック表（第四次産業革命スキル習得講座との同時申請は除く）\n\n［Excel形式］［233KB］\n提出書類チェック表（第四次産業革命スキル習得講座との同時申請を行う方はこちら）\n\n（1）IT分野［20KB］\n（2）IT利活用分野［24KB］\n次に、提出書類チェック表を参照の上、申請に必要な様式を以下よりダウンロードしてください。\n申請様式\n\n※申請様式は片面印刷とし、両面印刷は行わないでください。\n\n専門様式第１～３号：専門実践教育訓練実施状況調査票（総括票・個票・訓練経費内訳票）［4.4MB］\n専門様式第４号：専門実践教育訓練実施状況調査票（販売活動等調査票）［255KB］\n専門様式第５号：専門実践教育訓練運営管理状況調査票［282KB］\n専門様式第６号：教室別教育訓練講座票［53KB］\n専門様式第７号：専門実践教育訓練実施状況調査票（変更内容票）［76KB］\n専門様式第９号：指定講座廃止届［49KB］\n専門様式第10号：販売活動等管理責任者の交代について（届出）［36KB］\n専門様式第11号：教育訓練経費の割引等の実施について（届出）［36KB］\n記入例（新規指定）［155KB］\n記入例（再指定）［173KB］\n第四次産業革命スキル習得講座との同時申請を行う方\n（2）IT利活用分野\n\n専門様式第12～17号：同時申請用様式（新規）［457KB］\n専門様式第12～17号：同時申請用様式（再指定）［453KB］\n記入例（再指定）\n明示書（様式例）\n\n専門実践教育訓練明示書（様式例）１～３ページ［37KB］\n専門実践教育訓練明示書（様式例）４ページ［22KB］\n※ 「第四次産業革命スキル習得講座」との同時申請 を希望する施設は以下のア～ウの申請方法とは異なり、\n\n　IT分野については、経済産業省HPに掲載しているフォーム申請により受け付けます。\n\n　従来の申請書様式（Excelファイル）のメール提出は廃止いたしました。\n\n　IT利活用分野については、従来どおり厚生労働省及び経済産業省あてにメールでの申請が必要です。\n\n　詳細は、経済産業省HP〔 第四次産業革命スキル習得認定講座 〕をご確認ください。\nPDFファイルを見るためには、Adobe Readerというソフトが必要です。Adobe Readerは無料で配布されていますので、こちらからダウンロードしてください。",
-      "sourceTextCharacterCount": 2079,
-      "reuseMode": "verbatim-or-adaptation-permitted",
-      "sourceBodyFingerprint": "93d2c0b7d36c80549cc3d878a128db343f757eae42b43a9aef6c6c59dc155e30",
-      "sourceAttribution": "出典：厚生労働省ウェブサイト（https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/koyou_roudou/shokugyounouryoku/career_formation/kyouiku/03_00004.html）",
       "sourceProcessing": "Item-level source body extracted for later editorial adaptation. No learner-facing text has been generated.",
       "inventoryPosition": 42
     },
@@ -1381,38 +1381,6 @@
       "inventoryPosition": 43
     },
     {
-      "candidateId": "verified-school-work-306c042a1436",
-      "targetShelf": "school-work",
-      "sourceFamilyId": "gov-mhlw",
-      "sourceTitle": "一般教育訓練講座の申請手続について",
-      "sourcePublisher": "厚生労働省",
-      "sourceUrl": "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/koyou_roudou/shokugyounouryoku/career_formation/kyouiku/03.html",
-      "sourcePublishedDate": null,
-      "sourceRetrievedDate": "2026-08-22",
-      "rightsStatus": "adaptation-permitted",
-      "rightsBasis": {
-        "termsUrl": "https://www.mhlw.go.jp/chosakuken/",
-        "licenseName": "Public Data License 1.0",
-        "licenseUrl": "https://www.digital.go.jp/resources/open_data/public_data_license_v1.0",
-        "itemLevelCheck": "No contrary text-rights notice detected in the fetched page; excluded media remains excluded.",
-        "verifiedDate": "2026-08-22"
-      },
-      "thirdPartyContentReview": {
-        "status": "checked-no-item-level-signal",
-        "signals": [],
-        "excludedMedia": [],
-        "assetsBundled": false
-      },
-      "sourceBodyExtractionStatus": "body-ready",
-      "sourceJapaneseSubstance": "政策について\n>\n分野別の政策一覧\n>\n教育訓練給付制度\n>\n一般教育訓練講座の申請手続について\n一般教育訓練講座に関し、教育訓練施設の方が行う申請手続について御案内しています。\n申請手続について\n申請書類の提出先\n新たに一般教育訓練の講座指定を申請する手続です。\n\n申請受付・講座指定は、 年に２回 行っています。\n\n指定期間は、４月１日又は10月１日から原則として ３年間 です。\n４月１日 からの指定： 前年の10月上旬～11月上旬 に申請受付\n10月１日 からの指定： 同年の４月上旬～５月上旬 に申請受付\n現在、一般教育訓練の指定を受けている講座について、指定期間満了後も引き続き指定を申請する手続です。\n\n講座の指定期間は原則として３年間であり、自動的に指定が更新されるものではありませんので、引き続き指定を希望する際には再指定申請手続が必要です。\n\n再指定を希望する場合は、指定期間満了前の受付期間内に申請を行ってください。\n指定期間が ３月31日 までの場合（４月１日からの再指定）： 前年の10月上旬～11月上旬 に申請受付\n指定期間が ９月30日 までの場合（10月１日からの再指定）： 同年の４月上旬～５月上旬 に申請受付\n現在、一般教育訓練の講座指定を受けている場合に、教育訓練施設や講座に関する登録事項を変更する手続です。\n\nなお、変更事項により、 事前手続が必要なもの と、 随時手続を行うもの があります。\n次の（１）～（７）の事項を変更する場合は、変更前かつ決められた受付期間内に申請を行ってください。\n\n申請受付は、 年に２回 行っています。\n\nなお、これらの変更の可否は「講座指定等通知書」により通知します。変更は、この通知による変更日以降について認められることとなりますので、余裕を持って手続を行ってください。\n４月１日 からの変更： 前年の10月上旬～11月上旬 に申請受付\n10月１日 からの変更： 同年の４月上旬～５月上旬 に申請受付\n（１）一般教育訓練施設の名称\n（２）訓練期間及び総訓練時間\n（３）教育訓練経費（支払方法を含む。）\n（４）教育訓練目標（大幅な変更を除く。）\n（５）入講時に設定する受講者要件\n（６）修了認定基準\n（７）一般教育訓練講座の名称\n次の（１）～（12）の事項を変更する場合は、速やかに必要書類を指定窓口機関に提出してください。\n\nなお、これらは提出をもって変更を受け付けたこととします（文書による通知は行いません）。\n（１）教室の追加（不動産契約書等の手続が完了し、教育訓練を行うための設備等が整った後提出することが必要。）\n（２）教室で行う既指定講座の追加\n（３）カリキュラム（軽微なものに限る。）\n（４）主任指導者\n（５）実施方法「通学」の内訳（１昼間・２夜間・３土日）及び実施方法「通信」の内訳（１通信・２一部e-ラーニング・３e-ラーニングのみ）\n（７）一般教育訓練施設の所在地、電話番号\n（８）一般教育訓練実施者の名称、所在地（法人の合併等は除く。）、代表者名\n（９）教室の名称、所在地、電話番号\n（10）一般教育訓練施設と教室で行う施設事務の分担\n（11）販売活動等管理責任者\n（12）教育訓練経費の割引等の実施\n［ご留意ください］教育訓練実施者の要件を満たさなくなった場合\n講座指定後において、以下の（ｱ）から（ｴ）までのいずれかに該当することとなった場合、教育訓練実施者の要件不適合となり指定講座の取消しの対象となります。\n\n該当する（見込みを含む）場合は、厚生労働省の担当へご連絡をお願いします。\n\n(ｱ)　国の助成金制度に関して不正があった場合\n\n(ｲ)　国又は地方公共団体による許認可の取消しや事業停止命令等、重大な不利益処分を受けた場合\n\n(ｳ)　法人又は団体の役員（いかなる名称によるかを問わず、これと同等以上の職権又は支配力を有する者を含む。以下同じ。）の中に、(ｱ)又は(ｲ)に該当する別の法人若しくは団体の役員であった者（当該団体に(ｱ)又は(ｲ)に該当する行為があった時点において役員であった者に限る。）又は現に役員である者がいる場合\n\n(ｴ) 　(ｱ)から(ｳ)までに掲げる者のほか、これらに準ずる著しく不適当な事実が明らかになった場合\n\n教育訓練実施者の要件を満たさなくなった場合の連絡先\n\n厚生労働省　人材開発統括官　若年者・キャリア形成支援担当参事官室　中長期的キャリア形成支援係（03-5253-1111（代表））（内線5741、5398、5390）にお問合せください。\n一般教育訓練の対象となる講座の指定基準等については、以下のチェックリスト、パンフレット（申請手続の要領）等を御確認ください。\n講座指定申請前のチェックリスト［92KB］\n教育訓練給付制度（一般教育訓練）の講座指定を希望される方へ（教育訓練施設向けパンフレット）［836KB］\n分野・資格コード表［448KB］\n令和８年10月１日からの新規指定・再指定・変更（一部）\n・令和８年４月１日（水）～令和８年５月１日（金）（消印有効）\nまずは、提出書類チェック表をダウンロードしてください。\n提出書類チェック表\n\n［Excel形式］［206KB］\n次に、提出書類チェック表を参照の上、申請に必要な様式を以下よりダウンロードしてください。\n申請様式\n\n※申請様式は片面印刷とし、両面印刷は行わないでください。\n\n一般様式第１～３号：一般教育訓練実施状況調査票（総括票・個票・訓練経費内訳票）［2.7MB］\n一般様式第４号：一般教育訓練実施状況調査票（販売活動等調査票）［256KB］\n一般様式第５号：一般教育訓練運営管理状況調査票［292KB］\n一般様式第６号：教室別教育訓練講座票［52KB］\n一般様式第７号：一般教育訓練実施状況調査票（変更内容票）［78KB］\n一般様式第８号：廃止候補講座一覧表［43KB］\n一般様式第９号：指定講座廃止届［49KB］\n一般様式第10号：販売活動等管理責任者の交代について（届出）［37KB］\n一般様式第11号：教育訓練経費の割引等の実施について（届出）［35KB］\n記入例（新規指定）［124KB］\n記入例（再指定）［127KB］\n明示書（様式例）\n\n一般教育訓練明示書（様式例）１～３ページ［33KB］\n一般教育訓練明示書（様式例）４ページ［44KB］\nPDFファイルを見るためには、Adobe Readerというソフトが必要です。Adobe Readerは無料で配布されていますので、こちらからダウンロードしてください。",
-      "sourceTextCharacterCount": 2027,
-      "reuseMode": "verbatim-or-adaptation-permitted",
-      "sourceBodyFingerprint": "d8c3eb502c3cedda9af8ac546cedca24bf8c196fc15fc94a0b10d94f0729f5be",
-      "sourceAttribution": "出典：厚生労働省ウェブサイト（https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/koyou_roudou/shokugyounouryoku/career_formation/kyouiku/03.html）",
-      "sourceProcessing": "Item-level source body extracted for later editorial adaptation. No learner-facing text has been generated.",
-      "inventoryPosition": 44
-    },
-    {
       "candidateId": "verified-school-work-b644e946125d",
       "targetShelf": "school-work",
       "sourceFamilyId": "gov-caa",
@@ -1441,6 +1409,38 @@
       "reuseMode": "verbatim-or-adaptation-permitted",
       "sourceBodyFingerprint": "7057db5652ed1eb44f7abf6c43226ea22fbf3e837dd5add93a9e7c5ebec48829",
       "sourceAttribution": "出典：消費者庁ウェブサイト（https://www.caa.go.jp/policies/application/whistleblowing）",
+      "sourceProcessing": "Item-level source body extracted for later editorial adaptation. No learner-facing text has been generated.",
+      "inventoryPosition": 44
+    },
+    {
+      "candidateId": "verified-school-work-9bb82d42cdba",
+      "targetShelf": "school-work",
+      "sourceFamilyId": "gov-caa",
+      "sourceTitle": "春は入学、就職、転勤等での引越シーズンです! ー新生活を安全にスタートするための注意ポイントー",
+      "sourcePublisher": "消費者庁",
+      "sourceUrl": "https://www.caa.go.jp/policies/policy/consumer_safety/caution/caution_085",
+      "sourcePublishedDate": null,
+      "sourceRetrievedDate": "2026-08-22",
+      "rightsStatus": "adaptation-permitted",
+      "rightsBasis": {
+        "termsUrl": "https://www.caa.go.jp/terms_of_use/",
+        "licenseName": "Public Data License 1.0",
+        "licenseUrl": "https://www.digital.go.jp/resources/open_data/public_data_license_v1.0",
+        "itemLevelCheck": "No contrary text-rights notice detected in the fetched page; excluded media remains excluded.",
+        "verifiedDate": "2026-08-22"
+      },
+      "thirdPartyContentReview": {
+        "status": "checked-no-item-level-signal",
+        "signals": [],
+        "excludedMedia": [],
+        "assetsBundled": false
+      },
+      "sourceBodyExtractionStatus": "body-ready",
+      "sourceJapaneseSubstance": "春は入学、就職、転勤等での引越シーズンです! ー新生活を安全にスタートするための注意ポイントー\n新生活が始まる方たち(スーツ姿の男性、制服姿の女の子、ランドセルを持った男の子、資料を持った女性)\n引っ越しをしている様子\n春は引越シーズンです。入学、就職、転勤等、新生活を楽しみにされている方も多いのではないでしょうか。\n引越のタイミングで、これまで使用していた製品を処分したり、新たに日常で使うものを購入したりすることも増えると思います。そこで、引越前後で起こりがちな生活家電等の事故について、注意ポイントと実際に発生した事故事例をご紹介します。\nチラシも作成したので、新たな門出を安全に過ごすための参考として、ぜひご活用ください。\n日常と異なる引越準備中や直後には、危険な箇所がないか確認を\n引越前から直後にかけては、荷物整理などの影響で室内も日常とは違う状況となります。普段とは異なる場所に置いた家電や家具で思わぬ事故につながることもあるため、注意が必要です。\n不用品の処分方法について確認を\n引越を機に、これまで使っていた製品等を廃棄することも。前もって自治体のルールを確認しておきましょう。\nとくに、リチウムイオン電池内蔵製品などの廃棄は、火災等の重大な事故につながる恐れがあることから、必ず確認してください。\nテーブルタップの使い方も見直しを\n身の回りの多くの電気製品を同時にテーブル(電源)タップに接続し、たこ足配線にしがちです。このような使い方で、テーブル(電源)タップに表示されている接続可能な最大消費電力を超えると、異常発熱や発火の危険があります。\nまた、テーブル(電源)タップの寿命(3年から5年が交換の目安)も意識して、引越を機に交換も検討しましょう。\n使い慣れていない生活家電等は、特にしっかりと取扱説明書を読むこと\n生活家電等の使い始めは誤使用・不注意による事故が目立つため、まず取扱説明書をしっかり読んで、正しい使い方を理解しましょう。\nインターネット等で入手した中古品は製造時期や保証の確認を\n製造時期が古い製品は、経年劣化で事故が発生するリスクも高まります。また、修理や部品交換ができないものもあるため、製造時期や保証の確認をしましょう。\n加えてリコール対象品ではないかも確認しましょう。\nフリマアプリで購入した小型冷蔵庫が故障している様子\nこれらの注意ポイントを踏まえ、安全な新生活をスタートさせましょう。\n消費者庁には、引越や新生活で揃えた生活家電等で発生しがちな事故の情報が寄せられています。\n「引越の準備で炊飯器をダイニングテーブル上に置いていたところ、近くでこどもたちが遊んでいて蒸気噴出口でやけど。」 (※1)\n炊飯器の蒸気で手をやけどしている男の子\n「電動アシスト自転車のバッテリーパックが不燃ごみとして廃棄されていたため、ごみ収集車の反転板に押しつぶされ、内部のリチウムイオン電池が異常発熱し、焼損。」 (※2)\nゴミ収集車が発火して驚いている様子\n「引越後ミニ冷蔵庫を居間の棚の上に置き、隣にミニコンポ、さらにその隣にテレビを置き、これらの電源をたこ足配線にしていたところ、突然、冷蔵庫の裏側付近から煙が出てきた。」 (※2)\n「電子レンジでシリコン容器に味噌汁を入れて、自動加熱。器に移し替える際に蓋と共に味噌汁も飛び出し、やけど。取扱説明書には汁物は突沸の恐れがあり自動で温めないようにと記載。」 (※2)\n電子レンジから取り出した汁物が飛び出している様子\n「フリマアプリで購入した中古の小型冷蔵庫から発火。外国製のようだが、表示からは輸入業者や製造年などはわからない。取扱説明書も購入時にあったか不明で、探したが見つからない。」 (※2)\n※1: 医療機関ネットワーク事業:消費者庁は(独)国民生活センターと共同で、平成22年12月より、医療機関(令和8年3月時点で32機関が参画)から事故情報の提供を受けています。\n※2: 事故情報データバンク:消費者庁が(独)国民生活センターと連携し、関係機関から「事故情報」「危険情報」を広く収集し、事故防止に役立てるためのデータ収集・提供システム(平成22年4月運用開始)。\n消費者庁公表資料\n2026年3月19日\n\nチラシ:新生活を安全にスタートするための注意ポイント」[PDF: 970KB]\n消費者庁「リチウムイオン電池使用製品による発火事故に注意しましょう - 身に着ける、持ち歩く製品にも使用されています -」\n過去の関連メール\nVol.681 リチウムイオン電池は、正しく捨てる そして 資源循環!\n独立行政法人製品評価技術基盤機構(NITE) 「誤った使い方が火災の導火線に!～配線器具や充電ケーブルで火災、やけどが発生～」\n独立行政法人製品評価技術基盤機構(NITE) 「5年で157件、電子レンジで発生する事故～取扱説明書をよく読んで正しく使いましょう～」\n独立行政法人製品評価技術基盤機構(NITE) 「中古品の見えない危険に注意～製品の情報をしっかり確認～」\n独立行政法人製品評価技術基盤機構(NITE) 「無駄にしない」を\"事故\"にしない ～安全なリユースのための5つのチェックポイント～\n消費者庁 リコール情報サイト\n担当:消費者安全課\nおすすめコンテンツ\n(Banner)リコール情報サイト\nリコール情報サイト\n(Banner)事故情報データバンクシステム\n事故情報データバンクシステム\n(Banner)消費者安全調査委員会\n消費者安全調査委員会\n(Banner)食品と放射能Q&A\n食品と放射能Q&A\n(Banner)食品安全総合情報サイト\n食品安全総合情報サイト",
+      "sourceTextCharacterCount": 1952,
+      "reuseMode": "verbatim-or-adaptation-permitted",
+      "sourceBodyFingerprint": "ccd49726112dfc47dd87016476b6c7d3b26110ec47d809bf6b23f93e6cffbbad",
+      "sourceAttribution": "出典：消費者庁ウェブサイト（https://www.caa.go.jp/policies/policy/consumer_safety/caution/caution_085）",
       "sourceProcessing": "Item-level source body extracted for later editorial adaptation. No learner-facing text has been generated.",
       "inventoryPosition": 45
     },
@@ -1669,38 +1669,6 @@
       "inventoryPosition": 52
     },
     {
-      "candidateId": "verified-school-work-259ab9bdb2c8",
-      "targetShelf": "school-work",
-      "sourceFamilyId": "gov-mhlw",
-      "sourceTitle": "特定一般教育訓練講座の申請手続について",
-      "sourcePublisher": "厚生労働省",
-      "sourceUrl": "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/koyou_roudou/shokugyounouryoku/career_formation/kyouiku/03_00003.html",
-      "sourcePublishedDate": null,
-      "sourceRetrievedDate": "2026-08-22",
-      "rightsStatus": "adaptation-permitted",
-      "rightsBasis": {
-        "termsUrl": "https://www.mhlw.go.jp/chosakuken/",
-        "licenseName": "Public Data License 1.0",
-        "licenseUrl": "https://www.digital.go.jp/resources/open_data/public_data_license_v1.0",
-        "itemLevelCheck": "No contrary text-rights notice detected in the fetched page; excluded media remains excluded.",
-        "verifiedDate": "2026-08-22"
-      },
-      "thirdPartyContentReview": {
-        "status": "checked-no-item-level-signal",
-        "signals": [],
-        "excludedMedia": [],
-        "assetsBundled": false
-      },
-      "sourceBodyExtractionStatus": "body-ready",
-      "sourceJapaneseSubstance": "政策について\n>\n分野別の政策一覧\n>\n教育訓練給付制度\n>\n特定一般教育訓練講座の申請手続について\n特定一般教育訓練講座に関し、教育訓練施設の方が行う申請手続について御案内しています。\n申請手続について\n申請書類の提出先\n新たに特定一般教育訓練の講座指定を申請する手続です。\n\n申請受付・講座指定は、 年に２回 行っています。\n\n指定期間は、４月１日又は10月１日から原則として ３年間 です。\n４月１日 からの指定： 前年の10月上旬～11月上旬 に申請受付\n10月１日 からの指定： 同年の４月上旬～５月上旬 に申請受付\n現在、一般教育訓練で指定されている講座について、特定一般教育訓練への移行を申請する手続です。\n\n申請受付・講座指定は、 年に２回 行っています。\n４月１日 からの移行： 前年の10月上旬～11月上旬 に申請受付\n10月１日 からの移行： 同年の４月上旬～５月上旬 に申請受付\n現在、特定一般教育訓練の指定を受けている講座について、指定期間満了後も引き続き指定を申請する手続です。\n\n講座の指定期間は原則として３年間であり、自動的に指定が更新されるものではありませんので、引き続き指定を希望する際には再指定申請手続が必要です。\n\n再指定を希望する場合は、指定期間満了前の受付期間内に申請を行ってください。\n指定期間が ３月31日 までの場合（４月１日からの再指定）： 前年の10月上旬～11月上旬 に申請受付\n指定期間が ９月30日 までの場合（10月１日からの再指定）： 同年の４月上旬～５月上旬 に申請受付\n現在、特定一般教育訓練の講座指定を受けている場合に、教育訓練施設や講座に関する登録事項を変更する手続です。\n\nなお、変更事項により、 事前手続が必要なもの と、 随時手続を行うもの があります。\n次の（１）～（７）の事項を変更する場合は、変更前かつ決められた受付期間内に申請を行ってください。\n\n申請受付は、 年に２回 行っています。\n\nなお、これらの変更の可否は「講座指定等通知書」により通知します。変更は、この通知による変更日以降について認められることとなりますので、余裕を持って手続を行ってください。\n４月１日 からの変更： 前年の10月上旬～11月上旬 に申請受付\n10月１日 からの変更： 同年の４月上旬～５月上旬 に申請受付\n（１）特定一般教育訓練施設の名称\n（２）訓練期間及び総訓練時間\n（３）教育訓練経費（支払方法を含む。）\n（４）教育訓練目標（大幅な変更を除く。）\n（５）入講時に設定する受講者要件\n（６）修了認定基準\n（７）特定一般教育訓練講座の名称\n次の（１）～（13）の事項を変更する場合は、速やかに必要書類を指定窓口機関に提出してください。\n\nなお、これらは提出をもって変更を受け付けたこととします（文書による通知は行いません）。\n（１）教室の追加（不動産契約書等の手続が完了し、教育訓練を行うための設備等が整った後提出することが必要。）\n（２）教室で行う既指定講座の追加\n（３）カリキュラム（軽微なものに限る。）\n（４）主任指導者\n（５）実施方法「通学」の内訳（１昼間・２夜間・３土日）及び実施方法「通信」の内訳（１通信・２一部e-ラーニング・３e-ラーニングのみ）\n（７）特定一般教育訓練施設の所在地、電話番号\n（８）特定一般教育訓練実施者の名称、所在地（法人の合併等は除く。）、代表者名\n（９）教室の名称、所在地、電話番号\n（10）特定一般教育訓練施設と教室で行う施設事務の分担\n（11）販売活動等管理責任者\n（12）教育訓練経費の割引等の実施\n（13）施設責任者、苦情受付者、事務担当者\n［ご留意ください］教育訓練実施者の要件を満たさなくなった場合\n特定一般教育訓練の対象となる講座の指定基準等については、以下のチェックリスト、パンフレット（申請手続の要領）等を御確認ください。\n講座申請前のチェックリスト［79KB］\n教育訓練給付制度（特定一般教育訓練）の講座指定を希望される方へ（教育訓練施設向けパンフレット）［843KB］\n分野・資格コード表［235KB］\n令和８年10月１日からの新規指定・移行・再指定・変更（一部）\n・令和８年４月1日（水）～令和８年５月１日（金）（消印有効）\nまずは、提出書類チェック表をダウンロードしてください。\n提出書類チェック表\n\n［Excel形式］［196KB］\n次に、提出書類チェック表を参照の上、申請に必要な様式を以下よりダウンロードしてください。\n申請様式\n\n※申請様式は片面印刷とし、両面印刷は行わないでください。\n\n特定一般様式第１～３号：特定一般教育訓練実施状況調査票（総括票・個票・訓練経費内訳票）［3.5MB］\n特定一般様式第４号：特定一般教育訓練実施状況調査票（販売活動等調査票）［Excel形式］［265KB］\n特定一般様式第５号：特定一般教育訓練運営管理状況調査票［Excel形式］［290KB］\n特定一般様式第６号：教室別教育訓練講座票［Excel形式］［51KB］\n特定一般様式第７号：特定一般教育訓練実施状況調査票（変更内容票）［Excel形式］［82KB］\n特定一般様式第９号：指定講座廃止届［Excel形式］［49KB］\n特定一般様式第10号：販売活動等管理責任者の交代について（届出）［Excel形式］［36KB］\n特定一般様式第11号：教育訓練経費の割引等の実施について（届出）［Excel形式］［37KB］\n記入例（新規指定）［124KB］\n記入例（再指定）［137KB］\n明示書（様式例）\n\n特定一般教育訓練明示書（様式例）１～３ページ［Excel形式］［34KB］\n特定一般教育訓練明示書（様式例）４ページ［Word形式］［22KB］\nPDFファイルを見るためには、Adobe Readerというソフトが必要です。Adobe Readerは無料で配布されていますので、こちらからダウンロードしてください。",
-      "sourceTextCharacterCount": 1797,
-      "reuseMode": "verbatim-or-adaptation-permitted",
-      "sourceBodyFingerprint": "ce00b0e8411ed647d750d1d731d6fded0e94b9d29306d1a0a6ea79615f81a8aa",
-      "sourceAttribution": "出典：厚生労働省ウェブサイト（https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/koyou_roudou/shokugyounouryoku/career_formation/kyouiku/03_00003.html）",
-      "sourceProcessing": "Item-level source body extracted for later editorial adaptation. No learner-facing text has been generated.",
-      "inventoryPosition": 53
-    },
-    {
       "candidateId": "verified-school-work-4340d9b3e2e8",
       "targetShelf": "school-work",
       "sourceFamilyId": "gov-mhlw",
@@ -1730,7 +1698,7 @@
       "sourceBodyFingerprint": "ce860d849955fd0a3a37645740b7ef733575a74faa35773b6f761b7b0c4400ac",
       "sourceAttribution": "出典：厚生労働省ウェブサイト（https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/0000046152.html）",
       "sourceProcessing": "Item-level source body extracted for later editorial adaptation. No learner-facing text has been generated.",
-      "inventoryPosition": 54
+      "inventoryPosition": 53
     },
     {
       "candidateId": "verified-school-work-e9060789c90d",
@@ -1762,7 +1730,7 @@
       "sourceBodyFingerprint": "6b158b0bd3193ee3dc55e9582ad6c8fc10dafe45e86d6b39e492ecaa46c227c1",
       "sourceAttribution": "出典：厚生労働省ウェブサイト（https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/koyou_roudou/jinzaikaihatsu/kigyou_gakkou.html）",
       "sourceProcessing": "Item-level source body extracted for later editorial adaptation. No learner-facing text has been generated.",
-      "inventoryPosition": 55
+      "inventoryPosition": 54
     },
     {
       "candidateId": "verified-school-work-98992daeacef",
@@ -1794,7 +1762,7 @@
       "sourceBodyFingerprint": "6bab93b893bec764123bb4d835f9e75c586ef0baf5da0c53ba6e2a5d258cacf8",
       "sourceAttribution": "出典：厚生労働省ウェブサイト（https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/koyou_roudou/koyou/jakunen/teacher.html）",
       "sourceProcessing": "Item-level source body extracted for later editorial adaptation. No learner-facing text has been generated.",
-      "inventoryPosition": 56
+      "inventoryPosition": 55
     },
     {
       "candidateId": "verified-school-work-d91dbd2201de",
@@ -1826,7 +1794,7 @@
       "sourceBodyFingerprint": "e849051ac5c53684694847cd0fa840c369a3c0ad212e01448ed84f847039a3f5",
       "sourceAttribution": "出典：厚生労働省ウェブサイト（https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/koyou_roudou/koyoukintou/zaitaku/freelance_00007.html）",
       "sourceProcessing": "Item-level source body extracted for later editorial adaptation. No learner-facing text has been generated.",
-      "inventoryPosition": 57
+      "inventoryPosition": 56
     },
     {
       "candidateId": "verified-school-work-3aff47a00490",
@@ -1858,7 +1826,7 @@
       "sourceBodyFingerprint": "5197d3eb4c98fdc47c116c8db61fc0b657de9f68f11472ad1aee136eca5b3fa4",
       "sourceAttribution": "出典：厚生労働省ウェブサイト（https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/0000056460.html）",
       "sourceProcessing": "Item-level source body extracted for later editorial adaptation. No learner-facing text has been generated.",
-      "inventoryPosition": 58
+      "inventoryPosition": 57
     },
     {
       "candidateId": "verified-school-work-5e99a396f54f",
@@ -1890,7 +1858,7 @@
       "sourceBodyFingerprint": "ccfebcca75de885944c2224b7ecd7071a2ec0d62d6ce039b1e05c1732a5e1289",
       "sourceAttribution": "出典：厚生労働省ウェブサイト（https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/slide/rousai.html）",
       "sourceProcessing": "Item-level source body extracted for later editorial adaptation. No learner-facing text has been generated.",
-      "inventoryPosition": 59
+      "inventoryPosition": 58
     },
     {
       "candidateId": "verified-school-work-c5d4a4df1702",
@@ -1922,7 +1890,7 @@
       "sourceBodyFingerprint": "f6af36aa891d72cb87a3f3326b4121cb948d1c039cf8fb8d0a428a5e8dddc8ef",
       "sourceAttribution": "出典：厚生労働省ウェブサイト（https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/0000121431_00454.html）",
       "sourceProcessing": "Item-level source body extracted for later editorial adaptation. No learner-facing text has been generated.",
-      "inventoryPosition": 60
+      "inventoryPosition": 59
     },
     {
       "candidateId": "government-school-work-0055",
@@ -1954,7 +1922,7 @@
       "sourceBodyFingerprint": "ae4a1d4d9c3b042cc2546d6533b725fa042e8d2a03adc809b09eaa2796b82ca8",
       "sourceAttribution": "出典：環境省ウェブサイト（https://www.env.go.jp/press/press_04384.html）",
       "sourceProcessing": "Item-level source body extracted for later editorial adaptation. No learner-facing text has been generated.",
-      "inventoryPosition": 61
+      "inventoryPosition": 60
     },
     {
       "candidateId": "government-school-work-0027",
@@ -1986,7 +1954,7 @@
       "sourceBodyFingerprint": "09563ecac6d88e0fbbdcd6ba6da8da976c455f09fd25fd9deea037f91ecc7dee",
       "sourceAttribution": "出典：こども家庭庁ウェブサイト（https://www.cfa.go.jp/policies/hitori-oya/goukakushien）",
       "sourceProcessing": "Item-level source body extracted for later editorial adaptation. No learner-facing text has been generated.",
-      "inventoryPosition": 62
+      "inventoryPosition": 61
     },
     {
       "candidateId": "verified-school-work-47e24751decc",
@@ -2018,7 +1986,7 @@
       "sourceBodyFingerprint": "2deef9a6ca89fce13bccbeea6bc358266cb2532acf83bd0fcd937462097822e4",
       "sourceAttribution": "出典：厚生労働省ウェブサイト（https://www.mhlw.go.jp/web_magazine/column/20260803.html）",
       "sourceProcessing": "Item-level source body extracted for later editorial adaptation. No learner-facing text has been generated.",
-      "inventoryPosition": 63
+      "inventoryPosition": 62
     },
     {
       "candidateId": "verified-school-work-c1bf6a905fde",
@@ -2050,7 +2018,7 @@
       "sourceBodyFingerprint": "3c95af773ee19cca4f5f7500be075e2a811ce052071ae7708b96b3c17c5f4ae5",
       "sourceAttribution": "出典：厚生労働省ウェブサイト（https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/koyou_roudou/jinzaikaihatsu/chousa/r1/index_00003.html）",
       "sourceProcessing": "Item-level source body extracted for later editorial adaptation. No learner-facing text has been generated.",
-      "inventoryPosition": 64
+      "inventoryPosition": 63
     },
     {
       "candidateId": "verified-school-work-b2ba7ca19fcb",
@@ -2082,7 +2050,7 @@
       "sourceBodyFingerprint": "d07b8f89d97280f65cbcd653556afc6a7abcd042e9c0d42d5e7eeffb8310e012",
       "sourceAttribution": "出典：厚生労働省ウェブサイト（https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/0000132151.html）",
       "sourceProcessing": "Item-level source body extracted for later editorial adaptation. No learner-facing text has been generated.",
-      "inventoryPosition": 65
+      "inventoryPosition": 64
     },
     {
       "candidateId": "verified-school-work-c2c8c09e1d9c",
@@ -2114,7 +2082,7 @@
       "sourceBodyFingerprint": "986f38cd27f6a774c8fae9f2050a14c4dd6ddd137b78c45916ce3853b87e023e",
       "sourceAttribution": "出典：消費者庁ウェブサイト（https://www.caa.go.jp/policies/policy/consumer_education/public_awareness/teaching_material/business_education/program_02）",
       "sourceProcessing": "Item-level source body extracted for later editorial adaptation. No learner-facing text has been generated.",
-      "inventoryPosition": 66
+      "inventoryPosition": 65
     },
     {
       "candidateId": "verified-school-work-481612b2229c",
@@ -2146,7 +2114,7 @@
       "sourceBodyFingerprint": "2fbb478f35f307416621ea92d1c86eedde498079214053593d164ff1b7f32d89",
       "sourceAttribution": "出典：農林水産省ウェブサイト（https://www.maff.go.jp/j/seisan/kokumotu/gakkou_bitiku_kouhu.html）",
       "sourceProcessing": "Item-level source body extracted for later editorial adaptation. No learner-facing text has been generated.",
-      "inventoryPosition": 67
+      "inventoryPosition": 66
     },
     {
       "candidateId": "verified-school-work-e5dbbad7fb42",
@@ -2178,7 +2146,7 @@
       "sourceBodyFingerprint": "81b81fc09f3dd823f7b6377e7ce0bf2f925d65c97ff6e0eef6c3164b11d9d8e9",
       "sourceAttribution": "出典：厚生労働省ウェブサイト（https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/0000053725.html）",
       "sourceProcessing": "Item-level source body extracted for later editorial adaptation. No learner-facing text has been generated.",
-      "inventoryPosition": 68
+      "inventoryPosition": 67
     },
     {
       "candidateId": "verified-school-work-1c1c653da2dd",
@@ -2210,7 +2178,7 @@
       "sourceBodyFingerprint": "2a07adf53cbac4f855b69e755f47458568ef8e95a44409bace7b673bb7e935cd",
       "sourceAttribution": "出典：厚生労働省ウェブサイト（https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/0000045159.html）",
       "sourceProcessing": "Item-level source body extracted for later editorial adaptation. No learner-facing text has been generated.",
-      "inventoryPosition": 69
+      "inventoryPosition": 68
     },
     {
       "candidateId": "verified-school-work-da0401708024",
@@ -2244,7 +2212,7 @@
       "sourceBodyFingerprint": "c8f5585577e66f794ffcbd72110470e5c7dbc8554ebf2b8ef86bcb8563aedbed",
       "sourceAttribution": "出典：厚生労働省ウェブサイト（https://www.mhlw.go.jp/stf/newpage_64873.html）",
       "sourceProcessing": "Item-level source body extracted for later editorial adaptation. No learner-facing text has been generated.",
-      "inventoryPosition": 70
+      "inventoryPosition": 69
     },
     {
       "candidateId": "verified-school-work-089ad07d78b4",
@@ -2278,7 +2246,7 @@
       "sourceBodyFingerprint": "a3e5f5ec0a824a64cb6b4222268d61c028be294fb311811c479fc8ecd8393cf2",
       "sourceAttribution": "出典：厚生労働省ウェブサイト（https://www.mhlw.go.jp/stf/newpage_68596.html）",
       "sourceProcessing": "Item-level source body extracted for later editorial adaptation. No learner-facing text has been generated.",
-      "inventoryPosition": 71
+      "inventoryPosition": 70
     },
     {
       "candidateId": "verified-school-work-4c433e94fd1f",
@@ -2310,7 +2278,7 @@
       "sourceBodyFingerprint": "157f9e3c5e8ecde443b4a1c2ba0d17b35dcc4933a09a0411f0d0e83bd4585e53",
       "sourceAttribution": "出典：厚生労働省ウェブサイト（https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/0000200273.html）",
       "sourceProcessing": "Item-level source body extracted for later editorial adaptation. No learner-facing text has been generated.",
-      "inventoryPosition": 72
+      "inventoryPosition": 71
     },
     {
       "candidateId": "verified-school-work-e7b4784cc403",
@@ -2344,7 +2312,7 @@
       "sourceBodyFingerprint": "32b95357c4d7d8d7e921e0472881c843a6be7be372e877b75dad6ace466ae999",
       "sourceAttribution": "出典：厚生労働省ウェブサイト（https://www.mhlw.go.jp/stf/newpage_59780.html）",
       "sourceProcessing": "Item-level source body extracted for later editorial adaptation. No learner-facing text has been generated.",
-      "inventoryPosition": 73
+      "inventoryPosition": 72
     },
     {
       "candidateId": "verified-school-work-d35868f5e549",
@@ -2378,7 +2346,7 @@
       "sourceBodyFingerprint": "7d6401f0d1f62a19bb8395d060ac259bb4dd3a116b712093f253e627abb773cd",
       "sourceAttribution": "出典：厚生労働省ウェブサイト（https://www.mhlw.go.jp/stf/newpage_57215.html）",
       "sourceProcessing": "Item-level source body extracted for later editorial adaptation. No learner-facing text has been generated.",
-      "inventoryPosition": 74
+      "inventoryPosition": 73
     },
     {
       "candidateId": "verified-school-work-c0d83fbd0e6f",
@@ -2410,7 +2378,7 @@
       "sourceBodyFingerprint": "46889afd023448f147af6ef0c34699163fbf33ee97c5cf5f248b4b4021ccfaa2",
       "sourceAttribution": "出典：こども家庭庁ウェブサイト（https://www.cfa.go.jp/policies/hitori-oya/syokugyou-kunren）",
       "sourceProcessing": "Item-level source body extracted for later editorial adaptation. No learner-facing text has been generated.",
-      "inventoryPosition": 75
+      "inventoryPosition": 74
     },
     {
       "candidateId": "verified-school-work-7d99ac0f80f9",
@@ -2442,7 +2410,7 @@
       "sourceBodyFingerprint": "6762971460c42da742e622d764bef205d9126dfd91fccc73769ebc46b9767c7d",
       "sourceAttribution": "出典：厚生労働省ウェブサイト（https://www.mhlw.go.jp/stf/newpage_75305.html）",
       "sourceProcessing": "Item-level source body extracted for later editorial adaptation. No learner-facing text has been generated.",
-      "inventoryPosition": 76
+      "inventoryPosition": 75
     },
     {
       "candidateId": "verified-school-work-c3ea6f8a692d",
@@ -2474,7 +2442,7 @@
       "sourceBodyFingerprint": "0e91565376766d24656ab2b800a183eacaad34a37e7146c3172dc2b2ec6cba75",
       "sourceAttribution": "出典：消費者庁ウェブサイト（https://www.caa.go.jp/policies/policy/consumer_education/consumer_education/basic_policy）",
       "sourceProcessing": "Item-level source body extracted for later editorial adaptation. No learner-facing text has been generated.",
-      "inventoryPosition": 77
+      "inventoryPosition": 76
     },
     {
       "candidateId": "verified-school-work-2f3e4a132dc8",
@@ -2506,7 +2474,7 @@
       "sourceBodyFingerprint": "f356af8e168a9f3543171a03116f87ee0ad7929959096fb27f32388fca725e07",
       "sourceAttribution": "出典：厚生労働省ウェブサイト（https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/koyou_roudou/koyou/roudouseisaku/koyousokushinzei.html）",
       "sourceProcessing": "Item-level source body extracted for later editorial adaptation. No learner-facing text has been generated.",
-      "inventoryPosition": 78
+      "inventoryPosition": 77
     },
     {
       "candidateId": "verified-school-work-b76582f6b2cd",
@@ -2538,7 +2506,7 @@
       "sourceBodyFingerprint": "bf0c53d54d55b9c2c87084f5f41ef7a37fe5db0061d6977066ec05009dba73b0",
       "sourceAttribution": "出典：消費者庁ウェブサイト（https://www.caa.go.jp/policies/policy/consumer_education/consumer_education/information_link）",
       "sourceProcessing": "Item-level source body extracted for later editorial adaptation. No learner-facing text has been generated.",
-      "inventoryPosition": 79
+      "inventoryPosition": 78
     },
     {
       "candidateId": "verified-school-work-83f7cf541479",
@@ -2572,7 +2540,7 @@
       "sourceBodyFingerprint": "b8faae67f7b7b706ae8b65fa4db500fb0c8cf84384de0808a82a6a858937efb5",
       "sourceAttribution": "出典：厚生労働省ウェブサイト（https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/roudoukijun/anzeneisei10/qualificaton_education.html）",
       "sourceProcessing": "Item-level source body extracted for later editorial adaptation. No learner-facing text has been generated.",
-      "inventoryPosition": 80
+      "inventoryPosition": 79
     },
     {
       "candidateId": "verified-school-work-f11c04334e04",
@@ -2604,7 +2572,7 @@
       "sourceBodyFingerprint": "7c8c88328711e8b23efc96228eba2547cad278664d290912ba8498ebb1dce6bd",
       "sourceAttribution": "出典：厚生労働省ウェブサイト（https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/0000192188.html）",
       "sourceProcessing": "Item-level source body extracted for later editorial adaptation. No learner-facing text has been generated.",
-      "inventoryPosition": 81
+      "inventoryPosition": 80
     },
     {
       "candidateId": "verified-school-work-e23e9b1de92a",
@@ -2635,6 +2603,38 @@
       "reuseMode": "verbatim-or-adaptation-permitted",
       "sourceBodyFingerprint": "d8e7b045da9e371ad9b2ce1567cba893443a499be6e7fa1382cc149e557fb099",
       "sourceAttribution": "出典：消費者庁ウェブサイト（https://www.caa.go.jp/policies/policy/consumer_education/public_awareness/teaching_material/business_education/program_03）",
+      "sourceProcessing": "Item-level source body extracted for later editorial adaptation. No learner-facing text has been generated.",
+      "inventoryPosition": 81
+    },
+    {
+      "candidateId": "government-news-0116",
+      "targetShelf": "school-work",
+      "sourceFamilyId": "gov-mhlw",
+      "sourceTitle": "雇用・労働 労働市場関連情報",
+      "sourcePublisher": "厚生労働省",
+      "sourceUrl": "https://www.mhlw.go.jp/stf/jyouhou.html",
+      "sourcePublishedDate": null,
+      "sourceRetrievedDate": "2026-08-22",
+      "rightsStatus": "adaptation-permitted",
+      "rightsBasis": {
+        "termsUrl": "https://www.mhlw.go.jp/chosakuken/",
+        "licenseName": "Public Data License 1.0",
+        "licenseUrl": "https://www.digital.go.jp/resources/open_data/public_data_license_v1.0",
+        "itemLevelCheck": "No contrary text-rights notice detected in the fetched page; excluded media remains excluded.",
+        "verifiedDate": "2026-08-22"
+      },
+      "thirdPartyContentReview": {
+        "status": "checked-no-item-level-signal",
+        "signals": [],
+        "excludedMedia": [],
+        "assetsBundled": false
+      },
+      "sourceBodyExtractionStatus": "body-ready",
+      "sourceJapaneseSubstance": "政策について\n>\n分野別の政策一覧\n>\n労働市場関連情報\n雇用・労働 労働市場関連情報\n「job tag」について\n「しょくばらぼ」について\n「求職者等への職場情報提供に当たっての手引」（令和８年３月に改定を行いました）\n2026年7月24日掲載\n公開求人情報の収集・分析に関する調査研究事業報告書（令和7年度厚生労働省委託事業）を公表いたしました\nNEW\n2026年3月13日掲載\n「はたらく」に関する情報が見やすく便利になります\n2025年4月24日掲載\n公開求人情報の収集・分析に関する調査研究事業報告書（令和６年度厚生労働省委託事業）を公表いたしました\n2025年3月18日掲載\n「職業情報提供サイト（job tag）」等をリニューアルしました\n2024年3月29日掲載\n「求職者等への職場情報提供に当たっての手引」を策定しました\n2024年3月27日掲載\n「job tag（職業情報提供サイト）」をリニューアルしました\nページの先頭へ戻る\n職業の情報について\n職場・企業等の情報について\n■\n\nしょくばらぼ（職場情報総合サイト）\n「女性の活躍推進企業データベース」「両立支援のひろば」「若者雇用促進総合サイト」に掲載されている企業等の職場情報を求職者、学生等に総合的・横断的に提供するサイトです。\n\n▷ 各企業の働き方や採用状況に関する職場情報を検索・比較する\n■\n\n職場情報の開示・提供に当たって\n採用活動に当たって、企業等の皆さまの参考となるよう、労働関係法令における開示項目を整理するとともに、求職者等が求める職場情報や情報提供に当たっての課題や対応策を整理した手引を作成しています。\n\nこの手引を踏まえ、学生・生徒の皆さまや求職者等の皆さまの情報収集に当たってのポイントを整理したリーフレット等を作成しましたので、ご参考にしてください。\n\n▷リーフレット・チェックリスト\n・ 企業等の皆さま向けリーフレット［396KB］\n\n　・ 学生・求職者等の皆さま向けリーフレット［1.3MB］\n\n　・ 職場情報の開示・提供に関するチェックリスト［38KB］\n\n　・ 職場情報の開示・提供に関するチェックリスト［275KB］\n\n▷手引の概要と本文はこちら\n\n　・ 「求職者等への職場情報提供に当たっての手引」概要（令和８年３月改定）［923KB］\n\n　・ 「求職者等への職場情報提供に当たっての手引」第３版（令和８年３月改定）［383KB］\n\n※策定時の報道発表はこちら\n\n　令和６年３月29日　 「求職者等への職場情報提供に当たっての手引」を策定しました\n■ 人材の確保・定着に成功した企業の取組事例集～採用活動のコツ～\n採用活動のなかで求職者に情報を開示することは、業務内容や職場の環境、働き方といったさまざまな面で入社前後のミスマッチを解消し労働者の定着を図ることにつながります。また、労働者に企業のことを知ってもらい、企業に興味を持ってもらうことで自社に合った応募者を増やすうえでも重要な取組となっています。\n\nこうした求職者への情報開示に特に注目して、事例をとりまとめています。\n\nその他、中途採用・経験者採用に関する施策情報についてはこちら（ 中途採用・経験者採用 ）をご覧ください。\n「人材の確保・定着に成功した企業の取組事例集」ご案内リーフレット［1.7MB］\n\n人材の確保・定着に成功した企業の取組事例集～採用活動のコツ～［925KB］\n民間人材サービス企業等が保有する求人に関する情報について\n■ 公開求人情報の収集・分析に関する調査研究事業\n【令和６年度事業】\n結果概要及び報告書はこちら（ 公開求人情報の収集・分析に関する調査研究事業報告書 ）民間人材サービス企業等が保有する求人に関する情報についてをご覧ください。\n労働関連情報に関するポータルサイトについて\n関連するサイトのバナーを掲載しています。掲載する情報は今後順次追加することを予定しています。\nリスキリングに関する情報\n労働関係法令に関する基礎知識など\nPDFファイルを見るためには、Adobe Readerというソフトが必要です。Adobe Readerは無料で配布されていますので、こちらからダウンロードしてください。",
+      "sourceTextCharacterCount": 1370,
+      "reuseMode": "verbatim-or-adaptation-permitted",
+      "sourceBodyFingerprint": "0290b7925aa4c080416bc1d0f429fd9b3e044fceb99b62268beaf1d7b19e5625",
+      "sourceAttribution": "出典：厚生労働省ウェブサイト（https://www.mhlw.go.jp/stf/jyouhou.html）",
       "sourceProcessing": "Item-level source body extracted for later editorial adaptation. No learner-facing text has been generated.",
       "inventoryPosition": 82
     },
@@ -2767,6 +2767,70 @@
       "inventoryPosition": 86
     },
     {
+      "candidateId": "government-news-0262",
+      "targetShelf": "school-work",
+      "sourceFamilyId": "gov-mhlw",
+      "sourceTitle": "STOP！熱中症　クールワークキャンペーン（職場における熱中症予防対策）",
+      "sourcePublisher": "厚生労働省",
+      "sourceUrl": "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/0000116133.html",
+      "sourcePublishedDate": null,
+      "sourceRetrievedDate": "2026-08-22",
+      "rightsStatus": "adaptation-permitted",
+      "rightsBasis": {
+        "termsUrl": "https://www.mhlw.go.jp/chosakuken/",
+        "licenseName": "Public Data License 1.0",
+        "licenseUrl": "https://www.digital.go.jp/resources/open_data/public_data_license_v1.0",
+        "itemLevelCheck": "No contrary text-rights notice detected in the fetched page; excluded media remains excluded.",
+        "verifiedDate": "2026-08-22"
+      },
+      "thirdPartyContentReview": {
+        "status": "checked-no-item-level-signal",
+        "signals": [],
+        "excludedMedia": [],
+        "assetsBundled": false
+      },
+      "sourceBodyExtractionStatus": "body-ready",
+      "sourceJapaneseSubstance": "政策について\n>\n分野別の政策一覧\n>\nSTOP！熱中症　クールワークキャンペーン（職場における熱中症予防対策）\nキャンペーン概要\n熱中症の予防については、第14次労働災害防止計画において、下記のとおり目標が設定されています。\n\nアウトプット指標：熱中症災害防止のために暑さ指数を把握し活用している事業場の割合を2023年と比較して2027年までに増加させる。\n\nアウトカム指標：増加が見込まれる熱中症による死亡者数の増加率※を第13次労働災害防止計画期間と比較して減少させる。\n\n※当期計画期間中の総数を前期の同計画期間中の総数で除したもの。\n職場における\n\n熱中症死傷者数 （人）\n上記のうち、死亡者数（人）\n厚生労働省では、熱中症予防対策の徹底を図ることを目的として、関係団体等との連携の下、\n\n「STOP!熱中症　クールワークキャンペーン」を実施します\n\n（キャンペーン期間：令和８年５月１日から９月30日）。\n詳細については、下記実施要綱及びリーフレットをご覧ください。\n\n令和８年「STOP！熱中症 クールワークキャンペーン」実施要綱［149KB］\n\n令和８年「STOP ! 熱中症 クールワークキャンペーン」リーフレット（日本語）［614KB］\n\n（参考）令和７年リーフレットの他言語版\n\n英語［1.4MB］ 　 中国語［1.2MB］ 　 韓国語［617KB］ 　\n\nインドネシア語［1.4MB］ 　 タガログ語［1.5MB］ 　 ベトナム語［1.7MB］\n厚生労働省、中央労働災害防止協会、建設業労働災害防止協会、陸上貨物運送事業労働災害防止協会、港湾貨物運送事業労働災害防止協会、林業・木材製造業労働災害防止協会、一般社団法人日本労働安全衛生コンサルタント会、一般社団法人全国警備業協会\n公益社団法人日本保安用品協会、一般社団法人日本電気計測器工業会\n農林水産省､国土交通省､環境省､警察庁､消防庁\n（１）労働災害防止団体等との連携\n（２）関係業界団体などに対する要請・事業場などに対する周知\n（３）協賛団体による支援\n環境省熱中症予防情報サイト（ＷＢＧＴ値の予測値・実況値、熱中症について学べる動画など）\n気象庁熱中症関係情報（気温の予測情報など）\n気象庁熱中症関係情報（過去の気候系の特徴）\n消防庁熱中症関係情報（熱中症による救急搬送状況など）\n熱中症関係省庁連絡会議\n職場における熱中症防止のためのガイドライン　概要［531KB］\n職場における熱中症防止のためのガイドライン［283KB］\n​ 「令和７年　職場における熱中症による死傷災害の発生状況」（確定値）［528KB］\n職場における熱中症ポータルサイト\nリーフレット「熱中症ガイド」［2.1MB］\nリーフレット「熱中症予防スイッチ・オン　自分でできる７つのこと」［892KB］\nパンフレット「～職場における～熱中症予防基本対策のススメ」［8.4MB］\n労働安全衛生規則の一部を改正する省令（令和７年厚生労働省令第57号）［50KB］\n労働安全衛生規則の一部を改正する省令の施行等について（令和７年５月20日付け基発0520第６号）［582KB］\n「職場における熱中症対策の強化について」パンフレット［6.4MB］\n「職場における熱中症対策の強化について」リーフレット（日本語版）［1.5MB］\n「職場における熱中症対策の強化について」リーフレット（英語版）［568KB］\n「職場における熱中症対策の強化について」リーフレット（中国語版）［621KB］\n「職場における熱中症対策の強化について」リーフレット（ベトナム語版）［563KB］\nパンフレット「職場における熱中症防止のためのガイドラインを参考に熱中症を効果的に防止しましょう！」［1.5MB］\nリーフレット「職場における熱中症防止のためのガイドラインを参考に熱中症を効果的に防止しましょう！」［507KB］\n■多言語リーフレット（熱中症対策）\n\n日本語［2.5MB］\nインドネシア語［2.4MB］\nクメール語（カンボジア語［2.4MB］\nモンゴル語［2.4MB］\nミャンマー語［2.4MB］\nネパール語［2.4MB］\nタガログ語［2.4MB］\nベトナム語［2.4MB］\n中国語（簡体字）［2.4MB］\nPDFファイルを見るためには、Adobe Readerというソフトが必要です。Adobe Readerは無料で配布されていますので、こちらからダウンロードしてください。",
+      "sourceTextCharacterCount": 1295,
+      "reuseMode": "verbatim-or-adaptation-permitted",
+      "sourceBodyFingerprint": "54ba80a1b0f58568aee1cbc55c3266ad0656264e6af09ea1945fe55b35f61ff1",
+      "sourceAttribution": "出典：厚生労働省ウェブサイト（https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/0000116133.html）",
+      "sourceProcessing": "Item-level source body extracted for later editorial adaptation. No learner-facing text has been generated.",
+      "inventoryPosition": 87
+    },
+    {
+      "candidateId": "verified-school-work-4138371d65df",
+      "targetShelf": "school-work",
+      "sourceFamilyId": "gov-caa",
+      "sourceTitle": "生徒・学生の取組事例",
+      "sourcePublisher": "消費者庁",
+      "sourceUrl": "https://www.caa.go.jp/policies/policy/consumer_policy/information/food_loss/case/student.html",
+      "sourcePublishedDate": null,
+      "sourceRetrievedDate": "2026-08-22",
+      "rightsStatus": "adaptation-permitted",
+      "rightsBasis": {
+        "termsUrl": "https://www.caa.go.jp/terms_of_use/",
+        "licenseName": "Public Data License 1.0",
+        "licenseUrl": "https://www.digital.go.jp/resources/open_data/public_data_license_v1.0",
+        "itemLevelCheck": "No contrary text-rights notice detected in the fetched page; excluded media remains excluded.",
+        "verifiedDate": "2026-08-22"
+      },
+      "thirdPartyContentReview": {
+        "status": "checked-no-item-level-signal",
+        "signals": [],
+        "excludedMedia": [],
+        "assetsBundled": false
+      },
+      "sourceBodyExtractionStatus": "body-ready",
+      "sourceJapaneseSubstance": "生徒・学生の取組事例\n取組の紹介 NEW\n学校行事の中止で行き場を失った野菜たちを学校で配布(正則学園高等学校・生徒会)[PDF:1.8MB] (2021年4月9日掲載)\nコロナ禍での\"食\"の社会問題と向き合うきっかけを作る料理レシピコンテストを開催 (学生団体「Beyond Kitchen運営委員会」)[PDF:1.8MB] (2021年2月17日掲載)\n「捨てていた部分の価値」や活用方法に気づいてほしいを発信(京都大学エコ～るど京大)[PDF:1.2MB] (2021年1月14日掲載)\nお店での食べ残しの課題に取り組む 持ち帰り自己責任welcome!(ドギーバッグ普及委員会ボランティア 湘南女子高生ユニット「PlantPitty」)[PDF:614KB] (2020年10月29日掲載)\n高校生の探究活動「家庭の意識の改善で食品ロスは減らせるか」(仙台白百合学園高等学校30LS04班)[PDF:3.1MB] (2020年3月31日掲載)\n様々な取組事例(取組別)\n2018年から2020年2月までに紹介した取組をまとめました。\n食品ロス削減の取組事例集<生徒・学生の取組>[PDF:5.2MB]\n個別掲載は、以下をご覧ください。\n取組内容・タイトル\n「伝える力」を学ぶ学生らが食品ロス削減動画を制作・配信 [PDF:255KB]\n淑徳大学人文学部表現学科白寄ゼミ・東京都板橋区\nStop! えほロス campaign ～恵方巻きのフードロスをなくしたい～ [PDF:1.1MB]\n学生による活動グループ Sustainable Food Project\nおしゃれなフードロス対策 まもるカフェ [PDF:984KB]\n創価大学経営学部 野村ゼミナール\n青学から社会のもったいないをなくす! [PDF:636KB]\n青山学院大学ボランティアセンターRoote\n学生サークルが取り組む地域での食品ロス削減活動 [PDF:436KB]\n美作大学 食品ロス削減サークル\n江戸エコに学ぶ、千代田の食品ロス削減\n―ヘルシーな食、工夫して楽しむ、思いをはせる― [PDF:524KB]\n東京家政学院大学 現代生活学部現代家政学科\n～食べて、高める防災意識～ 防災備蓄食材活用フェアの開催 [PDF:471KB]\n獨協大学 学生食堂\n備蓄食料をおいしく食べる食品ロス削減レシピを考案 [PDF:445KB]\n広島女学院大学 人間生活学部管理栄養学科 食育サークル\n大学生による災害用備蓄食品を活用した簡単レシピの考案 [PDF:525KB]\n愛知学院大学 心身科学部 健康栄養学科 公衆栄養学ゼミナール\n備蓄食料を活用したレシピコンテストに参加 [PDF:507KB]\n羽衣国際大学 人間生活学科食クリエイトコース\n若者が若者へ、無駄なく、手軽さをテーマにエコクッキングレシピを開発 [PDF:369KB]\n広島文教女子大学 人間栄養学科\n学生の柔軟な発想で食品ロス問題を市民に呼び掛ける活動を展開 [PDF:496KB]\n松本大学 地域づくり考房『ゆめ』◎いただきます!!プロジェクト\nスパイスカレーを作って食品ロス削減!! [PDF:999KB]\n獨協大学経済学部高安健一ゼミナール Zero Food Wasteチーム\n不要な食品を必要な方へ 全品無料で提供する「もったいないスーパー」の開催 [PDF:536KB]\n龍谷大学政策学部深尾ゼミナール\n大学生による「小さな屋台からフードロスを考える」取組 [PDF:566KB]\n酪農学園大学 屋台部\n「食べてほしーる。」で、期限間近の食品の廃棄を減らす [PDF:474KB]\n壱岐高等学校生徒・大学生チーム\nお店での食べ残しの課題に取り組む 持ち帰り自己責任welcome! [PDF:717KB]\nドギーバッグ普及委員会ボランティア 湘南女子高生ユニット「PlantPitty」\n高校生の探究活動「家庭の意識の改善で食品ロスは減らせるか」 [PDF:303KB]\n仙台白百合学園高等学校30LS04班\nフードロス削減プロジェクト「非常食も考えたエシカル食」を試作 [PDF:303KB]\n徳島県立吉野川高等学校\n高校生による「家庭からの食品ロスを減らす」ための意識改革の実施 [PDF:1.1MB]\n秋田県立秋田南高等学校\n高校生が考えた、食育で楽しく食品ロス削減「たべったー。」\n「たべったー。」で冷蔵庫内の食品とおなかの中を見える化 [PDF:1.8MB]\n高校生チーム(TM)2\n中高生による「食品ロス削減・子どもの食」の課題解決に向けた活動 [PDF:1.1MB]\n中高生の「食品ロス削減・子どもの食」課題解決プロジェクト food moVing on!!\n「君が動けば、世界が変わる!!」 小学4年生の児童らが食品ロス削減を発信 [PDF:329KB]\n神奈川県鎌倉市立小坂小学校\n担当:消費者教育推進課",
+      "sourceTextCharacterCount": 1284,
+      "reuseMode": "verbatim-or-adaptation-permitted",
+      "sourceBodyFingerprint": "f2fc433e577017c54367fe140123c3e27f91f67b638b594cf9db393afa0ece29",
+      "sourceAttribution": "出典：消費者庁ウェブサイト（https://www.caa.go.jp/policies/policy/consumer_policy/information/food_loss/case/student.html）",
+      "sourceProcessing": "Item-level source body extracted for later editorial adaptation. No learner-facing text has been generated.",
+      "inventoryPosition": 88
+    },
+    {
       "candidateId": "verified-school-work-3624a5a15021",
       "targetShelf": "school-work",
       "sourceFamilyId": "gov-mhlw",
@@ -2796,7 +2860,7 @@
       "sourceBodyFingerprint": "32650b3e4e294f139140949a7e3b15d51a4633c23603097daf85ece4b97b9caf",
       "sourceAttribution": "出典：厚生労働省ウェブサイト（https://www.mhlw.go.jp/stf/houdou/newpage_00201.html）",
       "sourceProcessing": "Item-level source body extracted for later editorial adaptation. No learner-facing text has been generated.",
-      "inventoryPosition": 87
+      "inventoryPosition": 89
     },
     {
       "candidateId": "verified-school-work-eba1da166e86",
@@ -2828,7 +2892,7 @@
       "sourceBodyFingerprint": "185b0a64130b914ae31e681dfc7f7d7ccb7a9a01eabe2b96a09e6edc2b9b8cee",
       "sourceAttribution": "出典：厚生労働省ウェブサイト（https://www.mhlw.go.jp/stf/houdou/newpage_00165.html）",
       "sourceProcessing": "Item-level source body extracted for later editorial adaptation. No learner-facing text has been generated.",
-      "inventoryPosition": 88
+      "inventoryPosition": 90
     },
     {
       "candidateId": "verified-school-work-984151bd223d",
@@ -2860,7 +2924,7 @@
       "sourceBodyFingerprint": "9dd387ddc2e6372b97295b3b53185107f54f3e03935813640d8a44298a41125b",
       "sourceAttribution": "出典：厚生労働省ウェブサイト（https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/koyou_roudou/koyou）",
       "sourceProcessing": "Item-level source body extracted for later editorial adaptation. No learner-facing text has been generated.",
-      "inventoryPosition": 89
+      "inventoryPosition": 91
     },
     {
       "candidateId": "verified-school-work-162d6268735a",
@@ -2892,7 +2956,7 @@
       "sourceBodyFingerprint": "685639332673f86cf96a8adf8da4345df97b2bfca7d8d7da79d89fd8a27f5a63",
       "sourceAttribution": "出典：厚生労働省ウェブサイト（https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/0000105724.html）",
       "sourceProcessing": "Item-level source body extracted for later editorial adaptation. No learner-facing text has been generated.",
-      "inventoryPosition": 90
+      "inventoryPosition": 92
     },
     {
       "candidateId": "verified-school-work-a935ab6670c2",
@@ -2924,7 +2988,7 @@
       "sourceBodyFingerprint": "7cfc44eba565106d2fd3b46c32aff047922e906493ad7243531ae9ffbbb9c6d2",
       "sourceAttribution": "出典：厚生労働省ウェブサイト（https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/0000188045.html）",
       "sourceProcessing": "Item-level source body extracted for later editorial adaptation. No learner-facing text has been generated.",
-      "inventoryPosition": 91
+      "inventoryPosition": 93
     },
     {
       "candidateId": "verified-school-work-214bacc5c634",
@@ -2956,7 +3020,7 @@
       "sourceBodyFingerprint": "2b3836915fa3629afeedc13f226356d5689319bec9e94ae67fa7a80c7b4c1080",
       "sourceAttribution": "出典：厚生労働省ウェブサイト（https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/0000197308.html）",
       "sourceProcessing": "Item-level source body extracted for later editorial adaptation. No learner-facing text has been generated.",
-      "inventoryPosition": 92
+      "inventoryPosition": 94
     },
     {
       "candidateId": "verified-school-work-1f4c4a54c64a",
@@ -2988,7 +3052,7 @@
       "sourceBodyFingerprint": "245e179aa643432f5f629d9f09f2baded10f9fbafef6e9d5252ad52c5b005fee",
       "sourceAttribution": "出典：厚生労働省ウェブサイト（https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/koyou_roudou/koyoukintou/zaitaku/index_00002.html）",
       "sourceProcessing": "Item-level source body extracted for later editorial adaptation. No learner-facing text has been generated.",
-      "inventoryPosition": 93
+      "inventoryPosition": 95
     },
     {
       "candidateId": "government-school-work-0022",
@@ -3020,7 +3084,7 @@
       "sourceBodyFingerprint": "7c352d49562f34e71ae3a2a2ea6f4aefbbf7675325410598ea4cfffa4ffac1fb",
       "sourceAttribution": "出典：消費者庁ウェブサイト（https://www.caa.go.jp/about_us/about/main_function）",
       "sourceProcessing": "Item-level source body extracted for later editorial adaptation. No learner-facing text has been generated.",
-      "inventoryPosition": 94
+      "inventoryPosition": 96
     },
     {
       "candidateId": "verified-school-work-5ec81aad9607",
@@ -3052,7 +3116,7 @@
       "sourceBodyFingerprint": "cf213f0938f583220f5127e4ab0de67822dba0fae2342734748d2c52d4eca061",
       "sourceAttribution": "出典：厚生労働省ウェブサイト（https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/koyou_roudou/roudouzenpan）",
       "sourceProcessing": "Item-level source body extracted for later editorial adaptation. No learner-facing text has been generated.",
-      "inventoryPosition": 95
+      "inventoryPosition": 97
     },
     {
       "candidateId": "verified-school-work-890f5bad98b1",
@@ -3084,7 +3148,7 @@
       "sourceBodyFingerprint": "26d0e8fcf40b618590e537a5786a5525795dd3a0b69905b7b80e389df627ac78",
       "sourceAttribution": "出典：厚生労働省ウェブサイト（https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/koyou_roudou/roudoukijun/rousai_shinryouhi/kaitei0604_00010.html）",
       "sourceProcessing": "Item-level source body extracted for later editorial adaptation. No learner-facing text has been generated.",
-      "inventoryPosition": 96
+      "inventoryPosition": 98
     },
     {
       "candidateId": "government-school-work-0023",
@@ -3116,7 +3180,7 @@
       "sourceBodyFingerprint": "f8dcf5123a1187d6b997493080458a7f71062977bf02d194495bb032aab89fd1",
       "sourceAttribution": "出典：消費者庁ウェブサイト（https://www.caa.go.jp/policies/policy/consumer_education）",
       "sourceProcessing": "Item-level source body extracted for later editorial adaptation. No learner-facing text has been generated.",
-      "inventoryPosition": 97
+      "inventoryPosition": 99
     },
     {
       "candidateId": "verified-school-work-5baef83bbbe1",
@@ -3148,7 +3212,7 @@
       "sourceBodyFingerprint": "3b7377565f8c3e034615143df7aaaa15f0a78efbab24811477ea387e689a6539",
       "sourceAttribution": "出典：厚生労働省ウェブサイト（https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/0000207430.html）",
       "sourceProcessing": "Item-level source body extracted for later editorial adaptation. No learner-facing text has been generated.",
-      "inventoryPosition": 98
+      "inventoryPosition": 100
     },
     {
       "candidateId": "verified-school-work-e5816a3b2d7f",
@@ -3180,7 +3244,7 @@
       "sourceBodyFingerprint": "e9278b8f2431be4a897b06adeed22259d11fe0466c977441a8c876998abeb4cb",
       "sourceAttribution": "出典：厚生労働省ウェブサイト（https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/koyou_roudou/roudoukijun/rousai_shinryouhi/kaitei0604_00009.html）",
       "sourceProcessing": "Item-level source body extracted for later editorial adaptation. No learner-facing text has been generated.",
-      "inventoryPosition": 99
+      "inventoryPosition": 101
     },
     {
       "candidateId": "verified-school-work-9799ae3dff89",
@@ -3212,7 +3276,7 @@
       "sourceBodyFingerprint": "6275859508f28a2ccff704def777899138384df0af15e3eae829b60a42c11c1e",
       "sourceAttribution": "出典：厚生労働省ウェブサイト（https://www.mhlw.go.jp/stf/houdou/newpage_00235.html）",
       "sourceProcessing": "Item-level source body extracted for later editorial adaptation. No learner-facing text has been generated.",
-      "inventoryPosition": 100
+      "inventoryPosition": 102
     },
     {
       "candidateId": "verified-school-work-228396b8d8f5",
@@ -3244,7 +3308,7 @@
       "sourceBodyFingerprint": "788a06a9d05b440fe82eadf5c43d1c757a11e4dae09824c86ae1f926c0ac0c91",
       "sourceAttribution": "出典：厚生労働省ウェブサイト（https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/0000132220.html）",
       "sourceProcessing": "Item-level source body extracted for later editorial adaptation. No learner-facing text has been generated.",
-      "inventoryPosition": 101
+      "inventoryPosition": 103
     },
     {
       "candidateId": "verified-school-work-a750daf075e6",
@@ -3276,7 +3340,7 @@
       "sourceBodyFingerprint": "eb5c45d9442128b4c0814c20f3e65ced27314bc9d702ceb912b4f5c7acc153f6",
       "sourceAttribution": "出典：厚生労働省ウェブサイト（https://www.mhlw.go.jp/stf/newpage_32753.html）",
       "sourceProcessing": "Item-level source body extracted for later editorial adaptation. No learner-facing text has been generated.",
-      "inventoryPosition": 102
+      "inventoryPosition": 104
     },
     {
       "candidateId": "verified-school-work-9007d6cb7b1f",
@@ -3308,7 +3372,7 @@
       "sourceBodyFingerprint": "c0fb3eddd3a250839bd9b019f02e65111833f9c0be8cd8a1aea3193792bdeee9",
       "sourceAttribution": "出典：厚生労働省ウェブサイト（https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/mangaroudouhou.html）",
       "sourceProcessing": "Item-level source body extracted for later editorial adaptation. No learner-facing text has been generated.",
-      "inventoryPosition": 103
+      "inventoryPosition": 105
     },
     {
       "candidateId": "verified-school-work-1d18cc8dd720",
@@ -3340,7 +3404,7 @@
       "sourceBodyFingerprint": "ad72c8491d8b28f5b0559104c521828b0b0bf57fb63ea59741fbb25e041a0487",
       "sourceAttribution": "出典：厚生労働省ウェブサイト（https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/koyou_roudou/roudoukijun/zigyonushi/index_00051.html）",
       "sourceProcessing": "Item-level source body extracted for later editorial adaptation. No learner-facing text has been generated.",
-      "inventoryPosition": 104
+      "inventoryPosition": 106
     },
     {
       "candidateId": "verified-school-work-202bc92a46cb",
@@ -3372,7 +3436,7 @@
       "sourceBodyFingerprint": "407c1d18dd406ea55e7905d5259be0cd0b827a78430b3daac9f7a10c0e2644af",
       "sourceAttribution": "出典：厚生労働省ウェブサイト（https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/koyou_roudou/koyoukintou/0000088194_00001.html）",
       "sourceProcessing": "Item-level source body extracted for later editorial adaptation. No learner-facing text has been generated.",
-      "inventoryPosition": 105
+      "inventoryPosition": 107
     },
     {
       "candidateId": "verified-school-work-f8ba0c4501fb",
@@ -3404,7 +3468,7 @@
       "sourceBodyFingerprint": "a813cb3ac13b58be5738133a9b5993181a88ac69c42f5869cec3d526df21c87a",
       "sourceAttribution": "出典：厚生労働省ウェブサイト（https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/kodomo/shokuba_kosodate/jigyou_ryouritsu/topics/tp100618-1_00008.html）",
       "sourceProcessing": "Item-level source body extracted for later editorial adaptation. No learner-facing text has been generated.",
-      "inventoryPosition": 106
+      "inventoryPosition": 108
     },
     {
       "candidateId": "verified-school-work-5bf24037855b",
@@ -3436,7 +3500,7 @@
       "sourceBodyFingerprint": "c78b9339a5c9c4e9df6842a6ffc0fa2dbd2faf6aa3638e188c06108d5bf0277d",
       "sourceAttribution": "出典：厚生労働省ウェブサイト（https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/koyou_roudou/koyou/koyouhoken/kyukakyufukin.html）",
       "sourceProcessing": "Item-level source body extracted for later editorial adaptation. No learner-facing text has been generated.",
-      "inventoryPosition": 107
+      "inventoryPosition": 109
     },
     {
       "candidateId": "verified-school-work-ec60a851f83f",
@@ -3468,7 +3532,7 @@
       "sourceBodyFingerprint": "0ba0534cfb5e5c1c0266f16bcf7da93a3f95dc42402f875ee8107b458f3450a8",
       "sourceAttribution": "出典：厚生労働省ウェブサイト（https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/0000198331.html）",
       "sourceProcessing": "Item-level source body extracted for later editorial adaptation. No learner-facing text has been generated.",
-      "inventoryPosition": 108
+      "inventoryPosition": 110
     },
     {
       "candidateId": "verified-school-work-6d5a6bfb017e",
@@ -3500,7 +3564,7 @@
       "sourceBodyFingerprint": "ee645733b58f998f84f4c22e2418a07a3a9db7fdc6ee0e7a3a40224c4d70f06a",
       "sourceAttribution": "出典：農林水産省ウェブサイト（https://www.maff.go.jp/j/syokuiku/kyusyoku_guide.html）",
       "sourceProcessing": "Item-level source body extracted for later editorial adaptation. No learner-facing text has been generated.",
-      "inventoryPosition": 109
+      "inventoryPosition": 111
     },
     {
       "candidateId": "verified-school-work-1f9fadb5ce37",
@@ -3532,7 +3596,7 @@
       "sourceBodyFingerprint": "b3a110ce0031d25ca66c1bed1490c7a2ddffe908df3576c14b04d761ec821ee4",
       "sourceAttribution": "出典：消費者庁ウェブサイト（https://www.caa.go.jp/policies/policy/consumer_education/public_awareness/ethical/efforts/other/event_2026_001）",
       "sourceProcessing": "Item-level source body extracted for later editorial adaptation. No learner-facing text has been generated.",
-      "inventoryPosition": 110
+      "inventoryPosition": 112
     },
     {
       "candidateId": "verified-school-work-40d3282fc6a1",
@@ -3564,7 +3628,7 @@
       "sourceBodyFingerprint": "4263d6f41bcb1e5839684ba114a15fde7b0231ab612e6071ca6a95884d33458d",
       "sourceAttribution": "出典：厚生労働省ウェブサイト（https://www.mhlw.go.jp/stf/newpage_73375.html）",
       "sourceProcessing": "Item-level source body extracted for later editorial adaptation. No learner-facing text has been generated.",
-      "inventoryPosition": 111
+      "inventoryPosition": 113
     },
     {
       "candidateId": "verified-school-work-735414fde24e",
@@ -3596,7 +3660,7 @@
       "sourceBodyFingerprint": "114e61a1af7f6a655c1a67a89b116521e4928c47b37a4e5384555d46b66097cd",
       "sourceAttribution": "出典：厚生労働省ウェブサイト（https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/koyou_roudou/jinzaikaihatsu/global_cooperation/index_00029.html）",
       "sourceProcessing": "Item-level source body extracted for later editorial adaptation. No learner-facing text has been generated.",
-      "inventoryPosition": 112
+      "inventoryPosition": 114
     },
     {
       "candidateId": "verified-school-work-14f370ace386",
@@ -3628,7 +3692,7 @@
       "sourceBodyFingerprint": "663772bf4185c676d988053d515e4d12e42bb44f419078fb0bd5dafab1db6b24",
       "sourceAttribution": "出典：厚生労働省ウェブサイト（https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/koyou_roudou/roudoukijun/denshishinsei_00002.html）",
       "sourceProcessing": "Item-level source body extracted for later editorial adaptation. No learner-facing text has been generated.",
-      "inventoryPosition": 113
+      "inventoryPosition": 115
     },
     {
       "candidateId": "verified-school-work-27fad3b4b143",
@@ -3660,7 +3724,7 @@
       "sourceBodyFingerprint": "57a2b1c4d903f21489bca2a15f538eddc36671d2943589e26711343fc443b3ba",
       "sourceAttribution": "出典：農林水産省ウェブサイト（https://www.maff.go.jp/j/syokuiku/taikai/16th/lunchsympo.html）",
       "sourceProcessing": "Item-level source body extracted for later editorial adaptation. No learner-facing text has been generated.",
-      "inventoryPosition": 114
+      "inventoryPosition": 116
     },
     {
       "candidateId": "verified-school-work-91e6c8c7a810",
@@ -3692,7 +3756,7 @@
       "sourceBodyFingerprint": "a74e1c8b0ba58f12752b2d0a2a06ac650a94e547aaf8e9c64c8711f1cdd7bed1",
       "sourceAttribution": "出典：厚生労働省ウェブサイト（https://www.mhlw.go.jp/stf/shingi/shingi-rousei_126981.html）",
       "sourceProcessing": "Item-level source body extracted for later editorial adaptation. No learner-facing text has been generated.",
-      "inventoryPosition": 115
+      "inventoryPosition": 117
     },
     {
       "candidateId": "verified-school-work-f01f10d8970c",
@@ -3726,7 +3790,7 @@
       "sourceBodyFingerprint": "0c9bcbbad25cf5fe83407c4b544bc4eb940a80e3879a8c71528f35182ead3343",
       "sourceAttribution": "出典：厚生労働省ウェブサイト（https://www.mhlw.go.jp/stf/newpage_73233.html）",
       "sourceProcessing": "Item-level source body extracted for later editorial adaptation. No learner-facing text has been generated.",
-      "inventoryPosition": 116
+      "inventoryPosition": 118
     },
     {
       "candidateId": "verified-school-work-a126ddfb42b0",
@@ -3760,7 +3824,7 @@
       "sourceBodyFingerprint": "ca97695ecdcb872801df7e6931f91c0e09bffe11212168777a2a3c88d610a616",
       "sourceAttribution": "出典：厚生労働省ウェブサイト（https://www.mhlw.go.jp/stf/newpage_72678.html）",
       "sourceProcessing": "Item-level source body extracted for later editorial adaptation. No learner-facing text has been generated.",
-      "inventoryPosition": 117
+      "inventoryPosition": 119
     },
     {
       "candidateId": "verified-school-work-215b840c5a82",
@@ -3793,74 +3857,6 @@
       "reuseMode": "verbatim-or-adaptation-permitted",
       "sourceBodyFingerprint": "98d9bf714713d17be20b1d8bb3941cc1937b6c3cdf6f3d519e4a19c0c5daff8e",
       "sourceAttribution": "出典：厚生労働省ウェブサイト（https://www.mhlw.go.jp/stf/newpage_71964.html）",
-      "sourceProcessing": "Item-level source body extracted for later editorial adaptation. No learner-facing text has been generated.",
-      "inventoryPosition": 118
-    },
-    {
-      "candidateId": "verified-school-work-f909daa513e7",
-      "targetShelf": "school-work",
-      "sourceFamilyId": "gov-mhlw",
-      "sourceTitle": "第１回労働市場改革分科会を開催します",
-      "sourcePublisher": "厚生労働省",
-      "sourceUrl": "https://www.mhlw.go.jp/stf/newpage_70698.html",
-      "sourcePublishedDate": null,
-      "sourceRetrievedDate": "2026-08-22",
-      "rightsStatus": "adaptation-permitted",
-      "rightsBasis": {
-        "termsUrl": "https://www.mhlw.go.jp/chosakuken/",
-        "licenseName": "Public Data License 1.0",
-        "licenseUrl": "https://www.digital.go.jp/resources/open_data/public_data_license_v1.0",
-        "itemLevelCheck": "No contrary text-rights notice detected in the fetched page; excluded media remains excluded.",
-        "verifiedDate": "2026-08-22"
-      },
-      "thirdPartyContentReview": {
-        "status": "checked-third-party-assets-excluded",
-        "signals": [],
-        "excludedMedia": [
-          "third-party-media-credit"
-        ],
-        "assetsBundled": false
-      },
-      "sourceBodyExtractionStatus": "body-ready",
-      "sourceJapaneseSubstance": "報道発表資料\n>\n第１回労働市場改革分科会を開催します\n公開\n\n頭撮り可\n政策統括官付政策統括室\n\n　政策第二班\n(代表電話) 03 (5253) 1111\n(直通電話) 03 (3595) 2159\n３．議題（予定）\n４．傍聴等について\n取材・傍聴を希望される方は、会場設営の関係上、あらかじめご連絡いただきますようお願いします。\n\nなお、当省では審議会等のペーパーレス化の取組を推進しています。\n\n資料につきましては会議開催前までに当省ホームページに掲載しますので、傍聴に当たっては\n\n・お持ちのタブレット、携帯端末等に保存の上、当日持参いただくか\n\n・当日、当省ホームページに掲載されている資料を閲覧していただくか\n\nの対応をお願いします。\n\n会場内にはご利用いただける無線LANのアクセスポイントはございませんので、\n\n会場から当省ホームページ掲載の資料を閲覧される場合には、ご自身で通信環境をご用意していただくようお願いします。\n\nご不便をおかけしますが、ペーパーレス化へのご協力をお願いいたします。\n\n議事録につきましては、後日公開予定としております。\n対面で傍聴される方への留意事項\n傍聴に当たっては、次の留意事項を遵守してください。これらを遵守できない場合は、退場していただくことがあります。\n\n（１）事務局の指定した場所以外の場所に立ち入ることはできません。\n\n（２）携帯電話等音の出る機器については、電源を切るか、マナーモードに設定してください。\n\n（３）写真撮影、ビデオ撮影、録音をすることはできません（あらかじめ申し込まれた場合は、\n\n　　　会議冒頭の頭撮りに限って写真撮影などをすることができます）。\n\n（４）服装を整えて会場に入ってください。はちまき、ゼッケン、たすき、腕章等は着用しない\n\n　　　でください。\n\n（５）危険な物、旗、ヘルメット、ビラ、プラカード等は持ち込まないでください。\n\n（６）静粛を旨とし、意見を表明するなど審議の妨害になるような行為はしないでください。\n\n（７）構成員等の言論に対し賛否を表明し、又は拍手をすることはできません。また、会議開始\n\n　　　前後の構成員等への要請、陳情等はお控えください。\n\n（８）飲食等はしないでください。\n\n（９）途中での入退室はやむを得ない場合のみとします。\n\n（10）酒気を帯びている方、その他秩序を乱すおそれがあると認められる方の傍聴はお断り\n\n　　　いたします。\n\n（11）分科会開催当日は、必ず「顔写真付身分証明書（免許証、社員証、パスポート等）」を持参いただき、\n\n　　　入館の際にご提示して下さい。\n\n（12）その他、事務局職員の指示に従ってください。\nPDFファイルを見るためには、Adobe Readerというソフトが必要です。Adobe Readerは無料で配布されていますので、こちらからダウンロードしてください。",
-      "sourceTextCharacterCount": 931,
-      "reuseMode": "verbatim-or-adaptation-permitted",
-      "sourceBodyFingerprint": "7f44452c6d9a0a57e3dc1d66f569cb6a549d81c6a493cab1b7232596840d94a9",
-      "sourceAttribution": "出典：厚生労働省ウェブサイト（https://www.mhlw.go.jp/stf/newpage_70698.html）",
-      "sourceProcessing": "Item-level source body extracted for later editorial adaptation. No learner-facing text has been generated.",
-      "inventoryPosition": 119
-    },
-    {
-      "candidateId": "verified-school-work-fb2ed07cb648",
-      "targetShelf": "school-work",
-      "sourceFamilyId": "gov-mhlw",
-      "sourceTitle": "第６回「労働基準法における「労働者」に関する研究会」を開催します",
-      "sourcePublisher": "厚生労働省",
-      "sourceUrl": "https://www.mhlw.go.jp/stf/newpage_73959.html",
-      "sourcePublishedDate": null,
-      "sourceRetrievedDate": "2026-08-22",
-      "rightsStatus": "adaptation-permitted",
-      "rightsBasis": {
-        "termsUrl": "https://www.mhlw.go.jp/chosakuken/",
-        "licenseName": "Public Data License 1.0",
-        "licenseUrl": "https://www.digital.go.jp/resources/open_data/public_data_license_v1.0",
-        "itemLevelCheck": "No contrary text-rights notice detected in the fetched page; excluded media remains excluded.",
-        "verifiedDate": "2026-08-22"
-      },
-      "thirdPartyContentReview": {
-        "status": "checked-third-party-assets-excluded",
-        "signals": [],
-        "excludedMedia": [
-          "third-party-media-credit"
-        ],
-        "assetsBundled": false
-      },
-      "sourceBodyExtractionStatus": "body-ready",
-      "sourceJapaneseSubstance": "政策について\n>\n審議会・研究会等\n>\n労働基準局が実施する検討会等\n>\n労働基準法における「労働者」に関する研究会\n>\n第６回「労働基準法における「労働者」に関する研究会」を開催します\n公開\n\n頭撮り可\n令和8年7月10日（金）\n標記につきまして、下記のとおり開催いたします。\n傍聴を希望される方は、下記の傍聴者募集要領によりお申し込みください。\n\n　当省では、審議会等のペーパーレス化の取組を推進しています。\n\n　資料につきましては、開催までに当省ホームページに掲載しますので、傍聴に当たっては、\nお持ちのタブレット、携帯端末等に保存の上、当日持参いただくか\n当日、当省ホームページに掲載されている資料を閲覧していただくか\nなお、会場内にはご利用いただける無線LANのアクセスポイントはございませんので、会場から当省ホームページ掲載の資料を閲覧される場合には、ご自身で通信環境をご用意していただくようお願いします。\n\n　ご不便をおかけしますが、ペーパーレス化へのご協力をお願いいたします。\n５　傍聴者募集要領\n６　傍聴される方の注意事項\n会議の傍聴にあたり、次の留意事項を遵守してください。\n\nこれらをお守りいただけない場合は、退場していただくことがあります。\n（1） 事務局の指定した場所以外の場所に立ち入ることはできません。\n（2） 携帯電話等音の出る機器については、電源を切るか、マナーモードに設定してください。\n（3） 写真撮影、ビデオ撮影、録音をすることはできません（あらかじめ申し込まれた場合は、会議冒頭の頭撮りに限って写真撮影などをすることができます。）。\n（4） 服装を整えて会場に入ってください。はちまき、ゼッケン、たすき、腕章等は着用しないでください。\n（5） 危険な物、旗、ヘルメット、ビラ、プラカード等は持ち込まないでください。\n（6） 静粛を旨とし、意見を表明するなど議論の妨害になるような行為はしないでください。\n（7） 構成員等の言論に対し賛否を表明し、又は拍手をすることはできません。また、会議開始前後の構成員等への要請、陳情等はお控えください。\n（8） 飲食等はしないでください。\n（9） 途中での入退室はやむを得ない場合のみとします。\n（10） 酒気を帯びている方、その他秩序を乱すおそれがあると認められる方の傍聴はお断りします。\n（11） 会場及び建物の警備上の理由により身分証をご提示いただくことがあります。\n（12） その他、座長及び事務局職員の指示に従ってください。\nPDFファイルを見るためには、Adobe Readerというソフトが必要です。Adobe Readerは無料で配布されていますので、こちらからダウンロードしてください。",
-      "sourceTextCharacterCount": 920,
-      "reuseMode": "verbatim-or-adaptation-permitted",
-      "sourceBodyFingerprint": "586bdd3f81079a28544303bc6bf808608bb7902abc089041fd9e0cfea0e80f7b",
-      "sourceAttribution": "出典：厚生労働省ウェブサイト（https://www.mhlw.go.jp/stf/newpage_73959.html）",
       "sourceProcessing": "Item-level source body extracted for later editorial adaptation. No learner-facing text has been generated.",
       "inventoryPosition": 120
     }

@@ -2,21 +2,17 @@
   "version": 1,
   "generatedDate": "2026-08-22",
   "inspectedCandidates": 580,
-  "uniqueSourceUrls": 527,
+  "uniqueSourceUrls": 508,
   "readyCounts": {
-    "short-stories": 149,
-    "folktales-legends": 95,
-    "essays-opinions": 147,
-    "serialized-novels": 0,
+    "short-stories": 150,
+    "folktales-legends": 100,
+    "essays-opinions": 150,
+    "serialized-novels": 80,
     "poetry-micro-reads": 100
   },
-  "rejectionReasons": {
-    "insufficient-source-substance": 9,
-    "invalid-or-mojibake-section-title": 79,
-    "section-title-not-found-in-source": 1
-  },
-  "duplicateWholeWorkBodies": 53,
-  "serializedPolicy": "A serialized candidate is ready only when its decoded, named source division exists in the original Aozora HTML and is not merely the work title.",
+  "rejectionReasons": {},
+  "duplicateSourceBodies": 0,
+  "serializedPolicy": "A serialized candidate is ready only when its decoded, named source division and extracted section body exist in the original Aozora HTML; no arbitrary character slicing is allowed.",
   "details": {
     "short-stories": [
       {
@@ -628,16 +624,6 @@
         "failures": []
       },
       {
-        "candidateId": "aozora-003813",
-        "sourceUrl": "https://www.aozora.gr.jp/cards/000879/files/3813_27308.html",
-        "sourceCharacters": 257,
-        "sourceBodyFingerprint": "740fcd06662a0949c11ed054f8cebe7b17a86b8522658489119cce255f6a8e6d",
-        "ready": false,
-        "failures": [
-          "insufficient-source-substance"
-        ]
-      },
-      {
         "candidateId": "aozora-000155",
         "sourceUrl": "https://www.aozora.gr.jp/cards/000879/files/155_15203.html",
         "sourceCharacters": 13914,
@@ -1220,6 +1206,14 @@
         "sourceBodyFingerprint": "02ff2892ad58bdfb7a8e4d754bb1725ebe410a405b9f935deb3b9ced95dab33e",
         "ready": true,
         "failures": []
+      },
+      {
+        "candidateId": "aozora-000042",
+        "sourceUrl": "https://www.aozora.gr.jp/cards/000879/files/42_15228.html",
+        "sourceCharacters": 5270,
+        "sourceBodyFingerprint": "c92e92ce394c226dc0c031afdd57c5c09d7d2e6748738e6c85628a3a2b4f2883",
+        "ready": true,
+        "failures": []
       }
     ],
     "folktales-legends": [
@@ -1472,16 +1466,6 @@
         "failures": []
       },
       {
-        "candidateId": "aozora-051106",
-        "sourceUrl": "https://www.aozora.gr.jp/cards/001475/files/51106_48256.html",
-        "sourceCharacters": 118,
-        "sourceBodyFingerprint": "692178aaf25b8422e17c5f557267592e06c3fb1c9a49b4e2b64224647738edcd",
-        "ready": false,
-        "failures": [
-          "insufficient-source-substance"
-        ]
-      },
-      {
         "candidateId": "aozora-051093",
         "sourceUrl": "https://www.aozora.gr.jp/cards/001475/files/51093_48257.html",
         "sourceCharacters": 2234,
@@ -1496,16 +1480,6 @@
         "sourceBodyFingerprint": "8b374ea01d712443b450ca9f398c110bf264eb5b0edf216ee0222cf1dfe1c82d",
         "ready": true,
         "failures": []
-      },
-      {
-        "candidateId": "aozora-051115",
-        "sourceUrl": "https://www.aozora.gr.jp/cards/001475/files/51115_48535.html",
-        "sourceCharacters": 130,
-        "sourceBodyFingerprint": "e4d8bd6d1b459f72b73c54deb3068782fbade15ca8784d346755990068855cb3",
-        "ready": false,
-        "failures": [
-          "insufficient-source-substance"
-        ]
       },
       {
         "candidateId": "aozora-051066",
@@ -1764,16 +1738,6 @@
         "failures": []
       },
       {
-        "candidateId": "aozora-051119",
-        "sourceUrl": "https://www.aozora.gr.jp/cards/001475/files/51119_51774.html",
-        "sourceCharacters": 72,
-        "sourceBodyFingerprint": "4104954f73a084b0689ab42fd0079a1952c5fa6a00bbc8ecc30669c277e5ad60",
-        "ready": false,
-        "failures": [
-          "insufficient-source-substance"
-        ]
-      },
-      {
         "candidateId": "aozora-053453",
         "sourceUrl": "https://www.aozora.gr.jp/cards/001475/files/53453_50584.html",
         "sourceCharacters": 3388,
@@ -1966,16 +1930,6 @@
         "failures": []
       },
       {
-        "candidateId": "aozora-051124",
-        "sourceUrl": "https://www.aozora.gr.jp/cards/001475/files/51124_51778.html",
-        "sourceCharacters": 60,
-        "sourceBodyFingerprint": "bf89730b2529382e3b2912ff147f60192259910b66397daa903069da8dad0214",
-        "ready": false,
-        "failures": [
-          "insufficient-source-substance"
-        ]
-      },
-      {
         "candidateId": "aozora-051507",
         "sourceUrl": "https://www.aozora.gr.jp/cards/001475/files/51507_59482.html",
         "sourceCharacters": 3168,
@@ -2000,16 +1954,6 @@
         "failures": []
       },
       {
-        "candidateId": "aozora-051116",
-        "sourceUrl": "https://www.aozora.gr.jp/cards/001475/files/51116_51777.html",
-        "sourceCharacters": 115,
-        "sourceBodyFingerprint": "6eb1db86d5d2c6628908b85c27186bcb9f505a381a4bea26fc1a01c3af47fb01",
-        "ready": false,
-        "failures": [
-          "insufficient-source-substance"
-        ]
-      },
-      {
         "candidateId": "aozora-053123",
         "sourceUrl": "https://www.aozora.gr.jp/cards/001475/files/53123_74812.html",
         "sourceCharacters": 2948,
@@ -2030,6 +1974,46 @@
         "sourceUrl": "https://www.aozora.gr.jp/cards/001475/files/52966_46835.html",
         "sourceCharacters": 6238,
         "sourceBodyFingerprint": "7a2402779a36519313222dd9e15b6e6adace90fef2b69d05fd24433d59c9142b",
+        "ready": true,
+        "failures": []
+      },
+      {
+        "candidateId": "aozora-052484",
+        "sourceUrl": "https://www.aozora.gr.jp/cards/001475/files/52484_64342.html",
+        "sourceCharacters": 2861,
+        "sourceBodyFingerprint": "89578209864fc936b466490c0040ed1d870a8c1f54fb397d772373c18dd33131",
+        "ready": true,
+        "failures": []
+      },
+      {
+        "candidateId": "aozora-052927",
+        "sourceUrl": "https://www.aozora.gr.jp/cards/001475/files/52927_53037.html",
+        "sourceCharacters": 693,
+        "sourceBodyFingerprint": "b8166d560604bd375a762d0b4cb6d97001402551568a785acdb57446d66e3910",
+        "ready": true,
+        "failures": []
+      },
+      {
+        "candidateId": "aozora-051802",
+        "sourceUrl": "https://www.aozora.gr.jp/cards/001475/files/51802_46584.html",
+        "sourceCharacters": 2807,
+        "sourceBodyFingerprint": "44b10ff589acc2f382dc37bc3d8be80aaae7bf2f95227491951b849dfd648e7c",
+        "ready": true,
+        "failures": []
+      },
+      {
+        "candidateId": "aozora-051604",
+        "sourceUrl": "https://www.aozora.gr.jp/cards/001475/files/51604_62859.html",
+        "sourceCharacters": 1935,
+        "sourceBodyFingerprint": "ea3639e7afb1ec1a7a8c60b3854f1f1679a0ae27ec3e8ef1665fc33226ca006e",
+        "ready": true,
+        "failures": []
+      },
+      {
+        "candidateId": "aozora-052991",
+        "sourceUrl": "https://www.aozora.gr.jp/cards/001475/files/52991_68011.html",
+        "sourceCharacters": 1266,
+        "sourceBodyFingerprint": "cdd07c7ff1cbff8e618dcac80827fc332b14b0dcb4cafc568e022fcf912b86d8",
         "ready": true,
         "failures": []
       }
@@ -2596,16 +2580,6 @@
         "failures": []
       },
       {
-        "candidateId": "aozora-003820",
-        "sourceUrl": "https://www.aozora.gr.jp/cards/000879/files/3820_27304.html",
-        "sourceCharacters": 141,
-        "sourceBodyFingerprint": "edf380236417d3f5dcdc67fca515676572dbdb1bf90955a3f51f393d6d4b231e",
-        "ready": false,
-        "failures": [
-          "insufficient-source-substance"
-        ]
-      },
-      {
         "candidateId": "aozora-000140",
         "sourceUrl": "https://www.aozora.gr.jp/cards/000879/files/140_15196.html",
         "sourceCharacters": 2067,
@@ -2652,16 +2626,6 @@
         "sourceBodyFingerprint": "c66d555e74b0e621d7fb4d9c5c707c9eb3ce039e54b08195e6f43cabad4449da",
         "ready": true,
         "failures": []
-      },
-      {
-        "candidateId": "aozora-024451",
-        "sourceUrl": "https://www.aozora.gr.jp/cards/000879/files/24451_11252.html",
-        "sourceCharacters": 96,
-        "sourceBodyFingerprint": "23f9bf9e328254f3ca6ad532d409244418571876067c46efc675e809be176766",
-        "ready": false,
-        "failures": [
-          "insufficient-source-substance"
-        ]
       },
       {
         "candidateId": "aozora-000160",
@@ -2750,16 +2714,6 @@
         "sourceBodyFingerprint": "b14bbe9327131dc813ea690b69caf6362eb0b260e0057243be3238aca7c5cc15",
         "ready": true,
         "failures": []
-      },
-      {
-        "candidateId": "aozora-004301",
-        "sourceUrl": "https://www.aozora.gr.jp/cards/000879/files/4301_6768.html",
-        "sourceCharacters": 168,
-        "sourceBodyFingerprint": "a282434f4f62712d32ad698f5de88a85b5dac6838e6a63b3ed2890c4bb338b84",
-        "ready": false,
-        "failures": [
-          "insufficient-source-substance"
-        ]
       },
       {
         "candidateId": "aozora-003746",
@@ -3240,808 +3194,672 @@
         "sourceBodyFingerprint": "9ce353b476e9c5060cddba936215fdb60b68f4003627906f132ce0726ccae743",
         "ready": true,
         "failures": []
+      },
+      {
+        "candidateId": "aozora-003789",
+        "sourceUrl": "https://www.aozora.gr.jp/cards/000879/files/3789_27348.html",
+        "sourceCharacters": 1007,
+        "sourceBodyFingerprint": "2a7bd57eb6e1017e242fdcfdc638d236d5e4135217651da6258d8b0861e80555",
+        "ready": true,
+        "failures": []
+      },
+      {
+        "candidateId": "aozora-000099",
+        "sourceUrl": "https://www.aozora.gr.jp/cards/000879/files/99_15249.html",
+        "sourceCharacters": 4631,
+        "sourceBodyFingerprint": "349247876a81634791a1efa95a184b7169af3cdd3b27ff70d43414251146fada",
+        "ready": true,
+        "failures": []
+      },
+      {
+        "candidateId": "aozora-001124",
+        "sourceUrl": "https://www.aozora.gr.jp/cards/000879/files/1124_14252.html",
+        "sourceCharacters": 2640,
+        "sourceBodyFingerprint": "d273f7d1d2ed2a827256bd8364e2627da1e747f7b0d90c59ddcbf9356ff65912",
+        "ready": true,
+        "failures": []
       }
     ],
     "serialized-novels": [
       {
-        "candidateId": "aozora-001178-chapter-001",
-        "sourceUrl": "https://www.aozora.gr.jp/cards/000050/files/1178_23555.html",
-        "sourceCharacters": 15720,
-        "sourceBodyFingerprint": "9d98985b4389a934af3948a189943bcb4495d55e575b506d608cb490cb85a3ff",
-        "ready": false,
-        "failures": [
-          "invalid-or-mojibake-section-title"
-        ]
-      },
-      {
-        "candidateId": "aozora-001177-chapter-001",
-        "sourceUrl": "https://www.aozora.gr.jp/cards/000050/files/1177_20567.html",
-        "sourceCharacters": 11687,
-        "sourceBodyFingerprint": "2d31aa87855614e93feb01c29afbfa0ef59624d5e39d9ea51b81a7d0ed5c3dee",
-        "ready": false,
-        "failures": [
-          "invalid-or-mojibake-section-title"
-        ]
-      },
-      {
-        "candidateId": "aozora-043224-chapter-001",
-        "sourceUrl": "https://www.aozora.gr.jp/cards/000050/files/43224_20150.html",
-        "sourceCharacters": 5623,
-        "sourceBodyFingerprint": "5547bb3f01b56768df69ad53658690cbd7af537d92ef3f118f065e61dd57aea1",
-        "ready": false,
-        "failures": [
-          "invalid-or-mojibake-section-title"
-        ]
-      },
-      {
-        "candidateId": "aozora-001184-chapter-001",
-        "sourceUrl": "https://www.aozora.gr.jp/cards/000050/files/1184_20151.html",
-        "sourceCharacters": 5489,
-        "sourceBodyFingerprint": "d910da971c86678251a43b8091bc36a28faf835c6769dd425e3c175b1854d216",
-        "ready": false,
-        "failures": [
-          "invalid-or-mojibake-section-title"
-        ]
-      },
-      {
-        "candidateId": "aozora-043225-chapter-001",
-        "sourceUrl": "https://www.aozora.gr.jp/cards/000050/files/43225_20152.html",
-        "sourceCharacters": 5267,
-        "sourceBodyFingerprint": "0fc5576d53b1ee53acfd87595111609b9ef078c52fd14cb156ba3fb2b2560f21",
-        "ready": false,
-        "failures": [
-          "invalid-or-mojibake-section-title"
-        ]
-      },
-      {
-        "candidateId": "aozora-001185-chapter-001",
-        "sourceUrl": "https://www.aozora.gr.jp/cards/000050/files/1185_20153.html",
-        "sourceCharacters": 5132,
-        "sourceBodyFingerprint": "ac87512be435bd511868839d8e9b60558ac902bc8125bda543d1415bedfdbb55",
-        "ready": false,
-        "failures": [
-          "invalid-or-mojibake-section-title"
-        ]
-      },
-      {
-        "candidateId": "aozora-048410-chapter-001",
-        "sourceUrl": "https://www.aozora.gr.jp/cards/000050/files/48410_35161.html",
-        "sourceCharacters": 2662,
-        "sourceBodyFingerprint": "1b0a08d3cbc34c1bc88c1ea51276eb7d112dab2c4190f044df5dced8db6c21d1",
-        "ready": false,
-        "failures": [
-          "section-title-not-found-in-source"
-        ]
-      },
-      {
-        "candidateId": "aozora-001189-chapter-001",
-        "sourceUrl": "https://www.aozora.gr.jp/cards/000050/files/1189_22309.html",
-        "sourceCharacters": 7778,
-        "sourceBodyFingerprint": "480763dbb2ee431880ef9df614f1d9799eda0f63b68a6be8d22357b189faad04",
-        "ready": false,
-        "failures": [
-          "invalid-or-mojibake-section-title"
-        ]
-      },
-      {
-        "candidateId": "aozora-048333-chapter-001",
-        "sourceUrl": "https://www.aozora.gr.jp/cards/000050/files/48333_33337.html",
-        "sourceCharacters": 10911,
-        "sourceBodyFingerprint": "c5a11147484f306ad359880e95e60a721d9e3978e8ec3cd520676493c0306137",
-        "ready": false,
-        "failures": [
-          "invalid-or-mojibake-section-title"
-        ]
-      },
-      {
-        "candidateId": "aozora-003650-chapter-001",
-        "sourceUrl": "https://www.aozora.gr.jp/cards/000050/files/3650_12120.html",
-        "sourceCharacters": 5438,
-        "sourceBodyFingerprint": "beaba590cee9aea6d160c3d29083cfbc89981292cec853f9216db472535c2ec0",
-        "ready": false,
-        "failures": [
-          "invalid-or-mojibake-section-title"
-        ]
-      },
-      {
-        "candidateId": "aozora-001091-chapter-001",
-        "sourceUrl": "https://www.aozora.gr.jp/cards/000050/files/1091_20649.html",
-        "sourceCharacters": 13509,
-        "sourceBodyFingerprint": "d9233e3aed4a7ee5cbaa16fe446f517183972b13e459ab61503aef4aca0e37b6",
-        "ready": false,
-        "failures": [
-          "invalid-or-mojibake-section-title"
-        ]
-      },
-      {
-        "candidateId": "aozora-057471-chapter-001",
-        "sourceUrl": "https://www.aozora.gr.jp/cards/000050/files/57471_60107.html",
-        "sourceCharacters": 13596,
-        "sourceBodyFingerprint": "ba9d91b357afe1647c513da5c34304547e58cf2695ecac0e192bad355676576f",
-        "ready": false,
-        "failures": [
-          "invalid-or-mojibake-section-title"
-        ]
-      },
-      {
-        "candidateId": "aozora-057471-chapter-002",
-        "sourceUrl": "https://www.aozora.gr.jp/cards/000050/files/57471_60107.html",
-        "sourceCharacters": 13596,
-        "sourceBodyFingerprint": "ba9d91b357afe1647c513da5c34304547e58cf2695ecac0e192bad355676576f",
-        "ready": false,
-        "failures": [
-          "invalid-or-mojibake-section-title"
-        ]
-      },
-      {
-        "candidateId": "aozora-057471-chapter-003",
-        "sourceUrl": "https://www.aozora.gr.jp/cards/000050/files/57471_60107.html",
-        "sourceCharacters": 13596,
-        "sourceBodyFingerprint": "ba9d91b357afe1647c513da5c34304547e58cf2695ecac0e192bad355676576f",
-        "ready": false,
-        "failures": [
-          "invalid-or-mojibake-section-title"
-        ]
-      },
-      {
-        "candidateId": "aozora-057471-chapter-004",
-        "sourceUrl": "https://www.aozora.gr.jp/cards/000050/files/57471_60107.html",
-        "sourceCharacters": 13596,
-        "sourceBodyFingerprint": "ba9d91b357afe1647c513da5c34304547e58cf2695ecac0e192bad355676576f",
-        "ready": false,
-        "failures": [
-          "invalid-or-mojibake-section-title"
-        ]
-      },
-      {
-        "candidateId": "aozora-057471-chapter-005",
-        "sourceUrl": "https://www.aozora.gr.jp/cards/000050/files/57471_60107.html",
-        "sourceCharacters": 13596,
-        "sourceBodyFingerprint": "ba9d91b357afe1647c513da5c34304547e58cf2695ecac0e192bad355676576f",
-        "ready": false,
-        "failures": [
-          "invalid-or-mojibake-section-title"
-        ]
-      },
-      {
-        "candidateId": "aozora-057471-chapter-006",
-        "sourceUrl": "https://www.aozora.gr.jp/cards/000050/files/57471_60107.html",
-        "sourceCharacters": 13596,
-        "sourceBodyFingerprint": "ba9d91b357afe1647c513da5c34304547e58cf2695ecac0e192bad355676576f",
-        "ready": false,
-        "failures": [
-          "invalid-or-mojibake-section-title"
-        ]
-      },
-      {
-        "candidateId": "aozora-057471-chapter-007",
-        "sourceUrl": "https://www.aozora.gr.jp/cards/000050/files/57471_60107.html",
-        "sourceCharacters": 13596,
-        "sourceBodyFingerprint": "ba9d91b357afe1647c513da5c34304547e58cf2695ecac0e192bad355676576f",
-        "ready": false,
-        "failures": [
-          "invalid-or-mojibake-section-title"
-        ]
-      },
-      {
-        "candidateId": "aozora-057471-chapter-008",
-        "sourceUrl": "https://www.aozora.gr.jp/cards/000050/files/57471_60107.html",
-        "sourceCharacters": 13596,
-        "sourceBodyFingerprint": "ba9d91b357afe1647c513da5c34304547e58cf2695ecac0e192bad355676576f",
-        "ready": false,
-        "failures": [
-          "invalid-or-mojibake-section-title"
-        ]
-      },
-      {
-        "candidateId": "aozora-057471-chapter-009",
-        "sourceUrl": "https://www.aozora.gr.jp/cards/000050/files/57471_60107.html",
-        "sourceCharacters": 13596,
-        "sourceBodyFingerprint": "ba9d91b357afe1647c513da5c34304547e58cf2695ecac0e192bad355676576f",
-        "ready": false,
-        "failures": [
-          "invalid-or-mojibake-section-title"
-        ]
-      },
-      {
-        "candidateId": "aozora-057471-chapter-010",
-        "sourceUrl": "https://www.aozora.gr.jp/cards/000050/files/57471_60107.html",
-        "sourceCharacters": 13596,
-        "sourceBodyFingerprint": "ba9d91b357afe1647c513da5c34304547e58cf2695ecac0e192bad355676576f",
-        "ready": false,
-        "failures": [
-          "invalid-or-mojibake-section-title"
-        ]
-      },
-      {
-        "candidateId": "aozora-057471-chapter-011",
-        "sourceUrl": "https://www.aozora.gr.jp/cards/000050/files/57471_60107.html",
-        "sourceCharacters": 13596,
-        "sourceBodyFingerprint": "ba9d91b357afe1647c513da5c34304547e58cf2695ecac0e192bad355676576f",
-        "ready": false,
-        "failures": [
-          "invalid-or-mojibake-section-title"
-        ]
-      },
-      {
-        "candidateId": "aozora-056532-chapter-001",
-        "sourceUrl": "https://www.aozora.gr.jp/cards/000058/files/56532_67996.html",
-        "sourceCharacters": 4441,
-        "sourceBodyFingerprint": "332545fa378a6af431e321a367fe84be3beeff611d1c01b4e77f5881d3f48519",
-        "ready": false,
-        "failures": [
-          "invalid-or-mojibake-section-title"
-        ]
-      },
-      {
-        "candidateId": "aozora-058090-chapter-001",
-        "sourceUrl": "https://www.aozora.gr.jp/cards/001903/files/58090_60638.html",
-        "sourceCharacters": 16687,
-        "sourceBodyFingerprint": "2bfdca5db9da3cafe30e5a17cb6f7a63971756af489b5dd76d2270aa7041129d",
-        "ready": false,
-        "failures": [
-          "invalid-or-mojibake-section-title"
-        ]
-      },
-      {
-        "candidateId": "aozora-058090-chapter-002",
-        "sourceUrl": "https://www.aozora.gr.jp/cards/001903/files/58090_60638.html",
-        "sourceCharacters": 16687,
-        "sourceBodyFingerprint": "2bfdca5db9da3cafe30e5a17cb6f7a63971756af489b5dd76d2270aa7041129d",
-        "ready": false,
-        "failures": [
-          "invalid-or-mojibake-section-title"
-        ]
-      },
-      {
-        "candidateId": "aozora-013202-chapter-001",
-        "sourceUrl": "https://www.aozora.gr.jp/cards/000235/files/13202_17874.html",
-        "sourceCharacters": 2127,
-        "sourceBodyFingerprint": "5c8ec115b44139c674dbdeb107662be59291408c4150b5dd6c847b43689add20",
-        "ready": false,
-        "failures": [
-          "invalid-or-mojibake-section-title"
-        ]
-      },
-      {
-        "candidateId": "aozora-003622-chapter-001",
-        "sourceUrl": "https://www.aozora.gr.jp/cards/000165/files/3622_19268.html",
-        "sourceCharacters": 15138,
-        "sourceBodyFingerprint": "846c6dbf0ca79d43c5cd3dd63ce83fa11c10f4c22a976496c66026eceeb7544a",
-        "ready": false,
-        "failures": [
-          "invalid-or-mojibake-section-title"
-        ]
-      },
-      {
-        "candidateId": "aozora-056774-chapter-001",
-        "sourceUrl": "https://www.aozora.gr.jp/cards/001798/files/56774_58849.html",
-        "sourceCharacters": 9010,
-        "sourceBodyFingerprint": "eae86b743c3ab6a1f78180869ec9993ab9372a26f3d6937a69e010cdaba1e9eb",
-        "ready": false,
-        "failures": [
-          "invalid-or-mojibake-section-title"
-        ]
-      },
-      {
-        "candidateId": "aozora-003238-chapter-001",
-        "sourceUrl": "https://www.aozora.gr.jp/cards/000160/files/3238_9534.html",
-        "sourceCharacters": 10312,
-        "sourceBodyFingerprint": "2d66577862adc641943a2141b5b865fe3f107ad87848d2ff7e3fca5e043c68ee",
-        "ready": false,
-        "failures": [
-          "invalid-or-mojibake-section-title"
-        ]
-      },
-      {
-        "candidateId": "aozora-001243-chapter-001",
-        "sourceUrl": "https://www.aozora.gr.jp/cards/000160/files/1243_18587.html",
-        "sourceCharacters": 8266,
-        "sourceBodyFingerprint": "26ddf4fc9131eb5ed8a6b79d61144e5e93e7d74bed1a6e4dddc87f50b2cb09c8",
-        "ready": false,
-        "failures": [
-          "invalid-or-mojibake-section-title"
-        ]
-      },
-      {
-        "candidateId": "aozora-003230-chapter-001",
-        "sourceUrl": "https://www.aozora.gr.jp/cards/000160/files/3230_7212.html",
-        "sourceCharacters": 12764,
-        "sourceBodyFingerprint": "e0095bc9150ec9a8ac33508957c4aabb7a25356d5c530c9109b56aea279d548e",
-        "ready": false,
-        "failures": [
-          "invalid-or-mojibake-section-title"
-        ]
-      },
-      {
-        "candidateId": "aozora-001247-chapter-001",
-        "sourceUrl": "https://www.aozora.gr.jp/cards/000160/files/1247_18626.html",
-        "sourceCharacters": 20671,
-        "sourceBodyFingerprint": "cbdb44a4266ec189a175c1964be411c1cde28ac36f29f334c2fe26783a0c5aec",
-        "ready": false,
-        "failures": [
-          "invalid-or-mojibake-section-title"
-        ]
-      },
-      {
-        "candidateId": "aozora-043838-chapter-001",
-        "sourceUrl": "https://www.aozora.gr.jp/cards/000160/files/43838_18744.html",
-        "sourceCharacters": 1775,
-        "sourceBodyFingerprint": "bf5daae4a00b5d69f9d46c364f397497db4b5cef63a598b3bfd46d00b8e5bc56",
-        "ready": false,
-        "failures": [
-          "invalid-or-mojibake-section-title"
-        ]
-      },
-      {
-        "candidateId": "aozora-003349-chapter-001",
-        "sourceUrl": "https://www.aozora.gr.jp/cards/000160/files/3349_36910.html",
-        "sourceCharacters": 8923,
-        "sourceBodyFingerprint": "849a82496fce6719bdc9d31cca9e27cfb1b744b0aab62f2b74231b58ad24819f",
-        "ready": false,
-        "failures": [
-          "invalid-or-mojibake-section-title"
-        ]
-      },
-      {
-        "candidateId": "aozora-003349-chapter-002",
-        "sourceUrl": "https://www.aozora.gr.jp/cards/000160/files/3349_36910.html",
-        "sourceCharacters": 8923,
-        "sourceBodyFingerprint": "849a82496fce6719bdc9d31cca9e27cfb1b744b0aab62f2b74231b58ad24819f",
-        "ready": false,
-        "failures": [
-          "invalid-or-mojibake-section-title"
-        ]
-      },
-      {
-        "candidateId": "aozora-003522-chapter-001",
-        "sourceUrl": "https://www.aozora.gr.jp/cards/000160/files/3522_18463.html",
-        "sourceCharacters": 13174,
-        "sourceBodyFingerprint": "9b62a8f202ba0b95208a9cc3bb4d4ecf9a970f5ac173cfe71dc9640fd0d88f3b",
-        "ready": false,
-        "failures": [
-          "invalid-or-mojibake-section-title"
-        ]
-      },
-      {
-        "candidateId": "aozora-043719-chapter-001",
-        "sourceUrl": "https://www.aozora.gr.jp/cards/000160/files/43719_18746.html",
-        "sourceCharacters": 7580,
-        "sourceBodyFingerprint": "0625a493bc3008229e5885ba9ccb967c7a8c491c062a92f0fa343b997a28d5e7",
-        "ready": false,
-        "failures": [
-          "invalid-or-mojibake-section-title"
-        ]
-      },
-      {
-        "candidateId": "aozora-001233-chapter-001",
-        "sourceUrl": "https://www.aozora.gr.jp/cards/000160/files/1233_16953.html",
-        "sourceCharacters": 27494,
-        "sourceBodyFingerprint": "1aa606795989b651a51580fd6747f582dbcb4c24c257d7fd859d5aa76fa5604d",
-        "ready": false,
-        "failures": [
-          "invalid-or-mojibake-section-title"
-        ]
-      },
-      {
-        "candidateId": "aozora-000875-chapter-001",
-        "sourceUrl": "https://www.aozora.gr.jp/cards/000160/files/875_42450.html",
-        "sourceCharacters": 78494,
-        "sourceBodyFingerprint": "9874cf082cfeac92b01f64c13ee1bab19f913c56297de71641c5cd7e7f30a5d4",
-        "ready": false,
-        "failures": [
-          "invalid-or-mojibake-section-title"
-        ]
-      },
-      {
-        "candidateId": "aozora-000875-chapter-002",
-        "sourceUrl": "https://www.aozora.gr.jp/cards/000160/files/875_42450.html",
-        "sourceCharacters": 78494,
-        "sourceBodyFingerprint": "9874cf082cfeac92b01f64c13ee1bab19f913c56297de71641c5cd7e7f30a5d4",
-        "ready": false,
-        "failures": [
-          "invalid-or-mojibake-section-title"
-        ]
-      },
-      {
-        "candidateId": "aozora-000875-chapter-003",
-        "sourceUrl": "https://www.aozora.gr.jp/cards/000160/files/875_42450.html",
-        "sourceCharacters": 78494,
-        "sourceBodyFingerprint": "9874cf082cfeac92b01f64c13ee1bab19f913c56297de71641c5cd7e7f30a5d4",
-        "ready": false,
-        "failures": [
-          "invalid-or-mojibake-section-title"
-        ]
-      },
-      {
-        "candidateId": "aozora-000875-chapter-004",
-        "sourceUrl": "https://www.aozora.gr.jp/cards/000160/files/875_42450.html",
-        "sourceCharacters": 78494,
-        "sourceBodyFingerprint": "9874cf082cfeac92b01f64c13ee1bab19f913c56297de71641c5cd7e7f30a5d4",
-        "ready": false,
-        "failures": [
-          "invalid-or-mojibake-section-title"
-        ]
-      },
-      {
-        "candidateId": "aozora-000875-chapter-005",
-        "sourceUrl": "https://www.aozora.gr.jp/cards/000160/files/875_42450.html",
-        "sourceCharacters": 78494,
-        "sourceBodyFingerprint": "9874cf082cfeac92b01f64c13ee1bab19f913c56297de71641c5cd7e7f30a5d4",
-        "ready": false,
-        "failures": [
-          "invalid-or-mojibake-section-title"
-        ]
-      },
-      {
-        "candidateId": "aozora-000875-chapter-006",
-        "sourceUrl": "https://www.aozora.gr.jp/cards/000160/files/875_42450.html",
-        "sourceCharacters": 78494,
-        "sourceBodyFingerprint": "9874cf082cfeac92b01f64c13ee1bab19f913c56297de71641c5cd7e7f30a5d4",
-        "ready": false,
-        "failures": [
-          "invalid-or-mojibake-section-title"
-        ]
-      },
-      {
-        "candidateId": "aozora-000875-chapter-007",
-        "sourceUrl": "https://www.aozora.gr.jp/cards/000160/files/875_42450.html",
-        "sourceCharacters": 78494,
-        "sourceBodyFingerprint": "9874cf082cfeac92b01f64c13ee1bab19f913c56297de71641c5cd7e7f30a5d4",
-        "ready": false,
-        "failures": [
-          "invalid-or-mojibake-section-title"
-        ]
-      },
-      {
-        "candidateId": "aozora-000875-chapter-008",
-        "sourceUrl": "https://www.aozora.gr.jp/cards/000160/files/875_42450.html",
-        "sourceCharacters": 78494,
-        "sourceBodyFingerprint": "9874cf082cfeac92b01f64c13ee1bab19f913c56297de71641c5cd7e7f30a5d4",
-        "ready": false,
-        "failures": [
-          "invalid-or-mojibake-section-title"
-        ]
-      },
-      {
-        "candidateId": "aozora-000875-chapter-009",
-        "sourceUrl": "https://www.aozora.gr.jp/cards/000160/files/875_42450.html",
-        "sourceCharacters": 78494,
-        "sourceBodyFingerprint": "9874cf082cfeac92b01f64c13ee1bab19f913c56297de71641c5cd7e7f30a5d4",
-        "ready": false,
-        "failures": [
-          "invalid-or-mojibake-section-title"
-        ]
-      },
-      {
-        "candidateId": "aozora-000875-chapter-010",
-        "sourceUrl": "https://www.aozora.gr.jp/cards/000160/files/875_42450.html",
-        "sourceCharacters": 78494,
-        "sourceBodyFingerprint": "9874cf082cfeac92b01f64c13ee1bab19f913c56297de71641c5cd7e7f30a5d4",
-        "ready": false,
-        "failures": [
-          "invalid-or-mojibake-section-title"
-        ]
-      },
-      {
-        "candidateId": "aozora-000875-chapter-011",
-        "sourceUrl": "https://www.aozora.gr.jp/cards/000160/files/875_42450.html",
-        "sourceCharacters": 78494,
-        "sourceBodyFingerprint": "9874cf082cfeac92b01f64c13ee1bab19f913c56297de71641c5cd7e7f30a5d4",
-        "ready": false,
-        "failures": [
-          "invalid-or-mojibake-section-title"
-        ]
-      },
-      {
-        "candidateId": "aozora-000875-chapter-012",
-        "sourceUrl": "https://www.aozora.gr.jp/cards/000160/files/875_42450.html",
-        "sourceCharacters": 78494,
-        "sourceBodyFingerprint": "9874cf082cfeac92b01f64c13ee1bab19f913c56297de71641c5cd7e7f30a5d4",
-        "ready": false,
-        "failures": [
-          "invalid-or-mojibake-section-title"
-        ]
-      },
-      {
-        "candidateId": "aozora-000875-chapter-013",
-        "sourceUrl": "https://www.aozora.gr.jp/cards/000160/files/875_42450.html",
-        "sourceCharacters": 78494,
-        "sourceBodyFingerprint": "9874cf082cfeac92b01f64c13ee1bab19f913c56297de71641c5cd7e7f30a5d4",
-        "ready": false,
-        "failures": [
-          "invalid-or-mojibake-section-title"
-        ]
-      },
-      {
-        "candidateId": "aozora-000875-chapter-014",
-        "sourceUrl": "https://www.aozora.gr.jp/cards/000160/files/875_42450.html",
-        "sourceCharacters": 78494,
-        "sourceBodyFingerprint": "9874cf082cfeac92b01f64c13ee1bab19f913c56297de71641c5cd7e7f30a5d4",
-        "ready": false,
-        "failures": [
-          "invalid-or-mojibake-section-title"
-        ]
-      },
-      {
-        "candidateId": "aozora-000875-chapter-015",
-        "sourceUrl": "https://www.aozora.gr.jp/cards/000160/files/875_42450.html",
-        "sourceCharacters": 78494,
-        "sourceBodyFingerprint": "9874cf082cfeac92b01f64c13ee1bab19f913c56297de71641c5cd7e7f30a5d4",
-        "ready": false,
-        "failures": [
-          "invalid-or-mojibake-section-title"
-        ]
-      },
-      {
-        "candidateId": "aozora-000875-chapter-016",
-        "sourceUrl": "https://www.aozora.gr.jp/cards/000160/files/875_42450.html",
-        "sourceCharacters": 78494,
-        "sourceBodyFingerprint": "9874cf082cfeac92b01f64c13ee1bab19f913c56297de71641c5cd7e7f30a5d4",
-        "ready": false,
-        "failures": [
-          "invalid-or-mojibake-section-title"
-        ]
-      },
-      {
-        "candidateId": "aozora-000875-chapter-017",
-        "sourceUrl": "https://www.aozora.gr.jp/cards/000160/files/875_42450.html",
-        "sourceCharacters": 78494,
-        "sourceBodyFingerprint": "9874cf082cfeac92b01f64c13ee1bab19f913c56297de71641c5cd7e7f30a5d4",
-        "ready": false,
-        "failures": [
-          "invalid-or-mojibake-section-title"
-        ]
-      },
-      {
-        "candidateId": "aozora-000875-chapter-018",
-        "sourceUrl": "https://www.aozora.gr.jp/cards/000160/files/875_42450.html",
-        "sourceCharacters": 78494,
-        "sourceBodyFingerprint": "9874cf082cfeac92b01f64c13ee1bab19f913c56297de71641c5cd7e7f30a5d4",
-        "ready": false,
-        "failures": [
-          "invalid-or-mojibake-section-title"
-        ]
-      },
-      {
-        "candidateId": "aozora-000875-chapter-019",
-        "sourceUrl": "https://www.aozora.gr.jp/cards/000160/files/875_42450.html",
-        "sourceCharacters": 78494,
-        "sourceBodyFingerprint": "9874cf082cfeac92b01f64c13ee1bab19f913c56297de71641c5cd7e7f30a5d4",
-        "ready": false,
-        "failures": [
-          "invalid-or-mojibake-section-title"
-        ]
-      },
-      {
-        "candidateId": "aozora-000875-chapter-020",
-        "sourceUrl": "https://www.aozora.gr.jp/cards/000160/files/875_42450.html",
-        "sourceCharacters": 78494,
-        "sourceBodyFingerprint": "9874cf082cfeac92b01f64c13ee1bab19f913c56297de71641c5cd7e7f30a5d4",
-        "ready": false,
-        "failures": [
-          "invalid-or-mojibake-section-title"
-        ]
-      },
-      {
-        "candidateId": "aozora-000875-chapter-021",
-        "sourceUrl": "https://www.aozora.gr.jp/cards/000160/files/875_42450.html",
-        "sourceCharacters": 78494,
-        "sourceBodyFingerprint": "9874cf082cfeac92b01f64c13ee1bab19f913c56297de71641c5cd7e7f30a5d4",
-        "ready": false,
-        "failures": [
-          "invalid-or-mojibake-section-title"
-        ]
-      },
-      {
-        "candidateId": "aozora-000875-chapter-022",
-        "sourceUrl": "https://www.aozora.gr.jp/cards/000160/files/875_42450.html",
-        "sourceCharacters": 78494,
-        "sourceBodyFingerprint": "9874cf082cfeac92b01f64c13ee1bab19f913c56297de71641c5cd7e7f30a5d4",
-        "ready": false,
-        "failures": [
-          "invalid-or-mojibake-section-title"
-        ]
-      },
-      {
-        "candidateId": "aozora-000875-chapter-023",
-        "sourceUrl": "https://www.aozora.gr.jp/cards/000160/files/875_42450.html",
-        "sourceCharacters": 78494,
-        "sourceBodyFingerprint": "9874cf082cfeac92b01f64c13ee1bab19f913c56297de71641c5cd7e7f30a5d4",
-        "ready": false,
-        "failures": [
-          "invalid-or-mojibake-section-title"
-        ]
-      },
-      {
-        "candidateId": "aozora-000875-chapter-024",
-        "sourceUrl": "https://www.aozora.gr.jp/cards/000160/files/875_42450.html",
-        "sourceCharacters": 78494,
-        "sourceBodyFingerprint": "9874cf082cfeac92b01f64c13ee1bab19f913c56297de71641c5cd7e7f30a5d4",
-        "ready": false,
-        "failures": [
-          "invalid-or-mojibake-section-title"
-        ]
-      },
-      {
-        "candidateId": "aozora-000875-chapter-025",
-        "sourceUrl": "https://www.aozora.gr.jp/cards/000160/files/875_42450.html",
-        "sourceCharacters": 78494,
-        "sourceBodyFingerprint": "9874cf082cfeac92b01f64c13ee1bab19f913c56297de71641c5cd7e7f30a5d4",
-        "ready": false,
-        "failures": [
-          "invalid-or-mojibake-section-title"
-        ]
-      },
-      {
-        "candidateId": "aozora-000875-chapter-026",
-        "sourceUrl": "https://www.aozora.gr.jp/cards/000160/files/875_42450.html",
-        "sourceCharacters": 78494,
-        "sourceBodyFingerprint": "9874cf082cfeac92b01f64c13ee1bab19f913c56297de71641c5cd7e7f30a5d4",
-        "ready": false,
-        "failures": [
-          "invalid-or-mojibake-section-title"
-        ]
-      },
-      {
-        "candidateId": "aozora-000875-chapter-027",
-        "sourceUrl": "https://www.aozora.gr.jp/cards/000160/files/875_42450.html",
-        "sourceCharacters": 78494,
-        "sourceBodyFingerprint": "9874cf082cfeac92b01f64c13ee1bab19f913c56297de71641c5cd7e7f30a5d4",
-        "ready": false,
-        "failures": [
-          "invalid-or-mojibake-section-title"
-        ]
-      },
-      {
-        "candidateId": "aozora-000875-chapter-028",
-        "sourceUrl": "https://www.aozora.gr.jp/cards/000160/files/875_42450.html",
-        "sourceCharacters": 78494,
-        "sourceBodyFingerprint": "9874cf082cfeac92b01f64c13ee1bab19f913c56297de71641c5cd7e7f30a5d4",
-        "ready": false,
-        "failures": [
-          "invalid-or-mojibake-section-title"
-        ]
-      },
-      {
-        "candidateId": "aozora-000875-chapter-029",
-        "sourceUrl": "https://www.aozora.gr.jp/cards/000160/files/875_42450.html",
-        "sourceCharacters": 78494,
-        "sourceBodyFingerprint": "9874cf082cfeac92b01f64c13ee1bab19f913c56297de71641c5cd7e7f30a5d4",
-        "ready": false,
-        "failures": [
-          "invalid-or-mojibake-section-title"
-        ]
-      },
-      {
-        "candidateId": "aozora-000875-chapter-030",
-        "sourceUrl": "https://www.aozora.gr.jp/cards/000160/files/875_42450.html",
-        "sourceCharacters": 78494,
-        "sourceBodyFingerprint": "9874cf082cfeac92b01f64c13ee1bab19f913c56297de71641c5cd7e7f30a5d4",
-        "ready": false,
-        "failures": [
-          "invalid-or-mojibake-section-title"
-        ]
-      },
-      {
-        "candidateId": "aozora-000875-chapter-031",
-        "sourceUrl": "https://www.aozora.gr.jp/cards/000160/files/875_42450.html",
-        "sourceCharacters": 78494,
-        "sourceBodyFingerprint": "9874cf082cfeac92b01f64c13ee1bab19f913c56297de71641c5cd7e7f30a5d4",
-        "ready": false,
-        "failures": [
-          "invalid-or-mojibake-section-title"
-        ]
-      },
-      {
-        "candidateId": "aozora-000875-chapter-032",
-        "sourceUrl": "https://www.aozora.gr.jp/cards/000160/files/875_42450.html",
-        "sourceCharacters": 78494,
-        "sourceBodyFingerprint": "9874cf082cfeac92b01f64c13ee1bab19f913c56297de71641c5cd7e7f30a5d4",
-        "ready": false,
-        "failures": [
-          "invalid-or-mojibake-section-title"
-        ]
-      },
-      {
-        "candidateId": "aozora-000875-chapter-033",
-        "sourceUrl": "https://www.aozora.gr.jp/cards/000160/files/875_42450.html",
-        "sourceCharacters": 78494,
-        "sourceBodyFingerprint": "9874cf082cfeac92b01f64c13ee1bab19f913c56297de71641c5cd7e7f30a5d4",
-        "ready": false,
-        "failures": [
-          "invalid-or-mojibake-section-title"
-        ]
-      },
-      {
-        "candidateId": "aozora-000875-chapter-034",
-        "sourceUrl": "https://www.aozora.gr.jp/cards/000160/files/875_42450.html",
-        "sourceCharacters": 78494,
-        "sourceBodyFingerprint": "9874cf082cfeac92b01f64c13ee1bab19f913c56297de71641c5cd7e7f30a5d4",
-        "ready": false,
-        "failures": [
-          "invalid-or-mojibake-section-title"
-        ]
-      },
-      {
-        "candidateId": "aozora-000875-chapter-035",
-        "sourceUrl": "https://www.aozora.gr.jp/cards/000160/files/875_42450.html",
-        "sourceCharacters": 78494,
-        "sourceBodyFingerprint": "9874cf082cfeac92b01f64c13ee1bab19f913c56297de71641c5cd7e7f30a5d4",
-        "ready": false,
-        "failures": [
-          "invalid-or-mojibake-section-title"
-        ]
-      },
-      {
-        "candidateId": "aozora-000875-chapter-036",
-        "sourceUrl": "https://www.aozora.gr.jp/cards/000160/files/875_42450.html",
-        "sourceCharacters": 78494,
-        "sourceBodyFingerprint": "9874cf082cfeac92b01f64c13ee1bab19f913c56297de71641c5cd7e7f30a5d4",
-        "ready": false,
-        "failures": [
-          "invalid-or-mojibake-section-title"
-        ]
-      },
-      {
-        "candidateId": "aozora-000875-chapter-037",
-        "sourceUrl": "https://www.aozora.gr.jp/cards/000160/files/875_42450.html",
-        "sourceCharacters": 78494,
-        "sourceBodyFingerprint": "9874cf082cfeac92b01f64c13ee1bab19f913c56297de71641c5cd7e7f30a5d4",
-        "ready": false,
-        "failures": [
-          "invalid-or-mojibake-section-title"
-        ]
-      },
-      {
-        "candidateId": "aozora-000875-chapter-038",
-        "sourceUrl": "https://www.aozora.gr.jp/cards/000160/files/875_42450.html",
-        "sourceCharacters": 78494,
-        "sourceBodyFingerprint": "9874cf082cfeac92b01f64c13ee1bab19f913c56297de71641c5cd7e7f30a5d4",
-        "ready": false,
-        "failures": [
-          "invalid-or-mojibake-section-title"
-        ]
-      },
-      {
-        "candidateId": "aozora-000875-chapter-039",
-        "sourceUrl": "https://www.aozora.gr.jp/cards/000160/files/875_42450.html",
-        "sourceCharacters": 78494,
-        "sourceBodyFingerprint": "9874cf082cfeac92b01f64c13ee1bab19f913c56297de71641c5cd7e7f30a5d4",
-        "ready": false,
-        "failures": [
-          "invalid-or-mojibake-section-title"
-        ]
-      },
-      {
-        "candidateId": "aozora-000875-chapter-040",
-        "sourceUrl": "https://www.aozora.gr.jp/cards/000160/files/875_42450.html",
-        "sourceCharacters": 78494,
-        "sourceBodyFingerprint": "9874cf082cfeac92b01f64c13ee1bab19f913c56297de71641c5cd7e7f30a5d4",
-        "ready": false,
-        "failures": [
-          "invalid-or-mojibake-section-title"
-        ]
-      },
-      {
-        "candidateId": "aozora-000875-chapter-041",
-        "sourceUrl": "https://www.aozora.gr.jp/cards/000160/files/875_42450.html",
-        "sourceCharacters": 78494,
-        "sourceBodyFingerprint": "9874cf082cfeac92b01f64c13ee1bab19f913c56297de71641c5cd7e7f30a5d4",
-        "ready": false,
-        "failures": [
-          "invalid-or-mojibake-section-title"
-        ]
-      },
-      {
-        "candidateId": "aozora-000875-chapter-042",
-        "sourceUrl": "https://www.aozora.gr.jp/cards/000160/files/875_42450.html",
-        "sourceCharacters": 78494,
-        "sourceBodyFingerprint": "9874cf082cfeac92b01f64c13ee1bab19f913c56297de71641c5cd7e7f30a5d4",
-        "ready": false,
-        "failures": [
-          "invalid-or-mojibake-section-title"
-        ]
+        "candidateId": "aozora-000183-chapter-001",
+        "sourceUrl": "https://www.aozora.gr.jp/cards/000879/files/183_15274.html",
+        "sourceCharacters": 1002,
+        "sourceBodyFingerprint": "c699d9040856d6153b3b594f755aad316be644d1d271a8db6850f0f785748101",
+        "ready": true,
+        "failures": []
+      },
+      {
+        "candidateId": "aozora-000183-chapter-002",
+        "sourceUrl": "https://www.aozora.gr.jp/cards/000879/files/183_15274.html",
+        "sourceCharacters": 4333,
+        "sourceBodyFingerprint": "05367d9d3c33de285a434e5f08f0c2f76a9448ab724e2dac8a3b7d951ce07963",
+        "ready": true,
+        "failures": []
+      },
+      {
+        "candidateId": "aozora-000183-chapter-003",
+        "sourceUrl": "https://www.aozora.gr.jp/cards/000879/files/183_15274.html",
+        "sourceCharacters": 336,
+        "sourceBodyFingerprint": "57521f2c325bc029607f20117ff1bf3d3e3103ea34e0ab9c0ba78933c4b11e5d",
+        "ready": true,
+        "failures": []
+      },
+      {
+        "candidateId": "aozora-000133-chapter-001",
+        "sourceUrl": "https://www.aozora.gr.jp/cards/000879/files/133_14546.html",
+        "sourceCharacters": 483,
+        "sourceBodyFingerprint": "b23dbb20fc13ed3d05da1c924d32811288a2eee55d508d4111a901763898e728",
+        "ready": true,
+        "failures": []
+      },
+      {
+        "candidateId": "aozora-000133-chapter-002",
+        "sourceUrl": "https://www.aozora.gr.jp/cards/000879/files/133_14546.html",
+        "sourceCharacters": 3190,
+        "sourceBodyFingerprint": "b82e1bf7cde8a99391292777c383573f085bdd0fbb020f242652bb2840639949",
+        "ready": true,
+        "failures": []
+      },
+      {
+        "candidateId": "aozora-058089-chapter-001",
+        "sourceUrl": "https://www.aozora.gr.jp/cards/001902/files/58089_60623.html",
+        "sourceCharacters": 5384,
+        "sourceBodyFingerprint": "b4632561215b9cd55c1a49f11bed28bc38c175108fb77cb5b0650512059ae960",
+        "ready": true,
+        "failures": []
+      },
+      {
+        "candidateId": "aozora-058089-chapter-002",
+        "sourceUrl": "https://www.aozora.gr.jp/cards/001902/files/58089_60623.html",
+        "sourceCharacters": 1575,
+        "sourceBodyFingerprint": "b94478e487c3eba1876b1ceb281c964f245667f80613b82b5773be4be406c82a",
+        "ready": true,
+        "failures": []
+      },
+      {
+        "candidateId": "aozora-058089-chapter-003",
+        "sourceUrl": "https://www.aozora.gr.jp/cards/001902/files/58089_60623.html",
+        "sourceCharacters": 3602,
+        "sourceBodyFingerprint": "b1559bfbf64cf767e693e278fd0bc3513d9dc107a407a7526db600a5940b65ad",
+        "ready": true,
+        "failures": []
+      },
+      {
+        "candidateId": "aozora-000201-chapter-001",
+        "sourceUrl": "https://www.aozora.gr.jp/cards/000025/files/201_20052.html",
+        "sourceCharacters": 2786,
+        "sourceBodyFingerprint": "15d41b4c3caf6a2caae75bf98688f7d02d4b9f456b44183cb36b79b6c2ec270e",
+        "ready": true,
+        "failures": []
+      },
+      {
+        "candidateId": "aozora-000201-chapter-002",
+        "sourceUrl": "https://www.aozora.gr.jp/cards/000025/files/201_20052.html",
+        "sourceCharacters": 4821,
+        "sourceBodyFingerprint": "5964aeeb85bf60e41c8e55e6eb6c039c6daf58d92bed5d976aac34daceb5ff69",
+        "ready": true,
+        "failures": []
+      },
+      {
+        "candidateId": "aozora-000201-chapter-003",
+        "sourceUrl": "https://www.aozora.gr.jp/cards/000025/files/201_20052.html",
+        "sourceCharacters": 3248,
+        "sourceBodyFingerprint": "bc4aef4ed804d3d337b37942d99a76ed2535ad72fdea0b55cf304af03ac3afe2",
+        "ready": true,
+        "failures": []
+      },
+      {
+        "candidateId": "aozora-000201-chapter-004",
+        "sourceUrl": "https://www.aozora.gr.jp/cards/000025/files/201_20052.html",
+        "sourceCharacters": 4577,
+        "sourceBodyFingerprint": "7e93c594b5514a32fb102fc56ee2a72f549be34d70f7a21dc75a5d10cf86cf38",
+        "ready": true,
+        "failures": []
+      },
+      {
+        "candidateId": "aozora-000201-chapter-005",
+        "sourceUrl": "https://www.aozora.gr.jp/cards/000025/files/201_20052.html",
+        "sourceCharacters": 7259,
+        "sourceBodyFingerprint": "28509e3c7cc0cb54086380db9841870ed46df0281589ba4b73a2e3e8c1c78554",
+        "ready": true,
+        "failures": []
+      },
+      {
+        "candidateId": "aozora-000201-chapter-006",
+        "sourceUrl": "https://www.aozora.gr.jp/cards/000025/files/201_20052.html",
+        "sourceCharacters": 4990,
+        "sourceBodyFingerprint": "c87e197b061c3bff3a33672011c4d5d1507a990240edbf79f868233b640df422",
+        "ready": true,
+        "failures": []
+      },
+      {
+        "candidateId": "aozora-000201-chapter-007",
+        "sourceUrl": "https://www.aozora.gr.jp/cards/000025/files/201_20052.html",
+        "sourceCharacters": 7955,
+        "sourceBodyFingerprint": "3605f9aefdff8d28c95d7ce5a25411d9812b1c9555c72f4c44ee8146222ab688",
+        "ready": true,
+        "failures": []
+      },
+      {
+        "candidateId": "aozora-000201-chapter-008",
+        "sourceUrl": "https://www.aozora.gr.jp/cards/000025/files/201_20052.html",
+        "sourceCharacters": 7516,
+        "sourceBodyFingerprint": "002417d5bd4688f300730441d6efca60b7ec7a33bc8b40fab5d64ef3759b6a09",
+        "ready": true,
+        "failures": []
+      },
+      {
+        "candidateId": "aozora-000201-chapter-009",
+        "sourceUrl": "https://www.aozora.gr.jp/cards/000025/files/201_20052.html",
+        "sourceCharacters": 7417,
+        "sourceBodyFingerprint": "af95350976deacafc8c1a7335053baa49fb0a8092165c8eff3c02b311af17ba5",
+        "ready": true,
+        "failures": []
+      },
+      {
+        "candidateId": "aozora-000201-chapter-010",
+        "sourceUrl": "https://www.aozora.gr.jp/cards/000025/files/201_20052.html",
+        "sourceCharacters": 5758,
+        "sourceBodyFingerprint": "91327cec031eb060d6b3fc9d6d4ccac334b92ce22dd592d8a8b9dd9373b8fc0a",
+        "ready": true,
+        "failures": []
+      },
+      {
+        "candidateId": "aozora-000201-chapter-011",
+        "sourceUrl": "https://www.aozora.gr.jp/cards/000025/files/201_20052.html",
+        "sourceCharacters": 7667,
+        "sourceBodyFingerprint": "57e10f0155952914f274a0a226f31d06e659408dab7b3d49261e2d239d06f016",
+        "ready": true,
+        "failures": []
+      },
+      {
+        "candidateId": "aozora-000201-chapter-012",
+        "sourceUrl": "https://www.aozora.gr.jp/cards/000025/files/201_20052.html",
+        "sourceCharacters": 8441,
+        "sourceBodyFingerprint": "57476301afaa0e9186114ece659abec683301e5ee6f361b6ccf5118f9a13e8f5",
+        "ready": true,
+        "failures": []
+      },
+      {
+        "candidateId": "aozora-000201-chapter-013",
+        "sourceUrl": "https://www.aozora.gr.jp/cards/000025/files/201_20052.html",
+        "sourceCharacters": 5371,
+        "sourceBodyFingerprint": "6318040d3c5ce3769cbb1e5e31291a8eeb08727643541412b13b3da6c96ef440",
+        "ready": true,
+        "failures": []
+      },
+      {
+        "candidateId": "aozora-000201-chapter-014",
+        "sourceUrl": "https://www.aozora.gr.jp/cards/000025/files/201_20052.html",
+        "sourceCharacters": 6049,
+        "sourceBodyFingerprint": "cdc17cc332104af60e837452bddd91200a243b1e2882c8c155e353418d01861b",
+        "ready": true,
+        "failures": []
+      },
+      {
+        "candidateId": "aozora-000201-chapter-015",
+        "sourceUrl": "https://www.aozora.gr.jp/cards/000025/files/201_20052.html",
+        "sourceCharacters": 7559,
+        "sourceBodyFingerprint": "7548d8761a0c151fb672cb5f869b97e2102531a3bb29cb4eee6f7a427e61dbb6",
+        "ready": true,
+        "failures": []
+      },
+      {
+        "candidateId": "aozora-000201-chapter-016",
+        "sourceUrl": "https://www.aozora.gr.jp/cards/000025/files/201_20052.html",
+        "sourceCharacters": 6245,
+        "sourceBodyFingerprint": "3ab32520a88785456c454c1dde13dad72ed9f3ad4db491759dbe889b112f4a60",
+        "ready": true,
+        "failures": []
+      },
+      {
+        "candidateId": "aozora-000201-chapter-017",
+        "sourceUrl": "https://www.aozora.gr.jp/cards/000025/files/201_20052.html",
+        "sourceCharacters": 10731,
+        "sourceBodyFingerprint": "0662ca321b4da882e92014609b01ade3e3b99a746708d786c68d46b44ab4be2d",
+        "ready": true,
+        "failures": []
+      },
+      {
+        "candidateId": "aozora-000201-chapter-018",
+        "sourceUrl": "https://www.aozora.gr.jp/cards/000025/files/201_20052.html",
+        "sourceCharacters": 7709,
+        "sourceBodyFingerprint": "109f7498a510fc5b2151b65e4ec05418e1db15c742644b44b0ce21f7393a3c72",
+        "ready": true,
+        "failures": []
+      },
+      {
+        "candidateId": "aozora-000201-chapter-019",
+        "sourceUrl": "https://www.aozora.gr.jp/cards/000025/files/201_20052.html",
+        "sourceCharacters": 8251,
+        "sourceBodyFingerprint": "197123be99e97c12b6e40fa18847455881c69751550eb29381cb9c4f90c9dd9c",
+        "ready": true,
+        "failures": []
+      },
+      {
+        "candidateId": "aozora-000201-chapter-020",
+        "sourceUrl": "https://www.aozora.gr.jp/cards/000025/files/201_20052.html",
+        "sourceCharacters": 7512,
+        "sourceBodyFingerprint": "0da3d6c4a9c6b47f8516d2c67770aa7deadf7567032f79d4ed0a409c768801d1",
+        "ready": true,
+        "failures": []
+      },
+      {
+        "candidateId": "aozora-000201-chapter-021",
+        "sourceUrl": "https://www.aozora.gr.jp/cards/000025/files/201_20052.html",
+        "sourceCharacters": 8287,
+        "sourceBodyFingerprint": "23fa4091c24b46accb52b4305e82807329e91d77a141d8687cd3d7510053ea37",
+        "ready": true,
+        "failures": []
+      },
+      {
+        "candidateId": "aozora-000202-chapter-001",
+        "sourceUrl": "https://www.aozora.gr.jp/cards/000025/files/202_20066.html",
+        "sourceCharacters": 6824,
+        "sourceBodyFingerprint": "73d98afff83af8e0361f976d4a38a24906db31d47da2c42afd1619e81f13ffb4",
+        "ready": true,
+        "failures": []
+      },
+      {
+        "candidateId": "aozora-000202-chapter-002",
+        "sourceUrl": "https://www.aozora.gr.jp/cards/000025/files/202_20066.html",
+        "sourceCharacters": 5823,
+        "sourceBodyFingerprint": "c3b2214cf08863becebb376251669f58df582c0cb5409aecacb45bcff59f8d6a",
+        "ready": true,
+        "failures": []
+      },
+      {
+        "candidateId": "aozora-000202-chapter-003",
+        "sourceUrl": "https://www.aozora.gr.jp/cards/000025/files/202_20066.html",
+        "sourceCharacters": 7787,
+        "sourceBodyFingerprint": "4da4ce0e59d1f10063664808d9f07ae803d6e7d4ebeb413b7b007b5c16ace7d7",
+        "ready": true,
+        "failures": []
+      },
+      {
+        "candidateId": "aozora-000202-chapter-004",
+        "sourceUrl": "https://www.aozora.gr.jp/cards/000025/files/202_20066.html",
+        "sourceCharacters": 8843,
+        "sourceBodyFingerprint": "0dab96a124b29d060f36e318b1f218fd6623b31616baf1db0110509ca393203b",
+        "ready": true,
+        "failures": []
+      },
+      {
+        "candidateId": "aozora-000202-chapter-005",
+        "sourceUrl": "https://www.aozora.gr.jp/cards/000025/files/202_20066.html",
+        "sourceCharacters": 8550,
+        "sourceBodyFingerprint": "1ac2498372f94bc9dfaf74110d294f7497092f46566ddb7f37206ff5f4ac671e",
+        "ready": true,
+        "failures": []
+      },
+      {
+        "candidateId": "aozora-000202-chapter-006",
+        "sourceUrl": "https://www.aozora.gr.jp/cards/000025/files/202_20066.html",
+        "sourceCharacters": 5339,
+        "sourceBodyFingerprint": "30093876afa918c93887d84423b2b9a082dbb96302b5489057c1a59886e2f506",
+        "ready": true,
+        "failures": []
+      },
+      {
+        "candidateId": "aozora-000202-chapter-007",
+        "sourceUrl": "https://www.aozora.gr.jp/cards/000025/files/202_20066.html",
+        "sourceCharacters": 4898,
+        "sourceBodyFingerprint": "f0cd9272bdb2607b409baad04a0c6cf843984a88512f4a556e8ec31288027e66",
+        "ready": true,
+        "failures": []
+      },
+      {
+        "candidateId": "aozora-000202-chapter-008",
+        "sourceUrl": "https://www.aozora.gr.jp/cards/000025/files/202_20066.html",
+        "sourceCharacters": 7260,
+        "sourceBodyFingerprint": "7b236763457df640b18d85952c99841b3298619187979d522480bfca258a873a",
+        "ready": true,
+        "failures": []
+      },
+      {
+        "candidateId": "aozora-000202-chapter-009",
+        "sourceUrl": "https://www.aozora.gr.jp/cards/000025/files/202_20066.html",
+        "sourceCharacters": 6899,
+        "sourceBodyFingerprint": "6b0fdfbbacc50ff4a747f309df5ecdc7fe89c7c466be35f078c195e372d13a28",
+        "ready": true,
+        "failures": []
+      },
+      {
+        "candidateId": "aozora-000202-chapter-010",
+        "sourceUrl": "https://www.aozora.gr.jp/cards/000025/files/202_20066.html",
+        "sourceCharacters": 3701,
+        "sourceBodyFingerprint": "0681763526961e9d8603e53ba653827360349aed1a663d0340f94cee3b2d170c",
+        "ready": true,
+        "failures": []
+      },
+      {
+        "candidateId": "aozora-000202-chapter-011",
+        "sourceUrl": "https://www.aozora.gr.jp/cards/000025/files/202_20066.html",
+        "sourceCharacters": 7631,
+        "sourceBodyFingerprint": "e18e10606b69d31164c4d52a672f545f9af2ecc7a5a5511731d0b1589664c4fc",
+        "ready": true,
+        "failures": []
+      },
+      {
+        "candidateId": "aozora-000202-chapter-012",
+        "sourceUrl": "https://www.aozora.gr.jp/cards/000025/files/202_20066.html",
+        "sourceCharacters": 7266,
+        "sourceBodyFingerprint": "5cb5c615a5dbd3eca4a5ea83d4504b800a74661e9c505d06ed1e59f9a0cccd80",
+        "ready": true,
+        "failures": []
+      },
+      {
+        "candidateId": "aozora-000202-chapter-013",
+        "sourceUrl": "https://www.aozora.gr.jp/cards/000025/files/202_20066.html",
+        "sourceCharacters": 10611,
+        "sourceBodyFingerprint": "3d68b64b3204799b41316ea27a71e6af2fbe8dfd37db29490d990f718de6a182",
+        "ready": true,
+        "failures": []
+      },
+      {
+        "candidateId": "aozora-000202-chapter-014",
+        "sourceUrl": "https://www.aozora.gr.jp/cards/000025/files/202_20066.html",
+        "sourceCharacters": 8475,
+        "sourceBodyFingerprint": "63487ab7fbccd98f9dc5f37cdc6398b5fa943868166bec97727d48ad75355203",
+        "ready": true,
+        "failures": []
+      },
+      {
+        "candidateId": "aozora-000202-chapter-015",
+        "sourceUrl": "https://www.aozora.gr.jp/cards/000025/files/202_20066.html",
+        "sourceCharacters": 6662,
+        "sourceBodyFingerprint": "b7558bc54454853c4020c886f77e971764738139698be3203c62e561e1cc9d88",
+        "ready": true,
+        "failures": []
+      },
+      {
+        "candidateId": "aozora-000202-chapter-016",
+        "sourceUrl": "https://www.aozora.gr.jp/cards/000025/files/202_20066.html",
+        "sourceCharacters": 9342,
+        "sourceBodyFingerprint": "77ab7ad5485c4e1f9682717caf0b2a3f099875a0077e609ae925666cb39e4e00",
+        "ready": true,
+        "failures": []
+      },
+      {
+        "candidateId": "aozora-000202-chapter-017",
+        "sourceUrl": "https://www.aozora.gr.jp/cards/000025/files/202_20066.html",
+        "sourceCharacters": 6408,
+        "sourceBodyFingerprint": "f97361d6c8af15501ede21a8418f7c8cb7a0eef83c28a02fbbc4621641202e4f",
+        "ready": true,
+        "failures": []
+      },
+      {
+        "candidateId": "aozora-000202-chapter-018",
+        "sourceUrl": "https://www.aozora.gr.jp/cards/000025/files/202_20066.html",
+        "sourceCharacters": 6728,
+        "sourceBodyFingerprint": "2e399665eaa249effe16d03bebf64712960d0b480120f3392acc40f3bc7551ff",
+        "ready": true,
+        "failures": []
+      },
+      {
+        "candidateId": "aozora-000202-chapter-019",
+        "sourceUrl": "https://www.aozora.gr.jp/cards/000025/files/202_20066.html",
+        "sourceCharacters": 8191,
+        "sourceBodyFingerprint": "38c58256a253c3b0cc167ed1c609d5ff7875b2ccbb51e9f1fb90add702b84e12",
+        "ready": true,
+        "failures": []
+      },
+      {
+        "candidateId": "aozora-000202-chapter-020",
+        "sourceUrl": "https://www.aozora.gr.jp/cards/000025/files/202_20066.html",
+        "sourceCharacters": 7832,
+        "sourceBodyFingerprint": "fd980d6f380370d2fd6b92289375a050943b900b6965bc0101c6b9075527728e",
+        "ready": true,
+        "failures": []
+      },
+      {
+        "candidateId": "aozora-000202-chapter-021",
+        "sourceUrl": "https://www.aozora.gr.jp/cards/000025/files/202_20066.html",
+        "sourceCharacters": 7959,
+        "sourceBodyFingerprint": "c6ef28e98c581922e337b8eabee95cd713658361a489b75c4d5081f420190583",
+        "ready": true,
+        "failures": []
+      },
+      {
+        "candidateId": "aozora-000202-chapter-022",
+        "sourceUrl": "https://www.aozora.gr.jp/cards/000025/files/202_20066.html",
+        "sourceCharacters": 7050,
+        "sourceBodyFingerprint": "e36b6ac102ae563aa1ad7a9e4f8ecd17f5ab25dbb49fac7325a36d8d71c432dc",
+        "ready": true,
+        "failures": []
+      },
+      {
+        "candidateId": "aozora-000202-chapter-023",
+        "sourceUrl": "https://www.aozora.gr.jp/cards/000025/files/202_20066.html",
+        "sourceCharacters": 7384,
+        "sourceBodyFingerprint": "af72dc97e7a6fdafe293d66277fb7aa8f49181d956a87e8056c605a0884c8495",
+        "ready": true,
+        "failures": []
+      },
+      {
+        "candidateId": "aozora-000202-chapter-024",
+        "sourceUrl": "https://www.aozora.gr.jp/cards/000025/files/202_20066.html",
+        "sourceCharacters": 4872,
+        "sourceBodyFingerprint": "7d1c0975c67b6613ad06d3f4e72a4849026e67eb63f31e1fb28f8d39fe6fb2e3",
+        "ready": true,
+        "failures": []
+      },
+      {
+        "candidateId": "aozora-000202-chapter-025",
+        "sourceUrl": "https://www.aozora.gr.jp/cards/000025/files/202_20066.html",
+        "sourceCharacters": 5617,
+        "sourceBodyFingerprint": "444ce20f4c3745e0915ab7ae3681b948f87235c5d5681c63e84fa015b4b68bad",
+        "ready": true,
+        "failures": []
+      },
+      {
+        "candidateId": "aozora-000202-chapter-026",
+        "sourceUrl": "https://www.aozora.gr.jp/cards/000025/files/202_20066.html",
+        "sourceCharacters": 4701,
+        "sourceBodyFingerprint": "4dc52911434ec067e3f64a0faece56b5dacdc121c8c80d841127b19362e7a585",
+        "ready": true,
+        "failures": []
+      },
+      {
+        "candidateId": "aozora-000202-chapter-027",
+        "sourceUrl": "https://www.aozora.gr.jp/cards/000025/files/202_20066.html",
+        "sourceCharacters": 7601,
+        "sourceBodyFingerprint": "7ca728731af993bfee46c38b8541e9efbb9d39c63c0805750734f2d05fc5e3a7",
+        "ready": true,
+        "failures": []
+      },
+      {
+        "candidateId": "aozora-000202-chapter-028",
+        "sourceUrl": "https://www.aozora.gr.jp/cards/000025/files/202_20066.html",
+        "sourceCharacters": 3157,
+        "sourceBodyFingerprint": "3727dacb13a4848d2b00b91184b6668a2b7551178ef3c1b6e1f226ce1d30ab9f",
+        "ready": true,
+        "failures": []
+      },
+      {
+        "candidateId": "aozora-001111-chapter-001",
+        "sourceUrl": "https://www.aozora.gr.jp/cards/000025/files/1111_20600.html",
+        "sourceCharacters": 766,
+        "sourceBodyFingerprint": "2df93caeefc98530e2cb3ee1fe712d7b593795d8802374993b45cfe1c200d6a1",
+        "ready": true,
+        "failures": []
+      },
+      {
+        "candidateId": "aozora-001111-chapter-002",
+        "sourceUrl": "https://www.aozora.gr.jp/cards/000025/files/1111_20600.html",
+        "sourceCharacters": 6775,
+        "sourceBodyFingerprint": "bb201c5b84e1bf379da716631cdc12c4d92fce870234b748b12c46f5a5db3107",
+        "ready": true,
+        "failures": []
+      },
+      {
+        "candidateId": "aozora-001111-chapter-003",
+        "sourceUrl": "https://www.aozora.gr.jp/cards/000025/files/1111_20600.html",
+        "sourceCharacters": 6187,
+        "sourceBodyFingerprint": "58a8dc6945d7a16e55d71d6cc6944289fa52875556e9a04b92aa0e538526e20a",
+        "ready": true,
+        "failures": []
+      },
+      {
+        "candidateId": "aozora-001111-chapter-004",
+        "sourceUrl": "https://www.aozora.gr.jp/cards/000025/files/1111_20600.html",
+        "sourceCharacters": 594,
+        "sourceBodyFingerprint": "9795fd7c5e1fa8a70a316f17c552d294842bc4e02e6c795692d45c608c79b395",
+        "ready": true,
+        "failures": []
+      },
+      {
+        "candidateId": "aozora-001111-chapter-005",
+        "sourceUrl": "https://www.aozora.gr.jp/cards/000025/files/1111_20600.html",
+        "sourceCharacters": 4401,
+        "sourceBodyFingerprint": "3aec09ddfca3b6fb809454edb91d3a13c836244516342cb52350b92e9b2f6d64",
+        "ready": true,
+        "failures": []
+      },
+      {
+        "candidateId": "aozora-001111-chapter-006",
+        "sourceUrl": "https://www.aozora.gr.jp/cards/000025/files/1111_20600.html",
+        "sourceCharacters": 7694,
+        "sourceBodyFingerprint": "19cca09ee4425b4afdf99bb23500396eef8cfcc2bf41b043bbc54093c3184b28",
+        "ready": true,
+        "failures": []
+      },
+      {
+        "candidateId": "aozora-001111-chapter-007",
+        "sourceUrl": "https://www.aozora.gr.jp/cards/000025/files/1111_20600.html",
+        "sourceCharacters": 8331,
+        "sourceBodyFingerprint": "0237efd1e9eb527961a43f59abcaaca8ac04a2d3ee8121a90eed0de91aea5491",
+        "ready": true,
+        "failures": []
+      },
+      {
+        "candidateId": "aozora-001111-chapter-008",
+        "sourceUrl": "https://www.aozora.gr.jp/cards/000025/files/1111_20600.html",
+        "sourceCharacters": 11493,
+        "sourceBodyFingerprint": "f8135914aaa362a6d7d659ff15ffe997e9d087535770c1eb4bbf2dc83d832062",
+        "ready": true,
+        "failures": []
+      },
+      {
+        "candidateId": "aozora-001111-chapter-009",
+        "sourceUrl": "https://www.aozora.gr.jp/cards/000025/files/1111_20600.html",
+        "sourceCharacters": 1173,
+        "sourceBodyFingerprint": "8fe70e3a8beb968fe1eeb0d23ba94db8fc58539e404980a114bfe57dc2b3ebd3",
+        "ready": true,
+        "failures": []
+      },
+      {
+        "candidateId": "aozora-049934-chapter-001",
+        "sourceUrl": "https://www.aozora.gr.jp/cards/000025/files/49934_50922.html",
+        "sourceCharacters": 1422,
+        "sourceBodyFingerprint": "8516032ffd2182c1376f7be0ed01cf51da605953b0fec2d56c28e39e5b774809",
+        "ready": true,
+        "failures": []
+      },
+      {
+        "candidateId": "aozora-049934-chapter-002",
+        "sourceUrl": "https://www.aozora.gr.jp/cards/000025/files/49934_50922.html",
+        "sourceCharacters": 1518,
+        "sourceBodyFingerprint": "735b02bb37523bac02d8fa0b7a68ddb9a5316f697dde45583885331d4f5be17e",
+        "ready": true,
+        "failures": []
+      },
+      {
+        "candidateId": "aozora-049934-chapter-003",
+        "sourceUrl": "https://www.aozora.gr.jp/cards/000025/files/49934_50922.html",
+        "sourceCharacters": 1190,
+        "sourceBodyFingerprint": "dbc3e180bc91192a5dc77223ef7cb4ff7699545deb862c4f97f68255d42ed9fa",
+        "ready": true,
+        "failures": []
+      },
+      {
+        "candidateId": "aozora-049934-chapter-004",
+        "sourceUrl": "https://www.aozora.gr.jp/cards/000025/files/49934_50922.html",
+        "sourceCharacters": 2176,
+        "sourceBodyFingerprint": "f70631f2c29596dfc2c6bf6cb96b0cd45b2ff563951b34a130b029dc9dacc0a7",
+        "ready": true,
+        "failures": []
+      },
+      {
+        "candidateId": "aozora-049934-chapter-005",
+        "sourceUrl": "https://www.aozora.gr.jp/cards/000025/files/49934_50922.html",
+        "sourceCharacters": 1147,
+        "sourceBodyFingerprint": "56636a79c6b4858753be908d868466f57ddab1f569ba67f946b696415e3c8423",
+        "ready": true,
+        "failures": []
+      },
+      {
+        "candidateId": "aozora-049934-chapter-006",
+        "sourceUrl": "https://www.aozora.gr.jp/cards/000025/files/49934_50922.html",
+        "sourceCharacters": 1401,
+        "sourceBodyFingerprint": "1bf0f20d025c52926f32c2646f69f5a699c891b1e071271b69700391e60467bd",
+        "ready": true,
+        "failures": []
+      },
+      {
+        "candidateId": "aozora-049934-chapter-007",
+        "sourceUrl": "https://www.aozora.gr.jp/cards/000025/files/49934_50922.html",
+        "sourceCharacters": 1909,
+        "sourceBodyFingerprint": "aa8806ee1db7a31fdf59ce7d1174f8f9a6a8e832258ed1baa43e673841706cb5",
+        "ready": true,
+        "failures": []
+      },
+      {
+        "candidateId": "aozora-049934-chapter-008",
+        "sourceUrl": "https://www.aozora.gr.jp/cards/000025/files/49934_50922.html",
+        "sourceCharacters": 751,
+        "sourceBodyFingerprint": "853f4498e1cfccac2f61881cbc700b8c664def5f9fa95b4fff3064678cd0a845",
+        "ready": true,
+        "failures": []
+      },
+      {
+        "candidateId": "aozora-049934-chapter-009",
+        "sourceUrl": "https://www.aozora.gr.jp/cards/000025/files/49934_50922.html",
+        "sourceCharacters": 1008,
+        "sourceBodyFingerprint": "678bccaa6f5f20efcd29a408d77ffe498661b2d60e5c0c38ed6bf2e9b34826da",
+        "ready": true,
+        "failures": []
+      },
+      {
+        "candidateId": "aozora-049934-chapter-010",
+        "sourceUrl": "https://www.aozora.gr.jp/cards/000025/files/49934_50922.html",
+        "sourceCharacters": 2259,
+        "sourceBodyFingerprint": "7807ca18b0a4785f936e2c3c02c03b159c3d733044da4079f55f766b097487b1",
+        "ready": true,
+        "failures": []
+      },
+      {
+        "candidateId": "aozora-049934-chapter-011",
+        "sourceUrl": "https://www.aozora.gr.jp/cards/000025/files/49934_50922.html",
+        "sourceCharacters": 913,
+        "sourceBodyFingerprint": "a995040e0233c45284b0215c1a1ebad7f199d473711da2804457caba920a55f5",
+        "ready": true,
+        "failures": []
+      },
+      {
+        "candidateId": "aozora-055988-chapter-001",
+        "sourceUrl": "https://www.aozora.gr.jp/cards/000398/files/55988_55621.html",
+        "sourceCharacters": 470,
+        "sourceBodyFingerprint": "5c4f6431df2e537a20e8ec5ae6212f7d3dd2d4257701db750ae038b51f960cd4",
+        "ready": true,
+        "failures": []
+      },
+      {
+        "candidateId": "aozora-055988-chapter-002",
+        "sourceUrl": "https://www.aozora.gr.jp/cards/000398/files/55988_55621.html",
+        "sourceCharacters": 1383,
+        "sourceBodyFingerprint": "64e5cce28ce15128b2b591053a24c65c894cee4d52153aaea7017b29165cfc10",
+        "ready": true,
+        "failures": []
+      },
+      {
+        "candidateId": "aozora-055988-chapter-003",
+        "sourceUrl": "https://www.aozora.gr.jp/cards/000398/files/55988_55621.html",
+        "sourceCharacters": 457,
+        "sourceBodyFingerprint": "bcc115d9c33274a7086961d6335d53c231177fdbde6e1d6d2783b6a9577839e6",
+        "ready": true,
+        "failures": []
       }
     ],
     "poetry-micro-reads": [

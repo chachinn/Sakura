@@ -2513,39 +2513,6 @@
       "inventoryNote": "Work-level candidate approved for a later educational selection pass."
     },
     {
-      "candidateId": "aozora-003813",
-      "targetShelf": "short-stories",
-      "sourceFamilyId": "aozora-bunko",
-      "sourceTitle": "商賈聖母",
-      "sourceAuthor": "芥川 竜之介",
-      "sourceTranslator": null,
-      "workId": "003813",
-      "sourceUrl": "https://www.aozora.gr.jp/cards/000879/files/3813_27308.html",
-      "sourceCardUrl": "https://www.aozora.gr.jp/cards/000879/card3813.html",
-      "sourcePublishedDate": null,
-      "sourceLicense": "Aozora Bunko file handling standard (copyright-expired work)",
-      "sourceLicenseUrl": "https://www.aozora.gr.jp/guide/kijyunn.html",
-      "sourceTermsUrl": "https://www.aozora.gr.jp/guide/kijyunn.html",
-      "sourceAttribution": "出典：青空文庫「商賈聖母」芥川 竜之介",
-      "sourceProcessing": "Candidate metadata only; no reading body is bundled by this inventory.",
-      "rightsStatus": "public-domain",
-      "rightsEvidence": {
-        "catalog": "Aozora extended UTF-8 catalog",
-        "workCopyrightFlag": "なし",
-        "contributorCopyrightFlags": [
-          {
-            "role": "著者",
-            "name": "芥川 竜之介",
-            "flag": "なし"
-          }
-        ],
-        "checkedRule": "Work and every credited contributor must have copyright flag 'なし'."
-      },
-      "classification": "NDC 913",
-      "orthography": "新字旧仮名",
-      "inventoryNote": "Work-level candidate approved for a later educational selection pass."
-    },
-    {
       "candidateId": "aozora-000155",
       "targetShelf": "short-stories",
       "sourceFamilyId": "aozora-bunko",
@@ -4953,6 +4920,41 @@
       "classification": "NDC 913",
       "orthography": "新字新仮名",
       "inventoryNote": "Work-level candidate approved for a later educational selection pass."
+    },
+    {
+      "candidateId": "aozora-000042",
+      "targetShelf": "short-stories",
+      "sourceFamilyId": "aozora-bunko",
+      "sourceTitle": "鼻",
+      "sourceAuthor": "芥川 竜之介",
+      "sourceTranslator": null,
+      "workId": "000042",
+      "sourceUrl": "https://www.aozora.gr.jp/cards/000879/files/42_15228.html",
+      "sourceCardUrl": "https://www.aozora.gr.jp/cards/000879/card42.html",
+      "sourcePublishedDate": "「新思潮」1916（大正5）年2月",
+      "sourceLicense": "Aozora Bunko file handling standard (copyright-expired work)",
+      "sourceLicenseUrl": "https://www.aozora.gr.jp/guide/kijyunn.html",
+      "sourceTermsUrl": "https://www.aozora.gr.jp/guide/kijyunn.html",
+      "sourceAttribution": "出典：青空文庫「鼻」芥川 竜之介",
+      "sourceProcessing": "Source body fetched and verified for later editorial adaptation; no learner-facing text generated.",
+      "rightsStatus": "public-domain",
+      "rightsEvidence": {
+        "catalog": "Aozora extended UTF-8 catalog",
+        "workCopyrightFlag": "なし",
+        "contributorCopyrightFlags": [
+          {
+            "role": "著者",
+            "name": "芥川 竜之介",
+            "flag": "なし"
+          }
+        ],
+        "checkedRule": "Work and every credited contributor must have copyright flag 'なし'."
+      },
+      "classification": "NDC 913",
+      "orthography": "新字新仮名",
+      "sourceBodyExtractionStatus": "body-ready",
+      "sourceTextCharacterCount": 5270,
+      "sourceBodyFingerprint": "c92e92ce394c226dc0c031afdd57c5c09d7d2e6748738e6c85628a3a2b4f2883"
     }
   ]
 }

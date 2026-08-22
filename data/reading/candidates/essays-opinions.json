@@ -2315,39 +2315,6 @@
       "inventoryNote": "Work-level candidate approved for a later educational selection pass."
     },
     {
-      "candidateId": "aozora-003820",
-      "targetShelf": "essays-opinions",
-      "sourceFamilyId": "aozora-bunko",
-      "sourceTitle": "沙羅の花",
-      "sourceAuthor": "芥川 竜之介",
-      "sourceTranslator": null,
-      "workId": "003820",
-      "sourceUrl": "https://www.aozora.gr.jp/cards/000879/files/3820_27304.html",
-      "sourceCardUrl": "https://www.aozora.gr.jp/cards/000879/card3820.html",
-      "sourcePublishedDate": null,
-      "sourceLicense": "Aozora Bunko file handling standard (copyright-expired work)",
-      "sourceLicenseUrl": "https://www.aozora.gr.jp/guide/kijyunn.html",
-      "sourceTermsUrl": "https://www.aozora.gr.jp/guide/kijyunn.html",
-      "sourceAttribution": "出典：青空文庫「沙羅の花」芥川 竜之介",
-      "sourceProcessing": "Candidate metadata only; no reading body is bundled by this inventory.",
-      "rightsStatus": "public-domain",
-      "rightsEvidence": {
-        "catalog": "Aozora extended UTF-8 catalog",
-        "workCopyrightFlag": "なし",
-        "contributorCopyrightFlags": [
-          {
-            "role": "著者",
-            "name": "芥川 竜之介",
-            "flag": "なし"
-          }
-        ],
-        "checkedRule": "Work and every credited contributor must have copyright flag 'なし'."
-      },
-      "classification": "NDC 914",
-      "orthography": "新字旧仮名",
-      "inventoryNote": "Work-level candidate approved for a later educational selection pass."
-    },
-    {
       "candidateId": "aozora-000140",
       "targetShelf": "essays-opinions",
       "sourceFamilyId": "aozora-bunko",
@@ -2543,39 +2510,6 @@
       },
       "classification": "NDC 024 914",
       "orthography": "新字旧仮名",
-      "inventoryNote": "Work-level candidate approved for a later educational selection pass."
-    },
-    {
-      "candidateId": "aozora-024451",
-      "targetShelf": "essays-opinions",
-      "sourceFamilyId": "aozora-bunko",
-      "sourceTitle": "「侏儒の言葉」の序",
-      "sourceAuthor": "芥川 竜之介",
-      "sourceTranslator": null,
-      "workId": "024451",
-      "sourceUrl": "https://www.aozora.gr.jp/cards/000879/files/24451_11252.html",
-      "sourceCardUrl": "https://www.aozora.gr.jp/cards/000879/card24451.html",
-      "sourcePublishedDate": "「侏儒の言葉」文藝春秋社出版部、1927（昭和2）年12月6日初版",
-      "sourceLicense": "Aozora Bunko file handling standard (copyright-expired work)",
-      "sourceLicenseUrl": "https://www.aozora.gr.jp/guide/kijyunn.html",
-      "sourceTermsUrl": "https://www.aozora.gr.jp/guide/kijyunn.html",
-      "sourceAttribution": "出典：青空文庫「「侏儒の言葉」の序」芥川 竜之介",
-      "sourceProcessing": "Candidate metadata only; no reading body is bundled by this inventory.",
-      "rightsStatus": "public-domain",
-      "rightsEvidence": {
-        "catalog": "Aozora extended UTF-8 catalog",
-        "workCopyrightFlag": "なし",
-        "contributorCopyrightFlags": [
-          {
-            "role": "著者",
-            "name": "芥川 竜之介",
-            "flag": "なし"
-          }
-        ],
-        "checkedRule": "Work and every credited contributor must have copyright flag 'なし'."
-      },
-      "classification": "NDC 914 917",
-      "orthography": "旧字旧仮名",
       "inventoryNote": "Work-level candidate approved for a later educational selection pass."
     },
     {
@@ -2923,39 +2857,6 @@
       "sourceLicenseUrl": "https://www.aozora.gr.jp/guide/kijyunn.html",
       "sourceTermsUrl": "https://www.aozora.gr.jp/guide/kijyunn.html",
       "sourceAttribution": "出典：青空文庫「漱石山房の冬」芥川 竜之介",
-      "sourceProcessing": "Candidate metadata only; no reading body is bundled by this inventory.",
-      "rightsStatus": "public-domain",
-      "rightsEvidence": {
-        "catalog": "Aozora extended UTF-8 catalog",
-        "workCopyrightFlag": "なし",
-        "contributorCopyrightFlags": [
-          {
-            "role": "著者",
-            "name": "芥川 竜之介",
-            "flag": "なし"
-          }
-        ],
-        "checkedRule": "Work and every credited contributor must have copyright flag 'なし'."
-      },
-      "classification": "NDC 914",
-      "orthography": "新字旧仮名",
-      "inventoryNote": "Work-level candidate approved for a later educational selection pass."
-    },
-    {
-      "candidateId": "aozora-004301",
-      "targetShelf": "essays-opinions",
-      "sourceFamilyId": "aozora-bunko",
-      "sourceTitle": "装幀に就いての私の意見",
-      "sourceAuthor": "芥川 竜之介",
-      "sourceTranslator": null,
-      "workId": "004301",
-      "sourceUrl": "https://www.aozora.gr.jp/cards/000879/files/4301_6768.html",
-      "sourceCardUrl": "https://www.aozora.gr.jp/cards/000879/card4301.html",
-      "sourcePublishedDate": null,
-      "sourceLicense": "Aozora Bunko file handling standard (copyright-expired work)",
-      "sourceLicenseUrl": "https://www.aozora.gr.jp/guide/kijyunn.html",
-      "sourceTermsUrl": "https://www.aozora.gr.jp/guide/kijyunn.html",
-      "sourceAttribution": "出典：青空文庫「装幀に就いての私の意見」芥川 竜之介",
       "sourceProcessing": "Candidate metadata only; no reading body is bundled by this inventory.",
       "rightsStatus": "public-domain",
       "rightsEvidence": {
@@ -4953,6 +4854,111 @@
       "classification": "NDC 914",
       "orthography": "新字旧仮名",
       "inventoryNote": "Work-level candidate approved for a later educational selection pass."
+    },
+    {
+      "candidateId": "aozora-003789",
+      "targetShelf": "essays-opinions",
+      "sourceFamilyId": "aozora-bunko",
+      "sourceTitle": "又一説？",
+      "sourceAuthor": "芥川 竜之介",
+      "sourceTranslator": null,
+      "workId": "003789",
+      "sourceUrl": "https://www.aozora.gr.jp/cards/000879/files/3789_27348.html",
+      "sourceCardUrl": "https://www.aozora.gr.jp/cards/000879/card3789.html",
+      "sourcePublishedDate": null,
+      "sourceLicense": "Aozora Bunko file handling standard (copyright-expired work)",
+      "sourceLicenseUrl": "https://www.aozora.gr.jp/guide/kijyunn.html",
+      "sourceTermsUrl": "https://www.aozora.gr.jp/guide/kijyunn.html",
+      "sourceAttribution": "出典：青空文庫「又一説？」芥川 竜之介",
+      "sourceProcessing": "Source body fetched and verified for later editorial adaptation; no learner-facing text generated.",
+      "rightsStatus": "public-domain",
+      "rightsEvidence": {
+        "catalog": "Aozora extended UTF-8 catalog",
+        "workCopyrightFlag": "なし",
+        "contributorCopyrightFlags": [
+          {
+            "role": "著者",
+            "name": "芥川 竜之介",
+            "flag": "なし"
+          }
+        ],
+        "checkedRule": "Work and every credited contributor must have copyright flag 'なし'."
+      },
+      "classification": "NDC 914",
+      "orthography": "新字旧仮名",
+      "sourceBodyExtractionStatus": "body-ready",
+      "sourceTextCharacterCount": 1007,
+      "sourceBodyFingerprint": "2a7bd57eb6e1017e242fdcfdc638d236d5e4135217651da6258d8b0861e80555"
+    },
+    {
+      "candidateId": "aozora-000099",
+      "targetShelf": "essays-opinions",
+      "sourceFamilyId": "aozora-bunko",
+      "sourceTitle": "水の三日",
+      "sourceAuthor": "芥川 竜之介",
+      "sourceTranslator": null,
+      "workId": "000099",
+      "sourceUrl": "https://www.aozora.gr.jp/cards/000879/files/99_15249.html",
+      "sourceCardUrl": "https://www.aozora.gr.jp/cards/000879/card99.html",
+      "sourcePublishedDate": "「学友会雑誌」1910（明治43）年11月",
+      "sourceLicense": "Aozora Bunko file handling standard (copyright-expired work)",
+      "sourceLicenseUrl": "https://www.aozora.gr.jp/guide/kijyunn.html",
+      "sourceTermsUrl": "https://www.aozora.gr.jp/guide/kijyunn.html",
+      "sourceAttribution": "出典：青空文庫「水の三日」芥川 竜之介",
+      "sourceProcessing": "Source body fetched and verified for later editorial adaptation; no learner-facing text generated.",
+      "rightsStatus": "public-domain",
+      "rightsEvidence": {
+        "catalog": "Aozora extended UTF-8 catalog",
+        "workCopyrightFlag": "なし",
+        "contributorCopyrightFlags": [
+          {
+            "role": "著者",
+            "name": "芥川 竜之介",
+            "flag": "なし"
+          }
+        ],
+        "checkedRule": "Work and every credited contributor must have copyright flag 'なし'."
+      },
+      "classification": "NDC 914",
+      "orthography": "新字新仮名",
+      "sourceBodyExtractionStatus": "body-ready",
+      "sourceTextCharacterCount": 4631,
+      "sourceBodyFingerprint": "349247876a81634791a1efa95a184b7169af3cdd3b27ff70d43414251146fada"
+    },
+    {
+      "candidateId": "aozora-001124",
+      "targetShelf": "essays-opinions",
+      "sourceFamilyId": "aozora-bunko",
+      "sourceTitle": "三つのなぜ",
+      "sourceAuthor": "芥川 竜之介",
+      "sourceTranslator": null,
+      "workId": "001124",
+      "sourceUrl": "https://www.aozora.gr.jp/cards/000879/files/1124_14252.html",
+      "sourceCardUrl": "https://www.aozora.gr.jp/cards/000879/card1124.html",
+      "sourcePublishedDate": "「サンデー毎日　第六年第十五号」1927（昭和2）年4月1日",
+      "sourceLicense": "Aozora Bunko file handling standard (copyright-expired work)",
+      "sourceLicenseUrl": "https://www.aozora.gr.jp/guide/kijyunn.html",
+      "sourceTermsUrl": "https://www.aozora.gr.jp/guide/kijyunn.html",
+      "sourceAttribution": "出典：青空文庫「三つのなぜ」芥川 竜之介",
+      "sourceProcessing": "Source body fetched and verified for later editorial adaptation; no learner-facing text generated.",
+      "rightsStatus": "public-domain",
+      "rightsEvidence": {
+        "catalog": "Aozora extended UTF-8 catalog",
+        "workCopyrightFlag": "なし",
+        "contributorCopyrightFlags": [
+          {
+            "role": "著者",
+            "name": "芥川 竜之介",
+            "flag": "なし"
+          }
+        ],
+        "checkedRule": "Work and every credited contributor must have copyright flag 'なし'."
+      },
+      "classification": "NDC 914",
+      "orthography": "新字新仮名",
+      "sourceBodyExtractionStatus": "body-ready",
+      "sourceTextCharacterCount": 2640,
+      "sourceBodyFingerprint": "d273f7d1d2ed2a827256bd8364e2627da1e747f7b0d90c59ddcbf9356ff65912"
     }
   ]
 }
