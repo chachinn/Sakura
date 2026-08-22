@@ -61,7 +61,7 @@ const JMA_URLS = [
   "https://www.jma.go.jp/jma/kishou/know/bosai/riskmap.html",
   "https://www.jma.go.jp/jma/kishou/know/bosai/ame_push.html",
   "https://www.jma.go.jp/jma/kishou/know/bosai/kishojoho_senjoukousuitai.html",
-  "https://www.jma.go.jp/jma/kishou/know/toppuu/tatsumaki.html",
+  "https://www.jma.go.jp/jma/kishou/know/bosai/tatsumaki.html",
   "https://www.jma.go.jp/jma/kishou/know/ame_chuui/ame_chuui_p8.html",
   "https://www.jma.go.jp/jma/kishou/know/ame_chuui/ame_chuui_p8-2.html",
   "https://www.jma.go.jp/jma/kishou/know/ame_chuui/ame_chuui_p8-3.html"
