@@ -6,6 +6,8 @@ on:
       - complete-open-reading-garden-20260822
     paths:
       - .github/workflows/complete-reading-source-gap.yml
+      - tools/reconstruct-final-government-source-gap.mjs
+  workflow_dispatch:
 
 permissions:
   contents: write
