@@ -28,7 +28,7 @@ const rightsRestriction = /(?:本文|記事|資料|コンテンツ).{0,45}(?:著
 const mediaCredit = /写真(?:提供|撮影)|画像提供|動画提供|イラスト(?:提供|制作)|出典：地理院地図/i;
 
 const TOPIC_RULES = {
-  beauty: [["化粧",10],["美容",10],["香粧",10],["スキンケア",10],["コスメ",10],["毛髪",7],["ヘア",7],["シャンプー",7],["医薬部外品",5],["染毛",8],["日焼け止め",8],["成分",3]],
+  beauty: [["化粧",10],["美容",10],["美容医療",14],["美容師",12],["美容所",11],["理容師",9],["理容",7],["香粧",10],["スキンケア",10],["コスメ",10],["毛髪",8],["ヘア",7],["シャンプー",7],["医薬部外品",5],["染毛",9],["まつ毛",10],["エクステ",9],["日焼け止め",8],["成分",3]],
   food: [["食育",10],["食品",8],["食事",8],["食料",8],["栄養",8],["食中毒",8],["飲食",7],["農業",6],["農林",6],["給食",6],["食品ロス",9],["賞味期限",8],["消費期限",8],["食品表示",9]],
   travel: [["観光",10],["旅行",10],["宿泊",9],["訪日",9],["旅行者",9],["旅客",8],["空港",8],["鉄道",8],["交通",7],["国立公園",8],["観光地",9],["ホテル",7],["旅",4],["インバウンド",8]],
   digital: [["デジタル",10],["生成AI",10],["人工知能",10],["AI",8],["オンライン",8],["電子",6],["情報システム",9],["サイバー",9],["データ",7],["DX",8],["マイナンバー",9],["アプリ",6],["システム",5],["ICT",8]],
@@ -42,7 +42,7 @@ const TOPIC_RULES = {
 
 const FAMILY_PRIORS = {
   "gov-caa": { beauty:4, food:5, consumer:10, health:2 },
-  "gov-mhlw": { beauty:4, health:10, work:7, society:5, food:2 },
+  "gov-mhlw": { beauty:5, health:10, work:7, society:5, food:2 },
   "gov-maff": { food:10, environment:4, work:2, travel:2 },
   "gov-jta": { travel:12 },
   "gov-mlit": { travel:7, work:2 },
@@ -60,6 +60,15 @@ const TOPIC_CONFIG = {
     roots:[
       "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/kenkou_iryou/iyakuhin/keshouhin/index.html",
       "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/kenkou_iryou/iyakuhin/index.html",
+      "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/0000123853.html",
+      "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/0000124086.html",
+      "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/kenkou_iryou/kenkou/seikatsu-eisei/seikatsu-eisei03/06.html",
+      "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/kenkou/riyoushi/index.html",
+      "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/0000124874.html",
+      "https://www.mhlw.go.jp/stf/shingi/shingi-kousei_127723_00001.html",
+      "https://www.mhlw.go.jp/stf/shingi-yakuji_39210.html",
+      "https://www.mhlw.go.jp/stf/shingi/other-isei_436723_00013.html",
+      "https://www.mhlw.go.jp/stf/newpage_65283.html",
       "https://www.caa.go.jp/business/labeling/",
       "https://www.caa.go.jp/policies/policy/representation/household_goods/"
     ]
@@ -259,6 +268,10 @@ function linkHint(text, url, topic) {
   for (const [term, weight] of TOPIC_RULES[topic]) if (probe.includes(normalizeText(term))) score += weight;
   return score;
 }
+function beautyStrongEvidence(part, seed) {
+  if (seed) return true;
+  return (part?.evidence || []).some((row) => row.term !== "legacy-topic-seed" && (row.titleHits > 0 || row.urlHits > 0));
+}
 function linksFrom(html, baseUrl, topic, allowedFamilies, depth) {
   const out = [];
   for (const match of html.matchAll(/<a\b[^>]*href=["']([^"']+)["'][^>]*>([\s\S]*?)<\/a>/gi)) {
@@ -290,7 +303,7 @@ async function fetchPage(url, allowedFamilies) {
     const family = familyForUrl(key, allowedFamilies); if (!family) return {ok:false,url:key,error:"unapproved-family-or-path"};
     const controller = new AbortController(); const timer = setTimeout(()=>controller.abort(),16000);
     try {
-      const response = await fetch(key,{redirect:"follow",signal:controller.signal,headers:{"user-agent":"SakuraReadingGardenTopicSourceAudit/1.0","accept":"text/html,application/xhtml+xml"}});
+      const response = await fetch(key,{redirect:"follow",signal:controller.signal,headers:{"user-agent":"SakuraReadingGardenTopicSourceAudit/1.1","accept":"text/html,application/xhtml+xml"}});
       if (!response.ok) return {ok:false,url:key,error:`http-${response.status}`};
       const finalUrl = normalizeUrl(response.url); const finalFamily = familyForUrl(finalUrl,allowedFamilies);
       if (!finalFamily) return {ok:false,url:key,error:"redirect-outside-approved-family"};
@@ -335,7 +348,6 @@ function considerCandidate(page, discoveredForTopic, sourceKind) {
   return true;
 }
 
-// Seed the pool from the current body-ready inventory. Only semantically strong rows survive later assignment.
 for (const row of existingBodyReady.records || []) {
   const family = familyById.get(row.sourceFamilyId); if (!family) continue;
   const item = {url:normalizeUrl(row.sourceUrl),title:row.sourceTitle,body:row.sourceJapaneseSubstance,sourceTextCharacterCount:Number(row.sourceTextCharacterCount)||jpCount(row.sourceJapaneseSubstance),publishedDate:row.sourcePublishedDate||null,family,thirdPartyContentReview:row.thirdPartyContentReview||review(row.sourceJapaneseSubstance),sourceBodyFingerprint:row.sourceBodyFingerprint||sha256(normalizeBody(row.sourceJapaneseSubstance)),seedTopics:seedTopicsByUrl.get(normalizeUrl(row.sourceUrl))||new Set(),discoveredFor:new Set(),sourceKinds:new Set(["existing-body-ready"])};
@@ -357,7 +369,7 @@ async function crawlTopic(topic) {
     for(const {entry,page} of pages){
       if(!page.ok){rejected.push({url:entry.url,topic,reason:page.error});continue}
       const isCandidate=considerCandidate(page,topic,entry.kind);
-      if(isCandidate){const candidate=candidateByUrl.get(page.url);const score=candidate.scores[topic]?.score||0;if(score>=MIN_TOPIC_SCORE)acceptedForTopic+=1}
+      if(isCandidate){const candidate=candidateByUrl.get(page.url);const part=candidate.scores[topic];const strong=topic!=="beauty"||beautyStrongEvidence(part,candidate.seedTopics.has(topic));if((part?.score||0)>=MIN_TOPIC_SCORE&&strong)acceptedForTopic+=1}
       if(entry.depth>=2)continue;
       for(const link of linksFrom(page.html,page.url,topic,config.families,entry.depth)){
         if(visited.has(link.url)||queued.has(link.url))continue;
@@ -385,8 +397,6 @@ const candidates=[...candidateByUrl.values()].map((candidate)=>{
   return {...candidate,bestTopic:ranking[0]?.topic||null,bestScore:ranking[0]?.score||0,secondScore:ranking[1]?.score||0};
 });
 
-// Build a global capacity-constrained assignment. A page may appear in multiple topic crawls,
-// but can be selected only once in the final 300-source Article inventory.
 const capacity=Object.fromEntries(TOPICS.map((topic)=>[topic,TARGET_PER_TOPIC]));
 const selectedByTopic=Object.fromEntries(TOPICS.map((topic)=>[topic,[]]));
 const selectedUrls=new Set(); const selectedBodies=new Set(); const pairs=[];
@@ -394,8 +404,9 @@ for(const candidate of candidates){
   for(const topic of TOPICS){
     if(!TOPIC_CONFIG[topic].families.includes(candidate.family.sourceFamilyId))continue;
     const part=candidate.scores[topic]; if(!part||part.score<MIN_TOPIC_SCORE)continue;
-    const bestGap=Math.max(0,candidate.bestScore-part.score); if(bestGap>MAX_BEST_TOPIC_GAP && !candidate.seedTopics.has(topic))continue;
-    pairs.push({candidate,topic,score:part.score,bestGap,evidence:part.evidence,seed:candidate.seedTopics.has(topic)});
+    const seed=candidate.seedTopics.has(topic); const strong=topic!=="beauty"||beautyStrongEvidence(part,seed); if(!strong)continue;
+    const bestGap=Math.max(0,candidate.bestScore-part.score); if(bestGap>MAX_BEST_TOPIC_GAP&&!seed&&!(topic==="beauty"&&strong))continue;
+    pairs.push({candidate,topic,score:part.score,bestGap,evidence:part.evidence,seed,strong});
   }
 }
 pairs.sort((a,b)=>Number(b.seed)-Number(a.seed)||b.score-a.score||a.bestGap-b.bestGap||b.candidate.sourceTextCharacterCount-a.candidate.sourceTextCharacterCount||a.candidate.url.localeCompare(b.candidate.url));
@@ -424,11 +435,16 @@ for(const topic of TOPICS){
 }
 
 const gaps=Object.fromEntries(TOPICS.map((topic)=>[topic,Math.max(0,TARGET_PER_TOPIC-selectedByTopic[topic].length)]));
-const eligibleCounts=Object.fromEntries(TOPICS.map((topic)=>[topic,candidates.filter((candidate)=>TOPIC_CONFIG[topic].families.includes(candidate.family.sourceFamilyId)&&(candidate.scores[topic]?.score||0)>=MIN_TOPIC_SCORE&&((candidate.bestScore-(candidate.scores[topic]?.score||0))<=MAX_BEST_TOPIC_GAP||candidate.seedTopics.has(topic))).length]));
+const eligibleCounts=Object.fromEntries(TOPICS.map((topic)=>[topic,candidates.filter((candidate)=>{
+  if(!TOPIC_CONFIG[topic].families.includes(candidate.family.sourceFamilyId))return false;
+  const part=candidate.scores[topic];if(!part||part.score<MIN_TOPIC_SCORE)return false;
+  const seed=candidate.seedTopics.has(topic);const strong=topic!=="beauty"||beautyStrongEvidence(part,seed);if(!strong)return false;
+  const bestGap=Math.max(0,candidate.bestScore-part.score);return bestGap<=MAX_BEST_TOPIC_GAP||seed||(topic==="beauty"&&strong);
+}).length]));
 const pass=selected.length===300&&selectedUrls.size===300&&selectedBodies.size===300&&Object.values(gaps).every((gap)=>gap===0);
 const report={
-  version:1,generatedDate:TODAY,pass,
-  policy:"Exactly 30 unique, body-ready, semantically fitting official sources per Article topic. Every source is used once. Thin pages, contrary-rights signals, third-party media assets, duplicate URLs/bodies, weak topic matches, and forced cross-topic assignments are rejected.",
+  version:2,generatedDate:TODAY,pass,
+  policy:"Exactly 30 unique, body-ready, semantically fitting official sources per Article topic. Every source is used once. Thin pages, contrary-rights signals, third-party media assets, duplicate URLs/bodies, weak topic matches, and forced cross-topic assignments are rejected. Beauty additionally requires title/URL-level beauty evidence or a pre-existing trusted Beauty seed so shared navigation cannot create false positives.",
   thresholds:{minimumJapaneseCharacters:MIN_JP,minimumTopicScore:MIN_TOPIC_SCORE,maximumBestTopicGap:MAX_BEST_TOPIC_GAP,maxFetchesPerTopic:MAX_FETCHES_PER_TOPIC},
   startingSeeds:{uniqueLegacyTopicUrls:seedTopicsByUrl.size,existingBodyReadyRecords:(existingBodyReady.records||[]).length},
   crawl,discoveredUniqueCandidatePages:candidates.length,eligibleCounts,selectedCount:selected.length,uniqueSelectedUrls:selectedUrls.size,uniqueSelectedBodies:selectedBodies.size,gaps,
