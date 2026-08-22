@@ -1,15 +1,14 @@
 {
-  "version": 10,
+  "version": 11,
   "material": "articles",
   "mode": "source-grounded-adaptation",
   "targetCount": 300,
   "readyCount": 300,
-  "visibleQualityShelfTarget": 50,
-  "visibleQualityShelfReady": 50,
+  "finalDepthReadyCount": 0,
   "sourceArchiveRetained": true,
-  "qualityShelfPolicy": "The learner-facing shelf is capped at 50 curated Articles. Selection is balanced across 5 JLPT study levels and 10 topics (one strongest available lead reading per level-topic combination), favoring longer estimated reading time and newer verified sources. The 300-record verified source archive remains intact for Saved/Continue compatibility.",
-  "longFormPolicy": "Each visible Quality Shelf Article is expanded at reading time into a substantial multi-section feature using several verified source-grounded learner adaptations from the same JLPT study level and topic. Length follows the available substance rather than a fixed word-count target; shorter complete features are acceptable and richer topics may be longer. No filler is added solely to increase length.",
-  "longFormSourceSections": {"minimum":3,"maximum":5},
+  "qualityPolicy": "All 300 learner-facing Articles remain browseable. The final completion pass must transform every Article into a coherent substantial adaptation grounded in its own verified source. Multi-source stitching and the former 50-item visibility cap are retired.",
+  "depthPolicy": "Article quality is judged by coherent structure, meaningful paragraph development, source substance, level-appropriate language, and useful study support rather than a fixed character target. N5 may be shorter than N1, but obvious tiny/sample-like readings fail the final depth validator.",
+  "sourcePolicy": "Default final method: one verified body-ready source produces one substantial Sakura learner adaptation. Do not stitch unrelated sources merely to manufacture length. Full verbatim reproduction is used only when the source registry specifically permits it and the record labels that mode honestly.",
   "sourceYearPriority": 2026,
   "retrievedDate": "2026-08-14",
   "levelCounts": {
@@ -44,9 +43,9 @@
     {"id":"society","icon":"👨‍👩‍👧","label":"Society & Family"}
   ],
   "provenancePolicy": {
-    "facts": "300 readings grounded in linked official/open Japanese sources. This release adds 100 readings from 20 verified source families with 2026-first sourcing; one Beauty family uses a 2025 source because a distinct suitable 2026 source was not forced.",
-    "learnerText": "Learner adaptations are clearly identified and are not presented as verbatim government prose. Long-form Quality Features combine only these rewritten learner adaptations and label their source sections.",
-    "attribution": "Every record stores source title, publisher, URL, date, terms/license, attribution and edit notice. Long-form features preserve the lead source and list the additional source URLs used in the feature.",
+    "facts": "300 readings are grounded in linked official/open Japanese sources. The current source archive remains retained while learner bodies undergo the final depth rewrite.",
+    "learnerText": "Learner adaptations are clearly identified and are not presented as verbatim government prose unless a record explicitly uses a permitted full-text mode.",
+    "attribution": "Every record stores source title, publisher, URL, date, terms/license, attribution and edit notice.",
     "assets": "No source logos, photos, charts, videos, or separately credited third-party assets are included.",
     "studyLevel": "N5–N1 is Sakura study-support grading, not an official JLPT grade of the source."
   },
@@ -60,5 +59,5 @@
     "N1":["n1.json","n1-b.json","n1-c.json","n1-d.json","n1-e.json","n1-f.json"]
   },
   "indexFiles": {"N5":"n5-index.json","N4":"n4-index.json","N3":"n3-index.json","N2":"n2-index.json","N1":"n1-index.json"},
-  "packPolicy": "Each level uses six 10-reading body shards plus a compact metadata index. Browsing/search reads indexes only. When a curated Quality Shelf Article is opened, Sakura loads that level on demand so it can compose the multi-section feature from related verified readings. The body cache remains bounded in memory."
+  "packPolicy": "Each level uses six 10-reading body shards plus a compact metadata index. Browsing/search reads indexes only; opening an Article loads only its required shard. The body cache remains bounded in memory."
 }
