@@ -12,7 +12,6 @@ const sources = Array.isArray(bodyReady?.records) ? bodyReady.records : [];
 const LEVELS = ["N5", "N4", "N3", "N2", "N1"];
 const TOPICS = ["beauty", "food", "travel", "digital", "consumer", "health", "environment", "culture", "work", "society"];
 const TOPIC_CAPACITY = 30;
-const LEVEL_PER_TOPIC = 6;
 
 const TOPIC_RULES = {
   beauty: [
@@ -90,6 +89,14 @@ function sourceScore(source, topic) {
 function sourceSort(a, b) {
   return Number(a.inventoryPosition || 0) - Number(b.inventoryPosition || 0) || String(a.candidateId).localeCompare(String(b.candidateId));
 }
+function countBy(rows, getter) {
+  const out = {};
+  for (const row of rows) {
+    const key = String(getter(row) || "unknown");
+    out[key] = (out[key] || 0) + 1;
+  }
+  return Object.fromEntries(Object.entries(out).sort((a,b)=>a[0].localeCompare(b[0])));
+}
 
 const slots = [];
 for (const level of LEVELS) {
@@ -110,11 +117,12 @@ if (sources.length !== 300) throw new Error(`Expected 300 body-ready Article sou
 for (const topic of TOPICS) {
   const count = slots.filter((slot) => slot.topic === topic).length;
   if (count !== TOPIC_CAPACITY) throw new Error(`Expected ${TOPIC_CAPACITY} ${topic} slots, got ${count}`);
-  for (const level of LEVELS) {
-    const perLevel = slots.filter((slot) => slot.topic === topic && slot.jlpt === level).length;
-    if (perLevel !== LEVEL_PER_TOPIC) throw new Error(`Expected ${LEVEL_PER_TOPIC} ${topic}/${level} slots, got ${perLevel}`);
-  }
 }
+for (const level of LEVELS) {
+  const count = slots.filter((slot) => slot.jlpt === level).length;
+  if (count !== 60) throw new Error(`Expected 60 ${level} slots, got ${count}`);
+}
+const actualSlotMatrix = Object.fromEntries(TOPICS.map((topic) => [topic, countBy(slots.filter((slot)=>slot.topic===topic), (slot)=>slot.jlpt)]));
 
 const matrix = new Map();
 for (const source of sources) {
@@ -154,8 +162,8 @@ for (const pair of pairCandidates) {
 if (unassigned.size) throw new Error(`Could not capacity-assign ${unassigned.size} Article sources`);
 if (Object.values(capacity).some((value) => value !== 0)) throw new Error(`Topic capacity remained: ${JSON.stringify(capacity)}`);
 
-// Preserve stable learner IDs/levels/topics. Within each topic, spread source complexity across
-// levels deterministically rather than treating source prose itself as an official JLPT grade.
+// Preserve the repo's actual stable learner ID/level/topic slot matrix. Source complexity is
+// distributed deterministically within a topic, but the original source is never called JLPT-graded.
 const plan = [];
 for (const topic of TOPICS) {
   const topicSources = [...assignmentByTopic[topic]].sort((a,b) => {
@@ -205,6 +213,7 @@ const byTopic = Object.fromEntries(TOPICS.map((topic) => {
   const middle = Math.floor(scores.length / 2);
   return [topic, {
     count: rows.length,
+    actualLevelSlots: actualSlotMatrix[topic],
     scoreMinimum: Math.min(...scores),
     scoreMedian: scores.length % 2 ? scores[middle] : (scores[middle-1] + scores[middle]) / 2,
     scoreAverage: Math.round(scores.reduce((a,b)=>a+b,0)/scores.length*10)/10,
@@ -217,7 +226,7 @@ const byTopic = Object.fromEntries(TOPICS.map((topic) => {
 const structurallyValid = plan.length === 300 && sourceIds.size === 300 && sourceUrls.size === 300 && TOPICS.every((topic) => plan.filter((row)=>row.topic===topic).length===30) && LEVELS.every((level)=>plan.filter((row)=>row.jlpt===level).length===60);
 const semanticFitPass = lowConfidence.length === 0 && contraryBestTopic.length === 0;
 const report = {
-  version: 1,
+  version: 2,
   generatedDate: new Date().toISOString().slice(0,10),
   pass: structurallyValid,
   semanticFitPass,
@@ -230,6 +239,7 @@ const report = {
     byLevel: Object.fromEntries(LEVELS.map((level)=>[level,plan.filter((row)=>row.jlpt===level).length])),
     byTopic: Object.fromEntries(TOPICS.map((topic)=>[topic,plan.filter((row)=>row.topic===topic).length])),
   },
+  actualSlotMatrix,
   semanticFit: {
     pass: semanticFitPass,
     lowConfidenceCount: lowConfidence.length,
@@ -244,5 +254,5 @@ const report = {
 const out = path.join(qaRoot, "article-rebuild-plan.json");
 fs.mkdirSync(qaRoot,{recursive:true});
 fs.writeFileSync(out, `${JSON.stringify(report,null,2)}\n`);
-console.log(JSON.stringify({ pass:report.pass, semanticFitPass:report.semanticFitPass, counts:report.counts, semanticFit:report.semanticFit, byTopic:report.byTopic, lowConfidence:report.lowConfidence.slice(0,20), contraryBestTopic:report.contraryBestTopic.slice(0,20) }, null, 2));
+console.log(JSON.stringify({ pass:report.pass, semanticFitPass:report.semanticFitPass, counts:report.counts, actualSlotMatrix:report.actualSlotMatrix, semanticFit:report.semanticFit, byTopic:report.byTopic, lowConfidence:report.lowConfidence.slice(0,20), contraryBestTopic:report.contraryBestTopic.slice(0,20) }, null, 2));
 if (!report.pass) process.exitCode = 1;
