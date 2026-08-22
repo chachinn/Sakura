@@ -1,33 +1,34 @@
 {
   "version": 1,
   "generatedDate": "2026-08-22",
-  "pass": false,
-  "totalCandidatesInspected": 3500,
-  "eligibleBodyReadyItems": 2059,
-  "acceptedBodyReadyItems": 1265,
+  "pass": true,
+  "totalCandidatesInspected": 3555,
+  "eligibleBodyReadyItems": 2114,
+  "acceptedBodyReadyItems": 1320,
   "unselectedBodyReadyItems": 794,
   "rejectedItems": 1441,
   "needsReviewItems": 0,
   "acceptedCountsByShelf": {
-    "travel-reading": 195,
-    "recipes-how-to": 100,
-    "real-life-documents": 150,
+    "articles": 300,
     "interviews-qa": 100,
-    "school-work": 120,
     "news": 300,
-    "articles": 300
+    "real-life-documents": 200,
+    "recipes-how-to": 100,
+    "school-work": 120,
+    "travel-reading": 200
   },
   "acceptedCountsBySourceFamily": {
-    "gov-maff": 184,
-    "gov-jta": 156,
-    "gov-env": 9,
-    "gov-mhlw": 675,
-    "gov-fdma": 7,
-    "gov-caa": 140,
-    "gov-moj-isa": 7,
     "gov-digital": 74,
+    "gov-caa": 140,
     "gov-cfa": 11,
-    "gov-bunka": 2
+    "gov-mhlw": 675,
+    "gov-maff": 184,
+    "gov-env": 14,
+    "gov-bunka": 2,
+    "gov-jta": 156,
+    "gov-fdma": 7,
+    "gov-moj-isa": 7,
+    "gov-jma": 50
   },
   "rejectionReasons": {
     "http-403": 30,
@@ -43,11 +44,11 @@
   "duplicateUrls": 16,
   "duplicateSourceBodies": 6,
   "rightsStatusDistribution": {
-    "adaptation-permitted": 1265
+    "adaptation-permitted": 1320
   },
   "thirdPartyReviewDistribution": {
-    "checked-no-item-level-signal": 1172,
-    "checked-third-party-assets-excluded": 93
+    "checked-no-item-level-signal": 1226,
+    "checked-third-party-assets-excluded": 94
   },
   "targets": {
     "articles": 300,
@@ -58,12 +59,10 @@
     "interviews-qa": 100,
     "real-life-documents": 200
   },
-  "unfilled": {
-    "travel-reading": 5,
-    "real-life-documents": 50
-  },
+  "unfilled": {},
   "notes": [
     "Accepted government records are inventory evidence only; no learner-facing adaptation was generated.",
-    "Media assets are never bundled. Pages with detected contrary-rights or third-party-credit signals remain review-required."
+    "Media assets are never bundled. Pages with detected contrary-rights or third-party-credit signals remain review-required.",
+    "Final persisted source gap was completed from 50 official JMA disaster/weather guidance pages and 5 Ministry of the Environment national-park pages. All 55 were fetched from official HTML sources and passed the body-ready threshold."
   ]
 }

@@ -2,7 +2,7 @@
   "version": 1,
   "shelf": "travel-reading",
   "targetCount": 200,
-  "bodyReadyCount": 195,
+  "bodyReadyCount": 200,
   "records": [
     {
       "candidateId": "verified-travel-reading-24b3ce4ee88a",
@@ -6243,6 +6243,166 @@
       "sourceAttribution": "出典：観光庁ウェブサイト（https://www.mlit.go.jp/kankocho/news02_00036.html）",
       "sourceProcessing": "Item-level source body extracted for later editorial adaptation. No learner-facing text has been generated.",
       "inventoryPosition": 195
+    },
+    {
+      "candidateId": "verified-travel-reading-4bb64018371c",
+      "targetShelf": "travel-reading",
+      "sourceFamilyId": "gov-env",
+      "sourceTitle": "やんばる国立公園 見どころ",
+      "sourcePublisher": "環境省",
+      "sourceUrl": "https://www.env.go.jp/nature/nationalparks/list/yambaru/spot/",
+      "sourcePublishedDate": null,
+      "sourceRetrievedDate": "2026-08-22",
+      "rightsStatus": "adaptation-permitted",
+      "rightsBasis": {
+        "termsUrl": "https://www.env.go.jp/mail.html",
+        "licenseName": "Public Data License 1.0",
+        "licenseUrl": "https://www.digital.go.jp/resources/open_data/public_data_license_v1.0",
+        "itemLevelCheck": "No contrary text-rights notice detected in the fetched page; excluded media remains excluded.",
+        "verifiedDate": "2026-08-22"
+      },
+      "thirdPartyContentReview": {
+        "status": "checked-no-item-level-signal",
+        "signals": [],
+        "excludedMedia": [],
+        "assetsBundled": false
+      },
+      "sourceBodyExtractionStatus": "body-ready",
+      "sourceJapaneseSubstance": "ページの先頭です\nページ内を移動するためのリンク\nここから本文です。\nやんばる国立公園（PC表示）\nやんばる国立公園（SP表示）\nやんばる国立公園\n\n見どころ・施設\n海や川、水のある風景を 楽しむ\n\n塩屋湾\n慶佐次湾のヒルギ林\n山や植物を楽しむ\n\n与那覇岳\nアスムイハイクス\nネクマチヂ岳・塩屋富士\n文化・くらしにふれる\n\n塩屋湾のウンガミ\n生き物に出会う\n\nケナガネズミ\nオキナワトゲネズミ\nオキナワイシカワガエル\nヤンバルテナガコガネ\n施設の場所を確認する\n\nやんばる野生生物保護センター\nウフギー自然館\nヤンバルクイナ生態展示学習施設\nクイナの森\n大宜味村観光協会\n東村観光推進協議会\n公園でできる体験例を見る\n\nトレッキング\n海や川、水のある風景を楽しむ\n【サムネイル】塩屋湾\n【サムネイル】辺戸岬\n【サムネイル】比地大滝\n【サムネイル】慶佐次湾のヒルギ林\n山や植物を楽しむ\n【サムネイル】与那覇岳\n【サムネイル】伊部岳\n【サムネイル】アスムイハイクス\n【サムネイル】ネクマチヂ岳・塩屋富士\n【サムネイル】照葉樹林\n文化・くらしにふれる\n【サムネイル】塩屋湾のウンガミ\n【サムネイル】安田のシヌグ\n【サムネイル】ケナガネズミ\n【サムネイル】オキナワトゲネズミ\n【サムネイル】オキナワイシカワガエル\n【サムネイル】ヤンバルテナガコガネ\n【サムネイル】ヤンバルクイナ\n【サムネイル】ノグチゲラ\n施設の場所を確認する\n【サムネイル】やんばる野生生物保護センター ウフギー自然館\n【サムネイル】ヤンバルクイナ生態展示学習施設 クイナの森\n国頭村観光協会\n\n国頭村の観光案内を行っています。\n\nタグ\n-->\n大宜味村観光協会\n\n大宜味村の観光案内を行っています。\n\nタグ\n-->\n東村観光推進協議会\n\n東村の観光案内を行っています。\n\nタグ\n-->\n公園でできる体験例を見る\n【サムネイル】トレッキング\n【サムネイル】カヌーツアー\n所在地\n沖縄県国頭郡大宜味村\nおすすめの時期、見頃、施設の営業時間 など\n通年\n関連URLなど\n\nhttps://www.ufugi-yambaru.com/park/highlights\n所在地\n沖縄県国頭郡国頭村辺戸\n問い合わせ先\n辺戸岬観光案内所\n電話番号\n0980-43-0977\n関連URLなど\n\nhttps://hedomisaki.com/\n【写真】比地大滝\n所在地\n沖縄県国頭郡比地\nおすすめの時期、見頃、施設の営業時間 など\n通年（令和６年11月の大雨災害による影響で閉鎖中（期間未定））\n【写真】慶佐次湾のヒルギ林\n所在地\n沖縄県国頭郡慶佐次\n問い合わせ先\n東村ふれあいヒルギ公園\n電話番号\n0980-51-2433\n関連URLなど\n\nhttps://hirugipark.com/\n【写真】与那覇岳\n所在地\n沖縄県国頭郡\n【写真】アスムイハイクス\n所在地\n沖縄県国頭郡国頭村宜名真1241\n問い合わせ先\nアスムイハイクス\n電話番号\n0980-41-8117\n関連URLなど\n\nhttps://www.asmui.jp/\n【写真】ネクマチヂ岳・塩屋富士\n関連URLなど\n\nhttps://www.vill.ogimi.okinawa.jp/kanko_bunka_sports/kanko_joho/525.html\n【写真】照葉樹林\n【写真】塩屋湾のウンガミ\n所在地\n沖縄県国頭郡塩屋\nおすすめの時期、見頃、施設の営業時間 など\n8月\n関連URLなど\n\nhttps://www.vill.ogimi.okinawa.jp/kanko_bunka_sports/rekishi_bunkazai/bunkazai/534.html\n【写真】安田のシヌグ\n所在地\n沖縄県国頭郡安田\nおすすめの時期、見頃、施設の営業時間 など\n8月頃\n関連URLなど\n\nhttps://www.ufugi-yambaru.com/yanbaru/history\n【写真】ケナガネズミ\n所在地\n沖縄島北部、奄美大島、徳之島\nおすすめの時期、見頃、施設の営業時間 など\n通年（繁殖期：秋～冬）\n関連URLなど\n\nhttps://www.ufugi-yambaru.com/creatures/mammals\n【写真】オキナワトゲネズミ\n【写真】オキナワイシカワガエル\nおすすめの時期、見頃、施設の営業時間 など\n通年（繁殖期：冬）\n関連URLなど\n\nhttps://www.ufugi-yambaru.com/creatures/amphibians\n【写真】ヤンバルテナガコガネ\nおすすめの時期、見頃、施設の営業時間 など\n通年（繁殖期：秋）\n関連URLなど\n\nhttps://www.ufugi-yambaru.com/creatures/insect\n【写真】ヤンバルクイナ\nおすすめの時期、見頃、施設の営業時間 など\n通年（繁殖期：春～初夏）\n関連URLなど\n\nhttps://www.ufugi-yambaru.com/creatures/bird#sec1\n【写真】ノグチゲラ\nおすすめの時期、見頃、施設の営業時間 など\n通年（繁殖期：春）\n【写真】トレッキング\n関連URLなど\n\nhttps://www.env.go.jp/nature/nationalparks/list/yambaru/try/\n【写真】カヌーツアー\n【写真】やんばる野生生物保護センター ウフギー自然館\n所在地\n〒905-1413\n\n沖縄県国頭郡国頭村字比地263-1\nおすすめの時期、見頃、施設の営業時間 など\n\n「やんばる野生生物保護センター ウフギー自然館」は、「やんばる世界遺産センター  ウフギー自然館」に改修中です。改修工事のため、令和6年5月に閉館し、リニューアルオープンは令和7年7月以降を予定しています。\n※リニューアルオープンの時期については、決定次第お知らせします。\n問い合わせ先\n環境省やんばる野生生物保護センター ウフギー自然館\n電話番号\n0980-50-1025\n関連URLなど\n\nhttp://www.ufugi-yambaru.com/\n【写真】ヤンバルクイナ生態展示学習施設 クイナの森\n所在地\n〒905-1503\n\n沖縄県国頭郡国頭村字安田1477-35\n問い合わせ先\nヤンバルクイナ生態展示学習施設 クイナの森\n電話番号\n0980-41-7788\n関連URLなど\n\nhttp://kuinapark.com/\n【写真】国頭村観光協会\n所在地\n〒905-1412\n\n沖縄県国頭郡国頭村字奥間1569-1\n電話番号\n0980-41-2420\n関連URLなど\n\nhttps://kunigami-kanko.com/\n【写真】大宜味村観光協会\n所在地\n〒905-1318\n\n沖縄県国頭郡大宜味村字津波95\n電話番号\n0980-50-5707\n関連URLなど\n\nhttps://ogimi-kanko.com/\n【写真】東村観光推進協議会\n所在地\n〒905-1205\n\n沖縄県国頭郡東村慶佐次54-1（東村ふれあいヒルギ公園内）\n問い合わせ先\n東村観光推進協議会\n関連URLなど\n\nhttps://higashi-kanko.or.jp/\n本文ここまでです。",
+      "sourceTextCharacterCount": 1635,
+      "reuseMode": "verbatim-or-adaptation-permitted",
+      "sourceBodyFingerprint": "8348ef63f2b04a7e6b5a2240178cd29f9e9a8a61f077b121b3c4c6900e43f7be",
+      "sourceAttribution": "出典：環境省ウェブサイト（https://www.env.go.jp/nature/nationalparks/list/yambaru/spot/）",
+      "sourceProcessing": "Item-level source body extracted for later editorial adaptation. No learner-facing text has been generated.",
+      "inventoryPosition": 196
+    },
+    {
+      "candidateId": "verified-travel-reading-3b76136d6895",
+      "targetShelf": "travel-reading",
+      "sourceFamilyId": "gov-env",
+      "sourceTitle": "瀬戸内海国立公園 見どころ",
+      "sourcePublisher": "環境省",
+      "sourceUrl": "https://www.env.go.jp/nature/nationalparks/list/setonaikai/spot/index.html",
+      "sourcePublishedDate": null,
+      "sourceRetrievedDate": "2026-08-22",
+      "rightsStatus": "adaptation-permitted",
+      "rightsBasis": {
+        "termsUrl": "https://www.env.go.jp/mail.html",
+        "licenseName": "Public Data License 1.0",
+        "licenseUrl": "https://www.digital.go.jp/resources/open_data/public_data_license_v1.0",
+        "itemLevelCheck": "No contrary text-rights notice detected in the fetched page; excluded media remains excluded.",
+        "verifiedDate": "2026-08-22"
+      },
+      "thirdPartyContentReview": {
+        "status": "checked-no-item-level-signal",
+        "signals": [],
+        "excludedMedia": [],
+        "assetsBundled": false
+      },
+      "sourceBodyExtractionStatus": "body-ready",
+      "sourceJapaneseSubstance": "ページの先頭です\nページ内を移動するためのリンク\nここから本文です。\n瀬戸内海国立公園（PC表示）\n瀬戸内海国立公園（SP表示）\n瀬戸内海国立公園\n\n見どころ・施設\n海や川、水のある風景を 楽しむ\n\n屋島\n鳴門の渦潮（なるとのうずしお）\n王子が岳（おうじがたけ）\n六甲山系　掬星台（きくせいだい）\n山や植物を楽しむ\n\n弥山\nコバノミツバツツジ\n竜王山（りゅうおうざん）\n因島公園（いんのしまこうえん）\n嵩山（だけさん）\n文化・くらしにふれる\n\n嚴島神社\n鹿島集落の段々畑\n中山仙境（夷谷）\n牡蠣と牡蠣筏の風景\n生き物に出会う\n\n二ホンアワサンゴ\n施設の場所を確認する\n\n五色台ビジターセンター\n大久野島ビジターセンター\n徳島県立　渦の道\n高松市屋島山上交流拠点施設　やしまーる\n鷲羽山ビジターセンター\n公園でできる体験例を見る\n\nしまなみ海道サイクリング\n兵庫県立いえしま自然体験センター\n海や川、水のある風景を楽しむ\n【サムネイル】屋島\n【サムネイル】紫雲出山\n【サムネイル】五色台\n【サムネイル】鷲羽山\n【サムネイル】慶野松原\n【サムネイル】鳴門の渦潮（なるとのうずしお）\n【サムネイル】王子が岳（おうじがたけ）\n【サムネイル】六甲山系　掬星台（きくせいだい）\n【サムネイル】黒島\n【サムネイル】上立神岩\n山や植物を楽しむ\n【サムネイル】弥山\n【サムネイル】寒霞渓\n【サムネイル】積善山の桜並木\n【サムネイル】コバノミツバツツジ\n【サムネイル】ハマゴウ\n【サムネイル】竜王山（りゅうおうざん）\n【サムネイル】因島公園（いんのしまこうえん）\n【サムネイル】嵩山（だけさん）\n文化・くらしにふれる\n-->\n\n嚴島神社\n\n遠浅の浜にある境内は、満潮時には海に浮かんでいるかのような優美な光景となります。背後に広がる緑とのコントラストもまた格別な美しさです。1996年に世界遺産に登録されました。\n\nタグ\n-->\n【サムネイル】大不動岩屋\n【サムネイル】鞆の浦の町並み\n【サムネイル】鹿島集落の段々畑\n【サムネイル】両子寺\n【サムネイル】文殊仙寺\n【サムネイル】中山仙境（夷谷）\n【サムネイル】観音崎\n【サムネイル】牡蠣と牡蠣筏の風景\n【サムネイル】友ヶ島 砲台跡\n【サムネイル】お遍路\n【サムネイル】二ホンアワサンゴ\n【サムネイル】スナメリ\n【サムネイル】カブトガニ\n施設の場所を確認する\n五色台ビジターセンター\n\n五色台の真ん中にある五色台ビジターセンターには、五色台のいきものや植物の旬の自然情報の収集やお知らせや、見たり、聞いたり、触ったりできる展示や映像、季節ならではの楽しい体験プログラムなど、五色台を楽しめるきっかけがいっぱい！ぜひ、お気軽にお越しください。\n\nタグ\n-->\n大久野島ビジターセンター\n\n大久野島は、芸予要塞や毒ガス工場などの歴史的建物が点在する周囲4.3kmの小さな島です。現在は瀬戸内海の自然を楽しむ拠点として海水浴場やキャンプ場が整備されています。施設内では、大久野島周辺の植物や生物、施設で利用している自然エネルギーについて知ることができます。\n\nタグ\n-->\n【サムネイル】徳島県立　渦の道\n【サムネイル】高松市屋島山上交流拠点施設　やしまーる\n【サムネイル】鷲羽山ビジターセンター\n公園でできる体験例を見る\n【サムネイル】しまなみ海道サイクリング\n【サムネイル】六甲山の夜景\n【サムネイル】シーカヤック\n【サムネイル】SUP\n【サムネイル】兵庫県立いえしま自然体験センター\n所在地\n香川県高松市\nおすすめの時期、見頃、施設の営業時間 など\n通年、特に春と秋\n関連URLなど\n\nall YASHIMA\n\nhttps://www.yashima-navi.jp/jp/\n【写真】紫雲出山\n所在地\n香川県三豊市\nおすすめの時期、見頃、施設の営業時間 など\n通年、特に春と初夏　※桜開花時期は交通規制等あり\n関連URLなど\n\n三豊市観光交流局\n\nhttps://www.mitoyo-kanko.com/\n所在地\n香川県高松市/坂出市\nおすすめの時期、見頃、施設の営業時間 など\n通年\n関連URLなど\n\n坂出市観光協会\n\nhttps://sakaide-kankou.com/spots\n\n瀬戸内海歴史民俗資料館\n\nhttps://www.pref.kagawa.lg.jp/kmuseum/setorekishi/index.html\n\n香川県立五色台少年自然センター\n\nhttps://www.pref.kagawa.lg.jp/goshikidaishonen/goshikidai_shonen/welcome_goshikidai.html\n所在地\n岡山県倉敷市\nおすすめの時期、見頃、施設の営業時間 など\n通年、特に春\n関連URLなど\n\n岡山観光WEB\n\nhttps://www.okayama-kanko.jp/spot/detail_10430.html\n【写真】慶野松原\n所在地\n兵庫県南あわじ市\n【写真】鳴門の渦潮（なるとのうずしお）\n所在地\n徳島県鳴門市/兵庫県南あわじ市\nおすすめの時期、見頃、施設の営業時間 など\n通年、春と秋の大潮\n関連URLなど\n\n阿波ナビ\n\nhttps://www.awanavi.jp/archives/spot/2902\n【写真】王子が岳（おうじがたけ）\n所在地\n岡山県倉敷市・玉野市\n関連URLなど\n\n岡山観光WEB\n\nhttps://www.okayama-kanko.jp/spot/10609\n【写真】六甲山系　掬星台（きくせいだい）\n所在地\n兵庫県神戸市\n所在地\n岡山県瀬戸内市\n関連URLなど\n\n岡山観光WEB\n\nhttps://www.okayama-kanko.jp/spot/11144\n【写真】上立神岩\n関連URLなど\n\n沼島おのころクルーズ\n\nTEL:050-3187-5040\n所在地\n広島県廿日市市\n関連URLなど\n\n宮島観光協会\n\nhttps://www.miyajima.or.jp/index.php\n所在地\n香川県小豆郡小豆島町\nおすすめの時期、見頃、施設の営業時間 など\n通年、特に秋\n関連URLなど\n\n寒霞渓ロープウェイ\n\nhttps://www.kankakei.co.jp/\n\n小豆島観光協会\n\nhttps://shodoshima.or.jp/sightseeing/?c=1&pl=&con=11\n【写真】積善山の桜並木\n所在地\n愛媛県越智郡上島町\nおすすめの時期、見頃、施設の営業時間 など\n通年、特に春　※桜開花時期は交通規制等あり\n関連URLなど\n\n瀬戸内かみじまトリップ\n\nhttps://www.kamijima.info/\n【写真】コバノミツバツツジ\n所在地\n瀬戸内地域\nおすすめの時期、見頃、施設の営業時間 など\n3月下旬～4月\n【写真】ハマゴウ\nおすすめの時期、見頃、施設の営業時間 など\n7～9月\n【写真】竜王山（りゅうおうざん）\n所在地\n広島県三原市\nおすすめの時期、見頃、施設の営業時間 など\n4月桜開花時\n関連URLなど\n\n三原観光navi\n\nhttps://www.mihara-kankou.com/sightseeing/1044\n【写真】因島公園（いんのしまこうえん）\n所在地\n広島県尾道市\nおすすめの時期、見頃、施設の営業時間 など\n通年、特に4月、11月\n関連URLなど\n\n因島観光協会\n\nhttps://kanko-innoshima.jp/\n【写真】嵩山（だけさん）\n所在地\n山口県周防大島町\n関連URLなど\n\n周防大島観光協会\n\nhttp://suo-oshima-kanko.net/\n【写真】嚴島神社\nおすすめの時期、見頃、施設の営業時間 など\n通年、11月の紅葉\n問い合わせ先\n嚴島神社社務所\n電話番号\n0829-44-2020\n関連URLなど\n\nhttps://www.itsukushimajinja.jp/index.html\n【写真】大不動岩屋\n所在地\n大分県国東市\n関連URLなど\n\nhttps://www.onie.jp/cultura/detail/690867a3-a52a-4a69-b09a-442502debe0d\n【写真】鞆の浦の町並み\n所在地\n広島県福山市\n問い合わせ先\n鞆の浦観光情報センター\n電話番号\n084-982-3200\n関連URLなど\n\n鞆の浦観光情報センター\n\nhttps://tomotetsu.co.jp/tomonouratic/\n\n鞆物語\n\nhttps://tomonoura.life/\n関連URLなど\n\nhttp://www.futagoji.jp/\n【写真】文殊仙寺\n関連URLなど\n\nhttps://www.monjyusenji.com/\n【写真】中山仙境（夷谷）\n所在地\n大分県豊後高田市\n所在地\n大分県姫島村\n関連URLなど\n\n姫島村\n\nhttps://www.himeshima.jp/kankou/\n【写真】牡蠣と牡蠣筏の風景\n所在地\n広島県、岡山県、兵庫県\nおすすめの時期、見頃、施設の営業時間 など\n11～4月\n関連URLなど\n\nひろしま公式観光サイト\n\nhttps://dive-hiroshima.com/feature/kaki/\n\n岡山観光WEB\n\nhttps://www.okayama-kanko.jp/feature/okayama-gourmet/04\n\n兵庫観光navi\n\nhttps://www.hyogo-tourism.jp/feature/gourmet\n【写真】友ヶ島 砲台跡\n所在地\n和歌山県\n問い合わせ先\n和歌山市　産業交流局　観光国際部　観光課\n電話番号\n073-435-1234\n関連URLなど\n\n友ヶ島汽船\n\nhttps://tomogashimakisen.com/main/\n所在地\n徳島県、愛媛県、香川県\nおすすめの時期、見頃、施設の営業時間 など\n春～秋\n関連URLなど\n\n四国八十八ヶ所霊場会\n\nhttps://88shikokuhenro.jp/\n【写真】二ホンアワサンゴ\n所在地\n山口県大島郡周防大島町\n関連URLなど\n\nなぎさ水族館\n\nhttps://nagisapark.jimdofree.com/%E3%81%AA%E3%81%8E%E3%81%95%E6%B0%B4%E6%97%8F%E9%A4%A8/\n【写真】スナメリ\n【写真】カブトガニ\n所在地\n岡山県笠岡市/山口県山口市\nおすすめの時期、見頃、施設の営業時間 など\n夏（観察会等）\n関連URLなど\n\n笠岡市立カブトガニ博物館\n\nhttps://www.city.kasaoka.okayama.jp/site/kabutogani/\n【写真】しまなみ海道サイクリング\n所在地\n広島県尾道市〜愛媛県今治市\n問い合わせ先\n（一社）しまなみジャパン\n電話番号\n0898-35-3194\n関連URLなど\n\nhttps://shimanami-cycle.or.jp/\n【写真】六甲山の夜景\n所在地\n神戸市灘区\nおすすめの時期、見頃、施設の営業時間 など\n冬\n【写真】シーカヤック\n関連URLなど\n\nhttps://www.env.go.jp/nature/nationalparks/list/setonaikai/try/\n【写真】兵庫県立いえしま自然体験センター\n関連URLなど\n\n兵庫県立家島自然体験センター\n\nhttps://shizen-ieshima.com/\n【写真】五色台ビジターセンター\n所在地\n〒762-0014 香川県坂出市王越町木沢字西山1733-18\n問い合わせ先\n五色台ビジターセンター\n電話番号\n0877-47-2479\n関連URLなど\n\nhttp://goshikivc.jp/\n【写真】大久野島ビジターセンター\n所在地\n〒729-2311\n広島県竹原市忠海町大久野島\n問い合わせ先\n大久野島ビジターセンター\n電話番号\n0846-26-0100\n関連URLなど\n\n大久野島ビジターセンター\n\nhttps://chushikoku.env.go.jp/okunoshima/top.html\n\nFacebook\n\nhttps://www.facebook.com/Okunovisitercenter/\n\nInstagram\n\nhttps://www.instagram.com/ohkunoshima_visitor/\n【写真】徳島県立　渦の道\n所在地\n\n〒772-0053\n\n徳島県鳴門市鳴門町（鳴門公園内）\n関連URLなど\n\nhttps://www.uzunomichi.jp/\n【写真】高松市屋島山上交流拠点施設　やしまーる\n所在地\n〒761-0111\n香川県高松市屋島東町1784-6\n関連URLなど\n\nhttps://www.yashima-navi.jp/jp/yashimaru/\n【写真】鷲羽山ビジターセンター\n所在地\n\n〒711-0925\n\n岡山県倉敷市下津井田之浦1-2\n関連URLなど\n\nhttp://wasyuzan-vc.jp/\n本文ここまでです。",
+      "sourceTextCharacterCount": 2688,
+      "reuseMode": "verbatim-or-adaptation-permitted",
+      "sourceBodyFingerprint": "ae616e219d3a239994db9d6e3fbc0d3adea35ebefa8b22360cbe76e789c45ab6",
+      "sourceAttribution": "出典：環境省ウェブサイト（https://www.env.go.jp/nature/nationalparks/list/setonaikai/spot/index.html）",
+      "sourceProcessing": "Item-level source body extracted for later editorial adaptation. No learner-facing text has been generated.",
+      "inventoryPosition": 197
+    },
+    {
+      "candidateId": "verified-travel-reading-c1a076b4a27b",
+      "targetShelf": "travel-reading",
+      "sourceFamilyId": "gov-env",
+      "sourceTitle": "日光国立公園 見どころ",
+      "sourcePublisher": "環境省",
+      "sourceUrl": "https://www.env.go.jp/nature/nationalparks/list/nikko/spot/",
+      "sourcePublishedDate": null,
+      "sourceRetrievedDate": "2026-08-22",
+      "rightsStatus": "adaptation-permitted",
+      "rightsBasis": {
+        "termsUrl": "https://www.env.go.jp/mail.html",
+        "licenseName": "Public Data License 1.0",
+        "licenseUrl": "https://www.digital.go.jp/resources/open_data/public_data_license_v1.0",
+        "itemLevelCheck": "No contrary text-rights notice detected in the fetched page; excluded media remains excluded.",
+        "verifiedDate": "2026-08-22"
+      },
+      "thirdPartyContentReview": {
+        "status": "checked-no-item-level-signal",
+        "signals": [],
+        "excludedMedia": [],
+        "assetsBundled": false
+      },
+      "sourceBodyExtractionStatus": "body-ready",
+      "sourceJapaneseSubstance": "ページの先頭です\nページ内を移動するためのリンク\nここから本文です。\n日光国立公園（PC表示）\n日光国立公園（SP表示）\n日光国立公園\n\n見どころ・施設\n海や川、水のある風景を 楽しむ\n\n中禅寺湖\n山や植物を楽しむ\n\n華厳滝\nレンゲツツジ（八方ヶ原）\nニッコウキスゲ（霧降高原）\n文化・くらしにふれる\n\n日光の社寺\n日光田母沢御用邸記念公園\n湯西川かまくら祭\n英国大使館別荘記念公園\nイタリア大使館別荘記念公園\n生き物に出会う\n\nサル\n施設の場所を確認する\n\n日光湯元ビジターセンター\n那須高原ビジターセンター\n塩原温泉ビジターセンター\n那須平成の森フィールドセンター\n赤沼自然情報センター\n塩原温泉観光協会\nなす高原自然の家\n那須ロープウェイ（山麓駅）\n霧降高原キスゲ平園地\n霧降高原レストハウス\n公園でできる体験例を見る\n\n那須平成の森ガイドツアー\n戦場ヶ原ウォーキングツアー\nスノーサイクリング\nフライフィッシング\n中禅寺湖クルーズ\n海や川、水のある風景を楽しむ\n【サムネイル】中禅寺湖\n山や植物を楽しむ\n【サムネイル】華厳滝\n【サムネイル】男体山\n【サムネイル】那須連山\n【サムネイル】日光白根山\n【サムネイル】レンゲツツジ（八方ヶ原）\n【サムネイル】ニッコウキスゲ（霧降高原）\n【サムネイル】龍王峡\n【サムネイル】戦場ヶ原木道\n【サムネイル】半月山展望台\n【サムネイル】那須平成の森\n【サムネイル】剣桂\n【サムネイル】観音沼森林公園\n文化・くらしにふれる\n-->\n\n日光の社寺\n\n本公園には日光東照宮や日光二荒山神社、日光山輪王寺など、世界文化遺産に登録された社寺が建ち並び、周囲の豊かな森林とともに、自然と歴史文化が融合した独特の景観を形成しています。\n\nタグ\n-->\n【サムネイル】日光田母沢御用邸記念公園\n【サムネイル】湯西川かまくら祭\n【サムネイル】天然かき氷\n【サムネイル】日光湯元温泉\n【サムネイル】塩原温泉郷\n【サムネイル】殺生石\n【サムネイル】英国大使館別荘記念公園\n【サムネイル】イタリア大使館別荘記念公園\n【サムネイル】サル\n【サムネイル】野鳥\n施設の場所を確認する\n【サムネイル】日光湯元ビジターセンター\n那須高原ビジターセンター\n\n那須高原ビジターセンターは、東京から約180キロメートル、栃木県の北部、雄大な那須連山山麓の那須湯本温泉にあります。栃木県と福島県にまたがる日光国立公園の那須甲子地域の様々な情報を紹介しています。\n\nタグ\n-->\n【サムネイル】塩原温泉ビジターセンター\n【サムネイル】日光自然博物館\n【サムネイル】那須平成の森フィールドセンター\n【サムネイル】赤沼自然情報センター\n日光市観光協会\n\n日光の各エリアの観光情報の発信と地域活性化を目的に活動しています。\n\nタグ\n-->\n塩原温泉観光協会\n\n塩原温泉郷は箒川の渓谷沿いに連なり、古くから塩原十一湯と呼ばれて多様な泉質や成分の温泉が湧いています。明治・大正時代よりたくさんの文人たちに愛され、とて焼やスープ入り焼きそばなどご当地フードも楽しめます。\n\nタグ\n-->\n那須町観光協会\n\n那須高原（那須町）には雄大な那須連山の主峰・茶臼岳（1,915m）がそびえ、西暦630年開湯の歴史ある那須温泉郷、九尾の狐伝説が残り松尾芭蕉も訪れた殺生石など、自然と歴史の魅力が詰まっています。\n\nタグ\n-->\n黒磯観光協会\n\n下野の薬湯として知られ、深い山間にたたずむ自然あふれる静かな温泉地の板室温泉や、白笹山の山腹、標高1200mにある静かで美しい沼原湿原など、黒磯の自然は知る人ぞ知るポイントに溢れています。\n\nタグ\n-->\nなす高原自然の家\n\nなす高原自然の家は、自然と触れ合うことができる生涯学習施設です。日光国立公園の最北端、標高1915mの茶臼岳を背景に、眼下には那須野が原、遠く八溝・筑波の山嶺が一望できる標高1030mの高所に位置しています。\n\nタグ\n-->\n那須ロープウェイ（山麓駅）\n\n関東を代表する「茶臼岳」は那須連山の主峰で、今もなお白い噴煙を噴き上げています。那須ロープウェイを利用すれば茶臼岳の9合目まで到達でき、山頂までのハイキングや、那須高原の雄大な風景を楽しめます。\n\nタグ\n-->\n霧降高原キスゲ平園地\n霧降高原レストハウス\n\n〒321-1421\n\n栃木県日光市所野1531（日光市霧降高原 キスゲ平園地）\n\n[TEL]0288-53-5337\n\n[URL]http://www.kirifuri-kogen.jp\n公園でできる体験例を見る\n【サムネイル】那須平成の森ガイドツアー\n【サムネイル】戦場ヶ原ウォーキングツアー\n【サムネイル】スノーシュー\n【サムネイル】スノーサイクリング\n【サムネイル】フライフィッシング\n【サムネイル】SUP\n【サムネイル】キャニオニング\n【サムネイル】中禅寺湖クルーズ\n【サムネイル】Eバイク\n【写真】中禅寺湖\n所在地\n栃木県日光市\nおすすめの時期、見頃、施設の営業時間 など\n春夏秋\n問い合わせ先\n日光市観光協会\n電話番号\n0288-22-1525\n関連URLなど\n\nhttp://www.nikko-kankou.org/spot/12/\nおすすめの時期、見頃、施設の営業時間 など\n春夏秋冬（水しぶきがはじける壮大な滝と四季折々の色彩）\n問い合わせ先\n日光市観光協会日光支部\n電話番号\n0288-54-2495\n関連URLなど\n\nhttp://www.nikko-kankou.org/\nおすすめの時期、見頃、施設の営業時間 など\n春夏秋〔冬季入山禁止〕\n\n7月31日～8月7日男体山登拝大祭\n関連URLなど\n\nhttp://www.nikko-kankou.org/spot/14/\n【写真】那須連山\n所在地\n栃木県那須郡/那須塩原市\nおすすめの時期、見頃、施設の営業時間 など\n春夏秋\n\n開山祭5月上旬～閉山祭11月上旬\n問い合わせ先\n那須観光協会\n電話番号\n0287-76-2619\n関連URLなど\n\nhttps://www.nasukogen.org/\n【写真】日光白根山\n所在地\n群馬県利根郡/栃木県日光市\nおすすめの時期、見頃、施設の営業時間 など\n春（6月上旬～シラネアオイ）\n\n夏（7月上旬～コマクサ）\n\n秋（9月中旬から10月下旬頃 紅葉）\n問い合わせ先\n片品村観光協会\n電話番号\n0278-58-3222\n関連URLなど\n\nhttps://oze-katashina.info/blog/3000/\n【写真】レンゲツツジ（八方ヶ原）\n所在地\n栃木県矢板市\nおすすめの時期、見頃、施設の営業時間 など\n初夏（6月上旬～中旬頃）\n問い合わせ先\n矢板市商工観光課\n電話番号\n0287-43-6211\n関連URLなど\n\nhttps://www.city.yaita.tochigi.jp/site/kankou/happou-tsutsuji.html\n【写真】ニッコウキスゲ（霧降高原）\nおすすめの時期、見頃、施設の営業時間 など\n初夏（6月中旬～7月上旬）\n問い合わせ先\n日光市霧降高原キスゲ平園地\n電話番号\n0288-53-5337\n関連URLなど\n\nhttp://www.kirifuri-kogen.jp/kisuge.html\n所在地\n日光市藤原\nおすすめの時期、見頃、施設の営業時間 など\n春夏秋（四季折々の渓谷美\n\n4月下旬～5月中旬頃 ミズバショウ、\n\n6月頃 ヒオウギアヤメ、\n\n10月下旬～11月上旬 紅葉）\n問い合わせ先\n日光市観光協会鬼怒川･川治支部\n\n日光市藤原観光課\n電話番号\n0288-77-3111(日光市藤原観光課)\n関連URLなど\n\nhttp://www.nikko-kankou.org/spot/42/\n【写真】戦場ヶ原木道\n所在地\n戦場ヶ原\n問い合わせ先\n日光湯元温泉ビジターセンター\n電話番号\n0288-62-2321\n関連URLなど\n\nhttp://nikkoyumoto-vc.com/visitor/\n【写真】半月山展望台\n所在地\n日光市中宮祠\n関連URLなど\n\nhttp://www.nikko-kankou.org/spot/1330/\n【写真】那須平成の森\n所在地\n栃木県那須郡那須町\nおすすめの時期、見頃、施設の営業時間 など\n春夏秋冬\n問い合わせ先\n那須平成の森フィールドセンター\n電話番号\n0287-74-6808\n関連URLなど\n\nhttps://nasuheisei-f.jp/\n所在地\n福島県西白河郡西郷村\n問い合わせ先\n西郷村観光協会\n電話番号\n0248-25-5795\n関連URLなど\n\nhttps://www.nishigo-kankou.jp/\n【写真】観音沼森林公園\n所在地\n福島県南会津郡下郷町\n問い合わせ先\n下郷町総合政策課商工観光係\n電話番号\n0241-69-1144\n関連URLなど\n\nhttps://shimogo.jp/\n【写真】日光の社寺\nおすすめの時期、見頃、施設の営業時間 など\n春夏秋冬（世界遺産の建造物と自然が織りなす絶景）\n【写真】日光田母沢御用邸記念公園\nおすすめの時期、見頃、施設の営業時間 など\n春夏秋冬（四季折々の風情ある庭園と100年に及ぶ荘厳な趣きある建造物）\n問い合わせ先\n日光田母沢御用邸記念公園\n電話番号\n0288-53-6767\n関連URLなど\n\nhttps://www.park-tochigi.com/tamozawa/\n【写真】湯西川かまくら祭\nおすすめの時期、見頃、施設の営業時間 など\n冬（1月下旬から2月下旬頃）\n問い合わせ先\n日光市観光協会\n\n湯西川支部･川俣・奥鬼怒支部\n電話番号\n0288-25-3955\n関連URLなど\n\nhttp://www.nikko-kankou.org/event/1210/\n【写真】天然かき氷\nおすすめの時期、見頃、施設の営業時間 など\n夏\n問い合わせ先\n日光市役所\n\n日光市観光協会\n関連URLなど\n\n(日光市役所）特選日光ブランド日光の天然氷\n\nhttps://www.city.nikko.lg.jp/hisho/nikkobrand_food.html\n【写真】日光湯元温泉\nおすすめの時期、見頃、施設の営業時間 など\n春夏秋冬（湯元の息吹の春・爽快の夏・絢爛の秋・優美の冬を堪能しながら心身ともにリフレッシュ）\n問い合わせ先\n奥日光湯元温泉旅館協同組合\n電話番号\n0288-62-2570\n関連URLなど\n\nhttps://www.nikkoyumoto.com/\n【写真】塩原温泉郷\n所在地\n栃木県那須塩原市\n問い合わせ先\n塩原温泉ビジターセンター\n電話番号\n0287-32-3050\n関連URLなど\n\nhttp://www.siobara.or.jp/vc/\n問い合わせ先\n那須町観光協会\n関連URLなど\n\nhttp://www.nasukogen.org/\n【写真】英国大使館別荘記念公園\n問い合わせ先\n日光自然博物館\n電話番号\n0288-55-0880\n関連URLなど\n\nhttps://www.nikko-nsm.co.jp/british.html\n【写真】イタリア大使館別荘記念公園\nおすすめの時期、見頃、施設の営業時間 など\n夏（開放感あふれた広縁）\n\n秋（湖畔の紅葉）\n関連URLなど\n\nhttps://www.nikko-nsm.co.jp/italy.html\n問い合わせ先\n栃木県 自然環境課\n\n日光市 環境森林課 自然環境係\n電話番号\n028-623-3211\n\n0288-21-5152\n関連URLなど\n\n（栃木県自然環境課）\n\nhttps://www.pref.tochigi.lg.jp/d04/eco/shizenkankyou/shizen/saruhogokannri3.html\n\n（日光市）\n\nhttps://www.city.nikko.lg.jp/reiki_int/reiki_honbun/r340RG00000688.html\n関連URLなど\n\nhttps://www.nikko-nsm.co.jp/\n【写真】那須平成の森ガイドツアー\n所在地\n栃木県那須郡\n【写真】戦場ヶ原ウォーキングツアー\n問い合わせ先\n日光自然ガイド協議会\n\n日光市観光協会\n電話番号\n0288-22-1525（日光市観光協会）\n関連URLなど\n\n（日光市観光協会） http://www.nikko-kankou.org/\n\n（日光自然ガイド協議会） https://www.nikkoguide.jp\n【写真】スノーシュー\nおすすめの時期、見頃、施設の営業時間 など\n冬\n【写真】スノーサイクリング\nおすすめの時期、見頃、施設の営業時間 など\n冬（1～3月）\n問い合わせ先\nライドエクスペリエンス\n電話番号\n0287-74-5585\n関連URLなど\n\nhttps://ride-experience.com/3681\n【写真】フライフィッシング\n【写真】キャニオニング\n【写真】中禅寺湖クルーズ\nおすすめの時期、見頃、施設の営業時間 など\n春夏秋\n\n（休業期間：12月～4月中旬）\n問い合わせ先\n日光市観光協会\n\n(東武興業株式会社)\n電話番号\n0288-22-1525\n\n(0288-55-0360)\n関連URLなど\n\n（日光市観光協会） http://www.nikko-kankou.org/spot/601/\n\n（東武興業） https://chuzenjiko-cruise.com\n【写真】Eバイク\n問い合わせ先\n日光自然博物館（奥日光拠点）\n\n那須町観光協会（那須高原拠点）\n\n塩原温泉観光協会（塩原温泉拠点）\n\n那須塩原市観光局（那須ガーデンアウトレット拠点）\n電話番号\n0288-55-0880（日光自然博物館）\n\n0287-74-2301（那須町観光協会）\n\n0287-74-2301（塩原温泉観光協会）\n\n0287-74-5585（那須塩原市観光局）\n関連URLなど\n\n（奥日光エリア） https://ebike-okunikko.com\n\n（那須＆塩原エリア） https://ebike-nasu.com/\n【写真】日光湯元ビジターセンター\n所在地\n〒321-1662\n\n栃木県日光市湯元\n問い合わせ先\n日光湯元ビジターセンタ－（自然公園財団 日光支部）\n【写真】那須高原ビジターセンター\n所在地\n〒325-0301\n\n栃木県那須郡那須町湯本207-2\nおすすめの時期、見頃、施設の営業時間 など\n【開館時間】4月1日～11月30日／午前8時30分～午後5時30分\n\n12月1日～3月31日／午前9時～午後4時30分\n\n【休館日】水曜日（水曜日が祝日の場合は翌日）※ただし5月、8月、10月は無休\n\n館内点検による休館日（1月、9月にそれぞれ2日間）\n問い合わせ先\n那須高原ビジターセンター\n電話番号\n0287-74-2301\n関連URLなど\n\nhttps://nasu-vc.jp/\n【写真】塩原温泉ビジターセンター\n所在地\n〒329-2921\n\n栃木県那須塩原市塩原前山国有林内\nおすすめの時期、見頃、施設の営業時間 など\n【開館時間】9：00 ～ 16：30\n\n【休館日】毎週火曜日（祝日の場合は翌日）・12月29日～ 1月3日\n【写真】日光自然博物館\n所在地\n〒321-1662\n\n栃木県日光市中宮祠2480-1\nおすすめの時期、見頃、施設の営業時間 など\n春夏秋冬\n\n(館内展示リニューアル・大型映像やARを取り入れたジオラマ、最新のデジタル技術展示）\n【写真】那須平成の森フィールドセンター\n所在地\n〒325-0302\n\n栃木県那須郡那須町高久丙3254\nおすすめの時期、見頃、施設の営業時間 など\n【開園時間】通常／9:00～16:30、5･7･8月／9:00～17:00\n\n【休園日】水曜日（祝日の場合はその翌日、GW、お盆、年末年始は無休）\n【写真】赤沼自然情報センター\n所在地\n〒321-1661\n\n栃木県日光市中宮祠2494\nおすすめの時期、見頃、施設の営業時間 など\n春夏秋(4月下旬～11月末 低公害バス運行 〔赤沼車庫～小田代原～西ノ湖入口～千手ヶ浜〕）\n【写真】日光市観光協会\n所在地\n〒321-1261\n\n栃木県日光市今市717-1\n\n〇日光支部：栃木県日光市御幸町591 日光郷土センター内\n\n〇鬼怒川・川治支部：栃木県日光市鬼怒川温泉大原1404-1\n\n鬼怒川・川治温泉観光情報センター内\n\n〇湯西川・川俣・奥鬼怒支部：栃木県日光市西川478-1\n\n道の駅湯西川内\n電話番号\n0288-22-1525 (代表)\n【写真】塩原温泉観光協会\n所在地\n〒329-2921\n\n栃木県那須塩原市塩原747\n問い合わせ先\n塩原温泉観光協会\n電話番号\n0287-32-4000\n関連URLなど\n\nhttp://www.siobara.or.jp/\n【写真】那須町観光協会\n所在地\n〒325-0301\n\n栃木県那須郡那須町湯本182\n【写真】黒磯観光協会\n所在地\n〒325-8501\n\n栃木県那須塩原市共墾社108-2（那須塩原市役所商工観光課内）\n問い合わせ先\n黒磯観光協会\n電話番号\n0287-62-7155\n関連URLなど\n\nhttp://www.kuroiso-kankou.org/\n【写真】なす高原自然の家\n所在地\n〒325-0301\n\n栃木県那須郡那須町湯本157\nおすすめの時期、見頃、施設の営業時間 など\n[休業日] 無休\n問い合わせ先\nなす高原自然の家\n電話番号\n0287-76-6240\n関連URLなど\n\n[URL] https://sites.google.com/view/windy-nasu/\n\n[チェックイン] 9:00～16:00\n\n[チェックアウト] 9:00～16:30\n\n[利用料] 有料（但し、県内小中学生は宿泊費無料）\n\n[日帰り入浴] 無\n\n[泉質] 単純泉\n\n[外国語対応] 無\n\n[Wi-Fi] 一部有り\n\n[食事施設] 無（利用団体のみ利用可）\n【写真】那須ロープウェイ（山麓駅）\n所在地\n〒325-0301\n\n栃木県那須郡那須町大字湯本那須岳215\nおすすめの時期、見頃、施設の営業時間 など\n[営業時間] 8:30～16:30（通常） ※季節により変動有り\n\n[休業日] 12月中旬～3月中旬\n問い合わせ先\n那須ロープウェイ\n電話番号\n0287-76-2449\n関連URLなど\n\n[URL] https://www.nasu-ropeway.jp/\n\n[利用料] 有料\n\n[外国語対応] 無\n\n[Wi-Fi] 有り\n\n[食事施設] 有り\n【写真】霧降高原キスゲ平園地 霧降高原レストハウス\n問い合わせ先\n自然公園財団 日光支部\n関連URLなど\n\nhttp://www.kirifuri-kogen.jp/\n本文ここまでです。",
+      "sourceTextCharacterCount": 4341,
+      "reuseMode": "verbatim-or-adaptation-permitted",
+      "sourceBodyFingerprint": "43780862d8b65f50a005000671b316f0c1cd20995de3c83bcc60227694901800",
+      "sourceAttribution": "出典：環境省ウェブサイト（https://www.env.go.jp/nature/nationalparks/list/nikko/spot/）",
+      "sourceProcessing": "Item-level source body extracted for later editorial adaptation. No learner-facing text has been generated.",
+      "inventoryPosition": 198
+    },
+    {
+      "candidateId": "verified-travel-reading-90693ae49100",
+      "targetShelf": "travel-reading",
+      "sourceFamilyId": "gov-env",
+      "sourceTitle": "大山隠岐国立公園 見どころ",
+      "sourcePublisher": "環境省",
+      "sourceUrl": "https://www.env.go.jp/nature/nationalparks/list/daisen-oki/spot/",
+      "sourcePublishedDate": null,
+      "sourceRetrievedDate": "2026-08-22",
+      "rightsStatus": "adaptation-permitted",
+      "rightsBasis": {
+        "termsUrl": "https://www.env.go.jp/mail.html",
+        "licenseName": "Public Data License 1.0",
+        "licenseUrl": "https://www.digital.go.jp/resources/open_data/public_data_license_v1.0",
+        "itemLevelCheck": "No contrary text-rights notice detected in the fetched page; excluded media remains excluded.",
+        "verifiedDate": "2026-08-22"
+      },
+      "thirdPartyContentReview": {
+        "status": "checked-no-item-level-signal",
+        "signals": [],
+        "excludedMedia": [],
+        "assetsBundled": false
+      },
+      "sourceBodyExtractionStatus": "body-ready",
+      "sourceJapaneseSubstance": "ページの先頭です\nページ内を移動するためのリンク\nここから本文です。\n大山隠岐国立公園（PC表示）\n大山隠岐国立公園（SP表示）\n大山隠岐国立公園\n\n見どころ・施設\n海や川、水のある風景を 楽しむ\n\n国賀海岸\n山や植物を楽しむ\n\n大山\nダイセンキャラボク（大山8合目）\nツツジ（五本松公園）\nカタクリ（毛無山）\n文化・くらしにふれる\n\n出雲大社\n三徳山（三佛寺 投入堂）\n玉若酢神社（八百杉）\n生き物に出会う\n\n隠岐の牛馬たち（摩天崖）\nアカショウビン（大山ほか）\nオキサンショウウオ\nウミネコ（経島）\n施設の場所を確認する\n\n大山ナショナルパークセンター\n鳥取県立大山自然歴史館\n島根県立三瓶自然館サヒメル\n日御碕ビジターセンター\n島根半島・宍道湖中海ジオパーク　松江ビジターセンター\n公園でできる体験例を見る\n\n蒜山サイクリング\n洞窟シーカヤック\n海や川、水のある風景を楽しむ\n【サムネイル】国賀海岸\n【サムネイル】赤壁\n【サムネイル】明屋海岸\n【サムネイル】日御碕灯台\n【サムネイル】美保関灯台\n【サムネイル】大山滝\n【サムネイル】塩釜の冷泉\n【サムネイル】木谷沢渓流\n【サムネイル】壇鏡の滝\n【サムネイル】加賀の潜戸\n【サムネイル】北浦海水浴場\n【サムネイル】桂島\n【サムネイル】南光河原\n山や植物を楽しむ\n【サムネイル】大山\n【サムネイル】三瓶山\n【サムネイル】ダイセンキャラボク（大山8合目）\n【サムネイル】乳房杉\n【サムネイル】ツツジ（五本松公園）\n【サムネイル】カタクリ（毛無山）\n【サムネイル】蒜山三座\n【サムネイル】鏡ヶ成\n【サムネイル】カキツバタ\n【サムネイル】トウテイラン\n【サムネイル】トカゲ岩\n文化・くらしにふれる\n【サムネイル】出雲大社\n【サムネイル】三徳山（三佛寺 投入堂）\n【サムネイル】日御碕神社\n【サムネイル】出雲神楽鑑賞\n【サムネイル】イカ干し\n【サムネイル】美保神社\n【サムネイル】大神山神社奥宮\n【サムネイル】山焼き（蒜山）\n【サムネイル】大山寺\n【サムネイル】精進料理\n【サムネイル】出雲そば\n【サムネイル】三瓶温泉\n【サムネイル】玉若酢神社（八百杉）\n【サムネイル】焼火神社\n【サムネイル】牛突き\n【サムネイル】アラメ\n【サムネイル】隠岐の牛馬たち（摩天崖）\n【サムネイル】アカショウビン（大山ほか）\n【サムネイル】オキサンショウウオ\n【サムネイル】ウミネコ（経島）\n施設の場所を確認する\n【サムネイル】大山ナショナルパークセンター\n【サムネイル】鳥取県立大山自然歴史館\n【サムネイル】隠岐自然館\n【サムネイル】島根県立三瓶自然館サヒメル\n【サムネイル】日御碕ビジターセンター\n【サムネイル】島根半島・宍道湖中海ジオパーク　松江ビジターセンター\n公園でできる体験例を見る\n【サムネイル】蒜山サイクリング\n【サムネイル】洞窟シーカヤック\n【サムネイル】潜戸観光遊覧船\n【サムネイル】大山登山\n【写真】国賀海岸\n所在地\n島根県西ノ島町\nおすすめの時期、見頃、施設の営業時間 など\n通年\n所在地\n島根県知夫村\nおすすめの時期、見頃、施設の営業時間 など\n通年、特に夏\n【写真】明屋海岸\n所在地\n島根県海士町\n【写真】日御碕灯台\n所在地\n島根県出雲市\n問い合わせ先\n日御碕ビジターセンター\n電話番号\n0853-54-5400\n【写真】美保関灯台\n所在地\n島根県松江市\n所在地\n鳥取県琴浦町\nおすすめの時期、見頃、施設の営業時間 など\n8月（通年可）\n【写真】塩釜の冷泉\n所在地\n岡山県真庭市\n【写真】木谷沢渓流\n所在地\n鳥取県江府町\n【写真】壇鏡の滝\n所在地\n島根県隠岐の島町\n【写真】加賀の潜戸\nおすすめの時期、見頃、施設の営業時間 など\n3月～11月\n【写真】北浦海水浴場\n問い合わせ先\n桂島ビジターセンター\n電話番号\n0852-85-2902\n【写真】南光河原\n所在地\n鳥取県大山町\n所在地\n鳥取県大山町ほか\nおすすめの時期、見頃、施設の営業時間 など\n春・夏・秋\n所在地\n島根県大田市ほか\n【写真】ダイセンキャラボク（大山8合目）\n所在地\n島根県隠岐郡隠岐の島町\n【写真】ツツジ（五本松公園）\nおすすめの時期、見頃、施設の営業時間 など\n4月下旬から5月上旬（通年可）\n【写真】カタクリ（毛無山）\n所在地\n岡山県新庄村\nおすすめの時期、見頃、施設の営業時間 など\n4月\n【写真】蒜山三座\n【写真】カキツバタ\n所在地\n島根県大田市\nおすすめの時期、見頃、施設の営業時間 など\n5月上旬から6月上旬（通年可）\n【写真】トウテイラン\n所在地\n島根県隠岐の島町、西ノ島町\nおすすめの時期、見頃、施設の営業時間 など\n夏～秋\n【写真】トカゲ岩\n【写真】出雲大社\n【写真】三徳山（三佛寺 投入堂）\n所在地\n鳥取県三朝町\nおすすめの時期、見頃、施設の営業時間 など\n4月から11月（本堂は通年可）\n【写真】日御碕神社\n【写真】出雲神楽鑑賞\nおすすめの時期、見頃、施設の営業時間 など\n6月〜11月の特定日\n【写真】イカ干し\n【写真】美保神社\n【写真】大神山神社奥宮\n【写真】山焼き（蒜山）\nおすすめの時期、見頃、施設の営業時間 など\n春\n【写真】精進料理\n【写真】出雲そば\n所在地\n島根県出雲市、松江市ほか\n【写真】三瓶温泉\n【写真】玉若酢神社（八百杉）\n【写真】焼火神社\nおすすめの時期、見頃、施設の営業時間 など\n通年（生は春が旬）\n【写真】隠岐の牛馬たち（摩天崖）\n【写真】アカショウビン（大山ほか）\n所在地\n鳥取県/島根県/岡山県\n【写真】オキサンショウウオ\n所在地\n島根県隠岐郡\n【写真】ウミネコ（経島）\nおすすめの時期、見頃、施設の営業時間 など\n11月～7月\n【写真】蒜山サイクリング\n【写真】洞窟シーカヤック\n所在地\n島根県隠岐の島町ほか\n【写真】潜戸観光遊覧船\n【写真】大山登山\n【写真】大山ナショナルパークセンター\n所在地\n鳥取県西伯郡大山町大山40-33\nおすすめの時期、見頃、施設の営業時間 など\n[開館時間] 8:00-18:30\n電話番号\n0859-52-2165\n関連URLなど\n\n入館無料\n【写真】鳥取県立大山自然歴史館\n所在地\n鳥取県西伯郡大山町大山43\nおすすめの時期、見頃、施設の営業時間 など\n[開館時間] 9:00-17:00（夏期18:30閉館）\n電話番号\n0859-52-2327\n【写真】隠岐自然館\n所在地\n島根県隠岐郡隠岐の島町中町目貫の四61 隠岐ジオゲートウェイ2F\nおすすめの時期、見頃、施設の営業時間 など\n[開館時間] 9:00-17:00（第2・第4火曜日休館）\n電話番号\n08512-2-1583\n関連URLなど\n\n入館有料\n【写真】島根県立三瓶自然館サヒメル\n所在地\n島根県大田市三瓶町多根1121-8\nおすすめの時期、見頃、施設の営業時間 など\n[開館時間] 9:30-17:00（火曜休館）\n電話番号\n0854-86-0500\n【写真】日御碕ビジターセンター\n所在地\n出雲市大社町日御碕1089-37\nおすすめの時期、見頃、施設の営業時間 など\n[開館時間] 9:00-17:00（年中無休）\n関連URLなど\n\n[URL] https://www.izumo-kankou.gr.jp/5280\n\n[料金] 入館無料\n【写真】島根半島・宍道湖中海ジオパーク　松江ビジターセンター\n所在地\n松江市島根町加賀6120–14（マリンプラザしまね2F）\nおすすめの時期、見頃、施設の営業時間 など\n[開館時間] 9:30～16:30（12月〜2月は無人開館）\n\n[休館日] 火曜日、年末年始（12/28～1/4）\n電話番号\n0852-55-5399\n関連URLなど\n\n[料金] 入館無料\n大山隠岐国立公園 おすすめスポット20選\n大山隠岐国立公園のおすすめスポット20選（PC）\n大山隠岐国立公園のおすすめスポット20選（SP）\n本文ここまでです。",
+      "sourceTextCharacterCount": 2284,
+      "reuseMode": "verbatim-or-adaptation-permitted",
+      "sourceBodyFingerprint": "2b181a5fe2e701c6a03568f310d69854bfa1a9c96f3924a4f6a7aa537fcb016c",
+      "sourceAttribution": "出典：環境省ウェブサイト（https://www.env.go.jp/nature/nationalparks/list/daisen-oki/spot/）",
+      "sourceProcessing": "Item-level source body extracted for later editorial adaptation. No learner-facing text has been generated.",
+      "inventoryPosition": 199
+    },
+    {
+      "candidateId": "verified-travel-reading-9c1bbceeb6fe",
+      "targetShelf": "travel-reading",
+      "sourceFamilyId": "gov-env",
+      "sourceTitle": "吉野熊野国立公園 見どころ",
+      "sourcePublisher": "環境省",
+      "sourceUrl": "https://www.env.go.jp/nature/nationalparks/list/yoshino-kumano/spot/",
+      "sourcePublishedDate": null,
+      "sourceRetrievedDate": "2026-08-22",
+      "rightsStatus": "adaptation-permitted",
+      "rightsBasis": {
+        "termsUrl": "https://www.env.go.jp/mail.html",
+        "licenseName": "Public Data License 1.0",
+        "licenseUrl": "https://www.digital.go.jp/resources/open_data/public_data_license_v1.0",
+        "itemLevelCheck": "No contrary text-rights notice detected in the fetched page; excluded media remains excluded.",
+        "verifiedDate": "2026-08-22"
+      },
+      "thirdPartyContentReview": {
+        "status": "checked-no-item-level-signal",
+        "signals": [],
+        "excludedMedia": [],
+        "assetsBundled": false
+      },
+      "sourceBodyExtractionStatus": "body-ready",
+      "sourceJapaneseSubstance": "ページの先頭です\nページ内を移動するためのリンク\nここから本文です。\n吉野熊野国立公園（PC表示）\n吉野熊野国立公園（SP表示）\n吉野熊野国立公園\n\n見どころ・施設\n海や川、水のある風景を 楽しむ\n\n串本周辺の海域公園\nフェニックス褶曲\n山や植物を楽しむ\n\n大台ヶ原\n西大台利用調整地区\n文化・くらしにふれる\n\n熊野古道\n生き物に出会う\n\nアカウミガメ\nオオカワリギンチャク\nオオダイガハラサンショウウオ\n施設の場所を確認する\n\n宇久井ビジターセンター\n大台ヶ原ビジターセンター\n本州最南端潮風の休憩所\n公園でできる体験例を見る\n\nダイビング\n海や川、水のある風景を楽しむ\n【サムネイル】串本周辺の海域公園\n【サムネイル】三段壁\n【サムネイル】天神崎\n【サムネイル】橋杭岩\n【サムネイル】瀞峡\n【サムネイル】那智の大滝\n【サムネイル】円月島\n【サムネイル】千畳敷\n【サムネイル】フェニックス褶曲\n【サムネイル】潮岬\n【サムネイル】七里御浜\n【サムネイル】鬼ヶ城\n【サムネイル】楯ヶ崎\n山や植物を楽しむ\n【サムネイル】大台ヶ原\n【サムネイル】大杉谷\n【サムネイル】大蛇嵓\n【サムネイル】吉野山の桜\n【サムネイル】山上ヶ岳\n【サムネイル】西大台利用調整地区\n【サムネイル】八経ヶ岳\n文化・くらしにふれる\n【サムネイル】熊野古道\n-->\n\n熊野本宮大社\n\nかつて熊野川の中州にあった社殿は、明治の大洪水以降、現在の場所に移築されました。ここから熊野速玉大社まで続く「川の参詣道」を、川舟下りでたどることができます。\n\nタグ\n-->\n-->\n\n熊野速玉大社\n\n熊野川河口に位置し、社殿の背後にそびえる千穂ヶ峰から、祭神が最初に降臨したところと伝えられる神倉神社(元宮)まで遊歩道が整備されています。\n\nタグ\n-->\n-->\n\n熊野那智大社\n\n日本一の落差を誇る「那智大滝」を祭神とし、滝の背後に広がる照葉樹林は、那智原始林として保護されています。\n\nタグ\n-->\n花の窟・獅子岩\n\n熊野市にある「花の窟」は『日本書記』（720年：奈良時代）の神代第一で「国うみの舞台」として登場する日本最古の神社で、現在はパワースポットとしても有名です。祭神は、「イザナミノミコト」「カグツチノミコト」で、他の神社と異なり社殿がなく、ご神体が高さ45mの岩（窟）となっています。花の窟の名は、季節の花々で神をお祀りしたことに由来するといわれています。「花の窟」から東に進むと「獅子岩」が見えてきます。「獅子岩」は、世界遺産、天然記念物及び名勝になっており、熊野灘に向かって吠える獅子の姿は圧巻です。地盤の隆起と海蝕現象によってうまれた高さ約25m、周囲約210mの奇岩で、南側に位置する神仙洞の吽（うん）の岩（雌岩）に対して阿（あ）の岩（雄岩）と呼ばれ、井戸川上流に位置する大馬神社の狛犬とされています。\n金峯山寺\n\n金峯山修験本宗の総本山として全国の修験者・山伏が集う修験道の中心寺院。\n本堂である蔵王堂は国宝で、秘仏のご本尊金剛蔵王大権現の尊像3体がお祀りされています。\n大峯奥駈道\n\n修験道の開祖である役行者が8世紀初めに開いたとされる修験者の修行の道。吉野から熊野まで約170㎞あり、平成16年7月に「紀伊山地の霊場と参詣道」として、ユネスコ世界文化遺産にも登録されています。\n【サムネイル】アカウミガメ\n【サムネイル】オオカワリギンチャク\n【サムネイル】サンゴ\n【サムネイル】オオダイガハラサンショウウオ\n施設の場所を確認する\n【サムネイル】宇久井ビジターセンター\n【サムネイル】大台ヶ原ビジターセンター\n【サムネイル】本州最南端潮風の休憩所\n公園でできる体験例を見る\n【サムネイル】ダイビング\n【サムネイル】北山川筏くだり\n【写真】串本周辺の海域公園\n所在地\n和歌山県東牟婁郡\nおすすめの時期、見頃、施設の営業時間 など\n通年\n問い合わせ先\n串本海中公園\n電話番号\n0735-62-1122\nE-mail\n\nホームページお問い合わせフォーム\n関連URLなど\n\nhttps://www.kushimoto.co.jp/\n所在地\n和歌山県西牟婁郡\n所在地\n和歌山県田辺市\n問い合わせ先\n道の駅くしもと橋杭岩\n電話番号\n0735-62-5755\n関連URLなど\n\nhttps://kankou-kushimoto.jp/spots/%e6%a9%8b%e6%9d%ad%e5%b2%a9\n所在地\n三重県/奈良県/和歌山県\n問い合わせ先\n十津川村観光協会\n電話番号\n0746-63-0200\n関連URLなど\n\nhttp://totsukawa.info/joho/kanko/6doro-kyo_gorge.html\n【写真】那智の大滝\n問い合わせ先\n一般社団法人 那智勝浦観光機構\n電話番号\n0735-52-6153\n関連URLなど\n\nhttps://nachikan.jp/spot/\n所在地\n〒649-2211\n\n和歌山県西牟婁郡白浜町3740\n問い合わせ先\n白浜町\n電話番号\n0739-43-5555\n関連URLなど\n\nhttp://www.town.shirahama.wakayama.jp/kanko/midokoro/1454401545853.html\n所在地\n和歌山県西牟婁郡白浜町2927-72\n関連URLなど\n\nhttp://www.town.shirahama.wakayama.jp/kanko/midokoro/1454456682725.html\n【写真】フェニックス褶曲\n所在地\n和歌山県西牟婁郡すさみ町口和深\n問い合わせ先\nすさみ町\n電話番号\n0739-55-2004\n関連URLなど\n\nhttps://nankikumanogeo.jp/geosite/fuenikkusushukyoku/\n所在地\n和歌山県東牟婁郡串本町潮岬\n問い合わせ先\n一般社団法人南紀串本観光協会\n電話番号\n0735-62-3171\n関連URLなど\n\nhttps://kankou-kushimoto.jp/\n【写真】七里御浜\n所在地\n三重県熊野市、南牟婁郡御浜町、紀宝町\n問い合わせ先\n熊野市観光協会\n電話番号\n0597-89-0100\n関連URLなど\n\nhttps://www.kumano-kankou.info/\n所在地\n〒519-4323 三重県熊野市木本町1835\n所在地\n三重県熊野市甫母町\n【写真】大台ヶ原\n所在地\n奈良県吉野郡上北山村\nおすすめの時期、見頃、施設の営業時間 など\n4月下旬～11月下旬\n問い合わせ先\n大台ヶ原ビジターセンター\n電話番号\n07468-3-0312\n関連URLなど\n\nhttps://kinki.env.go.jp/nature/mat/m_2.html\n所在地\n三重県多気郡大台町\n問い合わせ先\n公益社団法人大杉谷登山センター\n電話番号\n0598-78-3338\n関連URLなど\n\nhttps://www.oosugidani.jp/\n【写真】吉野山の桜\n所在地\n奈良県吉野郡吉野町吉野山\nおすすめの時期、見頃、施設の営業時間 など\n3月下旬～4月\n問い合わせ先\n吉野ビジターズビューロー\n\n吉野山観光協会\n電話番号\n0746-34-2522\n\n0746-32-1007\n関連URLなど\n\nhttps://yoshino-kankou.jp/\n\nhttps://yoshinoyama-kankou.com/\n【写真】山上ヶ岳\n所在地\n奈良県吉野郡天川村洞川\nおすすめの時期、見頃、施設の営業時間 など\n通年\n\n（戸開け期間は5/3～9/23)\n【写真】西大台利用調整地区\n問い合わせ先\n上北山村商工会\n電話番号\n［TEL］07468-3-0070\n\n［FAX］07468-2-0205\n関連URLなど\n\nhttps://r.goope.jp/kamikitayamamura/free/nishioodai\n【写真】八経ヶ岳\n【写真】熊野古道\n所在地\n和歌山県/奈良県/三重県\n問い合わせ先\n①和歌山県公式観光サイト\n\n　和歌山県観光振興課内\n\n　公益社団法人和歌山県観光連盟\n\n②世界遺産熊野古道伊勢路サイト\n\n　三重県地域連携・交通部\n\n　南部地域振興局　東紀州振興課\n電話番号\n①073-422-4631\n\n②059-224-2193\nE-mail\n\n①ホームページお問い合わせフォーム\n\n② hkishu@pref.mie.lg.jp\n関連URLなど\n\n① https://www.wakayama-kanko.or.jp/features/world-heritage-kumano/#kmn-002\n\n② https://www.wakayama-kanko.or.jp/features/world-heritage-kumano/\n【写真】熊野本宮大社\n問い合わせ先\n熊野本宮大社\n電話番号\n0735-42-0009\n関連URLなど\n\nhttp://www.hongutaisha.jp/\n【写真】熊野速玉大社\n所在地\n和歌山県新宮市\n問い合わせ先\n熊野速玉大社\n電話番号\n0735-22-2533\n関連URLなど\n\nhttps://kumanohayatama.jp/\n【写真】熊野那智大社\n問い合わせ先\n熊野那智大社\n電話番号\n0735-55-0321\n関連URLなど\n\nhttps://kumanonachitaisha.or.jp/\n【写真】花の窟・獅子岩\n所在地\n花の窟\n\n〒519-4325 三重県熊野市有馬町130\n【写真】金峯山寺\n所在地\n〒639-3115\n\n奈良県吉野郡吉野町吉野山2498\n問い合わせ先\n金峯山寺\n電話番号\n0746-32-8371\n関連URLなど\n\nhttps://www.kinpusen.or.jp/\n【写真】大峯奥駈道\n所在地\n奈良県、和歌山県\n【写真】アカウミガメ\n所在地\n和歌山県\nおすすめの時期、見頃、施設の営業時間 など\n6月～7月\n【写真】オオカワリギンチャク\n所在地\n和歌山県日高郡\n【写真】オオダイガハラサンショウウオ\n【写真】ダイビング\n【写真】北山川筏くだり\n問い合わせ先\n北山村観光センター\n電話番号\n0735-49-2324\n関連URLなど\n\nhttps://www.vill.kitayama.wakayama.jp/kanko/ikada/\n【写真】宇久井ビジターセンター\n所在地\n〒649-5312\n\n和歌山県東牟婁郡那智勝浦町宇久井830番地\n問い合わせ先\n宇久井ビジターセンター\n電話番号\n[TEL] 0735-54-2510\n\n[FAX] 0735-54-1540\n関連URLなど\n\nhttps://www.ugui-vc.jp/\n【写真】大台ヶ原ビジターセンター\n所在地\n〒639-3702\n\n奈良県吉野郡上北山村小橡660-1\nおすすめの時期、見頃、施設の営業時間 など\n[開館期間] 4月下旬～11月\n電話番号\n[TEL / FAX] 07468-3-0312\n関連URLなど\n\nhttps://www.pref.nara.jp/2977.htm\n【写真】本州最南端潮風の休憩所\n所在地\n〒649-3502\n\n和歌山県東牟婁郡串本町潮岬2865-1\n問い合わせ先\n潮風の休憩所\n電話番号\n0735-62-5750\n関連URLなど\n\nhttps://www.town.kushimoto.wakayama.jp/kanko/shionomisaki/shiokaze.html\n本文ここまでです。",
+      "sourceTextCharacterCount": 2494,
+      "reuseMode": "verbatim-or-adaptation-permitted",
+      "sourceBodyFingerprint": "5e82a4d70b84fd15abc569e83995b37500c8d06ee9b88fdc3ddfee2122e435f9",
+      "sourceAttribution": "出典：環境省ウェブサイト（https://www.env.go.jp/nature/nationalparks/list/yoshino-kumano/spot/）",
+      "sourceProcessing": "Item-level source body extracted for later editorial adaptation. No learner-facing text has been generated.",
+      "inventoryPosition": 200
     }
   ]
 }
