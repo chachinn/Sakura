@@ -7,6 +7,7 @@ on:
     paths:
       - .github/workflows/complete-reading-article-longform-sources.yml
       - tools/upgrade-reading-article-longform-source-selection.mjs
+      - tools/add-reading-beauty-longform-roots.mjs
   workflow_dispatch:
 
 permissions:
@@ -27,6 +28,9 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '22'
+
+      - name: Add targeted Beauty source roots
+        run: node tools/add-reading-beauty-longform-roots.mjs
 
       - name: Upgrade Article source selection policy
         run: node tools/upgrade-reading-article-longform-source-selection.mjs
@@ -77,7 +81,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add -- tools/discover-reading-article-topic-sources.mjs data/reading/qa/article-topic-source-discovery.json data/reading/qa/article-topic-source-candidates.json data/reading/body-ready/articles.json data/reading/qa/body-ready-source-report.json data/reading/qa/source-rights-report.json
+          git add -- data/reading/source-registry.json tools/discover-reading-article-topic-sources.mjs data/reading/qa/article-topic-source-discovery.json data/reading/qa/article-topic-source-candidates.json data/reading/body-ready/articles.json data/reading/qa/body-ready-source-report.json data/reading/qa/source-rights-report.json
           if git diff --cached --quiet; then
             echo "No Article source changes to commit."
           else
