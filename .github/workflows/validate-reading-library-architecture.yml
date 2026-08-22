@@ -7,9 +7,12 @@ on:
     paths:
       - .github/workflows/validate-reading-library-architecture.yml
       - data/reading/library/**
+      - data/reading/articles/manifest.json
       - tools/build-reading-library.mjs
       - tools/validate-reading-library.mjs
+      - tools/validate-reading-article-depth.mjs
       - features/sakura-reading-quality.js
+      - features/sakura-reading-longform.js
       - service-worker.js
   pull_request:
     branches:
@@ -17,9 +20,12 @@ on:
     paths:
       - .github/workflows/validate-reading-library-architecture.yml
       - data/reading/library/**
+      - data/reading/articles/manifest.json
       - tools/build-reading-library.mjs
       - tools/validate-reading-library.mjs
+      - tools/validate-reading-article-depth.mjs
       - features/sakura-reading-quality.js
+      - features/sakura-reading-longform.js
       - service-worker.js
   workflow_dispatch:
 
@@ -35,10 +41,14 @@ jobs:
       - name: JavaScript syntax
         run: |
           node --check features/sakura-reading-quality.js
+          node --check features/sakura-reading-longform.js
           node --check tools/build-reading-library.mjs
           node --check tools/validate-reading-library.mjs
+          node --check tools/validate-reading-article-depth.mjs
           node --check service-worker.js
       - name: Validate partial production library
         run: node tools/validate-reading-library.mjs --allow-incomplete
+      - name: Report current Article depth baseline
+        run: node tools/validate-reading-article-depth.mjs || true
       - name: Diff hygiene
         run: git diff --check
