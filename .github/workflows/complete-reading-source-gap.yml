@@ -1,0 +1,55 @@
+name: Complete Reading Garden source gap
+
+on:
+  push:
+    branches:
+      - complete-open-reading-garden-20260822
+    paths:
+      - .github/workflows/complete-reading-source-gap.yml
+
+permissions:
+  contents: write
+
+jobs:
+  complete-source-gap:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Check out Reading Garden branch
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Check reconstruction tool syntax
+        run: node --check tools/reconstruct-final-government-source-gap.mjs
+
+      - name: Reconstruct final government source gap
+        run: node tools/reconstruct-final-government-source-gap.mjs
+
+      - name: Validate body-ready inventory
+        run: node tools/validate-reading-body-ready.mjs
+
+      - name: Validate source rights foundation
+        run: node tools/validate-reading-rights.mjs
+
+      - name: Check generated diff
+        run: |
+          git diff --check
+          git status --short
+
+      - name: Commit verified source completion
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -- data/reading/source-registry.json data/reading/body-ready/travel-reading.json data/reading/body-ready/real-life-documents.json data/reading/qa/body-ready-source-report.json data/reading/qa/source-rights-report.json data/reading/qa/final-government-source-gap-reconstruction.json
+          if git diff --cached --quiet; then
+            echo "No generated source changes to commit."
+          else
+            git commit -m "Complete Reading Garden government source inventory"
+            git push origin HEAD:complete-open-reading-garden-20260822
+          fi
