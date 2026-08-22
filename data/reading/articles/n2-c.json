@@ -101,9 +101,9 @@
     "sourceYear": 2026,
     "sourceKind": "official-government",
     "sourceMode": "source-grounded-adaptation",
-    "sourceLicense": "PDL1.0",
+    "sourceLicense": "Public Data License 1.0",
     "sourceLicenseUrl": "https://www.digital.go.jp/resources/open_data/public_data_license_v1.0",
-    "sourceTermsUrl": "https://www.digital.go.jp/resources/open_data/public_data_license_v1.0",
+    "sourceTermsUrl": "https://www.caa.go.jp/terms_of_use/",
     "sourceAttribution": "出典：消費者庁「エステティックサロンの運営事業者3社に対する景品表示法に基づく措置命令について」（2026-03-26）。Sakuraが学習用に要約・平易化。原文そのものではありません。",
     "sourceProcessing": "Facts and the retained source-grounded paragraph(s) come from Sakura’s verified adaptation of the linked 2026 official source. This record adds a new JLPT-support frame and reading lens; it is not verbatim source text.",
     "rightsNote": "Text-only adaptation under Japan Public Data License 1.0 where applicable unless the source page states otherwise. No government logos, photographs, charts, videos, or separately credited third-party assets are bundled.",
@@ -115,8 +115,9 @@
     },
     "sourceVerifiedDate": "2026-08-14",
     "sourceDateLabel": "2026-03-26",
-    "sourceFamilyId": "src26-v7-beauty-01",
-    "adaptationLevel": "N2"
+    "sourceFamilyId": "gov-caa",
+    "adaptationLevel": "N2",
+    "rightsStatus": "adaptation-permitted"
   },
   {
     "id": "src26-v7-beauty-02-n2",
@@ -220,7 +221,7 @@
     "sourceYear": 2026,
     "sourceKind": "official-government",
     "sourceMode": "source-grounded-adaptation",
-    "sourceLicense": "PDL1.0",
+    "sourceLicense": "Public Data License 1.0",
     "sourceLicenseUrl": "https://www.digital.go.jp/resources/open_data/public_data_license_v1.0",
     "sourceTermsUrl": "https://www.mhlw.go.jp/chosakuken/",
     "sourceAttribution": "出典：厚生労働省ウェブサイト（https://www.mhlw.go.jp/stf/newpage_74751.html）。この学習用本文は当該情報をもとにSakuraが編集・要約して作成しました。",
@@ -234,8 +235,9 @@
     },
     "sourceVerifiedDate": "2026-08-14",
     "sourceDateLabel": "Published",
-    "sourceFamilyId": "src26-v7-beauty-02",
-    "adaptationLevel": "N2"
+    "sourceFamilyId": "gov-mhlw",
+    "adaptationLevel": "N2",
+    "rightsStatus": "adaptation-permitted"
   },
   {
     "id": "src26-v7-food-01-n2",
@@ -339,9 +341,9 @@
     "sourceYear": 2026,
     "sourceKind": "official-government",
     "sourceMode": "source-grounded-adaptation",
-    "sourceLicense": "PDL1.0",
+    "sourceLicense": "Public Data License 1.0",
     "sourceLicenseUrl": "https://www.digital.go.jp/resources/open_data/public_data_license_v1.0",
-    "sourceTermsUrl": "https://www.digital.go.jp/resources/open_data/public_data_license_v1.0",
+    "sourceTermsUrl": "https://www.caa.go.jp/terms_of_use/",
     "sourceAttribution": "出典：消費者庁「食品表示基準の一部改正等について」（2026-04-01）。Sakuraが学習用に要約・平易化。原文そのものではありません。",
     "sourceProcessing": "Facts and the retained source-grounded paragraph(s) come from Sakura’s verified adaptation of the linked 2026 official source. This record adds a new JLPT-support frame and reading lens; it is not verbatim source text.",
     "rightsNote": "Text-only adaptation under Japan Public Data License 1.0 where applicable unless the source page states otherwise. No government logos, photographs, charts, videos, or separately credited third-party assets are bundled.",
@@ -353,8 +355,9 @@
     },
     "sourceVerifiedDate": "2026-08-14",
     "sourceDateLabel": "2026-04-01",
-    "sourceFamilyId": "src26-v7-food-01",
-    "adaptationLevel": "N2"
+    "sourceFamilyId": "gov-caa",
+    "adaptationLevel": "N2",
+    "rightsStatus": "adaptation-permitted"
   },
   {
     "id": "src26-v7-food-02-n2",
@@ -458,7 +461,7 @@
     "sourceYear": 2026,
     "sourceKind": "official-government",
     "sourceMode": "source-grounded-adaptation",
-    "sourceLicense": "PDL1.0",
+    "sourceLicense": "Public Data License 1.0",
     "sourceLicenseUrl": "https://www.digital.go.jp/resources/open_data/public_data_license_v1.0",
     "sourceTermsUrl": "https://www.maff.go.jp/j/use/link.html",
     "sourceAttribution": "出典：農林水産省ウェブサイト（https://www.maff.go.jp/j/press/shokuhin/recycle/260630.html）。この学習用本文は当該情報をもとにSakuraが編集・要約して作成しました。",
@@ -472,8 +475,9 @@
     },
     "sourceVerifiedDate": "2026-08-14",
     "sourceDateLabel": "Published",
-    "sourceFamilyId": "src26-v7-food-02",
-    "adaptationLevel": "N2"
+    "sourceFamilyId": "gov-maff",
+    "adaptationLevel": "N2",
+    "rightsStatus": "adaptation-permitted"
   },
   {
     "id": "src26-v7-travel-01-n2",
@@ -577,7 +581,7 @@
     "sourceYear": 2026,
     "sourceKind": "official-government",
     "sourceMode": "source-grounded-adaptation",
-    "sourceLicense": "PDL1.0",
+    "sourceLicense": "Public Data License 1.0",
     "sourceLicenseUrl": "https://www.digital.go.jp/resources/open_data/public_data_license_v1.0",
     "sourceTermsUrl": "https://www.mlit.go.jp/kankocho/site-policy.html",
     "sourceAttribution": "出典：観光庁ウェブサイト（https://www.mlit.go.jp/kankocho/news02_00077.html）。この学習用本文は当該情報をもとにSakuraが編集・要約して作成しました。",
@@ -591,8 +595,9 @@
     },
     "sourceVerifiedDate": "2026-08-14",
     "sourceDateLabel": "Published",
-    "sourceFamilyId": "src26-v7-travel-01",
-    "adaptationLevel": "N2"
+    "sourceFamilyId": "gov-jta",
+    "adaptationLevel": "N2",
+    "rightsStatus": "adaptation-permitted"
   },
   {
     "id": "src26-v7-travel-02-n2",
@@ -696,9 +701,9 @@
     "sourceYear": 2026,
     "sourceKind": "official-government",
     "sourceMode": "source-grounded-adaptation",
-    "sourceLicense": "PDL1.0",
+    "sourceLicense": "Public Data License 1.0",
     "sourceLicenseUrl": "https://www.digital.go.jp/resources/open_data/public_data_license_v1.0",
-    "sourceTermsUrl": "https://www.digital.go.jp/resources/open_data/public_data_license_v1.0",
+    "sourceTermsUrl": "https://www.mlit.go.jp/kankocho/site-policy.html",
     "sourceAttribution": "出典：観光庁「多様な宗教的、文化的習慣を有する旅行者の受入環境の充実」（2026-03-31）。Sakuraが学習用に要約・平易化。原文そのものではありません。",
     "sourceProcessing": "Facts and the retained source-grounded paragraph(s) come from Sakura’s verified adaptation of the linked 2026 official source. This record adds a new JLPT-support frame and reading lens; it is not verbatim source text.",
     "rightsNote": "Text-only adaptation under Japan Public Data License 1.0 where applicable unless the source page states otherwise. No government logos, photographs, charts, videos, or separately credited third-party assets are bundled.",
@@ -710,8 +715,9 @@
     },
     "sourceVerifiedDate": "2026-08-14",
     "sourceDateLabel": "2026-03-31",
-    "sourceFamilyId": "src26-v7-travel-02",
-    "adaptationLevel": "N2"
+    "sourceFamilyId": "gov-jta",
+    "adaptationLevel": "N2",
+    "rightsStatus": "adaptation-permitted"
   },
   {
     "id": "src26-v7-digital-01-n2",
@@ -815,9 +821,9 @@
     "sourceYear": 2026,
     "sourceKind": "official-government",
     "sourceMode": "source-grounded-adaptation",
-    "sourceLicense": "PDL1.0",
+    "sourceLicense": "Public Data License 1.0",
     "sourceLicenseUrl": "https://www.digital.go.jp/resources/open_data/public_data_license_v1.0",
-    "sourceTermsUrl": "https://www.digital.go.jp/resources/open_data/public_data_license_v1.0",
+    "sourceTermsUrl": "https://www.digital.go.jp/terms",
     "sourceAttribution": "出典：デジタル庁「全府省庁の約18万人の政府職員を対象としたガバメントAI（源内）の大規模実証を開始しました」（2026-05-28）。Sakuraが学習用に要約・平易化。原文そのものではありません。",
     "sourceProcessing": "Facts and the retained source-grounded paragraph(s) come from Sakura’s verified adaptation of the linked 2026 official source. This record adds a new JLPT-support frame and reading lens; it is not verbatim source text.",
     "rightsNote": "Text-only adaptation under Japan Public Data License 1.0 where applicable unless the source page states otherwise. No government logos, photographs, charts, videos, or separately credited third-party assets are bundled.",
@@ -829,8 +835,9 @@
     },
     "sourceVerifiedDate": "2026-08-14",
     "sourceDateLabel": "2026-05-28",
-    "sourceFamilyId": "src26-v7-digital-01",
-    "adaptationLevel": "N2"
+    "sourceFamilyId": "gov-digital",
+    "adaptationLevel": "N2",
+    "rightsStatus": "adaptation-permitted"
   },
   {
     "id": "src26-v7-digital-02-n2",
@@ -934,9 +941,9 @@
     "sourceYear": 2026,
     "sourceKind": "official-government",
     "sourceMode": "source-grounded-adaptation",
-    "sourceLicense": "PDL1.0",
+    "sourceLicense": "Public Data License 1.0",
     "sourceLicenseUrl": "https://www.digital.go.jp/resources/open_data/public_data_license_v1.0",
-    "sourceTermsUrl": "https://www.digital.go.jp/resources/open_data/public_data_license_v1.0",
+    "sourceTermsUrl": "https://www.digital.go.jp/terms",
     "sourceAttribution": "出典：デジタル庁「ガバメントAI「源内」のオープンソース化について」（2026-04-24）。Sakuraが学習用に要約・平易化。原文そのものではありません。",
     "sourceProcessing": "Facts and the retained source-grounded paragraph(s) come from Sakura’s verified adaptation of the linked 2026 official source. This record adds a new JLPT-support frame and reading lens; it is not verbatim source text.",
     "rightsNote": "Text-only adaptation under Japan Public Data License 1.0 where applicable unless the source page states otherwise. No government logos, photographs, charts, videos, or separately credited third-party assets are bundled.",
@@ -948,8 +955,9 @@
     },
     "sourceVerifiedDate": "2026-08-14",
     "sourceDateLabel": "2026-04-24",
-    "sourceFamilyId": "src26-v7-digital-02",
-    "adaptationLevel": "N2"
+    "sourceFamilyId": "gov-digital",
+    "adaptationLevel": "N2",
+    "rightsStatus": "adaptation-permitted"
   },
   {
     "id": "src26-v7-consumer-01-n2",
@@ -1053,9 +1061,9 @@
     "sourceYear": 2026,
     "sourceKind": "official-government",
     "sourceMode": "source-grounded-adaptation",
-    "sourceLicense": "PDL1.0",
+    "sourceLicense": "Public Data License 1.0",
     "sourceLicenseUrl": "https://www.digital.go.jp/resources/open_data/public_data_license_v1.0",
-    "sourceTermsUrl": "https://www.digital.go.jp/resources/open_data/public_data_license_v1.0",
+    "sourceTermsUrl": "https://www.caa.go.jp/terms_of_use/",
     "sourceAttribution": "出典：消費者庁「財産にかかわる危険」（2026-06-25）。Sakuraが学習用に要約・平易化。原文そのものではありません。",
     "sourceProcessing": "Facts and the retained source-grounded paragraph(s) come from Sakura’s verified adaptation of the linked 2026 official source. This record adds a new JLPT-support frame and reading lens; it is not verbatim source text.",
     "rightsNote": "Text-only adaptation under Japan Public Data License 1.0 where applicable unless the source page states otherwise. No government logos, photographs, charts, videos, or separately credited third-party assets are bundled.",
@@ -1067,8 +1075,9 @@
     },
     "sourceVerifiedDate": "2026-08-14",
     "sourceDateLabel": "2026-06-25",
-    "sourceFamilyId": "src26-v7-consumer-01",
-    "adaptationLevel": "N2"
+    "sourceFamilyId": "gov-caa",
+    "adaptationLevel": "N2",
+    "rightsStatus": "adaptation-permitted"
   },
   {
     "id": "src26-v7-consumer-02-n2",
@@ -1172,9 +1181,9 @@
     "sourceYear": 2026,
     "sourceKind": "official-government",
     "sourceMode": "source-grounded-adaptation",
-    "sourceLicense": "PDL1.0",
+    "sourceLicense": "Public Data License 1.0",
     "sourceLicenseUrl": "https://www.digital.go.jp/resources/open_data/public_data_license_v1.0",
-    "sourceTermsUrl": "https://www.digital.go.jp/resources/open_data/public_data_license_v1.0",
+    "sourceTermsUrl": "https://www.caa.go.jp/terms_of_use/",
     "sourceAttribution": "出典：消費者庁「Webページ等におけるいわゆるダークパターンに対する消費者意識調査の結果」（2026-06-18）。Sakuraが学習用に要約・平易化。原文そのものではありません。",
     "sourceProcessing": "Facts and the retained source-grounded paragraph(s) come from Sakura’s verified adaptation of the linked 2026 official source. This record adds a new JLPT-support frame and reading lens; it is not verbatim source text.",
     "rightsNote": "Text-only adaptation under Japan Public Data License 1.0 where applicable unless the source page states otherwise. No government logos, photographs, charts, videos, or separately credited third-party assets are bundled.",
@@ -1186,7 +1195,8 @@
     },
     "sourceVerifiedDate": "2026-08-14",
     "sourceDateLabel": "2026-06-18",
-    "sourceFamilyId": "src26-v7-consumer-02",
-    "adaptationLevel": "N2"
+    "sourceFamilyId": "gov-caa",
+    "adaptationLevel": "N2",
+    "rightsStatus": "adaptation-permitted"
   }
 ]

@@ -1,0 +1,3018 @@
+{
+  "version": 1,
+  "shelf": "serialized-novels",
+  "targetCount": 80,
+  "candidateCount": 80,
+  "candidates": [
+    {
+      "candidateId": "aozora-001178-chapter-001",
+      "targetShelf": "serialized-novels",
+      "sourceFamilyId": "aozora-bunko",
+      "sourceTitle": "海異記",
+      "sourceAuthor": "泉 鏡花",
+      "sourceTranslator": null,
+      "workId": "001178",
+      "sourceUrl": "https://www.aozora.gr.jp/cards/000050/files/1178_23555.html",
+      "sourceCardUrl": "https://www.aozora.gr.jp/cards/000050/card1178.html",
+      "sourcePublishedDate": null,
+      "sourceLicense": "Aozora Bunko file handling standard (copyright-expired work)",
+      "sourceLicenseUrl": "https://www.aozora.gr.jp/guide/kijyunn.html",
+      "sourceTermsUrl": "https://www.aozora.gr.jp/guide/kijyunn.html",
+      "sourceAttribution": "出典：青空文庫「海異記」泉 鏡花",
+      "sourceProcessing": "Candidate metadata only; no reading body is bundled by this inventory.",
+      "rightsStatus": "public-domain",
+      "rightsEvidence": {
+        "catalog": "Aozora extended UTF-8 catalog",
+        "workCopyrightFlag": "なし",
+        "contributorCopyrightFlags": [
+          {
+            "role": "著者",
+            "name": "泉 鏡花",
+            "flag": "なし"
+          }
+        ],
+        "checkedRule": "Work and every credited contributor must have copyright flag 'なし'."
+      },
+      "classification": "NDC 913",
+      "orthography": "新字新仮名",
+      "inventoryNote": "A real named source division extracted from the approved Aozora HTML; no text body is bundled.",
+      "sourceSectionTitle": "�C�ًL",
+      "sourceSectionIndex": 1
+    },
+    {
+      "candidateId": "aozora-001177-chapter-001",
+      "targetShelf": "serialized-novels",
+      "sourceFamilyId": "aozora-bunko",
+      "sourceTitle": "朱日記",
+      "sourceAuthor": "泉 鏡花",
+      "sourceTranslator": null,
+      "workId": "001177",
+      "sourceUrl": "https://www.aozora.gr.jp/cards/000050/files/1177_20567.html",
+      "sourceCardUrl": "https://www.aozora.gr.jp/cards/000050/card1177.html",
+      "sourcePublishedDate": null,
+      "sourceLicense": "Aozora Bunko file handling standard (copyright-expired work)",
+      "sourceLicenseUrl": "https://www.aozora.gr.jp/guide/kijyunn.html",
+      "sourceTermsUrl": "https://www.aozora.gr.jp/guide/kijyunn.html",
+      "sourceAttribution": "出典：青空文庫「朱日記」泉 鏡花",
+      "sourceProcessing": "Candidate metadata only; no reading body is bundled by this inventory.",
+      "rightsStatus": "public-domain",
+      "rightsEvidence": {
+        "catalog": "Aozora extended UTF-8 catalog",
+        "workCopyrightFlag": "なし",
+        "contributorCopyrightFlags": [
+          {
+            "role": "著者",
+            "name": "泉 鏡花",
+            "flag": "なし"
+          }
+        ],
+        "checkedRule": "Work and every credited contributor must have copyright flag 'なし'."
+      },
+      "classification": "NDC 913",
+      "orthography": "新字新仮名",
+      "inventoryNote": "A real named source division extracted from the approved Aozora HTML; no text body is bundled.",
+      "sourceSectionTitle": "����L",
+      "sourceSectionIndex": 1
+    },
+    {
+      "candidateId": "aozora-043224-chapter-001",
+      "targetShelf": "serialized-novels",
+      "sourceFamilyId": "aozora-bunko",
+      "sourceTitle": "雪霊記事",
+      "sourceAuthor": "泉 鏡花",
+      "sourceTranslator": null,
+      "workId": "043224",
+      "sourceUrl": "https://www.aozora.gr.jp/cards/000050/files/43224_20150.html",
+      "sourceCardUrl": "https://www.aozora.gr.jp/cards/000050/card43224.html",
+      "sourcePublishedDate": null,
+      "sourceLicense": "Aozora Bunko file handling standard (copyright-expired work)",
+      "sourceLicenseUrl": "https://www.aozora.gr.jp/guide/kijyunn.html",
+      "sourceTermsUrl": "https://www.aozora.gr.jp/guide/kijyunn.html",
+      "sourceAttribution": "出典：青空文庫「雪霊記事」泉 鏡花",
+      "sourceProcessing": "Candidate metadata only; no reading body is bundled by this inventory.",
+      "rightsStatus": "public-domain",
+      "rightsEvidence": {
+        "catalog": "Aozora extended UTF-8 catalog",
+        "workCopyrightFlag": "なし",
+        "contributorCopyrightFlags": [
+          {
+            "role": "著者",
+            "name": "泉 鏡花",
+            "flag": "なし"
+          }
+        ],
+        "checkedRule": "Work and every credited contributor must have copyright flag 'なし'."
+      },
+      "classification": "NDC 913",
+      "orthography": "新字新仮名",
+      "inventoryNote": "A real named source division extracted from the approved Aozora HTML; no text body is bundled.",
+      "sourceSectionTitle": "���L��",
+      "sourceSectionIndex": 1
+    },
+    {
+      "candidateId": "aozora-001184-chapter-001",
+      "targetShelf": "serialized-novels",
+      "sourceFamilyId": "aozora-bunko",
+      "sourceTitle": "雪霊記事",
+      "sourceAuthor": "泉 鏡花",
+      "sourceTranslator": null,
+      "workId": "001184",
+      "sourceUrl": "https://www.aozora.gr.jp/cards/000050/files/1184_20151.html",
+      "sourceCardUrl": "https://www.aozora.gr.jp/cards/000050/card1184.html",
+      "sourcePublishedDate": null,
+      "sourceLicense": "Aozora Bunko file handling standard (copyright-expired work)",
+      "sourceLicenseUrl": "https://www.aozora.gr.jp/guide/kijyunn.html",
+      "sourceTermsUrl": "https://www.aozora.gr.jp/guide/kijyunn.html",
+      "sourceAttribution": "出典：青空文庫「雪霊記事」泉 鏡花",
+      "sourceProcessing": "Candidate metadata only; no reading body is bundled by this inventory.",
+      "rightsStatus": "public-domain",
+      "rightsEvidence": {
+        "catalog": "Aozora extended UTF-8 catalog",
+        "workCopyrightFlag": "なし",
+        "contributorCopyrightFlags": [
+          {
+            "role": "著者",
+            "name": "泉 鏡花",
+            "flag": "なし"
+          }
+        ],
+        "checkedRule": "Work and every credited contributor must have copyright flag 'なし'."
+      },
+      "classification": "NDC 913",
+      "orthography": "旧字旧仮名",
+      "inventoryNote": "A real named source division extracted from the approved Aozora HTML; no text body is bundled.",
+      "sourceSectionTitle": "���ˋL��",
+      "sourceSectionIndex": 1
+    },
+    {
+      "candidateId": "aozora-043225-chapter-001",
+      "targetShelf": "serialized-novels",
+      "sourceFamilyId": "aozora-bunko",
+      "sourceTitle": "雪霊続記",
+      "sourceAuthor": "泉 鏡花",
+      "sourceTranslator": null,
+      "workId": "043225",
+      "sourceUrl": "https://www.aozora.gr.jp/cards/000050/files/43225_20152.html",
+      "sourceCardUrl": "https://www.aozora.gr.jp/cards/000050/card43225.html",
+      "sourcePublishedDate": null,
+      "sourceLicense": "Aozora Bunko file handling standard (copyright-expired work)",
+      "sourceLicenseUrl": "https://www.aozora.gr.jp/guide/kijyunn.html",
+      "sourceTermsUrl": "https://www.aozora.gr.jp/guide/kijyunn.html",
+      "sourceAttribution": "出典：青空文庫「雪霊続記」泉 鏡花",
+      "sourceProcessing": "Candidate metadata only; no reading body is bundled by this inventory.",
+      "rightsStatus": "public-domain",
+      "rightsEvidence": {
+        "catalog": "Aozora extended UTF-8 catalog",
+        "workCopyrightFlag": "なし",
+        "contributorCopyrightFlags": [
+          {
+            "role": "著者",
+            "name": "泉 鏡花",
+            "flag": "なし"
+          }
+        ],
+        "checkedRule": "Work and every credited contributor must have copyright flag 'なし'."
+      },
+      "classification": "NDC 913",
+      "orthography": "新字新仮名",
+      "inventoryNote": "A real named source division extracted from the approved Aozora HTML; no text body is bundled.",
+      "sourceSectionTitle": "��쑱�L",
+      "sourceSectionIndex": 1
+    },
+    {
+      "candidateId": "aozora-001185-chapter-001",
+      "targetShelf": "serialized-novels",
+      "sourceFamilyId": "aozora-bunko",
+      "sourceTitle": "雪霊続記",
+      "sourceAuthor": "泉 鏡花",
+      "sourceTranslator": null,
+      "workId": "001185",
+      "sourceUrl": "https://www.aozora.gr.jp/cards/000050/files/1185_20153.html",
+      "sourceCardUrl": "https://www.aozora.gr.jp/cards/000050/card1185.html",
+      "sourcePublishedDate": null,
+      "sourceLicense": "Aozora Bunko file handling standard (copyright-expired work)",
+      "sourceLicenseUrl": "https://www.aozora.gr.jp/guide/kijyunn.html",
+      "sourceTermsUrl": "https://www.aozora.gr.jp/guide/kijyunn.html",
+      "sourceAttribution": "出典：青空文庫「雪霊続記」泉 鏡花",
+      "sourceProcessing": "Candidate metadata only; no reading body is bundled by this inventory.",
+      "rightsStatus": "public-domain",
+      "rightsEvidence": {
+        "catalog": "Aozora extended UTF-8 catalog",
+        "workCopyrightFlag": "なし",
+        "contributorCopyrightFlags": [
+          {
+            "role": "著者",
+            "name": "泉 鏡花",
+            "flag": "なし"
+          }
+        ],
+        "checkedRule": "Work and every credited contributor must have copyright flag 'なし'."
+      },
+      "classification": "NDC 913",
+      "orthography": "旧字旧仮名",
+      "inventoryNote": "A real named source division extracted from the approved Aozora HTML; no text body is bundled.",
+      "sourceSectionTitle": "����㔋L",
+      "sourceSectionIndex": 1
+    },
+    {
+      "candidateId": "aozora-048410-chapter-001",
+      "targetShelf": "serialized-novels",
+      "sourceFamilyId": "aozora-bunko",
+      "sourceTitle": "蠅を憎む記",
+      "sourceAuthor": "泉 鏡花",
+      "sourceTranslator": null,
+      "workId": "048410",
+      "sourceUrl": "https://www.aozora.gr.jp/cards/000050/files/48410_35161.html",
+      "sourceCardUrl": "https://www.aozora.gr.jp/cards/000050/card48410.html",
+      "sourcePublishedDate": "「文芸界」1901（明治34）年6月",
+      "sourceLicense": "Aozora Bunko file handling standard (copyright-expired work)",
+      "sourceLicenseUrl": "https://www.aozora.gr.jp/guide/kijyunn.html",
+      "sourceTermsUrl": "https://www.aozora.gr.jp/guide/kijyunn.html",
+      "sourceAttribution": "出典：青空文庫「蠅を憎む記」泉 鏡花",
+      "sourceProcessing": "Candidate metadata only; no reading body is bundled by this inventory.",
+      "rightsStatus": "public-domain",
+      "rightsEvidence": {
+        "catalog": "Aozora extended UTF-8 catalog",
+        "workCopyrightFlag": "なし",
+        "contributorCopyrightFlags": [
+          {
+            "role": "著者",
+            "name": "泉 鏡花",
+            "flag": "なし"
+          }
+        ],
+        "checkedRule": "Work and every credited contributor must have copyright flag 'なし'."
+      },
+      "classification": "NDC 913",
+      "orthography": "新字旧仮名",
+      "inventoryNote": "A real named source division extracted from the approved Aozora HTML; no text body is bundled.",
+      "sourceSectionTitle": "墂𑞂ދL",
+      "sourceSectionIndex": 1
+    },
+    {
+      "candidateId": "aozora-001189-chapter-001",
+      "targetShelf": "serialized-novels",
+      "sourceFamilyId": "aozora-bunko",
+      "sourceTitle": "妖怪年代記",
+      "sourceAuthor": "泉 鏡花",
+      "sourceTranslator": null,
+      "workId": "001189",
+      "sourceUrl": "https://www.aozora.gr.jp/cards/000050/files/1189_22309.html",
+      "sourceCardUrl": "https://www.aozora.gr.jp/cards/000050/card1189.html",
+      "sourcePublishedDate": null,
+      "sourceLicense": "Aozora Bunko file handling standard (copyright-expired work)",
+      "sourceLicenseUrl": "https://www.aozora.gr.jp/guide/kijyunn.html",
+      "sourceTermsUrl": "https://www.aozora.gr.jp/guide/kijyunn.html",
+      "sourceAttribution": "出典：青空文庫「妖怪年代記」泉 鏡花",
+      "sourceProcessing": "Candidate metadata only; no reading body is bundled by this inventory.",
+      "rightsStatus": "public-domain",
+      "rightsEvidence": {
+        "catalog": "Aozora extended UTF-8 catalog",
+        "workCopyrightFlag": "なし",
+        "contributorCopyrightFlags": [
+          {
+            "role": "著者",
+            "name": "泉 鏡花",
+            "flag": "なし"
+          }
+        ],
+        "checkedRule": "Work and every credited contributor must have copyright flag 'なし'."
+      },
+      "classification": "NDC 913",
+      "orthography": "新字旧仮名",
+      "inventoryNote": "A real named source division extracted from the approved Aozora HTML; no text body is bundled.",
+      "sourceSectionTitle": "�d���N��L",
+      "sourceSectionIndex": 1
+    },
+    {
+      "candidateId": "aozora-048333-chapter-001",
+      "targetShelf": "serialized-novels",
+      "sourceFamilyId": "aozora-bunko",
+      "sourceTitle": "夫人利生記",
+      "sourceAuthor": "泉 鏡花",
+      "sourceTranslator": null,
+      "workId": "048333",
+      "sourceUrl": "https://www.aozora.gr.jp/cards/000050/files/48333_33337.html",
+      "sourceCardUrl": "https://www.aozora.gr.jp/cards/000050/card48333.html",
+      "sourcePublishedDate": null,
+      "sourceLicense": "Aozora Bunko file handling standard (copyright-expired work)",
+      "sourceLicenseUrl": "https://www.aozora.gr.jp/guide/kijyunn.html",
+      "sourceTermsUrl": "https://www.aozora.gr.jp/guide/kijyunn.html",
+      "sourceAttribution": "出典：青空文庫「夫人利生記」泉 鏡花",
+      "sourceProcessing": "Candidate metadata only; no reading body is bundled by this inventory.",
+      "rightsStatus": "public-domain",
+      "rightsEvidence": {
+        "catalog": "Aozora extended UTF-8 catalog",
+        "workCopyrightFlag": "なし",
+        "contributorCopyrightFlags": [
+          {
+            "role": "著者",
+            "name": "泉 鏡花",
+            "flag": "なし"
+          }
+        ],
+        "checkedRule": "Work and every credited contributor must have copyright flag 'なし'."
+      },
+      "classification": "NDC 913",
+      "orthography": "新字新仮名",
+      "inventoryNote": "A real named source division extracted from the approved Aozora HTML; no text body is bundled.",
+      "sourceSectionTitle": "�v�l�����L",
+      "sourceSectionIndex": 1
+    },
+    {
+      "candidateId": "aozora-003650-chapter-001",
+      "targetShelf": "serialized-novels",
+      "sourceFamilyId": "aozora-bunko",
+      "sourceTitle": "妖僧記",
+      "sourceAuthor": "泉 鏡花",
+      "sourceTranslator": null,
+      "workId": "003650",
+      "sourceUrl": "https://www.aozora.gr.jp/cards/000050/files/3650_12120.html",
+      "sourceCardUrl": "https://www.aozora.gr.jp/cards/000050/card3650.html",
+      "sourcePublishedDate": null,
+      "sourceLicense": "Aozora Bunko file handling standard (copyright-expired work)",
+      "sourceLicenseUrl": "https://www.aozora.gr.jp/guide/kijyunn.html",
+      "sourceTermsUrl": "https://www.aozora.gr.jp/guide/kijyunn.html",
+      "sourceAttribution": "出典：青空文庫「妖僧記」泉 鏡花",
+      "sourceProcessing": "Candidate metadata only; no reading body is bundled by this inventory.",
+      "rightsStatus": "public-domain",
+      "rightsEvidence": {
+        "catalog": "Aozora extended UTF-8 catalog",
+        "workCopyrightFlag": "なし",
+        "contributorCopyrightFlags": [
+          {
+            "role": "著者",
+            "name": "泉 鏡花",
+            "flag": "なし"
+          }
+        ],
+        "checkedRule": "Work and every credited contributor must have copyright flag 'なし'."
+      },
+      "classification": "NDC 913",
+      "orthography": "新字新仮名",
+      "inventoryNote": "A real named source division extracted from the approved Aozora HTML; no text body is bundled.",
+      "sourceSectionTitle": "�d�m�L",
+      "sourceSectionIndex": 1
+    },
+    {
+      "candidateId": "aozora-001091-chapter-001",
+      "targetShelf": "serialized-novels",
+      "sourceFamilyId": "aozora-bunko",
+      "sourceTitle": "竜潭譚",
+      "sourceAuthor": "泉 鏡花",
+      "sourceTranslator": null,
+      "workId": "001091",
+      "sourceUrl": "https://www.aozora.gr.jp/cards/000050/files/1091_20649.html",
+      "sourceCardUrl": "https://www.aozora.gr.jp/cards/000050/card1091.html",
+      "sourcePublishedDate": "「文芸倶楽部」1896（明治29）年11月",
+      "sourceLicense": "Aozora Bunko file handling standard (copyright-expired work)",
+      "sourceLicenseUrl": "https://www.aozora.gr.jp/guide/kijyunn.html",
+      "sourceTermsUrl": "https://www.aozora.gr.jp/guide/kijyunn.html",
+      "sourceAttribution": "出典：青空文庫「竜潭譚」泉 鏡花",
+      "sourceProcessing": "Candidate metadata only; no reading body is bundled by this inventory.",
+      "rightsStatus": "public-domain",
+      "rightsEvidence": {
+        "catalog": "Aozora extended UTF-8 catalog",
+        "workCopyrightFlag": "なし",
+        "contributorCopyrightFlags": [
+          {
+            "role": "著者",
+            "name": "泉 鏡花",
+            "flag": "なし"
+          }
+        ],
+        "checkedRule": "Work and every credited contributor must have copyright flag 'なし'."
+      },
+      "classification": "NDC 913",
+      "orthography": "新字旧仮名",
+      "inventoryNote": "A real named source division extracted from the approved Aozora HTML; no text body is bundled.",
+      "sourceSectionTitle": "���K�",
+      "sourceSectionIndex": 1
+    },
+    {
+      "candidateId": "aozora-057471-chapter-001",
+      "targetShelf": "serialized-novels",
+      "sourceFamilyId": "aozora-bunko",
+      "sourceTitle": "竜潭譚",
+      "sourceAuthor": "泉 鏡花",
+      "sourceTranslator": null,
+      "workId": "057471",
+      "sourceUrl": "https://www.aozora.gr.jp/cards/000050/files/57471_60107.html",
+      "sourceCardUrl": "https://www.aozora.gr.jp/cards/000050/card57471.html",
+      "sourcePublishedDate": "「文芸倶楽部」1896（明治29）年11月",
+      "sourceLicense": "Aozora Bunko file handling standard (copyright-expired work)",
+      "sourceLicenseUrl": "https://www.aozora.gr.jp/guide/kijyunn.html",
+      "sourceTermsUrl": "https://www.aozora.gr.jp/guide/kijyunn.html",
+      "sourceAttribution": "出典：青空文庫「竜潭譚」泉 鏡花",
+      "sourceProcessing": "Candidate metadata only; no reading body is bundled by this inventory.",
+      "rightsStatus": "public-domain",
+      "rightsEvidence": {
+        "catalog": "Aozora extended UTF-8 catalog",
+        "workCopyrightFlag": "なし",
+        "contributorCopyrightFlags": [
+          {
+            "role": "著者",
+            "name": "泉 鏡花",
+            "flag": "なし"
+          }
+        ],
+        "checkedRule": "Work and every credited contributor must have copyright flag 'なし'."
+      },
+      "classification": "NDC 913",
+      "orthography": "新字新仮名",
+      "inventoryNote": "A real named source division extracted from the approved Aozora HTML; no text body is bundled.",
+      "sourceSectionTitle": "���K�",
+      "sourceSectionIndex": 1
+    },
+    {
+      "candidateId": "aozora-057471-chapter-002",
+      "targetShelf": "serialized-novels",
+      "sourceFamilyId": "aozora-bunko",
+      "sourceTitle": "竜潭譚",
+      "sourceAuthor": "泉 鏡花",
+      "sourceTranslator": null,
+      "workId": "057471",
+      "sourceUrl": "https://www.aozora.gr.jp/cards/000050/files/57471_60107.html",
+      "sourceCardUrl": "https://www.aozora.gr.jp/cards/000050/card57471.html",
+      "sourcePublishedDate": "「文芸倶楽部」1896（明治29）年11月",
+      "sourceLicense": "Aozora Bunko file handling standard (copyright-expired work)",
+      "sourceLicenseUrl": "https://www.aozora.gr.jp/guide/kijyunn.html",
+      "sourceTermsUrl": "https://www.aozora.gr.jp/guide/kijyunn.html",
+      "sourceAttribution": "出典：青空文庫「竜潭譚」泉 鏡花",
+      "sourceProcessing": "Candidate metadata only; no reading body is bundled by this inventory.",
+      "rightsStatus": "public-domain",
+      "rightsEvidence": {
+        "catalog": "Aozora extended UTF-8 catalog",
+        "workCopyrightFlag": "なし",
+        "contributorCopyrightFlags": [
+          {
+            "role": "著者",
+            "name": "泉 鏡花",
+            "flag": "なし"
+          }
+        ],
+        "checkedRule": "Work and every credited contributor must have copyright flag 'なし'."
+      },
+      "classification": "NDC 913",
+      "orthography": "新字新仮名",
+      "inventoryNote": "A real named source division extracted from the approved Aozora HTML; no text body is bundled.",
+      "sourceSectionTitle": "�U�P���u",
+      "sourceSectionIndex": 2
+    },
+    {
+      "candidateId": "aozora-057471-chapter-003",
+      "targetShelf": "serialized-novels",
+      "sourceFamilyId": "aozora-bunko",
+      "sourceTitle": "竜潭譚",
+      "sourceAuthor": "泉 鏡花",
+      "sourceTranslator": null,
+      "workId": "057471",
+      "sourceUrl": "https://www.aozora.gr.jp/cards/000050/files/57471_60107.html",
+      "sourceCardUrl": "https://www.aozora.gr.jp/cards/000050/card57471.html",
+      "sourcePublishedDate": "「文芸倶楽部」1896（明治29）年11月",
+      "sourceLicense": "Aozora Bunko file handling standard (copyright-expired work)",
+      "sourceLicenseUrl": "https://www.aozora.gr.jp/guide/kijyunn.html",
+      "sourceTermsUrl": "https://www.aozora.gr.jp/guide/kijyunn.html",
+      "sourceAttribution": "出典：青空文庫「竜潭譚」泉 鏡花",
+      "sourceProcessing": "Candidate metadata only; no reading body is bundled by this inventory.",
+      "rightsStatus": "public-domain",
+      "rightsEvidence": {
+        "catalog": "Aozora extended UTF-8 catalog",
+        "workCopyrightFlag": "なし",
+        "contributorCopyrightFlags": [
+          {
+            "role": "著者",
+            "name": "泉 鏡花",
+            "flag": "なし"
+          }
+        ],
+        "checkedRule": "Work and every credited contributor must have copyright flag 'なし'."
+      },
+      "classification": "NDC 913",
+      "orthography": "新字新仮名",
+      "inventoryNote": "A real named source division extracted from the approved Aozora HTML; no text body is bundled.",
+      "sourceSectionTitle": "����̎�",
+      "sourceSectionIndex": 3
+    },
+    {
+      "candidateId": "aozora-057471-chapter-004",
+      "targetShelf": "serialized-novels",
+      "sourceFamilyId": "aozora-bunko",
+      "sourceTitle": "竜潭譚",
+      "sourceAuthor": "泉 鏡花",
+      "sourceTranslator": null,
+      "workId": "057471",
+      "sourceUrl": "https://www.aozora.gr.jp/cards/000050/files/57471_60107.html",
+      "sourceCardUrl": "https://www.aozora.gr.jp/cards/000050/card57471.html",
+      "sourcePublishedDate": "「文芸倶楽部」1896（明治29）年11月",
+      "sourceLicense": "Aozora Bunko file handling standard (copyright-expired work)",
+      "sourceLicenseUrl": "https://www.aozora.gr.jp/guide/kijyunn.html",
+      "sourceTermsUrl": "https://www.aozora.gr.jp/guide/kijyunn.html",
+      "sourceAttribution": "出典：青空文庫「竜潭譚」泉 鏡花",
+      "sourceProcessing": "Candidate metadata only; no reading body is bundled by this inventory.",
+      "rightsStatus": "public-domain",
+      "rightsEvidence": {
+        "catalog": "Aozora extended UTF-8 catalog",
+        "workCopyrightFlag": "なし",
+        "contributorCopyrightFlags": [
+          {
+            "role": "著者",
+            "name": "泉 鏡花",
+            "flag": "なし"
+          }
+        ],
+        "checkedRule": "Work and every credited contributor must have copyright flag 'なし'."
+      },
+      "classification": "NDC 913",
+      "orthography": "新字新仮名",
+      "inventoryNote": "A real named source division extracted from the approved Aozora HTML; no text body is bundled.",
+      "sourceSectionTitle": "�����ꂠ����",
+      "sourceSectionIndex": 4
+    },
+    {
+      "candidateId": "aozora-057471-chapter-005",
+      "targetShelf": "serialized-novels",
+      "sourceFamilyId": "aozora-bunko",
+      "sourceTitle": "竜潭譚",
+      "sourceAuthor": "泉 鏡花",
+      "sourceTranslator": null,
+      "workId": "057471",
+      "sourceUrl": "https://www.aozora.gr.jp/cards/000050/files/57471_60107.html",
+      "sourceCardUrl": "https://www.aozora.gr.jp/cards/000050/card57471.html",
+      "sourcePublishedDate": "「文芸倶楽部」1896（明治29）年11月",
+      "sourceLicense": "Aozora Bunko file handling standard (copyright-expired work)",
+      "sourceLicenseUrl": "https://www.aozora.gr.jp/guide/kijyunn.html",
+      "sourceTermsUrl": "https://www.aozora.gr.jp/guide/kijyunn.html",
+      "sourceAttribution": "出典：青空文庫「竜潭譚」泉 鏡花",
+      "sourceProcessing": "Candidate metadata only; no reading body is bundled by this inventory.",
+      "rightsStatus": "public-domain",
+      "rightsEvidence": {
+        "catalog": "Aozora extended UTF-8 catalog",
+        "workCopyrightFlag": "なし",
+        "contributorCopyrightFlags": [
+          {
+            "role": "著者",
+            "name": "泉 鏡花",
+            "flag": "なし"
+          }
+        ],
+        "checkedRule": "Work and every credited contributor must have copyright flag 'なし'."
+      },
+      "classification": "NDC 913",
+      "orthography": "新字新仮名",
+      "inventoryNote": "A real named source division extracted from the approved Aozora HTML; no text body is bundled.",
+      "sourceSectionTitle": "����������",
+      "sourceSectionIndex": 5
+    },
+    {
+      "candidateId": "aozora-057471-chapter-006",
+      "targetShelf": "serialized-novels",
+      "sourceFamilyId": "aozora-bunko",
+      "sourceTitle": "竜潭譚",
+      "sourceAuthor": "泉 鏡花",
+      "sourceTranslator": null,
+      "workId": "057471",
+      "sourceUrl": "https://www.aozora.gr.jp/cards/000050/files/57471_60107.html",
+      "sourceCardUrl": "https://www.aozora.gr.jp/cards/000050/card57471.html",
+      "sourcePublishedDate": "「文芸倶楽部」1896（明治29）年11月",
+      "sourceLicense": "Aozora Bunko file handling standard (copyright-expired work)",
+      "sourceLicenseUrl": "https://www.aozora.gr.jp/guide/kijyunn.html",
+      "sourceTermsUrl": "https://www.aozora.gr.jp/guide/kijyunn.html",
+      "sourceAttribution": "出典：青空文庫「竜潭譚」泉 鏡花",
+      "sourceProcessing": "Candidate metadata only; no reading body is bundled by this inventory.",
+      "rightsStatus": "public-domain",
+      "rightsEvidence": {
+        "catalog": "Aozora extended UTF-8 catalog",
+        "workCopyrightFlag": "なし",
+        "contributorCopyrightFlags": [
+          {
+            "role": "著者",
+            "name": "泉 鏡花",
+            "flag": "なし"
+          }
+        ],
+        "checkedRule": "Work and every credited contributor must have copyright flag 'なし'."
+      },
+      "classification": "NDC 913",
+      "orthography": "新字新仮名",
+      "inventoryNote": "A real named source division extracted from the approved Aozora HTML; no text body is bundled.",
+      "sourceSectionTitle": "���",
+      "sourceSectionIndex": 6
+    },
+    {
+      "candidateId": "aozora-057471-chapter-007",
+      "targetShelf": "serialized-novels",
+      "sourceFamilyId": "aozora-bunko",
+      "sourceTitle": "竜潭譚",
+      "sourceAuthor": "泉 鏡花",
+      "sourceTranslator": null,
+      "workId": "057471",
+      "sourceUrl": "https://www.aozora.gr.jp/cards/000050/files/57471_60107.html",
+      "sourceCardUrl": "https://www.aozora.gr.jp/cards/000050/card57471.html",
+      "sourcePublishedDate": "「文芸倶楽部」1896（明治29）年11月",
+      "sourceLicense": "Aozora Bunko file handling standard (copyright-expired work)",
+      "sourceLicenseUrl": "https://www.aozora.gr.jp/guide/kijyunn.html",
+      "sourceTermsUrl": "https://www.aozora.gr.jp/guide/kijyunn.html",
+      "sourceAttribution": "出典：青空文庫「竜潭譚」泉 鏡花",
+      "sourceProcessing": "Candidate metadata only; no reading body is bundled by this inventory.",
+      "rightsStatus": "public-domain",
+      "rightsEvidence": {
+        "catalog": "Aozora extended UTF-8 catalog",
+        "workCopyrightFlag": "なし",
+        "contributorCopyrightFlags": [
+          {
+            "role": "著者",
+            "name": "泉 鏡花",
+            "flag": "なし"
+          }
+        ],
+        "checkedRule": "Work and every credited contributor must have copyright flag 'なし'."
+      },
+      "classification": "NDC 913",
+      "orthography": "新字新仮名",
+      "inventoryNote": "A real named source division extracted from the approved Aozora HTML; no text body is bundled.",
+      "sourceSectionTitle": "�܈ʍ�",
+      "sourceSectionIndex": 7
+    },
+    {
+      "candidateId": "aozora-057471-chapter-008",
+      "targetShelf": "serialized-novels",
+      "sourceFamilyId": "aozora-bunko",
+      "sourceTitle": "竜潭譚",
+      "sourceAuthor": "泉 鏡花",
+      "sourceTranslator": null,
+      "workId": "057471",
+      "sourceUrl": "https://www.aozora.gr.jp/cards/000050/files/57471_60107.html",
+      "sourceCardUrl": "https://www.aozora.gr.jp/cards/000050/card57471.html",
+      "sourcePublishedDate": "「文芸倶楽部」1896（明治29）年11月",
+      "sourceLicense": "Aozora Bunko file handling standard (copyright-expired work)",
+      "sourceLicenseUrl": "https://www.aozora.gr.jp/guide/kijyunn.html",
+      "sourceTermsUrl": "https://www.aozora.gr.jp/guide/kijyunn.html",
+      "sourceAttribution": "出典：青空文庫「竜潭譚」泉 鏡花",
+      "sourceProcessing": "Candidate metadata only; no reading body is bundled by this inventory.",
+      "rightsStatus": "public-domain",
+      "rightsEvidence": {
+        "catalog": "Aozora extended UTF-8 catalog",
+        "workCopyrightFlag": "なし",
+        "contributorCopyrightFlags": [
+          {
+            "role": "著者",
+            "name": "泉 鏡花",
+            "flag": "なし"
+          }
+        ],
+        "checkedRule": "Work and every credited contributor must have copyright flag 'なし'."
+      },
+      "classification": "NDC 913",
+      "orthography": "新字新仮名",
+      "inventoryNote": "A real named source division extracted from the approved Aozora HTML; no text body is bundled.",
+      "sourceSectionTitle": "��c�",
+      "sourceSectionIndex": 8
+    },
+    {
+      "candidateId": "aozora-057471-chapter-009",
+      "targetShelf": "serialized-novels",
+      "sourceFamilyId": "aozora-bunko",
+      "sourceTitle": "竜潭譚",
+      "sourceAuthor": "泉 鏡花",
+      "sourceTranslator": null,
+      "workId": "057471",
+      "sourceUrl": "https://www.aozora.gr.jp/cards/000050/files/57471_60107.html",
+      "sourceCardUrl": "https://www.aozora.gr.jp/cards/000050/card57471.html",
+      "sourcePublishedDate": "「文芸倶楽部」1896（明治29）年11月",
+      "sourceLicense": "Aozora Bunko file handling standard (copyright-expired work)",
+      "sourceLicenseUrl": "https://www.aozora.gr.jp/guide/kijyunn.html",
+      "sourceTermsUrl": "https://www.aozora.gr.jp/guide/kijyunn.html",
+      "sourceAttribution": "出典：青空文庫「竜潭譚」泉 鏡花",
+      "sourceProcessing": "Candidate metadata only; no reading body is bundled by this inventory.",
+      "rightsStatus": "public-domain",
+      "rightsEvidence": {
+        "catalog": "Aozora extended UTF-8 catalog",
+        "workCopyrightFlag": "なし",
+        "contributorCopyrightFlags": [
+          {
+            "role": "著者",
+            "name": "泉 鏡花",
+            "flag": "なし"
+          }
+        ],
+        "checkedRule": "Work and every credited contributor must have copyright flag 'なし'."
+      },
+      "classification": "NDC 913",
+      "orthography": "新字新仮名",
+      "inventoryNote": "A real named source division extracted from the approved Aozora HTML; no text body is bundled.",
+      "sourceSectionTitle": "�n�D",
+      "sourceSectionIndex": 9
+    },
+    {
+      "candidateId": "aozora-057471-chapter-010",
+      "targetShelf": "serialized-novels",
+      "sourceFamilyId": "aozora-bunko",
+      "sourceTitle": "竜潭譚",
+      "sourceAuthor": "泉 鏡花",
+      "sourceTranslator": null,
+      "workId": "057471",
+      "sourceUrl": "https://www.aozora.gr.jp/cards/000050/files/57471_60107.html",
+      "sourceCardUrl": "https://www.aozora.gr.jp/cards/000050/card57471.html",
+      "sourcePublishedDate": "「文芸倶楽部」1896（明治29）年11月",
+      "sourceLicense": "Aozora Bunko file handling standard (copyright-expired work)",
+      "sourceLicenseUrl": "https://www.aozora.gr.jp/guide/kijyunn.html",
+      "sourceTermsUrl": "https://www.aozora.gr.jp/guide/kijyunn.html",
+      "sourceAttribution": "出典：青空文庫「竜潭譚」泉 鏡花",
+      "sourceProcessing": "Candidate metadata only; no reading body is bundled by this inventory.",
+      "rightsStatus": "public-domain",
+      "rightsEvidence": {
+        "catalog": "Aozora extended UTF-8 catalog",
+        "workCopyrightFlag": "なし",
+        "contributorCopyrightFlags": [
+          {
+            "role": "著者",
+            "name": "泉 鏡花",
+            "flag": "なし"
+          }
+        ],
+        "checkedRule": "Work and every credited contributor must have copyright flag 'なし'."
+      },
+      "classification": "NDC 913",
+      "orthography": "新字新仮名",
+      "inventoryNote": "A real named source division extracted from the approved Aozora HTML; no text body is bundled.",
+      "sourceSectionTitle": "�ӂ邳��",
+      "sourceSectionIndex": 10
+    },
+    {
+      "candidateId": "aozora-057471-chapter-011",
+      "targetShelf": "serialized-novels",
+      "sourceFamilyId": "aozora-bunko",
+      "sourceTitle": "竜潭譚",
+      "sourceAuthor": "泉 鏡花",
+      "sourceTranslator": null,
+      "workId": "057471",
+      "sourceUrl": "https://www.aozora.gr.jp/cards/000050/files/57471_60107.html",
+      "sourceCardUrl": "https://www.aozora.gr.jp/cards/000050/card57471.html",
+      "sourcePublishedDate": "「文芸倶楽部」1896（明治29）年11月",
+      "sourceLicense": "Aozora Bunko file handling standard (copyright-expired work)",
+      "sourceLicenseUrl": "https://www.aozora.gr.jp/guide/kijyunn.html",
+      "sourceTermsUrl": "https://www.aozora.gr.jp/guide/kijyunn.html",
+      "sourceAttribution": "出典：青空文庫「竜潭譚」泉 鏡花",
+      "sourceProcessing": "Candidate metadata only; no reading body is bundled by this inventory.",
+      "rightsStatus": "public-domain",
+      "rightsEvidence": {
+        "catalog": "Aozora extended UTF-8 catalog",
+        "workCopyrightFlag": "なし",
+        "contributorCopyrightFlags": [
+          {
+            "role": "著者",
+            "name": "泉 鏡花",
+            "flag": "なし"
+          }
+        ],
+        "checkedRule": "Work and every credited contributor must have copyright flag 'なし'."
+      },
+      "classification": "NDC 913",
+      "orthography": "新字新仮名",
+      "inventoryNote": "A real named source division extracted from the approved Aozora HTML; no text body is bundled.",
+      "sourceSectionTitle": "����ɗ���",
+      "sourceSectionIndex": 11
+    },
+    {
+      "candidateId": "aozora-056532-chapter-001",
+      "targetShelf": "serialized-novels",
+      "sourceFamilyId": "aozora-bunko",
+      "sourceTitle": "新万葉物語",
+      "sourceAuthor": "伊藤 左千夫",
+      "sourceTranslator": null,
+      "workId": "056532",
+      "sourceUrl": "https://www.aozora.gr.jp/cards/000058/files/56532_67996.html",
+      "sourceCardUrl": "https://www.aozora.gr.jp/cards/000058/card56532.html",
+      "sourcePublishedDate": "「文章世界　第四卷第二號」1909（明治42）年2月1日",
+      "sourceLicense": "Aozora Bunko file handling standard (copyright-expired work)",
+      "sourceLicenseUrl": "https://www.aozora.gr.jp/guide/kijyunn.html",
+      "sourceTermsUrl": "https://www.aozora.gr.jp/guide/kijyunn.html",
+      "sourceAttribution": "出典：青空文庫「新万葉物語」伊藤 左千夫",
+      "sourceProcessing": "Candidate metadata only; no reading body is bundled by this inventory.",
+      "rightsStatus": "public-domain",
+      "rightsEvidence": {
+        "catalog": "Aozora extended UTF-8 catalog",
+        "workCopyrightFlag": "なし",
+        "contributorCopyrightFlags": [
+          {
+            "role": "著者",
+            "name": "伊藤 左千夫",
+            "flag": "なし"
+          }
+        ],
+        "checkedRule": "Work and every credited contributor must have copyright flag 'なし'."
+      },
+      "classification": "NDC 913",
+      "orthography": "新字新仮名",
+      "inventoryNote": "A real named source division extracted from the approved Aozora HTML; no text body is bundled.",
+      "sourceSectionTitle": "�V���t����",
+      "sourceSectionIndex": 1
+    },
+    {
+      "candidateId": "aozora-058090-chapter-001",
+      "targetShelf": "serialized-novels",
+      "sourceFamilyId": "aozora-bunko",
+      "sourceTitle": "指導物語",
+      "sourceAuthor": "上田 広",
+      "sourceTranslator": null,
+      "workId": "058090",
+      "sourceUrl": "https://www.aozora.gr.jp/cards/001903/files/58090_60638.html",
+      "sourceCardUrl": "https://www.aozora.gr.jp/cards/001903/card58090.html",
+      "sourcePublishedDate": "「中央公論」1940（昭和15）年7月号",
+      "sourceLicense": "Aozora Bunko file handling standard (copyright-expired work)",
+      "sourceLicenseUrl": "https://www.aozora.gr.jp/guide/kijyunn.html",
+      "sourceTermsUrl": "https://www.aozora.gr.jp/guide/kijyunn.html",
+      "sourceAttribution": "出典：青空文庫「指導物語」上田 広",
+      "sourceProcessing": "Candidate metadata only; no reading body is bundled by this inventory.",
+      "rightsStatus": "public-domain",
+      "rightsEvidence": {
+        "catalog": "Aozora extended UTF-8 catalog",
+        "workCopyrightFlag": "なし",
+        "contributorCopyrightFlags": [
+          {
+            "role": "著者",
+            "name": "上田 広",
+            "flag": "なし"
+          }
+        ],
+        "checkedRule": "Work and every credited contributor must have copyright flag 'なし'."
+      },
+      "classification": "NDC 913",
+      "orthography": "新字新仮名",
+      "inventoryNote": "A real named source division extracted from the approved Aozora HTML; no text body is bundled.",
+      "sourceSectionTitle": "�w������",
+      "sourceSectionIndex": 1
+    },
+    {
+      "candidateId": "aozora-058090-chapter-002",
+      "targetShelf": "serialized-novels",
+      "sourceFamilyId": "aozora-bunko",
+      "sourceTitle": "指導物語",
+      "sourceAuthor": "上田 広",
+      "sourceTranslator": null,
+      "workId": "058090",
+      "sourceUrl": "https://www.aozora.gr.jp/cards/001903/files/58090_60638.html",
+      "sourceCardUrl": "https://www.aozora.gr.jp/cards/001903/card58090.html",
+      "sourcePublishedDate": "「中央公論」1940（昭和15）年7月号",
+      "sourceLicense": "Aozora Bunko file handling standard (copyright-expired work)",
+      "sourceLicenseUrl": "https://www.aozora.gr.jp/guide/kijyunn.html",
+      "sourceTermsUrl": "https://www.aozora.gr.jp/guide/kijyunn.html",
+      "sourceAttribution": "出典：青空文庫「指導物語」上田 広",
+      "sourceProcessing": "Candidate metadata only; no reading body is bundled by this inventory.",
+      "rightsStatus": "public-domain",
+      "rightsEvidence": {
+        "catalog": "Aozora extended UTF-8 catalog",
+        "workCopyrightFlag": "なし",
+        "contributorCopyrightFlags": [
+          {
+            "role": "著者",
+            "name": "上田 広",
+            "flag": "なし"
+          }
+        ],
+        "checkedRule": "Work and every credited contributor must have copyright flag 'なし'."
+      },
+      "classification": "NDC 913",
+      "orthography": "新字新仮名",
+      "inventoryNote": "A real named source division extracted from the approved Aozora HTML; no text body is bundled.",
+      "sourceSectionTitle": "���鍑�S�@�֎m�̏q��",
+      "sourceSectionIndex": 2
+    },
+    {
+      "candidateId": "aozora-013202-chapter-001",
+      "targetShelf": "serialized-novels",
+      "sourceFamilyId": "aozora-bunko",
+      "sourceTitle": "『新訳源氏物語』初版の序",
+      "sourceAuthor": "上田 敏",
+      "sourceTranslator": null,
+      "workId": "013202",
+      "sourceUrl": "https://www.aozora.gr.jp/cards/000235/files/13202_17874.html",
+      "sourceCardUrl": "https://www.aozora.gr.jp/cards/000235/card13202.html",
+      "sourcePublishedDate": null,
+      "sourceLicense": "Aozora Bunko file handling standard (copyright-expired work)",
+      "sourceLicenseUrl": "https://www.aozora.gr.jp/guide/kijyunn.html",
+      "sourceTermsUrl": "https://www.aozora.gr.jp/guide/kijyunn.html",
+      "sourceAttribution": "出典：青空文庫「『新訳源氏物語』初版の序」上田 敏",
+      "sourceProcessing": "Candidate metadata only; no reading body is bundled by this inventory.",
+      "rightsStatus": "public-domain",
+      "rightsEvidence": {
+        "catalog": "Aozora extended UTF-8 catalog",
+        "workCopyrightFlag": "なし",
+        "contributorCopyrightFlags": [
+          {
+            "role": "著者",
+            "name": "上田 敏",
+            "flag": "なし"
+          }
+        ],
+        "checkedRule": "Work and every credited contributor must have copyright flag 'なし'."
+      },
+      "classification": "NDC 913 914",
+      "orthography": "新字新仮名",
+      "inventoryNote": "A real named source division extracted from the approved Aozora HTML; no text body is bundled.",
+      "sourceSectionTitle": "�w�V�󌹎�����x���ł̏�",
+      "sourceSectionIndex": 1
+    },
+    {
+      "candidateId": "aozora-003622-chapter-001",
+      "targetShelf": "serialized-novels",
+      "sourceFamilyId": "aozora-bunko",
+      "sourceTitle": "犬物語",
+      "sourceAuthor": "内田 魯庵",
+      "sourceTranslator": null,
+      "workId": "003622",
+      "sourceUrl": "https://www.aozora.gr.jp/cards/000165/files/3622_19268.html",
+      "sourceCardUrl": "https://www.aozora.gr.jp/cards/000165/card3622.html",
+      "sourcePublishedDate": null,
+      "sourceLicense": "Aozora Bunko file handling standard (copyright-expired work)",
+      "sourceLicenseUrl": "https://www.aozora.gr.jp/guide/kijyunn.html",
+      "sourceTermsUrl": "https://www.aozora.gr.jp/guide/kijyunn.html",
+      "sourceAttribution": "出典：青空文庫「犬物語」内田 魯庵",
+      "sourceProcessing": "Candidate metadata only; no reading body is bundled by this inventory.",
+      "rightsStatus": "public-domain",
+      "rightsEvidence": {
+        "catalog": "Aozora extended UTF-8 catalog",
+        "workCopyrightFlag": "なし",
+        "contributorCopyrightFlags": [
+          {
+            "role": "著者",
+            "name": "内田 魯庵",
+            "flag": "なし"
+          }
+        ],
+        "checkedRule": "Work and every credited contributor must have copyright flag 'なし'."
+      },
+      "classification": "NDC 913",
+      "orthography": "新字旧仮名",
+      "inventoryNote": "A real named source division extracted from the approved Aozora HTML; no text body is bundled.",
+      "sourceSectionTitle": "������",
+      "sourceSectionIndex": 1
+    },
+    {
+      "candidateId": "aozora-056774-chapter-001",
+      "targetShelf": "serialized-novels",
+      "sourceFamilyId": "aozora-bunko",
+      "sourceTitle": "記憶",
+      "sourceAuthor": "梅崎 春生",
+      "sourceTranslator": null,
+      "workId": "056774",
+      "sourceUrl": "https://www.aozora.gr.jp/cards/001798/files/56774_58849.html",
+      "sourceCardUrl": "https://www.aozora.gr.jp/cards/001798/card56774.html",
+      "sourcePublishedDate": "「群像」講談社、1962（昭和37）年7月",
+      "sourceLicense": "Aozora Bunko file handling standard (copyright-expired work)",
+      "sourceLicenseUrl": "https://www.aozora.gr.jp/guide/kijyunn.html",
+      "sourceTermsUrl": "https://www.aozora.gr.jp/guide/kijyunn.html",
+      "sourceAttribution": "出典：青空文庫「記憶」梅崎 春生",
+      "sourceProcessing": "Candidate metadata only; no reading body is bundled by this inventory.",
+      "rightsStatus": "public-domain",
+      "rightsEvidence": {
+        "catalog": "Aozora extended UTF-8 catalog",
+        "workCopyrightFlag": "なし",
+        "contributorCopyrightFlags": [
+          {
+            "role": "著者",
+            "name": "梅崎 春生",
+            "flag": "なし"
+          }
+        ],
+        "checkedRule": "Work and every credited contributor must have copyright flag 'なし'."
+      },
+      "classification": "NDC 913",
+      "orthography": "新字新仮名",
+      "inventoryNote": "A real named source division extracted from the approved Aozora HTML; no text body is bundled.",
+      "sourceSectionTitle": "�L��",
+      "sourceSectionIndex": 1
+    },
+    {
+      "candidateId": "aozora-003238-chapter-001",
+      "targetShelf": "serialized-novels",
+      "sourceFamilyId": "aozora-bunko",
+      "sourceTitle": "暗号音盤事件",
+      "sourceAuthor": "海野 十三",
+      "sourceTranslator": null,
+      "workId": "003238",
+      "sourceUrl": "https://www.aozora.gr.jp/cards/000160/files/3238_9534.html",
+      "sourceCardUrl": "https://www.aozora.gr.jp/cards/000160/card3238.html",
+      "sourcePublishedDate": "「講談雑誌」1942（昭和17）年1月号",
+      "sourceLicense": "Aozora Bunko file handling standard (copyright-expired work)",
+      "sourceLicenseUrl": "https://www.aozora.gr.jp/guide/kijyunn.html",
+      "sourceTermsUrl": "https://www.aozora.gr.jp/guide/kijyunn.html",
+      "sourceAttribution": "出典：青空文庫「暗号音盤事件」海野 十三",
+      "sourceProcessing": "Candidate metadata only; no reading body is bundled by this inventory.",
+      "rightsStatus": "public-domain",
+      "rightsEvidence": {
+        "catalog": "Aozora extended UTF-8 catalog",
+        "workCopyrightFlag": "なし",
+        "contributorCopyrightFlags": [
+          {
+            "role": "著者",
+            "name": "海野 十三",
+            "flag": "なし"
+          }
+        ],
+        "checkedRule": "Work and every credited contributor must have copyright flag 'なし'."
+      },
+      "classification": "NDC 913",
+      "orthography": "新字新仮名",
+      "inventoryNote": "A real named source division extracted from the approved Aozora HTML; no text body is bundled.",
+      "sourceSectionTitle": "�Í����Վ���",
+      "sourceSectionIndex": 1
+    },
+    {
+      "candidateId": "aozora-001243-chapter-001",
+      "targetShelf": "serialized-novels",
+      "sourceFamilyId": "aozora-bunko",
+      "sourceTitle": "間諜座事件",
+      "sourceAuthor": "海野 十三",
+      "sourceTranslator": null,
+      "workId": "001243",
+      "sourceUrl": "https://www.aozora.gr.jp/cards/000160/files/1243_18587.html",
+      "sourceCardUrl": "https://www.aozora.gr.jp/cards/000160/card1243.html",
+      "sourcePublishedDate": "「日曜報知」1932（昭和7）年10月",
+      "sourceLicense": "Aozora Bunko file handling standard (copyright-expired work)",
+      "sourceLicenseUrl": "https://www.aozora.gr.jp/guide/kijyunn.html",
+      "sourceTermsUrl": "https://www.aozora.gr.jp/guide/kijyunn.html",
+      "sourceAttribution": "出典：青空文庫「間諜座事件」海野 十三",
+      "sourceProcessing": "Candidate metadata only; no reading body is bundled by this inventory.",
+      "rightsStatus": "public-domain",
+      "rightsEvidence": {
+        "catalog": "Aozora extended UTF-8 catalog",
+        "workCopyrightFlag": "なし",
+        "contributorCopyrightFlags": [
+          {
+            "role": "著者",
+            "name": "海野 十三",
+            "flag": "なし"
+          }
+        ],
+        "checkedRule": "Work and every credited contributor must have copyright flag 'なし'."
+      },
+      "classification": "NDC 913",
+      "orthography": "新字新仮名",
+      "inventoryNote": "A real named source division extracted from the approved Aozora HTML; no text body is bundled.",
+      "sourceSectionTitle": "�Ԓ�������",
+      "sourceSectionIndex": 1
+    },
+    {
+      "candidateId": "aozora-003230-chapter-001",
+      "targetShelf": "serialized-novels",
+      "sourceFamilyId": "aozora-bunko",
+      "sourceTitle": "鬼仏洞事件",
+      "sourceAuthor": "海野 十三",
+      "sourceTranslator": null,
+      "workId": "003230",
+      "sourceUrl": "https://www.aozora.gr.jp/cards/000160/files/3230_7212.html",
+      "sourceCardUrl": "https://www.aozora.gr.jp/cards/000160/card3230.html",
+      "sourcePublishedDate": null,
+      "sourceLicense": "Aozora Bunko file handling standard (copyright-expired work)",
+      "sourceLicenseUrl": "https://www.aozora.gr.jp/guide/kijyunn.html",
+      "sourceTermsUrl": "https://www.aozora.gr.jp/guide/kijyunn.html",
+      "sourceAttribution": "出典：青空文庫「鬼仏洞事件」海野 十三",
+      "sourceProcessing": "Candidate metadata only; no reading body is bundled by this inventory.",
+      "rightsStatus": "public-domain",
+      "rightsEvidence": {
+        "catalog": "Aozora extended UTF-8 catalog",
+        "workCopyrightFlag": "なし",
+        "contributorCopyrightFlags": [
+          {
+            "role": "著者",
+            "name": "海野 十三",
+            "flag": "なし"
+          }
+        ],
+        "checkedRule": "Work and every credited contributor must have copyright flag 'なし'."
+      },
+      "classification": "NDC 913",
+      "orthography": "新字新仮名",
+      "inventoryNote": "A real named source division extracted from the approved Aozora HTML; no text body is bundled.",
+      "sourceSectionTitle": "�S��������",
+      "sourceSectionIndex": 1
+    },
+    {
+      "candidateId": "aozora-001247-chapter-001",
+      "targetShelf": "serialized-novels",
+      "sourceFamilyId": "aozora-bunko",
+      "sourceTitle": "ゴールデン・バット事件",
+      "sourceAuthor": "海野 十三",
+      "sourceTranslator": null,
+      "workId": "001247",
+      "sourceUrl": "https://www.aozora.gr.jp/cards/000160/files/1247_18626.html",
+      "sourceCardUrl": "https://www.aozora.gr.jp/cards/000160/card1247.html",
+      "sourcePublishedDate": "「新青年」1933（昭和8）年10月号",
+      "sourceLicense": "Aozora Bunko file handling standard (copyright-expired work)",
+      "sourceLicenseUrl": "https://www.aozora.gr.jp/guide/kijyunn.html",
+      "sourceTermsUrl": "https://www.aozora.gr.jp/guide/kijyunn.html",
+      "sourceAttribution": "出典：青空文庫「ゴールデン・バット事件」海野 十三",
+      "sourceProcessing": "Candidate metadata only; no reading body is bundled by this inventory.",
+      "rightsStatus": "public-domain",
+      "rightsEvidence": {
+        "catalog": "Aozora extended UTF-8 catalog",
+        "workCopyrightFlag": "なし",
+        "contributorCopyrightFlags": [
+          {
+            "role": "著者",
+            "name": "海野 十三",
+            "flag": "なし"
+          }
+        ],
+        "checkedRule": "Work and every credited contributor must have copyright flag 'なし'."
+      },
+      "classification": "NDC 913",
+      "orthography": "新字新仮名",
+      "inventoryNote": "A real named source division extracted from the approved Aozora HTML; no text body is bundled.",
+      "sourceSectionTitle": "�S�[���f���E�o�b�g����",
+      "sourceSectionIndex": 1
+    },
+    {
+      "candidateId": "aozora-043838-chapter-001",
+      "targetShelf": "serialized-novels",
+      "sourceFamilyId": "aozora-bunko",
+      "sourceTitle": "三重宙返りの記",
+      "sourceAuthor": "海野 十三",
+      "sourceTranslator": null,
+      "workId": "043838",
+      "sourceUrl": "https://www.aozora.gr.jp/cards/000160/files/43838_18744.html",
+      "sourceCardUrl": "https://www.aozora.gr.jp/cards/000160/card43838.html",
+      "sourcePublishedDate": "「航空朝日」1941（昭和16）年4月号",
+      "sourceLicense": "Aozora Bunko file handling standard (copyright-expired work)",
+      "sourceLicenseUrl": "https://www.aozora.gr.jp/guide/kijyunn.html",
+      "sourceTermsUrl": "https://www.aozora.gr.jp/guide/kijyunn.html",
+      "sourceAttribution": "出典：青空文庫「三重宙返りの記」海野 十三",
+      "sourceProcessing": "Candidate metadata only; no reading body is bundled by this inventory.",
+      "rightsStatus": "public-domain",
+      "rightsEvidence": {
+        "catalog": "Aozora extended UTF-8 catalog",
+        "workCopyrightFlag": "なし",
+        "contributorCopyrightFlags": [
+          {
+            "role": "著者",
+            "name": "海野 十三",
+            "flag": "なし"
+          }
+        ],
+        "checkedRule": "Work and every credited contributor must have copyright flag 'なし'."
+      },
+      "classification": "NDC 913",
+      "orthography": "新字新仮名",
+      "inventoryNote": "A real named source division extracted from the approved Aozora HTML; no text body is bundled.",
+      "sourceSectionTitle": "�O�d���Ԃ�̋L",
+      "sourceSectionIndex": 1
+    },
+    {
+      "candidateId": "aozora-003349-chapter-001",
+      "targetShelf": "serialized-novels",
+      "sourceFamilyId": "aozora-bunko",
+      "sourceTitle": "時限爆弾奇譚",
+      "sourceAuthor": "海野 十三",
+      "sourceTranslator": null,
+      "workId": "003349",
+      "sourceUrl": "https://www.aozora.gr.jp/cards/000160/files/3349_36910.html",
+      "sourceCardUrl": "https://www.aozora.gr.jp/cards/000160/card3349.html",
+      "sourcePublishedDate": "「新青年」1941（昭和16）年12月",
+      "sourceLicense": "Aozora Bunko file handling standard (copyright-expired work)",
+      "sourceLicenseUrl": "https://www.aozora.gr.jp/guide/kijyunn.html",
+      "sourceTermsUrl": "https://www.aozora.gr.jp/guide/kijyunn.html",
+      "sourceAttribution": "出典：青空文庫「時限爆弾奇譚」海野 十三",
+      "sourceProcessing": "Candidate metadata only; no reading body is bundled by this inventory.",
+      "rightsStatus": "public-domain",
+      "rightsEvidence": {
+        "catalog": "Aozora extended UTF-8 catalog",
+        "workCopyrightFlag": "なし",
+        "contributorCopyrightFlags": [
+          {
+            "role": "著者",
+            "name": "海野 十三",
+            "flag": "なし"
+          }
+        ],
+        "checkedRule": "Work and every credited contributor must have copyright flag 'なし'."
+      },
+      "classification": "NDC 913",
+      "orthography": "新字新仮名",
+      "inventoryNote": "A real named source division extracted from the approved Aozora HTML; no text body is bundled.",
+      "sourceSectionTitle": "�������e���",
+      "sourceSectionIndex": 1
+    },
+    {
+      "candidateId": "aozora-003349-chapter-002",
+      "targetShelf": "serialized-novels",
+      "sourceFamilyId": "aozora-bunko",
+      "sourceTitle": "時限爆弾奇譚",
+      "sourceAuthor": "海野 十三",
+      "sourceTranslator": null,
+      "workId": "003349",
+      "sourceUrl": "https://www.aozora.gr.jp/cards/000160/files/3349_36910.html",
+      "sourceCardUrl": "https://www.aozora.gr.jp/cards/000160/card3349.html",
+      "sourcePublishedDate": "「新青年」1941（昭和16）年12月",
+      "sourceLicense": "Aozora Bunko file handling standard (copyright-expired work)",
+      "sourceLicenseUrl": "https://www.aozora.gr.jp/guide/kijyunn.html",
+      "sourceTermsUrl": "https://www.aozora.gr.jp/guide/kijyunn.html",
+      "sourceAttribution": "出典：青空文庫「時限爆弾奇譚」海野 十三",
+      "sourceProcessing": "Candidate metadata only; no reading body is bundled by this inventory.",
+      "rightsStatus": "public-domain",
+      "rightsEvidence": {
+        "catalog": "Aozora extended UTF-8 catalog",
+        "workCopyrightFlag": "なし",
+        "contributorCopyrightFlags": [
+          {
+            "role": "著者",
+            "name": "海野 十三",
+            "flag": "なし"
+          }
+        ],
+        "checkedRule": "Work and every credited contributor must have copyright flag 'なし'."
+      },
+      "classification": "NDC 913",
+      "orthography": "新字新仮名",
+      "inventoryNote": "A real named source division extracted from the approved Aozora HTML; no text body is bundled.",
+      "sourceSectionTitle": "�\\�\\�����m�V���[�Y�E�W�\\�\\",
+      "sourceSectionIndex": 2
+    },
+    {
+      "candidateId": "aozora-003522-chapter-001",
+      "targetShelf": "serialized-novels",
+      "sourceFamilyId": "aozora-bunko",
+      "sourceTitle": "人造人間事件",
+      "sourceAuthor": "海野 十三",
+      "sourceTranslator": null,
+      "workId": "003522",
+      "sourceUrl": "https://www.aozora.gr.jp/cards/000160/files/3522_18463.html",
+      "sourceCardUrl": "https://www.aozora.gr.jp/cards/000160/card3522.html",
+      "sourcePublishedDate": "「オール読物」文藝春秋、1936（昭和11）年12月",
+      "sourceLicense": "Aozora Bunko file handling standard (copyright-expired work)",
+      "sourceLicenseUrl": "https://www.aozora.gr.jp/guide/kijyunn.html",
+      "sourceTermsUrl": "https://www.aozora.gr.jp/guide/kijyunn.html",
+      "sourceAttribution": "出典：青空文庫「人造人間事件」海野 十三",
+      "sourceProcessing": "Candidate metadata only; no reading body is bundled by this inventory.",
+      "rightsStatus": "public-domain",
+      "rightsEvidence": {
+        "catalog": "Aozora extended UTF-8 catalog",
+        "workCopyrightFlag": "なし",
+        "contributorCopyrightFlags": [
+          {
+            "role": "著者",
+            "name": "海野 十三",
+            "flag": "なし"
+          }
+        ],
+        "checkedRule": "Work and every credited contributor must have copyright flag 'なし'."
+      },
+      "classification": "NDC 913",
+      "orthography": "新字新仮名",
+      "inventoryNote": "A real named source division extracted from the approved Aozora HTML; no text body is bundled.",
+      "sourceSectionTitle": "�l���l�Ԏ���",
+      "sourceSectionIndex": 1
+    },
+    {
+      "candidateId": "aozora-043719-chapter-001",
+      "targetShelf": "serialized-novels",
+      "sourceFamilyId": "aozora-bunko",
+      "sourceTitle": "人造物語",
+      "sourceAuthor": "海野 十三",
+      "sourceTranslator": null,
+      "workId": "043719",
+      "sourceUrl": "https://www.aozora.gr.jp/cards/000160/files/43719_18746.html",
+      "sourceCardUrl": "https://www.aozora.gr.jp/cards/000160/card43719.html",
+      "sourcePublishedDate": "「新青年」1931（昭和6）年4月号",
+      "sourceLicense": "Aozora Bunko file handling standard (copyright-expired work)",
+      "sourceLicenseUrl": "https://www.aozora.gr.jp/guide/kijyunn.html",
+      "sourceTermsUrl": "https://www.aozora.gr.jp/guide/kijyunn.html",
+      "sourceAttribution": "出典：青空文庫「人造物語」海野 十三",
+      "sourceProcessing": "Candidate metadata only; no reading body is bundled by this inventory.",
+      "rightsStatus": "public-domain",
+      "rightsEvidence": {
+        "catalog": "Aozora extended UTF-8 catalog",
+        "workCopyrightFlag": "なし",
+        "contributorCopyrightFlags": [
+          {
+            "role": "著者",
+            "name": "海野 十三",
+            "flag": "なし"
+          }
+        ],
+        "checkedRule": "Work and every credited contributor must have copyright flag 'なし'."
+      },
+      "classification": "NDC 913",
+      "orthography": "新字新仮名",
+      "inventoryNote": "A real named source division extracted from the approved Aozora HTML; no text body is bundled.",
+      "sourceSectionTitle": "�l������",
+      "sourceSectionIndex": 1
+    },
+    {
+      "candidateId": "aozora-001233-chapter-001",
+      "targetShelf": "serialized-novels",
+      "sourceFamilyId": "aozora-bunko",
+      "sourceTitle": "赤耀館事件の真相",
+      "sourceAuthor": "海野 十三",
+      "sourceTranslator": null,
+      "workId": "001233",
+      "sourceUrl": "https://www.aozora.gr.jp/cards/000160/files/1233_16953.html",
+      "sourceCardUrl": "https://www.aozora.gr.jp/cards/000160/card1233.html",
+      "sourcePublishedDate": "「新青年」博文館、1929（昭和4）年10月号",
+      "sourceLicense": "Aozora Bunko file handling standard (copyright-expired work)",
+      "sourceLicenseUrl": "https://www.aozora.gr.jp/guide/kijyunn.html",
+      "sourceTermsUrl": "https://www.aozora.gr.jp/guide/kijyunn.html",
+      "sourceAttribution": "出典：青空文庫「赤耀館事件の真相」海野 十三",
+      "sourceProcessing": "Candidate metadata only; no reading body is bundled by this inventory.",
+      "rightsStatus": "public-domain",
+      "rightsEvidence": {
+        "catalog": "Aozora extended UTF-8 catalog",
+        "workCopyrightFlag": "なし",
+        "contributorCopyrightFlags": [
+          {
+            "role": "著者",
+            "name": "海野 十三",
+            "flag": "なし"
+          }
+        ],
+        "checkedRule": "Work and every credited contributor must have copyright flag 'なし'."
+      },
+      "classification": "NDC 913",
+      "orthography": "新字新仮名",
+      "inventoryNote": "A real named source division extracted from the approved Aozora HTML; no text body is bundled.",
+      "sourceSectionTitle": "�ԗs�َ����̐^��",
+      "sourceSectionIndex": 1
+    },
+    {
+      "candidateId": "aozora-000875-chapter-001",
+      "targetShelf": "serialized-novels",
+      "sourceFamilyId": "aozora-bunko",
+      "sourceTitle": "地球発狂事件",
+      "sourceAuthor": "海野 十三 / 丘 丘十郎",
+      "sourceTranslator": null,
+      "workId": "000875",
+      "sourceUrl": "https://www.aozora.gr.jp/cards/000160/files/875_42450.html",
+      "sourceCardUrl": "https://www.aozora.gr.jp/cards/000160/card875.html",
+      "sourcePublishedDate": "「協力新聞」1945（昭和20）年9月1日～1946（昭和21）年（終号未詳）",
+      "sourceLicense": "Aozora Bunko file handling standard (copyright-expired work)",
+      "sourceLicenseUrl": "https://www.aozora.gr.jp/guide/kijyunn.html",
+      "sourceTermsUrl": "https://www.aozora.gr.jp/guide/kijyunn.html",
+      "sourceAttribution": "出典：青空文庫「地球発狂事件」海野 十三、丘 丘十郎",
+      "sourceProcessing": "Candidate metadata only; no reading body is bundled by this inventory.",
+      "rightsStatus": "public-domain",
+      "rightsEvidence": {
+        "catalog": "Aozora extended UTF-8 catalog",
+        "workCopyrightFlag": "なし",
+        "contributorCopyrightFlags": [
+          {
+            "role": "著者",
+            "name": "海野 十三",
+            "flag": "なし"
+          },
+          {
+            "role": "著者",
+            "name": "丘 丘十郎",
+            "flag": "なし"
+          }
+        ],
+        "checkedRule": "Work and every credited contributor must have copyright flag 'なし'."
+      },
+      "classification": "NDC 913",
+      "orthography": "新字新仮名",
+      "inventoryNote": "A real named source division extracted from the approved Aozora HTML; no text body is bundled.",
+      "sourceSectionTitle": "�n����������",
+      "sourceSectionIndex": 1
+    },
+    {
+      "candidateId": "aozora-000875-chapter-002",
+      "targetShelf": "serialized-novels",
+      "sourceFamilyId": "aozora-bunko",
+      "sourceTitle": "地球発狂事件",
+      "sourceAuthor": "海野 十三 / 丘 丘十郎",
+      "sourceTranslator": null,
+      "workId": "000875",
+      "sourceUrl": "https://www.aozora.gr.jp/cards/000160/files/875_42450.html",
+      "sourceCardUrl": "https://www.aozora.gr.jp/cards/000160/card875.html",
+      "sourcePublishedDate": "「協力新聞」1945（昭和20）年9月1日～1946（昭和21）年（終号未詳）",
+      "sourceLicense": "Aozora Bunko file handling standard (copyright-expired work)",
+      "sourceLicenseUrl": "https://www.aozora.gr.jp/guide/kijyunn.html",
+      "sourceTermsUrl": "https://www.aozora.gr.jp/guide/kijyunn.html",
+      "sourceAttribution": "出典：青空文庫「地球発狂事件」海野 十三、丘 丘十郎",
+      "sourceProcessing": "Candidate metadata only; no reading body is bundled by this inventory.",
+      "rightsStatus": "public-domain",
+      "rightsEvidence": {
+        "catalog": "Aozora extended UTF-8 catalog",
+        "workCopyrightFlag": "なし",
+        "contributorCopyrightFlags": [
+          {
+            "role": "著者",
+            "name": "海野 十三",
+            "flag": "なし"
+          },
+          {
+            "role": "著者",
+            "name": "丘 丘十郎",
+            "flag": "なし"
+          }
+        ],
+        "checkedRule": "Work and every credited contributor must have copyright flag 'なし'."
+      },
+      "classification": "NDC 913",
+      "orthography": "新字新仮名",
+      "inventoryNote": "A real named source division extracted from the approved Aozora HTML; no text body is bundled.",
+      "sourceSectionTitle": "���[",
+      "sourceSectionIndex": 2
+    },
+    {
+      "candidateId": "aozora-000875-chapter-003",
+      "targetShelf": "serialized-novels",
+      "sourceFamilyId": "aozora-bunko",
+      "sourceTitle": "地球発狂事件",
+      "sourceAuthor": "海野 十三 / 丘 丘十郎",
+      "sourceTranslator": null,
+      "workId": "000875",
+      "sourceUrl": "https://www.aozora.gr.jp/cards/000160/files/875_42450.html",
+      "sourceCardUrl": "https://www.aozora.gr.jp/cards/000160/card875.html",
+      "sourcePublishedDate": "「協力新聞」1945（昭和20）年9月1日～1946（昭和21）年（終号未詳）",
+      "sourceLicense": "Aozora Bunko file handling standard (copyright-expired work)",
+      "sourceLicenseUrl": "https://www.aozora.gr.jp/guide/kijyunn.html",
+      "sourceTermsUrl": "https://www.aozora.gr.jp/guide/kijyunn.html",
+      "sourceAttribution": "出典：青空文庫「地球発狂事件」海野 十三、丘 丘十郎",
+      "sourceProcessing": "Candidate metadata only; no reading body is bundled by this inventory.",
+      "rightsStatus": "public-domain",
+      "rightsEvidence": {
+        "catalog": "Aozora extended UTF-8 catalog",
+        "workCopyrightFlag": "なし",
+        "contributorCopyrightFlags": [
+          {
+            "role": "著者",
+            "name": "海野 十三",
+            "flag": "なし"
+          },
+          {
+            "role": "著者",
+            "name": "丘 丘十郎",
+            "flag": "なし"
+          }
+        ],
+        "checkedRule": "Work and every credited contributor must have copyright flag 'なし'."
+      },
+      "classification": "NDC 913",
+      "orthography": "新字新仮名",
+      "inventoryNote": "A real named source division extracted from the approved Aozora HTML; no text body is bundled.",
+      "sourceSectionTitle": "�H��̉���",
+      "sourceSectionIndex": 3
+    },
+    {
+      "candidateId": "aozora-000875-chapter-004",
+      "targetShelf": "serialized-novels",
+      "sourceFamilyId": "aozora-bunko",
+      "sourceTitle": "地球発狂事件",
+      "sourceAuthor": "海野 十三 / 丘 丘十郎",
+      "sourceTranslator": null,
+      "workId": "000875",
+      "sourceUrl": "https://www.aozora.gr.jp/cards/000160/files/875_42450.html",
+      "sourceCardUrl": "https://www.aozora.gr.jp/cards/000160/card875.html",
+      "sourcePublishedDate": "「協力新聞」1945（昭和20）年9月1日～1946（昭和21）年（終号未詳）",
+      "sourceLicense": "Aozora Bunko file handling standard (copyright-expired work)",
+      "sourceLicenseUrl": "https://www.aozora.gr.jp/guide/kijyunn.html",
+      "sourceTermsUrl": "https://www.aozora.gr.jp/guide/kijyunn.html",
+      "sourceAttribution": "出典：青空文庫「地球発狂事件」海野 十三、丘 丘十郎",
+      "sourceProcessing": "Candidate metadata only; no reading body is bundled by this inventory.",
+      "rightsStatus": "public-domain",
+      "rightsEvidence": {
+        "catalog": "Aozora extended UTF-8 catalog",
+        "workCopyrightFlag": "なし",
+        "contributorCopyrightFlags": [
+          {
+            "role": "著者",
+            "name": "海野 十三",
+            "flag": "なし"
+          },
+          {
+            "role": "著者",
+            "name": "丘 丘十郎",
+            "flag": "なし"
+          }
+        ],
+        "checkedRule": "Work and every credited contributor must have copyright flag 'なし'."
+      },
+      "classification": "NDC 913",
+      "orthography": "新字新仮名",
+      "inventoryNote": "A real named source division extracted from the approved Aozora HTML; no text body is bundled.",
+      "sourceSectionTitle": "���O�E�H��̉���",
+      "sourceSectionIndex": 4
+    },
+    {
+      "candidateId": "aozora-000875-chapter-005",
+      "targetShelf": "serialized-novels",
+      "sourceFamilyId": "aozora-bunko",
+      "sourceTitle": "地球発狂事件",
+      "sourceAuthor": "海野 十三 / 丘 丘十郎",
+      "sourceTranslator": null,
+      "workId": "000875",
+      "sourceUrl": "https://www.aozora.gr.jp/cards/000160/files/875_42450.html",
+      "sourceCardUrl": "https://www.aozora.gr.jp/cards/000160/card875.html",
+      "sourcePublishedDate": "「協力新聞」1945（昭和20）年9月1日～1946（昭和21）年（終号未詳）",
+      "sourceLicense": "Aozora Bunko file handling standard (copyright-expired work)",
+      "sourceLicenseUrl": "https://www.aozora.gr.jp/guide/kijyunn.html",
+      "sourceTermsUrl": "https://www.aozora.gr.jp/guide/kijyunn.html",
+      "sourceAttribution": "出典：青空文庫「地球発狂事件」海野 十三、丘 丘十郎",
+      "sourceProcessing": "Candidate metadata only; no reading body is bundled by this inventory.",
+      "rightsStatus": "public-domain",
+      "rightsEvidence": {
+        "catalog": "Aozora extended UTF-8 catalog",
+        "workCopyrightFlag": "なし",
+        "contributorCopyrightFlags": [
+          {
+            "role": "著者",
+            "name": "海野 十三",
+            "flag": "なし"
+          },
+          {
+            "role": "著者",
+            "name": "丘 丘十郎",
+            "flag": "なし"
+          }
+        ],
+        "checkedRule": "Work and every credited contributor must have copyright flag 'なし'."
+      },
+      "classification": "NDC 913",
+      "orthography": "新字新仮名",
+      "inventoryNote": "A real named source division extracted from the approved Aozora HTML; no text body is bundled.",
+      "sourceSectionTitle": "�o�R����",
+      "sourceSectionIndex": 5
+    },
+    {
+      "candidateId": "aozora-000875-chapter-006",
+      "targetShelf": "serialized-novels",
+      "sourceFamilyId": "aozora-bunko",
+      "sourceTitle": "地球発狂事件",
+      "sourceAuthor": "海野 十三 / 丘 丘十郎",
+      "sourceTranslator": null,
+      "workId": "000875",
+      "sourceUrl": "https://www.aozora.gr.jp/cards/000160/files/875_42450.html",
+      "sourceCardUrl": "https://www.aozora.gr.jp/cards/000160/card875.html",
+      "sourcePublishedDate": "「協力新聞」1945（昭和20）年9月1日～1946（昭和21）年（終号未詳）",
+      "sourceLicense": "Aozora Bunko file handling standard (copyright-expired work)",
+      "sourceLicenseUrl": "https://www.aozora.gr.jp/guide/kijyunn.html",
+      "sourceTermsUrl": "https://www.aozora.gr.jp/guide/kijyunn.html",
+      "sourceAttribution": "出典：青空文庫「地球発狂事件」海野 十三、丘 丘十郎",
+      "sourceProcessing": "Candidate metadata only; no reading body is bundled by this inventory.",
+      "rightsStatus": "public-domain",
+      "rightsEvidence": {
+        "catalog": "Aozora extended UTF-8 catalog",
+        "workCopyrightFlag": "なし",
+        "contributorCopyrightFlags": [
+          {
+            "role": "著者",
+            "name": "海野 十三",
+            "flag": "なし"
+          },
+          {
+            "role": "著者",
+            "name": "丘 丘十郎",
+            "flag": "なし"
+          }
+        ],
+        "checkedRule": "Work and every credited contributor must have copyright flag 'なし'."
+      },
+      "classification": "NDC 913",
+      "orthography": "新字新仮名",
+      "inventoryNote": "A real named source division extracted from the approved Aozora HTML; no text body is bundled.",
+      "sourceSectionTitle": "���O�E�o�R����",
+      "sourceSectionIndex": 6
+    },
+    {
+      "candidateId": "aozora-000875-chapter-007",
+      "targetShelf": "serialized-novels",
+      "sourceFamilyId": "aozora-bunko",
+      "sourceTitle": "地球発狂事件",
+      "sourceAuthor": "海野 十三 / 丘 丘十郎",
+      "sourceTranslator": null,
+      "workId": "000875",
+      "sourceUrl": "https://www.aozora.gr.jp/cards/000160/files/875_42450.html",
+      "sourceCardUrl": "https://www.aozora.gr.jp/cards/000160/card875.html",
+      "sourcePublishedDate": "「協力新聞」1945（昭和20）年9月1日～1946（昭和21）年（終号未詳）",
+      "sourceLicense": "Aozora Bunko file handling standard (copyright-expired work)",
+      "sourceLicenseUrl": "https://www.aozora.gr.jp/guide/kijyunn.html",
+      "sourceTermsUrl": "https://www.aozora.gr.jp/guide/kijyunn.html",
+      "sourceAttribution": "出典：青空文庫「地球発狂事件」海野 十三、丘 丘十郎",
+      "sourceProcessing": "Candidate metadata only; no reading body is bundled by this inventory.",
+      "rightsStatus": "public-domain",
+      "rightsEvidence": {
+        "catalog": "Aozora extended UTF-8 catalog",
+        "workCopyrightFlag": "なし",
+        "contributorCopyrightFlags": [
+          {
+            "role": "著者",
+            "name": "海野 十三",
+            "flag": "なし"
+          },
+          {
+            "role": "著者",
+            "name": "丘 丘十郎",
+            "flag": "なし"
+          }
+        ],
+        "checkedRule": "Work and every credited contributor must have copyright flag 'なし'."
+      },
+      "classification": "NDC 913",
+      "orthography": "新字新仮名",
+      "inventoryNote": "A real named source division extracted from the approved Aozora HTML; no text body is bundled.",
+      "sourceSectionTitle": "����",
+      "sourceSectionIndex": 7
+    },
+    {
+      "candidateId": "aozora-000875-chapter-008",
+      "targetShelf": "serialized-novels",
+      "sourceFamilyId": "aozora-bunko",
+      "sourceTitle": "地球発狂事件",
+      "sourceAuthor": "海野 十三 / 丘 丘十郎",
+      "sourceTranslator": null,
+      "workId": "000875",
+      "sourceUrl": "https://www.aozora.gr.jp/cards/000160/files/875_42450.html",
+      "sourceCardUrl": "https://www.aozora.gr.jp/cards/000160/card875.html",
+      "sourcePublishedDate": "「協力新聞」1945（昭和20）年9月1日～1946（昭和21）年（終号未詳）",
+      "sourceLicense": "Aozora Bunko file handling standard (copyright-expired work)",
+      "sourceLicenseUrl": "https://www.aozora.gr.jp/guide/kijyunn.html",
+      "sourceTermsUrl": "https://www.aozora.gr.jp/guide/kijyunn.html",
+      "sourceAttribution": "出典：青空文庫「地球発狂事件」海野 十三、丘 丘十郎",
+      "sourceProcessing": "Candidate metadata only; no reading body is bundled by this inventory.",
+      "rightsStatus": "public-domain",
+      "rightsEvidence": {
+        "catalog": "Aozora extended UTF-8 catalog",
+        "workCopyrightFlag": "なし",
+        "contributorCopyrightFlags": [
+          {
+            "role": "著者",
+            "name": "海野 十三",
+            "flag": "なし"
+          },
+          {
+            "role": "著者",
+            "name": "丘 丘十郎",
+            "flag": "なし"
+          }
+        ],
+        "checkedRule": "Work and every credited contributor must have copyright flag 'なし'."
+      },
+      "classification": "NDC 913",
+      "orthography": "新字新仮名",
+      "inventoryNote": "A real named source division extracted from the approved Aozora HTML; no text body is bundled.",
+      "sourceSectionTitle": "������",
+      "sourceSectionIndex": 8
+    },
+    {
+      "candidateId": "aozora-000875-chapter-009",
+      "targetShelf": "serialized-novels",
+      "sourceFamilyId": "aozora-bunko",
+      "sourceTitle": "地球発狂事件",
+      "sourceAuthor": "海野 十三 / 丘 丘十郎",
+      "sourceTranslator": null,
+      "workId": "000875",
+      "sourceUrl": "https://www.aozora.gr.jp/cards/000160/files/875_42450.html",
+      "sourceCardUrl": "https://www.aozora.gr.jp/cards/000160/card875.html",
+      "sourcePublishedDate": "「協力新聞」1945（昭和20）年9月1日～1946（昭和21）年（終号未詳）",
+      "sourceLicense": "Aozora Bunko file handling standard (copyright-expired work)",
+      "sourceLicenseUrl": "https://www.aozora.gr.jp/guide/kijyunn.html",
+      "sourceTermsUrl": "https://www.aozora.gr.jp/guide/kijyunn.html",
+      "sourceAttribution": "出典：青空文庫「地球発狂事件」海野 十三、丘 丘十郎",
+      "sourceProcessing": "Candidate metadata only; no reading body is bundled by this inventory.",
+      "rightsStatus": "public-domain",
+      "rightsEvidence": {
+        "catalog": "Aozora extended UTF-8 catalog",
+        "workCopyrightFlag": "なし",
+        "contributorCopyrightFlags": [
+          {
+            "role": "著者",
+            "name": "海野 十三",
+            "flag": "なし"
+          },
+          {
+            "role": "著者",
+            "name": "丘 丘十郎",
+            "flag": "なし"
+          }
+        ],
+        "checkedRule": "Work and every credited contributor must have copyright flag 'なし'."
+      },
+      "classification": "NDC 913",
+      "orthography": "新字新仮名",
+      "inventoryNote": "A real named source division extracted from the approved Aozora HTML; no text body is bundled.",
+      "sourceSectionTitle": "�Q�����R��",
+      "sourceSectionIndex": 9
+    },
+    {
+      "candidateId": "aozora-000875-chapter-010",
+      "targetShelf": "serialized-novels",
+      "sourceFamilyId": "aozora-bunko",
+      "sourceTitle": "地球発狂事件",
+      "sourceAuthor": "海野 十三 / 丘 丘十郎",
+      "sourceTranslator": null,
+      "workId": "000875",
+      "sourceUrl": "https://www.aozora.gr.jp/cards/000160/files/875_42450.html",
+      "sourceCardUrl": "https://www.aozora.gr.jp/cards/000160/card875.html",
+      "sourcePublishedDate": "「協力新聞」1945（昭和20）年9月1日～1946（昭和21）年（終号未詳）",
+      "sourceLicense": "Aozora Bunko file handling standard (copyright-expired work)",
+      "sourceLicenseUrl": "https://www.aozora.gr.jp/guide/kijyunn.html",
+      "sourceTermsUrl": "https://www.aozora.gr.jp/guide/kijyunn.html",
+      "sourceAttribution": "出典：青空文庫「地球発狂事件」海野 十三、丘 丘十郎",
+      "sourceProcessing": "Candidate metadata only; no reading body is bundled by this inventory.",
+      "rightsStatus": "public-domain",
+      "rightsEvidence": {
+        "catalog": "Aozora extended UTF-8 catalog",
+        "workCopyrightFlag": "なし",
+        "contributorCopyrightFlags": [
+          {
+            "role": "著者",
+            "name": "海野 十三",
+            "flag": "なし"
+          },
+          {
+            "role": "著者",
+            "name": "丘 丘十郎",
+            "flag": "なし"
+          }
+        ],
+        "checkedRule": "Work and every credited contributor must have copyright flag 'なし'."
+      },
+      "classification": "NDC 913",
+      "orthography": "新字新仮名",
+      "inventoryNote": "A real named source division extracted from the approved Aozora HTML; no text body is bundled.",
+      "sourceSectionTitle": "�V�s�ӕX�D",
+      "sourceSectionIndex": 10
+    },
+    {
+      "candidateId": "aozora-000875-chapter-011",
+      "targetShelf": "serialized-novels",
+      "sourceFamilyId": "aozora-bunko",
+      "sourceTitle": "地球発狂事件",
+      "sourceAuthor": "海野 十三 / 丘 丘十郎",
+      "sourceTranslator": null,
+      "workId": "000875",
+      "sourceUrl": "https://www.aozora.gr.jp/cards/000160/files/875_42450.html",
+      "sourceCardUrl": "https://www.aozora.gr.jp/cards/000160/card875.html",
+      "sourcePublishedDate": "「協力新聞」1945（昭和20）年9月1日～1946（昭和21）年（終号未詳）",
+      "sourceLicense": "Aozora Bunko file handling standard (copyright-expired work)",
+      "sourceLicenseUrl": "https://www.aozora.gr.jp/guide/kijyunn.html",
+      "sourceTermsUrl": "https://www.aozora.gr.jp/guide/kijyunn.html",
+      "sourceAttribution": "出典：青空文庫「地球発狂事件」海野 十三、丘 丘十郎",
+      "sourceProcessing": "Candidate metadata only; no reading body is bundled by this inventory.",
+      "rightsStatus": "public-domain",
+      "rightsEvidence": {
+        "catalog": "Aozora extended UTF-8 catalog",
+        "workCopyrightFlag": "なし",
+        "contributorCopyrightFlags": [
+          {
+            "role": "著者",
+            "name": "海野 十三",
+            "flag": "なし"
+          },
+          {
+            "role": "著者",
+            "name": "丘 丘十郎",
+            "flag": "なし"
+          }
+        ],
+        "checkedRule": "Work and every credited contributor must have copyright flag 'なし'."
+      },
+      "classification": "NDC 913",
+      "orthography": "新字新仮名",
+      "inventoryNote": "A real named source division extracted from the approved Aozora HTML; no text body is bundled.",
+      "sourceSectionTitle": "�؋��̎蕀",
+      "sourceSectionIndex": 11
+    },
+    {
+      "candidateId": "aozora-000875-chapter-012",
+      "targetShelf": "serialized-novels",
+      "sourceFamilyId": "aozora-bunko",
+      "sourceTitle": "地球発狂事件",
+      "sourceAuthor": "海野 十三 / 丘 丘十郎",
+      "sourceTranslator": null,
+      "workId": "000875",
+      "sourceUrl": "https://www.aozora.gr.jp/cards/000160/files/875_42450.html",
+      "sourceCardUrl": "https://www.aozora.gr.jp/cards/000160/card875.html",
+      "sourcePublishedDate": "「協力新聞」1945（昭和20）年9月1日～1946（昭和21）年（終号未詳）",
+      "sourceLicense": "Aozora Bunko file handling standard (copyright-expired work)",
+      "sourceLicenseUrl": "https://www.aozora.gr.jp/guide/kijyunn.html",
+      "sourceTermsUrl": "https://www.aozora.gr.jp/guide/kijyunn.html",
+      "sourceAttribution": "出典：青空文庫「地球発狂事件」海野 十三、丘 丘十郎",
+      "sourceProcessing": "Candidate metadata only; no reading body is bundled by this inventory.",
+      "rightsStatus": "public-domain",
+      "rightsEvidence": {
+        "catalog": "Aozora extended UTF-8 catalog",
+        "workCopyrightFlag": "なし",
+        "contributorCopyrightFlags": [
+          {
+            "role": "著者",
+            "name": "海野 十三",
+            "flag": "なし"
+          },
+          {
+            "role": "著者",
+            "name": "丘 丘十郎",
+            "flag": "なし"
+          }
+        ],
+        "checkedRule": "Work and every credited contributor must have copyright flag 'なし'."
+      },
+      "classification": "NDC 913",
+      "orthography": "新字新仮名",
+      "inventoryNote": "A real named source division extracted from the approved Aozora HTML; no text body is bundled.",
+      "sourceSectionTitle": "���͂̒ǋ�",
+      "sourceSectionIndex": 12
+    },
+    {
+      "candidateId": "aozora-000875-chapter-013",
+      "targetShelf": "serialized-novels",
+      "sourceFamilyId": "aozora-bunko",
+      "sourceTitle": "地球発狂事件",
+      "sourceAuthor": "海野 十三 / 丘 丘十郎",
+      "sourceTranslator": null,
+      "workId": "000875",
+      "sourceUrl": "https://www.aozora.gr.jp/cards/000160/files/875_42450.html",
+      "sourceCardUrl": "https://www.aozora.gr.jp/cards/000160/card875.html",
+      "sourcePublishedDate": "「協力新聞」1945（昭和20）年9月1日～1946（昭和21）年（終号未詳）",
+      "sourceLicense": "Aozora Bunko file handling standard (copyright-expired work)",
+      "sourceLicenseUrl": "https://www.aozora.gr.jp/guide/kijyunn.html",
+      "sourceTermsUrl": "https://www.aozora.gr.jp/guide/kijyunn.html",
+      "sourceAttribution": "出典：青空文庫「地球発狂事件」海野 十三、丘 丘十郎",
+      "sourceProcessing": "Candidate metadata only; no reading body is bundled by this inventory.",
+      "rightsStatus": "public-domain",
+      "rightsEvidence": {
+        "catalog": "Aozora extended UTF-8 catalog",
+        "workCopyrightFlag": "なし",
+        "contributorCopyrightFlags": [
+          {
+            "role": "著者",
+            "name": "海野 十三",
+            "flag": "なし"
+          },
+          {
+            "role": "著者",
+            "name": "丘 丘十郎",
+            "flag": "なし"
+          }
+        ],
+        "checkedRule": "Work and every credited contributor must have copyright flag 'なし'."
+      },
+      "classification": "NDC 913",
+      "orthography": "新字新仮名",
+      "inventoryNote": "A real named source division extracted from the approved Aozora HTML; no text body is bundled.",
+      "sourceSectionTitle": "���͑吼�m��",
+      "sourceSectionIndex": 13
+    },
+    {
+      "candidateId": "aozora-000875-chapter-014",
+      "targetShelf": "serialized-novels",
+      "sourceFamilyId": "aozora-bunko",
+      "sourceTitle": "地球発狂事件",
+      "sourceAuthor": "海野 十三 / 丘 丘十郎",
+      "sourceTranslator": null,
+      "workId": "000875",
+      "sourceUrl": "https://www.aozora.gr.jp/cards/000160/files/875_42450.html",
+      "sourceCardUrl": "https://www.aozora.gr.jp/cards/000160/card875.html",
+      "sourcePublishedDate": "「協力新聞」1945（昭和20）年9月1日～1946（昭和21）年（終号未詳）",
+      "sourceLicense": "Aozora Bunko file handling standard (copyright-expired work)",
+      "sourceLicenseUrl": "https://www.aozora.gr.jp/guide/kijyunn.html",
+      "sourceTermsUrl": "https://www.aozora.gr.jp/guide/kijyunn.html",
+      "sourceAttribution": "出典：青空文庫「地球発狂事件」海野 十三、丘 丘十郎",
+      "sourceProcessing": "Candidate metadata only; no reading body is bundled by this inventory.",
+      "rightsStatus": "public-domain",
+      "rightsEvidence": {
+        "catalog": "Aozora extended UTF-8 catalog",
+        "workCopyrightFlag": "なし",
+        "contributorCopyrightFlags": [
+          {
+            "role": "著者",
+            "name": "海野 十三",
+            "flag": "なし"
+          },
+          {
+            "role": "著者",
+            "name": "丘 丘十郎",
+            "flag": "なし"
+          }
+        ],
+        "checkedRule": "Work and every credited contributor must have copyright flag 'なし'."
+      },
+      "classification": "NDC 913",
+      "orthography": "新字新仮名",
+      "inventoryNote": "A real named source division extracted from the approved Aozora HTML; no text body is bundled.",
+      "sourceSectionTitle": "�ُ�C��n�k",
+      "sourceSectionIndex": 14
+    },
+    {
+      "candidateId": "aozora-000875-chapter-015",
+      "targetShelf": "serialized-novels",
+      "sourceFamilyId": "aozora-bunko",
+      "sourceTitle": "地球発狂事件",
+      "sourceAuthor": "海野 十三 / 丘 丘十郎",
+      "sourceTranslator": null,
+      "workId": "000875",
+      "sourceUrl": "https://www.aozora.gr.jp/cards/000160/files/875_42450.html",
+      "sourceCardUrl": "https://www.aozora.gr.jp/cards/000160/card875.html",
+      "sourcePublishedDate": "「協力新聞」1945（昭和20）年9月1日～1946（昭和21）年（終号未詳）",
+      "sourceLicense": "Aozora Bunko file handling standard (copyright-expired work)",
+      "sourceLicenseUrl": "https://www.aozora.gr.jp/guide/kijyunn.html",
+      "sourceTermsUrl": "https://www.aozora.gr.jp/guide/kijyunn.html",
+      "sourceAttribution": "出典：青空文庫「地球発狂事件」海野 十三、丘 丘十郎",
+      "sourceProcessing": "Candidate metadata only; no reading body is bundled by this inventory.",
+      "rightsStatus": "public-domain",
+      "rightsEvidence": {
+        "catalog": "Aozora extended UTF-8 catalog",
+        "workCopyrightFlag": "なし",
+        "contributorCopyrightFlags": [
+          {
+            "role": "著者",
+            "name": "海野 十三",
+            "flag": "なし"
+          },
+          {
+            "role": "著者",
+            "name": "丘 丘十郎",
+            "flag": "なし"
+          }
+        ],
+        "checkedRule": "Work and every credited contributor must have copyright flag 'なし'."
+      },
+      "classification": "NDC 913",
+      "orthography": "新字新仮名",
+      "inventoryNote": "A real named source division extracted from the approved Aozora HTML; no text body is bundled.",
+      "sourceSectionTitle": "�x���̎莆",
+      "sourceSectionIndex": 15
+    },
+    {
+      "candidateId": "aozora-000875-chapter-016",
+      "targetShelf": "serialized-novels",
+      "sourceFamilyId": "aozora-bunko",
+      "sourceTitle": "地球発狂事件",
+      "sourceAuthor": "海野 十三 / 丘 丘十郎",
+      "sourceTranslator": null,
+      "workId": "000875",
+      "sourceUrl": "https://www.aozora.gr.jp/cards/000160/files/875_42450.html",
+      "sourceCardUrl": "https://www.aozora.gr.jp/cards/000160/card875.html",
+      "sourcePublishedDate": "「協力新聞」1945（昭和20）年9月1日～1946（昭和21）年（終号未詳）",
+      "sourceLicense": "Aozora Bunko file handling standard (copyright-expired work)",
+      "sourceLicenseUrl": "https://www.aozora.gr.jp/guide/kijyunn.html",
+      "sourceTermsUrl": "https://www.aozora.gr.jp/guide/kijyunn.html",
+      "sourceAttribution": "出典：青空文庫「地球発狂事件」海野 十三、丘 丘十郎",
+      "sourceProcessing": "Candidate metadata only; no reading body is bundled by this inventory.",
+      "rightsStatus": "public-domain",
+      "rightsEvidence": {
+        "catalog": "Aozora extended UTF-8 catalog",
+        "workCopyrightFlag": "なし",
+        "contributorCopyrightFlags": [
+          {
+            "role": "著者",
+            "name": "海野 十三",
+            "flag": "なし"
+          },
+          {
+            "role": "著者",
+            "name": "丘 丘十郎",
+            "flag": "なし"
+          }
+        ],
+        "checkedRule": "Work and every credited contributor must have copyright flag 'なし'."
+      },
+      "classification": "NDC 913",
+      "orthography": "新字新仮名",
+      "inventoryNote": "A real named source division extracted from the approved Aozora HTML; no text body is bundled.",
+      "sourceSectionTitle": "���Ɏ�����",
+      "sourceSectionIndex": 16
+    },
+    {
+      "candidateId": "aozora-000875-chapter-017",
+      "targetShelf": "serialized-novels",
+      "sourceFamilyId": "aozora-bunko",
+      "sourceTitle": "地球発狂事件",
+      "sourceAuthor": "海野 十三 / 丘 丘十郎",
+      "sourceTranslator": null,
+      "workId": "000875",
+      "sourceUrl": "https://www.aozora.gr.jp/cards/000160/files/875_42450.html",
+      "sourceCardUrl": "https://www.aozora.gr.jp/cards/000160/card875.html",
+      "sourcePublishedDate": "「協力新聞」1945（昭和20）年9月1日～1946（昭和21）年（終号未詳）",
+      "sourceLicense": "Aozora Bunko file handling standard (copyright-expired work)",
+      "sourceLicenseUrl": "https://www.aozora.gr.jp/guide/kijyunn.html",
+      "sourceTermsUrl": "https://www.aozora.gr.jp/guide/kijyunn.html",
+      "sourceAttribution": "出典：青空文庫「地球発狂事件」海野 十三、丘 丘十郎",
+      "sourceProcessing": "Candidate metadata only; no reading body is bundled by this inventory.",
+      "rightsStatus": "public-domain",
+      "rightsEvidence": {
+        "catalog": "Aozora extended UTF-8 catalog",
+        "workCopyrightFlag": "なし",
+        "contributorCopyrightFlags": [
+          {
+            "role": "著者",
+            "name": "海野 十三",
+            "flag": "なし"
+          },
+          {
+            "role": "著者",
+            "name": "丘 丘十郎",
+            "flag": "なし"
+          }
+        ],
+        "checkedRule": "Work and every credited contributor must have copyright flag 'なし'."
+      },
+      "classification": "NDC 913",
+      "orthography": "新字新仮名",
+      "inventoryNote": "A real named source division extracted from the approved Aozora HTML; no text body is bundled.",
+      "sourceSectionTitle": "�]�k�Ȃ��n�k",
+      "sourceSectionIndex": 17
+    },
+    {
+      "candidateId": "aozora-000875-chapter-018",
+      "targetShelf": "serialized-novels",
+      "sourceFamilyId": "aozora-bunko",
+      "sourceTitle": "地球発狂事件",
+      "sourceAuthor": "海野 十三 / 丘 丘十郎",
+      "sourceTranslator": null,
+      "workId": "000875",
+      "sourceUrl": "https://www.aozora.gr.jp/cards/000160/files/875_42450.html",
+      "sourceCardUrl": "https://www.aozora.gr.jp/cards/000160/card875.html",
+      "sourcePublishedDate": "「協力新聞」1945（昭和20）年9月1日～1946（昭和21）年（終号未詳）",
+      "sourceLicense": "Aozora Bunko file handling standard (copyright-expired work)",
+      "sourceLicenseUrl": "https://www.aozora.gr.jp/guide/kijyunn.html",
+      "sourceTermsUrl": "https://www.aozora.gr.jp/guide/kijyunn.html",
+      "sourceAttribution": "出典：青空文庫「地球発狂事件」海野 十三、丘 丘十郎",
+      "sourceProcessing": "Candidate metadata only; no reading body is bundled by this inventory.",
+      "rightsStatus": "public-domain",
+      "rightsEvidence": {
+        "catalog": "Aozora extended UTF-8 catalog",
+        "workCopyrightFlag": "なし",
+        "contributorCopyrightFlags": [
+          {
+            "role": "著者",
+            "name": "海野 十三",
+            "flag": "なし"
+          },
+          {
+            "role": "著者",
+            "name": "丘 丘十郎",
+            "flag": "なし"
+          }
+        ],
+        "checkedRule": "Work and every credited contributor must have copyright flag 'なし'."
+      },
+      "classification": "NDC 913",
+      "orthography": "新字新仮名",
+      "inventoryNote": "A real named source division extracted from the approved Aozora HTML; no text body is bundled.",
+      "sourceSectionTitle": "���͉�����",
+      "sourceSectionIndex": 18
+    },
+    {
+      "candidateId": "aozora-000875-chapter-019",
+      "targetShelf": "serialized-novels",
+      "sourceFamilyId": "aozora-bunko",
+      "sourceTitle": "地球発狂事件",
+      "sourceAuthor": "海野 十三 / 丘 丘十郎",
+      "sourceTranslator": null,
+      "workId": "000875",
+      "sourceUrl": "https://www.aozora.gr.jp/cards/000160/files/875_42450.html",
+      "sourceCardUrl": "https://www.aozora.gr.jp/cards/000160/card875.html",
+      "sourcePublishedDate": "「協力新聞」1945（昭和20）年9月1日～1946（昭和21）年（終号未詳）",
+      "sourceLicense": "Aozora Bunko file handling standard (copyright-expired work)",
+      "sourceLicenseUrl": "https://www.aozora.gr.jp/guide/kijyunn.html",
+      "sourceTermsUrl": "https://www.aozora.gr.jp/guide/kijyunn.html",
+      "sourceAttribution": "出典：青空文庫「地球発狂事件」海野 十三、丘 丘十郎",
+      "sourceProcessing": "Candidate metadata only; no reading body is bundled by this inventory.",
+      "rightsStatus": "public-domain",
+      "rightsEvidence": {
+        "catalog": "Aozora extended UTF-8 catalog",
+        "workCopyrightFlag": "なし",
+        "contributorCopyrightFlags": [
+          {
+            "role": "著者",
+            "name": "海野 十三",
+            "flag": "なし"
+          },
+          {
+            "role": "著者",
+            "name": "丘 丘十郎",
+            "flag": "なし"
+          }
+        ],
+        "checkedRule": "Work and every credited contributor must have copyright flag 'なし'."
+      },
+      "classification": "NDC 913",
+      "orthography": "新字新仮名",
+      "inventoryNote": "A real named source division extracted from the approved Aozora HTML; no text body is bundled.",
+      "sourceSectionTitle": "���m�̖`���v��",
+      "sourceSectionIndex": 19
+    },
+    {
+      "candidateId": "aozora-000875-chapter-020",
+      "targetShelf": "serialized-novels",
+      "sourceFamilyId": "aozora-bunko",
+      "sourceTitle": "地球発狂事件",
+      "sourceAuthor": "海野 十三 / 丘 丘十郎",
+      "sourceTranslator": null,
+      "workId": "000875",
+      "sourceUrl": "https://www.aozora.gr.jp/cards/000160/files/875_42450.html",
+      "sourceCardUrl": "https://www.aozora.gr.jp/cards/000160/card875.html",
+      "sourcePublishedDate": "「協力新聞」1945（昭和20）年9月1日～1946（昭和21）年（終号未詳）",
+      "sourceLicense": "Aozora Bunko file handling standard (copyright-expired work)",
+      "sourceLicenseUrl": "https://www.aozora.gr.jp/guide/kijyunn.html",
+      "sourceTermsUrl": "https://www.aozora.gr.jp/guide/kijyunn.html",
+      "sourceAttribution": "出典：青空文庫「地球発狂事件」海野 十三、丘 丘十郎",
+      "sourceProcessing": "Candidate metadata only; no reading body is bundled by this inventory.",
+      "rightsStatus": "public-domain",
+      "rightsEvidence": {
+        "catalog": "Aozora extended UTF-8 catalog",
+        "workCopyrightFlag": "なし",
+        "contributorCopyrightFlags": [
+          {
+            "role": "著者",
+            "name": "海野 十三",
+            "flag": "なし"
+          },
+          {
+            "role": "著者",
+            "name": "丘 丘十郎",
+            "flag": "なし"
+          }
+        ],
+        "checkedRule": "Work and every credited contributor must have copyright flag 'なし'."
+      },
+      "classification": "NDC 913",
+      "orthography": "新字新仮名",
+      "inventoryNote": "A real named source division extracted from the approved Aozora HTML; no text body is bundled.",
+      "sourceSectionTitle": "�c�\\�܍���i",
+      "sourceSectionIndex": 20
+    },
+    {
+      "candidateId": "aozora-000875-chapter-021",
+      "targetShelf": "serialized-novels",
+      "sourceFamilyId": "aozora-bunko",
+      "sourceTitle": "地球発狂事件",
+      "sourceAuthor": "海野 十三 / 丘 丘十郎",
+      "sourceTranslator": null,
+      "workId": "000875",
+      "sourceUrl": "https://www.aozora.gr.jp/cards/000160/files/875_42450.html",
+      "sourceCardUrl": "https://www.aozora.gr.jp/cards/000160/card875.html",
+      "sourcePublishedDate": "「協力新聞」1945（昭和20）年9月1日～1946（昭和21）年（終号未詳）",
+      "sourceLicense": "Aozora Bunko file handling standard (copyright-expired work)",
+      "sourceLicenseUrl": "https://www.aozora.gr.jp/guide/kijyunn.html",
+      "sourceTermsUrl": "https://www.aozora.gr.jp/guide/kijyunn.html",
+      "sourceAttribution": "出典：青空文庫「地球発狂事件」海野 十三、丘 丘十郎",
+      "sourceProcessing": "Candidate metadata only; no reading body is bundled by this inventory.",
+      "rightsStatus": "public-domain",
+      "rightsEvidence": {
+        "catalog": "Aozora extended UTF-8 catalog",
+        "workCopyrightFlag": "なし",
+        "contributorCopyrightFlags": [
+          {
+            "role": "著者",
+            "name": "海野 十三",
+            "flag": "なし"
+          },
+          {
+            "role": "著者",
+            "name": "丘 丘十郎",
+            "flag": "なし"
+          }
+        ],
+        "checkedRule": "Work and every credited contributor must have copyright flag 'なし'."
+      },
+      "classification": "NDC 913",
+      "orthography": "新字新仮名",
+      "inventoryNote": "A real named source division extracted from the approved Aozora HTML; no text body is bundled.",
+      "sourceSectionTitle": "��C��ɒ���",
+      "sourceSectionIndex": 21
+    },
+    {
+      "candidateId": "aozora-000875-chapter-022",
+      "targetShelf": "serialized-novels",
+      "sourceFamilyId": "aozora-bunko",
+      "sourceTitle": "地球発狂事件",
+      "sourceAuthor": "海野 十三 / 丘 丘十郎",
+      "sourceTranslator": null,
+      "workId": "000875",
+      "sourceUrl": "https://www.aozora.gr.jp/cards/000160/files/875_42450.html",
+      "sourceCardUrl": "https://www.aozora.gr.jp/cards/000160/card875.html",
+      "sourcePublishedDate": "「協力新聞」1945（昭和20）年9月1日～1946（昭和21）年（終号未詳）",
+      "sourceLicense": "Aozora Bunko file handling standard (copyright-expired work)",
+      "sourceLicenseUrl": "https://www.aozora.gr.jp/guide/kijyunn.html",
+      "sourceTermsUrl": "https://www.aozora.gr.jp/guide/kijyunn.html",
+      "sourceAttribution": "出典：青空文庫「地球発狂事件」海野 十三、丘 丘十郎",
+      "sourceProcessing": "Candidate metadata only; no reading body is bundled by this inventory.",
+      "rightsStatus": "public-domain",
+      "rightsEvidence": {
+        "catalog": "Aozora extended UTF-8 catalog",
+        "workCopyrightFlag": "なし",
+        "contributorCopyrightFlags": [
+          {
+            "role": "著者",
+            "name": "海野 十三",
+            "flag": "なし"
+          },
+          {
+            "role": "著者",
+            "name": "丘 丘十郎",
+            "flag": "なし"
+          }
+        ],
+        "checkedRule": "Work and every credited contributor must have copyright flag 'なし'."
+      },
+      "classification": "NDC 913",
+      "orthography": "新字新仮名",
+      "inventoryNote": "A real named source division extracted from the approved Aozora HTML; no text body is bundled.",
+      "sourceSectionTitle": "�ԑ��̑Ґl",
+      "sourceSectionIndex": 22
+    },
+    {
+      "candidateId": "aozora-000875-chapter-023",
+      "targetShelf": "serialized-novels",
+      "sourceFamilyId": "aozora-bunko",
+      "sourceTitle": "地球発狂事件",
+      "sourceAuthor": "海野 十三 / 丘 丘十郎",
+      "sourceTranslator": null,
+      "workId": "000875",
+      "sourceUrl": "https://www.aozora.gr.jp/cards/000160/files/875_42450.html",
+      "sourceCardUrl": "https://www.aozora.gr.jp/cards/000160/card875.html",
+      "sourcePublishedDate": "「協力新聞」1945（昭和20）年9月1日～1946（昭和21）年（終号未詳）",
+      "sourceLicense": "Aozora Bunko file handling standard (copyright-expired work)",
+      "sourceLicenseUrl": "https://www.aozora.gr.jp/guide/kijyunn.html",
+      "sourceTermsUrl": "https://www.aozora.gr.jp/guide/kijyunn.html",
+      "sourceAttribution": "出典：青空文庫「地球発狂事件」海野 十三、丘 丘十郎",
+      "sourceProcessing": "Candidate metadata only; no reading body is bundled by this inventory.",
+      "rightsStatus": "public-domain",
+      "rightsEvidence": {
+        "catalog": "Aozora extended UTF-8 catalog",
+        "workCopyrightFlag": "なし",
+        "contributorCopyrightFlags": [
+          {
+            "role": "著者",
+            "name": "海野 十三",
+            "flag": "なし"
+          },
+          {
+            "role": "著者",
+            "name": "丘 丘十郎",
+            "flag": "なし"
+          }
+        ],
+        "checkedRule": "Work and every credited contributor must have copyright flag 'なし'."
+      },
+      "classification": "NDC 913",
+      "orthography": "新字新仮名",
+      "inventoryNote": "A real named source division extracted from the approved Aozora HTML; no text body is bundled.",
+      "sourceSectionTitle": "�����_",
+      "sourceSectionIndex": 23
+    },
+    {
+      "candidateId": "aozora-000875-chapter-024",
+      "targetShelf": "serialized-novels",
+      "sourceFamilyId": "aozora-bunko",
+      "sourceTitle": "地球発狂事件",
+      "sourceAuthor": "海野 十三 / 丘 丘十郎",
+      "sourceTranslator": null,
+      "workId": "000875",
+      "sourceUrl": "https://www.aozora.gr.jp/cards/000160/files/875_42450.html",
+      "sourceCardUrl": "https://www.aozora.gr.jp/cards/000160/card875.html",
+      "sourcePublishedDate": "「協力新聞」1945（昭和20）年9月1日～1946（昭和21）年（終号未詳）",
+      "sourceLicense": "Aozora Bunko file handling standard (copyright-expired work)",
+      "sourceLicenseUrl": "https://www.aozora.gr.jp/guide/kijyunn.html",
+      "sourceTermsUrl": "https://www.aozora.gr.jp/guide/kijyunn.html",
+      "sourceAttribution": "出典：青空文庫「地球発狂事件」海野 十三、丘 丘十郎",
+      "sourceProcessing": "Candidate metadata only; no reading body is bundled by this inventory.",
+      "rightsStatus": "public-domain",
+      "rightsEvidence": {
+        "catalog": "Aozora extended UTF-8 catalog",
+        "workCopyrightFlag": "なし",
+        "contributorCopyrightFlags": [
+          {
+            "role": "著者",
+            "name": "海野 十三",
+            "flag": "なし"
+          },
+          {
+            "role": "著者",
+            "name": "丘 丘十郎",
+            "flag": "なし"
+          }
+        ],
+        "checkedRule": "Work and every credited contributor must have copyright flag 'なし'."
+      },
+      "classification": "NDC 913",
+      "orthography": "新字新仮名",
+      "inventoryNote": "A real named source division extracted from the approved Aozora HTML; no text body is bundled.",
+      "sourceSectionTitle": "���l�P�m�t�X�L�[",
+      "sourceSectionIndex": 24
+    },
+    {
+      "candidateId": "aozora-000875-chapter-025",
+      "targetShelf": "serialized-novels",
+      "sourceFamilyId": "aozora-bunko",
+      "sourceTitle": "地球発狂事件",
+      "sourceAuthor": "海野 十三 / 丘 丘十郎",
+      "sourceTranslator": null,
+      "workId": "000875",
+      "sourceUrl": "https://www.aozora.gr.jp/cards/000160/files/875_42450.html",
+      "sourceCardUrl": "https://www.aozora.gr.jp/cards/000160/card875.html",
+      "sourcePublishedDate": "「協力新聞」1945（昭和20）年9月1日～1946（昭和21）年（終号未詳）",
+      "sourceLicense": "Aozora Bunko file handling standard (copyright-expired work)",
+      "sourceLicenseUrl": "https://www.aozora.gr.jp/guide/kijyunn.html",
+      "sourceTermsUrl": "https://www.aozora.gr.jp/guide/kijyunn.html",
+      "sourceAttribution": "出典：青空文庫「地球発狂事件」海野 十三、丘 丘十郎",
+      "sourceProcessing": "Candidate metadata only; no reading body is bundled by this inventory.",
+      "rightsStatus": "public-domain",
+      "rightsEvidence": {
+        "catalog": "Aozora extended UTF-8 catalog",
+        "workCopyrightFlag": "なし",
+        "contributorCopyrightFlags": [
+          {
+            "role": "著者",
+            "name": "海野 十三",
+            "flag": "なし"
+          },
+          {
+            "role": "著者",
+            "name": "丘 丘十郎",
+            "flag": "なし"
+          }
+        ],
+        "checkedRule": "Work and every credited contributor must have copyright flag 'なし'."
+      },
+      "classification": "NDC 913",
+      "orthography": "新字新仮名",
+      "inventoryNote": "A real named source division extracted from the approved Aozora HTML; no text body is bundled.",
+      "sourceSectionTitle": "�ċ���̗�",
+      "sourceSectionIndex": 25
+    },
+    {
+      "candidateId": "aozora-000875-chapter-026",
+      "targetShelf": "serialized-novels",
+      "sourceFamilyId": "aozora-bunko",
+      "sourceTitle": "地球発狂事件",
+      "sourceAuthor": "海野 十三 / 丘 丘十郎",
+      "sourceTranslator": null,
+      "workId": "000875",
+      "sourceUrl": "https://www.aozora.gr.jp/cards/000160/files/875_42450.html",
+      "sourceCardUrl": "https://www.aozora.gr.jp/cards/000160/card875.html",
+      "sourcePublishedDate": "「協力新聞」1945（昭和20）年9月1日～1946（昭和21）年（終号未詳）",
+      "sourceLicense": "Aozora Bunko file handling standard (copyright-expired work)",
+      "sourceLicenseUrl": "https://www.aozora.gr.jp/guide/kijyunn.html",
+      "sourceTermsUrl": "https://www.aozora.gr.jp/guide/kijyunn.html",
+      "sourceAttribution": "出典：青空文庫「地球発狂事件」海野 十三、丘 丘十郎",
+      "sourceProcessing": "Candidate metadata only; no reading body is bundled by this inventory.",
+      "rightsStatus": "public-domain",
+      "rightsEvidence": {
+        "catalog": "Aozora extended UTF-8 catalog",
+        "workCopyrightFlag": "なし",
+        "contributorCopyrightFlags": [
+          {
+            "role": "著者",
+            "name": "海野 十三",
+            "flag": "なし"
+          },
+          {
+            "role": "著者",
+            "name": "丘 丘十郎",
+            "flag": "なし"
+          }
+        ],
+        "checkedRule": "Work and every credited contributor must have copyright flag 'なし'."
+      },
+      "classification": "NDC 913",
+      "orthography": "新字新仮名",
+      "inventoryNote": "A real named source division extracted from the approved Aozora HTML; no text body is bundled.",
+      "sourceSectionTitle": "����ߐ�",
+      "sourceSectionIndex": 26
+    },
+    {
+      "candidateId": "aozora-000875-chapter-027",
+      "targetShelf": "serialized-novels",
+      "sourceFamilyId": "aozora-bunko",
+      "sourceTitle": "地球発狂事件",
+      "sourceAuthor": "海野 十三 / 丘 丘十郎",
+      "sourceTranslator": null,
+      "workId": "000875",
+      "sourceUrl": "https://www.aozora.gr.jp/cards/000160/files/875_42450.html",
+      "sourceCardUrl": "https://www.aozora.gr.jp/cards/000160/card875.html",
+      "sourcePublishedDate": "「協力新聞」1945（昭和20）年9月1日～1946（昭和21）年（終号未詳）",
+      "sourceLicense": "Aozora Bunko file handling standard (copyright-expired work)",
+      "sourceLicenseUrl": "https://www.aozora.gr.jp/guide/kijyunn.html",
+      "sourceTermsUrl": "https://www.aozora.gr.jp/guide/kijyunn.html",
+      "sourceAttribution": "出典：青空文庫「地球発狂事件」海野 十三、丘 丘十郎",
+      "sourceProcessing": "Candidate metadata only; no reading body is bundled by this inventory.",
+      "rightsStatus": "public-domain",
+      "rightsEvidence": {
+        "catalog": "Aozora extended UTF-8 catalog",
+        "workCopyrightFlag": "なし",
+        "contributorCopyrightFlags": [
+          {
+            "role": "著者",
+            "name": "海野 十三",
+            "flag": "なし"
+          },
+          {
+            "role": "著者",
+            "name": "丘 丘十郎",
+            "flag": "なし"
+          }
+        ],
+        "checkedRule": "Work and every credited contributor must have copyright flag 'なし'."
+      },
+      "classification": "NDC 913",
+      "orthography": "新字新仮名",
+      "inventoryNote": "A real named source division extracted from the approved Aozora HTML; no text body is bundled.",
+      "sourceSectionTitle": "�C��ɂ킾���܂����",
+      "sourceSectionIndex": 27
+    },
+    {
+      "candidateId": "aozora-000875-chapter-028",
+      "targetShelf": "serialized-novels",
+      "sourceFamilyId": "aozora-bunko",
+      "sourceTitle": "地球発狂事件",
+      "sourceAuthor": "海野 十三 / 丘 丘十郎",
+      "sourceTranslator": null,
+      "workId": "000875",
+      "sourceUrl": "https://www.aozora.gr.jp/cards/000160/files/875_42450.html",
+      "sourceCardUrl": "https://www.aozora.gr.jp/cards/000160/card875.html",
+      "sourcePublishedDate": "「協力新聞」1945（昭和20）年9月1日～1946（昭和21）年（終号未詳）",
+      "sourceLicense": "Aozora Bunko file handling standard (copyright-expired work)",
+      "sourceLicenseUrl": "https://www.aozora.gr.jp/guide/kijyunn.html",
+      "sourceTermsUrl": "https://www.aozora.gr.jp/guide/kijyunn.html",
+      "sourceAttribution": "出典：青空文庫「地球発狂事件」海野 十三、丘 丘十郎",
+      "sourceProcessing": "Candidate metadata only; no reading body is bundled by this inventory.",
+      "rightsStatus": "public-domain",
+      "rightsEvidence": {
+        "catalog": "Aozora extended UTF-8 catalog",
+        "workCopyrightFlag": "なし",
+        "contributorCopyrightFlags": [
+          {
+            "role": "著者",
+            "name": "海野 十三",
+            "flag": "なし"
+          },
+          {
+            "role": "著者",
+            "name": "丘 丘十郎",
+            "flag": "なし"
+          }
+        ],
+        "checkedRule": "Work and every credited contributor must have copyright flag 'なし'."
+      },
+      "classification": "NDC 913",
+      "orthography": "新字新仮名",
+      "inventoryNote": "A real named source division extracted from the approved Aozora HTML; no text body is bundled.",
+      "sourceSectionTitle": "�[�C�̑���",
+      "sourceSectionIndex": 28
+    },
+    {
+      "candidateId": "aozora-000875-chapter-029",
+      "targetShelf": "serialized-novels",
+      "sourceFamilyId": "aozora-bunko",
+      "sourceTitle": "地球発狂事件",
+      "sourceAuthor": "海野 十三 / 丘 丘十郎",
+      "sourceTranslator": null,
+      "workId": "000875",
+      "sourceUrl": "https://www.aozora.gr.jp/cards/000160/files/875_42450.html",
+      "sourceCardUrl": "https://www.aozora.gr.jp/cards/000160/card875.html",
+      "sourcePublishedDate": "「協力新聞」1945（昭和20）年9月1日～1946（昭和21）年（終号未詳）",
+      "sourceLicense": "Aozora Bunko file handling standard (copyright-expired work)",
+      "sourceLicenseUrl": "https://www.aozora.gr.jp/guide/kijyunn.html",
+      "sourceTermsUrl": "https://www.aozora.gr.jp/guide/kijyunn.html",
+      "sourceAttribution": "出典：青空文庫「地球発狂事件」海野 十三、丘 丘十郎",
+      "sourceProcessing": "Candidate metadata only; no reading body is bundled by this inventory.",
+      "rightsStatus": "public-domain",
+      "rightsEvidence": {
+        "catalog": "Aozora extended UTF-8 catalog",
+        "workCopyrightFlag": "なし",
+        "contributorCopyrightFlags": [
+          {
+            "role": "著者",
+            "name": "海野 十三",
+            "flag": "なし"
+          },
+          {
+            "role": "著者",
+            "name": "丘 丘十郎",
+            "flag": "なし"
+          }
+        ],
+        "checkedRule": "Work and every credited contributor must have copyright flag 'なし'."
+      },
+      "classification": "NDC 913",
+      "orthography": "新字新仮名",
+      "inventoryNote": "A real named source division extracted from the approved Aozora HTML; no text body is bundled.",
+      "sourceSectionTitle": "��ނ̓w��",
+      "sourceSectionIndex": 29
+    },
+    {
+      "candidateId": "aozora-000875-chapter-030",
+      "targetShelf": "serialized-novels",
+      "sourceFamilyId": "aozora-bunko",
+      "sourceTitle": "地球発狂事件",
+      "sourceAuthor": "海野 十三 / 丘 丘十郎",
+      "sourceTranslator": null,
+      "workId": "000875",
+      "sourceUrl": "https://www.aozora.gr.jp/cards/000160/files/875_42450.html",
+      "sourceCardUrl": "https://www.aozora.gr.jp/cards/000160/card875.html",
+      "sourcePublishedDate": "「協力新聞」1945（昭和20）年9月1日～1946（昭和21）年（終号未詳）",
+      "sourceLicense": "Aozora Bunko file handling standard (copyright-expired work)",
+      "sourceLicenseUrl": "https://www.aozora.gr.jp/guide/kijyunn.html",
+      "sourceTermsUrl": "https://www.aozora.gr.jp/guide/kijyunn.html",
+      "sourceAttribution": "出典：青空文庫「地球発狂事件」海野 十三、丘 丘十郎",
+      "sourceProcessing": "Candidate metadata only; no reading body is bundled by this inventory.",
+      "rightsStatus": "public-domain",
+      "rightsEvidence": {
+        "catalog": "Aozora extended UTF-8 catalog",
+        "workCopyrightFlag": "なし",
+        "contributorCopyrightFlags": [
+          {
+            "role": "著者",
+            "name": "海野 十三",
+            "flag": "なし"
+          },
+          {
+            "role": "著者",
+            "name": "丘 丘十郎",
+            "flag": "なし"
+          }
+        ],
+        "checkedRule": "Work and every credited contributor must have copyright flag 'なし'."
+      },
+      "classification": "NDC 913",
+      "orthography": "新字新仮名",
+      "inventoryNote": "A real named source division extracted from the approved Aozora HTML; no text body is bundled.",
+      "sourceSectionTitle": "�h���̑�� �� �i �j",
+      "sourceSectionIndex": 30
+    },
+    {
+      "candidateId": "aozora-000875-chapter-031",
+      "targetShelf": "serialized-novels",
+      "sourceFamilyId": "aozora-bunko",
+      "sourceTitle": "地球発狂事件",
+      "sourceAuthor": "海野 十三 / 丘 丘十郎",
+      "sourceTranslator": null,
+      "workId": "000875",
+      "sourceUrl": "https://www.aozora.gr.jp/cards/000160/files/875_42450.html",
+      "sourceCardUrl": "https://www.aozora.gr.jp/cards/000160/card875.html",
+      "sourcePublishedDate": "「協力新聞」1945（昭和20）年9月1日～1946（昭和21）年（終号未詳）",
+      "sourceLicense": "Aozora Bunko file handling standard (copyright-expired work)",
+      "sourceLicenseUrl": "https://www.aozora.gr.jp/guide/kijyunn.html",
+      "sourceTermsUrl": "https://www.aozora.gr.jp/guide/kijyunn.html",
+      "sourceAttribution": "出典：青空文庫「地球発狂事件」海野 十三、丘 丘十郎",
+      "sourceProcessing": "Candidate metadata only; no reading body is bundled by this inventory.",
+      "rightsStatus": "public-domain",
+      "rightsEvidence": {
+        "catalog": "Aozora extended UTF-8 catalog",
+        "workCopyrightFlag": "なし",
+        "contributorCopyrightFlags": [
+          {
+            "role": "著者",
+            "name": "海野 十三",
+            "flag": "なし"
+          },
+          {
+            "role": "著者",
+            "name": "丘 丘十郎",
+            "flag": "なし"
+          }
+        ],
+        "checkedRule": "Work and every credited contributor must have copyright flag 'なし'."
+      },
+      "classification": "NDC 913",
+      "orthography": "新字新仮名",
+      "inventoryNote": "A real named source division extracted from the approved Aozora HTML; no text body is bundled.",
+      "sourceSectionTitle": "�������",
+      "sourceSectionIndex": 31
+    },
+    {
+      "candidateId": "aozora-000875-chapter-032",
+      "targetShelf": "serialized-novels",
+      "sourceFamilyId": "aozora-bunko",
+      "sourceTitle": "地球発狂事件",
+      "sourceAuthor": "海野 十三 / 丘 丘十郎",
+      "sourceTranslator": null,
+      "workId": "000875",
+      "sourceUrl": "https://www.aozora.gr.jp/cards/000160/files/875_42450.html",
+      "sourceCardUrl": "https://www.aozora.gr.jp/cards/000160/card875.html",
+      "sourcePublishedDate": "「協力新聞」1945（昭和20）年9月1日～1946（昭和21）年（終号未詳）",
+      "sourceLicense": "Aozora Bunko file handling standard (copyright-expired work)",
+      "sourceLicenseUrl": "https://www.aozora.gr.jp/guide/kijyunn.html",
+      "sourceTermsUrl": "https://www.aozora.gr.jp/guide/kijyunn.html",
+      "sourceAttribution": "出典：青空文庫「地球発狂事件」海野 十三、丘 丘十郎",
+      "sourceProcessing": "Candidate metadata only; no reading body is bundled by this inventory.",
+      "rightsStatus": "public-domain",
+      "rightsEvidence": {
+        "catalog": "Aozora extended UTF-8 catalog",
+        "workCopyrightFlag": "なし",
+        "contributorCopyrightFlags": [
+          {
+            "role": "著者",
+            "name": "海野 十三",
+            "flag": "なし"
+          },
+          {
+            "role": "著者",
+            "name": "丘 丘十郎",
+            "flag": "なし"
+          }
+        ],
+        "checkedRule": "Work and every credited contributor must have copyright flag 'なし'."
+      },
+      "classification": "NDC 913",
+      "orthography": "新字新仮名",
+      "inventoryNote": "A real named source division extracted from the approved Aozora HTML; no text body is bundled.",
+      "sourceSectionTitle": "���������c",
+      "sourceSectionIndex": 32
+    },
+    {
+      "candidateId": "aozora-000875-chapter-033",
+      "targetShelf": "serialized-novels",
+      "sourceFamilyId": "aozora-bunko",
+      "sourceTitle": "地球発狂事件",
+      "sourceAuthor": "海野 十三 / 丘 丘十郎",
+      "sourceTranslator": null,
+      "workId": "000875",
+      "sourceUrl": "https://www.aozora.gr.jp/cards/000160/files/875_42450.html",
+      "sourceCardUrl": "https://www.aozora.gr.jp/cards/000160/card875.html",
+      "sourcePublishedDate": "「協力新聞」1945（昭和20）年9月1日～1946（昭和21）年（終号未詳）",
+      "sourceLicense": "Aozora Bunko file handling standard (copyright-expired work)",
+      "sourceLicenseUrl": "https://www.aozora.gr.jp/guide/kijyunn.html",
+      "sourceTermsUrl": "https://www.aozora.gr.jp/guide/kijyunn.html",
+      "sourceAttribution": "出典：青空文庫「地球発狂事件」海野 十三、丘 丘十郎",
+      "sourceProcessing": "Candidate metadata only; no reading body is bundled by this inventory.",
+      "rightsStatus": "public-domain",
+      "rightsEvidence": {
+        "catalog": "Aozora extended UTF-8 catalog",
+        "workCopyrightFlag": "なし",
+        "contributorCopyrightFlags": [
+          {
+            "role": "著者",
+            "name": "海野 十三",
+            "flag": "なし"
+          },
+          {
+            "role": "著者",
+            "name": "丘 丘十郎",
+            "flag": "なし"
+          }
+        ],
+        "checkedRule": "Work and every credited contributor must have copyright flag 'なし'."
+      },
+      "classification": "NDC 913",
+      "orthography": "新字新仮名",
+      "inventoryNote": "A real named source division extracted from the approved Aozora HTML; no text body is bundled.",
+      "sourceSectionTitle": "���M�҂͒N",
+      "sourceSectionIndex": 33
+    },
+    {
+      "candidateId": "aozora-000875-chapter-034",
+      "targetShelf": "serialized-novels",
+      "sourceFamilyId": "aozora-bunko",
+      "sourceTitle": "地球発狂事件",
+      "sourceAuthor": "海野 十三 / 丘 丘十郎",
+      "sourceTranslator": null,
+      "workId": "000875",
+      "sourceUrl": "https://www.aozora.gr.jp/cards/000160/files/875_42450.html",
+      "sourceCardUrl": "https://www.aozora.gr.jp/cards/000160/card875.html",
+      "sourcePublishedDate": "「協力新聞」1945（昭和20）年9月1日～1946（昭和21）年（終号未詳）",
+      "sourceLicense": "Aozora Bunko file handling standard (copyright-expired work)",
+      "sourceLicenseUrl": "https://www.aozora.gr.jp/guide/kijyunn.html",
+      "sourceTermsUrl": "https://www.aozora.gr.jp/guide/kijyunn.html",
+      "sourceAttribution": "出典：青空文庫「地球発狂事件」海野 十三、丘 丘十郎",
+      "sourceProcessing": "Candidate metadata only; no reading body is bundled by this inventory.",
+      "rightsStatus": "public-domain",
+      "rightsEvidence": {
+        "catalog": "Aozora extended UTF-8 catalog",
+        "workCopyrightFlag": "なし",
+        "contributorCopyrightFlags": [
+          {
+            "role": "著者",
+            "name": "海野 十三",
+            "flag": "なし"
+          },
+          {
+            "role": "著者",
+            "name": "丘 丘十郎",
+            "flag": "なし"
+          }
+        ],
+        "checkedRule": "Work and every credited contributor must have copyright flag 'なし'."
+      },
+      "classification": "NDC 913",
+      "orthography": "新字新仮名",
+      "inventoryNote": "A real named source division extracted from the approved Aozora HTML; no text body is bundled.",
+      "sourceSectionTitle": "�񑩂̎莆",
+      "sourceSectionIndex": 34
+    },
+    {
+      "candidateId": "aozora-000875-chapter-035",
+      "targetShelf": "serialized-novels",
+      "sourceFamilyId": "aozora-bunko",
+      "sourceTitle": "地球発狂事件",
+      "sourceAuthor": "海野 十三 / 丘 丘十郎",
+      "sourceTranslator": null,
+      "workId": "000875",
+      "sourceUrl": "https://www.aozora.gr.jp/cards/000160/files/875_42450.html",
+      "sourceCardUrl": "https://www.aozora.gr.jp/cards/000160/card875.html",
+      "sourcePublishedDate": "「協力新聞」1945（昭和20）年9月1日～1946（昭和21）年（終号未詳）",
+      "sourceLicense": "Aozora Bunko file handling standard (copyright-expired work)",
+      "sourceLicenseUrl": "https://www.aozora.gr.jp/guide/kijyunn.html",
+      "sourceTermsUrl": "https://www.aozora.gr.jp/guide/kijyunn.html",
+      "sourceAttribution": "出典：青空文庫「地球発狂事件」海野 十三、丘 丘十郎",
+      "sourceProcessing": "Candidate metadata only; no reading body is bundled by this inventory.",
+      "rightsStatus": "public-domain",
+      "rightsEvidence": {
+        "catalog": "Aozora extended UTF-8 catalog",
+        "workCopyrightFlag": "なし",
+        "contributorCopyrightFlags": [
+          {
+            "role": "著者",
+            "name": "海野 十三",
+            "flag": "なし"
+          },
+          {
+            "role": "著者",
+            "name": "丘 丘十郎",
+            "flag": "なし"
+          }
+        ],
+        "checkedRule": "Work and every credited contributor must have copyright flag 'なし'."
+      },
+      "classification": "NDC 913",
+      "orthography": "新字新仮名",
+      "inventoryNote": "A real named source division extracted from the approved Aozora HTML; no text body is bundled.",
+      "sourceSectionTitle": "�[��̑吼�m",
+      "sourceSectionIndex": 35
+    },
+    {
+      "candidateId": "aozora-000875-chapter-036",
+      "targetShelf": "serialized-novels",
+      "sourceFamilyId": "aozora-bunko",
+      "sourceTitle": "地球発狂事件",
+      "sourceAuthor": "海野 十三 / 丘 丘十郎",
+      "sourceTranslator": null,
+      "workId": "000875",
+      "sourceUrl": "https://www.aozora.gr.jp/cards/000160/files/875_42450.html",
+      "sourceCardUrl": "https://www.aozora.gr.jp/cards/000160/card875.html",
+      "sourcePublishedDate": "「協力新聞」1945（昭和20）年9月1日～1946（昭和21）年（終号未詳）",
+      "sourceLicense": "Aozora Bunko file handling standard (copyright-expired work)",
+      "sourceLicenseUrl": "https://www.aozora.gr.jp/guide/kijyunn.html",
+      "sourceTermsUrl": "https://www.aozora.gr.jp/guide/kijyunn.html",
+      "sourceAttribution": "出典：青空文庫「地球発狂事件」海野 十三、丘 丘十郎",
+      "sourceProcessing": "Candidate metadata only; no reading body is bundled by this inventory.",
+      "rightsStatus": "public-domain",
+      "rightsEvidence": {
+        "catalog": "Aozora extended UTF-8 catalog",
+        "workCopyrightFlag": "なし",
+        "contributorCopyrightFlags": [
+          {
+            "role": "著者",
+            "name": "海野 十三",
+            "flag": "なし"
+          },
+          {
+            "role": "著者",
+            "name": "丘 丘十郎",
+            "flag": "なし"
+          }
+        ],
+        "checkedRule": "Work and every credited contributor must have copyright flag 'なし'."
+      },
+      "classification": "NDC 913",
+      "orthography": "新字新仮名",
+      "inventoryNote": "A real named source division extracted from the approved Aozora HTML; no text body is bundled.",
+      "sourceSectionTitle": "�e���r�W�����T��",
+      "sourceSectionIndex": 36
+    },
+    {
+      "candidateId": "aozora-000875-chapter-037",
+      "targetShelf": "serialized-novels",
+      "sourceFamilyId": "aozora-bunko",
+      "sourceTitle": "地球発狂事件",
+      "sourceAuthor": "海野 十三 / 丘 丘十郎",
+      "sourceTranslator": null,
+      "workId": "000875",
+      "sourceUrl": "https://www.aozora.gr.jp/cards/000160/files/875_42450.html",
+      "sourceCardUrl": "https://www.aozora.gr.jp/cards/000160/card875.html",
+      "sourcePublishedDate": "「協力新聞」1945（昭和20）年9月1日～1946（昭和21）年（終号未詳）",
+      "sourceLicense": "Aozora Bunko file handling standard (copyright-expired work)",
+      "sourceLicenseUrl": "https://www.aozora.gr.jp/guide/kijyunn.html",
+      "sourceTermsUrl": "https://www.aozora.gr.jp/guide/kijyunn.html",
+      "sourceAttribution": "出典：青空文庫「地球発狂事件」海野 十三、丘 丘十郎",
+      "sourceProcessing": "Candidate metadata only; no reading body is bundled by this inventory.",
+      "rightsStatus": "public-domain",
+      "rightsEvidence": {
+        "catalog": "Aozora extended UTF-8 catalog",
+        "workCopyrightFlag": "なし",
+        "contributorCopyrightFlags": [
+          {
+            "role": "著者",
+            "name": "海野 十三",
+            "flag": "なし"
+          },
+          {
+            "role": "著者",
+            "name": "丘 丘十郎",
+            "flag": "なし"
+          }
+        ],
+        "checkedRule": "Work and every credited contributor must have copyright flag 'なし'."
+      },
+      "classification": "NDC 913",
+      "orthography": "新字新仮名",
+      "inventoryNote": "A real named source division extracted from the approved Aozora HTML; no text body is bundled.",
+      "sourceSectionTitle": "�ϑ��̗F",
+      "sourceSectionIndex": 37
+    },
+    {
+      "candidateId": "aozora-000875-chapter-038",
+      "targetShelf": "serialized-novels",
+      "sourceFamilyId": "aozora-bunko",
+      "sourceTitle": "地球発狂事件",
+      "sourceAuthor": "海野 十三 / 丘 丘十郎",
+      "sourceTranslator": null,
+      "workId": "000875",
+      "sourceUrl": "https://www.aozora.gr.jp/cards/000160/files/875_42450.html",
+      "sourceCardUrl": "https://www.aozora.gr.jp/cards/000160/card875.html",
+      "sourcePublishedDate": "「協力新聞」1945（昭和20）年9月1日～1946（昭和21）年（終号未詳）",
+      "sourceLicense": "Aozora Bunko file handling standard (copyright-expired work)",
+      "sourceLicenseUrl": "https://www.aozora.gr.jp/guide/kijyunn.html",
+      "sourceTermsUrl": "https://www.aozora.gr.jp/guide/kijyunn.html",
+      "sourceAttribution": "出典：青空文庫「地球発狂事件」海野 十三、丘 丘十郎",
+      "sourceProcessing": "Candidate metadata only; no reading body is bundled by this inventory.",
+      "rightsStatus": "public-domain",
+      "rightsEvidence": {
+        "catalog": "Aozora extended UTF-8 catalog",
+        "workCopyrightFlag": "なし",
+        "contributorCopyrightFlags": [
+          {
+            "role": "著者",
+            "name": "海野 十三",
+            "flag": "なし"
+          },
+          {
+            "role": "著者",
+            "name": "丘 丘十郎",
+            "flag": "なし"
+          }
+        ],
+        "checkedRule": "Work and every credited contributor must have copyright flag 'なし'."
+      },
+      "classification": "NDC 913",
+      "orthography": "新字新仮名",
+      "inventoryNote": "A real named source division extracted from the approved Aozora HTML; no text body is bundled.",
+      "sourceSectionTitle": "���l�΍�̌��ܕ�W",
+      "sourceSectionIndex": 38
+    },
+    {
+      "candidateId": "aozora-000875-chapter-039",
+      "targetShelf": "serialized-novels",
+      "sourceFamilyId": "aozora-bunko",
+      "sourceTitle": "地球発狂事件",
+      "sourceAuthor": "海野 十三 / 丘 丘十郎",
+      "sourceTranslator": null,
+      "workId": "000875",
+      "sourceUrl": "https://www.aozora.gr.jp/cards/000160/files/875_42450.html",
+      "sourceCardUrl": "https://www.aozora.gr.jp/cards/000160/card875.html",
+      "sourcePublishedDate": "「協力新聞」1945（昭和20）年9月1日～1946（昭和21）年（終号未詳）",
+      "sourceLicense": "Aozora Bunko file handling standard (copyright-expired work)",
+      "sourceLicenseUrl": "https://www.aozora.gr.jp/guide/kijyunn.html",
+      "sourceTermsUrl": "https://www.aozora.gr.jp/guide/kijyunn.html",
+      "sourceAttribution": "出典：青空文庫「地球発狂事件」海野 十三、丘 丘十郎",
+      "sourceProcessing": "Candidate metadata only; no reading body is bundled by this inventory.",
+      "rightsStatus": "public-domain",
+      "rightsEvidence": {
+        "catalog": "Aozora extended UTF-8 catalog",
+        "workCopyrightFlag": "なし",
+        "contributorCopyrightFlags": [
+          {
+            "role": "著者",
+            "name": "海野 十三",
+            "flag": "なし"
+          },
+          {
+            "role": "著者",
+            "name": "丘 丘十郎",
+            "flag": "なし"
+          }
+        ],
+        "checkedRule": "Work and every credited contributor must have copyright flag 'なし'."
+      },
+      "classification": "NDC 913",
+      "orthography": "新字新仮名",
+      "inventoryNote": "A real named source division extracted from the approved Aozora HTML; no text body is bundled.",
+      "sourceSectionTitle": "�A���_�[�\\������",
+      "sourceSectionIndex": 39
+    },
+    {
+      "candidateId": "aozora-000875-chapter-040",
+      "targetShelf": "serialized-novels",
+      "sourceFamilyId": "aozora-bunko",
+      "sourceTitle": "地球発狂事件",
+      "sourceAuthor": "海野 十三 / 丘 丘十郎",
+      "sourceTranslator": null,
+      "workId": "000875",
+      "sourceUrl": "https://www.aozora.gr.jp/cards/000160/files/875_42450.html",
+      "sourceCardUrl": "https://www.aozora.gr.jp/cards/000160/card875.html",
+      "sourcePublishedDate": "「協力新聞」1945（昭和20）年9月1日～1946（昭和21）年（終号未詳）",
+      "sourceLicense": "Aozora Bunko file handling standard (copyright-expired work)",
+      "sourceLicenseUrl": "https://www.aozora.gr.jp/guide/kijyunn.html",
+      "sourceTermsUrl": "https://www.aozora.gr.jp/guide/kijyunn.html",
+      "sourceAttribution": "出典：青空文庫「地球発狂事件」海野 十三、丘 丘十郎",
+      "sourceProcessing": "Candidate metadata only; no reading body is bundled by this inventory.",
+      "rightsStatus": "public-domain",
+      "rightsEvidence": {
+        "catalog": "Aozora extended UTF-8 catalog",
+        "workCopyrightFlag": "なし",
+        "contributorCopyrightFlags": [
+          {
+            "role": "著者",
+            "name": "海野 十三",
+            "flag": "なし"
+          },
+          {
+            "role": "著者",
+            "name": "丘 丘十郎",
+            "flag": "なし"
+          }
+        ],
+        "checkedRule": "Work and every credited contributor must have copyright flag 'なし'."
+      },
+      "classification": "NDC 913",
+      "orthography": "新字新仮名",
+      "inventoryNote": "A real named source division extracted from the approved Aozora HTML; no text body is bundled.",
+      "sourceSectionTitle": "�V�s������",
+      "sourceSectionIndex": 40
+    },
+    {
+      "candidateId": "aozora-000875-chapter-041",
+      "targetShelf": "serialized-novels",
+      "sourceFamilyId": "aozora-bunko",
+      "sourceTitle": "地球発狂事件",
+      "sourceAuthor": "海野 十三 / 丘 丘十郎",
+      "sourceTranslator": null,
+      "workId": "000875",
+      "sourceUrl": "https://www.aozora.gr.jp/cards/000160/files/875_42450.html",
+      "sourceCardUrl": "https://www.aozora.gr.jp/cards/000160/card875.html",
+      "sourcePublishedDate": "「協力新聞」1945（昭和20）年9月1日～1946（昭和21）年（終号未詳）",
+      "sourceLicense": "Aozora Bunko file handling standard (copyright-expired work)",
+      "sourceLicenseUrl": "https://www.aozora.gr.jp/guide/kijyunn.html",
+      "sourceTermsUrl": "https://www.aozora.gr.jp/guide/kijyunn.html",
+      "sourceAttribution": "出典：青空文庫「地球発狂事件」海野 十三、丘 丘十郎",
+      "sourceProcessing": "Candidate metadata only; no reading body is bundled by this inventory.",
+      "rightsStatus": "public-domain",
+      "rightsEvidence": {
+        "catalog": "Aozora extended UTF-8 catalog",
+        "workCopyrightFlag": "なし",
+        "contributorCopyrightFlags": [
+          {
+            "role": "著者",
+            "name": "海野 十三",
+            "flag": "なし"
+          },
+          {
+            "role": "著者",
+            "name": "丘 丘十郎",
+            "flag": "なし"
+          }
+        ],
+        "checkedRule": "Work and every credited contributor must have copyright flag 'なし'."
+      },
+      "classification": "NDC 913",
+      "orthography": "新字新仮名",
+      "inventoryNote": "A real named source division extracted from the approved Aozora HTML; no text body is bundled.",
+      "sourceSectionTitle": "���l�W�c���Ă�",
+      "sourceSectionIndex": 41
+    },
+    {
+      "candidateId": "aozora-000875-chapter-042",
+      "targetShelf": "serialized-novels",
+      "sourceFamilyId": "aozora-bunko",
+      "sourceTitle": "地球発狂事件",
+      "sourceAuthor": "海野 十三 / 丘 丘十郎",
+      "sourceTranslator": null,
+      "workId": "000875",
+      "sourceUrl": "https://www.aozora.gr.jp/cards/000160/files/875_42450.html",
+      "sourceCardUrl": "https://www.aozora.gr.jp/cards/000160/card875.html",
+      "sourcePublishedDate": "「協力新聞」1945（昭和20）年9月1日～1946（昭和21）年（終号未詳）",
+      "sourceLicense": "Aozora Bunko file handling standard (copyright-expired work)",
+      "sourceLicenseUrl": "https://www.aozora.gr.jp/guide/kijyunn.html",
+      "sourceTermsUrl": "https://www.aozora.gr.jp/guide/kijyunn.html",
+      "sourceAttribution": "出典：青空文庫「地球発狂事件」海野 十三、丘 丘十郎",
+      "sourceProcessing": "Candidate metadata only; no reading body is bundled by this inventory.",
+      "rightsStatus": "public-domain",
+      "rightsEvidence": {
+        "catalog": "Aozora extended UTF-8 catalog",
+        "workCopyrightFlag": "なし",
+        "contributorCopyrightFlags": [
+          {
+            "role": "著者",
+            "name": "海野 十三",
+            "flag": "なし"
+          },
+          {
+            "role": "著者",
+            "name": "丘 丘十郎",
+            "flag": "なし"
+          }
+        ],
+        "checkedRule": "Work and every credited contributor must have copyright flag 'なし'."
+      },
+      "classification": "NDC 913",
+      "orthography": "新字新仮名",
+      "inventoryNote": "A real named source division extracted from the approved Aozora HTML; no text body is bundled.",
+      "sourceSectionTitle": "��������",
+      "sourceSectionIndex": 42
+    }
+  ]
+}
