@@ -29,12 +29,21 @@ Translations are not approved merely because the original author is public domai
 
 `tools/build-government-reading-inventory.mjs` starts only from the existing verified sources and explicit approved-family index pages. It records metadata; it does not copy source text or assets. A later population pass must re-check the item for a contrary notice and third-party credits before importing or adapting text.
 
+## Body-ready source inventory
+
+Run `tools/rebuild-reading-body-ready-inventory.mjs` while online to crawl only registry-approved government families. It inspects the fetched item, rejects obvious landing/index pages and thin or unavailable sources, excludes third-party media, fingerprints extracted Japanese, and allocates only appropriately typed items to `body-ready/*.json`. These packs are editorial evidence, not production readings, and are deliberately outside the runtime loader and service-worker shell.
+
+The crawl writes `qa/body-ready-source-report.json` and `qa/body-ready-rejections.json`. A target shortage is a valid failure result: never weaken shelf typing or retain a bad page merely to make a target count pass. Run `tools/validate-reading-body-ready.mjs` afterward for offline schema, source-family, domain/path, uniqueness, body-evidence, and report/pack consistency checks.
+
+Run `tools/audit-aozora-body-ready.mjs` separately to verify current Aozora candidates using charset-aware source decoding. Serialized Novel candidates require a decoded named division that exists in the source and is not simply the work title. Its machine-readable result is `qa/aozora-body-ready-report.json`.
+
 ## Validation
 
 Run:
 
 ```text
 node tools/validate-reading-rights.mjs
+node tools/validate-reading-body-ready.mjs
 ```
 
 The validator checks record IDs, rights statuses, source-family/domain/path compatibility, terms and attribution, full-text/adaptation permissions, Aozora public-domain evidence, third-party asset flags, candidate counts, and real serialized-source section names. It writes `qa/source-rights-report.json`.

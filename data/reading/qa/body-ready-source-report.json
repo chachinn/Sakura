@@ -1,0 +1,67 @@
+{
+  "version": 1,
+  "generatedDate": "2026-08-22",
+  "pass": false,
+  "totalCandidatesInspected": 8500,
+  "eligibleBodyReadyItems": 4192,
+  "acceptedBodyReadyItems": 1044,
+  "unselectedBodyReadyItems": 3148,
+  "rejectedItems": 4308,
+  "needsReviewItems": 0,
+  "acceptedCountsByShelf": {
+    "articles": 300,
+    "recipes-how-to": 24,
+    "interviews-qa": 100,
+    "travel-reading": 131,
+    "school-work": 120,
+    "real-life-documents": 69,
+    "news": 300
+  },
+  "acceptedCountsBySourceFamily": {
+    "gov-digital": 45,
+    "gov-caa": 55,
+    "gov-env": 11,
+    "gov-cfa": 15,
+    "gov-mhlw": 721,
+    "gov-maff": 61,
+    "gov-jta": 136
+  },
+  "rejectionReasons": {
+    "insufficient-source-substance": 1973,
+    "http-403": 811,
+    "landing-or-index-page": 1491,
+    "non-html-source": 267,
+    "unapproved-redirect-path": 2,
+    "duplicate-source-body": 20,
+    "http-404": 37
+  },
+  "landingIndexPageRejectionCount": 1491,
+  "itemsMissingUsableSourceSubstance": 1973,
+  "duplicateUrls": 91,
+  "duplicateSourceBodies": 20,
+  "rightsStatusDistribution": {
+    "adaptation-permitted": 1044
+  },
+  "thirdPartyReviewDistribution": {
+    "checked-no-item-level-signal": 1031,
+    "checked-third-party-assets-excluded": 13
+  },
+  "targets": {
+    "articles": 300,
+    "news": 300,
+    "travel-reading": 200,
+    "school-work": 120,
+    "recipes-how-to": 100,
+    "interviews-qa": 100,
+    "real-life-documents": 200
+  },
+  "unfilled": {
+    "travel-reading": 69,
+    "recipes-how-to": 76,
+    "real-life-documents": 131
+  },
+  "notes": [
+    "Accepted government records are inventory evidence only; no learner-facing adaptation was generated.",
+    "Media assets are never bundled. Pages with detected contrary-rights or third-party-credit signals remain review-required."
+  ]
+}
