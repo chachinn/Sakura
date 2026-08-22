@@ -47,14 +47,14 @@
     "health": {
       "fetches": 112,
       "visited": 112,
-      "acceptedForTopic": 79,
-      "remainingQueue": 751
+      "acceptedForTopic": 77,
+      "remainingQueue": 769
     },
     "environment": {
-      "fetches": 192,
-      "visited": 192,
-      "acceptedForTopic": 75,
-      "remainingQueue": 471
+      "fetches": 184,
+      "visited": 184,
+      "acceptedForTopic": 77,
+      "remainingQueue": 501
     },
     "culture": {
       "fetches": 328,
@@ -65,7 +65,7 @@
     "work": {
       "fetches": 136,
       "visited": 136,
-      "acceptedForTopic": 77,
+      "acceptedForTopic": 76,
       "remainingQueue": 361
     },
     "society": {
@@ -75,17 +75,17 @@
       "remainingQueue": 473
     }
   },
-  "discoveredUniqueCandidatePages": 1593,
+  "discoveredUniqueCandidatePages": 1590,
   "eligibleCounts": {
     "beauty": 22,
     "food": 151,
     "travel": 71,
     "digital": 84,
     "consumer": 250,
-    "health": 434,
-    "environment": 98,
+    "health": 429,
+    "environment": 99,
     "culture": 72,
-    "work": 265,
+    "work": 264,
     "society": 185
   },
   "selectedCount": 292,
@@ -12413,6 +12413,102 @@
         ]
       },
       {
+        "candidateId": "article-topic-6195d771f0e8a853",
+        "targetShelf": "articles",
+        "articleTopic": "health",
+        "topicScore": 366,
+        "topicEvidence": [
+          {
+            "term": "健診",
+            "titleHits": 1,
+            "bodyHits": 4,
+            "urlHits": 0,
+            "contribution": 72
+          },
+          {
+            "term": "保健",
+            "titleHits": 1,
+            "bodyHits": 4,
+            "urlHits": 0,
+            "contribution": 56
+          },
+          {
+            "term": "健康",
+            "titleHits": 0,
+            "bodyHits": 4,
+            "urlHits": 0,
+            "contribution": 40
+          },
+          {
+            "term": "医療",
+            "titleHits": 0,
+            "bodyHits": 4,
+            "urlHits": 0,
+            "contribution": 40
+          },
+          {
+            "term": "感染",
+            "titleHits": 0,
+            "bodyHits": 4,
+            "urlHits": 0,
+            "contribution": 36
+          },
+          {
+            "term": "生活習慣病",
+            "titleHits": 0,
+            "bodyHits": 4,
+            "urlHits": 0,
+            "contribution": 36
+          },
+          {
+            "term": "診療",
+            "titleHits": 0,
+            "bodyHits": 4,
+            "urlHits": 0,
+            "contribution": 32
+          },
+          {
+            "term": "予防",
+            "titleHits": 0,
+            "bodyHits": 4,
+            "urlHits": 0,
+            "contribution": 28
+          }
+        ],
+        "sourceBestTopic": "health",
+        "sourceBestTopicScore": 366,
+        "sourceFamilyId": "gov-mhlw",
+        "sourceTitle": "特定健診・特定保健指導について",
+        "sourcePublisher": "厚生労働省",
+        "sourceUrl": "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/0000161103.html",
+        "sourcePublishedDate": null,
+        "sourceRetrievedDate": "2026-08-22",
+        "rightsStatus": "adaptation-permitted",
+        "rightsBasis": {
+          "termsUrl": "https://www.mhlw.go.jp/chosakuken/",
+          "licenseName": "Public Data License 1.0",
+          "licenseUrl": "https://www.digital.go.jp/resources/open_data/public_data_license_v1.0",
+          "itemLevelCheck": "No contrary text-rights notice detected in the fetched page; excluded media remains excluded.",
+          "verifiedDate": "2026-08-22"
+        },
+        "thirdPartyContentReview": {
+          "status": "checked-no-item-level-signal",
+          "signals": [],
+          "excludedMedia": [],
+          "assetsBundled": false
+        },
+        "sourceBodyExtractionStatus": "body-ready",
+        "sourceTextCharacterCount": 5560,
+        "reuseMode": "verbatim-or-adaptation-permitted",
+        "sourceBodyFingerprint": "f3b155bbc6943c2465d04c64d18f49ef5e4e9baa8b56ae6c667917cb97398d2e",
+        "sourceAttribution": "出典：厚生労働省ウェブサイト（https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/0000161103.html）",
+        "sourceProcessing": "Item-level source body extracted for one-source Sakura Article adaptation. No learner-facing text has been generated.",
+        "inventoryPosition": 151,
+        "discoveryKinds": [
+          "crawl"
+        ]
+      },
+      {
         "candidateId": "article-topic-667e2409acc68956",
         "targetShelf": "articles",
         "articleTopic": "health",
@@ -12503,7 +12599,7 @@
         "sourceBodyFingerprint": "d3c500304d3f0dddd3d76ce3273486d59deb42327de4272052d713bb47b9ab12",
         "sourceAttribution": "出典：厚生労働省ウェブサイト（https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/kenkou_iryou/iryou/johoka/index.html）",
         "sourceProcessing": "Item-level source body extracted for one-source Sakura Article adaptation. No learner-facing text has been generated.",
-        "inventoryPosition": 151,
+        "inventoryPosition": 152,
         "discoveryKinds": [
           "crawl"
         ]
@@ -12599,7 +12695,7 @@
         "sourceBodyFingerprint": "303f83122affd3873f4bcc373f29aabb86fdc0a4678546a71372836ba79cade8",
         "sourceAttribution": "出典：厚生労働省ウェブサイト（https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/kenkou_iryou/kenkou/kekkaku-kansenshou/yobou-sesshu/vaccine/japanese-encephalitis/index.html）",
         "sourceProcessing": "Item-level source body extracted for one-source Sakura Article adaptation. No learner-facing text has been generated.",
-        "inventoryPosition": 152,
+        "inventoryPosition": 153,
         "discoveryKinds": [
           "crawl"
         ]
@@ -12695,7 +12791,7 @@
         "sourceBodyFingerprint": "d8e2357149897837d5bf63444041e016660556f4c8d51f77a19a169d6e583d63",
         "sourceAttribution": "出典：厚生労働省ウェブサイト（https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/kenkou_iryou/kenkou/kekkaku-kansenshou/yobou-sesshu/index.html）",
         "sourceProcessing": "Item-level source body extracted for one-source Sakura Article adaptation. No learner-facing text has been generated.",
-        "inventoryPosition": 153,
+        "inventoryPosition": 154,
         "discoveryKinds": [
           "crawl"
         ]
@@ -12784,7 +12880,7 @@
         "sourceBodyFingerprint": "640d8faf7a37a604a39171a8b2ba55b8796b77222a6f90331ab886087e0b1281",
         "sourceAttribution": "出典：厚生労働省ウェブサイト（https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/kenkou_iryou/iryouhoken/hokenjigyou/index_00003.html）",
         "sourceProcessing": "Item-level source body extracted for one-source Sakura Article adaptation. No learner-facing text has been generated.",
-        "inventoryPosition": 154,
+        "inventoryPosition": 155,
         "discoveryKinds": [
           "crawl"
         ]
@@ -12880,7 +12976,7 @@
         "sourceBodyFingerprint": "7624a51fe16c62fbf87e3691f88ed059e25473c678e183caaf3b328134c7de4e",
         "sourceAttribution": "出典：厚生労働省ウェブサイト（https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/kenkou_iryou/iryou/index.html）",
         "sourceProcessing": "Item-level source body extracted for one-source Sakura Article adaptation. No learner-facing text has been generated.",
-        "inventoryPosition": 155,
+        "inventoryPosition": 156,
         "discoveryKinds": [
           "crawl"
         ]
@@ -12969,7 +13065,7 @@
         "sourceBodyFingerprint": "1d735c7e4a5ed57eaf6567ab4a23e1cfb5eabdc12a8c76f1ccbc1f0272870742",
         "sourceAttribution": "出典：厚生労働省ウェブサイト（https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/kenkou_iryou/kenkou/kekkaku-kansenshou/yobou-sesshu/vaccine/shingles/index.html）",
         "sourceProcessing": "Item-level source body extracted for one-source Sakura Article adaptation. No learner-facing text has been generated.",
-        "inventoryPosition": 156,
+        "inventoryPosition": 157,
         "discoveryKinds": [
           "crawl"
         ]
@@ -13065,7 +13161,7 @@
         "sourceBodyFingerprint": "7582408e17cee0059a46b4673c0ef5119aaab2acc70a14e0e8742fc159c9e1a4",
         "sourceAttribution": "出典：厚生労働省ウェブサイト（https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/kenkou_iryou/kenkou/jinshikkan/index.html）",
         "sourceProcessing": "Item-level source body extracted for one-source Sakura Article adaptation. No learner-facing text has been generated.",
-        "inventoryPosition": 157,
+        "inventoryPosition": 158,
         "discoveryKinds": [
           "crawl"
         ]
@@ -13158,10 +13254,10 @@
         "sourceBodyExtractionStatus": "body-ready",
         "sourceTextCharacterCount": 3955,
         "reuseMode": "verbatim-or-adaptation-permitted",
-        "sourceBodyFingerprint": "50457873cb59afa426c24ca9290059288bd71082ce245ad95567508d83dc24d8",
+        "sourceBodyFingerprint": "8c42bf412258b892d1e2b324f6745b07cfea358eef582cc8282a35868778a2b5",
         "sourceAttribution": "出典：厚生労働省ウェブサイト（https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/kenkou_iryou/kenkou/kekkaku-kansenshou/yobou-sesshu/vaccine/rs/index.html）",
         "sourceProcessing": "Item-level source body extracted for one-source Sakura Article adaptation. No learner-facing text has been generated.",
-        "inventoryPosition": 158,
+        "inventoryPosition": 159,
         "discoveryKinds": [
           "crawl"
         ]
@@ -13257,7 +13353,7 @@
         "sourceBodyFingerprint": "5946d27054fa0ebdd228a686d7cc9622f2fa294cf8363f6d6b9e8c206a7b15f5",
         "sourceAttribution": "出典：厚生労働省ウェブサイト（https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/kenkou_iryou/kenkou/kekkaku-kansenshou/yobou-sesshu/vaccine/dpt-ipv-hib/index.html）",
         "sourceProcessing": "Item-level source body extracted for one-source Sakura Article adaptation. No learner-facing text has been generated.",
-        "inventoryPosition": 159,
+        "inventoryPosition": 160,
         "discoveryKinds": [
           "crawl"
         ]
@@ -13353,7 +13449,7 @@
         "sourceBodyFingerprint": "8c50ffca99ed9678e3a0f114924bd185bced26118f676e11a7c29d97e2e09ce8",
         "sourceAttribution": "出典：厚生労働省ウェブサイト（https://www.mhlw.go.jp/stf/shingi/indexshingiother_127238.html）",
         "sourceProcessing": "Item-level source body extracted for one-source Sakura Article adaptation. No learner-facing text has been generated.",
-        "inventoryPosition": 160,
+        "inventoryPosition": 161,
         "discoveryKinds": [
           "crawl"
         ]
@@ -13449,7 +13545,7 @@
         "sourceBodyFingerprint": "19a78371d7bbd963e56dda8427425bd9d6e4339bf1ac6c05e6defc8b605287e2",
         "sourceAttribution": "出典：厚生労働省ウェブサイト（https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/kenkou_iryou/kenkou/hoken-eisei/index.html）",
         "sourceProcessing": "Item-level source body extracted for one-source Sakura Article adaptation. No learner-facing text has been generated.",
-        "inventoryPosition": 161,
+        "inventoryPosition": 162,
         "discoveryKinds": [
           "crawl"
         ]
@@ -13531,7 +13627,7 @@
         "sourceBodyFingerprint": "293291da8c9099e611df3ad9f5d66581d13ff61100502bc466df11fb60d60fbc",
         "sourceAttribution": "出典：厚生労働省ウェブサイト（https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/kenkou_iryou/kenkou/kekkaku-kansenshou/yobou-sesshu/vaccine/rota/index.html）",
         "sourceProcessing": "Item-level source body extracted for one-source Sakura Article adaptation. No learner-facing text has been generated.",
-        "inventoryPosition": 162,
+        "inventoryPosition": 163,
         "discoveryKinds": [
           "crawl"
         ]
@@ -13620,7 +13716,7 @@
         "sourceBodyFingerprint": "f87c129d4f980226ecaf56e21995d98e5bf4141c263288a7aa46f862952d873a",
         "sourceAttribution": "出典：厚生労働省ウェブサイト（https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/kenkou_iryou/kenkou/kekkaku-kansenshou/yobou-sesshu/vaccine/pneumococcus-child/index.html）",
         "sourceProcessing": "Item-level source body extracted for one-source Sakura Article adaptation. No learner-facing text has been generated.",
-        "inventoryPosition": 163,
+        "inventoryPosition": 164,
         "discoveryKinds": [
           "crawl"
         ]
@@ -13716,7 +13812,7 @@
         "sourceBodyFingerprint": "1de7a98e9e7bc7a71136d9ae46992069c1f4d82690f737c6219a2b333bf256af",
         "sourceAttribution": "出典：厚生労働省ウェブサイト（https://www.mhlw.go.jp/stf/shingi/other-isei_210261.html）",
         "sourceProcessing": "Item-level source body extracted for one-source Sakura Article adaptation. No learner-facing text has been generated.",
-        "inventoryPosition": 164,
+        "inventoryPosition": 165,
         "discoveryKinds": [
           "crawl"
         ]
@@ -13798,7 +13894,7 @@
         "sourceBodyFingerprint": "62fd85e03aa1c0c54f868cd90fc29b4b1df4dab07a480fd9330ad0e8201326b9",
         "sourceAttribution": "出典：厚生労働省ウェブサイト（https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/000013196.html）",
         "sourceProcessing": "Item-level source body extracted for one-source Sakura Article adaptation. No learner-facing text has been generated.",
-        "inventoryPosition": 165,
+        "inventoryPosition": 166,
         "discoveryKinds": [
           "crawl"
         ]
@@ -13880,84 +13976,8 @@
         "sourceBodyFingerprint": "7d44d4c03d2bb56bdcfecd2eb596db515cad57aa274793edc553ed08b0e7c620",
         "sourceAttribution": "出典：厚生労働省ウェブサイト（https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/kenkou_iryou/kenkou/seikatsu/index.html）",
         "sourceProcessing": "Item-level source body extracted for one-source Sakura Article adaptation. No learner-facing text has been generated.",
-        "inventoryPosition": 166,
-        "discoveryKinds": [
-          "crawl"
-        ]
-      },
-      {
-        "candidateId": "article-topic-b6e44f8da14f7342",
-        "targetShelf": "articles",
-        "articleTopic": "health",
-        "topicScore": 319,
-        "topicEvidence": [
-          {
-            "term": "医療",
-            "titleHits": 2,
-            "bodyHits": 4,
-            "urlHits": 0,
-            "contribution": 120
-          },
-          {
-            "term": "健康",
-            "titleHits": 1,
-            "bodyHits": 4,
-            "urlHits": 0,
-            "contribution": 80
-          },
-          {
-            "term": "医薬品",
-            "titleHits": 1,
-            "bodyHits": 4,
-            "urlHits": 0,
-            "contribution": 64
-          },
-          {
-            "term": "疾病",
-            "titleHits": 0,
-            "bodyHits": 3,
-            "urlHits": 0,
-            "contribution": 27
-          },
-          {
-            "term": "感染",
-            "titleHits": 0,
-            "bodyHits": 2,
-            "urlHits": 0,
-            "contribution": 18
-          }
-        ],
-        "sourceBestTopic": "health",
-        "sourceBestTopicScore": 319,
-        "sourceFamilyId": "gov-mhlw",
-        "sourceTitle": "健康・医療 医薬品・医療機器",
-        "sourcePublisher": "厚生労働省",
-        "sourceUrl": "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/kenkou_iryou/iyakuhin/index.html",
-        "sourcePublishedDate": null,
-        "sourceRetrievedDate": "2026-08-22",
-        "rightsStatus": "adaptation-permitted",
-        "rightsBasis": {
-          "termsUrl": "https://www.mhlw.go.jp/chosakuken/",
-          "licenseName": "Public Data License 1.0",
-          "licenseUrl": "https://www.digital.go.jp/resources/open_data/public_data_license_v1.0",
-          "itemLevelCheck": "No contrary text-rights notice detected in the fetched page; excluded media remains excluded.",
-          "verifiedDate": "2026-08-22"
-        },
-        "thirdPartyContentReview": {
-          "status": "checked-no-item-level-signal",
-          "signals": [],
-          "excludedMedia": [],
-          "assetsBundled": false
-        },
-        "sourceBodyExtractionStatus": "body-ready",
-        "sourceTextCharacterCount": 2210,
-        "reuseMode": "verbatim-or-adaptation-permitted",
-        "sourceBodyFingerprint": "262f637bebe0e8af6a4a1988cd20c8b5205c49ebbc1f456789509a5441d49bd6",
-        "sourceAttribution": "出典：厚生労働省ウェブサイト（https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/kenkou_iryou/iyakuhin/index.html）",
-        "sourceProcessing": "Item-level source body extracted for one-source Sakura Article adaptation. No learner-facing text has been generated.",
         "inventoryPosition": 167,
         "discoveryKinds": [
-          "topic-root",
           "crawl"
         ]
       },
@@ -14986,6 +15006,102 @@
         ]
       },
       {
+        "candidateId": "article-topic-14007cd89e954615",
+        "targetShelf": "articles",
+        "articleTopic": "environment",
+        "topicScore": 239,
+        "topicEvidence": [
+          {
+            "term": "環境",
+            "titleHits": 1,
+            "bodyHits": 4,
+            "urlHits": 0,
+            "contribution": 80
+          },
+          {
+            "term": "脱炭素",
+            "titleHits": 0,
+            "bodyHits": 4,
+            "urlHits": 0,
+            "contribution": 36
+          },
+          {
+            "term": "自然",
+            "titleHits": 0,
+            "bodyHits": 4,
+            "urlHits": 0,
+            "contribution": 24
+          },
+          {
+            "term": "循環",
+            "titleHits": 0,
+            "bodyHits": 3,
+            "urlHits": 0,
+            "contribution": 21
+          },
+          {
+            "term": "大気",
+            "titleHits": 0,
+            "bodyHits": 3,
+            "urlHits": 0,
+            "contribution": 21
+          },
+          {
+            "term": "廃棄",
+            "titleHits": 0,
+            "bodyHits": 2,
+            "urlHits": 0,
+            "contribution": 16
+          },
+          {
+            "term": "資源",
+            "titleHits": 0,
+            "bodyHits": 2,
+            "urlHits": 0,
+            "contribution": 12
+          },
+          {
+            "term": "リサイクル",
+            "titleHits": 0,
+            "bodyHits": 1,
+            "urlHits": 0,
+            "contribution": 9
+          }
+        ],
+        "sourceBestTopic": "environment",
+        "sourceBestTopicScore": 239,
+        "sourceFamilyId": "gov-env",
+        "sourceTitle": "環境省の組織（内部部局）",
+        "sourcePublisher": "環境省",
+        "sourceUrl": "https://www.env.go.jp/annai/soshiki/bukyoku.html",
+        "sourcePublishedDate": null,
+        "sourceRetrievedDate": "2026-08-22",
+        "rightsStatus": "adaptation-permitted",
+        "rightsBasis": {
+          "termsUrl": "https://www.env.go.jp/mail.html",
+          "licenseName": "Public Data License 1.0",
+          "licenseUrl": "https://www.digital.go.jp/resources/open_data/public_data_license_v1.0",
+          "itemLevelCheck": "No contrary text-rights notice detected in the fetched page; excluded media remains excluded.",
+          "verifiedDate": "2026-08-22"
+        },
+        "thirdPartyContentReview": {
+          "status": "checked-no-item-level-signal",
+          "signals": [],
+          "excludedMedia": [],
+          "assetsBundled": false
+        },
+        "sourceBodyExtractionStatus": "body-ready",
+        "sourceTextCharacterCount": 856,
+        "reuseMode": "verbatim-or-adaptation-permitted",
+        "sourceBodyFingerprint": "c8601f0217818113a85d5f7a0839de36216b4e4dbef1046f536804a05c4d9317",
+        "sourceAttribution": "出典：環境省ウェブサイト（https://www.env.go.jp/annai/soshiki/bukyoku.html）",
+        "sourceProcessing": "Item-level source body extracted for one-source Sakura Article adaptation. No learner-facing text has been generated.",
+        "inventoryPosition": 180,
+        "discoveryKinds": [
+          "crawl"
+        ]
+      },
+      {
         "candidateId": "article-topic-8f284bbafd7f401b",
         "targetShelf": "articles",
         "articleTopic": "environment",
@@ -15055,7 +15171,7 @@
         "sourceBodyFingerprint": "5f4ce4769ee41aaab899af72a4c6f42b04935adb9edba50244247da5e54da332",
         "sourceAttribution": "出典：環境省ウェブサイト（https://www.env.go.jp/policy/hakusyo/index.html）",
         "sourceProcessing": "Item-level source body extracted for one-source Sakura Article adaptation. No learner-facing text has been generated.",
-        "inventoryPosition": 180,
+        "inventoryPosition": 181,
         "discoveryKinds": [
           "crawl"
         ]
@@ -15137,7 +15253,7 @@
         "sourceBodyFingerprint": "d3c82a7a10cbfc59f6d5f9da251054bccce33c06f7f7012f6afe41f7300b278c",
         "sourceAttribution": "出典：農林水産省ウェブサイト（https://www.maff.go.jp/j/kanbo/kankyo/seisaku/being_sustainable/mieruka/mieruka.html）",
         "sourceProcessing": "Item-level source body extracted for one-source Sakura Article adaptation. No learner-facing text has been generated.",
-        "inventoryPosition": 181,
+        "inventoryPosition": 182,
         "discoveryKinds": [
           "crawl"
         ]
@@ -15219,7 +15335,7 @@
         "sourceBodyFingerprint": "b7274b6133efb8c1f4260b3bbfc7e381be39d11ab5b702e728aab8fde3883845",
         "sourceAttribution": "出典：環境省ウェブサイト（https://www.env.go.jp/earth/）",
         "sourceProcessing": "Item-level source body extracted for one-source Sakura Article adaptation. No learner-facing text has been generated.",
-        "inventoryPosition": 182,
+        "inventoryPosition": 183,
         "discoveryKinds": [
           "topic-root"
         ]
@@ -15287,7 +15403,7 @@
         "sourceBodyFingerprint": "6069f74ae168571537f87f63d2be046e9864014dc4c9feb9e5fb416b12bd4ff4",
         "sourceAttribution": "出典：環境省ウェブサイト（https://www.env.go.jp/council/03recycle/yoshi03-15.html）",
         "sourceProcessing": "Item-level source body extracted for one-source Sakura Article adaptation. No learner-facing text has been generated.",
-        "inventoryPosition": 183,
+        "inventoryPosition": 184,
         "discoveryKinds": [
           "crawl"
         ]
@@ -15362,7 +15478,7 @@
         "sourceBodyFingerprint": "15841311b182797a50c158c6a7acd4e2ba93281d1385c988d75f269a49d585bb",
         "sourceAttribution": "出典：環境省ウェブサイト（https://www.env.go.jp/earth/g7/2023_sapporo_emm/index.html）",
         "sourceProcessing": "Item-level source body extracted for one-source Sakura Article adaptation. No learner-facing text has been generated.",
-        "inventoryPosition": 184,
+        "inventoryPosition": 185,
         "discoveryKinds": [
           "crawl"
         ]
@@ -15444,7 +15560,7 @@
         "sourceBodyFingerprint": "7985926653b50df313a14f2d9d3cfb70c9bb73d8ea9f47957fb5ace7d3e23284",
         "sourceAttribution": "出典：環境省ウェブサイト（https://www.env.go.jp/recycle/recycling/index.html）",
         "sourceProcessing": "Item-level source body extracted for one-source Sakura Article adaptation. No learner-facing text has been generated.",
-        "inventoryPosition": 185,
+        "inventoryPosition": 186,
         "discoveryKinds": [
           "crawl"
         ]
@@ -15540,7 +15656,7 @@
         "sourceBodyFingerprint": "957f0404f78df0c12e02df762abf7ef270aa6bf1a457c393560debf72b25206f",
         "sourceAttribution": "出典：環境省ウェブサイト（https://www.env.go.jp/guide/info/ecojin/index.html）",
         "sourceProcessing": "Item-level source body extracted for one-source Sakura Article adaptation. No learner-facing text has been generated.",
-        "inventoryPosition": 186,
+        "inventoryPosition": 187,
         "discoveryKinds": [
           "crawl"
         ]
@@ -15601,7 +15717,7 @@
         "sourceBodyFingerprint": "1c581b2c58e800e09a9fd5e8224cb4973ee68abba04a0d735343d42c3a33bb77",
         "sourceAttribution": "出典：環境省ウェブサイト（https://www.env.go.jp/policy/hakusyo/zu.html）",
         "sourceProcessing": "Item-level source body extracted for one-source Sakura Article adaptation. No learner-facing text has been generated.",
-        "inventoryPosition": 187,
+        "inventoryPosition": 188,
         "discoveryKinds": [
           "crawl"
         ]
@@ -15662,7 +15778,7 @@
         "sourceBodyFingerprint": "7d6384fcc57088115e0b769f6319a224084cb1c6a5ba5dbf41fa97d4da69f956",
         "sourceAttribution": "出典：環境省ウェブサイト（https://www.env.go.jp/council/17nat-wil/yoshi17.html）",
         "sourceProcessing": "Item-level source body extracted for one-source Sakura Article adaptation. No learner-facing text has been generated.",
-        "inventoryPosition": 188,
+        "inventoryPosition": 189,
         "discoveryKinds": [
           "crawl"
         ]
@@ -15723,7 +15839,7 @@
         "sourceBodyFingerprint": "b29a480f6c50e8d20c2b34b1bbdf9f90ed54233de850ce06f45d5eee90653b9f",
         "sourceAttribution": "出典：環境省ウェブサイト（https://www.env.go.jp/nature/）",
         "sourceProcessing": "Item-level source body extracted for one-source Sakura Article adaptation. No learner-facing text has been generated.",
-        "inventoryPosition": 189,
+        "inventoryPosition": 190,
         "discoveryKinds": [
           "topic-root"
         ]
@@ -15805,7 +15921,7 @@
         "sourceBodyFingerprint": "17a8c881cb8b039e33ecf232972549ba03d3d789c97ad5e9bbfeb282fc271e3e",
         "sourceAttribution": "出典：環境省ウェブサイト（https://www.env.go.jp/earth/ondanka/gosat.html）",
         "sourceProcessing": "Item-level source body extracted for one-source Sakura Article adaptation. No learner-facing text has been generated.",
-        "inventoryPosition": 190,
+        "inventoryPosition": 191,
         "discoveryKinds": [
           "crawl"
         ]
@@ -15866,7 +15982,7 @@
         "sourceBodyFingerprint": "1de4a0526f9902b425606944926220e551a9e730f7b920f33a69b92467fb2340",
         "sourceAttribution": "出典：環境省ウェブサイト（https://www.env.go.jp/press/111114.html）",
         "sourceProcessing": "Item-level source body extracted for one-source Sakura Article adaptation. No learner-facing text has been generated.",
-        "inventoryPosition": 191,
+        "inventoryPosition": 192,
         "discoveryKinds": [
           "crawl"
         ]
@@ -15920,7 +16036,96 @@
         "sourceBodyFingerprint": "9e7f88d9fd1e130b695e94b60ad3e2e618f0ef26efceb9c713a7e612b21f562e",
         "sourceAttribution": "出典：環境省ウェブサイト（https://www.env.go.jp/council/06earth/yoshi06-20.html）",
         "sourceProcessing": "Item-level source body extracted for one-source Sakura Article adaptation. No learner-facing text has been generated.",
-        "inventoryPosition": 192,
+        "inventoryPosition": 193,
+        "discoveryKinds": [
+          "crawl"
+        ]
+      },
+      {
+        "candidateId": "article-topic-3c80e626d0a024d8",
+        "targetShelf": "articles",
+        "articleTopic": "environment",
+        "topicScore": 199,
+        "topicEvidence": [
+          {
+            "term": "気候",
+            "titleHits": 1,
+            "bodyHits": 4,
+            "urlHits": 0,
+            "contribution": 72
+          },
+          {
+            "term": "環境",
+            "titleHits": 0,
+            "bodyHits": 4,
+            "urlHits": 0,
+            "contribution": 40
+          },
+          {
+            "term": "温室効果",
+            "titleHits": 0,
+            "bodyHits": 4,
+            "urlHits": 0,
+            "contribution": 36
+          },
+          {
+            "term": "大気",
+            "titleHits": 0,
+            "bodyHits": 2,
+            "urlHits": 0,
+            "contribution": 14
+          },
+          {
+            "term": "エネルギー",
+            "titleHits": 0,
+            "bodyHits": 2,
+            "urlHits": 0,
+            "contribution": 12
+          },
+          {
+            "term": "循環",
+            "titleHits": 0,
+            "bodyHits": 1,
+            "urlHits": 0,
+            "contribution": 7
+          },
+          {
+            "term": "自然",
+            "titleHits": 0,
+            "bodyHits": 1,
+            "urlHits": 0,
+            "contribution": 6
+          }
+        ],
+        "sourceBestTopic": "environment",
+        "sourceBestTopicScore": 199,
+        "sourceFamilyId": "gov-env",
+        "sourceTitle": "気候変動に関する政府間パネル（IPCC）第6次評価報告書（AR6）サイクル",
+        "sourcePublisher": "環境省",
+        "sourceUrl": "https://www.env.go.jp/earth/ipcc/6th/index.html",
+        "sourcePublishedDate": null,
+        "sourceRetrievedDate": "2026-08-22",
+        "rightsStatus": "adaptation-permitted",
+        "rightsBasis": {
+          "termsUrl": "https://www.env.go.jp/mail.html",
+          "licenseName": "Public Data License 1.0",
+          "licenseUrl": "https://www.digital.go.jp/resources/open_data/public_data_license_v1.0",
+          "itemLevelCheck": "No contrary text-rights notice detected in the fetched page; excluded media remains excluded.",
+          "verifiedDate": "2026-08-22"
+        },
+        "thirdPartyContentReview": {
+          "status": "checked-no-item-level-signal",
+          "signals": [],
+          "excludedMedia": [],
+          "assetsBundled": false
+        },
+        "sourceBodyExtractionStatus": "body-ready",
+        "sourceTextCharacterCount": 4102,
+        "reuseMode": "verbatim-or-adaptation-permitted",
+        "sourceBodyFingerprint": "198b78f9a7103f730ab6e9761393ae2bc21a9434eefbd4671a1942a2ecf9bda8",
+        "sourceAttribution": "出典：環境省ウェブサイト（https://www.env.go.jp/earth/ipcc/6th/index.html）",
+        "sourceProcessing": "Item-level source body extracted for one-source Sakura Article adaptation. No learner-facing text has been generated.",
+        "inventoryPosition": 194,
         "discoveryKinds": [
           "crawl"
         ]
@@ -15974,7 +16179,7 @@
         "sourceBodyFingerprint": "dbe8968d0105e4e95c86dc6919b8b45c75bad1733438491adf11185dc928b0a8",
         "sourceAttribution": "出典：環境省ウェブサイト（https://www.env.go.jp/council/former2013/07air/yoshi07.html）",
         "sourceProcessing": "Item-level source body extracted for one-source Sakura Article adaptation. No learner-facing text has been generated.",
-        "inventoryPosition": 193,
+        "inventoryPosition": 195,
         "discoveryKinds": [
           "crawl"
         ]
@@ -16035,7 +16240,7 @@
         "sourceBodyFingerprint": "74fbcf2116ecfb7f20d320e2ca57368992bdc2e8581ac0fcfc7b853c95c481da",
         "sourceAttribution": "出典：環境省ウェブサイト（https://www.env.go.jp/press/109603.html）",
         "sourceProcessing": "Item-level source body extracted for one-source Sakura Article adaptation. No learner-facing text has been generated.",
-        "inventoryPosition": 194,
+        "inventoryPosition": 196,
         "discoveryKinds": [
           "crawl"
         ]
@@ -16095,165 +16300,6 @@
         "reuseMode": "verbatim-or-adaptation-permitted",
         "sourceBodyFingerprint": "bc4a0a9fbb0c64daf9bb4dfa7a0afc4aaf309d73bb3781b7a6d3225304f50b7f",
         "sourceAttribution": "出典：環境省ウェブサイト（https://www.env.go.jp/press/press_04036.html）",
-        "sourceProcessing": "Item-level source body extracted for one-source Sakura Article adaptation. No learner-facing text has been generated.",
-        "inventoryPosition": 195,
-        "discoveryKinds": [
-          "crawl"
-        ]
-      },
-      {
-        "candidateId": "article-topic-ce7579ab96ad62ab",
-        "targetShelf": "articles",
-        "articleTopic": "environment",
-        "topicScore": 179,
-        "topicEvidence": [
-          {
-            "term": "環境",
-            "titleHits": 0,
-            "bodyHits": 4,
-            "urlHits": 0,
-            "contribution": 40
-          },
-          {
-            "term": "脱炭素",
-            "titleHits": 0,
-            "bodyHits": 4,
-            "urlHits": 0,
-            "contribution": 36
-          },
-          {
-            "term": "循環",
-            "titleHits": 0,
-            "bodyHits": 4,
-            "urlHits": 0,
-            "contribution": 28
-          },
-          {
-            "term": "エネルギー",
-            "titleHits": 0,
-            "bodyHits": 4,
-            "urlHits": 0,
-            "contribution": 24
-          },
-          {
-            "term": "資源",
-            "titleHits": 0,
-            "bodyHits": 3,
-            "urlHits": 0,
-            "contribution": 18
-          },
-          {
-            "term": "自然",
-            "titleHits": 0,
-            "bodyHits": 2,
-            "urlHits": 0,
-            "contribution": 12
-          },
-          {
-            "term": "リサイクル",
-            "titleHits": 0,
-            "bodyHits": 1,
-            "urlHits": 0,
-            "contribution": 9
-          }
-        ],
-        "sourceBestTopic": "environment",
-        "sourceBestTopicScore": 179,
-        "sourceFamilyId": "gov-env",
-        "sourceTitle": "20251224.html",
-        "sourcePublisher": "環境省",
-        "sourceUrl": "https://www.env.go.jp/guide/info/ecojin/feature2/20251224.html",
-        "sourcePublishedDate": null,
-        "sourceRetrievedDate": "2026-08-22",
-        "rightsStatus": "adaptation-permitted",
-        "rightsBasis": {
-          "termsUrl": "https://www.env.go.jp/mail.html",
-          "licenseName": "Public Data License 1.0",
-          "licenseUrl": "https://www.digital.go.jp/resources/open_data/public_data_license_v1.0",
-          "itemLevelCheck": "No contrary text-rights notice detected in the fetched page; excluded media remains excluded.",
-          "verifiedDate": "2026-08-22"
-        },
-        "thirdPartyContentReview": {
-          "status": "checked-third-party-assets-excluded",
-          "signals": [],
-          "excludedMedia": [
-            "third-party-media-credit"
-          ],
-          "assetsBundled": false
-        },
-        "sourceBodyExtractionStatus": "body-ready",
-        "sourceTextCharacterCount": 3664,
-        "reuseMode": "verbatim-or-adaptation-permitted",
-        "sourceBodyFingerprint": "bbeef5d672d9baaffa8f1bc3ec99d205ba060217b129caea3bdc432f7502d316",
-        "sourceAttribution": "出典：環境省ウェブサイト（https://www.env.go.jp/guide/info/ecojin/feature2/20251224.html）",
-        "sourceProcessing": "Item-level source body extracted for one-source Sakura Article adaptation. No learner-facing text has been generated.",
-        "inventoryPosition": 196,
-        "discoveryKinds": [
-          "crawl"
-        ]
-      },
-      {
-        "candidateId": "article-topic-6dafec28d3f6d640",
-        "targetShelf": "articles",
-        "articleTopic": "environment",
-        "topicScore": 176,
-        "topicEvidence": [
-          {
-            "term": "リサイクル",
-            "titleHits": 1,
-            "bodyHits": 4,
-            "urlHits": 0,
-            "contribution": 72
-          },
-          {
-            "term": "環境",
-            "titleHits": 0,
-            "bodyHits": 4,
-            "urlHits": 0,
-            "contribution": 40
-          },
-          {
-            "term": "循環",
-            "titleHits": 0,
-            "bodyHits": 4,
-            "urlHits": 0,
-            "contribution": 28
-          },
-          {
-            "term": "資源",
-            "titleHits": 0,
-            "bodyHits": 4,
-            "urlHits": 0,
-            "contribution": 24
-          }
-        ],
-        "sourceBestTopic": "environment",
-        "sourceBestTopicScore": 176,
-        "sourceFamilyId": "gov-env",
-        "sourceTitle": "小型家電リサイクル小委員会",
-        "sourcePublisher": "環境省",
-        "sourceUrl": "https://www.env.go.jp/council/03recycle/yoshi03-18.html",
-        "sourcePublishedDate": null,
-        "sourceRetrievedDate": "2026-08-22",
-        "rightsStatus": "adaptation-permitted",
-        "rightsBasis": {
-          "termsUrl": "https://www.env.go.jp/mail.html",
-          "licenseName": "Public Data License 1.0",
-          "licenseUrl": "https://www.digital.go.jp/resources/open_data/public_data_license_v1.0",
-          "itemLevelCheck": "No contrary text-rights notice detected in the fetched page; excluded media remains excluded.",
-          "verifiedDate": "2026-08-22"
-        },
-        "thirdPartyContentReview": {
-          "status": "checked-no-item-level-signal",
-          "signals": [],
-          "excludedMedia": [],
-          "assetsBundled": false
-        },
-        "sourceBodyExtractionStatus": "body-ready",
-        "sourceTextCharacterCount": 545,
-        "reuseMode": "verbatim-or-adaptation-permitted",
-        "sourceBodyFingerprint": "45253a4b591500efc92eb56e212527cb78307bf2a7a1f32f719f0a19737ac3cc",
-        "sourceAttribution": "出典：環境省ウェブサイト（https://www.env.go.jp/council/03recycle/yoshi03-18.html）",
         "sourceProcessing": "Item-level source body extracted for one-source Sakura Article adaptation. No learner-facing text has been generated.",
         "inventoryPosition": 197,
         "discoveryKinds": [
@@ -16336,10 +16382,10 @@
         ]
       },
       {
-        "candidateId": "article-topic-f9eaf9a53e0089d0",
+        "candidateId": "article-topic-e802a1d58e3c0352",
         "targetShelf": "articles",
         "articleTopic": "environment",
-        "topicScore": 169,
+        "topicScore": 171,
         "topicEvidence": [
           {
             "term": "環境",
@@ -16349,47 +16395,61 @@
             "contribution": 40
           },
           {
-            "term": "リサイクル",
+            "term": "温室効果",
             "titleHits": 0,
             "bodyHits": 4,
             "urlHits": 0,
             "contribution": 36
           },
           {
-            "term": "廃棄",
-            "titleHits": 0,
-            "bodyHits": 4,
-            "urlHits": 0,
-            "contribution": 32
-          },
-          {
-            "term": "エネルギー",
-            "titleHits": 0,
-            "bodyHits": 4,
-            "urlHits": 0,
-            "contribution": 24
-          },
-          {
-            "term": "資源",
+            "term": "大気",
             "titleHits": 0,
             "bodyHits": 3,
+            "urlHits": 0,
+            "contribution": 21
+          },
+          {
+            "term": "気候",
+            "titleHits": 0,
+            "bodyHits": 2,
             "urlHits": 0,
             "contribution": 18
           },
           {
-            "term": "循環",
+            "term": "資源",
+            "titleHits": 0,
+            "bodyHits": 2,
+            "urlHits": 0,
+            "contribution": 12
+          },
+          {
+            "term": "生物多様",
             "titleHits": 0,
             "bodyHits": 1,
             "urlHits": 0,
-            "contribution": 7
+            "contribution": 9
+          },
+          {
+            "term": "リサイクル",
+            "titleHits": 0,
+            "bodyHits": 1,
+            "urlHits": 0,
+            "contribution": 9
+          },
+          {
+            "term": "廃棄",
+            "titleHits": 0,
+            "bodyHits": 1,
+            "urlHits": 0,
+            "contribution": 8
           }
         ],
         "sourceBestTopic": "environment",
-        "sourceBestTopicScore": 169,
+        "sourceBestTopicScore": 171,
         "sourceFamilyId": "gov-env",
-        "sourceTitle": "20251022.html",
+        "sourceTitle": "20250226.html",
         "sourcePublisher": "環境省",
-        "sourceUrl": "https://www.env.go.jp/guide/info/ecojin/feature2/20251022.html",
+        "sourceUrl": "https://www.env.go.jp/guide/info/ecojin/feature1/20250226.html",
         "sourcePublishedDate": null,
         "sourceRetrievedDate": "2026-08-22",
         "rightsStatus": "adaptation-permitted",
@@ -16401,18 +16461,16 @@
           "verifiedDate": "2026-08-22"
         },
         "thirdPartyContentReview": {
-          "status": "checked-third-party-assets-excluded",
+          "status": "checked-no-item-level-signal",
           "signals": [],
-          "excludedMedia": [
-            "third-party-media-credit"
-          ],
+          "excludedMedia": [],
           "assetsBundled": false
         },
         "sourceBodyExtractionStatus": "body-ready",
-        "sourceTextCharacterCount": 3461,
+        "sourceTextCharacterCount": 2290,
         "reuseMode": "verbatim-or-adaptation-permitted",
-        "sourceBodyFingerprint": "718ba10c5c31086e31e45f4113d839ad5e9f036463c1f47d7bf1209e5131bd16",
-        "sourceAttribution": "出典：環境省ウェブサイト（https://www.env.go.jp/guide/info/ecojin/feature2/20251022.html）",
+        "sourceBodyFingerprint": "076a80245f8cdb5dd88591b4ab5a72665d0327aef21895378bc270129e3362d2",
+        "sourceAttribution": "出典：環境省ウェブサイト（https://www.env.go.jp/guide/info/ecojin/feature1/20250226.html）",
         "sourceProcessing": "Item-level source body extracted for one-source Sakura Article adaptation. No learner-facing text has been generated.",
         "inventoryPosition": 199,
         "discoveryKinds": [
@@ -24117,11 +24175,11 @@
   "rejectionSummary": {
     "duplicate-body": 53,
     "thin-0": 49,
-    "http-403": 31,
-    "http-404": 23,
+    "http-404": 21,
+    "http-403": 20,
+    "thin-132": 9,
     "thin-100": 8,
     "thin-102": 8,
-    "thin-132": 8,
     "thin-109": 7,
     "thin-84": 7,
     "thin-141": 6,
@@ -24132,10 +24190,12 @@
     "thin-313": 6,
     "thin-64": 6,
     "thin-11": 5,
+    "thin-116": 5,
     "thin-121": 5,
     "thin-137": 5,
     "thin-15": 5,
     "thin-159": 5,
+    "thin-18": 5,
     "thin-190": 5,
     "thin-191": 5,
     "thin-270": 5,
@@ -24148,7 +24208,6 @@
     "thin-107": 4,
     "thin-111": 4,
     "thin-112": 4,
-    "thin-116": 4,
     "thin-125": 4,
     "thin-127": 4,
     "thin-133": 4,
@@ -24160,7 +24219,6 @@
     "thin-166": 4,
     "thin-17": 4,
     "thin-174": 4,
-    "thin-18": 4,
     "thin-211": 4,
     "thin-213": 4,
     "thin-218": 4,
@@ -24168,6 +24226,7 @@
     "thin-257": 4,
     "thin-262": 4,
     "thin-264": 4,
+    "thin-272": 4,
     "thin-280": 4,
     "thin-286": 4,
     "thin-34": 4,
@@ -24206,7 +24265,6 @@
     "thin-26": 3,
     "thin-260": 3,
     "thin-263": 3,
-    "thin-272": 3,
     "thin-274": 3,
     "thin-282": 3,
     "thin-291": 3,
@@ -24332,6 +24390,7 @@
     "thin-187": 1,
     "thin-192": 1,
     "thin-193": 1,
+    "thin-20": 1,
     "thin-203": 1,
     "thin-205": 1,
     "thin-209": 1,
