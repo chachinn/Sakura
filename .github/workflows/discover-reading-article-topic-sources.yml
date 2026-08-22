@@ -30,6 +30,11 @@ jobs:
       - name: Syntax check
         run: node --check tools/discover-reading-article-topic-sources.mjs
 
+      - name: Extend strict Beauty crawl budget
+        run: |
+          sed -i 's/const MAX_FETCHES_PER_TOPIC = 420;/const MAX_FETCHES_PER_TOPIC = 900;/' tools/discover-reading-article-topic-sources.mjs
+          node --check tools/discover-reading-article-topic-sources.mjs
+
       - name: Discover topic-balanced official sources
         run: node tools/discover-reading-article-topic-sources.mjs
 
