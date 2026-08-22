@@ -2,51 +2,52 @@
   "version": 1,
   "generatedDate": "2026-08-22",
   "pass": false,
-  "totalCandidatesInspected": 12008,
-  "eligibleBodyReadyItems": 6117,
-  "acceptedBodyReadyItems": 1164,
-  "unselectedBodyReadyItems": 4953,
-  "rejectedItems": 5891,
+  "totalCandidatesInspected": 3500,
+  "eligibleBodyReadyItems": 2059,
+  "acceptedBodyReadyItems": 1265,
+  "unselectedBodyReadyItems": 794,
+  "rejectedItems": 1441,
   "needsReviewItems": 0,
   "acceptedCountsByShelf": {
-    "travel-reading": 192,
+    "travel-reading": 195,
     "recipes-how-to": 100,
-    "real-life-documents": 52,
+    "real-life-documents": 150,
     "interviews-qa": 100,
     "school-work": 120,
     "news": 300,
     "articles": 300
   },
   "acceptedCountsBySourceFamily": {
-    "gov-jta": 153,
-    "gov-maff": 182,
-    "gov-digital": 46,
-    "gov-mhlw": 705,
-    "gov-caa": 54,
-    "gov-env": 12,
-    "gov-cfa": 10,
+    "gov-maff": 184,
+    "gov-jta": 156,
+    "gov-env": 9,
+    "gov-mhlw": 675,
+    "gov-fdma": 7,
+    "gov-caa": 140,
+    "gov-moj-isa": 7,
+    "gov-digital": 74,
+    "gov-cfa": 11,
     "gov-bunka": 2
   },
   "rejectionReasons": {
-    "http-403": 983,
-    "insufficient-source-substance": 2927,
-    "http-404": 44,
-    "landing-or-index-page": 2073,
-    "duplicate-source-body": 59,
-    "non-html-source": 269,
-    "unapproved-redirect-path": 2,
-    "fetch-failure": 1
+    "http-403": 30,
+    "insufficient-source-substance": 1184,
+    "http-404": 15,
+    "landing-or-index-page": 628,
+    "unapproved-redirect-path": 4,
+    "duplicate-source-body": 6,
+    "non-html-source": 2
   },
-  "landingIndexPageRejectionCount": 2073,
-  "itemsMissingUsableSourceSubstance": 2927,
-  "duplicateUrls": 227,
-  "duplicateSourceBodies": 59,
+  "landingIndexPageRejectionCount": 628,
+  "itemsMissingUsableSourceSubstance": 1184,
+  "duplicateUrls": 16,
+  "duplicateSourceBodies": 6,
   "rightsStatusDistribution": {
-    "adaptation-permitted": 1164
+    "adaptation-permitted": 1265
   },
   "thirdPartyReviewDistribution": {
-    "checked-no-item-level-signal": 1082,
-    "checked-third-party-assets-excluded": 82
+    "checked-no-item-level-signal": 1172,
+    "checked-third-party-assets-excluded": 93
   },
   "targets": {
     "articles": 300,
@@ -58,8 +59,8 @@
     "real-life-documents": 200
   },
   "unfilled": {
-    "travel-reading": 8,
-    "real-life-documents": 148
+    "travel-reading": 5,
+    "real-life-documents": 50
   },
   "notes": [
     "Accepted government records are inventory evidence only; no learner-facing adaptation was generated.",
