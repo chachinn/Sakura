@@ -7,10 +7,12 @@ on:
     paths:
       - .github/workflows/validate-reading-library-architecture.yml
       - data/reading/library/**
-      - data/reading/articles/manifest.json
+      - data/reading/articles/**
+      - data/reading/body-ready/articles.json
       - tools/build-reading-library.mjs
       - tools/validate-reading-library.mjs
       - tools/validate-reading-article-depth.mjs
+      - tools/audit-reading-article-source-mapping.mjs
       - features/sakura-reading-quality.js
       - features/sakura-reading-longform.js
       - service-worker.js
@@ -20,10 +22,12 @@ on:
     paths:
       - .github/workflows/validate-reading-library-architecture.yml
       - data/reading/library/**
-      - data/reading/articles/manifest.json
+      - data/reading/articles/**
+      - data/reading/body-ready/articles.json
       - tools/build-reading-library.mjs
       - tools/validate-reading-library.mjs
       - tools/validate-reading-article-depth.mjs
+      - tools/audit-reading-article-source-mapping.mjs
       - features/sakura-reading-quality.js
       - features/sakura-reading-longform.js
       - service-worker.js
@@ -45,9 +49,12 @@ jobs:
           node --check tools/build-reading-library.mjs
           node --check tools/validate-reading-library.mjs
           node --check tools/validate-reading-article-depth.mjs
+          node --check tools/audit-reading-article-source-mapping.mjs
           node --check service-worker.js
       - name: Validate partial production library
         run: node tools/validate-reading-library.mjs --allow-incomplete
+      - name: Verify one-source Article mapping
+        run: node tools/audit-reading-article-source-mapping.mjs
       - name: Report current Article depth baseline
         run: node tools/validate-reading-article-depth.mjs || true
       - name: Diff hygiene
