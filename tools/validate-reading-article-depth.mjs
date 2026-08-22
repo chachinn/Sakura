@@ -8,6 +8,13 @@ const articleRoot = path.join(root, "data", "reading", "articles");
 const qaPath = path.join(root, "data", "reading", "qa", "article-depth-report.json");
 const manifest = JSON.parse(fs.readFileSync(path.join(articleRoot, "manifest.json"), "utf8"));
 const LEVELS = ["N5", "N4", "N3", "N2", "N1"];
+const LONGFORM_MINIMUMS = Object.freeze({
+  N5: { characters: 350, paragraphs: 5 },
+  N4: { characters: 450, paragraphs: 5 },
+  N3: { characters: 600, paragraphs: 6 },
+  N2: { characters: 800, paragraphs: 6 },
+  N1: { characters: 1000, paragraphs: 7 },
+});
 const errors = [];
 const records = [];
 const seenIds = new Set();
@@ -44,6 +51,7 @@ function grammarNeedle(pattern) {
 
 for (const level of LEVELS) {
   const files = manifest.levelFiles?.[level] || [];
+  const minimums = LONGFORM_MINIMUMS[level];
   for (const name of files) {
     const file = path.join(articleRoot, name);
     if (!fs.existsSync(file)) {
@@ -66,7 +74,8 @@ for (const level of LEVELS) {
       else if (compact) seenBodies.set(hash, record.id);
       if (Number(record?.contentVersion || 0) < 4) errors.push(`${record?.id}: final depth rewrite has not been versioned`);
       if (record?.depthRevision !== "substantial-one-source") errors.push(`${record?.id}: depthRevision must be substantial-one-source`);
-      if (paragraphs.length < 3) errors.push(`${record?.id}: needs at least 3 meaningful learner paragraphs`);
+      if (paragraphs.length < minimums.paragraphs) errors.push(`${record?.id}: ${level} long-form Article needs at least ${minimums.paragraphs} meaningful learner paragraphs, got ${paragraphs.length}`);
+      if (compact.length < minimums.characters) errors.push(`${record?.id}: ${level} long-form Article needs at least ${minimums.characters} Japanese characters, got ${compact.length}`);
       if (paragraphs.some((paragraph) => !paragraph?.japanese || !paragraph?.kana || !paragraph?.furigana || !paragraph?.english)) errors.push(`${record?.id}: paragraph support fields are incomplete`);
       if (!record?.sourceUrl || !/^https:\/\//.test(record.sourceUrl)) errors.push(`${record?.id}: verified HTTPS sourceUrl missing`);
       if (!record?.sourceFamilyId || !record?.rightsStatus || !record?.sourcePublisher || !record?.sourceTitle) errors.push(`${record?.id}: source/rights metadata incomplete`);
@@ -92,18 +101,23 @@ if (records.length !== 300) errors.push(`Article corpus must contain exactly 300
 const byLevel = {};
 for (const level of LEVELS) {
   const group = records.filter((record) => record.jlpt === level);
+  const minimums = LONGFORM_MINIMUMS[level];
   byLevel[level] = {
     count: group.length,
+    requiredMinimumJapaneseCharacters: minimums.characters,
+    requiredMinimumParagraphs: minimums.paragraphs,
     characters: statistics(group.map((record) => normalize(body(record)).length)),
     paragraphs: statistics(group.map((record) => Array.isArray(record.paragraphs) ? record.paragraphs.length : 0)),
-    sampleLikeOutliers: group.filter((record) => (record.paragraphs || []).length < 3 || record.depthRevision !== "substantial-one-source").map((record) => record.id),
+    belowLongformMinimum: group.filter((record) => normalize(body(record)).length < minimums.characters || (record.paragraphs || []).length < minimums.paragraphs).map((record) => record.id),
+    sampleLikeOutliers: group.filter((record) => record.depthRevision !== "substantial-one-source").map((record) => record.id),
   };
 }
 const report = {
-  version: 1,
+  version: 2,
   generatedDate: new Date().toISOString().slice(0, 10),
   pass: errors.length === 0,
-  policy: "Structural/source-aware final Article QA. Character statistics are reported for visibility but are not used as fixed JLPT length targets.",
+  policy: "Final Article QA requires substantial one-source long-form learner adaptations with level-specific minimum Japanese depth. Minimums are floors, not padding targets; unsupported or repetitive filler remains invalid.",
+  longformMinimums: LONGFORM_MINIMUMS,
   articleCount: records.length,
   byLevel,
   errors,
