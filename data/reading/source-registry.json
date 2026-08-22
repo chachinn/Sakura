@@ -539,6 +539,48 @@
       ],
       "notes": "PDL 1.0 applies where no separate rights statement appears. This Reading Garden approval is restricted to public-information and disaster/weather guidance under /jma/kishou/know/; media assets are excluded.",
       "verifiedDate": "2026-08-22"
+    },
+    {
+      "sourceFamilyId": "gov-pmda",
+      "name": "Pharmaceuticals and Medical Devices Agency",
+      "domain": "www.pmda.go.jp",
+      "publisher": "独立行政法人医薬品医療機器総合機構",
+      "sourceType": "open-government",
+      "termsUrl": "https://www.pmda.go.jp/0048.html",
+      "licenseName": "Public Data License 1.0",
+      "licenseUrl": "https://www.digital.go.jp/resources/open_data/public_data_license_v1.0",
+      "allowedUse": [
+        "copy",
+        "public-transmission",
+        "translation",
+        "adaptation",
+        "commercial-use"
+      ],
+      "fullTextAllowed": true,
+      "adaptationAllowed": true,
+      "attributionRequired": true,
+      "modificationDisclosureRequired": true,
+      "thirdPartyAssetWarning": true,
+      "approvedPathPatterns": [
+        "^/review-services/drug-reviews/about-reviews/q-drugs/",
+        "^/safety/info-services/qdrugs-cosmetics/",
+        "^/safety/reports/mah/0005\\.html$",
+        "^/safety/consultation-for-mah/",
+        "^/review-services/f2f-pre/consultations/",
+        "^/review-services/symposia/0174\\.html$"
+      ],
+      "excludedContent": [
+        "logos",
+        "symbols",
+        "characters",
+        "third-party photographs",
+        "third-party videos",
+        "manufacturer-authored application summaries and review-report content",
+        "databases or services governed by separate terms",
+        "content with a separate rights notice"
+      ],
+      "notes": "PMDA site policy applies PDL 1.0 unless otherwise indicated. Reading Garden approval is restricted to PMDA-authored HTML cosmetics/quasi-drug guidance, consultation, safety and explanatory pages in the listed paths. PDF review reports, manufacturer-authored application materials, separately governed databases/services, and any item with contrary rights text are excluded.",
+      "verifiedDate": "2026-08-22"
     }
   ]
 }

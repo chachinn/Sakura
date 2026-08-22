@@ -10,6 +10,15 @@ const qaRoot = path.join(readingRoot, "qa");
 const registry = JSON.parse(fs.readFileSync(path.join(readingRoot, "source-registry.json"), "utf8"));
 const manifest = JSON.parse(fs.readFileSync(path.join(articleRoot, "manifest.json"), "utf8"));
 const existingBodyReady = JSON.parse(fs.readFileSync(path.join(readingRoot, "body-ready", "articles.json"), "utf8"));
+const reservedCrossShelfUrls = new Set();
+const reservedCrossShelfBodies = new Set();
+for (const name of fs.readdirSync(path.join(readingRoot, "body-ready")).filter((name) => name.endsWith(".json") && name !== "articles.json")) {
+  const pack = JSON.parse(fs.readFileSync(path.join(readingRoot, "body-ready", name), "utf8"));
+  for (const row of pack.records || []) {
+    if (row.sourceUrl) reservedCrossShelfUrls.add(row.sourceUrl);
+    if (row.sourceBodyFingerprint) reservedCrossShelfBodies.add(row.sourceBodyFingerprint);
+  }
+}
 const TODAY = "2026-08-22";
 const LEVELS = ["N5", "N4", "N3", "N2", "N1"];
 const TOPICS = ["beauty", "food", "travel", "digital", "consumer", "health", "environment", "culture", "work", "society"];
@@ -43,6 +52,7 @@ const TOPIC_RULES = {
 const FAMILY_PRIORS = {
   "gov-caa": { beauty:4, food:5, consumer:10, health:2 },
   "gov-mhlw": { beauty:5, health:10, work:7, society:5, food:2 },
+  "gov-pmda": { beauty:14, health:4 },
   "gov-maff": { food:10, environment:4, work:2, travel:2 },
   "gov-jta": { travel:12 },
   "gov-mlit": { travel:7, work:2 },
@@ -56,7 +66,7 @@ const FAMILY_PRIORS = {
 
 const TOPIC_CONFIG = {
   beauty: {
-    families:["gov-mhlw","gov-caa"],
+    families:["gov-mhlw","gov-caa","gov-pmda"],
     roots:[
       "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/kenkou_iryou/iyakuhin/keshouhin/index.html",
       "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/kenkou_iryou/iyakuhin/index.html",
@@ -69,6 +79,20 @@ const TOPIC_CONFIG = {
       "https://www.mhlw.go.jp/stf/shingi-yakuji_39210.html",
       "https://www.mhlw.go.jp/stf/shingi/other-isei_436723_00013.html",
       "https://www.mhlw.go.jp/stf/newpage_65283.html",
+      "https://www.pmda.go.jp/review-services/drug-reviews/about-reviews/q-drugs/0002.html",
+      "https://www.pmda.go.jp/review-services/drug-reviews/about-reviews/q-drugs/0003.html",
+      "https://www.pmda.go.jp/review-services/drug-reviews/about-reviews/q-drugs/0004.html",
+      "https://www.pmda.go.jp/review-services/drug-reviews/about-reviews/q-drugs/0005.html",
+      "https://www.pmda.go.jp/review-services/drug-reviews/about-reviews/q-drugs/0006.html",
+      "https://www.pmda.go.jp/safety/info-services/qdrugs-cosmetics/0001.html",
+      "https://www.pmda.go.jp/safety/info-services/qdrugs-cosmetics/0002.html",
+      "https://www.pmda.go.jp/safety/info-services/qdrugs-cosmetics/0003.html",
+      "https://www.pmda.go.jp/safety/info-services/qdrugs-cosmetics/0004.html",
+      "https://www.pmda.go.jp/safety/reports/mah/0005.html",
+      "https://www.pmda.go.jp/safety/consultation-for-mah/0004.html",
+      "https://www.pmda.go.jp/review-services/f2f-pre/consultations/0017.html",
+      "https://www.pmda.go.jp/review-services/f2f-pre/consultations/0067.html",
+      "https://www.pmda.go.jp/review-services/symposia/0174.html",
       "https://www.caa.go.jp/business/labeling/",
       "https://www.caa.go.jp/policies/policy/representation/household_goods/"
     ]
@@ -337,6 +361,8 @@ function considerCandidate(page, discoveredForTopic, sourceKind) {
   if (genericTitle.test(title)) { rejected.push({url:page.url,topic:discoveredForTopic,reason:"generic-title"}); return false; }
   const thirdPartyContentReview = review(body); if (thirdPartyContentReview.status === "needs-review") { rejected.push({url:page.url,topic:discoveredForTopic,reason:"rights-signal"}); return false; }
   const fingerprint = sha256(normalizeBody(body));
+  if (reservedCrossShelfUrls.has(page.url)) { rejected.push({url:page.url,topic:discoveredForTopic,reason:"cross-shelf-duplicate-url"}); return false; }
+  if (reservedCrossShelfBodies.has(fingerprint)) { rejected.push({url:page.url,topic:discoveredForTopic,reason:"cross-shelf-duplicate-body"}); return false; }
   const existingFingerprintUrl = candidateFingerprintToUrl.get(fingerprint);
   if (existingFingerprintUrl && existingFingerprintUrl !== page.url) { rejected.push({url:page.url,topic:discoveredForTopic,reason:"duplicate-body",duplicateOf:existingFingerprintUrl}); return false; }
   let candidate = candidateByUrl.get(page.url);
